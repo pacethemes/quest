@@ -1,0 +1,108 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "511437842660ff7634f49312f6550913",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "donatj/alike-color-finder",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/donatj/AlikeColorFinder.git",
+                "reference": "1d5e4f04a6eec04f2a6c14edcdb2343479309850"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/donatj/AlikeColorFinder/zipball/1d5e4f04a6eec04f2a6c14edcdb2343479309850",
+                "reference": "1d5e4f04a6eec04f2a6c14edcdb2343479309850",
+                "shasum": ""
+            },
+            "require": {
+                "donatj/flags": "~1.1.0"
+            },
+            "require-dev": {
+                "donatj/drop": "*"
+            },
+            "bin": [
+                "composer/bin/alike"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "donatj\\AlikeColorFinder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse Donat",
+                    "email": "donatj@gmail.com"
+                }
+            ],
+            "time": "2015-01-19 21:49:38"
+        },
+        {
+            "name": "donatj/flags",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/donatj/Flags.git",
+                "reference": "b37f8b206bca17efcab0400fae4258eb882b2298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/donatj/Flags/zipball/b37f8b206bca17efcab0400fae4258eb882b2298",
+                "reference": "b37f8b206bca17efcab0400fae4258eb882b2298",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "donatj/drop": "*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "donatj": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse Donat",
+                    "email": "donatj@gmail.com",
+                    "homepage": "http://donatstudios.com",
+                    "role": "Lead"
+                }
+            ],
+            "description": "GNU-style PHP command line argument parser",
+            "keywords": [
+                "arguments",
+                "cli",
+                "flags",
+                "gnu-style",
+                "options"
+            ],
+            "time": "2014-05-09 17:39:11"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

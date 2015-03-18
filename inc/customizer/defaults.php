@@ -5,7 +5,7 @@ $trivoo_setting_name = 'setting_trivoo_';
 
 $trivoo_defaults = array (
 
-/************
+	/************
 	** General **
 	*************/
 
@@ -69,6 +69,14 @@ $trivoo_defaults = array (
 	'layout_page_sidebar' => 'right',
 	'layout_page_title-bar' => 1,
 	'layout_page_title' => 1,
+
+
+	/* Global */
+	'colors_global_accent' => '#27ae60',
+	'colors_global_alt' => '#f5f5f5',
+	'colors_global_border' => '#e0e0e0',
+	'colors_global_site_bg' => '#ddd',
+	'colors_global_content_bg' => '#fff',
 
 );
 
