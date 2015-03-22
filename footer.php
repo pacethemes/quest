@@ -7,7 +7,8 @@
  * @package trivoo-free
  */
 ?>
-
+	
+	<?php if( is_active_sidebar( 'footer-widget' ) ) : ?>
 	<footer class="trivoo-row main-footer">
 		<div class="container">
 			<div class="row">
@@ -15,14 +16,15 @@
 			</div>
 		</div>
 	</footer>
+	<?php endif; ?>
 
 	<footer id="colophon" class="copyright trivoo-row" role="contentinfo">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 copyright-text">
 					<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'trivoo-free' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'trivoo-free' ), 'WordPress' ); ?></a>
 					<span class="sep"> | </span>
-					<?php printf( __( 'Theme: %1$s by %2$s.', 'trivoo-free' ), 'trivoo-free', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+					<?php printf( __( 'Theme: %1$s by %2$s.', 'trivoo-free' ), 'trivoo-free', '<a href="http://trivoo.net" rel="designer">Trivoo.net</a>' ); ?>
 				</div>
 
 				<div class="col-md-6 social-icon-container clearfix">

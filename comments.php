@@ -20,11 +20,11 @@ if ( post_password_required() ) {
 <div id="comments" class="clearfix">
 <?php if(have_comments()) :?>
 	<div class="post-comments-heading">
-		<h2><?php comments_number(__('No Comments', 'trivoo-framework'), 
+		<h3><?php comments_number(__('No Comments', 'trivoo-framework'), 
 									__('One Comment', 'trivoo-framework'), 
 									__('% Comments', 'trivoo-framework')) 
 									?>
-								</h2>
+								</h3>
 	</div>
 
 	<div class="comments-container">

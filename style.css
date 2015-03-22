@@ -1,8 +1,8 @@
 /*
 Theme Name: trivoo-free
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
+Theme URI: http://trvoo.net/trivoo-theme
+Author: Trivoo Team
+Author URI: http://trvoo.net/
 Description: Description
 Version: 1.0.0
 License: GNU General Public License v2 or later
@@ -47,3 +47,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	width: auto;
 	z-index: 100000; /* Above WP toolbar. */
 }
+
+.bypostauthor{}
+.sticky{}
+.gallery-caption{}

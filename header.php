@@ -28,7 +28,7 @@ if ( $favicon !== '' ): ?>
 	<header id="masthead" class="main-header" role="banner">
 		<div class="container">
 			<div class="row">
-				<div class="site-branding col-md-3">
+				<div class="site-branding col-md-4">
 
 				<?php $logo =  get_theme_mod( 'logo_logo', trivoo_get_default( 'logo_logo' ) ); 
 					if ( $logo !== '' ): ?>
@@ -49,7 +49,7 @@ if ( $favicon !== '' ): ?>
 
 				</div><!-- .site-branding -->
 
-				<nav id="site-navigation" class="main-navigation col-md-9" role="navigation">
+				<nav id="site-navigation" class="main-navigation col-md-8" role="navigation">
 					  <div class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-collapse">
 					    <span class="menu-text"><?php _e('Menu', 'infinite-framework') ?></span>
 					      <i class="fa fa-reorder"></i>

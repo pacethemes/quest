@@ -96,33 +96,33 @@ function trivoo_free_widgets_init() {
 
 	$cols = get_theme_mod( 'layout_footer_widgets', trivoo_get_default( 'layout_footer_widgets' ) );
 
-    switch ($cols) {
-        case 1:
-            $span = 12;
-            break;
-        
-        case 2:
-            $span = 6;
-            break;
+	switch ( $cols ) {
+	case 1:
+		$span = 12;
+		break;
 
-        case 3:
-            $span = 4;
-            break;
-            
-        case 4:
-            $span = 3;
-            break;    
-    }
+	case 2:
+		$span = 6;
+		break;
 
-	register_sidebar( array( 
-        'name'            => __('Footer Widget','trivoo-framework'),
-        'id'            => __('footer-widget','trivoo-framework'),
-        'before_widget'    => '<article class="col-md-'.$span.' %2$s" id="%1$s">',
-        'after_widget'    => "</article>\n",
-        'before_title'    => '<h1>',
-        'after_title'    => "</h1>\n"
-        )    
-    );
+	case 3:
+		$span = 4;
+		break;
+
+	case 4:
+		$span = 3;
+		break;
+	}
+
+	register_sidebar( array(
+			'name'            => __( 'Footer Widget', 'trivoo-framework' ),
+			'id'            => __( 'footer-widget', 'trivoo-framework' ),
+			'before_widget'    => '<article class="col-md-'.$span.' %2$s" id="%1$s">',
+			'after_widget'    => "</article>\n",
+			'before_title'    => '<h1>',
+			'after_title'    => "</h1>\n"
+		)
+	);
 }
 add_action( 'widgets_init', 'trivoo_free_widgets_init' );
 
@@ -130,7 +130,7 @@ add_action( 'widgets_init', 'trivoo_free_widgets_init' );
  * Enqueue scripts and styles.
  */
 function trivoo_free_scripts() {
-
+	// if ( is_admin() ) return;
 	wp_enqueue_style( 'trivoo-bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap.min.css' );
 	wp_enqueue_style( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css' );
 	// wp_enqueue_style( 'trivoo-bootstrap-theme', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap-theme.min.css' );
@@ -150,19 +150,19 @@ function trivoo_free_scripts() {
 
 	//wp_enqueue_script( 'trivoo-free-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	//
-	
+
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array('jquery') );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.js' );
-	wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.min.js', array('jquery') );
+	wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'SlitSlider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js' );
 	wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/jquery.colorbox-min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/jquery.smartmenus.min.js' );
-    wp_enqueue_script( 'bs.smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js' );
-    wp_enqueue_script( 'smartmenus.keyboard', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js' );
+	wp_enqueue_script( 'bs.smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js' );
+	wp_enqueue_script( 'smartmenus.keyboard', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js' );
 
-    wp_enqueue_script( 'trivoo-js', get_template_directory_uri() . '/assets/js/trivoo.js' );
-    
+	wp_enqueue_script( 'trivoo-js', get_template_directory_uri() . '/assets/js/trivoo.js' );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -176,47 +176,49 @@ add_action( 'wp_enqueue_scripts', 'trivoo_free_scripts' );
  */
 function trivoo_admin_scripts() {
 
-	wp_enqueue_script( 'trivoo_custom_js', get_template_directory_uri() . '/assets/js/admin.js', array( 'jquery', 'wp-color-picker', 'chosen' ) );
+	//wp_enqueue_script( 'chosen', get_template_directory_uri() . '/assets/plugins/chosen/chosen.jquery.min.js', array( 'jquery', 'wp-color-picker' ) );
+	wp_enqueue_script( 'trivoo_custom_js', get_template_directory_uri() . '/assets/js/admin.js' );
+
 	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_style( 'admin_panel_font', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
-	wp_enqueue_style( 'admin_panel_css', get_template_directory_uri() . '/assets/css/admin.css' );
+	wp_enqueue_style( 'admin-panel-font', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
+	wp_enqueue_style( 'admin-panel-css', get_template_directory_uri() . '/assets/css/admin.css' );
 
 }
 add_action( 'admin_enqueue_scripts', 'trivoo_admin_scripts' );
 
-if(!class_exists('Trivoo_Main_Menu')) :
+if ( !class_exists( 'Trivoo_Main_Menu' ) ) :
 
-class Trivoo_Main_Menu extends Walker_Nav_Menu
+	class Trivoo_Main_Menu extends Walker_Nav_Menu
 {
 
-    function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
-        $id_field = $this->db_fields['id'];
+	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+		$id_field = $this->db_fields['id'];
 
-        if ( is_object( $args[0] ) ) {
-            $args[0]->has_children = !empty( $children_elements[$element->$id_field] );
-        }
+		if ( is_object( $args[0] ) ) {
+			$args[0]->has_children = !empty( $children_elements[$element->$id_field] );
+		}
 
-        return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
-    }
+		return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+	}
 
-    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
-        if ( $args->has_children ) {
-            $item->classes[] = 'dropdown';
-        } 
+		if ( $args->has_children ) {
+			$item->classes[] = 'dropdown';
+		}
 
-        parent::start_el($output, $item, $depth, $args, $id);
+		parent::start_el( $output, $item, $depth, $args, $id );
 
-    }
+	}
 
-    // add classes to ul sub-menus
-    function start_lvl( &$output, $depth = 0, $args = array() ) {
+	// add classes to ul sub-menus
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
 
-        // depth dependent classes
-        $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' );
+		// depth dependent classes
+		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' );
 
-        $output.= "\n" . $indent . '<ul class="dropdown-menu">' . "\n";
-    }
+		$output.= "\n" . $indent . '<ul class="dropdown-menu">' . "\n";
+	}
 
 }
 
@@ -249,7 +251,7 @@ endif;
  * @return string html menu
  */
 function trivoo_wp_page_menu( $args = array() ) {
-	$defaults = array('sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '');
+	$defaults = array( 'sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '' );
 	$args = wp_parse_args( $args, $defaults );
 
 	/**
@@ -259,7 +261,7 @@ function trivoo_wp_page_menu( $args = array() ) {
 	 *
 	 * @see wp_page_menu()
 	 *
-	 * @param array $args An array of page menu arguments.
+	 * @param array   $args An array of page menu arguments.
 	 */
 	$args = apply_filters( 'wp_page_menu_args', $args );
 
@@ -268,9 +270,9 @@ function trivoo_wp_page_menu( $args = array() ) {
 	$list_args = $args;
 
 	// Show Home in the menu
-	if ( ! empty($args['show_home']) ) {
+	if ( ! empty( $args['show_home'] ) ) {
 		if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] )
-			$text = __('Home');
+			$text = __( 'Home', 'Trivoo' );
 		else
 			$text = $args['show_home'];
 		$class = '';
@@ -278,24 +280,24 @@ function trivoo_wp_page_menu( $args = array() ) {
 			$class = 'class="current_page_item"';
 		$menu .= '<li ' . $class . '><a href="' . home_url( '/' ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
 		// If the front page is a page, add it to the exclude list
-		if (get_option('show_on_front') == 'page') {
+		if ( get_option( 'show_on_front' ) == 'page' ) {
 			if ( !empty( $list_args['exclude'] ) ) {
 				$list_args['exclude'] .= ',';
 			} else {
 				$list_args['exclude'] = '';
 			}
-			$list_args['exclude'] .= get_option('page_on_front');
+			$list_args['exclude'] .= get_option( 'page_on_front' );
 		}
 	}
 
 	$list_args['echo'] = false;
 	$list_args['title_li'] = '';
-	$menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages($list_args) );
+	$menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $list_args ) );
 
 	if ( $menu )
 		$menu = '<ul class="nav navbar-nav">' . $menu . '</ul>';
 
-	$menu = '<div class="' . esc_attr($args['menu_class']) . '">' . $menu . "</div>\n";
+	$menu = '<div class="' . esc_attr( $args['menu_class'] ) . '">' . $menu . "</div>\n";
 
 	/**
 	 * Filter the HTML output of a page-based menu.
@@ -304,8 +306,8 @@ function trivoo_wp_page_menu( $args = array() ) {
 	 *
 	 * @see wp_page_menu()
 	 *
-	 * @param string $menu The HTML output.
-	 * @param array  $args An array of arguments.
+	 * @param string  $menu The HTML output.
+	 * @param array   $args An array of arguments.
 	 */
 	$menu = apply_filters( 'wp_page_menu', $menu, $args );
 	if ( $args['echo'] )
@@ -351,8 +353,8 @@ require get_template_directory() . '/inc/jetpack.php';
 
 // Filter wp_nav_menu() to add additional links and other output
 function trivoo_search_menu_icon( $items, $args ) {
-    if ( $args->theme_location == 'primary' ) {
-        $items.= '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown" id="menu-item-search">
+	if ( $args->theme_location == 'primary' ) {
+		$items.= '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown" id="menu-item-search">
                     <a href="#"><i class="fa fa-search"></i></a>
                     <ul class="dropdown-menu">
                     <li>
@@ -363,8 +365,8 @@ function trivoo_search_menu_icon( $items, $args ) {
                     </li>
                     </ul>
                 </li>';
-    }
-    return $items;
+	}
+	return $items;
 }
 
 if ( get_theme_mod( 'layout_header_search', trivoo_get_default( 'layout_header_search' ) ) ) {

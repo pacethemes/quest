@@ -14,6 +14,9 @@ $accent_color_alt_dark: darken($accent_color_alt, 5);
 
 $alt_color: #ddd;
 
+$text_color: #333;
+$text_alt_color: #9d9a9a;
+
 $black: #000;
 $color_mountain_mist_approx: #9e8f8f;
 
@@ -34,7 +37,7 @@ $color_fuscous_gray_approx: #504e4e;
 $color_stack_approx: #918f8f;
 
 
-$color_star_dust_approx: #9d9a9a;
+
 $black_50: rgba(0, 0, 0, 0.5);
 $color_suva_gray_approx: #888;
 
@@ -85,7 +88,7 @@ $font_15: 'FontAwesome';
 //original selectors
 //a, p a, span a, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 %extend_2 {
-	color: $color_mine_shaft_approx;
+	color: $text_color;
 	//Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 	text-shadow: 0 1px $black_10;
 	-webkit-transition: all 0.1s ease-out;
@@ -333,7 +336,7 @@ $font_15: 'FontAwesome';
 //original selectors
 //.main-sidebar .widget_categories li:before, .main-sidebar .widget_archive li:before, .main-sidebar .widget_pages li:before, .main-sidebar .widget_nav_menu li:before, .main-sidebar .widget_meta li:before, .main-sidebar .widget_recent_comments li:before, .main-sidebar .widget_rss li:before, .main-sidebar .widget_recent_entries li:before
 %extend_37 {
-	content: "\f054";
+	content: "\f178";
 	font-family: $font_15;
 	font-size: 8px;
 	padding-right: 10px;
@@ -350,8 +353,8 @@ $font_15: 'FontAwesome';
 	display: inline-block;
 	margin: 10px 20px;
 	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 700;
+	letter-spacing: 0.5px;
+	// font-weight: 700;
 	outline: none;
 	position: relative;
 	-webkit-transition: all 0.3s;
@@ -733,6 +736,9 @@ blockquote {
 		margin-top: 0;
 	}
 }
+code{
+	background-color: transparent;
+}
 pre {
 	@extend %extend_1;
 }
@@ -922,12 +928,15 @@ article {
 	&.post-normal {
 		padding: 25px 0;
 		border-bottom: 1px solid #e5e5e5;
+		&:first-child{
+			padding-top: 0;
+		}
 		h1 {
 			margin: 15px 0 20px;
 			text-align: left;
 		}
 		.post-meta {
-			color: $color_star_dust_approx;
+			color: $text_alt_color;
 			.seperator {
 				margin: 0 5px;
 			}
@@ -946,7 +955,7 @@ article {
 			text-align: left;
 		}
 		.post-meta {
-			color: $color_star_dust_approx;
+			color: $text_alt_color;
 			.seperator {
 				margin: 0 2px;
 			}
@@ -1127,9 +1136,54 @@ hr {
 	background: #ddd;
 }
 
+.boxed, #title-container {
+	background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center center !important;
+}
+
+#title-container {
+	background: $color_wild_sand_approx;
+	border-bottom: 1px solid $border_color;
+	text-align: center;
+	padding: 30px 0;
+	h3 {
+		margin: 0;
+		// color: $color_mine_shaft_approx;
+	}
+	ul {
+		// float: right;
+		margin: 0;
+		li {
+			display: inline-block;
+			margin-right: 5px;
+			font-size: 11px;
+			&:after {
+				content: '/';
+			}
+			a {
+				padding-right: 5px;
+				font-size: 11px;
+			}
+		}
+		li:last-child:after {
+			content: none;
+		}
+	}
+}
+
 @media (min-width: 1200px) {
 	.boxed{
 		width: 1200px;
+	}
+}
+
+@media (min-width: 992px) {
+	#title-container{
+		text-align: left;
+		ul{
+			float: right;
+		}
 	}
 }
 
@@ -1563,23 +1617,23 @@ hr {
 		.dropdown-menu {
 			padding: 0;
 			background-color: $color_wild_sand_approx;
-			-webkit-box-shadow: 0 0 5px 0 $black_20;
+			-webkit-box-shadow: none;// 0 0 5px 0 $black_20;
 			//Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-			box-shadow: 0 0 5px 0 $black_20;
+			box-shadow: none;//0 0 5px 0 $black_20;
+			border-radius: 0;
 			li {
 				a {
 					line-height: 2.5em;
-					height: 2.5em;
 					padding: 0 25px;
 					font-size: 13px;
-					&:hover {
-						@extend %extend_13;
-					}
-					&:focus {
-						@extend %extend_13;
-					}
 				}
-				&.current-menu-item a {
+				&:hover > a {
+					@extend %extend_13;
+				}
+				&:focus > a {
+					@extend %extend_13;
+				}
+			&.current-menu-item a {
 					@extend %extend_13;
 				}
 				&.current-menu-ancestor > a {
@@ -1591,7 +1645,7 @@ hr {
 			}
 			.dropdown-menu {
 				top: 0 !important;
-				margin-top: -3px !important;
+				margin-top: 2px !important;
 			}
 		}
 		.open > a {
@@ -1604,13 +1658,13 @@ hr {
 			}
 		}
 		.current-menu-item > a {
-			margin-top: -3px;
+			// margin-top: -3px;
 		}
 		.current-menu-ancestor > a {
-			margin-top: -3px;
+			// margin-top: -3px;
 		}
 		.current-menu-parent > a {
-			margin-top: -3px;
+			// margin-top: -3px;
 		}
 		#menu-item-search a {
 			padding: 0 15px;
@@ -1625,7 +1679,7 @@ hr {
 				font-size: 14px;
 				line-height: inherit;
 				padding: 0 7.5px;
-				margin-top: -3px;
+				// margin-top: -3px;
 				&:hover {
 					background-color: transparent;
 				}
@@ -1751,6 +1805,7 @@ hr {
 			//Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 			box-shadow: none;
 			background: $color_wild_sand_approx;
+			border: 1px solid #e0e0e0;
 			margin-bottom: 0;
 			line-height: 1.5em;
 			&:focus {
@@ -1784,34 +1839,7 @@ hr {
 		}
 	}
 }
-#title-container {
-	background: $color_wild_sand_approx;
-	border-bottom: 1px solid $border_color;
-	padding: 30px 0;
-	h3 {
-		margin: 0;
-		color: $color_mine_shaft_approx;
-	}
-	ul {
-		float: right;
-		margin: 0;
-		li {
-			float: left;
-			margin-right: 5px;
-			font-size: 11px;
-			&:after {
-				content: '/';
-			}
-			a {
-				padding-right: 5px;
-				font-size: 11px;
-			}
-		}
-		li:last-child:after {
-			content: none;
-		}
-	}
-}
+
 .slider {
 	margin: 0 auto 2em auto;
 }
@@ -1925,17 +1953,18 @@ hr {
 	margin: 0 auto;
 }
 .main-footer {
-	background-color: $color_shark_approx;
-	padding: 1em 0;
-	border-bottom: solid 1px $color_mine_shaft_approx;
-	border-top: 4px solid $color_fuscous_gray_approx;
+	background-color: #efefef;//$color_shark_approx;
+	padding: 25px 0;
+	color: #777777;
+	// border-bottom: solid 1px $color_mine_shaft_approx;
+	border-top: 1px solid #c1c1c1;
 	h1 {
 		//Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 		text-shadow: none;
-		font-size: 18px;
+		font-size: 20px;
 		text-align: left;
-		color: $alt_color;
-		margin: 15px 0;
+		color: #5f5f5f;
+		margin: 0 0 15px 0;
 	}
 	h2 {
 		//Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
@@ -1958,49 +1987,52 @@ hr {
 		text-shadow: none;
 	}
 	p {
-		color: $color_stack_approx;
+		color: #777777;
 		font-size: 12px;
 	}
 	li {
-		color: $color_stack_approx;
+		color: #777777;
 		font-size: 12px;
 		margin-bottom: 5px;
 		margin: 0;
 		padding: 5px;
-		border-top: 1px solid $black;
-		-webkit-box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
-		-moz-box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
+		border-top: 1px solid #c1c1c1;
+		// -webkit-box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
+		// -moz-box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
 		//Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-		box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
+		// box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
 		ul {
 			margin: 5px 0 5px 8px;
 			li:last-child {
-				border-bottom: 1px solid $black;
-				-webkit-box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
+				border-bottom: 1px solid #c1c1c1;
+				// -webkit-box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
 				//Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-				box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
+				// box-shadow: inset 0 1px 0 $color_mine_shaft_approx;
 			}
 		}
 		&:last-child {
-			-webkit-box-shadow: inset 0 1px 0 $color_mine_shaft_approx, 0 1px 0 $color_mine_shaft_approx;
-			//Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-			box-shadow: inset 0 1px 0 $color_mine_shaft_approx, 0 1px 0 $color_mine_shaft_approx;
-			border-bottom: 1px solid $black;
+			// -webkit-box-shadow: inset 0 1px 0 $color_mine_shaft_approx, 0 1px 0 $color_mine_shaft_approx;
+			// //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			// box-shadow: inset 0 1px 0 $color_mine_shaft_approx, 0 1px 0 $color_mine_shaft_approx;
+			border-bottom: 1px solid #c1c1c1;
 		}
 	}
-	a {
-		color: $color_silver_approx;
-		&:hover {
-			color: $white;
-		}
-		&.tag {
-			background: $color_mine_shaft_approx;
-			color: $color_tapa_approx;
-			&:hover {
-				background: $accent_color;
-				color: $white;
-			}
-		}
+	.tagcloud a {
+		display: inline-block;
+		padding-right: 5px;
+		padding-bottom: 5px;
+		// color: $color_silver_approx;
+		// &:hover {
+		// 	color: $white;
+		// }
+		// &.tag {
+			// background: $color_mine_shaft_approx;
+			// color: $color_tapa_approx;
+			// &:hover {
+			// 	background: $accent_color;
+			// 	color: $white;
+			// }
+		// }
 	}
 	.col-md-3 {
 		margin-top: 1em;
@@ -2020,8 +2052,12 @@ hr {
 	}
 }
 .copyright {
-	padding: 1em 0;
-	background-color: $color_rangoon_green_approx;
+	padding: 15px 0;
+	background-color: #2B3A42;//$color_rangoon_green_approx;
+	.copyright-text{
+		min-height: 28px;
+		line-height: 28px;
+	}
 	.col-md-6 p {
 		margin-bottom: 0;
 		line-height: 44px;
@@ -2214,7 +2250,7 @@ hr {
 		}
 	}
 	.post-meta {
-		color: $color_star_dust_approx;
+		color: $text_alt_color;
 		margin-bottom: 1em;
 		.seperator {
 			margin: 0 2px;
@@ -2239,7 +2275,7 @@ hr {
 		}
 	}
 	.post-meta {
-		color: $color_star_dust_approx;
+		color: $text_alt_color;
 		.seperator {
 			margin: 0 2px;
 		}
@@ -2475,7 +2511,7 @@ hr {
 	margin-top: 1.5em;
 }
 .post-date {
-	color: $color_star_dust_approx;
+	color: $text_alt_color;
 	font-size: 11px;
 	line-height: 11px;
 	i {
@@ -2503,7 +2539,7 @@ hr {
 			margin-left: 0;
 			margin-right: 0;
 			padding-right: 0;
-			color: $color_mine_shaft_approx;
+			color: $text_color;
 			&:hover {
 				border: none;
 				color: $accent_color;
@@ -2570,7 +2606,7 @@ hr {
 		display: inline-block;
 		font: 14px FontAwesome;
 		content: "\f15b";
-		color: #aaa;
+		color: #9d9a9a;
 		margin-right: 10px;
 	}
 	li{
@@ -2702,7 +2738,7 @@ hr {
 			margin-top: 1.5em;
 		}
 	}
-	.post-comments-heading h2 {
+	.post-comments-heading h3 {
 		border-top: 1px solid $border_color;
 		margin-top: 0;
 		padding-top: 0.8em;
@@ -2713,7 +2749,7 @@ hr {
 	margin: 2em 0 0;
 	border-top: 1px solid $border_color;
 	h2 {
-		color: $black;
+		// color: $black;
 		font-size: 18px;
 		// padding: 0 0 1em 0;
 	}
@@ -2735,9 +2771,10 @@ hr {
 			margin-top: 0;
 		}
 		padding: 0 8px;
-		h3 {
+		.widget-title {
 			text-align: left;
 			margin-top: 0;
+			margin-bottom: 10px;
 		}
 		ul {
 			margin-bottom: 0;

@@ -53,7 +53,7 @@ class Trivoo_Customize_Misc_Control extends WP_Customize_Control {
 				break;
 
 			case 'heading':
-				echo '<span class="customize-control-title">' . $this->label . '</span>';
+				echo '<span class="customize-control-title section-title">' . $this->label . '</span>';
 				break;
 
 			case 'line' :

@@ -72,12 +72,12 @@ if ( ! function_exists( 'trivoo_free_post_meta' ) ) :
 	function trivoo_free_post_meta() {
 		echo '<time class="post-date"><i class="fa fa-clock-o"></i>' . get_the_time( get_option( 'date_format' ) ) . '</time>';
 
-		echo '<span class="seperator">/</span><i class="fa fa-comments"></i>&nbsp;';
+		echo '<span class="seperator">/</span>';
 
 		echo comments_popup_link(
-			__( 'No Comments', 'trivoo-framework' ),
-			__( '1 Comment', 'trivoo-framework' ),
-			__( '% Comments', 'trivoo-framework' ) );
+			__( '<i class="fa fa-comments"></i>&nbsp; No Comments', 'trivoo-framework' ),
+			__( '<i class="fa fa-comments"></i>&nbsp; 1 Comment', 'trivoo-framework' ),
+			__( '<i class="fa fa-comments"></i>&nbsp; % Comments', 'trivoo-framework' ) );
 
 	}
 endif;

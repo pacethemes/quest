@@ -147,19 +147,19 @@ var trivoo = function() {
         // },
 
         displayMobileMenu: function() {
-            var h = 0,
-                mob = false;
-            jQuery('.main-header').removeClass('mobile');
-            jQuery('.main-header:not(#sticky-header) .nav.navbar-nav>li').each(function() {
-                if (h == 0) {
-                    h = jQuery(this).offset().top;
-                } else if (h != jQuery(this).offset().top) {
-                    mob = true;
-                }
-            });
-            if (mob) {
-                jQuery('.main-header').addClass('mobile');
-            }
+            // var h = 0,
+            //     mob = false;
+            // jQuery('.main-header').removeClass('mobile');
+            // jQuery('.main-header:not(#sticky-header) .nav.navbar-nav>li').each(function() {
+            //     if (h == 0) {
+            //         h = jQuery(this).offset().top;
+            //     } else if (h != jQuery(this).offset().top) {
+            //         mob = true;
+            //     }
+            // });
+            // if (mob) {
+            //     jQuery('.main-header').addClass('mobile');
+            // }
         },
 
 
