@@ -16,7 +16,7 @@
 			fontChosen.cache.chosen = {};
 
 			$.each(trivooCustomizerFontsL10n, function(name, options) {
-				var disabled;
+				var disabled = '';
 				if( options['disabled'] !== undefined ){
 					disabled = ' disabled="disabled" ';
 				}

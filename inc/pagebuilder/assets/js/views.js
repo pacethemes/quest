@@ -1,8 +1,7 @@
 /* global Backbone, jQuery, _, wp:true */
-var trPbApp = trPbApp || {},
-    $trPbApp = $trPbApp || jQuery(trPbApp);
+var trPbApp = trPbApp || {};
 
-(function(window, Backbone, $, _, trPbApp, $trPbApp) {
+(function(window, Backbone, $, _, trPbApp) {
     'use strict';
 
     trPbApp.SectionView = Backbone.View.extend({
@@ -39,7 +38,7 @@ var trPbApp = trPbApp || {},
                 .attr({
                     'id': this.model.id
                 });
-            //this.$el.find('.tr-pb-content').css('background-image', 'url('+this.model.get('bg_image')+')');
+            
             var $content = this.$el.find('.tr-pb-content'),
                 $view = this,
                 content = this.model.get('content');
@@ -177,6 +176,9 @@ var trPbApp = trPbApp || {},
         },
 
         updateColumns: function(e) {
+
+            //var confirm = window.confirm("You are about to update the column layout, it may remove extra columns");
+
             var $target = e.target.tagName.toUpperCase() === 'LI' ? $(e.target) : $(e.target).closest('li'),
                 columns = $target.data('layout').replace(/ /g, '').split(','),
                 $view = this,
@@ -184,6 +186,12 @@ var trPbApp = trPbApp || {},
                 contentArr = new trPbApp.ColumnCollection(),
                 models = $view.model.get('content'),
                 order = [];
+
+            if(models.length > columns.length) {
+                var confirm = window.confirm("You are about to resize the columns to a lower size than the existing columns, it may remove the last columns and will result in data/module loss. Do you really want to do this ?");
+                if( !confirm )
+                    return;
+            }
 
             $content.html('');
             _.each(columns, function(col, index) {
@@ -273,7 +281,6 @@ var trPbApp = trPbApp || {},
             }).render().el);
 
             this.model.set('content', slider);
-            //trPbApp.setHiddenInputAll(slider);
         },
 
         insertGallery: function(e){
@@ -287,10 +294,6 @@ var trPbApp = trPbApp || {},
                 reveal.remove();
             }, 500);
         }
-
-        // setColumnOrder: function(order) {
-        //     trPbApp.setHiddenInput(this.model.get('id') + '__order', order.join(",").replace(/tr_pb_section__/ig, ''));
-        // }
 
 
     });
@@ -434,19 +437,10 @@ var trPbApp = trPbApp || {},
             var $view = this;
             $view.$el.sortable({
                 handle: '.tr-pb-column-sortable',
-                // placeholder: 'sortable-placeholder tr-pb-column',
                 forcePlaceholderSizeType: true,
                 distance: 5,
                 tolerance: 'pointer',
-                items: '.tr-pb-column',
-                // axis: 'x',
-                start: function(e, ui) {
-                    //var col = ui.item.attr('class').replace(/ ?tr-pb-column ?/, '');
-                    //ui.placeholder.addClass(col).html('<div class="placeholder-inner" style="height:' + ui.item.height() + 'px"></div>');
-                },
-                update: function(event, ui) {
-
-                }
+                items: '.tr-pb-column'
             });
         },
 
@@ -654,7 +648,80 @@ var trPbApp = trPbApp || {},
 
     });
 
-})(window, Backbone, jQuery, _, trPbApp, $trPbApp);
+
+    trPbApp.Modules.HovericonView = Backbone.View.extend({
+        template: _.template($('#tr-pb-module-hovericon-template').html()),
+        $editTemplateId: $('#tr-pb-module-hovericon-edit-template'),
+        editTemplate: '',
+
+        events: {
+            'click .content-preview': 'editModel',
+            'click .save-icon': 'updateModel',
+            'click .edit-module .edit': 'editModel',
+            'click .edit-module .remove': 'removeModel'
+        },
+
+        initialize: function() {
+            this.editTemplate = _.template(this.$editTemplateId.html());
+        },
+
+        render: function(cls) {
+            this.$el.html(this.template(this.model.toJSON()))
+                .attr({
+                    'id': this.model.id
+                });
+            return this;
+        },
+
+        editModel: function(e) {
+            if (e) e.preventDefault();
+            this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('tr-pb-hovericon-edit reveal-modal'));
+
+            var $preview = this.$el.find('.icon-grid');
+            if($preview.find('section').length === 0) {
+                $preview.html(window.trIcons);
+                $preview.find('.fa-hover a').on('click', function(e){
+                    e.preventDefault();
+                    var $a = $(this),
+                        $option = $a.closest('.tr-pb-option-container'),
+                        icon = $a.attr('href').replace('#', '');
+
+                    $option.children('.tr-pb-icon').val(icon);
+                    $option.children('.icon-preview').html('<i class="fa fa-2x '+icon+'"></i>');
+                    $preview.slideToggle();
+                });
+            }
+
+            this.$el.find('.reveal-modal').reveal();
+
+        },
+
+        removeModel: function(e){
+            e.preventDefault();
+            $('#'+this.model.get('parent')).trigger('remove-module')
+        },
+
+        updateModel: function(e) {
+            var id = this.model.get('id'),
+                parent = this.model.get('parent'),
+                view = this;
+
+            this.model.set(this.$el.find('.edit-content form').serializeObject());
+
+            trPbApp.setColumnContent(parent, this.model);
+            trPbApp.setHiddenInputAll(this.model);
+
+            this.$el.find('.reveal-modal').trigger('reveal:close');
+
+            setTimeout(function() {
+                view.render();
+            }, 300);
+        }
+
+    });
+
+
+})(window, Backbone, jQuery, _, trPbApp);
 
 
 String.prototype.toProperCase = function() {

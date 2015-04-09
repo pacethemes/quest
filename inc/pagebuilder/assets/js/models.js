@@ -81,13 +81,15 @@ trPbApp.Modules = trPbApp.Modules || {};
             align: 'left',
             type: 'image',
             parent: '',
-            admin_label: 'Image'
+            admin_label: 'Image',
+            text: 'Image'
         }
     });
 
     trPbApp.Modules.TextModel = Backbone.Model.extend({
         defaults: {
             id: '',
+            animation: '',
             content: '',
             type: 'text',
             parent: '',
@@ -95,14 +97,22 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    // Set up this model as a "no URL model" where data is not synced with the server
-    trPbApp.SectionModel.prototype.sync = function() {
-        return null;
-    };
-    trPbApp.SectionModel.prototype.fetch = function() {
-        return null;
-    };
-    trPbApp.SectionModel.prototype.save = function() {
-        return null;
-    };
+    trPbApp.Modules.HovericonModel = Backbone.Model.extend({
+        defaults: {
+            id: '',
+            animation: '',
+            icon: '',
+            size: 3,
+            href: '',
+            color: '#27ae60',
+            hover_color: '#fff',
+            title: '',
+            content: '',
+            type: 'hovericon',
+            parent: '',
+            admin_label: 'Hover Icon'
+        }
+    });
+
+
 })(window, Backbone, jQuery, _, trPbApp);

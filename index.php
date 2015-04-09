@@ -13,7 +13,7 @@
 
 get_header();
 $view = trivoo_get_view();
-$layout = get_theme_mod( 'layout_'.$view.'_style', trivoo_get_default( 'layout_'.$view.'_style' ) ); ?>
+$layout = trivoo_get_mod( 'layout_'.$view.'_style' ); ?>
 
 <?php get_template_part( 'partials/content', $layout ); ?>
 

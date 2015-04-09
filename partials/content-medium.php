@@ -20,9 +20,9 @@
 							<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 								<?php if ( 'post' == get_post_type() ) : ?>
-									<div class="post-meta">
+									<div class="entry-meta">
 										<?php trivoo_free_post_meta(); ?>
-									</div><!-- .post-meta -->
+									</div><!-- .entry-meta -->
 								<?php endif; ?>
 
 
@@ -34,14 +34,14 @@
 
 							<?php endif; ?>
 
-								<div class="post-content">
+								<div class="entry-content">
 									<?php the_excerpt() ?>
 								</div>
 
-							<footer class="post-footer">
+							<footer class="entry-footer">
 								<?php trivoo_post_taxonomy( $view ); ?>
 								<?php trivoo_post_read_more(); ?>
-							</footer><!-- .post-footer -->
+							</footer><!-- .entry-footer -->
 
 						</article><!-- #post-## -->
 

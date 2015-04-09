@@ -337,6 +337,19 @@ html[xmlns] .clearfix {
   text-align: center;
   cursor: pointer;
 }
+/*.hover-icon .edit-module .fa{
+  height: auto;
+  width: auto;
+  line-height: 1.5em;
+  color: #888;
+  background-color: transparent;
+  box-shadow: none;
+  margin-top: 0;
+}*/
+.hover-icon .edit-module .fa:before{
+  font-size: 13px;
+  line-height: 1em;
+}
 .edit-module a {
   color: #888;
   display: inline-block;
@@ -436,6 +449,8 @@ html[xmlns] .clearfix {
   background: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .reveal-modal .close-reveal-modal {
   color: #fff;
@@ -537,4 +552,11 @@ textarea.regular-text {
   width: 25em !important;
   display: inline-block !important;
   height: 5em !important;
+}
+.icon-grid{
+ display: none; 
+}
+.icon-preview{
+  display: inline-block;
+  margin-right: 10px;
 }

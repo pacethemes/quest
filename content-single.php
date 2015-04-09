@@ -7,7 +7,7 @@ $view = trivoo_get_view();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post-normal'); ?>>
-	<header class="post-header">
+	<header class="entry-header">
 
 		<?php if(has_post_thumbnail()) : ?>
 
@@ -17,19 +17,19 @@ $view = trivoo_get_view();
 		
 		<?php endif; ?>
 
-		<?php if ( get_theme_mod( 'layout_'.$view.'_title', trivoo_get_default( 'layout_'.$view.'_title' ) ) ) : ?>
+		<?php if ( trivoo_get_mod( 'layout_'.$view.'_title' ) ) : ?>
 			<?php the_title( sprintf( '<h1 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 		<?php endif; ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
-			<div class="post-meta">
+			<div class="entry-meta">
 				<?php trivoo_free_post_meta(); ?>
-			</div><!-- .post-meta -->
+			</div><!-- .entry-meta -->
 		<?php endif; ?>
 		
-	</header><!-- .post-header -->
+	</header><!-- .entry-header -->
 
-	<div class="post-content">
+	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -37,12 +37,12 @@ $view = trivoo_get_view();
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .post-content -->
+	</div><!-- .entry-content -->
 
-	<footer class="post-footer">
+	<footer class="entry-footer">
 		<?php trivoo_post_author_info(); ?>
 		<?php trivoo_post_taxonomy( $view ); ?>
 		<?php trivoo_post_single_navigation(); ?>
-		<?php //edit_post_link( __( 'Edit', 'trivoo-free' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .post-footer -->
+		<?php edit_post_link( __( 'Edit', 'trivoo-free' ), '<span class="edit-link">', '</span>' ); ?>
+	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

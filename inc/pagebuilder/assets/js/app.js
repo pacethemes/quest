@@ -126,25 +126,6 @@ var trPbApp = trPbApp || {};
 
         sectionView.updateInputs();
 
-        //trPbApp.setHiddenInputAll(newSection);
-
-        // var contentArr;
-
-        // try{
-        //     contentArr = newSection.get('content').models || newSection.get('content').get('slides').models;
-        // } catch (err) {}
-
-        // if (contentArr !== undefined) {
-        //     _.each(contentArr, function(column, ind) {
-        //         trPbApp.setHiddenInputAll(column);
-        //         if (column.attributes.content && column.attributes.content.attributes !== undefined) {
-        //             trPbApp.setHiddenInputAll(column.attributes.content);
-        //         } else if (column.get('id').match(/slider/) !== null) {
-        //             //trPbApp.setHiddenInputAll(column);
-        //         }
-        //     });
-        // }
-
     };
 
     trPbApp.setHiddenInput = function(id, content, isText) {
@@ -186,8 +167,8 @@ var trPbApp = trPbApp || {};
 
         var $section = $('#' + sectionId);
 
-        _.each(model.attributes, function(value, key) { //console.log(value, key)
-            if (typeof value !== 'string' || ['parent', 'id'].indexOf(key) > -1) return;
+        _.each(model.attributes, function(value, key) {
+            if (typeof value !== 'string' || ['parent'].indexOf(key) > -1) return;
 
             var inputName = name + '[' + key + ']',
                 input = (text && key === 'content') ? $('textarea[name="' + inputName + '"]') : $('input[name="' + inputName + '"]');
@@ -380,6 +361,15 @@ var trPbApp = trPbApp || {};
         });
     };
 
+    trPbApp.Icons = {};
+
+    trPbApp.Icons.BindEvents = function() {
+        $('.tr-pb-icon-select').each(function() {
+            $(this).on('click', function(){
+                $(this).siblings('.icon-grid').slideToggle();
+            })
+        });
+    }
 
 
 })(jQuery, trPbApp);
@@ -413,6 +403,7 @@ jQuery(document).ready(function() {
 
     jQuery(document).on('reveal:open', function() {
         trPbApp.Upload.BindEvents();
+        trPbApp.Icons.BindEvents();
         $('.reveal-modal').find('.tr-pb-color').wpColorPicker();
         $("body").css({
             overflow: 'hidden'
@@ -449,7 +440,6 @@ jQuery(document).ready(function() {
 
     trPbApp.cache.$container.sortable({
         handle: '.tr-pb-header',
-        // placeholder: 'section-sortable-placeholder',
         forcePlaceholderSizeType: true,
         distance: 2,
         tolerance: 'pointer',
@@ -465,7 +455,6 @@ jQuery(document).ready(function() {
                 return _.indexOf(updated, model.id);
             });
 
-            //trPbApp.setSectionOrder(updated);
         }
     });
 

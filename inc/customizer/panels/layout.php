@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Contains methods for customizing the theme customization screen.
+ * Contains methods for adding Layout Customization Panel and all settings under it
  *
- * @link http://codex.wordpress.org/Theme_Customization_API
  * @since Trivoo 1.0
  */
 class Trivoo_Customize_Layout {
@@ -16,8 +15,7 @@ class Trivoo_Customize_Layout {
         'priority'       => 10,
         'capability'     => 'edit_theme_options',
         'theme_supports' => '',
-        'title'          => 'Layout',
-        'description'    => '',
+        'title'          => 'Layout'
       ) );
 
     /******************
@@ -28,10 +26,9 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Global', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -42,7 +39,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -55,10 +53,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'wide'   => __( 'Wide', 'Trivoo' ),
-            'boxed'  => __( 'Boxed', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -72,10 +67,9 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Header', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Header', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -113,10 +107,9 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Footer', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -128,7 +121,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -141,12 +134,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => 1,
-            '2'  => 2,
-            '3'  => 3,
-            '4'  => 4,
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -184,12 +172,11 @@ class Trivoo_Customize_Layout {
 
     $section_id = 'layout_blog';
 
-    //1. Define a new section (if desired) to the Theme Customizer
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Blog (Posts Page)', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
+        'title' => __( 'Blog (Posts Page)', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -201,7 +188,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -214,11 +202,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'left'   => __( 'Left', 'Trivoo' ),
-            'right'  => __( 'Right', 'Trivoo' ),
-            'none'  => __( 'None', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -230,7 +214,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -243,11 +228,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'normal'   => __( 'Normal', 'Trivoo' ),
-            'medium'   => __( 'Medium', 'Trivoo' ),
-            'grid'  => __( 'Grid', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -259,7 +240,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -272,10 +253,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -302,7 +280,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -325,7 +304,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -349,12 +329,12 @@ class Trivoo_Customize_Layout {
 
     $section_id = 'layout_archive';
 
-    //1. Define a new section (if desired) to the Theme Customizer
+    
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Archives', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
+        'title' => __( 'Archives', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -366,7 +346,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -379,11 +360,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'left'   => __( 'Left', 'Trivoo' ),
-            'right'  => __( 'Right', 'Trivoo' ),
-            'none'  => __( 'None', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -395,7 +372,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -408,11 +386,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'normal'   => __( 'Normal', 'Trivoo' ),
-            'medium'   => __( 'Medium', 'Trivoo' ),
-            'grid'  => __( 'Grid', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -424,7 +398,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -437,10 +411,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -466,7 +437,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -489,7 +461,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -513,13 +486,12 @@ class Trivoo_Customize_Layout {
 
     $section_id = 'layout_search';
 
-    //1. Define a new section (if desired) to the Theme Customizer
+    
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Search Results', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Search Results', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -531,7 +503,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -544,11 +517,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'left'   => __( 'Left', 'Trivoo' ),
-            'right'  => __( 'Right', 'Trivoo' ),
-            'none'  => __( 'None', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -560,7 +529,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -573,11 +543,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'normal'   => __( 'Normal', 'Trivoo' ),
-            'medium'   => __( 'Medium', 'Trivoo' ),
-            'grid'  => __( 'Grid', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -589,7 +555,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -602,10 +568,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -632,7 +595,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -655,7 +619,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -679,45 +644,15 @@ class Trivoo_Customize_Layout {
 
     $section_id = 'layout_post';
 
-    //1. Define a new section (if desired) to the Theme Customizer
+    
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Single Post', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Single Post', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
-
-    $setting_id = $section_id . '_related';
-
-    $wp_customize->add_setting(
-      $setting_id,
-      array(
-        'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
-      )
-    );
-
-    $wp_customize->add_control(
-      new WP_Customize_Control(
-        $wp_customize,
-        $setting_id,
-        array(
-          'label'          => __( 'Show Related Posts ?', 'Trivoo' ),
-          'section'        => $section_id,
-          'settings'       => $setting_id,
-          'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'  => __( 'No', 'Trivoo' )
-          )
-        )
-      )
-    );
-
 
     $setting_id = $section_id . '_sidebar';
 
@@ -725,7 +660,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -738,11 +674,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'left'   => __( 'Left', 'Trivoo' ),
-            'right'  => __( 'Right', 'Trivoo' ),
-            'none'  => __( 'None', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -754,7 +686,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -767,10 +699,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -782,7 +711,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -795,10 +724,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -824,7 +750,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -847,7 +774,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -871,13 +799,12 @@ class Trivoo_Customize_Layout {
 
     $section_id = 'layout_page';
 
-    //1. Define a new section (if desired) to the Theme Customizer
+    
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Single Page', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Single Page', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -888,7 +815,8 @@ class Trivoo_Customize_Layout {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -901,11 +829,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            'left'   => __( 'Left', 'Trivoo' ),
-            'right'  => __( 'Right', 'Trivoo' ),
-            'none'  => __( 'None', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -918,7 +842,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -931,10 +855,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );
@@ -946,7 +867,7 @@ class Trivoo_Customize_Layout {
       array(
         'default'           => trivoo_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'absint',
+        'sanitize_callback' => 'trivoo_sanitize_choice'
       )
     );
 
@@ -959,10 +880,7 @@ class Trivoo_Customize_Layout {
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => array(
-            '1'   => __( 'Yes', 'Trivoo' ),
-            '0'   => __( 'No', 'Trivoo' )
-          )
+          'choices'        => trivoo_get_choices( $setting_id )
         )
       )
     );

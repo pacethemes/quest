@@ -1,7 +1,4 @@
 <?php
-$trivoo_panel_name = 'panel_trivoo_';
-$trivoo_section_name = 'trivoo_';
-$trivoo_setting_name = 'setting_trivoo_';
 
 $trivoo_defaults = array (
 
@@ -280,10 +277,57 @@ $trivoo_defaults = array (
 	'typography_footer_text_letter_spacing' => 0,
 	'typography_footer_text_word_spacing' => 0,
 
-	'bgimages_site' => '',
-	'bgimages_title_container' => '',
+	'bgimages_global_site' => '',
+	'bgimages_global_title_container' => '',
+
+
+	'choices' => array (
+		'layout_global_site' => array(
+			'wide'   => __( 'Wide', 'Trivoo' ),
+			'boxed'  => __( 'Boxed', 'Trivoo' )
+		),
+		'layout_footer_widgets' => array(
+			1   => '1',
+			2  => '2',
+			3  => '3',
+			4  => '4',
+		),
+		'layout_blog_sidebar' => array(
+			'left'   => __( 'Left', 'Trivoo' ),
+			'right'  => __( 'Right', 'Trivoo' ),
+			'none'  => __( 'None', 'Trivoo' )
+		),
+		'layout_blog_style' => array(
+			'normal'   => __( 'Normal', 'Trivoo' ),
+			'medium'   => __( 'Medium', 'Trivoo' ),
+			'grid'  => __( 'Grid', 'Trivoo' )
+		),
+		'layout_blog_title-bar' => array(
+			1   => __( 'Yes', 'Trivoo' ),
+			0   => __( 'No', 'Trivoo' )
+		)
+	),
 
 
 );
+
+$trivoo_defaults['choices']['layout_archive_sidebar']
+	= $trivoo_defaults['choices']['layout_search_sidebar']
+	= $trivoo_defaults['choices']['layout_post_sidebar']
+	= $trivoo_defaults['choices']['layout_page_sidebar']
+	= $trivoo_defaults['choices']['layout_blog_sidebar'];
+
+$trivoo_defaults['choices']['layout_archive_style']
+	= $trivoo_defaults['choices']['layout_search_style']
+	= $trivoo_defaults['choices']['layout_blog_style'];
+
+$trivoo_defaults['choices']['layout_archive_title-bar']
+	= $trivoo_defaults['choices']['layout_search_title-bar']
+	= $trivoo_defaults['choices']['layout_post_title-bar']
+	= $trivoo_defaults['choices']['layout_post_title']
+	= $trivoo_defaults['choices']['layout_page_title-bar']
+	= $trivoo_defaults['choices']['layout_page_title']
+	= $trivoo_defaults['choices']['layout_blog_title-bar'];
+
 
 ?>

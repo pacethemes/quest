@@ -17,3 +17,4 @@ function trivoo_free_jetpack_setup() {
 	) );
 }
 add_action( 'after_setup_theme', 'trivoo_free_jetpack_setup' );
+?>

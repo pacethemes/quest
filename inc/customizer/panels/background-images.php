@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Contains methods for customizing the theme customization screen.
+ * Contains methods for adding Background Images Customization Panel and all settings under it
  *
- * @link http://codex.wordpress.org/Theme_Customization_API
  * @since Trivoo 1.0
  */
 class Trivoo_Customize_Background_Images {
@@ -24,19 +23,32 @@ class Trivoo_Customize_Background_Images {
         'description'    => '',
       ) );
 
-    /******************
+    /********************************
     // Background Images Section
-    *******************/
+    *********************************/
 
-    $section_id = 'bgimages';
+    $section_id = 'bgimages_global';
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Site', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Global', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
+      )
+    );
+
+    $setting_id = $section_id . '_h1';
+
+    $wp_customize->add_control(
+      new Trivoo_Customize_Misc_Control(
+        $wp_customize,
+        $setting_id,
+        array(
+          'section'     => $section_id ,
+          'type'        => 'heading',
+          'label' => __( 'Site', 'Trivoo' )
+        )
       )
     );
 
@@ -46,7 +58,8 @@ class Trivoo_Customize_Background_Images {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -62,14 +75,17 @@ class Trivoo_Customize_Background_Images {
       )
     );
 
+    $setting_id = $section_id . '_h2';
 
-    $wp_customize->add_section( $section_id ,
-      array(
-        'title' => __( 'Title Container', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
-        'panel' => $panel_id
+    $wp_customize->add_control(
+      new Trivoo_Customize_Misc_Control(
+        $wp_customize,
+        $setting_id,
+        array(
+          'section'     => $section_id ,
+          'type'        => 'heading',
+          'label' => __( 'Title Container', 'Trivoo' )
+        )
       )
     );
 
@@ -79,7 +95,8 @@ class Trivoo_Customize_Background_Images {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 

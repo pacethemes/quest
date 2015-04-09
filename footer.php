@@ -24,7 +24,7 @@
 				<div class="col-md-6 copyright-text">
 					<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'trivoo-free' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'trivoo-free' ), 'WordPress' ); ?></a>
 					<span class="sep"> | </span>
-					<?php printf( __( 'Theme: %1$s by %2$s.', 'trivoo-free' ), 'trivoo-free', '<a href="http://trivoo.net" rel="designer">Trivoo.net</a>' ); ?>
+					<?php printf( __( 'Theme: %1$s by %2$s.', 'trivoo-free' ), 'trivoo-free', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">Trivoo.net</a>' ); ?>
 				</div>
 
 				<div class="col-md-6 social-icon-container clearfix">
@@ -43,7 +43,7 @@
 								'social_dribbble',
 								'social_digg',
 							);
-							$theme_mods = get_theme_mods();
+							$theme_mods = trivoo_get_mods();
 							foreach ( $social_profiles as $profile ) :
 								if ( array_key_exists( $profile, $theme_mods ) && esc_url( $theme_mods[ $profile ] ) !== '' ) :
 									$title = ucwords( str_replace( 'social_', '', $profile ) );

@@ -12,3 +12,48 @@
 .customize-control{
   margin-bottom: 10px;
 }
+
+.mce-i-flag:before {
+    font-family: "FontAwesome";
+    content: "\f024";
+}
+
+#trivoo_icon_picker_reveal section:after, .icon-grid section:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#trivoo_icon_picker_reveal, .icon-grid {
+	font-family: "Open Sans",sans-serif;
+}
+
+#trivoo_icon_picker_reveal h3, .icon-grid h3{
+	font-weight: 300;
+	font-size: 24px !important;
+	margin-top: 30px;
+}
+.fa-hover{
+	width: 25%;
+	float: left;
+	margin: 2px 0; 
+}
+
+.fa-hover a{
+	color: #222222;
+	display: inline-block;
+	padding: 5px 10px;
+	transition: 0.3s all easeIn;
+	border-radius: 3px;
+}
+
+.fa-hover a:hover{
+	background-color: #1e8bc3;
+	color: #fff;
+}
+
+.fa-hover .fa{
+	font-size: 14px;
+	display: inline-block;
+	margin-right: 5px;
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * The header for our theme.
+ * The header for trivoo.
  *
  * Displays all of the <head> section and everything up till end of </header>
  *
@@ -11,9 +11,9 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php $favicon =  get_theme_mod( 'logo_favicon', trivoo_get_default( 'logo_favicon' ) ); 
+<?php $favicon =  trivoo_get_mod( 'logo_favicon' ); 
 if ( $favicon !== '' ): ?>
-<link rel="icon" href="<?php echo esc_url( $favicon ); ?>" />
+	<link rel="icon" href="<?php echo esc_url( $favicon ); ?>" />
 <?php endif; ?>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -21,7 +21,7 @@ if ( $favicon !== '' ): ?>
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class( get_theme_mod( 'layout_global_site', trivoo_get_default( 'layout_global_site' ) ) ); ?>>
+<body <?php body_class( trivoo_get_mod( 'layout_global_site' ) ); ?>>
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'trivoo-free' ); ?></a>
 
@@ -30,7 +30,7 @@ if ( $favicon !== '' ): ?>
 			<div class="row">
 				<div class="site-branding col-md-4">
 
-				<?php $logo =  get_theme_mod( 'logo_logo', trivoo_get_default( 'logo_logo' ) ); 
+				<?php $logo =  trivoo_get_mod( 'logo_logo' ); 
 					if ( $logo !== '' ): ?>
 						<h1 class="logo">
 							<a href="<?php echo esc_url( home_url() ); ?>">
@@ -39,11 +39,11 @@ if ( $favicon !== '' ): ?>
 						</h1>
 				<?php endif; ?>
 
-				<?php if ( !get_theme_mod( 'title_tagline_hide_title', trivoo_get_default( 'title_tagline_hide_title' ) ) ) : ?>
+				<?php if ( !trivoo_get_mod( 'title_tagline_hide_title' ) ) : ?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php endif; ?>
 
-				<?php if ( !get_theme_mod( 'title_tagline_hide_tagline', trivoo_get_default( 'title_tagline_hide_tagline' ) ) ) : ?>
+				<?php if ( !trivoo_get_mod( 'title_tagline_hide_tagline' ) ) : ?>
 					<span class="site-description"><?php bloginfo( 'description' ); ?></span>
 				<?php endif; ?>
 

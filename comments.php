@@ -18,64 +18,52 @@ if ( post_password_required() ) {
 }
 ?>
 <div id="comments" class="clearfix">
-<?php if(have_comments()) :?>
+<?php if ( have_comments() ) :?>
 	<div class="post-comments-heading">
-		<h3><?php comments_number(__('No Comments', 'trivoo-framework'), 
-									__('One Comment', 'trivoo-framework'), 
-									__('% Comments', 'trivoo-framework')) 
-									?>
-								</h3>
+		<h3><?php comments_number( __( 'No Comments', 'trivoo-framework' ),
+				__( 'One Comment', 'trivoo-framework' ),
+				__( '% Comments', 'trivoo-framework' ) )
+			?>
+		</h3>
 	</div>
 
 	<div class="comments-container">
 		<ul class="comment-list">
-			<?php wp_list_comments('callback=trivoo_comments'); ?>
+			<?php wp_list_comments( 'callback=trivoo_comments' ); ?>
 		</ul>
 	</div>
 
-
-	<?php if(get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
+	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<div class="pagination post-pagination clearfix">
-			<?php previous_comments_link(__('Older Comments', 'trivoo-framework')); ?>
-			<?php next_comments_link(__('Newer Comments', 'trivoo-framework')); ?>
+			<?php previous_comments_link( __( 'Older Comments', 'trivoo-framework' ) ); ?>
+			<?php next_comments_link( __( 'Newer Comments', 'trivoo-framework' ) ); ?>
 		</div>
 	<?php endif;?>
-<?php elseif (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) :?>
+
+<?php elseif ( !comments_open() && !is_page() && post_type_supports( get_post_type(), 'comments' ) ) :?>
 	<p>
-		<?php __('Comments are closed.','trivoo-framework') ?>
+		<?php __( 'Comments are closed.', 'trivoo-framework' ) ?>
 	</p>
 <?php endif;?>
 
 <?php if ( comments_open() ) : ?>
-<?php
-$commenter = wp_get_current_commenter();
-$req = get_option( 'require_name_email' );
-$aria_req = ( $req ? " aria-required='true'" : '' );
-$fields =  array(
-    'author' => '<div class="col-md-4"><input type="text" placeholder="'.__('Name (required)','trivoo-framework').'" name="author" id="author" '.$aria_req.'></div>',
-    'email'  => '<div class="col-md-4"><input type="text" placeholder="'.__('Email Address (required)','trivoo-framework').'" name="email" id="email" '.$aria_req.'></div>',
-    'website' => '<div class="col-md-4"><input type="text" placeholder="'.__('Website (required)','trivoo-framework').'" name="url" id="url"></div>'
-);
- 
-$comments_args = array(
-    'fields' =>  $fields,
-    'comment_field' => '<div class="row"><div class="col-md-12"><textarea name="comment" id="comment" placeholder="'.__('Your Comment...','trivoo-framework').'"></textarea></div></div>',
-    //'comment_notes_after' => '',
-    'id_form' => 'post-comments-form'
-);
+	<?php
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? " aria-required='true'" : '' );
+	$fields =  array(
+		'author' => '<div class="col-md-4"><input type="text" placeholder="'.__( 'Name (required)', 'trivoo-framework' ).'" name="author" id="author" '.$aria_req.'></div>',
+		'email'  => '<div class="col-md-4"><input type="text" placeholder="'.__( 'Email Address (required)', 'trivoo-framework' ).'" name="email" id="email" '.$aria_req.'></div>',
+		'website' => '<div class="col-md-4"><input type="text" placeholder="'.__( 'Website (required)', 'trivoo-framework' ).'" name="url" id="url"></div>'
+	);
 
-function commentfields_rowtag( $comment_id ){
-	echo '<div class="row">';
-}
+	$comments_args = array(
+		'fields' =>  $fields,
+		'comment_field' => '<div class="row"><div class="col-md-12"><textarea name="comment" id="comment" placeholder="'.__( 'Your Comment...', 'trivoo-framework' ).'"></textarea></div></div>',
+		'id_form' => 'post-comments-form'
+	);
 
-function commentfields_rowtag_end( $comment_id ){
-	echo '</div>';
-}
-
-add_action( 'comment_form_before_fields', 'commentfields_rowtag', 10, 1 );
-add_action( 'comment_form_after_fields', 'commentfields_rowtag_end', 10, 1 );
-
-comment_form($comments_args); ?>
+	comment_form( $comments_args ); ?>
 
 <?php endif; ?>
 </div>

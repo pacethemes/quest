@@ -1,12 +1,8 @@
 <?php
 
-// include "defaults.php";
-// include "helpers.php";
-
 /**
- * Contains methods for customizing the theme customization screen.
+ * Contains methods for adding General Customization Panel and all settings under it
  *
- * @link http://codex.wordpress.org/Theme_Customization_API
  * @since Trivoo 1.0
  */
 class Trivoo_Customize_General {
@@ -23,9 +19,9 @@ class Trivoo_Customize_General {
         'description'    => '',
       ) );
 
-    /******************
+    /******************************
     // Title & Tagline Section
-    *******************/
+    *******************************/
 
     $section_id = 'title_tagline';
 
@@ -49,7 +45,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -73,7 +70,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'absint'
       )
     );
 
@@ -104,10 +102,9 @@ class Trivoo_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Logo', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Logo', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -119,7 +116,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -142,7 +140,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -160,18 +159,17 @@ class Trivoo_Customize_General {
     );
 
 
-    /******************
+    /******************************
     // Social Profiles Section
-    *******************/
+    *******************************/
 
     $section_id = 'social';
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Social Profiles', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Social Profiles', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -182,7 +180,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -205,7 +204,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -227,7 +227,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -249,7 +250,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -271,7 +273,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -294,7 +297,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -316,7 +320,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -338,7 +343,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -360,7 +366,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -382,7 +389,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 
@@ -405,7 +413,8 @@ class Trivoo_Customize_General {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
       )
     );
 

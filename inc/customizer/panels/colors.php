@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Contains methods for customizing the theme customization screen.
+ * Contains methods for adding Colors Customization Panel and all settings under it
  *
- * @link http://codex.wordpress.org/Theme_Customization_API
  * @since Trivoo 1.0
  */
 class Trivoo_Customize_Colors {
@@ -30,10 +29,9 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Global', 'Trivoo' ),
+        'priority' => 35, 
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -44,7 +42,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -67,7 +66,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -91,7 +91,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -115,7 +116,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -138,7 +140,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -162,7 +165,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -185,7 +189,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -209,7 +214,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -233,7 +239,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -259,10 +266,9 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Header', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Header', 'Trivoo' ),
+        'priority' => 35, 
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -273,7 +279,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -297,7 +304,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -321,7 +329,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -347,10 +356,9 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Main Menu', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Main Menu', 'Trivoo' ),
+        'priority' => 35, 
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -377,7 +385,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -401,7 +410,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -438,7 +448,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -462,7 +473,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -486,7 +498,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -510,7 +523,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -533,7 +547,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -559,10 +574,9 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Title Container', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Title Container', 'Trivoo' ),
+        'priority' => 35, 
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -573,7 +587,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -596,7 +611,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -619,7 +635,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -644,10 +661,9 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Trivoo' ), //Visible title of section
-        'priority' => 35, //Determines what order this appears in
-        'capability' => 'edit_theme_options', //Capability needed to tweak
-        //'description' => __( 'Allows you to customize some example settings for Trivoo.', 'Trivoo' ), //Descriptive tooltip
+        'title' => __( 'Footer', 'Trivoo' ),
+        'priority' => 35, 
+        'capability' => 'edit_theme_options',
         'panel' => $panel_id
       )
     );
@@ -674,7 +690,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -696,7 +713,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -719,7 +737,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -742,7 +761,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -779,7 +799,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -801,7 +822,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -824,7 +846,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -846,7 +869,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 
@@ -868,7 +892,8 @@ class Trivoo_Customize_Colors {
       $setting_id,
       array(
         'default'           => trivoo_get_default( $setting_id ),
-        'type'              => 'theme_mod'
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'maybe_hash_hex_color',
       )
     );
 

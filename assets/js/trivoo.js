@@ -1,40 +1,40 @@
 var mob = false;
 var menuOpen = false;
 var menuTimeout;
-var trivoo = function() {
+var trivoo = function($) {
 
     return {
 
         // initCarousel: function() {
-        //     jQuery('.carousel').carousel();
+        //     $('.carousel').carousel();
         // },
 
         // initFitVids: function() {
-        //     jQuery(".textwidget, iframe, .video:not(.no-fitvids)").fitVids();
+        //     $(".textwidget, iframe, .video:not(.no-fitvids)").fitVids();
         // },
 
         initFormPlaceHolder: function() {
             if (!("placeholder" in document.createElement("input"))) {
-                jQuery("input[placeholder], textarea[placeholder]").each(function() {
-                    var val = jQuery(this).attr("placeholder");
+                $("input[placeholder], textarea[placeholder]").each(function() {
+                    var val = $(this).attr("placeholder");
                     if (this.value == "") {
                         this.value = val;
                     }
-                    jQuery(this).focus(function() {
+                    $(this).focus(function() {
                         if (this.value == val) {
                             this.value = "";
                         }
                     }).blur(function() {
-                        if (jQuery.trim(this.value) == "") {
+                        if ($.trim(this.value) == "") {
                             this.value = val;
                         }
                     });
                 });
 
                 // Clear default placeholder values on form submit
-                jQuery('form').submit(function() {
-                    jQuery(this).find("input[placeholder], textarea[placeholder]").each(function() {
-                        if (this.value == jQuery(this).attr("placeholder")) {
+                $('form').submit(function() {
+                    $(this).find("input[placeholder], textarea[placeholder]").each(function() {
+                        if (this.value == $(this).attr("placeholder")) {
                             this.value = "";
                         }
                     });
@@ -43,7 +43,7 @@ var trivoo = function() {
         },
 
         // initFlexSlider: function() {
-        //     jQuery('#related-posts').flexslider({
+        //     $('#related-posts').flexslider({
         //         animation: 'slide',
         //         itemWidth: 210,
         //         itemMargin: 5,
@@ -51,7 +51,7 @@ var trivoo = function() {
         //         maxItems: 5
         //     });
 
-        //     jQuery('.flexslider:not(.ignore)').flexslider({
+        //     $('.flexslider:not(.ignore)').flexslider({
         //         animation: "fade",
         //         smoothHeight: true,
         //         selector: ".slides > li"
@@ -59,8 +59,8 @@ var trivoo = function() {
         // },
 
         initBackToTop: function() {
-            jQuery('#back-to-top a').click(function() {
-                jQuery('body,html').animate({
+            $('#back-to-top a').click(function() {
+                $('body,html').animate({
                     scrollTop: 0
                 }, 800);
                 return false;
@@ -73,58 +73,67 @@ var trivoo = function() {
         //     trivoo.eventsForTransitions('fromLeft');
         //     trivoo.eventsForTransitions('fromRight');
         //     trivoo.eventsForTransitions('fadeIn');
-        //     trivoo.eventsForTransitions('scaleUp', jQuery('.avatar img'));
+        //     trivoo.eventsForTransitions('scaleUp', $('.avatar img'));
         // },
 
         // initIsotope: function(selector) {
         //     if (typeof selector === 'undefined') {
-        //         jQuery('.portfolio-grid-alt').isotope({
+        //         $('.portfolio-grid-alt').isotope({
         //             itemSelector: '.portfolio-grid-alt-item'
         //         });
         //     } else {
-        //         jQuery('.portfolio-grid-alt').isotope({
+        //         $('.portfolio-grid-alt').isotope({
         //             filter: '.portfolio-grid-alt-item.' + selector
         //         });
         //     }
         // },
 
         // initPortfolioFilter: function() {
-        //     jQuery('#portfolio_filter a').click(function() {
-        //         jQuery('#portfolio_filter a').removeClass('active');
-        //         var selector = jQuery(this).addClass('active').attr('data-filter');
+        //     $('#portfolio_filter a').click(function() {
+        //         $('#portfolio_filter a').removeClass('active');
+        //         var selector = $(this).addClass('active').attr('data-filter');
         //         trivoo.initIsotope(selector);
         //         return false;
         //     });
         // },
 
         initColorbox: function() {
-            jQuery('a.gallery').colorbox({
+            $('a.gallery').colorbox({
                 rel: 'gallery',
                 maxWidth: '95%'
             });
         },
 
         initTooltip: function() {
-            jQuery('a[data-toggle=tooltip]').tooltip();
+            $('a[data-toggle=tooltip]').tooltip();
+        },
+
+        initMasonry: function() {
+            var $container = $('#grid-container');
+            if ( $container.length > 0 ) {
+                $container.masonry({
+                  itemSelector: '.post-grid-wrap'
+                });
+            }
         },
 
         // initCustomJs: function() {
-        //     jQuery('.post-content .col-md-9 .container, .container .container').removeClass('container');
-        //     jQuery('.row.no-spacing').parent().parent('.trivoo-row').addClass('np');
-        //     jQuery('.row.spacing').parent().parent('.trivoo-row').removeClass('np')
+        //     $('.entry-content .col-md-9 .container, .container .container').removeClass('container');
+        //     $('.row.no-spacing').parent().parent('.trivoo-row').addClass('np');
+        //     $('.row.spacing').parent().parent('.trivoo-row').removeClass('np')
         // },
 
         // initStickyHeader: function() {
-        //     if (!jQuery('nav.main-menu:first').visible(true)) {
+        //     if (!$('nav.main-menu:first').visible(true)) {
         //         if (menuOpen) {
         //             return;
         //         }
         //         menuOpen = true;
-        //         jQuery('#back-to-top').fadeIn();
+        //         $('#back-to-top').fadeIn();
 
-        //         if (jQuery('.fixed-header #sticky-header').length > 0 && !jQuery('#sticky-header').hasClass('scrolled')) {
-        //             var that = jQuery('#sticky-header');
-        //             var tp = jQuery('#wpadminbar').length > 0 ? jQuery('#wpadminbar').height() : -1;
+        //         if ($('.fixed-header #sticky-header').length > 0 && !$('#sticky-header').hasClass('scrolled')) {
+        //             var that = $('#sticky-header');
+        //             var tp = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : -1;
         //             that.fadeOut(0, function() {
         //                 that.addClass('scrolled').css('top', tp - 42 + 'px');
         //                 menuTimeout = setTimeout(function() {
@@ -133,15 +142,15 @@ var trivoo = function() {
         //                     }, 300);
         //                 }, 1000);
         //             });
-        //             jQuery('ul#menu-trivoo>li>a').removeAttr('style');
+        //             $('ul#menu-trivoo>li>a').removeAttr('style');
         //         }
         //     } else if (menuOpen) {
         //         menuOpen = false;
         //         clearTimeout(menuTimeout);
-        //         jQuery('#back-to-top').fadeOut();
+        //         $('#back-to-top').fadeOut();
 
-        //         if (jQuery('.fixed-header #sticky-header').length > 0) {
-        //             jQuery('#sticky-header').stop().hide().removeClass('scrolled').removeAttr('style');
+        //         if ($('.fixed-header #sticky-header').length > 0) {
+        //             $('#sticky-header').stop().hide().removeClass('scrolled').removeAttr('style');
         //         }
         //     }
         // },
@@ -149,31 +158,31 @@ var trivoo = function() {
         displayMobileMenu: function() {
             // var h = 0,
             //     mob = false;
-            // jQuery('.main-header').removeClass('mobile');
-            // jQuery('.main-header:not(#sticky-header) .nav.navbar-nav>li').each(function() {
+            // $('.main-header').removeClass('mobile');
+            // $('.main-header:not(#sticky-header) .nav.navbar-nav>li').each(function() {
             //     if (h == 0) {
-            //         h = jQuery(this).offset().top;
-            //     } else if (h != jQuery(this).offset().top) {
+            //         h = $(this).offset().top;
+            //     } else if (h != $(this).offset().top) {
             //         mob = true;
             //     }
             // });
             // if (mob) {
-            //     jQuery('.main-header').addClass('mobile');
+            //     $('.main-header').addClass('mobile');
             // }
         },
 
 
         // setHeaderPosition: function() {
-        //     if (jQuery(window).width() <= 768) {
-        //         jQuery('.main-header').css('top', 'auto');
+        //     if ($(window).width() <= 768) {
+        //         $('.main-header').css('top', 'auto');
         //     } else {
-        //         jQuery('.main-header').removeAttr('style');
+        //         $('.main-header').removeAttr('style');
         //     }
         // },
 
         // setMenuHeight: function(){
-        //     var lh = jQuery('.logo img').first().height(),
-        //         menu = jQuery('.main-menu .nav:not(#trivoo-sticky-menu)');
+        //     var lh = $('.logo img').first().height(),
+        //         menu = $('.main-menu .nav:not(#trivoo-sticky-menu)');
 
         //     if( lh > menu.height()){
         //         menu.css({'height': lh+'px', 'line-height': lh+'px'});
@@ -182,7 +191,73 @@ var trivoo = function() {
 
     };
 
-}();
+}(jQuery);
+
+var PageBuilder = (function($) {
+
+    return {
+
+        initEvents : function() {
+
+            $('.sl-slider-wrapper').each(function(){
+                var $el = $(this),
+                    options = $el.data(),
+                    defaults = {
+                        autoplay: true,
+                        onBeforeChange : function( slide, pos ) {
+                            $nav.removeClass( 'nav-dot-current' );
+                            $nav.eq( pos ).addClass( 'nav-dot-current' );
+                        }
+                    },
+                    cnt = $el.find('.sl-slide').length;
+                $.extend( defaults, options );
+
+                $el.append('<nav class="nav-dots">' + new Array(cnt + 1).join('<span></span>')+ '</nav>');
+
+                var $nav = $el.find( '.nav-dots > span' );
+                $nav.first().addClass('nav-dot-current');
+
+                var slitslider = $el.slitslider( defaults ),
+                $next = $el.find('.slit-nav-buttons .next'),
+                $prev = $el.find('.slit-nav-buttons .prev');
+
+                $nav.each( function( i ) {
+                
+                    $( this ).on( 'click', function( event ) {
+                        
+                        var $dot = $( this );
+                        
+                        if( !slitslider.isActive() ) {
+
+                            $nav.removeClass( 'nav-dot-current' );
+                            $dot.addClass( 'nav-dot-current' );
+                        
+                        }
+                        
+                        slitslider.jump( i + 1 );
+                        return false;
+                    
+                    } );
+                    
+                } );
+
+                $next.on('click', function( event ) {
+                    slitslider.next();
+                    return false;
+                });
+
+                $prev.on('click', function( event ) { 
+                    slitslider.previous();
+                    return false;
+                });
+
+            });
+
+        }
+
+    }
+
+})(jQuery);
 
 
 jQuery(window).load(function() {
@@ -202,6 +277,7 @@ jQuery(window).load(function() {
 });
 
 jQuery(document).ready(function() {
+    PageBuilder.initEvents();
     trivoo.displayMobileMenu();
     // trivoo.initCarousel();
     // trivoo.initFitVids();
@@ -209,6 +285,7 @@ jQuery(document).ready(function() {
     trivoo.initTooltip();
     // trivoo.initFlexSlider();
     trivoo.initBackToTop();
+    trivoo.initMasonry();
     // trivoo.setHeaderPosition();
     trivoo.initFormPlaceHolder();
     // trivoo.initCustomJs();

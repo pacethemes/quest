@@ -7,64 +7,6 @@
  * @package trivoo-free
  */
 
-if ( ! function_exists( 'the_posts_navigation' ) ) :
-	/**
-	 * Display navigation to next/previous set of posts when applicable.
-	 *
-	 * @todo Remove this function when WordPress 4.3 is released.
-	 */
-	function the_posts_navigation() {
-		// Don't print empty markup if there's only one page.
-		if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-			return;
-		}
-?>
-	<nav class="navigation posts-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'trivoo-free' ); ?></h2>
-		<div class="nav-links">
-
-			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'trivoo-free' ) ); ?></div>
-			<?php endif; ?>
-
-			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'trivoo-free' ) ); ?></div>
-			<?php endif; ?>
-
-		</div><!-- .nav-links -->
-	</nav><!-- .navigation -->
-	<?php
-	}
-endif;
-
-if ( ! function_exists( 'the_post_navigation' ) ) :
-	/**
-	 * Display navigation to next/previous post when applicable.
-	 *
-	 * @todo Remove this function when WordPress 4.3 is released.
-	 */
-	function the_post_navigation() {
-		// Don't print empty markup if there's nowhere to navigate.
-		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-		$next     = get_adjacent_post( false, '', false );
-
-		if ( ! $next && ! $previous ) {
-			return;
-		}
-?>
-	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'trivoo-free' ); ?></h2>
-		<div class="nav-links">
-			<?php
-		previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
-		next_post_link( '<div class="nav-next">%link</div>', '%title' );
-?>
-		</div><!-- .nav-links -->
-	</nav><!-- .navigation -->
-	<?php
-	}
-endif;
-
 if ( ! function_exists( 'trivoo_free_post_meta' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time, author & comments.
@@ -272,8 +214,8 @@ if ( ! function_exists( 'trivoo_post_taxonomy' ) ) :
 	 * Display category, tag, or term description.
 	 */
 	function trivoo_post_taxonomy( $view ) {
-		$show_categories = get_theme_mod( 'layout_'.$view.'_meta-cats', trivoo_get_default( 'layout_'.$view.'_meta-cats' ) );
-		$show_tags = get_theme_mod( 'layout_'.$view.'_meta-tags', trivoo_get_default( 'layout_'.$view.'_meta-tags' ) );
+		$show_categories = trivoo_get_mod( 'layout_'.$view.'_meta-cats' );
+		$show_tags = trivoo_get_mod( 'layout_'.$view.'_meta-tags' );
 		$category_list   = get_the_category_list();
 		$tag_list        = get_the_tag_list( '<ul class="post-tags"><li>', "</li>\n<li>", '</li></ul>' ); // Replicates category output
 		$taxonomy_output = '';
@@ -306,11 +248,11 @@ if ( ! function_exists( 'trivoo_post_single_navigation' ) ) :
 	 */
 	function trivoo_post_single_navigation() {
 		global $post;
-?>
-    <div class="pagination post-pagination row">
-        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'trivoo-framework' ).'</div> <h4>%title</h4>' ); ?></div>
-        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'trivoo-framework' ).'</div> <h4>%title</h4>' ); ?></div>
-    </div>
+		?>
+	    <div class="pagination post-pagination row">
+	        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'trivoo-framework' ).'</div> <h4>%title</h4>' ); ?></div>
+	        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'trivoo-framework' ).'</div> <h4>%title</h4>' ); ?></div>
+	    </div>
     <?php
 	}
 endif;
@@ -324,7 +266,7 @@ if ( ! function_exists( 'trivoo_post_author_info' ) ) :
 	function trivoo_post_author_info() {
 		global $post;
 		$auth_info = get_the_author_meta( 'description' );
-		//if(of_get_option('author_info','yes') == 'yes' && $auth_info != '') : ?>
+		?>
         <div id="about-author" class="clearfix author">
             <h2><?php _e( 'by ', 'trivoo-framework' ) ?><?php the_author_posts_link(); ?></h2>
             <div class="avatar">
@@ -334,15 +276,17 @@ if ( ! function_exists( 'trivoo_post_author_info' ) ) :
                 <?php echo $auth_info ?>
             </div>
         </div>
-    <?php //endif;
+    <?php
 	}
 endif;
 
 
 if ( !function_exists( 'trivoo_try_sidebar' ) ) :
-
+	/**
+	 * Displays sidebar if the @position matches the @view sidebar position
+	 */
 	function trivoo_try_sidebar( $view , $position ) {
-		$pos = get_theme_mod( 'layout_'.$view.'_sidebar', trivoo_get_default( 'layout_'.$view.'_sidebar' ) );
+		$pos = trivoo_get_mod( 'layout_'.$view.'_sidebar' );
 		if ( $pos === $position ) {
 			get_sidebar();
 		}
@@ -352,10 +296,12 @@ endif;
 
 
 if ( !function_exists( 'trivoo_main_cls' ) ) :
-
+	/**
+	 * Prints the appropriate Bootstrap class for the main content area
+	 */
 	function trivoo_main_cls() {
 		$view = trivoo_get_view();
-		$pos = get_theme_mod( 'layout_'.$view.'_sidebar', trivoo_get_default( 'layout_'.$view.'_sidebar' ) );
+		$pos = trivoo_get_mod( 'layout_'.$view.'_sidebar' );
 		if ( $pos === 'none' ) {
 			echo 'col-md-12';
 		} else {
@@ -367,9 +313,11 @@ endif;
 
 
 if ( !function_exists( 'trivoo_title_bar' ) ) :
-
+	/**
+	 * Prints the Title Bar Container
+	 */
 	function trivoo_title_bar( $view ) {
-		$title_bar = get_theme_mod( 'layout_'.$view.'_title-bar', trivoo_get_default( 'layout_'.$view.'_title-bar' ) );
+		$title_bar = trivoo_get_mod( 'layout_'.$view.'_title-bar' );
 		if ( $title_bar ) : ?>
 		<div class="trivoo-row" id="title-container">
 			<div class="container title-container">
@@ -391,7 +339,9 @@ endif;
 
 
 if ( !function_exists( 'trivoo_page_title' ) ) :
-
+	/**
+	 * Prints the Page Title inside the Title Container
+	 */
 	function trivoo_page_title() {
 		if ( is_search() ) {
 			echo __( 'Search results for: ', 'trivoo-framework' ) . get_search_query();
@@ -407,147 +357,225 @@ if ( !function_exists( 'trivoo_page_title' ) ) :
 endif;
 
 
-/*****************************************************************************************************/
+if ( !function_exists( 'trivoo_comments' ) ) :
+	/**
+	 * Prints the Comments for a page or post
+	 */
+	function trivoo_comments( $comment, $args, $depth ) {
 
-/* FUNCTION TO DISPLAY COMMENTS */
+		$GLOBALS['comment'] = $comment;
 
-/*****************************************************************************************************/
+		if ( get_comment_type() == 'pingback' || get_comment_type() == 'trackback' ): ?>
 
-function trivoo_comments( $comment, $args, $depth ) {
+	        <li class="pingback" id="comment-<?php comment_ID() ?>">
+	            <article <?php comment_class( 'clearfix' ) ?>>
+	                <div class="comment-meta">
+	                    <?php _e( 'Pingback:', 'trivoo-framework' ) ?>
+	                    <?php edit_comment_link() ?>
+	                </div>
+	                <div class="comment-content">
+	                    <?php comment_author_link(); ?>
+	                </div>
+	            </article>
+	        </li>
 
-	$GLOBALS['comment'] = $comment;
+	    <?php elseif ( get_comment_type() == 'comment' ): ?>
 
-	if ( get_comment_type() == 'pingback' || get_comment_type() == 'trackback' ): ?>
+	        <li id="comment-<?php comment_ID() ?>">
+	            <article <?php comment_class( 'clearfix' ) ?>>
+	                <div class="avatar">
+	                    <?php echo get_avatar( $comment, 70 ); ?>
+	                </div>
+	                <div class="comment-meta">
+	                    <?php $author_url = get_comment_author_url();
+						if ( empty( $author_url ) || 'http://' == $author_url ): ?>
+	                                <i class="fa fa-user"></i>
+	                                <span class="comment-author"><?php comment_author(); ?></span>
+	                    <?php else: ?>
+	                            <i class="fa fa-user"></i>
+	                            <a class="comment-author" href="<?php $author_url; ?>"><?php comment_author(); ?></a>
+	                    <?php endif; ?>
+	                    <span class="comment-date post-date"><i class="fa fa-clock-o"></i><?php comment_date(); ?> <?php _e( 'at', 'trivoo' ) ?> <?php comment_time(); ?></span>
+	                    <span class="comment-reply"> <i class="fa fa-reply"></i>
+	                        <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+	                    </span>
+	                </div>
+	                <div class="comment-content">
+	                    <?php if ( $comment->comment_approved == '0' ): ?>
+	                        <p><?php _e( 'Your comment is awaiting moderation', 'trivoo-framework' ) ?></p>
+	                    <?php endif; ?>
+	                    <?php comment_text(); ?>
+	                </div>
+	            </article>
+	        </li>
+	    <?php  endif;
+	}
+endif;
 
-        <li class="pingback" id="comment-<?php comment_ID() ?>">
-            <article <?php comment_class( 'clearfix' ) ?>>
-                <div class="comment-meta">
-                    <?php _e( 'Pingback:', 'trivoo-framework' ) ?>
-                    <?php edit_comment_link() ?>
-                </div>
-                <div class="comment-content">
-                    <?php comment_author_link(); ?>
-                </div>
-            </article>
-        </li>
-
-    <?php elseif ( get_comment_type() == 'comment' ): ?>
-
-        <li id="comment-<?php comment_ID() ?>">
-            <article <?php comment_class( 'clearfix' ) ?>>
-                <div class="avatar">
-                    <?php echo get_avatar( $comment, 70 ); ?>
-                </div>
-                <div class="comment-meta">
-                    <?php $author_url = get_comment_author_url();
-	if ( empty( $author_url ) || 'http://' == $author_url ): ?>
-                                <i class="fa fa-user"></i>
-                                <span class="comment-author"><?php comment_author(); ?></span>
-                    <?php else: ?>
-                            <i class="fa fa-user"></i>
-                            <a class="comment-author" href="<?php $author_url; ?>"><?php comment_author(); ?></a>
-                    <?php endif; ?>
-                    <span class="comment-date post-date"><i class="fa fa-clock-o"></i><?php comment_date(); ?> <?php _e( 'at', 'trivoo' ) ?> <?php comment_time(); ?></span>
-                    <span class="comment-reply"> <i class="fa fa-reply"></i>
-                        <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-                    </span>
-                </div>
-                <div class="comment-content">
-                    <?php if ( $comment->comment_approved == '0' ): ?>
-                        <p><?php _e( 'Your comment is awaiting moderation', 'trivoo-framework' ) ?></p>
-                    <?php endif; ?>
-                    <?php comment_text(); ?>
-                </div>
-            </article>
-        </li>
-    <?php  endif;
-}
-
-function trivoo_custom_comment_fields() {
-	$commenter = wp_get_current_commenter();
-	$req = get_option( 'require_name_email' );
-	$aria_req = ( $req ? " aria-required='true'" : ' ' );
-}
+if ( !function_exists( 'trivoo_custom_comment_fields' ) ) :
+	/**
+	 * Adds the Aria Required attribute for required fields
+	 */
+	function trivoo_custom_comment_fields() {
+		$commenter = wp_get_current_commenter();
+		$req = get_option( 'require_name_email' );
+		$aria_req = ( $req ? " aria-required='true'" : ' ' );
+	}
+endif;
 
 add_filter( 'comment_form_default_fields', 'trivoo_custom_comment_fields' );
 
 
-/*****************************************************************************************************/
 
-/* PAGINATION/BREADCRUMB FUNCTIONS */
-
-/*****************************************************************************************************/
-
-function trivoo_pagination( $pages = '', $range = 2 ) {
-	$showitems = ( $range * 2 ) + 1;
-
-	global $paged;
-	if ( empty( $paged ) ) $paged = 1;
-
-	if ( $pages == '' ) {
-		global $wp_query;
-		$pages = $wp_query->max_num_pages;
-		if ( !$pages ) {
-			$pages = 1;
-		}
+if ( !function_exists( 'trivoo_commentfields_rowtag' ) ) :
+	/**
+	 * Adds the Proper opening markup for comment filed
+	 */
+	function commentfields_rowtag( $comment_id ) {
+		echo '<div class="row">';
 	}
+endif;
 
-	if ( 1 != $pages ) {
-		echo "<div class='center'><ul class='pagination'>";
-		if ( $paged > 1 ) echo "<li><a class='prev' href='" . get_pagenum_link( $paged - 1 ) . "'><i class='fa fa-angle-double-left'></i></a></li>";
+if ( !function_exists( 'trivoo_commentfields_rowtag_end' ) ) :
+	/**
+	 * Adds the Proper closing markup for comment filed
+	 */
+	function trivoo_commentfields_rowtag_end( $comment_id ) {
+		echo '</div>';
+	}
+endif;
 
-		for ( $i = 1; $i <= $pages; $i++ ) {
-			if ( 1 != $pages && ( !( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
-				echo ( $paged == $i ) ? "<li class='active'><a href='" . get_pagenum_link( $i ) . "'>" . $i . "</a></li>" : "<li><a href='" . get_pagenum_link( $i ) . "' >" . $i . "</a></li>";
+add_action( 'comment_form_before_fields', 'commentfields_rowtag', 10, 1 );
+add_action( 'comment_form_after_fields', 'commentfields_rowtag_end', 10, 1 );
+
+if ( !function_exists( 'trivoo_pagination' ) ) :
+	/**
+	 * Prints pagination HTML required by the theme
+	 */
+	function trivoo_pagination() {
+	    global $wp_query;
+	    $big = 999999999; // need an unlikely integer
+	    $pages = paginate_links( array(
+	            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+	            'format' => '?paged=%#%',
+	            'current' => max( 1, get_query_var('paged') ),
+	            'total' => $wp_query->max_num_pages,
+	            'prev_next' => false,
+	            'type'  => 'array',
+	            'prev_next'   => TRUE,
+				'prev_text'    => '<i class="fa fa-angle-double-left"></i>',
+				'next_text'    => '<i class="fa fa-angle-double-right"></i>',
+	        ) );
+	        if( is_array( $pages ) ) {
+	            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+	            echo '<div class="center"><ul class="pagination">';
+	            foreach ( $pages as $page ) {
+	                    echo "<li>$page</li>";
+	            }
+	           echo '</ul></div>';
+	        }
+	}
+endif;
+
+if ( !function_exists( 'trivoo_breadcrumb' ) ) :
+	/**
+	 * Prints breadcrumb HTML required by the theme
+	 */
+	function trivoo_breadcrumb() {
+		global $post;
+		echo '<ul class="breadcrumbs">';
+
+		if ( !is_front_page() ) {
+			echo '<li><a href="';
+			echo home_url();
+			echo '">' . __( 'Home', 'trivoo-framework' );
+			echo "</a></li>";
+		}
+
+		if ( is_category() || is_single() && !is_singular( 'portfolio' ) ) {
+			$category = get_the_category();
+			if ( isset( $category[0] ) ) {
+				$ID = $category[0]->cat_ID;
+				echo '<li>' . get_category_parents( $ID, TRUE, '', FALSE ) . '</li>';
 			}
 		}
 
-		if ( $paged < $pages ) echo "<li><a class='next' href='" . get_pagenum_link( $paged + 1 ) . "'><i class='fa fa-angle-double-right '></i></a></li>";
-		echo "</ul></div>\n";
-	}
-}
-
-function trivoo_breadcrumb() {
-	global $post;
-	echo '<ul class="breadcrumbs">';
-
-	if ( !is_front_page() ) {
-		echo '<li><a href="';
-		echo home_url();
-		echo '">' . __( 'Home', 'trivoo-framework' );
-		echo "</a></li>";
-	}
-
-	if ( is_category() || is_single() && !is_singular( 'portfolio' ) ) {
-		$category = get_the_category();
-		if ( isset( $category[0] ) ) {
-			$ID = $category[0]->cat_ID;
-			echo '<li>' . get_category_parents( $ID, TRUE, '', FALSE ) . '</li>';
+		if ( is_singular( 'portfolio' ) ) {
+			echo get_the_term_list( $post->ID, 'portfolio_category', '<li>', ' - ', '</li>' );
 		}
-	}
 
-	if ( is_singular( 'portfolio' ) ) {
-		echo get_the_term_list( $post->ID, 'portfolio_category', '<li>', ' - ', '</li>' );
-	}
+		if ( is_home() ) {
+			echo '<li>' . get_option( 'blog_title', 'Blog' ) . '</li>';
+		}
+		if ( is_single() || is_page() ) {
+			echo '<li>' . get_the_title() . '</li>';
+		}
+		if ( is_tag() ) {
+			echo '<li>' . "Tag: " . single_tag_title( '', FALSE ) . '</li>';
+		}
+		if ( is_404() ) {
+			echo '<li>' . __( "404 - Page not Found", 'trivoo-framework' ) . '</li>';
+		}
+		if ( is_search() ) {
+			echo '<li>' . __( "Search", 'trivoo-framework' ) . '</li>';
+		}
+		if ( is_year() ) {
+			echo '<li>' . get_the_time( 'Y' ) . '</li>';
+		}
 
-	if ( is_home() ) {
-		echo '<li>' . get_option( 'blog_title', 'Blog' ) . '</li>';
+		echo "</ul>";
 	}
-	if ( is_single() || is_page() ) {
-		echo '<li>' . get_the_title() . '</li>';
-	}
-	if ( is_tag() ) {
-		echo '<li>' . "Tag: " . single_tag_title( '', FALSE ) . '</li>';
-	}
-	if ( is_404() ) {
-		echo '<li>' . __( "404 - Page not Found", 'trivoo-framework' ) . '</li>';
-	}
-	if ( is_search() ) {
-		echo '<li>' . __( "Search", 'trivoo-framework' ) . '</li>';
-	}
-	if ( is_year() ) {
-		echo '<li>' . get_the_time( 'Y' ) . '</li>';
-	}
+endif;
 
-	echo "</ul>";
-}
+if ( !function_exists( 'trivoo_get_view' ) ):
+
+	/**
+	 * Determine the current view.
+	 *
+	 * @return string    The string representing the current view.
+	 */
+	function trivoo_get_view() {
+
+		// Post types
+		$post_types = get_post_types( array( 'public' => true, '_builtin' => false ) );
+		$post_types[] = 'post';
+
+		// Post parent
+		$parent_post_type = '';
+		if ( is_attachment() ) {
+			$post_parent = get_post()->post_parent;
+			$parent_post_type = get_post_type( $post_parent );
+		}
+
+		$view = 'post';
+
+		// Blog
+		if ( is_home() ) {
+			$view = 'blog';
+		}
+
+		// Archives
+		else if ( is_archive() ) {
+				$view = 'archive';
+			}
+
+		// Search results
+		else if ( is_search() ) {
+				$view = 'search';
+			}
+
+		// Posts and public custom post types
+		else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
+				$view = 'post';
+			}
+
+		// Pages
+		else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
+				$view = 'page';
+			}
+
+		return $view;
+	}
+endif;
+
+?>

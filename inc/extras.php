@@ -69,3 +69,5 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	}
 	add_action( 'wp_head', 'trivoo_free_render_title' );
 endif;
+
+?>
