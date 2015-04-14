@@ -11,9 +11,16 @@ $view = trivoo_get_view();
 
 		<?php if(has_post_thumbnail()) : ?>
 
-			<div class="post-image blog-normal">
-				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('blog-normal'); ?></a>					
-			</div>
+		<div class="post-image blog-normal effect slide-top">
+				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-normal' ); ?></a>
+				<div class="overlay">
+					<div class="caption">
+                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'Trivoo'); ?></a>
+                    </div>
+                    <a href="<?php the_permalink() ?>" class="expand">+</a>
+                    <a href="#" class="close-overlay hidden">x</a>
+                </div>
+		</div>
 		
 		<?php endif; ?>
 

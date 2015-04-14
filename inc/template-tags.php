@@ -393,7 +393,7 @@ if ( !function_exists( 'trivoo_comments' ) ) :
 	                                <span class="comment-author"><?php comment_author(); ?></span>
 	                    <?php else: ?>
 	                            <i class="fa fa-user"></i>
-	                            <a class="comment-author" href="<?php $author_url; ?>"><?php comment_author(); ?></a>
+	                            <a class="comment-author" href="<?php echo $author_url; ?>"><?php comment_author(); ?></a>
 	                    <?php endif; ?>
 	                    <span class="comment-date post-date"><i class="fa fa-clock-o"></i><?php comment_date(); ?> <?php _e( 'at', 'trivoo' ) ?> <?php comment_time(); ?></span>
 	                    <span class="comment-reply"> <i class="fa fa-reply"></i>
@@ -460,9 +460,8 @@ if ( !function_exists( 'trivoo_pagination' ) ) :
 	            'format' => '?paged=%#%',
 	            'current' => max( 1, get_query_var('paged') ),
 	            'total' => $wp_query->max_num_pages,
-	            'prev_next' => false,
 	            'type'  => 'array',
-	            'prev_next'   => TRUE,
+	            'prev_next'   => true,
 				'prev_text'    => '<i class="fa fa-angle-double-left"></i>',
 				'next_text'    => '<i class="fa fa-angle-double-right"></i>',
 	        ) );

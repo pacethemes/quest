@@ -38,6 +38,7 @@ trPbApp.Modules = trPbApp.Modules || {};
             id: '',
             css_class: '',
             slides: '',
+            height: '400px',
             autoplay: 'true',
             interval: '4000',
             speed: '800',
@@ -52,6 +53,8 @@ trPbApp.Modules = trPbApp.Modules || {};
             parent: '',
             css_class: '',
             bg_image: '',
+            bg_pos_x: 'center',
+            bg_pos_y: 'center',
             heading: '',
             text: '',
             heading_color: '',
@@ -66,6 +69,29 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
+    trPbApp.GalleryModel = Backbone.Model.extend({
+        defaults: {
+            id: '',
+            css_class: '',
+            images: '',
+            shape: 'rounded',
+            admin_label: 'Gallery',
+            title: 'Edit Gallery'
+        }
+    });
+
+    trPbApp.GImageModel = Backbone.Model.extend({
+        defaults: {
+            id: '',
+            css_class: '',
+            src: '',
+            post_id: '',
+            href: '',
+            parent: '',
+            admin_label: 'Image',
+            icon: 'format-image'
+        }
+    });
 
     trPbApp.Modules.ImageModel = Backbone.Model.extend({
         defaults: {
@@ -82,7 +108,7 @@ trPbApp.Modules = trPbApp.Modules || {};
             type: 'image',
             parent: '',
             admin_label: 'Image',
-            text: 'Image'
+            icon: 'format-image'
         }
     });
 
@@ -93,7 +119,8 @@ trPbApp.Modules = trPbApp.Modules || {};
             content: '',
             type: 'text',
             parent: '',
-            admin_label: 'Text'
+            admin_label: 'Text',
+            icon: 'editor-paragraph'
         }
     });
 
@@ -101,7 +128,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         defaults: {
             id: '',
             animation: '',
-            icon: '',
+            icon: 'heart',
             size: 3,
             href: '',
             color: '#27ae60',

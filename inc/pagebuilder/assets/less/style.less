@@ -87,13 +87,15 @@ html[xmlns] .clearfix {
     margin: 25px 0 15px;
     padding: 10px 0;
     text-align: center;
-    border: 1px solid #ddd;
+
+    // border: 1px solid #ddd;
     a {
         font-size: 20px;
         text-decoration: none;
         // color: #999;
         &:hover {
             // color: #0074a2;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
     }
 }
@@ -246,7 +248,7 @@ html[xmlns] .clearfix {
     }
 }
 
-.section-type{
+.section-type, .column-module{
     display: inline-block;
     background-color: #e0e0e0;
     border-radius: 3px;
@@ -254,11 +256,13 @@ html[xmlns] .clearfix {
     font-size: 16px;
     color: #666;
     text-decoration: none;
-    margin-right: 20px;
+    margin: 10px;
+    transition: all 0.3s;
     &:hover, &:focus{
         color: #222 !important;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
     }
-    .fa{
+    .fa, .dashicons{
         margin-right: 5px;
     }
 }
@@ -294,7 +298,7 @@ html[xmlns] .clearfix {
 .tr-pb-column-edit{
     text-align: center;
     padding: 15px;
-    a{
+    a, .dashicons, .dashicons-before:before{
         color: #666;
         font-size: 24px;
     }
@@ -344,6 +348,13 @@ html[xmlns] .clearfix {
             right: 7px !important;
         }
     }
+}
+.tr-pb-settings-slidera{
+    color: #666;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
 }
 .edit-module {
     position: absolute;
@@ -539,7 +550,7 @@ html[xmlns] .clearfix {
 
 }
 
-.slide-content-preview{
+.slide-content-preview, .gimage-content-preview{
     height: 100px;
     border: 1px solid #ddd;
     border-top: none;
@@ -554,7 +565,34 @@ html[xmlns] .clearfix {
         padding: 0 20px !important;
         margin-top: 0 !important;
     }
+    .slide-dummy-image{
+        a, .dashicons{
+            width: 100%;
+            display: block;
+            font-size: 60px;
+            min-height: 60px;
+            color: #ccc;
+            &:hover{
+                color: #aaa;
+            }
+        }
+    }
 }
+
+.tr-pb-add-image{
+    text-align: center;
+    a{
+        margin-right: 0;
+    }
+}
+
+// .gimage-content-preview{
+//     padding: 0;
+//     img{
+//         max-width: 100%;
+//         max-height: 100%;
+//     }
+// }
 
 textarea.regular-text{
     width: 25em !important;
@@ -562,6 +600,9 @@ textarea.regular-text{
     height: 5em !important;
 }
 
-border: none;
--webkit-box-shadow: none;
-box-shadow: none;
+.icon-preview{
+    margin-bottom: 10px;
+}
+.icon-grid{
+    display: none;
+}

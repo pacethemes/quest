@@ -9,7 +9,7 @@ require 'panels/background-images.php';
 require 'panels/colors.php';
 require 'panels/typography.php';
 
-if ( !class_exists( 'Trivoo_Customize_Misc_Control' ) ):
+if ( !class_exists( 'Trivoo_Customize' ) ):
 
   /**
    * Contains methods for customizing the theme customization screen.
@@ -64,7 +64,6 @@ if ( !class_exists( 'Trivoo_Customize_Misc_Control' ) ):
    * @since MyTheme 1.0
    */
   public static function Register( $wp_customize ) {
-
     Trivoo_Customize_General::register( $wp_customize );
     Trivoo_Customize_Layout::register( $wp_customize );
     Trivoo_Customize_Background_Images::register( $wp_customize );
@@ -121,9 +120,7 @@ if ( !class_exists( 'Trivoo_Customize_Misc_Control' ) ):
     }
 
     $css = "\n/* Hover Icons */\n";
-    $sections = get_post_meta( $post->ID, 'tr_pb_sections' );
-
-    $sections = $sections[0];
+    $sections = get_post_meta( $post->ID, 'tr_pb_sections', true );
 
     foreach ( $sections as $key => $section ) {
 
@@ -196,7 +193,7 @@ if ( !class_exists( 'Trivoo_Customize_Misc_Control' ) ):
     /* Theme/Text Colors */
     .entry-content blockquote,.action-icon.normal,.action, .pagination>.active>a, .pagination .current, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle { border-color: <?php
     echo $accent_color; ?> ; }
-    .button,#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle { background-color: <?php
+    .button,#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle,.trivoo-gallery .trivoo-gallery-thumb .fa { background-color: <?php
     echo $accent_color; ?> ; }
     span a, p a,a,a.tag,.entry-content strong,.pagination a,.action-icon.normal, .pagination>li>a, .pagination>li>span { color: <?php
     echo $accent_color; ?> ; }

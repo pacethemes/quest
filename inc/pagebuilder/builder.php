@@ -70,7 +70,6 @@ class TR_PageBuilder {
 	public function EnqueueAssets( $hook ) {
 		global $typenow, $post;
 
-
 		if ( ! in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) return;
 
 		$post_types = apply_filters( 'tr_pb_builder_post_types', array(
@@ -106,8 +105,7 @@ class TR_PageBuilder {
 			wp_enqueue_script( 'tr_pb_views_js', self::$TR_PB_URI . '/assets/js/views.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone' ), self::$TR_PB_VERSION, true );
 			wp_enqueue_script( 'tr_pb_admin_js', self::$TR_PB_URI . '/assets/js/app.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone' ), self::$TR_PB_VERSION, true );
 
-
-			wp_localize_script( 'tr_pb_admin_js', 'trPbAppSections', get_post_meta( $post->ID, 'tr_pb_sections' ) );
+			wp_localize_script( 'tr_pb_admin_js', 'trPbAppSections', get_post_meta( $post->ID, 'tr_pb_sections', true ) );
 
 			wp_enqueue_style( 'tr_pb_admin_css', self::$TR_PB_URI . '/assets//css/style.css', array(), self::$TR_PB_VERSION );
 
@@ -129,6 +127,7 @@ class TR_PageBuilder {
 				</div>
 
 				<div class="tr-pb-add-section">
+					<input name="tr_pb_section[]" type="hidden" value="">
 					<a href="#" class="tr-pb-insert-section tr-pb-btn"><i class="dashicons dashicons-plus-alt"></i> <?php _e( 'Add New Section', 'Trivoo' ); ?></a>
 				</div>
 			</div>
@@ -464,18 +463,16 @@ class TR_PageBuilder {
 			</script>
 
 			<script type="text/template" id="tr-pb-module-slider-template">
-				<div title="Drag-and-drop this column into place" class="tr-pb-column-header tr-pb-column-sortable ui-sortable-handle">
-					<div class="sortable-background column-sortable-background"></div>
-				</div>
-				<div class="tr-pb-column-content">
-					<%= partial('tr-pb-module-header-template', { admin_label: admin_label, module: 'slider' }) %>
-					<div class="content-preview clearfix">
 
-						<div class="tr-pb-add-slide">
-							<a href="#" class="tr-pb-insert-slide tr-pb-btn"><i class="fa fa-image"></i> <?php _e( 'New Slide', 'Trivoo' ) ?></a>
-						</div>
-
+				<div class="slider-container clearfix">
+					<div class="tr-pb-column-edit ">
+						<a href="#" class="tr-pb-settings tr-pb-settings-slider" title="<?php _e( 'Slider Settings', 'Trivoo' ) ?>"><i class="dashicons dashicons-images-alt"></i></a>
 					</div>
+					
+					<div class="tr-pb-add-slide">
+						<a href="#" class="tr-pb-insert-slide tr-pb-btn"><i class="dashicons dashicons-format-image"></i> <?php _e( 'New Slide', 'Trivoo' ) ?></a>
+					</div>
+
 				</div>
 				<div>
 
@@ -483,9 +480,20 @@ class TR_PageBuilder {
 			</script>
 
 			<script type="text/template" id="tr-pb-module-slider-edit-template" data-title="<?php _e( 'Slider Settings', 'Trivoo' ); ?>">
-				<h2><?php _e( 'Edit Image', 'Trivoo' ); ?></h2>
+				<h2><?php _e( 'Edit Slider', 'Trivoo' ); ?></h2>
 				<div class="edit-content">
 					<form>
+
+						<div class="tr-pb-option">
+							<label for="height"><?php _e( 'Slider Height', 'Trivoo' ); ?>: </label>
+
+							<div class="tr-pb-option-container">
+								<input name="height" class="regular-text"  type="text" value="<%= height %>" />
+
+								<p class="description"><?php _e( 'Height of the slider', 'Trivoo' )?></p>
+							</div>
+						</div>
+
 
 						<div class="tr-pb-option">
 							<label for="autoplay"><?php _e( 'Slider AutoPlay', 'Trivoo' ); ?>: </label>
@@ -538,6 +546,10 @@ class TR_PageBuilder {
 				<div class="tr-pb-column-content">
 					<%= partial('tr-pb-module-header-template', { admin_label: admin_label, module: 'slide' }) %>
 					<div class="slide-content-preview" <%= bg_image != '' ? 'style="background-image:url(' + bg_image + ');"' : void 0  %>>
+						<% if (bg_image == "") { %>
+							<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Slide', 'Trivoo' ); ?>"><i class="dashicons dashicons-format-image"></i></a></div>
+						<% }%>
+
 						<% if (heading == "" && text == "") { %>
 
 						<% }%>
@@ -549,7 +561,6 @@ class TR_PageBuilder {
 						<% if (text != "") { %>
 							<p class="slide-text" style="<%= text_color != '' ? 'color:' + text_color + ';' : void 0  %>"><%= text %></h2>
 						<% }%>
-
 					</div>
 				</div>
 			</script>
@@ -569,6 +580,34 @@ class TR_PageBuilder {
 
 								<p class="description"><?php _e( 'Select the slide image', 'Trivoo' ); ?></p>
 								<div class="screenshot"></div>
+							</div>
+						</div>
+
+						<div class="tr-pb-option">
+							<label for="bg_pos_x"><?php _e( 'Image Position - Horizontal', 'Trivoo' ); ?>: </label>
+
+							<div class="tr-pb-option-container">
+								<select name="bg_pos_x">
+									<option value="center" <%= bg_pos_x == 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'Trivoo' ); ?></option>
+									<option value="left" <%= bg_pos_x == 'left' ? 'selected' : void 0  %> ><?php _e( 'Left', 'Trivoo' ); ?></option>
+									<option value="right" <%= bg_pos_x == 'right' ? 'selected' : void 0  %> ><?php _e( 'Right', 'Trivoo' ); ?></option>
+								</select>
+
+								<p class="description"><?php _e( 'Horizontal position of the Image, if the image width is more than the slider width then the image will be positioned as per this setting', 'Trivoo' )?></p>
+							</div>
+						</div>
+
+						<div class="tr-pb-option">
+							<label for="bg_pos_y"><?php _e( 'Image Position - Vertical', 'Trivoo' ); ?>: </label>
+
+							<div class="tr-pb-option-container">
+								<select name="bg_pos_y">
+									<option value="center" <%= bg_pos_y == 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'Trivoo' ); ?></option>
+									<option value="top" <%= bg_pos_y == 'top' ? 'selected' : void 0  %> ><?php _e( 'Top', 'Trivoo' ); ?></option>
+									<option value="bottom" <%= bg_pos_y == 'bottom' ? 'selected' : void 0  %> ><?php _e( 'Bottom', 'Trivoo' ); ?></option>
+								</select>
+
+								<p class="description"><?php _e( 'Vertical position of the Image, if the image height is more than the slider height then the image will be positioned as per this setting', 'Trivoo' )?></p>
 							</div>
 						</div>
 
@@ -676,18 +715,106 @@ class TR_PageBuilder {
 				</div>
 			</script>
 
+			<script type="text/template" id="tr-pb-module-gallery-template">
+
+				<div class="gallery-container clearfix">
+					<div class="tr-pb-column-edit ">
+						<a href="#" class="tr-pb-settings tr-pb-settings-gallery" title="<?php _e( 'Gallery Settings', 'Trivoo' ) ?>"><i class="dashicons dashicons-format-gallery"></i></a>
+					</div>
+					
+					<div class="images-container clearfix"></div>
+
+					<div class="tr-pb-add-image">
+						<a href="#" class="tr-pb-insert-gimage tr-pb-btn"><i class="dashicons dashicons-format-image"></i> <?php _e( 'New Image', 'Trivoo' ) ?></a>
+					</div>
+
+				</div>
+				<div>
+
+				</div>
+			</script>
+
+			<script type="text/template" id="tr-pb-module-gallery-edit-template" data-title="<?php _e( 'Gallery Settings', 'Trivoo' ); ?>">
+				<h2><?php _e( 'Edit Gallery', 'Trivoo' ); ?></h2>
+				<div class="edit-content">
+					<form>
+
+						<div class="tr-pb-option">
+							<label for="shape"><?php _e( 'Thumbnails Shape', 'Trivoo' ); ?>: </label>
+
+							<div class="tr-pb-option-container">
+								<select name="shape">
+									<option value="rounded" <%= shape == 'rounded' ? 'selected' : void 0  %> ><?php _e( 'Round', 'Trivoo' ); ?></option>
+									<option value="square" <%= shape == 'square' ? 'selected' : void 0  %> ><?php _e( 'Square', 'Trivoo' ); ?></option>
+								</select>
+
+								<p class="description"><?php _e( 'Do you want to enable Fullscreen for this gallery preview ?', 'Trivoo' )?></p>
+							</div>
+						</div>
+
+						<%= partial('tr-pb-form-css-class', { css_class: css_class }) %>
+						<%= partial('tr-pb-form-admin-label', { admin_label: admin_label }) %>
+
+					</form>
+				</div>
+				<div class="edit-bottom">
+					<input type="button" class="button button-primary save-gallery" value="Save" />
+					<input type="button" class="button close-model" value="Close" />
+				</div>
+			</script>
+
+			<script type="text/template" id="tr-pb-module-gimage-template">
+				<div title="Drag-and-drop this column into place" class="tr-pb-column-header tr-pb-column-sortable ui-sortable-handle">
+					<div class="sortable-background column-sortable-background"></div>
+				</div>
+				<div class="tr-pb-column-content">
+					<%= partial('tr-pb-module-header-template', { admin_label: admin_label, module: 'gimage' }) %>
+					<div class="gimage-content-preview" <%= src != '' ? 'style="background-image:url(' + src + ');"' : void 0  %>>
+						<% if (src == "") { %>
+							<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Image', 'Trivoo' ); ?>"><i class="dashicons dashicons-format-image"></i></a></div>
+						<% }%>
+					</div>
+				</div>
+			</script>
+
+			<script type="text/template" id="tr-pb-module-gimage-edit-template" data-title="<?php _e( 'Edit Slider', 'Trivoo' ); ?>">
+				<h2><?php _e( 'Edit Image', 'Trivoo' ); ?></h2>
+				<div class="edit-content">
+					<form>
+
+						<div class="tr-pb-option">
+							<label for="src"><?php _e( 'Select Image', 'Trivoo' ); ?>: </label>
+
+							<div class="tr-pb-option-container">
+								<input name="src" type="text" class="regular-text tr-pb-upload-field" value="<%= src %>">
+								<input name="post_id" type="hidden" class="regular-text tr-pb-upload-field-id" value="<%= post_id %>">
+								<input type="button" class="button tr-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'Trivoo' ); ?>" data-update="<?php _e( 'Select Image', 'Trivoo' ); ?>">
+								<input type="button" class="button tr-pb-remove-upload-button" value="Remove" data-type="image">
+
+								<p class="description"><?php _e( 'Select the slide image', 'Trivoo' ); ?></p>
+								<div class="screenshot"></div>
+							</div>
+						</div>
+
+						<%= partial('tr-pb-form-css-class', { css_class: css_class }) %>
+						<%= partial('tr-pb-form-admin-label', { admin_label: admin_label }) %>
+
+					</form>
+				</div>
+				<div class="edit-bottom">
+					<input type="button" class="button button-primary save-gimage" value="Save" />
+					<input type="button" class="button close-model" value="Close" />
+				</div>
+			</script>
+
 			<script type="text/template" id="tr-pb-insert-module-template">
 				<h2><?php _e( 'Select Module', 'Trivoo' ); ?></h2>
 				<div class="edit-content">
-					<ul class="column-modules">
-					<% _.each(modules, function(module){ %>
-			            <li data-module="<%= module.toLowerCase() %>">
-				            <div class="column-module">
-								<a href="#" data-module="<%= module.toLowerCase() %>"><%= module %></a>
-							</div>
-						</li>
+					<div class="column-modules">
+					<% _.each(modules, function(attr, module){ %>
+						<a class="column-module" href="#" data-module="<%= module.toLowerCase() %>"><i class="dashicons dashicons-<%= attr.icon %>"></i> <%= attr.admin_label %></a>
 			        <% }); %>
-					</ul>
+					</div>
 				</div>
 			</script>
 
@@ -777,8 +904,8 @@ class TR_PageBuilder {
 
 							<div class="tr-pb-option-container">
 								<select name="lightbox">
-									<option value="true" <%= lightbox === true ? 'selected' : void 0  %> ><?php _e( 'Yes', 'Trivoo' ); ?></option>
-									<option value="false" <%= lightbox === false ? 'selected' : void 0  %> ><?php _e( 'No', 'Trivoo' ); ?></option>
+									<option value="true" <%= lightbox == 'true' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'Trivoo' ); ?></option>
+									<option value="false" <%= lightbox == 'false' ? 'selected' : void 0  %> ><?php _e( 'No', 'Trivoo' ); ?></option>
 								</select>
 
 								<p class="description"><?php _e( 'Do you want to show a lightbox for the image ? If set to yes it will override the URL and the image will be displayed in a lightbox when the image is clicked', 'Trivoo' )?></p>

@@ -13,7 +13,9 @@ class TR_PageBuilder_Save {
 
 
 	public function __construct() {
-		if ( isset( $_POST[ 'tr-pb-nonce' ] ) && isset( $_POST[ 'tr_pb_section' ] ) && wp_verify_nonce( $_POST[ 'tr-pb-nonce' ], 'save' ) ) {
+		//If the template is set to Page Builder then save the Pagebuilder Meta and create content based on the meta
+		if ( isset( $_POST['page_template'] ) && $_POST['page_template'] === 'page-builder.php' &&
+				isset( $_POST[ 'tr-pb-nonce' ] ) && isset( $_POST[ 'tr_pb_section' ] ) && wp_verify_nonce( $_POST[ 'tr-pb-nonce' ], 'save' ) ) {
 			// Save the post's meta data
 			add_action( 'save_post', array( $this, 'SavePost' ), 10, 2 );
 
@@ -72,7 +74,9 @@ class TR_PageBuilder_Save {
 	private function prepareSections( $sections ) {
 		$sorted = array();
 		foreach ( $sections as $key => $section ) {
-
+			if($section == '' || empty($section) || !is_array($section)){
+				continue;
+			}
 			//If the columns are not set or the current iteration is not a section then we dont have to sort the columns
 			if ( array_key_exists( 'col', $section ) ) {
 				$sorted[] =  $this->sortColumns( $section );
@@ -170,6 +174,10 @@ class TR_PageBuilder_Save {
 			$content .= $this->generateSlider( $section['slider'] );
 		}
 
+		if ( array_key_exists( 'gallery', $section ) && !empty( $section['gallery'] ) ) {
+			$content .= $this->generateGallery( $section['gallery'] );
+		}
+
 		if ( $addRow ) {
 			$content .= "\t\t </div> \n\t </div> \n";
 		}
@@ -222,7 +230,7 @@ class TR_PageBuilder_Save {
 	 * @return string $content
 	 */	
 	private function generateSlider( $slider ) {
-		$content = "<div class='sl-slider-wrapper'".TR_PageBuilder_Helper::GetDataAttributes( $slider, array( 'autoplay', 'interval', 'speed' ) )."><div class='sl-slider'>";
+		$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" . TR_PageBuilder_Helper::GetDataAttributes( $slider, array( 'autoplay', 'interval', 'speed' ) )."><div class='sl-slider'>";
 		foreach ( $slider as $slide ) {
 			if ( !is_array( $slide ) )
 				continue;
@@ -245,13 +253,43 @@ class TR_PageBuilder_Save {
 	 */	
 	private function generateSlide( $slide ) {
 
-		$content = "<div class='sl-slide'". TR_PageBuilder_Helper::GetDataAttributes( $slide, array( 'orientation', 'slice1_rotation', 'slice2_rotation', 'slice1_scale', 'slice2_scale' ) ) ."><div class='sl-slide-inner'>";
+		$content = "<div class='sl-slide {$slide['css_class']}'". TR_PageBuilder_Helper::GetDataAttributes( $slide, array( 'orientation', 'slice1_rotation', 'slice2_rotation', 'slice1_scale', 'slice2_scale' ) ) ."><div class='sl-slide-inner'>";
 		$content .= "<div class='sl-slide-inner' style='" . $this->_getCssProperties( $slide ) . "'>";
 
 		$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array( 'text_color' => $slide['heading_color'] ) ) . "'>". $slide['heading'] ."</h2>";
 		$content .= "<p class='sl-slide-text' style='" . $this->_getCssProperties( array( 'text_color' => $slide['text_color'] ) ) . "'>". $slide['text'] ."</p>";
 
 		$content .= "</div></div></div>\n";
+		return $content;
+	}
+
+	/**
+	 * Generates Slider markup
+	 * Iterates through all slides and invokes the generateSlide method to generate slide specific markup
+	 *
+	 * @return string $content
+	 */	
+	private function generateGallery( $gallery ) {
+		$content = "<div class='trivoo-gallery {$gallery['shape']} {$gallery['css_class']}' >";
+		foreach ( $gallery as $image ) {
+			if ( !is_array( $image ) )
+				continue;
+
+			if($image['post_id'] != '' && is_numeric($image['post_id'])){
+				$content .= $this->generateImage( $image );
+			}
+		}
+		$content .= "</div>";
+		return $content;
+	}
+
+	/**
+	 * Generates Gallery Image markup
+	 *
+	 * @return string $content
+	 */	
+	private function generateImage( $image ) {
+		$content = "<a href='{$image['src']}' class='trivoo-gallery-thumb gallery' title='' data-gallery=''>".wp_get_attachment_image( $image['post_id'], 'gallery')."<span class='overlay'><i class='fa fa-expand'></i></span></a>";
 		return $content;
 	}
 
@@ -280,7 +318,8 @@ class TR_PageBuilder_Save {
 	 */	
 	private function _getCssProperties( $section ) {
 		$css = array( 'bg_image' => 'background-image', 'bg_color' => 'background-color', 'text_color' => 'color', 'padding_top' => 'padding-top', 'padding_bottom' => 'padding-bottom',
-			'border_top_width' => 'border-top-width', 'border_bottom_width' => 'border-bottom-width', 'border_top_color' => 'border-top-color', 'border_bottom_color' => 'border-bottom-color' );
+			'border_top_width' => 'border-top-width', 'border_bottom_width' => 'border-bottom-width', 'border_top_color' => 'border-top-color', 'border_bottom_color' => 'border-bottom-color', 
+			'height' => 'height', 'bg_pos_x' => 'background-position-x', 'bg_pos_y' => 'background-position-y' );
 
 		$properties = array();
 
@@ -363,7 +402,7 @@ class TR_PageBuilder_Slider_Module {
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
 			$content .= "<a" . TR_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
-			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='{$image['href']}'";
+			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='".esc_url($image['href'])."'";
 			$content .= $image['lightbox'] == 'true' ? " class='lightbox gallery'>" : '>';
 		}
 
@@ -400,7 +439,7 @@ class TR_PageBuilder_Image_Module {
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
 			$content .= "<a" . TR_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
-			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='{$image['href']}'";
+			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='".esc_url($image['href'])."'";
 			$content .= $image['lightbox'] == 'true' ? " class='lightbox gallery'>" : '>';
 		}
 

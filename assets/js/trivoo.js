@@ -100,7 +100,8 @@ var trivoo = function($) {
         initColorbox: function() {
             $('a.gallery').colorbox({
                 rel: 'gallery',
-                maxWidth: '95%'
+                maxWidth: '95%',
+                maxHeight: '90%'
             });
         },
 
@@ -117,77 +118,32 @@ var trivoo = function($) {
             }
         },
 
-        // initCustomJs: function() {
-        //     $('.entry-content .col-md-9 .container, .container .container').removeClass('container');
-        //     $('.row.no-spacing').parent().parent('.trivoo-row').addClass('np');
-        //     $('.row.spacing').parent().parent('.trivoo-row').removeClass('np')
-        // },
+          //init image hover effects
+        initImageEffects: function() {
+            if (Modernizr.touch) {
+                $(".close-overlay").removeClass("hidden");
+                $(".effects").click(function(e) {
+                    if (!$(this).hasClass("hover")) {
+                        $(this).addClass("hover");
+                    }
+                });
+                $(".close-overlay").click(function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if ($(this).closest(".effects").hasClass("hover")) {
+                        $(this).closest(".effects").removeClass("hover");
+                    }
+                });
+            } else {
+                $(".effect").mouseenter(function() {
+                        $(this).addClass("hover");
+                    })
+                    .mouseleave(function() {
+                        $(this).removeClass("hover");
+                    });
+            }
 
-        // initStickyHeader: function() {
-        //     if (!$('nav.main-menu:first').visible(true)) {
-        //         if (menuOpen) {
-        //             return;
-        //         }
-        //         menuOpen = true;
-        //         $('#back-to-top').fadeIn();
-
-        //         if ($('.fixed-header #sticky-header').length > 0 && !$('#sticky-header').hasClass('scrolled')) {
-        //             var that = $('#sticky-header');
-        //             var tp = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : -1;
-        //             that.fadeOut(0, function() {
-        //                 that.addClass('scrolled').css('top', tp - 42 + 'px');
-        //                 menuTimeout = setTimeout(function() {
-        //                     that.show().animate({
-        //                         'top': tp
-        //                     }, 300);
-        //                 }, 1000);
-        //             });
-        //             $('ul#menu-trivoo>li>a').removeAttr('style');
-        //         }
-        //     } else if (menuOpen) {
-        //         menuOpen = false;
-        //         clearTimeout(menuTimeout);
-        //         $('#back-to-top').fadeOut();
-
-        //         if ($('.fixed-header #sticky-header').length > 0) {
-        //             $('#sticky-header').stop().hide().removeClass('scrolled').removeAttr('style');
-        //         }
-        //     }
-        // },
-
-        displayMobileMenu: function() {
-            // var h = 0,
-            //     mob = false;
-            // $('.main-header').removeClass('mobile');
-            // $('.main-header:not(#sticky-header) .nav.navbar-nav>li').each(function() {
-            //     if (h == 0) {
-            //         h = $(this).offset().top;
-            //     } else if (h != $(this).offset().top) {
-            //         mob = true;
-            //     }
-            // });
-            // if (mob) {
-            //     $('.main-header').addClass('mobile');
-            // }
         },
-
-
-        // setHeaderPosition: function() {
-        //     if ($(window).width() <= 768) {
-        //         $('.main-header').css('top', 'auto');
-        //     } else {
-        //         $('.main-header').removeAttr('style');
-        //     }
-        // },
-
-        // setMenuHeight: function(){
-        //     var lh = $('.logo img').first().height(),
-        //         menu = $('.main-menu .nav:not(#trivoo-sticky-menu)');
-
-        //     if( lh > menu.height()){
-        //         menu.css({'height': lh+'px', 'line-height': lh+'px'});
-        //     }
-        // }
 
     };
 
@@ -278,7 +234,8 @@ jQuery(window).load(function() {
 
 jQuery(document).ready(function() {
     PageBuilder.initEvents();
-    trivoo.displayMobileMenu();
+    new WOW().init();
+    trivoo.initImageEffects();
     // trivoo.initCarousel();
     // trivoo.initFitVids();
     trivoo.initColorbox();

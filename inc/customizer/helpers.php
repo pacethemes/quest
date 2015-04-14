@@ -14,7 +14,7 @@ if ( !function_exists( 'trivoo_get_default' ) ):
 			return $trivoo_defaults[$name];
 		}
 
-		return;
+		return '';
 	}
 endif;
 
@@ -55,7 +55,7 @@ if ( !function_exists( 'trivoo_get_default_mod' ) ):
 				return $trivoo_defaults[$name];
 			}
 
-		return;
+		return '';
 	}
 endif;
 

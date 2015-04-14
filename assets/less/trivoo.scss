@@ -190,6 +190,10 @@ $font_15: 'FontAwesome';
     width: 100%;
     padding: 0 15px;
     float: left;
+    .effect{
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
 }
 /* Small devices (tablets, 768px and up) */
 
@@ -217,11 +221,7 @@ $font_15: 'FontAwesome';
     padding: 0 0 15px;
     overflow: hidden;
     //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
-    border-radius: 4px;
-    //Instead of the line below you could use @includeborder-top-left-radius($radius)
-    border-top-left-radius: 0;
-    //Instead of the line below you could use @includeborder-top-right-radius($radius)
-    border-top-right-radius: 0;
+    border-radius: 5px;
     margin-bottom: 30px;
     //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     box-shadow: $black_20 0 3px 4px -2px;
@@ -245,13 +245,13 @@ $font_15: 'FontAwesome';
 //original selectors
 //.post-grid .post-image a:hover img, .recent-post .post-image a:hover img
 %extend_26 {
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-    transform: scale(1.1);
-    opacity: 0.4;
+    // -moz-transform: scale(1.1);
+    // -webkit-transform: scale(1.1);
+    // -o-transform: scale(1.1);
+    // -ms-transform: scale(1.1);
+    // //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    // transform: scale(1.1);
+    opacity: 1;
 }
 
 //original selectors
@@ -271,18 +271,6 @@ $font_15: 'FontAwesome';
     top: 56.5px;
     left: 85px;
     color: $white;
-}
-
-//original selectors
-//.post-grid .post-image .grid-dummy-image:hover, .recent-post .post-image .grid-dummy-image:hover
-%extend_28 {
-    -moz-transform: scale(1);
-    -webkit-transform: scale(1);
-    -o-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-    transform: scale(1);
-    opacity: 0.2;
 }
 
 //original selectors
@@ -2083,10 +2071,264 @@ hr {
     }
 }
 
+/*********************
+    Image Effects
+*********************/
+.effect {
+  position: relative;
+}
+.effect img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  display: block;
+  position: absolute;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+a.close-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 45px;
+  text-align: center;
+  background-color: #000;
+  cursor: pointer;
+}
+a.close-overlay.hidden {
+  display: none;
+}
+a.expand {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  width: 60px;
+  height: 60px;
+  border: solid 5px #fff;
+  text-align: center;
+  color: #fff !important;
+  line-height: 50px;
+  font-weight: 700;
+  font-size: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+}
+.slide-top .overlay,
+.slide-bottom .overlay,
+.slide-left .overlay,
+.slide-right .overlay {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+.slide-top .overlay a.expand,
+.slide-bottom .overlay a.expand,
+.slide-left .overlay a.expand,
+.slide-right .overlay a.expand {
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.slide-top .overlay a.expand:hover,
+.slide-bottom .overlay a.expand:hover,
+.slide-left .overlay a.expand:hover,
+.slide-right .overlay a.expand:hover,
+.slide-top .overlay a.expand:focus,
+.slide-bottom .overlay a.expand:focus,
+.slide-left .overlay a.expand:focus,
+.slide-right .overlay a.expand:focus {
+  color: #fff !important;
+  text-decoration: none;
+}
+.slide-top.hover .overlay,
+.slide-bottom.hover .overlay,
+.slide-left.hover .overlay,
+.slide-right.hover .overlay {
+  opacity: 1;
+}
+.slide-top.hover .overlay a.expand,
+.slide-bottom.hover .overlay a.expand,
+.slide-left.hover .overlay a.expand,
+.slide-right.hover .overlay a.expand {
+  top: 50%;
+  margin-top: -30px;
+  opacity: 1;
+}
+.effect {
+  text-align: center;
+  // -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+  // -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+  // box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+.effect .caption {
+  padding: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+}
+.effect .caption:before,
+.effect .caption:after {
+  pointer-events: none;
+}
+.effect .caption a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.effect .caption h2 {
+  word-spacing: -0.15em;
+  font-weight: 300;
+  font-size: 1.2em;
+}
+.effect .caption p {
+  letter-spacing: 1px;
+  font-size: 68.5%;
+  margin: 0;
+}
+
 .aligncenter {
     display: block;
     margin: 0 auto;
 }
+
+@-webkit-keyframes rotateScale {
+  0% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -150deg);
+            transform: rotate3d(0, 0, 1, -150deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateScale {
+  0% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 150deg);
+            transform: rotate3d(0, 0, 1, 150deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform:  scale(1.8);
+            transform: scale(1.8);
+    opacity: 1;
+  }
+}
+
+.trivoo-gallery{
+    text-align: center;
+    .trivoo-gallery-thumb{
+        display: inline-block;
+        margin: 10px;
+        position: relative;
+        img{
+            max-width: 272px;
+        }
+        .overlay{
+            background: rgba(0,0,0,0.6);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            opacity: 0;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+        .fa{
+            font-size: 24px;
+            color: #fff;
+            background: $accent_color;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border-radius: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -24px;
+            margin-left: -24px;
+        }
+        &:hover{
+            .overlay{
+                opacity: 1;
+                display: block;
+                .fa{
+                    -webkit-animation: rotateScale 0.3s forwards;
+                -moz-animation: rotateScale 0.3s forwards;
+                animation: rotateScale 0.3s forwards;
+                }
+            }
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    &.rounded{
+        img, span{
+            border-radius: 150px;
+        }
+    }
+}
+
 
 .main-footer {
     background-color: #efefef; //$color_shark_approx;
@@ -2270,15 +2512,15 @@ hr {
                 .related-post-title {
                     left: 0;
                 }
-                img {
-                    -moz-transform: scale(1.1);
-                    -webkit-transform: scale(1.1);
-                    -o-transform: scale(1.1);
-                    -ms-transform: scale(1.1);
-                    //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-                    transform: scale(1.1);
-                    opacity: 0.6;
-                }
+                // img {
+                //     -moz-transform: scale(1.1);
+                //     -webkit-transform: scale(1.1);
+                //     -o-transform: scale(1.1);
+                //     -ms-transform: scale(1.1);
+                //     //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+                //     transform: scale(1.1);
+                //     opacity: 0.6;
+                // }
             }
         }
         .fa-pencil {
@@ -2483,7 +2725,7 @@ hr {
         //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
         transition: all 0.3s;
         &:hover {
-            opacity: 0.6;
+            // opacity: 0.6;
         }
     }
 }
@@ -2493,6 +2735,7 @@ hr {
     margin: 5px 0;
     border: none;
     position: relative;
+    border-radius: 5px;
     opacity: 1;
     //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
     transition: opacity 0.25s ease-in-out;
@@ -2621,15 +2864,15 @@ hr {
         .post-title {
             left: 0;
         }
-        img {
-            -moz-transform: scale(1.1);
-            -webkit-transform: scale(1.1);
-            -o-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-            //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-            transform: scale(1.1);
-            opacity: 0.6;
-        }
+        // img {
+        //     -moz-transform: scale(1.1);
+        //     -webkit-transform: scale(1.1);
+        //     -o-transform: scale(1.1);
+        //     -ms-transform: scale(1.1);
+        //     //Instead of the line below you could use @includetransform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        //     transform: scale(1.1);
+        //     opacity: 0.6;
+        // }
     }
     img {
         position: relative;

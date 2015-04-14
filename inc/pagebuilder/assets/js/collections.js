@@ -12,6 +12,10 @@ var trPbApp = trPbApp || {};
         model: trPbApp.ColumnModel
     });
 
+    trPbApp.GImageCollection = Backbone.Collection.extend({
+        model: trPbApp.GImageModel
+    });
+
     trPbApp.SlideCollection = Backbone.Collection.extend({
         model: trPbApp.SlideModel
     });

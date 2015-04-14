@@ -82,11 +82,13 @@ html[xmlns] .clearfix {
   margin: 25px 0 15px;
   padding: 10px 0;
   text-align: center;
-  border: 1px solid #ddd;
 }
 .tr-pb-add-section a {
   font-size: 20px;
   text-decoration: none;
+}
+.tr-pb-add-section a:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .tr-pb-section {
   margin: 20px 0;
@@ -229,7 +231,8 @@ html[xmlns] .clearfix {
 .tr-pb-column:first-child {
   margin-left: 0 !important;
 }
-.section-type {
+.section-type,
+.column-module {
   display: inline-block;
   background-color: #e0e0e0;
   border-radius: 3px;
@@ -237,13 +240,20 @@ html[xmlns] .clearfix {
   font-size: 16px;
   color: #666;
   text-decoration: none;
-  margin-right: 20px;
+  margin: 10px;
+  transition: all 0.3s;
 }
 .section-type:hover,
-.section-type:focus {
+.column-module:hover,
+.section-type:focus,
+.column-module:focus {
   color: #222 !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-.section-type .fa {
+.section-type .fa,
+.column-module .fa,
+.section-type .dashicons,
+.column-module .dashicons {
   margin-right: 5px;
 }
 .tr-pb-insert-module {
@@ -277,7 +287,9 @@ html[xmlns] .clearfix {
   text-align: center;
   padding: 15px;
 }
-.tr-pb-column-edit a {
+.tr-pb-column-edit a,
+.tr-pb-column-edit .dashicons,
+.tr-pb-column-edit .dashicons-before:before {
   color: #666;
   font-size: 24px;
 }
@@ -327,6 +339,13 @@ html[xmlns] .clearfix {
   top: 2px !important;
   right: 7px !important;
 }
+.tr-pb-settings-slidera {
+  color: #666;
+  font-size: 30px;
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
 .edit-module {
   position: absolute;
   top: -4px;
@@ -336,19 +355,6 @@ html[xmlns] .clearfix {
   line-height: 25px;
   text-align: center;
   cursor: pointer;
-}
-/*.hover-icon .edit-module .fa{
-  height: auto;
-  width: auto;
-  line-height: 1.5em;
-  color: #888;
-  background-color: transparent;
-  box-shadow: none;
-  margin-top: 0;
-}*/
-.hover-icon .edit-module .fa:before{
-  font-size: 13px;
-  line-height: 1em;
 }
 .edit-module a {
   color: #888;
@@ -449,8 +455,6 @@ html[xmlns] .clearfix {
   background: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .reveal-modal .close-reveal-modal {
   color: #fff;
@@ -531,7 +535,8 @@ html[xmlns] .clearfix {
 .tr-pb-btn:hover {
   color: #222;
 }
-.slide-content-preview {
+.slide-content-preview,
+.gimage-content-preview {
   height: 100px;
   border: 1px solid #ddd;
   border-top: none;
@@ -540,7 +545,9 @@ html[xmlns] .clearfix {
   padding: 20px;
 }
 .slide-content-preview .slide-heading,
-.slide-content-preview .slide-text {
+.gimage-content-preview .slide-heading,
+.slide-content-preview .slide-text,
+.gimage-content-preview .slide-text {
   color: #fff;
   width: 80%;
   max-width: 960px;
@@ -548,15 +555,36 @@ html[xmlns] .clearfix {
   padding: 0 20px !important;
   margin-top: 0 !important;
 }
+.slide-content-preview .slide-dummy-image a,
+.gimage-content-preview .slide-dummy-image a,
+.slide-content-preview .slide-dummy-image .dashicons,
+.gimage-content-preview .slide-dummy-image .dashicons {
+  width: 100%;
+  display: block;
+  font-size: 60px;
+  min-height: 60px;
+  color: #ccc;
+}
+.slide-content-preview .slide-dummy-image a:hover,
+.gimage-content-preview .slide-dummy-image a:hover,
+.slide-content-preview .slide-dummy-image .dashicons:hover,
+.gimage-content-preview .slide-dummy-image .dashicons:hover {
+  color: #aaa;
+}
+.tr-pb-add-image {
+  text-align: center;
+}
+.tr-pb-add-image a {
+  margin-right: 0;
+}
 textarea.regular-text {
   width: 25em !important;
   display: inline-block !important;
   height: 5em !important;
 }
-.icon-grid{
- display: none; 
+.icon-preview {
+  margin-bottom: 10px;
 }
-.icon-preview{
-  display: inline-block;
-  margin-right: 10px;
+.icon-grid {
+  display: none;
 }

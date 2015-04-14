@@ -53,6 +53,7 @@ if ( !function_exists( 'trivoo_free_setup' ) ):
         */
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'blog-grid', 540, 420, true );
+		add_image_size( 'gallery', 280, 280, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'trivoo-free' ), ) );
@@ -128,6 +129,7 @@ if ( !function_exists( 'trivoo_free_scripts' ) ):
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
 		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
 		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
+		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/example4/colorbox.css' );
 		wp_enqueue_style( 'trivoo-main', get_template_directory_uri() . '/assets/css/trivoo.css' );
 		wp_enqueue_style( 'trivoo-free-style', get_stylesheet_uri() );
 
@@ -284,6 +286,7 @@ if ( !function_exists( 'trivoo_wp_page_menu' ) ):
 		$menu = apply_filters( 'wp_page_menu', $menu, $args );
 		if ( $args['echo'] ) echo $menu;
 		else return $menu;
+		return '';
 	}
 endif;
 
