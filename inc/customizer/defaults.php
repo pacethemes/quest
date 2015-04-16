@@ -14,6 +14,8 @@ $trivoo_defaults = array (
 	'logo_logo' => '',
 	'logo_favicon' => '',
 
+	'sticky_label' => 'Featured',
+
 	/************
 	** Layout **
 	*************/

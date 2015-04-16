@@ -24,7 +24,6 @@ $view = trivoo_get_view();
 								
 									
 								<?php if ( has_post_thumbnail() ) : ?>
-									
 									<div class="post-image blog-normal effect slide-top">
 										<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-grid' ); ?></a>
 										<div class="overlay">
@@ -38,7 +37,7 @@ $view = trivoo_get_view();
 
 								<?php endif; ?>
 
-
+								<?php get_template_part( 'partials/content', 'sticky' ); ?>
 								<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 								<?php if ( 'post' == get_post_type() ) : ?>

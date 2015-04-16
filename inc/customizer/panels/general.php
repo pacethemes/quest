@@ -430,6 +430,45 @@ class Trivoo_Customize_General {
       )
     );
 
+
+    /******************************
+    // Sticky Posts Section
+    *******************************/
+
+    $section_id = 'sticky';
+
+    $wp_customize->add_section( $section_id ,
+      array(
+        'title' => __( 'Sticky Posts', 'Trivoo' ),
+        'priority' => 35,
+        'capability' => 'edit_theme_options',
+        'panel' => $panel_id
+      )
+    );
+
+    $setting_id = $section_id . '_label';
+
+    $wp_customize->add_setting(
+      $setting_id,
+      array(
+        'default'           => trivoo_get_default( $setting_id ),
+        'type'              => 'theme_mod',
+        'sanitize_callback' => 'esc_url_raw'
+      )
+    );
+
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        $setting_id,
+        array(
+          'label'          => __( 'Sticky Label', 'Trivoo' ),
+          'section'        => $section_id,
+          'settings'       => $setting_id
+        )
+      )
+    );
+
   }
 }
 
