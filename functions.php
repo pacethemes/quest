@@ -266,6 +266,7 @@ if ( !function_exists( 'quest_wp_page_menu' ) ):
 		}
 
 		$list_args['echo'] = false;
+		$list_args['depth'] = 1;
 		$list_args['title_li'] = '';
 		$menu.= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $list_args ) );
 

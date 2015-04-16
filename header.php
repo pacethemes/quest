@@ -56,14 +56,14 @@ if ( $favicon !== '' ): ?>
 					  </div>
 					<div class="navbar-collapse collapse" id="main-menu-collapse">
 					<?php if (has_nav_menu('primary')) {
-							wp_nav_menu( array(
+								wp_nav_menu( array(
 									'theme_location' => 'primary',
 									'menu_class' => 'nav navbar-nav',
 									'container' => false,
 									'walker' => new Quest_Main_Menu()
 								) );
 							} else {
-								quest_wp_page_menu( /*array( 'menu_class' => 'navbar-collapse collapse' )*/ );
+								quest_wp_page_menu( );
 							}
 						?>
 					</div>
