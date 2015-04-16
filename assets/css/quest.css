@@ -759,15 +759,15 @@ hr {
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 0 auto; }
 
-.trivoo-row {
+.quest-row {
   padding: 30px 0; }
-  .trivoo-row.slider-row {
+  .quest-row.slider-row {
     padding: 0; }
-  .trivoo-row#content {
+  .quest-row#content {
     padding-bottom: 30px !important; }
-  .trivoo-row.post-list .post-normal {
+  .quest-row.post-list .post-normal {
     margin-bottom: 30px; }
-  .trivoo-row .trivoo-row:first-child {
+  .quest-row .quest-row:first-child {
     padding-top: 10px; }
 
 .entry-content {
@@ -830,7 +830,7 @@ hr {
       margin-bottom: 0; }
     .entry-content .alert .close {
       padding-right: 5px; }
-  .entry-content .trivoo-row:last-child {
+  .entry-content .quest-row:last-child {
     padding-bottom: 0; }
 
 #content {
@@ -888,9 +888,9 @@ hr {
     background-color: #fff; }
   #content label {
     font-weight: bold; }
-  #content .trivoo-row.np:first-child {
+  #content .quest-row.np:first-child {
     padding-top: 30px !important; }
-  #content .trivoo-row.np:last-child {
+  #content .quest-row.np:last-child {
     padding-bottom: 30px !important; }
   #content article.error404 .search input {
     border: 1px solid #e5e5e5;
@@ -1425,15 +1425,15 @@ a.expand {
     transform: rotate(-175deg) scale(0.2); }
   100% {
     transform: rotate(0deg) scale(1); } }
-.trivoo-gallery {
+.quest-gallery {
   text-align: center; }
-  .trivoo-gallery .trivoo-gallery-thumb {
+  .quest-gallery .quest-gallery-thumb {
     display: inline-block;
     margin: 10px;
     position: relative; }
-    .trivoo-gallery .trivoo-gallery-thumb img {
+    .quest-gallery .quest-gallery-thumb img {
       max-width: 272px; }
-    .trivoo-gallery .trivoo-gallery-thumb .overlay {
+    .quest-gallery .quest-gallery-thumb .overlay {
       background: rgba(0, 0, 0, 0.8);
       width: 100%;
       height: 100%;
@@ -1445,7 +1445,7 @@ a.expand {
       -webkit-transition: opacity 0.4s ease-in-out;
       -moz-transition: opacity 0.4s ease-in-out;
       transition: opacity 0.4s ease-in-out; }
-    .trivoo-gallery .trivoo-gallery-thumb .fa {
+    .quest-gallery .quest-gallery-thumb .fa {
       font-size: 24px;
       color: #fff;
       background: #27ae60;
@@ -1459,14 +1459,14 @@ a.expand {
       left: 50%;
       margin-top: -30px;
       margin-left: -30px; }
-    .trivoo-gallery .trivoo-gallery-thumb:hover .overlay {
+    .quest-gallery .quest-gallery-thumb:hover .overlay {
       opacity: 0.7; }
-      .trivoo-gallery .trivoo-gallery-thumb:hover .overlay .fa {
+      .quest-gallery .quest-gallery-thumb:hover .overlay .fa {
         -webkit-animation: rotateScale 0.5s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
         animation: rotateScale 0.5s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .trivoo-gallery .trivoo-gallery-thumb:focus {
+    .quest-gallery .quest-gallery-thumb:focus {
       outline: none; }
-  .trivoo-gallery.rounded img, .trivoo-gallery.rounded span {
+  .quest-gallery.rounded img, .quest-gallery.rounded span {
     border-radius: 150px; }
 
 .main-footer {
@@ -1513,10 +1513,10 @@ a.expand {
   .main-footer .col-md-3 {
     margin-top: 1em;
     margin-bottom: 1em; }
-  .main-footer .widget_trivoo-flickr-widget .trivoo-flickr-item {
+  .main-footer .widget_quest-flickr-widget .quest-flickr-item {
     border: none;
     box-shadow: none; }
-  .main-footer .widget_trivoo-flickr-widget li.trivoo-flickr-item:last-child {
+  .main-footer .widget_quest-flickr-widget li.quest-flickr-item:last-child {
     border: none;
     box-shadow: none; }
 
@@ -2594,22 +2594,22 @@ article.post-normal h1.post-title {
     padding-right: 1.714285714rem;
     text-align: right; }
 
-.trivoo-recent-posts .sidebar-posts {
+.quest-recent-posts .sidebar-posts {
   margin: 8px 0; }
-  .trivoo-recent-posts .sidebar-posts .sidebar-post-image {
+  .quest-recent-posts .sidebar-posts .sidebar-post-image {
     width: 50px;
     position: relative; }
-    .trivoo-recent-posts .sidebar-posts .sidebar-post-image .fa-minus-sign {
+    .quest-recent-posts .sidebar-posts .sidebar-post-image .fa-minus-sign {
       position: absolute;
       top: 20px;
       left: 20px;
       font-size: 12px; }
-    .trivoo-recent-posts .sidebar-posts .sidebar-post-image img {
+    .quest-recent-posts .sidebar-posts .sidebar-post-image img {
       width: 50px;
       height: 50px; }
-  .trivoo-recent-posts .sidebar-posts .post-title {
+  .quest-recent-posts .sidebar-posts .post-title {
     padding-left: 60px; }
-  .trivoo-recent-posts .sidebar-posts .post-date {
+  .quest-recent-posts .sidebar-posts .post-date {
     padding-left: 60px; }
 
 .img-container1 img {

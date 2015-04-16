@@ -8,12 +8,12 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package trivoo-free
+ * @package Quest
  */
 
 get_header();
-$view = trivoo_get_view();
-$layout = trivoo_get_mod( 'layout_'.$view.'_style' ); ?>
+$view = quest_get_view();
+$layout = quest_get_mod( 'layout_'.$view.'_style' ); ?>
 
 <?php get_template_part( 'partials/content', $layout ); ?>
 

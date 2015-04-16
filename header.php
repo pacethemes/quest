@@ -1,17 +1,17 @@
 <?php
 /**
- * The header for trivoo.
+ * The header for quest.
  *
  * Displays all of the <head> section and everything up till end of </header>
  *
- * @package trivoo-free
+ * @package Quest
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php $favicon =  trivoo_get_mod( 'logo_favicon' ); 
+<?php $favicon =  quest_get_mod( 'logo_favicon' ); 
 if ( $favicon !== '' ): ?>
 	<link rel="icon" href="<?php echo esc_url( $favicon ); ?>" />
 <?php endif; ?>
@@ -21,16 +21,16 @@ if ( $favicon !== '' ): ?>
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class( trivoo_get_mod( 'layout_global_site' ) ); ?>>
+<body <?php body_class( quest_get_mod( 'layout_global_site' ) ); ?>>
 <div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'trivoo-free' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'Quest' ); ?></a>
 
 	<header id="masthead" class="main-header" role="banner">
 		<div class="container">
 			<div class="row">
 				<div class="site-branding col-md-4">
 
-				<?php $logo =  trivoo_get_mod( 'logo_logo' ); 
+				<?php $logo =  quest_get_mod( 'logo_logo' ); 
 					if ( $logo !== '' ): ?>
 						<h1 class="logo">
 							<a href="<?php echo esc_url( home_url() ); ?>">
@@ -39,11 +39,11 @@ if ( $favicon !== '' ): ?>
 						</h1>
 				<?php endif; ?>
 
-				<?php if ( !trivoo_get_mod( 'title_tagline_hide_title' ) ) : ?>
+				<?php if ( !quest_get_mod( 'title_tagline_hide_title' ) ) : ?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php endif; ?>
 
-				<?php if ( !trivoo_get_mod( 'title_tagline_hide_tagline' ) ) : ?>
+				<?php if ( !quest_get_mod( 'title_tagline_hide_tagline' ) ) : ?>
 					<span class="site-description"><?php bloginfo( 'description' ); ?></span>
 				<?php endif; ?>
 
@@ -60,10 +60,10 @@ if ( $favicon !== '' ): ?>
 									'theme_location' => 'primary',
 									'menu_class' => 'nav navbar-nav',
 									'container' => false,
-									'walker' => new Trivoo_Main_Menu()
+									'walker' => new Quest_Main_Menu()
 								) );
 							} else {
-								trivoo_wp_page_menu( /*array( 'menu_class' => 'navbar-collapse collapse' )*/ );
+								quest_wp_page_menu( /*array( 'menu_class' => 'navbar-collapse collapse' )*/ );
 							}
 						?>
 					</div>

@@ -1,14 +1,14 @@
 <?php
-if ( class_exists( 'WP_Customize_Control' ) && !class_exists( 'Trivoo_Customize_Misc_Control' ) ):
+if ( class_exists( 'WP_Customize_Control' ) && !class_exists( 'Quest_Customize_Misc_Control' ) ):
 
 	/**
-	 * Class Trivoo_Customize_Misc_Control
+	 * Class Quest_Customize_Misc_Control
 	 *
 	 * Control for adding arbitrary HTML to a Customizer section.
 	 *
 	 * @since 1.0.0.
 	 */
-	class Trivoo_Customize_Misc_Control extends WP_Customize_Control
+	class Quest_Customize_Misc_Control extends WP_Customize_Control
 	{
 
 		/**

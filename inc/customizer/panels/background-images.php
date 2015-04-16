@@ -3,9 +3,9 @@
 /**
  * Contains methods for adding Background Images Customization Panel and all settings under it
  *
- * @since Trivoo 1.0
+ * @since Quest 1.0
  */
-class Trivoo_Customize_Background_Images {
+class Quest_Customize_Background_Images {
 
   public static function register( $wp_customize ) {
 
@@ -31,7 +31,7 @@ class Trivoo_Customize_Background_Images {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Trivoo' ),
+        'title' => __( 'Global', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -41,13 +41,13 @@ class Trivoo_Customize_Background_Images {
     $setting_id = $section_id . '_h1';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Site', 'Trivoo' )
+          'label' => __( 'Site', 'Quest' )
         )
       )
     );
@@ -57,7 +57,7 @@ class Trivoo_Customize_Background_Images {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -68,7 +68,7 @@ class Trivoo_Customize_Background_Images {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Image', 'Trivoo' ),
+          'label'          => __( 'Background Image', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -78,13 +78,13 @@ class Trivoo_Customize_Background_Images {
     $setting_id = $section_id . '_h2';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Title Container', 'Trivoo' )
+          'label' => __( 'Title Container', 'Quest' )
         )
       )
     );
@@ -94,7 +94,7 @@ class Trivoo_Customize_Background_Images {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -105,7 +105,7 @@ class Trivoo_Customize_Background_Images {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Image', 'Trivoo' ),
+          'label'          => __( 'Background Image', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )

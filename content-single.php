@@ -1,9 +1,9 @@
 <?php
 /**
- * @package trivoo-free
+ * @package Quest
  */
 
-$view = trivoo_get_view();
+$view = quest_get_view();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post-normal'); ?>>
@@ -15,7 +15,7 @@ $view = trivoo_get_view();
 				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-normal' ); ?></a>
 				<div class="overlay">
 					<div class="caption">
-                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'Trivoo'); ?></a>
+                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'Quest'); ?></a>
                     </div>
                     <a href="<?php the_permalink() ?>" class="expand">+</a>
                     <a href="#" class="close-overlay hidden">x</a>
@@ -24,13 +24,13 @@ $view = trivoo_get_view();
 		
 		<?php endif; ?>
 
-		<?php if ( trivoo_get_mod( 'layout_'.$view.'_title' ) ) : ?>
+		<?php if ( quest_get_mod( 'layout_'.$view.'_title' ) ) : ?>
 			<?php the_title( sprintf( '<h1 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 		<?php endif; ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 			<div class="entry-meta">
-				<?php trivoo_free_post_meta(); ?>
+				<?php quest_post_meta(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 		
@@ -40,16 +40,16 @@ $view = trivoo_get_view();
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'trivoo-free' ),
+				'before' => '<div class="page-links">' . __( 'Pages: ', 'Quest' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php trivoo_post_author_info(); ?>
-		<?php trivoo_post_taxonomy( $view ); ?>
-		<?php trivoo_post_single_navigation(); ?>
-		<?php edit_post_link( __( 'Edit', 'trivoo-free' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php quest_post_author_info(); ?>
+		<?php quest_post_taxonomy( $view ); ?>
+		<?php quest_post_single_navigation(); ?>
+		<?php edit_post_link( __( 'Edit', 'Quest' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

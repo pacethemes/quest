@@ -1,9 +1,9 @@
 <?php
 
 /**
- * trivoo-free functions and definitions
+ * Quest functions and definitions
  *
- * @package trivoo-free
+ * @package Quest
  */
 
 /**
@@ -14,7 +14,7 @@ if ( !isset( $content_width ) ) {
 	/* pixels */
 }
 
-if ( !function_exists( 'trivoo_free_setup' ) ):
+if ( !function_exists( 'quest_setup' ) ):
 
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -23,16 +23,16 @@ if ( !function_exists( 'trivoo_free_setup' ) ):
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function trivoo_free_setup() {
+	function quest_setup() {
 
 		/*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on trivoo-free, use a find and replace
-         * to change 'trivoo-free' to the name of your theme in all the template files
+         * If you're building a theme based on Quest, use a find and replace
+         * to change 'Quest' to the name of your theme in all the template files
         */
-		if ( !load_theme_textdomain( 'trivoo-free', get_stylesheet_directory() . '/languages' ) ) {
-			load_theme_textdomain( 'trivoo-free', get_template_directory() . '/languages' );
+		if ( !load_theme_textdomain( 'Quest', get_stylesheet_directory() . '/languages' ) ) {
+			load_theme_textdomain( 'Quest', get_template_directory() . '/languages' );
 		}
 
 		// Add default posts and comments RSS feed links to head.
@@ -56,7 +56,7 @@ if ( !function_exists( 'trivoo_free_setup' ) ):
 		add_image_size( 'gallery', 280, 280, true );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'trivoo-free' ), ) );
+		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'Quest' ), ) );
 
 		/*
          * Switch default core markup for search form, comment form, and comments
@@ -65,7 +65,7 @@ if ( !function_exists( 'trivoo_free_setup' ) ):
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', ) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'trivoo_free_custom_background_args', array( 'default-color' => 'ffffff', 'default-image' => '', ) ) );
+		add_theme_support( 'custom-background', apply_filters( 'quest_custom_background_args', array( 'default-color' => 'ffffff', 'default-image' => '', ) ) );
 
 		// Allows theme developers to link a custom stylesheet file to the TinyMCE visual editor
 		add_editor_style( 'custom-editor-style.css' );
@@ -73,22 +73,22 @@ if ( !function_exists( 'trivoo_free_setup' ) ):
 
 endif;
 
-// trivoo_free_setup
-add_action( 'after_setup_theme', 'trivoo_free_setup' );
+// quest_setup
+add_action( 'after_setup_theme', 'quest_setup' );
 
-if ( !function_exists( 'trivoo_free_widgets_init' ) ):
+if ( !function_exists( 'quest_widgets_init' ) ):
 
 	/**
 	 * Register widget area.
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
 	 */
-	function trivoo_free_widgets_init() {
+	function quest_widgets_init() {
 
 		//register Main sidebar widgets
-		register_sidebar( array( 'name' => __( 'Sidebar', 'trivoo-free' ), 'id' => 'sidebar-1', 'description' => '', 'before_widget' => '<aside id="%1$s" class="widget %2$s sidebar-widget clearfix">', 'after_widget' => '</aside>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>', ) );
+		register_sidebar( array( 'name' => __( 'Sidebar', 'Quest' ), 'id' => 'sidebar-1', 'description' => '', 'before_widget' => '<aside id="%1$s" class="widget %2$s sidebar-widget clearfix">', 'after_widget' => '</aside>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>', ) );
 
-		$cols = trivoo_get_mod( 'layout_footer_widgets' );
+		$cols = quest_get_mod( 'layout_footer_widgets' );
 
 		switch ( $cols ) {
 		case 1:
@@ -109,29 +109,29 @@ if ( !function_exists( 'trivoo_free_widgets_init' ) ):
 		}
 
 		//Register Footer WIdgets
-		register_sidebar( array( 'name' => __( 'Footer Widget', 'trivoo-framework' ), 'id' => __( 'footer-widget', 'trivoo-framework' ), 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
+		register_sidebar( array( 'name' => __( 'Footer Widget', 'Quest' ), 'id' => __( 'footer-widget', 'Quest' ), 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
 	}
 
 endif;
 
-add_action( 'widgets_init', 'trivoo_free_widgets_init' );
+add_action( 'widgets_init', 'quest_widgets_init' );
 
-if ( !function_exists( 'trivoo_free_scripts' ) ):
+if ( !function_exists( 'quest_scripts' ) ):
 
 	/**
 	 * Enqueue scripts and styles.
 	 */
-	function trivoo_free_scripts() {
+	function quest_scripts() {
 
 		// Enqueue required styles
-		wp_enqueue_style( 'trivoo-bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap.min.css' );
+		wp_enqueue_style( 'quest-bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap.min.css' );
 		wp_enqueue_style( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css' );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
 		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
 		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
 		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/example4/colorbox.css' );
-		wp_enqueue_style( 'trivoo-main', get_template_directory_uri() . '/assets/css/trivoo.css' );
-		wp_enqueue_style( 'trivoo-free-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'quest-main', get_template_directory_uri() . '/assets/css/quest.css' );
+		wp_enqueue_style( 'Quest-style', get_stylesheet_uri() );
 
 		// Enqueue required scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
@@ -143,7 +143,7 @@ if ( !function_exists( 'trivoo_free_scripts' ) ):
 		wp_enqueue_script( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/jquery.smartmenus.min.js' );
 		wp_enqueue_script( 'bs-smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js' );
 		wp_enqueue_script( 'smartmenus-keyboard', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js' );
-		wp_enqueue_script( 'trivoo-js', get_template_directory_uri() . '/assets/js/trivoo.js' );
+		wp_enqueue_script( 'quest-js', get_template_directory_uri() . '/assets/js/quest.js' );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -153,14 +153,14 @@ if ( !function_exists( 'trivoo_free_scripts' ) ):
 
 endif;
 
-add_action( 'wp_enqueue_scripts', 'trivoo_free_scripts' );
+add_action( 'wp_enqueue_scripts', 'quest_scripts' );
 
-if ( !function_exists( 'trivoo_admin_scripts' ) ):
+if ( !function_exists( 'quest_admin_scripts' ) ):
 
 	/**
 	 * Enqueue Admin scripts and styles.
 	 */
-	function trivoo_admin_scripts() {
+	function quest_admin_scripts() {
 
 		// Enqueue required styles
 		wp_enqueue_style( 'wp-color-picker' );
@@ -168,21 +168,21 @@ if ( !function_exists( 'trivoo_admin_scripts' ) ):
 		wp_enqueue_style( 'admin-panel-css', get_template_directory_uri() . '/assets/css/admin.css' );
 
 		// Enqueue required scripts
-		wp_enqueue_script( 'trivoo_custom_js', get_template_directory_uri() . '/assets/js/admin.js' );
+		wp_enqueue_script( 'quest_custom_js', get_template_directory_uri() . '/assets/js/admin.js' );
 
 	}
 
 endif;
 
-add_action( 'admin_enqueue_scripts', 'trivoo_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'quest_admin_scripts' );
 
-if ( !class_exists( 'Trivoo_Main_Menu' ) ):
+if ( !class_exists( 'Quest_Main_Menu' ) ):
 
 	/**
-	 * Trivoo_Main_Menu extends from Walker_Nav_Menu
+	 * Quest_Main_Menu extends from Walker_Nav_Menu
 	 * Provides custom walker functions to add/edit additional markup for the theme menu
 	 */
-	class Trivoo_Main_Menu extends Walker_Nav_Menu
+	class Quest_Main_Menu extends Walker_Nav_Menu
 	{
 
 		function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
@@ -216,7 +216,7 @@ if ( !class_exists( 'Trivoo_Main_Menu' ) ):
 
 endif;
 
-if ( !function_exists( 'trivoo_wp_page_menu' ) ):
+if ( !function_exists( 'quest_wp_page_menu' ) ):
 
 	/**
 	 * Display or retrieve list of pages with optional home link.
@@ -226,7 +226,7 @@ if ( !function_exists( 'trivoo_wp_page_menu' ) ):
 	 *
 	 * @return string html menu
 	 */
-	function trivoo_wp_page_menu( $args = array() ) {
+	function quest_wp_page_menu( $args = array() ) {
 		$defaults = array( 'sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '' );
 		$args = wp_parse_args( $args, $defaults );
 
@@ -247,7 +247,7 @@ if ( !function_exists( 'trivoo_wp_page_menu' ) ):
 
 		// Show Home in the menu
 		if ( !empty( $args['show_home'] ) ) {
-			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] ) $text = __( 'Home', 'Trivoo' );
+			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] ) $text = __( 'Home', 'Quest' );
 			else $text = $args['show_home'];
 			$class = '';
 			if ( is_front_page() && !is_paged() ) $class = 'class="current_page_item"';
@@ -329,23 +329,23 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 
-if ( !function_exists( 'trivoo_search_menu_icon' ) ):
+if ( !function_exists( 'quest_search_menu_icon' ) ):
 
 	/**
 	 * Adds Seach Icon to the Primary Menu if the option is set in Theme Options
 	 *
 	 * @return string html menu
 	 */
-	function trivoo_search_menu_icon( $items, $args ) {
+	function quest_search_menu_icon( $items, $args ) {
 
-		if ( trivoo_get_mod( 'layout_header_search' ) && $args->theme_location === 'primary' ) {
+		if ( quest_get_mod( 'layout_header_search' ) && $args->theme_location === 'primary' ) {
 			$items.= '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown" id="menu-item-search">
                     <a href="#"><i class="fa fa-search"></i></a>
                     <ul class="dropdown-menu">
                     <li>
                     <form class="search" action="' . get_home_url() . '" method="get">
                         <div class="arrow-up"></div>
-                        <input name="s" type="text" placeholder="' . __( 'Search', 'Trivoo' ) . '...">
+                        <input name="s" type="text" placeholder="' . __( 'Search', 'Quest' ) . '...">
                     </form>
                     </li>
                     </ul>
@@ -357,6 +357,6 @@ if ( !function_exists( 'trivoo_search_menu_icon' ) ):
 
 endif;
 
-add_filter( 'wp_nav_menu_items', 'trivoo_search_menu_icon', 10, 2 );
+add_filter( 'wp_nav_menu_items', 'quest_search_menu_icon', 10, 2 );
 
 ?>

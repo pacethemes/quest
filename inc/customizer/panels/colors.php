@@ -3,9 +3,9 @@
 /**
  * Contains methods for adding Colors Customization Panel and all settings under it
  *
- * @since Trivoo 1.0
+ * @since Quest 1.0
  */
-class Trivoo_Customize_Colors {
+class Quest_Customize_Colors {
 
   public static function register( $wp_customize ) {
 
@@ -29,7 +29,7 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Trivoo' ),
+        'title' => __( 'Global', 'Quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -41,7 +41,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -52,8 +52,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Accent Color', 'Trivoo' ),
-          'description'    => __( 'Used for Links & Buttons', 'Trivoo' ),
+          'label'          => __( 'Accent Color', 'Quest' ),
+          'description'    => __( 'Used for Links & Buttons', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -65,7 +65,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -76,8 +76,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Accent Shade Color', 'Trivoo' ),
-          'description'    => __( 'Used for Links & Buttons hover state', 'Trivoo' ),
+          'label'          => __( 'Accent Shade Color', 'Quest' ),
+          'description'    => __( 'Used for Links & Buttons hover state', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -90,7 +90,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -101,8 +101,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Alt Color', 'Trivoo' ),
-          'description'    => __( 'Used for Form Elements', 'Trivoo' ),
+          'label'          => __( 'Alt Color', 'Quest' ),
+          'description'    => __( 'Used for Form Elements', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -115,7 +115,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -126,8 +126,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Trivoo' ),
-          'description'    => __( 'Used for Borders for all content elements', 'Trivoo' ),
+          'label'          => __( 'Border Color', 'Quest' ),
+          'description'    => __( 'Used for Borders for all content elements', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -139,7 +139,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -150,8 +150,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Heading Color', 'Trivoo' ),
-          'description'    => __( 'Used for headings - h1 to h6', 'Trivoo' ),
+          'label'          => __( 'Heading Color', 'Quest' ),
+          'description'    => __( 'Used for headings - h1 to h6', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -164,7 +164,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -175,8 +175,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
-          'description'    => __( 'Used for content text', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
+          'description'    => __( 'Used for content text', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -188,7 +188,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -199,8 +199,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Alt Color', 'Trivoo' ),
-          'description'    => __( 'Used for post meta & icons', 'Trivoo' ),
+          'label'          => __( 'Text Alt Color', 'Quest' ),
+          'description'    => __( 'Used for post meta & icons', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -213,7 +213,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -224,8 +224,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Site Background Color', 'Trivoo' ),
-          'description'    => __( 'Used for background color of the site', 'Trivoo' ),
+          'label'          => __( 'Site Background Color', 'Quest' ),
+          'description'    => __( 'Used for background color of the site', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -238,7 +238,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -249,8 +249,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Content Background Color', 'Trivoo' ),
-          'description'    => __( 'Used for background color of the site content', 'Trivoo' ),
+          'label'          => __( 'Content Background Color', 'Quest' ),
+          'description'    => __( 'Used for background color of the site content', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -266,7 +266,7 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Header', 'Trivoo' ),
+        'title' => __( 'Header', 'Quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -278,7 +278,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -289,8 +289,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Trivoo' ),
-          'description'    => __( 'Header background color', 'Trivoo' ),
+          'label'          => __( 'Background Color', 'Quest' ),
+          'description'    => __( 'Header background color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -303,7 +303,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -314,8 +314,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
-          'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
+          'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -328,7 +328,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -339,8 +339,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Trivoo' ),
-          'description'    => __( 'Header Bottom Border Color', 'Trivoo' ),
+          'label'          => __( 'Border Color', 'Quest' ),
+          'description'    => __( 'Header Bottom Border Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -356,7 +356,7 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Main Menu', 'Trivoo' ),
+        'title' => __( 'Main Menu', 'Quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -367,13 +367,13 @@ class Trivoo_Customize_Colors {
     $setting_id = $section_id . '_menu_h';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Menu Items', 'Trivoo' )
+          'label' => __( 'Menu Items', 'Quest' )
         )
       )
     );
@@ -384,7 +384,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -395,8 +395,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -409,7 +409,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -420,8 +420,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Hover/Focus Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Hover/Focus Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -431,13 +431,13 @@ class Trivoo_Customize_Colors {
     $setting_id = $section_id . '_menu_sub_h';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Sub Menu Items', 'Trivoo' )
+          'label' => __( 'Sub Menu Items', 'Quest' )
         )
       )
     );
@@ -447,7 +447,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -458,8 +458,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Background Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -472,7 +472,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -483,8 +483,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Border Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -497,7 +497,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -508,8 +508,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -522,7 +522,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -533,8 +533,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hover/Focus Text Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Hover/Focus Text Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -546,7 +546,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -557,8 +557,8 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hover/Focus Background Color', 'Trivoo' ),
-          // 'description'    => __( 'Header Text Color', 'Trivoo' ),
+          'label'          => __( 'Hover/Focus Background Color', 'Quest' ),
+          // 'description'    => __( 'Header Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -574,7 +574,7 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Title Container', 'Trivoo' ),
+        'title' => __( 'Title Container', 'Quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -586,7 +586,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -597,7 +597,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Trivoo' ),
+          'label'          => __( 'Background Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -610,7 +610,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -621,7 +621,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -634,7 +634,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -645,7 +645,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Trivoo' ),
+          'label'          => __( 'Border Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -661,7 +661,7 @@ class Trivoo_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Trivoo' ),
+        'title' => __( 'Footer', 'Quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -673,13 +673,13 @@ class Trivoo_Customize_Colors {
     $setting_id = $section_id . '_main';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Main Footer', 'Trivoo' )
+          'label' => __( 'Main Footer', 'Quest' )
         )
       )
     );
@@ -689,7 +689,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -700,7 +700,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Trivoo' ),
+          'label'          => __( 'Background Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -712,7 +712,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -723,7 +723,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Heading Color', 'Trivoo' ),
+          'label'          => __( 'Heading Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -736,7 +736,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -747,7 +747,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -760,7 +760,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -771,7 +771,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Trivoo' ),
+          'label'          => __( 'Border Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -782,13 +782,13 @@ class Trivoo_Customize_Colors {
     $setting_id = $section_id . '_second';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Secondary Footer', 'Trivoo' )
+          'label' => __( 'Secondary Footer', 'Quest' )
         )
       )
     );
@@ -798,7 +798,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -809,7 +809,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Trivoo' ),
+          'label'          => __( 'Background Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -821,7 +821,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -832,7 +832,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Trivoo' ),
+          'label'          => __( 'Text Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -845,7 +845,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -856,7 +856,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Social Icon Color', 'Trivoo' ),
+          'label'          => __( 'Social Icon Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -868,7 +868,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -879,7 +879,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Social Icon Hover Color', 'Trivoo' ),
+          'label'          => __( 'Social Icon Hover Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -891,7 +891,7 @@ class Trivoo_Customize_Colors {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'maybe_hash_hex_color',
       )
@@ -902,7 +902,7 @@ class Trivoo_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Social Icon Hover background Color', 'Trivoo' ),
+          'label'          => __( 'Social Icon Hover background Color', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )

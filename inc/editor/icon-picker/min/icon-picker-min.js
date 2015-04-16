@@ -46,3 +46,4 @@ var trIconPicker,
 		});
 	}
 } )( tinymce );
+

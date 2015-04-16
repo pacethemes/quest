@@ -3,7 +3,7 @@
  * Template Name: Page Builder
  * 
  * The template for displaying Page Builder Content *
- * @package trivoo-free
+ * @package Quest
  */
 get_header(); ?>
 

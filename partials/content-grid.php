@@ -1,16 +1,16 @@
 <?php
-$view = trivoo_get_view();
+$view = quest_get_view();
 ?>
 
-<?php trivoo_title_bar( $view ); ?>
+<?php quest_title_bar( $view ); ?>
 
-<div class="trivoo-row site-content" id="content">
+<div class="quest-row site-content" id="content">
     <div class="container">
 		<div class="row">
 
-			<?php trivoo_try_sidebar( $view, 'left' ); ?>
+			<?php quest_try_sidebar( $view, 'left' ); ?>
 
-			<div id="primary" class="content-area <?php trivoo_main_cls(); ?>">
+			<div id="primary" class="content-area <?php quest_main_cls(); ?>">
 				<main id="main" class="site-main" role="main">
 
 				<?php if ( have_posts() ) : ?>
@@ -28,7 +28,7 @@ $view = trivoo_get_view();
 										<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-grid' ); ?></a>
 										<div class="overlay">
 											<div class="caption">
-		                                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'Trivoo'); ?></a>
+		                                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'Quest'); ?></a>
 		                                    </div>
 		                                    <a href="<?php the_permalink() ?>" class="expand">+</a>
 		                                    <a href="#" class="close-overlay hidden">x</a>
@@ -42,7 +42,7 @@ $view = trivoo_get_view();
 
 								<?php if ( 'post' == get_post_type() ) : ?>
 									<div class="entry-meta">
-										<?php trivoo_free_post_meta(); ?>
+										<?php quest_post_meta(); ?>
 									</div><!-- .entry-meta -->
 								<?php endif; ?>
 
@@ -51,7 +51,7 @@ $view = trivoo_get_view();
 
 						<?php endwhile; ?>
 					</div>
-					<?php trivoo_pagination( $pages = '', $range = 2 ); ?>
+					<?php quest_pagination( $pages = '', $range = 2 ); ?>
 
 				<?php else : ?>
 
@@ -61,7 +61,7 @@ $view = trivoo_get_view();
 				</main><!-- #main -->
 			</div><!-- #primary -->
 
-			<?php trivoo_try_sidebar( $view, 'right' ); ?>
+			<?php quest_try_sidebar( $view, 'right' ); ?>
 
 		</div><!-- .row -->
 	</div><!-- .container -->

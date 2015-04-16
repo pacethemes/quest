@@ -1498,7 +1498,7 @@ hr {
     margin: 0 auto;
 }
 
-.trivoo-row {
+.quest-row {
     padding: 30px 0;
     &.slider-row {
         padding: 0;
@@ -1509,7 +1509,7 @@ hr {
     &.post-list .post-normal {
         margin-bottom: 30px;
     }
-    .trivoo-row:first-child {
+    .quest-row:first-child {
         padding-top: 10px;
     }
 }
@@ -1620,7 +1620,7 @@ hr {
             padding-right: 5px;
         }
     }
-    .trivoo-row:last-child {
+    .quest-row:last-child {
         padding-bottom: 0;
     }
 }
@@ -1744,7 +1744,7 @@ hr {
     label {
         font-weight: bold;
     }
-    .trivoo-row.np {
+    .quest-row.np {
         &:first-child {
             padding-top: 30px !important;
         }
@@ -2503,9 +2503,9 @@ a.expand {
     }
 }
 
-.trivoo-gallery{
+.quest-gallery{
     text-align: center;
-    .trivoo-gallery-thumb{
+    .quest-gallery-thumb{
         display: inline-block;
         margin: 10px;
         position: relative;
@@ -2647,13 +2647,13 @@ a.expand {
         margin-top: 1em;
         margin-bottom: 1em;
     }
-    .widget_trivoo-flickr-widget {
-        .trivoo-flickr-item {
+    .widget_quest-flickr-widget {
+        .quest-flickr-item {
             border: none;
             //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
             box-shadow: none;
         }
-        li.trivoo-flickr-item:last-child {
+        li.quest-flickr-item:last-child {
             border: none;
             //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
             box-shadow: none;
@@ -4215,7 +4215,7 @@ article.post-normal h1.post-title {
     }
 }
 
-.trivoo-recent-posts .sidebar-posts {
+.quest-recent-posts .sidebar-posts {
     margin: 8px 0;
     .sidebar-post-image {
         width: 50px;

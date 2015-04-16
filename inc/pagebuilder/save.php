@@ -1,9 +1,9 @@
 <?php
 
 /**
- * TR_PageBuilder_Save class provides functionality to generate HTML markup based on the sections & modules built using the Page Builder
+ * PT_PageBuilder_Save class provides functionality to generate HTML markup based on the sections & modules built using the Page Builder
  */
-class TR_PageBuilder_Save {
+class PT_PageBuilder_Save {
 
 	// Hold an instance of the class
 	private static $instance;
@@ -15,7 +15,7 @@ class TR_PageBuilder_Save {
 	public function __construct() {
 		//If the template is set to Page Builder then save the Pagebuilder Meta and create content based on the meta
 		if ( isset( $_POST['page_template'] ) && $_POST['page_template'] === 'page-builder.php' &&
-				isset( $_POST[ 'tr-pb-nonce' ] ) && isset( $_POST[ 'tr_pb_section' ] ) && wp_verify_nonce( $_POST[ 'tr-pb-nonce' ], 'save' ) ) {
+				isset( $_POST[ 'pt-pb-nonce' ] ) && isset( $_POST[ 'pt_pb_section' ] ) && wp_verify_nonce( $_POST[ 'pt-pb-nonce' ], 'save' ) ) {
 			// Save the post's meta data
 			add_action( 'save_post', array( $this, 'SavePost' ), 10, 2 );
 
@@ -25,9 +25,9 @@ class TR_PageBuilder_Save {
 	}
 
 	/**
-	 * Returns an instance of the TR_PageBuilder_Save class, creates one if an instance doesn't exist. Implements Singleton pattern
+	 * Returns an instance of the PT_PageBuilder_Save class, creates one if an instance doesn't exist. Implements Singleton pattern
 	 *
-	 * @return TR_PageBuilder_Save
+	 * @return PT_PageBuilder_Save
 	 */
 	public static function getInstance() {
 		if ( !isset( self::$instance ) ) {
@@ -37,7 +37,7 @@ class TR_PageBuilder_Save {
 	}
 
 	/**
-	 * Updates Post Meta key 'tr_pb_sections' with the prepared sections array
+	 * Updates Post Meta key 'pt_pb_sections' with the prepared sections array
 	 *
 	 * @return void
 	 */
@@ -47,7 +47,7 @@ class TR_PageBuilder_Save {
 			return;
 		}
 
-		update_post_meta( $post_id, 'tr_pb_sections', $this->_sections );
+		update_post_meta( $post_id, 'pt_pb_sections', $this->_sections );
 
 	}
 
@@ -58,10 +58,10 @@ class TR_PageBuilder_Save {
 	 */
 	public function InsertPostData( $data, $postarr ) {
 
-		if ( $postarr['post_type'] === 'revision' || !isset( $postarr['tr_pb_section'] ) )
+		if ( $postarr['post_type'] === 'revision' || !isset( $postarr['pt_pb_section'] ) )
 			return $data;
 
-		$this->_sections = $this->prepareSections( $postarr['tr_pb_section'] );
+		$this->_sections = $this->prepareSections( $postarr['pt_pb_section'] );
 		$data['post_content'] = $this->generatePostContent();
 		return $data;
 	}
@@ -158,7 +158,7 @@ class TR_PageBuilder_Save {
 
 		$addRow = !array_key_exists( 'slider', $section );
 
-		$content = "<section class='trivoo-row $cssClass' style='" . $css . "'> ";
+		$content = "<section class='quest-row $cssClass' style='" . $css . "'> ";
 
 		if ( $addRow ) {
 			$content .= "\n\t <div class='container'> \n\t\t <div class='row'> \n";
@@ -213,7 +213,7 @@ class TR_PageBuilder_Save {
 	 * @return string
 	 */	
 	private function generateModule( $module ) {
-		$cls = "TR_PageBuilder_" . ucwords( $module['type'] ) . "_Module";
+		$cls = "PT_PageBuilder_" . ucwords( $module['type'] ) . "_Module";
 		if ( !class_exists( $cls ) )
 			return "";
 
@@ -230,7 +230,7 @@ class TR_PageBuilder_Save {
 	 * @return string $content
 	 */	
 	private function generateSlider( $slider ) {
-		$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" . TR_PageBuilder_Helper::GetDataAttributes( $slider, array( 'autoplay', 'interval', 'speed' ) )."><div class='sl-slider'>";
+		$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" . PT_PageBuilder_Helper::GetDataAttributes( $slider, array( 'autoplay', 'interval', 'speed' ) )."><div class='sl-slider'>";
 		foreach ( $slider as $slide ) {
 			if ( !is_array( $slide ) )
 				continue;
@@ -253,7 +253,7 @@ class TR_PageBuilder_Save {
 	 */	
 	private function generateSlide( $slide ) {
 
-		$content = "<div class='sl-slide {$slide['css_class']}'". TR_PageBuilder_Helper::GetDataAttributes( $slide, array( 'orientation', 'slice1_rotation', 'slice2_rotation', 'slice1_scale', 'slice2_scale' ) ) ."><div class='sl-slide-inner'>";
+		$content = "<div class='sl-slide {$slide['css_class']}'". PT_PageBuilder_Helper::GetDataAttributes( $slide, array( 'orientation', 'slice1_rotation', 'slice2_rotation', 'slice1_scale', 'slice2_scale' ) ) ."><div class='sl-slide-inner'>";
 		$content .= "<div class='sl-slide-inner' style='" . $this->_getCssProperties( $slide ) . "'>";
 
 		$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array( 'text_color' => $slide['heading_color'] ) ) . "'>". $slide['heading'] ."</h2>";
@@ -270,7 +270,7 @@ class TR_PageBuilder_Save {
 	 * @return string $content
 	 */	
 	private function generateGallery( $gallery ) {
-		$content = "<div class='trivoo-gallery {$gallery['shape']} {$gallery['css_class']}' >";
+		$content = "<div class='quest-gallery {$gallery['shape']} {$gallery['css_class']}' >";
 		foreach ( $gallery as $image ) {
 			if ( !is_array( $image ) )
 				continue;
@@ -289,7 +289,7 @@ class TR_PageBuilder_Save {
 	 * @return string $content
 	 */	
 	private function generateImage( $image ) {
-		$content = "<a href='{$image['src']}' class='trivoo-gallery-thumb gallery' title='' data-gallery=''>".wp_get_attachment_image( $image['post_id'], 'gallery')."<span class='overlay'><i class='fa fa-expand'></i></span></a>";
+		$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='' data-gallery=''>".wp_get_attachment_image( $image['post_id'], 'gallery')."<span class='overlay'><i class='fa fa-expand'></i></span></a>";
 		return $content;
 	}
 
@@ -341,10 +341,10 @@ class TR_PageBuilder_Save {
 }
 
 /**
- * Helper class for TR_PageBuilder
+ * Helper class for PT_PageBuilder
  *
  */	
-class TR_PageBuilder_Helper {
+class PT_PageBuilder_Helper {
 
 	/**
 	 * Generates Attributes
@@ -386,7 +386,7 @@ class TR_PageBuilder_Helper {
  *
  * @return string $content
  */	
-class TR_PageBuilder_Slider_Module {
+class PT_PageBuilder_Slider_Module {
 
 	private $_module;
 
@@ -401,12 +401,12 @@ class TR_PageBuilder_Slider_Module {
 		$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
-			$content .= "<a" . TR_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
+			$content .= "<a" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
 			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='".esc_url($image['href'])."'";
 			$content .= $image['lightbox'] == 'true' ? " class='lightbox gallery'>" : '>';
 		}
 
-		$content .= "<img" . TR_PageBuilder_Helper::GetAttributes( $image, array( 'src', 'title', 'alt', 'class' ) ) . " />";
+		$content .= "<img" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'src', 'title', 'alt', 'class' ) ) . " />";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
 			$content .= "</a>";
@@ -423,7 +423,7 @@ class TR_PageBuilder_Slider_Module {
  * Class to handle HTML generation for Image Module
  *
  */	
-class TR_PageBuilder_Image_Module {
+class PT_PageBuilder_Image_Module {
 
 	private $_module;
 
@@ -438,12 +438,12 @@ class TR_PageBuilder_Image_Module {
 		$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
-			$content .= "<a" . TR_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
+			$content .= "<a" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
 			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='".esc_url($image['href'])."'";
 			$content .= $image['lightbox'] == 'true' ? " class='lightbox gallery'>" : '>';
 		}
 
-		$content .= "<img" . TR_PageBuilder_Helper::GetAttributes( $image, array( 'src', 'title', 'alt', 'class' ) ) . " />";
+		$content .= "<img" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'src', 'title', 'alt', 'class' ) ) . " />";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
 			$content .= "</a>";
@@ -460,7 +460,7 @@ class TR_PageBuilder_Image_Module {
  * Class to handle HTML generation for Text Module
  *
  */	
-class TR_PageBuilder_Text_Module {
+class PT_PageBuilder_Text_Module {
 
 	private $_module;
 
@@ -479,7 +479,7 @@ class TR_PageBuilder_Text_Module {
  * Class to handle HTML generation for Hover Icon Module
  *
  */	
-class TR_PageBuilder_Hovericon_Module {
+class PT_PageBuilder_Hovericon_Module {
 
 	private $_module;
 
@@ -499,15 +499,15 @@ class TR_PageBuilder_Hovericon_Module {
 }
 
 /**
- * Returns instance of TR_PageBuilder_Save
+ * Returns instance of PT_PageBuilder_Save
  *
- * @return TR_PageBuilder_Save
+ * @return PT_PageBuilder_Save
  */	
-function tr_pb_get_builder_save() {
-	return TR_PageBuilder_Save::getInstance();
+function pt_pb_get_builder_save() {
+	return PT_PageBuilder_Save::getInstance();
 }
 
-//Hook into admin_init and create an instance of TR_PageBuilder_Save to initialize Page Builder Save Methods
-add_action( 'admin_init', 'tr_pb_get_builder_save' );
+//Hook into admin_init and create an instance of PT_PageBuilder_Save to initialize Page Builder Save Methods
+add_action( 'admin_init', 'pt_pb_get_builder_save' );
 
 ?>

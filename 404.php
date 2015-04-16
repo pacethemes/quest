@@ -2,12 +2,12 @@
 /**
  * The template for displaying 404 pages (not found).
  *
- * @package trivoo-free
+ * @package Quest
  */
 
 get_header(); ?>
 
-<div class="trivoo-row site-content" id="content">
+<div class="quest-row site-content" id="content">
     <div class="container">
 		<div class="row">
 
@@ -16,19 +16,19 @@ get_header(); ?>
 
 				<section class="error-404 not-found">
 					<header class="entry-header">
-						<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'trivoo-free' ); ?></h1>
+						<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'Quest' ); ?></h1>
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
-						<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'trivoo-free' ); ?></p>
+						<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'Quest' ); ?></p>
 
 						<?php get_search_form(); ?>
 
 						<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 
-						<?php if ( trivoo_free_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+						<?php if ( quest_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 						<div class="widget widget_categories">
-							<h2 class="widget-title"><?php _e( 'Most Used Categories', 'trivoo-free' ); ?></h2>
+							<h2 class="widget-title"><?php _e( 'Most Used Categories', 'Quest' ); ?></h2>
 							<ul>
 							<?php
 								wp_list_categories( array(
@@ -45,7 +45,7 @@ get_header(); ?>
 
 						<?php
 							/* translators: %1$s: smiley */
-							$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'trivoo-free' ), convert_smilies( ':)' ) ) . '</p>';
+							$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'Quest' ), convert_smilies( ':)' ) ) . '</p>';
 							the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 						?>
 

@@ -6,9 +6,9 @@ require_once dirname( __FILE__ ) . "/../custom-controls/google-fonts-control.php
  * Contains methods for customizing the theme customization screen.
  *
  * @link http://codex.wordpress.org/Theme_Customization_API
- * @since Trivoo 1.0
+ * @since Quest 1.0
  */
-class Trivoo_Customize_Typography {
+class Quest_Customize_Typography {
 
   public static function register( $wp_customize ) {
 
@@ -32,7 +32,7 @@ class Trivoo_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Trivoo' ),
+        'title' => __( 'Global', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -40,7 +40,7 @@ class Trivoo_Customize_Typography {
     );
 
     /* Global */
-    trivoo_generate_font_control ( $wp_customize, $section_id ,  __( 'Text', 'Trivoo' ), '', true ) ;
+    quest_generate_font_control ( $wp_customize, $section_id ,  __( 'Text', 'Quest' ), '', true ) ;
 
 
     /******************
@@ -51,7 +51,7 @@ class Trivoo_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Text Headings', 'Trivoo' ),
+        'title' => __( 'Text Headings', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -59,22 +59,22 @@ class Trivoo_Customize_Typography {
     );
 
     /* H1 */
-    trivoo_generate_font_control ( $wp_customize, $section_id,  __( 'H1', 'Trivoo' ), 'h1' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H1', 'Quest' ), 'h1' ) ;
 
     /* H2 */
-    trivoo_generate_font_control ( $wp_customize, $section_id,  __( 'H2', 'Trivoo' ), 'h2' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H2', 'Quest' ), 'h2' ) ;
 
     /* H3 */
-    trivoo_generate_font_control ( $wp_customize, $section_id,  __( 'H3', 'Trivoo' ), 'h3' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H3', 'Quest' ), 'h3' ) ;
 
     /* H4 */
-    trivoo_generate_font_control ( $wp_customize, $section_id,  __( 'H4', 'Trivoo' ), 'h4' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H4', 'Quest' ), 'h4' ) ;
 
     /* H5 */
-    trivoo_generate_font_control ( $wp_customize, $section_id,  __( 'H5', 'Trivoo' ), 'h5' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H5', 'Quest' ), 'h5' ) ;
 
     /* H6 */
-    trivoo_generate_font_control ( $wp_customize, $section_id,  __( 'H6', 'Trivoo' ), 'h6' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H6', 'Quest' ), 'h6' ) ;
 
 
     /******************
@@ -85,7 +85,7 @@ class Trivoo_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Main Menu', 'Trivoo' ),
+        'title' => __( 'Main Menu', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -93,11 +93,11 @@ class Trivoo_Customize_Typography {
     );
 
     /* Menu Items */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Menu Items', 'Trivoo' ), '', true, array( 'line_height' ) ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Menu Items', 'Quest' ), '', true, array( 'line_height' ) ) ;
 
 
     /* Sub Menu Items */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Sub Menu Items', 'Trivoo' ), 'sub' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Sub Menu Items', 'Quest' ), 'sub' ) ;
 
 
     /******************************
@@ -108,7 +108,7 @@ class Trivoo_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Site Title & Tagline', 'Trivoo' ),
+        'title' => __( 'Site Title & Tagline', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -116,10 +116,10 @@ class Trivoo_Customize_Typography {
     );
 
     /* Site Title */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Title', 'Trivoo' ), 'title' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Title', 'Quest' ), 'title' ) ;
 
     /* Site Tagline */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Tagline', 'Trivoo' ), 'tagline' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Tagline', 'Quest' ), 'tagline' ) ;
 
 
     /******************************
@@ -130,7 +130,7 @@ class Trivoo_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Sidebar', 'Trivoo' ),
+        'title' => __( 'Sidebar', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -138,10 +138,10 @@ class Trivoo_Customize_Typography {
     );
 
     /* Site Title */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'Trivoo' ), 'title' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'Quest' ), 'title' ) ;
 
     /* Site Tagline */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'Trivoo' ), 'body' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'Quest' ), 'body' ) ;
 
 
     /******************************
@@ -152,7 +152,7 @@ class Trivoo_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Trivoo' ),
+        'title' => __( 'Footer', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -160,13 +160,13 @@ class Trivoo_Customize_Typography {
     );
 
     /* Widget Title */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'Trivoo' ), 'title' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'Quest' ), 'title' ) ;
 
     /* Widget Body */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'Trivoo' ), 'body' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'Quest' ), 'body' ) ;
 
     /* Secondary Footer */
-    trivoo_generate_font_control ( $wp_customize, $section_id  ,  __( 'Footer Text', 'Trivoo' ), 'text' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Footer Text', 'Quest' ), 'text' ) ;
 
 
   }

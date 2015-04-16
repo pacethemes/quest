@@ -34,17 +34,17 @@ if ( ! class_exists( 'Google_Fonts_Custom_Control' ) ) :
     }
 endif;
 
-if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
+if ( ! function_exists( 'quest_generate_font_control' ) ) :
     /**
      * Adds all the required Font Controls (Family, variant, size etc) to the WP_Customize object
      *
      */
-    function trivoo_generate_font_control( &$wp_customize, $section_id, $group_label, $group_id, $use_section_id = false, $exclude = array() ) {
+    function quest_generate_font_control( &$wp_customize, $section_id, $group_label, $group_id, $use_section_id = false, $exclude = array() ) {
 
         $font_setting_id = ( !$use_section_id ) ?  $section_id . '_' . $group_id : $section_id ;
 
         $wp_customize->add_control(
-            new Trivoo_Customize_Misc_Control(
+            new Quest_Customize_Misc_Control(
                 $wp_customize,
                 $font_setting_id,
                 array(
@@ -63,9 +63,9 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id ,
             array(
-                'default'        => trivoo_get_default( $setting_id ),
+                'default'        => quest_get_default( $setting_id ),
                 'type'           => 'theme_mod',
-                'sanitize_callback'       => 'trivoo_sanitize_font_family'
+                'sanitize_callback'       => 'quest_sanitize_font_family'
             ) );
 
         $wp_customize->add_control( new Google_Fonts_Custom_Control( $wp_customize, $setting_id , array(
@@ -84,9 +84,9 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id,
             array(
-                'default'           => trivoo_get_default( $setting_id ),
+                'default'           => quest_get_default( $setting_id ),
                 'type'              => 'theme_mod',
-                'sanitize_callback'       => 'trivoo_sanitize_font_variant'
+                'sanitize_callback'       => 'quest_sanitize_font_variant'
             )
         );
 
@@ -95,8 +95,8 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Font Variant', 'Trivoo' ),
-                    'description'    => __( 'Different variants of the font, provides control over font-weight and italics', 'Trivoo' ),
+                    'label'          => __( 'Font Variant', 'Quest' ),
+                    'description'    => __( 'Different variants of the font, provides control over font-weight and italics', 'Quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id,
                     'type'           => 'select',
@@ -116,7 +116,7 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id,
             array(
-                'default'           => trivoo_get_default( $setting_id ),
+                'default'           => quest_get_default( $setting_id ),
                 'type'              => 'theme_mod',
                 'sanitize_callback'       => 'absint'
             )
@@ -127,7 +127,7 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Font Size (px)', 'Trivoo' ),
+                    'label'          => __( 'Font Size (px)', 'Quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )
@@ -143,9 +143,9 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id,
             array(
-                'default'           => trivoo_get_default( $setting_id ),
+                'default'           => quest_get_default( $setting_id ),
                 'type'              => 'theme_mod',
-                'sanitize_callback'       => 'trivoo_sanitize_float'
+                'sanitize_callback'       => 'quest_sanitize_float'
             )
         );
 
@@ -154,7 +154,7 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Line Height (em)', 'Trivoo' ),
+                    'label'          => __( 'Line Height (em)', 'Quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )
@@ -170,9 +170,9 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id,
             array(
-                'default'           => trivoo_get_default( $setting_id ),
+                'default'           => quest_get_default( $setting_id ),
                 'type'              => 'theme_mod',
-                'sanitize_callback'       => 'trivoo_sanitize_font_text_transform'
+                'sanitize_callback'       => 'quest_sanitize_font_text_transform'
             )
         );
 
@@ -181,14 +181,14 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Text Transform', 'Trivoo' ),
+                    'label'          => __( 'Text Transform', 'Quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id,
                     'type'           => 'select',
                     'choices'        => array(
-                        'none' => __( 'None', 'Trivoo' ),
-                        'uppercase' => __( 'Uppercase', 'Trivoo' ),
-                        'lowercase' => __( 'Lowercase', 'Trivoo' ),
+                        'none' => __( 'None', 'Quest' ),
+                        'uppercase' => __( 'Uppercase', 'Quest' ),
+                        'lowercase' => __( 'Lowercase', 'Quest' ),
                     )
                 )
             )
@@ -203,9 +203,9 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id,
             array(
-                'default'           => trivoo_get_default( $setting_id ),
+                'default'           => quest_get_default( $setting_id ),
                 'type'              => 'theme_mod',
-                'sanitize_callback'       => 'trivoo_sanitize_float'
+                'sanitize_callback'       => 'quest_sanitize_float'
             )
         );
 
@@ -214,7 +214,7 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Letter Spacing (px)', 'Trivoo' ),
+                    'label'          => __( 'Letter Spacing (px)', 'Quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )
@@ -230,9 +230,9 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
         $wp_customize->add_setting(
             $setting_id,
             array(
-                'default'           => trivoo_get_default( $setting_id ),
+                'default'           => quest_get_default( $setting_id ),
                 'type'              => 'theme_mod',
-                'sanitize_callback'       => 'trivoo_sanitize_float'
+                'sanitize_callback'       => 'quest_sanitize_float'
             )
         );
 
@@ -241,7 +241,7 @@ if ( ! function_exists( 'trivoo_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Word Spacing (px)', 'Trivoo' ),
+                    'label'          => __( 'Word Spacing (px)', 'Quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )

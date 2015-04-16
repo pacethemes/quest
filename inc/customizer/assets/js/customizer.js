@@ -15,7 +15,7 @@
 			fontChosen.cache.fonts = '';
 			fontChosen.cache.chosen = {};
 
-			$.each(trivooCustomizerFontsL10n, function(name, options) {
+			$.each(questCustomizerFontsL10n, function(name, options) {
 				var disabled = '';
 				if( options['disabled'] !== undefined ){
 					disabled = ' disabled="disabled" ';
@@ -41,8 +41,8 @@
 						var $select = $(this),
 							font = $select.val(),
 							$variant = $select.closest('li').next().find('select');
-						if( $variant.length > 0 && trivooCustomizerFontsL10n[ font ] !== undefined ) {
-							$variant.html( fontChosen.showVariants(trivooCustomizerFontsL10n[ font ]['variants']) ).val('regular');
+						if( $variant.length > 0 && questCustomizerFontsL10n[ font ] !== undefined ) {
+							$variant.html( fontChosen.showVariants(questCustomizerFontsL10n[ font ]['variants']) ).val('regular');
 						}
 					});
 					$el.chosen({
@@ -61,7 +61,7 @@
 					parentKey = key.replace('_variant', '_family');
 				wpApi( key , function( setting ) {
 					if( fontChosen.cache.chosen[ parentKey ] !== undefined && fontChosen.cache.chosen[ parentKey ].length > 0 ) {
-						$el.html( fontChosen.showVariants(trivooCustomizerFontsL10n[ fontChosen.cache.chosen[ parentKey ].val() ]['variants']) )
+						$el.html( fontChosen.showVariants(questCustomizerFontsL10n[ fontChosen.cache.chosen[ parentKey ].val() ]['variants']) )
 						   .val( setting.get() );
 					}
 				});

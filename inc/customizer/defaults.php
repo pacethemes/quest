@@ -1,6 +1,6 @@
 <?php
 
-$trivoo_defaults = array (
+$quest_defaults = array (
 
 	/************
 	** General **
@@ -285,8 +285,8 @@ $trivoo_defaults = array (
 
 	'choices' => array (
 		'layout_global_site' => array(
-			'wide'   => __( 'Wide', 'Trivoo' ),
-			'boxed'  => __( 'Boxed', 'Trivoo' )
+			'wide'   => __( 'Wide', 'Quest' ),
+			'boxed'  => __( 'Boxed', 'Quest' )
 		),
 		'layout_footer_widgets' => array(
 			1   => '1',
@@ -295,41 +295,41 @@ $trivoo_defaults = array (
 			4  => '4',
 		),
 		'layout_blog_sidebar' => array(
-			'left'   => __( 'Left', 'Trivoo' ),
-			'right'  => __( 'Right', 'Trivoo' ),
-			'none'  => __( 'None', 'Trivoo' )
+			'left'   => __( 'Left', 'Quest' ),
+			'right'  => __( 'Right', 'Quest' ),
+			'none'  => __( 'None', 'Quest' )
 		),
 		'layout_blog_style' => array(
-			'normal'   => __( 'Normal', 'Trivoo' ),
-			'medium'   => __( 'Medium', 'Trivoo' ),
-			'grid'  => __( 'Grid', 'Trivoo' )
+			'normal'   => __( 'Normal', 'Quest' ),
+			'medium'   => __( 'Medium', 'Quest' ),
+			'grid'  => __( 'Grid', 'Quest' )
 		),
 		'layout_blog_title-bar' => array(
-			1   => __( 'Yes', 'Trivoo' ),
-			0   => __( 'No', 'Trivoo' )
+			1   => __( 'Yes', 'Quest' ),
+			0   => __( 'No', 'Quest' )
 		)
 	),
 
 
 );
 
-$trivoo_defaults['choices']['layout_archive_sidebar']
-	= $trivoo_defaults['choices']['layout_search_sidebar']
-	= $trivoo_defaults['choices']['layout_post_sidebar']
-	= $trivoo_defaults['choices']['layout_page_sidebar']
-	= $trivoo_defaults['choices']['layout_blog_sidebar'];
+$quest_defaults['choices']['layout_archive_sidebar']
+	= $quest_defaults['choices']['layout_search_sidebar']
+	= $quest_defaults['choices']['layout_post_sidebar']
+	= $quest_defaults['choices']['layout_page_sidebar']
+	= $quest_defaults['choices']['layout_blog_sidebar'];
 
-$trivoo_defaults['choices']['layout_archive_style']
-	= $trivoo_defaults['choices']['layout_search_style']
-	= $trivoo_defaults['choices']['layout_blog_style'];
+$quest_defaults['choices']['layout_archive_style']
+	= $quest_defaults['choices']['layout_search_style']
+	= $quest_defaults['choices']['layout_blog_style'];
 
-$trivoo_defaults['choices']['layout_archive_title-bar']
-	= $trivoo_defaults['choices']['layout_search_title-bar']
-	= $trivoo_defaults['choices']['layout_post_title-bar']
-	= $trivoo_defaults['choices']['layout_post_title']
-	= $trivoo_defaults['choices']['layout_page_title-bar']
-	= $trivoo_defaults['choices']['layout_page_title']
-	= $trivoo_defaults['choices']['layout_blog_title-bar'];
+$quest_defaults['choices']['layout_archive_title-bar']
+	= $quest_defaults['choices']['layout_search_title-bar']
+	= $quest_defaults['choices']['layout_post_title-bar']
+	= $quest_defaults['choices']['layout_post_title']
+	= $quest_defaults['choices']['layout_page_title-bar']
+	= $quest_defaults['choices']['layout_page_title']
+	= $quest_defaults['choices']['layout_blog_title-bar'];
 
 
 ?>

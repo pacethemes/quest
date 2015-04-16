@@ -3,9 +3,9 @@
 /**
  * Contains methods for adding Layout Customization Panel and all settings under it
  *
- * @since Trivoo 1.0
+ * @since Quest 1.0
  */
-class Trivoo_Customize_Layout {
+class Quest_Customize_Layout {
 
   public static function register( $wp_customize ) {
 
@@ -26,7 +26,7 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Trivoo' ),
+        'title' => __( 'Global', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -38,9 +38,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -49,11 +49,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Site Layout', 'Trivoo' ),
+          'label'          => __( 'Site Layout', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -67,7 +67,7 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Header', 'Trivoo' ),
+        'title' => __( 'Header', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -79,7 +79,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint',
       )
@@ -90,7 +90,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Search Icon', 'Trivoo' ),
+          'label'          => __( 'Show Search Icon', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -107,7 +107,7 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Trivoo' ),
+        'title' => __( 'Footer', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -119,9 +119,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -130,11 +130,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Number of Widgets', 'Trivoo' ),
+          'label'          => __( 'Number of Widgets', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -145,7 +145,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint',
       )
@@ -156,7 +156,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Social Icons', 'Trivoo' ),
+          'label'          => __( 'Show Social Icons', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -174,7 +174,7 @@ class Trivoo_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Blog (Posts Page)', 'Trivoo' ),
+        'title' => __( 'Blog (Posts Page)', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -187,9 +187,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -198,11 +198,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Trivoo' ),
+          'label'          => __( 'Sidebar Position', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -213,9 +213,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -224,11 +224,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Style', 'Trivoo' ),
+          'label'          => __( 'Style', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -238,9 +238,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -249,11 +249,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Trivoo' ),
+          'label'          => __( 'Show Title Bar ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -262,13 +262,13 @@ class Trivoo_Customize_Layout {
     $setting_id = $section_id . '_meta';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Trivoo' )
+          'label' => __( 'Post Meta', 'Quest' )
         )
       )
     );
@@ -279,7 +279,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -290,7 +290,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Trivoo' ),
+          'label'          => __( 'Show Categories', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -303,7 +303,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -314,7 +314,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Trivoo' ),
+          'label'          => __( 'Show Tags', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -332,7 +332,7 @@ class Trivoo_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Archives', 'Trivoo' ),
+        'title' => __( 'Archives', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -345,9 +345,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -356,11 +356,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Trivoo' ),
+          'label'          => __( 'Sidebar Position', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -371,9 +371,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -382,11 +382,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Style', 'Trivoo' ),
+          'label'          => __( 'Style', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -396,9 +396,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -407,11 +407,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Trivoo' ),
+          'label'          => __( 'Show Title Bar ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -419,13 +419,13 @@ class Trivoo_Customize_Layout {
     $setting_id = $section_id . '_meta';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Trivoo' )
+          'label' => __( 'Post Meta', 'Quest' )
         )
       )
     );
@@ -436,7 +436,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -447,7 +447,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Trivoo' ),
+          'label'          => __( 'Show Categories', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -460,7 +460,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -471,7 +471,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Trivoo' ),
+          'label'          => __( 'Show Tags', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -489,7 +489,7 @@ class Trivoo_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Search Results', 'Trivoo' ),
+        'title' => __( 'Search Results', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -502,9 +502,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -513,11 +513,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Trivoo' ),
+          'label'          => __( 'Sidebar Position', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -528,9 +528,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -539,11 +539,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Style', 'Trivoo' ),
+          'label'          => __( 'Style', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -553,9 +553,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -564,11 +564,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Trivoo' ),
+          'label'          => __( 'Show Title Bar ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -577,13 +577,13 @@ class Trivoo_Customize_Layout {
     $setting_id = $section_id . '_meta';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Trivoo' )
+          'label' => __( 'Post Meta', 'Quest' )
         )
       )
     );
@@ -594,7 +594,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -605,7 +605,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Trivoo' ),
+          'label'          => __( 'Show Categories', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -618,7 +618,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -629,7 +629,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Trivoo' ),
+          'label'          => __( 'Show Tags', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -647,7 +647,7 @@ class Trivoo_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Single Post', 'Trivoo' ),
+        'title' => __( 'Single Post', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -659,9 +659,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -670,11 +670,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Trivoo' ),
+          'label'          => __( 'Sidebar Position', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -684,9 +684,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -695,11 +695,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Trivoo' ),
+          'label'          => __( 'Show Title Bar ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -709,9 +709,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -720,11 +720,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Post Title ?', 'Trivoo' ),
+          'label'          => __( 'Show Post Title ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -732,13 +732,13 @@ class Trivoo_Customize_Layout {
     $setting_id = $section_id . '_meta';
 
     $wp_customize->add_control(
-      new Trivoo_Customize_Misc_Control(
+      new Quest_Customize_Misc_Control(
         $wp_customize,
         $setting_id,
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Trivoo' )
+          'label' => __( 'Post Meta', 'Quest' )
         )
       )
     );
@@ -749,7 +749,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -760,7 +760,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Trivoo' ),
+          'label'          => __( 'Show Categories', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -773,7 +773,7 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -784,7 +784,7 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Trivoo' ),
+          'label'          => __( 'Show Tags', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -802,7 +802,7 @@ class Trivoo_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Single Page', 'Trivoo' ),
+        'title' => __( 'Single Page', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -814,9 +814,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -825,11 +825,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Trivoo' ),
+          'label'          => __( 'Sidebar Position', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -840,9 +840,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -851,11 +851,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Trivoo' ),
+          'label'          => __( 'Show Title Bar ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );
@@ -865,9 +865,9 @@ class Trivoo_Customize_Layout {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
-        'sanitize_callback' => 'trivoo_sanitize_choice'
+        'sanitize_callback' => 'quest_sanitize_choice'
       )
     );
 
@@ -876,11 +876,11 @@ class Trivoo_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Page Title ?', 'Trivoo' ),
+          'label'          => __( 'Show Page Title ?', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
-          'choices'        => trivoo_get_choices( $setting_id )
+          'choices'        => quest_get_choices( $setting_id )
         )
       )
     );

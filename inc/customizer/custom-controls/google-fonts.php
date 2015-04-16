@@ -1,35 +1,35 @@
 <?php
 
-if ( !function_exists( 'trivoo_get_all_fonts' ) ):
+if ( !function_exists( 'quest_get_all_fonts' ) ):
 	/**
 	 * Returns an Array of all the Available Font Options
 	 *
 	 */
-	function trivoo_get_all_fonts( $show_header = true ) {
+	function quest_get_all_fonts( $show_header = true ) {
 
 		if ( $show_header ) {
 			return array_merge(
 				array( '-------Standard Fonts-------' => array ( 'disabled' => true, 'variants' => array() ) ),
-				trivoo_get_standard_fonts(),
+				quest_get_standard_fonts(),
 				array( '-------Google Fonts-------' => array ( 'disabled' => true, 'variants' => array() ) ),
-				trivoo_get_google_fonts()
+				quest_get_google_fonts()
 			);
 		}
 
 		return array_merge(
-			trivoo_get_standard_fonts() ,
-			trivoo_get_google_fonts()
+			quest_get_standard_fonts() ,
+			quest_get_google_fonts()
 		) ;
 
 	}
 endif;
 
-if ( !function_exists( 'trivoo_get_standard_fonts' ) ):
+if ( !function_exists( 'quest_get_standard_fonts' ) ):
 	/**
 	 * Returns an Array of al the Available Standard Fonts
 	 *
 	 */
-	function trivoo_get_standard_fonts() {
+	function quest_get_standard_fonts() {
 		return array(
 			'Serif' => array ( 'variants' => array( 'regular' ) ),
 			'Sans Serif' => array ( 'variants' => array( 'regular' ) ),
@@ -38,12 +38,12 @@ if ( !function_exists( 'trivoo_get_standard_fonts' ) ):
 	}
 endif;
 
-if ( !function_exists( 'trivoo_get_google_fonts' ) ):
+if ( !function_exists( 'quest_get_google_fonts' ) ):
 	/**
 	 * Returns an Array of al the Available Google Fonts
 	 *
 	 */
-	function trivoo_get_google_fonts() {
+	function quest_get_google_fonts() {
 
 		return array(
 			'ABeeZee' => array(

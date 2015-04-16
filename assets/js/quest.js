@@ -1,7 +1,7 @@
 var mob = false;
 var menuOpen = false;
 var menuTimeout;
-var trivoo = function($) {
+var quest = function($) {
 
     return {
 
@@ -68,12 +68,12 @@ var trivoo = function($) {
         },
 
         // initAnimations: function() {
-        //     trivoo.eventsForTransitions('fromTop');
-        //     trivoo.eventsForTransitions('fromBottom');
-        //     trivoo.eventsForTransitions('fromLeft');
-        //     trivoo.eventsForTransitions('fromRight');
-        //     trivoo.eventsForTransitions('fadeIn');
-        //     trivoo.eventsForTransitions('scaleUp', $('.avatar img'));
+        //     quest.eventsForTransitions('fromTop');
+        //     quest.eventsForTransitions('fromBottom');
+        //     quest.eventsForTransitions('fromLeft');
+        //     quest.eventsForTransitions('fromRight');
+        //     quest.eventsForTransitions('fadeIn');
+        //     quest.eventsForTransitions('scaleUp', $('.avatar img'));
         // },
 
         // initIsotope: function(selector) {
@@ -92,7 +92,7 @@ var trivoo = function($) {
         //     $('#portfolio_filter a').click(function() {
         //         $('#portfolio_filter a').removeClass('active');
         //         var selector = $(this).addClass('active').attr('data-filter');
-        //         trivoo.initIsotope(selector);
+        //         quest.initIsotope(selector);
         //         return false;
         //     });
         // },
@@ -217,33 +217,33 @@ var PageBuilder = (function($) {
 
 
 jQuery(window).load(function() {
-    // trivoo.setHeaderPosition();
-    // trivoo.setMenuHeight();
-    // trivoo.initAnimations();
-    // trivoo.resizeTabs(null, true);
-    // trivoo.initIsotope();
-    // trivoo.initPortfolioFilter();
+    // quest.setHeaderPosition();
+    // quest.setMenuHeight();
+    // quest.initAnimations();
+    // quest.resizeTabs(null, true);
+    // quest.initIsotope();
+    // quest.initPortfolioFilter();
 }).resize(function() {
-    // trivoo.resizeTabs();
-    // trivoo.setHeaderPosition();
-    // trivoo.displayMobileMenu();
-    // trivoo.initIsotope();
+    // quest.resizeTabs();
+    // quest.setHeaderPosition();
+    // quest.displayMobileMenu();
+    // quest.initIsotope();
 }).scroll(function() {
-    // trivoo.initStickyHeader();
+    // quest.initStickyHeader();
 });
 
 jQuery(document).ready(function() {
     PageBuilder.initEvents();
     new WOW().init();
-    trivoo.initImageEffects();
-    // trivoo.initCarousel();
-    // trivoo.initFitVids();
-    trivoo.initColorbox();
-    trivoo.initTooltip();
-    // trivoo.initFlexSlider();
-    trivoo.initBackToTop();
-    trivoo.initMasonry();
-    // trivoo.setHeaderPosition();
-    trivoo.initFormPlaceHolder();
-    // trivoo.initCustomJs();
+    quest.initImageEffects();
+    // quest.initCarousel();
+    // quest.initFitVids();
+    quest.initColorbox();
+    quest.initTooltip();
+    // quest.initFlexSlider();
+    quest.initBackToTop();
+    quest.initMasonry();
+    // quest.setHeaderPosition();
+    quest.initFormPlaceHolder();
+    // quest.initCustomJs();
 });

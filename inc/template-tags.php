@@ -4,32 +4,32 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package trivoo-free
+ * @package Quest
  */
 
-if ( ! function_exists( 'trivoo_free_post_meta' ) ) :
+if ( ! function_exists( 'quest_post_meta' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time, author & comments.
 	 */
-	function trivoo_free_post_meta() {
+	function quest_post_meta() {
 		echo '<time class="post-date"><i class="fa fa-clock-o"></i>' . get_the_time( get_option( 'date_format' ) ) . '</time>';
 
 		echo '<span class="seperator">/</span>';
 
 		echo comments_popup_link(
-			__( '<i class="fa fa-comments"></i>&nbsp; No Comments', 'trivoo-framework' ),
-			__( '<i class="fa fa-comments"></i>&nbsp; 1 Comment', 'trivoo-framework' ),
-			__( '<i class="fa fa-comments"></i>&nbsp; % Comments', 'trivoo-framework' ) );
+			__( '<i class="fa fa-comments"></i>&nbsp; No Comments', 'Quest' ),
+			__( '<i class="fa fa-comments"></i>&nbsp; 1 Comment', 'Quest' ),
+			__( '<i class="fa fa-comments"></i>&nbsp; % Comments', 'Quest' ) );
 
 	}
 endif;
 
 
-if ( ! function_exists( 'trivoo_free_posted_on' ) ) :
+if ( ! function_exists( 'quest_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
-	function trivoo_free_posted_on() {
+	function quest_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -43,12 +43,12 @@ if ( ! function_exists( 'trivoo_free_posted_on' ) ) :
 		);
 
 		$posted_on = sprintf(
-			_x( 'Posted on %s', 'post date', 'trivoo-free' ),
+			_x( 'Posted on %s', 'post date', 'Quest' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		$byline = sprintf(
-			_x( 'by %s', 'post author', 'trivoo-free' ),
+			_x( 'by %s', 'post author', 'Quest' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -57,13 +57,13 @@ if ( ! function_exists( 'trivoo_free_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'trivoo_post_read_more' ) ) :
+if ( ! function_exists( 'quest_post_read_more' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function trivoo_post_read_more() {
+	function quest_post_read_more() {
 
-		echo ' <div class="read-more"><a href="'. get_permalink( get_the_ID() ) . '">'.__( 'Read More', 'trivoo-framework' ).' <i class="fa fa-angle-double-right "></i></a></div>';
+		echo ' <div class="read-more"><a href="'. get_permalink( get_the_ID() ) . '">'.__( 'Read More', 'Quest' ).' <i class="fa fa-angle-double-right "></i></a></div>';
 
 	}
 endif;
@@ -81,45 +81,45 @@ if ( ! function_exists( 'the_archive_title' ) ) :
 	 */
 	function the_archive_title( $before = '', $after = '' ) {
 		if ( is_category() ) {
-			$title = sprintf( __( 'Category: %s', 'trivoo-free' ), single_cat_title( '', false ) );
+			$title = sprintf( __( 'Category: %s', 'Quest' ), single_cat_title( '', false ) );
 		} elseif ( is_tag() ) {
-			$title = sprintf( __( 'Tag: %s', 'trivoo-free' ), single_tag_title( '', false ) );
+			$title = sprintf( __( 'Tag: %s', 'Quest' ), single_tag_title( '', false ) );
 		} elseif ( is_author() ) {
-			$title = sprintf( __( 'Author: %s', 'trivoo-free' ), '<span class="vcard">' . get_the_author() . '</span>' );
+			$title = sprintf( __( 'Author: %s', 'Quest' ), '<span class="vcard">' . get_the_author() . '</span>' );
 		} elseif ( is_year() ) {
-			$title = sprintf( __( 'Year: %s', 'trivoo-free' ), get_the_date( _x( 'Y', 'yearly archives date format', 'trivoo-free' ) ) );
+			$title = sprintf( __( 'Year: %s', 'Quest' ), get_the_date( _x( 'Y', 'yearly archives date format', 'Quest' ) ) );
 		} elseif ( is_month() ) {
-			$title = sprintf( __( 'Month: %s', 'trivoo-free' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'trivoo-free' ) ) );
+			$title = sprintf( __( 'Month: %s', 'Quest' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'Quest' ) ) );
 		} elseif ( is_day() ) {
-			$title = sprintf( __( 'Day: %s', 'trivoo-free' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'trivoo-free' ) ) );
+			$title = sprintf( __( 'Day: %s', 'Quest' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'Quest' ) ) );
 		} elseif ( is_tax( 'post_format' ) ) {
 			if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-				$title = _x( 'Asides', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Asides', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-				$title = _x( 'Galleries', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Galleries', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-				$title = _x( 'Images', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Images', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-				$title = _x( 'Videos', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Videos', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-				$title = _x( 'Quotes', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Quotes', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-				$title = _x( 'Links', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Links', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-				$title = _x( 'Statuses', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Statuses', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-				$title = _x( 'Audio', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Audio', 'post format archive title', 'Quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-				$title = _x( 'Chats', 'post format archive title', 'trivoo-free' );
+				$title = _x( 'Chats', 'post format archive title', 'Quest' );
 			}
 		} elseif ( is_post_type_archive() ) {
-			$title = sprintf( __( 'Archives: %s', 'trivoo-free' ), post_type_archive_title( '', false ) );
+			$title = sprintf( __( 'Archives: %s', 'Quest' ), post_type_archive_title( '', false ) );
 		} elseif ( is_tax() ) {
 			$tax = get_taxonomy( get_queried_object()->taxonomy );
 			/* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
-			$title = sprintf( __( '%1$s: %2$s', 'trivoo-free' ), $tax->labels->singular_name, single_term_title( '', false ) );
+			$title = sprintf( __( '%1$s: %2$s', 'Quest' ), $tax->labels->singular_name, single_term_title( '', false ) );
 		} else {
-			$title = __( 'Archives', 'trivoo-free' );
+			$title = __( 'Archives', 'Quest' );
 		}
 
 		/**
@@ -167,8 +167,8 @@ endif;
  *
  * @return bool
  */
-function trivoo_free_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'trivoo_free_categories' ) ) ) {
+function quest_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'quest_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 				'fields'     => 'ids',
@@ -181,41 +181,41 @@ function trivoo_free_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'trivoo_free_categories', $all_the_cool_cats );
+		set_transient( 'quest_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so trivoo_free_categorized_blog should return true.
+		// This blog has more than 1 category so quest_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so trivoo_free_categorized_blog should return false.
+		// This blog has only 1 category so quest_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in trivoo_free_categorized_blog.
+ * Flush out the transients used in quest_categorized_blog.
  */
-function trivoo_free_category_transient_flusher() {
+function quest_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'trivoo_free_categories' );
+	delete_transient( 'quest_categories' );
 }
-add_action( 'edit_category', 'trivoo_free_category_transient_flusher' );
-add_action( 'save_post',     'trivoo_free_category_transient_flusher' );
+add_action( 'edit_category', 'quest_category_transient_flusher' );
+add_action( 'save_post',     'quest_category_transient_flusher' );
 
 
-if ( ! function_exists( 'trivoo_post_taxonomy' ) ) :
+if ( ! function_exists( 'quest_post_taxonomy' ) ) :
 	/**
-	 * Shim for `trivoo_post_taxonomy()`.
+	 * Shim for `quest_post_taxonomy()`.
 	 *
 	 * Display category, tag, or term description.
 	 */
-	function trivoo_post_taxonomy( $view ) {
-		$show_categories = trivoo_get_mod( 'layout_'.$view.'_meta-cats' );
-		$show_tags = trivoo_get_mod( 'layout_'.$view.'_meta-tags' );
+	function quest_post_taxonomy( $view ) {
+		$show_categories = quest_get_mod( 'layout_'.$view.'_meta-cats' );
+		$show_tags = quest_get_mod( 'layout_'.$view.'_meta-tags' );
 		$category_list   = get_the_category_list();
 		$tag_list        = get_the_tag_list( '<ul class="post-tags"><li>', "</li>\n<li>", '</li></ul>' ); // Replicates category output
 		$taxonomy_output = '';
@@ -240,35 +240,35 @@ if ( ! function_exists( 'trivoo_post_taxonomy' ) ) :
 endif;
 
 
-if ( ! function_exists( 'trivoo_post_single_navigation' ) ) :
+if ( ! function_exists( 'quest_post_single_navigation' ) ) :
 	/**
 	 * Shim for `the_archive_description()`.
 	 *
 	 * Display category, tag, or term description.
 	 */
-	function trivoo_post_single_navigation() {
+	function quest_post_single_navigation() {
 		global $post;
 		?>
 	    <div class="pagination post-pagination row">
-	        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'trivoo-framework' ).'</div> <h4>%title</h4>' ); ?></div>
-	        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'trivoo-framework' ).'</div> <h4>%title</h4>' ); ?></div>
+	        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'Quest' ).'</div> <h4>%title</h4>' ); ?></div>
+	        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'Quest' ).'</div> <h4>%title</h4>' ); ?></div>
 	    </div>
     <?php
 	}
 endif;
 
-if ( ! function_exists( 'trivoo_post_author_info' ) ) :
+if ( ! function_exists( 'quest_post_author_info' ) ) :
 	/**
-	 * Shim for `trivoo_post_author_info()`.
+	 * Shim for `quest_post_author_info()`.
 	 *
 	 * Display category, tag, or term description.
 	 */
-	function trivoo_post_author_info() {
+	function quest_post_author_info() {
 		global $post;
 		$auth_info = get_the_author_meta( 'description' );
 		?>
         <div id="about-author" class="clearfix author">
-            <h2><?php _e( 'by ', 'trivoo-framework' ) ?><?php the_author_posts_link(); ?></h2>
+            <h2><?php _e( 'by ', 'Quest' ) ?><?php the_author_posts_link(); ?></h2>
             <div class="avatar">
                  <?php  echo get_avatar( get_the_author_meta( 'ID' ), 70 );    ?>
             </div>
@@ -281,12 +281,12 @@ if ( ! function_exists( 'trivoo_post_author_info' ) ) :
 endif;
 
 
-if ( !function_exists( 'trivoo_try_sidebar' ) ) :
+if ( !function_exists( 'quest_try_sidebar' ) ) :
 	/**
 	 * Displays sidebar if the @position matches the @view sidebar position
 	 */
-	function trivoo_try_sidebar( $view , $position ) {
-		$pos = trivoo_get_mod( 'layout_'.$view.'_sidebar' );
+	function quest_try_sidebar( $view , $position ) {
+		$pos = quest_get_mod( 'layout_'.$view.'_sidebar' );
 		if ( $pos === $position ) {
 			get_sidebar();
 		}
@@ -295,13 +295,13 @@ if ( !function_exists( 'trivoo_try_sidebar' ) ) :
 endif;
 
 
-if ( !function_exists( 'trivoo_main_cls' ) ) :
+if ( !function_exists( 'quest_main_cls' ) ) :
 	/**
 	 * Prints the appropriate Bootstrap class for the main content area
 	 */
-	function trivoo_main_cls() {
-		$view = trivoo_get_view();
-		$pos = trivoo_get_mod( 'layout_'.$view.'_sidebar' );
+	function quest_main_cls() {
+		$view = quest_get_view();
+		$pos = quest_get_mod( 'layout_'.$view.'_sidebar' );
 		if ( $pos === 'none' ) {
 			echo 'col-md-12';
 		} else {
@@ -312,21 +312,21 @@ if ( !function_exists( 'trivoo_main_cls' ) ) :
 endif;
 
 
-if ( !function_exists( 'trivoo_title_bar' ) ) :
+if ( !function_exists( 'quest_title_bar' ) ) :
 	/**
 	 * Prints the Title Bar Container
 	 */
-	function trivoo_title_bar( $view ) {
-		$title_bar = trivoo_get_mod( 'layout_'.$view.'_title-bar' );
+	function quest_title_bar( $view ) {
+		$title_bar = quest_get_mod( 'layout_'.$view.'_title-bar' );
 		if ( $title_bar ) : ?>
-		<div class="trivoo-row" id="title-container">
+		<div class="quest-row" id="title-container">
 			<div class="container title-container">
 				<div class="row">
 					<div class="col-md-6">
-						<h3><?php trivoo_page_title(); ?></h3>
+						<h3><?php quest_page_title(); ?></h3>
 					</div>
 					<div class="col-md-6">
-						<?php trivoo_breadcrumb();  ?>
+						<?php quest_breadcrumb();  ?>
 					</div>
 				</div>
 			</div>
@@ -338,13 +338,13 @@ if ( !function_exists( 'trivoo_title_bar' ) ) :
 endif;
 
 
-if ( !function_exists( 'trivoo_page_title' ) ) :
+if ( !function_exists( 'quest_page_title' ) ) :
 	/**
 	 * Prints the Page Title inside the Title Container
 	 */
-	function trivoo_page_title() {
+	function quest_page_title() {
 		if ( is_search() ) {
-			echo __( 'Search results for: ', 'trivoo-framework' ) . get_search_query();
+			echo __( 'Search results for: ', 'Quest' ) . get_search_query();
 		} else if ( is_archive() ) {
 				single_cat_title();
 			} else if ( is_home() ) {
@@ -357,11 +357,11 @@ if ( !function_exists( 'trivoo_page_title' ) ) :
 endif;
 
 
-if ( !function_exists( 'trivoo_comments' ) ) :
+if ( !function_exists( 'quest_comments' ) ) :
 	/**
 	 * Prints the Comments for a page or post
 	 */
-	function trivoo_comments( $comment, $args, $depth ) {
+	function quest_comments( $comment, $args, $depth ) {
 
 		$GLOBALS['comment'] = $comment;
 
@@ -370,7 +370,7 @@ if ( !function_exists( 'trivoo_comments' ) ) :
 	        <li class="pingback" id="comment-<?php comment_ID() ?>">
 	            <article <?php comment_class( 'clearfix' ) ?>>
 	                <div class="comment-meta">
-	                    <?php _e( 'Pingback:', 'trivoo-framework' ) ?>
+	                    <?php _e( 'Pingback:', 'Quest' ) ?>
 	                    <?php edit_comment_link() ?>
 	                </div>
 	                <div class="comment-content">
@@ -395,14 +395,14 @@ if ( !function_exists( 'trivoo_comments' ) ) :
 	                            <i class="fa fa-user"></i>
 	                            <a class="comment-author" href="<?php echo $author_url; ?>"><?php comment_author(); ?></a>
 	                    <?php endif; ?>
-	                    <span class="comment-date post-date"><i class="fa fa-clock-o"></i><?php comment_date(); ?> <?php _e( 'at', 'trivoo' ) ?> <?php comment_time(); ?></span>
+	                    <span class="comment-date post-date"><i class="fa fa-clock-o"></i><?php comment_date(); ?> <?php _e( 'at', 'quest' ) ?> <?php comment_time(); ?></span>
 	                    <span class="comment-reply"> <i class="fa fa-reply"></i>
 	                        <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 	                    </span>
 	                </div>
 	                <div class="comment-content">
 	                    <?php if ( $comment->comment_approved == '0' ): ?>
-	                        <p><?php _e( 'Your comment is awaiting moderation', 'trivoo-framework' ) ?></p>
+	                        <p><?php _e( 'Your comment is awaiting moderation', 'Quest' ) ?></p>
 	                    <?php endif; ?>
 	                    <?php comment_text(); ?>
 	                </div>
@@ -412,22 +412,22 @@ if ( !function_exists( 'trivoo_comments' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'trivoo_custom_comment_fields' ) ) :
+if ( !function_exists( 'quest_custom_comment_fields' ) ) :
 	/**
 	 * Adds the Aria Required attribute for required fields
 	 */
-	function trivoo_custom_comment_fields() {
+	function quest_custom_comment_fields() {
 		$commenter = wp_get_current_commenter();
 		$req = get_option( 'require_name_email' );
 		$aria_req = ( $req ? " aria-required='true'" : ' ' );
 	}
 endif;
 
-add_filter( 'comment_form_default_fields', 'trivoo_custom_comment_fields' );
+add_filter( 'comment_form_default_fields', 'quest_custom_comment_fields' );
 
 
 
-if ( !function_exists( 'trivoo_commentfields_rowtag' ) ) :
+if ( !function_exists( 'quest_commentfields_rowtag' ) ) :
 	/**
 	 * Adds the Proper opening markup for comment filed
 	 */
@@ -436,11 +436,11 @@ if ( !function_exists( 'trivoo_commentfields_rowtag' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'trivoo_commentfields_rowtag_end' ) ) :
+if ( !function_exists( 'quest_commentfields_rowtag_end' ) ) :
 	/**
 	 * Adds the Proper closing markup for comment filed
 	 */
-	function trivoo_commentfields_rowtag_end( $comment_id ) {
+	function quest_commentfields_rowtag_end( $comment_id ) {
 		echo '</div>';
 	}
 endif;
@@ -448,11 +448,11 @@ endif;
 add_action( 'comment_form_before_fields', 'commentfields_rowtag', 10, 1 );
 add_action( 'comment_form_after_fields', 'commentfields_rowtag_end', 10, 1 );
 
-if ( !function_exists( 'trivoo_pagination' ) ) :
+if ( !function_exists( 'quest_pagination' ) ) :
 	/**
 	 * Prints pagination HTML required by the theme
 	 */
-	function trivoo_pagination() {
+	function quest_pagination() {
 	    global $wp_query;
 	    $big = 999999999; // need an unlikely integer
 	    $pages = paginate_links( array(
@@ -476,18 +476,18 @@ if ( !function_exists( 'trivoo_pagination' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'trivoo_breadcrumb' ) ) :
+if ( !function_exists( 'quest_breadcrumb' ) ) :
 	/**
 	 * Prints breadcrumb HTML required by the theme
 	 */
-	function trivoo_breadcrumb() {
+	function quest_breadcrumb() {
 		global $post;
 		echo '<ul class="breadcrumbs">';
 
 		if ( !is_front_page() ) {
 			echo '<li><a href="';
 			echo home_url();
-			echo '">' . __( 'Home', 'trivoo-framework' );
+			echo '">' . __( 'Home', 'Quest' );
 			echo "</a></li>";
 		}
 
@@ -513,10 +513,10 @@ if ( !function_exists( 'trivoo_breadcrumb' ) ) :
 			echo '<li>' . "Tag: " . single_tag_title( '', FALSE ) . '</li>';
 		}
 		if ( is_404() ) {
-			echo '<li>' . __( "404 - Page not Found", 'trivoo-framework' ) . '</li>';
+			echo '<li>' . __( "404 - Page not Found", 'Quest' ) . '</li>';
 		}
 		if ( is_search() ) {
-			echo '<li>' . __( "Search", 'trivoo-framework' ) . '</li>';
+			echo '<li>' . __( "Search", 'Quest' ) . '</li>';
 		}
 		if ( is_year() ) {
 			echo '<li>' . get_the_time( 'Y' ) . '</li>';
@@ -526,14 +526,14 @@ if ( !function_exists( 'trivoo_breadcrumb' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'trivoo_get_view' ) ):
+if ( !function_exists( 'quest_get_view' ) ):
 
 	/**
 	 * Determine the current view.
 	 *
 	 * @return string    The string representing the current view.
 	 */
-	function trivoo_get_view() {
+	function quest_get_view() {
 
 		// Post types
 		$post_types = get_post_types( array( 'public' => true, '_builtin' => false ) );

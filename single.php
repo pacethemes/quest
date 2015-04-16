@@ -2,22 +2,22 @@
 /**
  * The template for displaying all single posts.
  *
- * @package trivoo-free
+ * @package Quest
  */
 
 get_header(); 
-$view = trivoo_get_view();
+$view = quest_get_view();
 ?>
 
-<?php trivoo_title_bar( $view ); ?>
+<?php quest_title_bar( $view ); ?>
 
-<div class="trivoo-row site-content" id="content">
+<div class="quest-row site-content" id="content">
     <div class="container">
 		<div class="row">
 			
-			<?php trivoo_try_sidebar( $view, 'left' ); ?>
+			<?php quest_try_sidebar( $view, 'left' ); ?>
 
-			<div id="primary" class="content-area single <?php trivoo_main_cls(); ?>">
+			<div id="primary" class="content-area single <?php quest_main_cls(); ?>">
 				<main id="main" class="site-main" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -36,7 +36,7 @@ $view = trivoo_get_view();
 				</main><!-- #main -->
 			</div><!-- #primary -->
 			
-			<?php trivoo_try_sidebar( $view, 'right' ); ?>
+			<?php quest_try_sidebar( $view, 'right' ); ?>
 
 		</div><!-- .row -->
 	</div><!-- .container -->

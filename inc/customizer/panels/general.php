@@ -3,9 +3,9 @@
 /**
  * Contains methods for adding General Customization Panel and all settings under it
  *
- * @since Trivoo 1.0
+ * @since Quest 1.0
  */
-class Trivoo_Customize_General {
+class Quest_Customize_General {
 
   public static function register( $wp_customize ) {
 
@@ -44,7 +44,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -55,7 +55,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hide Title', 'Trivoo' ),
+          'label'          => __( 'Hide Title', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox',
@@ -69,7 +69,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'absint'
       )
@@ -80,7 +80,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hide Tagline', 'Trivoo' ),
+          'label'          => __( 'Hide Tagline', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox',
@@ -102,7 +102,7 @@ class Trivoo_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Logo', 'Trivoo' ),
+        'title' => __( 'Logo', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -115,7 +115,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -126,7 +126,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Logo', 'Trivoo' ),
+          'label'          => __( 'Logo', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -139,7 +139,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -150,8 +150,8 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Favicon', 'Trivoo' ),
-          'description'    => __( '<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels', 'Trivoo' ),
+          'label'          => __( 'Favicon', 'Quest' ),
+          'description'    => __( '<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -167,7 +167,7 @@ class Trivoo_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Social Profiles', 'Trivoo' ),
+        'title' => __( 'Social Profiles', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -179,7 +179,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -190,7 +190,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Facebook URL', 'Trivoo' ),
+          'label'          => __( 'Facebook URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -203,7 +203,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -214,7 +214,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Twitter URL', 'Trivoo' ),
+          'label'          => __( 'Twitter URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -226,7 +226,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -237,7 +237,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Google+ URL', 'Trivoo' ),
+          'label'          => __( 'Google+ URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -249,7 +249,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -260,7 +260,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'LinkedIn URL', 'Trivoo' ),
+          'label'          => __( 'LinkedIn URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -272,7 +272,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -283,7 +283,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Youtube URL', 'Trivoo' ),
+          'label'          => __( 'Youtube URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -296,7 +296,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -307,7 +307,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Vimeo URL', 'Trivoo' ),
+          'label'          => __( 'Vimeo URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -319,7 +319,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -330,7 +330,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Instagram URL', 'Trivoo' ),
+          'label'          => __( 'Instagram URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -342,7 +342,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -353,7 +353,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Flickr URL', 'Trivoo' ),
+          'label'          => __( 'Flickr URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -365,7 +365,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -376,7 +376,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Pinterest URL', 'Trivoo' ),
+          'label'          => __( 'Pinterest URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -388,7 +388,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -399,7 +399,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Dribbble URL', 'Trivoo' ),
+          'label'          => __( 'Dribbble URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -412,7 +412,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -423,7 +423,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Digg URL', 'Trivoo' ),
+          'label'          => __( 'Digg URL', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -439,7 +439,7 @@ class Trivoo_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Sticky Posts', 'Trivoo' ),
+        'title' => __( 'Sticky Posts', 'Quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -451,7 +451,7 @@ class Trivoo_Customize_General {
     $wp_customize->add_setting(
       $setting_id,
       array(
-        'default'           => trivoo_get_default( $setting_id ),
+        'default'           => quest_get_default( $setting_id ),
         'type'              => 'theme_mod',
         'sanitize_callback' => 'esc_url_raw'
       )
@@ -462,7 +462,7 @@ class Trivoo_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sticky Label', 'Trivoo' ),
+          'label'          => __( 'Sticky Label', 'Quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
