@@ -109,7 +109,7 @@ if ( !function_exists( 'quest_widgets_init' ) ):
 		}
 
 		//Register Footer WIdgets
-		register_sidebar( array( 'name' => __( 'Footer Widget', 'Quest' ), 'id' => __( 'footer-widget', 'Quest' ), 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
+		register_sidebar( array( 'name' => __( 'Footer Widget', 'Quest' ), 'id' => 'footer-widget', 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
 	}
 
 endif;
@@ -130,7 +130,6 @@ if ( !function_exists( 'quest_scripts' ) ):
 		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
 		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
 		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/example4/colorbox.css' );
-		wp_enqueue_style( 'quest-main', get_template_directory_uri() . '/assets/css/quest.css' );
 		wp_enqueue_style( 'Quest-style', get_stylesheet_uri() );
 
 		// Enqueue required scripts

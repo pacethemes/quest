@@ -248,7 +248,7 @@ if ( ! function_exists( 'quest_post_single_navigation' ) ) :
 	 */
 	function quest_post_single_navigation() {
 		global $post;
-		?>
+?>
 	    <div class="pagination post-pagination row">
 	        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'Quest' ).'</div> <h4>%title</h4>' ); ?></div>
 	        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'Quest' ).'</div> <h4>%title</h4>' ); ?></div>
@@ -266,7 +266,7 @@ if ( ! function_exists( 'quest_post_author_info' ) ) :
 	function quest_post_author_info() {
 		global $post;
 		$auth_info = get_the_author_meta( 'description' );
-		?>
+?>
         <div id="about-author" class="clearfix author">
             <h2><?php _e( 'by ', 'Quest' ) ?><?php the_author_posts_link(); ?></h2>
             <div class="avatar">
@@ -388,7 +388,7 @@ if ( !function_exists( 'quest_comments' ) ) :
 	                </div>
 	                <div class="comment-meta">
 	                    <?php $author_url = get_comment_author_url();
-						if ( empty( $author_url ) || 'http://' == $author_url ): ?>
+		if ( empty( $author_url ) || 'http://' == $author_url ): ?>
 	                                <i class="fa fa-user"></i>
 	                                <span class="comment-author"><?php comment_author(); ?></span>
 	                    <?php else: ?>
@@ -453,26 +453,26 @@ if ( !function_exists( 'quest_pagination' ) ) :
 	 * Prints pagination HTML required by the theme
 	 */
 	function quest_pagination() {
-	    global $wp_query;
-	    $big = 999999999; // need an unlikely integer
-	    $pages = paginate_links( array(
-	            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-	            'format' => '?paged=%#%',
-	            'current' => max( 1, get_query_var('paged') ),
-	            'total' => $wp_query->max_num_pages,
-	            'type'  => 'array',
-	            'prev_next'   => true,
+		global $wp_query;
+		$big = 999999999; // need an unlikely integer
+		$pages = paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, get_query_var( 'paged' ) ),
+				'total' => $wp_query->max_num_pages,
+				'type'  => 'array',
+				'prev_next'   => true,
 				'prev_text'    => '<i class="fa fa-angle-double-left"></i>',
 				'next_text'    => '<i class="fa fa-angle-double-right"></i>',
-	        ) );
-	        if( is_array( $pages ) ) {
-	            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-	            echo '<div class="center"><ul class="pagination">';
-	            foreach ( $pages as $page ) {
-	                    echo "<li>$page</li>";
-	            }
-	           echo '</ul></div>';
-	        }
+			) );
+		if ( is_array( $pages ) ) {
+			$paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
+			echo '<div class="center"><ul class="pagination">';
+			foreach ( $pages as $page ) {
+				echo "<li>$page</li>";
+			}
+			echo '</ul></div>';
+		}
 	}
 endif;
 
@@ -523,6 +523,42 @@ if ( !function_exists( 'quest_breadcrumb' ) ) :
 		}
 
 		echo "</ul>";
+	}
+endif;
+
+if ( !function_exists( 'quest_footer_social_icons' ) ) :
+	/**
+	 * Prints Footer Social Icons HTML markup
+	 */
+	function quest_footer_social_icons() {
+
+		if( ! ( quest_get_mod( 'layout_footer_social' ) ) ){
+			return;
+		}
+
+		$social_profiles = array (
+			'social_facebook',
+			'social_twitter',
+			'social_google-plus',
+			'social_linkedin',
+			'social_youtube',
+			'social_vimeo-square',
+			'social_instagram',
+			'social_flickr',
+			'social_pinterest',
+			'social_dribbble',
+			'social_digg',
+		);
+		$theme_mods = quest_get_mods();
+		foreach ( $social_profiles as $profile ) :
+			if ( array_key_exists( $profile, $theme_mods ) && esc_url( $theme_mods[ $profile ] ) !== '' ) :
+				$title = ucwords( str_replace( 'social_', '', $profile ) );
+		?>
+						<li>
+							<a data-toggle="tooltip" title="<?php echo $title; ?>" target="_blank" data-original-title="<?php echo $title; ?>" class="social-icon fa fa-<?php echo strtolower( $title ) ?>" href="<?php echo esc_url( $theme_mods[ $profile ] )  ?>"></a>
+						</li>
+					<?php endif;
+		endforeach;
 	}
 endif;
 

@@ -18,3 +18,12 @@ Getting Started
 ---------------
 
 If you want to keep it simple, head over to http://underscores.me and generate your `_s` based theme from there. You just input the name of the theme you want to create, click the "Generate" button, and you get your ready-to-awesomize starter theme.
+
+
+Credits
+------------
+
+All images used in the theme and the theme demo are licensed under CC0. Image sources listed below
+* http://www.gratisography.com/
+* https://unsplash.com/
+* http://publicdomainarchive.com/

@@ -22,38 +22,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 copyright-text">
-					<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'Quest' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'Quest' ), 'WordPress' ); ?></a>
+					<a href="<?php echo esc_url( 'http://wordpress.org/' ); ?>"><?php printf( __( 'Proudly powered by %s', 'Quest' ), 'WordPress' ); ?></a>
 					<span class="sep"> | </span>
-					<?php printf( __( 'Theme: %1$s by %2$s.', 'Quest' ), 'Quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">Quest.net</a>' ); ?>
+					<?php printf( __( 'Theme: %1$s by %2$s.', 'Quest' ), 'Quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">'. wp_get_theme()->get( 'Author' ) .'</a>' ); ?>
 				</div>
 
 				<div class="col-md-6 social-icon-container clearfix">
 					<ul>
-						<?php
-							$social_profiles = array (
-								'social_facebook',
-								'social_twitter',
-								'social_google-plus',
-								'social_linkedin',
-								'social_youtube',
-								'social_vimeo-square',
-								'social_instagram',
-								'social_flickr',
-								'social_pinterest',
-								'social_dribbble',
-								'social_digg',
-							);
-							$theme_mods = quest_get_mods();
-							foreach ( $social_profiles as $profile ) :
-								if ( array_key_exists( $profile, $theme_mods ) && esc_url( $theme_mods[ $profile ] ) !== '' ) :
-									$title = ucwords( str_replace( 'social_', '', $profile ) );
-							?>
-									<li>
-										<a data-toggle="tooltip" title="<?php echo $title; ?>" target="_blank" data-original-title="<?php echo $title; ?>" class="social-icon fa fa-<?php echo strtolower( $title ) ?>" href="<?php echo esc_url( $theme_mods[ $profile ] )  ?>"></a>
-									</li>
-								<?php endif;
-							endforeach;
-							?>
+						<?php quest_footer_social_icons(); ?>
 					</ul>
 				</div>
 
