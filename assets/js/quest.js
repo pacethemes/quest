@@ -1,17 +1,9 @@
 var mob = false;
 var menuOpen = false;
 var menuTimeout;
-var quest = function($) {
+var Quest = function($) {
 
     return {
-
-        // initCarousel: function() {
-        //     $('.carousel').carousel();
-        // },
-
-        // initFitVids: function() {
-        //     $(".textwidget, iframe, .video:not(.no-fitvids)").fitVids();
-        // },
 
         initFormPlaceHolder: function() {
             if (!("placeholder" in document.createElement("input"))) {
@@ -41,61 +33,6 @@ var quest = function($) {
                 });
             }
         },
-
-        // initFlexSlider: function() {
-        //     $('#related-posts').flexslider({
-        //         animation: 'slide',
-        //         itemWidth: 210,
-        //         itemMargin: 5,
-        //         minItems: 1,
-        //         maxItems: 5
-        //     });
-
-        //     $('.flexslider:not(.ignore)').flexslider({
-        //         animation: "fade",
-        //         smoothHeight: true,
-        //         selector: ".slides > li"
-        //     });
-        // },
-
-        initBackToTop: function() {
-            $('#back-to-top a').click(function() {
-                $('body,html').animate({
-                    scrollTop: 0
-                }, 800);
-                return false;
-            });
-        },
-
-        // initAnimations: function() {
-        //     quest.eventsForTransitions('fromTop');
-        //     quest.eventsForTransitions('fromBottom');
-        //     quest.eventsForTransitions('fromLeft');
-        //     quest.eventsForTransitions('fromRight');
-        //     quest.eventsForTransitions('fadeIn');
-        //     quest.eventsForTransitions('scaleUp', $('.avatar img'));
-        // },
-
-        // initIsotope: function(selector) {
-        //     if (typeof selector === 'undefined') {
-        //         $('.portfolio-grid-alt').isotope({
-        //             itemSelector: '.portfolio-grid-alt-item'
-        //         });
-        //     } else {
-        //         $('.portfolio-grid-alt').isotope({
-        //             filter: '.portfolio-grid-alt-item.' + selector
-        //         });
-        //     }
-        // },
-
-        // initPortfolioFilter: function() {
-        //     $('#portfolio_filter a').click(function() {
-        //         $('#portfolio_filter a').removeClass('active');
-        //         var selector = $(this).addClass('active').attr('data-filter');
-        //         quest.initIsotope(selector);
-        //         return false;
-        //     });
-        // },
 
         initColorbox: function() {
             $('a.gallery').colorbox({
@@ -144,6 +81,30 @@ var quest = function($) {
             }
 
         },
+
+        showBackToTop: function(){
+            var offset = 300,
+            //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+            offset_opacity = 1200,
+            //grab the "back to top" link
+            $back_to_top = $('.cd-top'),
+            $window = $(window);
+            ( $window.scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+            if( $window.scrollTop() > offset_opacity ) { 
+                $back_to_top.addClass('cd-fade-out');
+            }
+        },
+
+        initBackToTop: function(){
+            //smooth scroll to top
+            $('.cd-top').on('click', function(event){
+                event.preventDefault();
+                $('body,html').animate({
+                    scrollTop: 0 ,
+                    }, 700
+                );
+            });
+        }
 
     };
 
@@ -216,34 +177,17 @@ var PageBuilder = (function($) {
 })(jQuery);
 
 
-jQuery(window).load(function() {
-    // quest.setHeaderPosition();
-    // quest.setMenuHeight();
-    // quest.initAnimations();
-    // quest.resizeTabs(null, true);
-    // quest.initIsotope();
-    // quest.initPortfolioFilter();
-}).resize(function() {
-    // quest.resizeTabs();
-    // quest.setHeaderPosition();
-    // quest.displayMobileMenu();
-    // quest.initIsotope();
-}).scroll(function() {
-    // quest.initStickyHeader();
+jQuery(window).scroll(function() {
+    Quest.showBackToTop();
 });
 
 jQuery(document).ready(function() {
     PageBuilder.initEvents();
     new WOW().init();
-    quest.initImageEffects();
-    // quest.initCarousel();
-    // quest.initFitVids();
-    quest.initColorbox();
-    quest.initTooltip();
-    // quest.initFlexSlider();
-    quest.initBackToTop();
-    quest.initMasonry();
-    // quest.setHeaderPosition();
-    quest.initFormPlaceHolder();
-    // quest.initCustomJs();
+    Quest.initImageEffects();
+    Quest.initColorbox();
+    Quest.initTooltip();
+    Quest.initBackToTop();
+    Quest.initMasonry();
+    Quest.initFormPlaceHolder();
 });

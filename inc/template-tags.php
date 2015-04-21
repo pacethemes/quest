@@ -431,7 +431,7 @@ if ( !function_exists( 'quest_commentfields_rowtag' ) ) :
 	/**
 	 * Adds the Proper opening markup for comment filed
 	 */
-	function commentfields_rowtag( $comment_id ) {
+	function quest_commentfields_rowtag( $comment_id ) {
 		echo '<div class="row">';
 	}
 endif;
@@ -445,8 +445,8 @@ if ( !function_exists( 'quest_commentfields_rowtag_end' ) ) :
 	}
 endif;
 
-add_action( 'comment_form_before_fields', 'commentfields_rowtag', 10, 1 );
-add_action( 'comment_form_after_fields', 'commentfields_rowtag_end', 10, 1 );
+add_action( 'comment_form_before_fields', 'quest_commentfields_rowtag', 10, 1 );
+add_action( 'comment_form_after_fields', 'quest_commentfields_rowtag_end', 10, 1 );
 
 if ( !function_exists( 'quest_pagination' ) ) :
 	/**

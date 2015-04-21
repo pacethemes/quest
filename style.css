@@ -3,14 +3,14 @@ Theme Name: Quest
 Theme URI: http://pacethemes.com/quest
 Author: Pace Themes
 Author URI: http://pacethemes.com
-Description: Description
+Description: Your Quest for an awesome WordPress theme ends right here. Quest let's you create the website you need without having any coding knowledge. Quest offers a powerful click, drag and drop page builder to help you create amazing pages to showcase your content while offering a slick user interface therein increasing your user experience. Quest also includes powerful and flexible easy to understand and easy to use customization options to customize the entire layout of your site including background images, colors, typography and so on. Build your site now using Quest - blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't limit you when it comes to your creativity. Quest is built on the famous bootstrap framework which uses a mobile first approach, this will ensure your site works properly on all mobiles, tablets, laptops and desktops
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: Quest
-Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, sticky-post, theme-options, translation-ready
+Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
 
-This theme, like WordPress, is licensed under the GPL.
+Quest, like WordPress, is licensed under the GPL.
 Quest is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
 */
 /* Text meant only for screen readers. */
@@ -40,4 +40,13 @@ Quest is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, 
   width: auto;
   z-index: 100000;
   /* Above WP toolbar. */
+}
+.bypostauthor {
+  position: relative;
+}
+.sticky {
+  position: relative;
+}
+.gallery-caption {
+  position: relative;
 }

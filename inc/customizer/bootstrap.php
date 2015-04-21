@@ -193,7 +193,7 @@ if ( !class_exists( 'Quest_Customize' ) ):
     /* Theme/Text Colors */
     .entry-content blockquote,.action-icon.normal,.action, .pagination>.active>a, .pagination .current, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle { border-color: <?php
     echo $accent_color; ?> ; }
-    .button, input[type="submit"],#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle,.quest-gallery .quest-gallery-thumb .fa, .sticky-post-label { background-color: <?php
+    .button, input[type="submit"],#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle,.quest-gallery .quest-gallery-thumb .fa, .sticky-post-label,.cd-top  { background-color: <?php
     echo $accent_color; ?> ; }
     span a, p a,a,a.tag,.pagination a,.action-icon.normal, .pagination>li>a, .pagination>li>span { color: <?php
     echo $accent_color; ?> ; }
