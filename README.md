@@ -24,6 +24,7 @@ Credits
 ------------
 
 All images used in the theme and the theme demo are licensed under CC0. Image sources listed below
+
 * http://www.gratisography.com/
 * https://unsplash.com/
 * http://publicdomainarchive.com/

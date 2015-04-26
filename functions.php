@@ -135,6 +135,7 @@ if ( !function_exists( 'quest_scripts' ) ):
 		// Enqueue required scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
 		wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array( 'jquery', 'masonry' ) );
+		wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/assets/plugins/smoothscroll/SmoothScroll.js' );
 		wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.js' );
 		wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js' );

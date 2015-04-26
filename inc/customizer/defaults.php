@@ -31,7 +31,7 @@ $quest_defaults = array (
 	/* Blog (Posts Page) */
 	'layout_blog_sidebar' => 'right',
 	'layout_blog_style' => 'normal',
-	'layout_blog_title-bar' => 1,
+	'layout_blog_title-bar' => 0,
 	'layout_blog_meta' => '',
 	'layout_blog_meta-cats' => 1,
 	'layout_blog_meta-tags' => 1,

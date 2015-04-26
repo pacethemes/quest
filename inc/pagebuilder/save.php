@@ -317,7 +317,7 @@ class PT_PageBuilder_Save {
 	 * @return string
 	 */	
 	private function _getCssProperties( $section ) {
-		$css = array( 'bg_image' => 'background-image', 'bg_color' => 'background-color', 'text_color' => 'color', 'padding_top' => 'padding-top', 'padding_bottom' => 'padding-bottom',
+		$css = array( 'bg_image' => 'background-image', 'bg_attach' => 'background-attachment', 'bg_color' => 'background-color', 'text_color' => 'color', 'padding_top' => 'padding-top', 'padding_bottom' => 'padding-bottom',
 			'border_top_width' => 'border-top-width', 'border_bottom_width' => 'border-bottom-width', 'border_top_color' => 'border-top-color', 'border_bottom_color' => 'border-bottom-color', 
 			'height' => 'height', 'bg_pos_x' => 'background-position-x', 'bg_pos_y' => 'background-position-y' );
 

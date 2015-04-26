@@ -12,12 +12,13 @@ trPbApp.Modules = trPbApp.Modules || {};
             content: [],
             columns: 1,
             bg_image: '',
+            bg_attach: 'fixed',
             bg_color: '',
             text_color: '',
             padding_top: '30px',
             padding_bottom: '30px',
-            border_top_width: '1px',
-            border_bottom_width: '1px',
+            border_top_width: '0px',
+            border_bottom_width: '0px',
             border_top_color: '#e5e5e5',
             border_bottom_color: '#e5e5e5'
         }

@@ -19,6 +19,9 @@
     top: 0;
     left: 0;
 }
+.sl-slide-inner{
+    background-size: cover;
+}
 .sl-slide {
     z-index: 1;
 }

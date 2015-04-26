@@ -334,6 +334,19 @@ class PT_PageBuilder {
 						</div>
 
 						<div class="pt-pb-option">
+							<label for="bg_attach"><?php _e( 'Background Image Attachment', 'Quest' ); ?>: </label>
+
+							<div class="pt-pb-option-container">
+								<select name="bg_attach">
+									<option value="fixed" <%= bg_attach == 'fixed' ? 'selected' : void 0  %> ><?php _e( 'Fixed', 'Quest' ); ?></option>
+									<option value="scroll" <%= bg_attach == 'scroll' ? 'selected' : void 0  %> ><?php _e( 'Scroll', 'Quest' ); ?></option>
+								</select>
+
+								<p class="description"><?php _e( 'Scroll - The background scrolls along with the element. Fixed - The background is fixed with regard to the viewport', 'Quest' )?></p>
+							</div>
+						</div>
+
+						<div class="pt-pb-option">
 							<label for="bg_color"><?php _e( 'Background Color', 'Quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
