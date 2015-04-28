@@ -329,6 +329,13 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
+/**
+ * Woocommerce
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
+
 
 if ( !function_exists( 'quest_search_menu_icon' ) ):
 
