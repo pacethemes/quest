@@ -95,8 +95,8 @@ if ( ! function_exists( 'quest_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Font Variant', 'Quest' ),
-                    'description'    => __( 'Different variants of the font, provides control over font-weight and italics', 'Quest' ),
+                    'label'          => __( 'Font Variant', 'quest' ),
+                    'description'    => __( 'Different variants of the font, provides control over font-weight and italics', 'quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id,
                     'type'           => 'select',
@@ -127,7 +127,7 @@ if ( ! function_exists( 'quest_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Font Size (px)', 'Quest' ),
+                    'label'          => __( 'Font Size (px)', 'quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )
@@ -154,7 +154,7 @@ if ( ! function_exists( 'quest_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Line Height (em)', 'Quest' ),
+                    'label'          => __( 'Line Height (em)', 'quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )
@@ -181,14 +181,14 @@ if ( ! function_exists( 'quest_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Text Transform', 'Quest' ),
+                    'label'          => __( 'Text Transform', 'quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id,
                     'type'           => 'select',
                     'choices'        => array(
-                        'none' => __( 'None', 'Quest' ),
-                        'uppercase' => __( 'Uppercase', 'Quest' ),
-                        'lowercase' => __( 'Lowercase', 'Quest' ),
+                        'none' => __( 'None', 'quest' ),
+                        'uppercase' => __( 'Uppercase', 'quest' ),
+                        'lowercase' => __( 'Lowercase', 'quest' ),
                     )
                 )
             )
@@ -214,7 +214,7 @@ if ( ! function_exists( 'quest_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Letter Spacing (px)', 'Quest' ),
+                    'label'          => __( 'Letter Spacing (px)', 'quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )
@@ -241,7 +241,7 @@ if ( ! function_exists( 'quest_generate_font_control' ) ) :
                 $wp_customize,
                 $setting_id,
                 array(
-                    'label'          => __( 'Word Spacing (px)', 'Quest' ),
+                    'label'          => __( 'Word Spacing (px)', 'quest' ),
                     'section'        => $section_id,
                     'settings'       => $setting_id
                 )

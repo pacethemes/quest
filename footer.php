@@ -22,9 +22,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 copyright-text">
-					<a href="<?php echo esc_url( 'http://wordpress.org/' ); ?>"><?php printf( __( 'Proudly powered by %s', 'Quest' ), 'WordPress' ); ?></a>
+					<a href="<?php echo esc_url( 'http://wordpress.org/' ); ?>"><?php printf( __( 'Proudly powered by %s', 'quest' ), 'WordPress' ); ?></a>
 					<span class="sep"> | </span>
-					<?php printf( __( 'Theme: %1$s by %2$s.', 'Quest' ), 'Quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">'. wp_get_theme()->get( 'Author' ) .'</a>' ); ?>
+					<?php printf( __( 'Theme: %1$s by %2$s.', 'quest' ), 'quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">'. wp_get_theme()->get( 'Author' ) .'</a>' ); ?>
 				</div>
 
 				<div class="col-md-6 social-icon-container clearfix">

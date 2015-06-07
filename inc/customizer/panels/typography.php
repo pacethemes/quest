@@ -32,7 +32,7 @@ class Quest_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Quest' ),
+        'title' => __( 'Global', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -40,7 +40,7 @@ class Quest_Customize_Typography {
     );
 
     /* Global */
-    quest_generate_font_control ( $wp_customize, $section_id ,  __( 'Text', 'Quest' ), '', true ) ;
+    quest_generate_font_control ( $wp_customize, $section_id ,  __( 'Text', 'quest' ), '', true ) ;
 
 
     /******************
@@ -51,7 +51,7 @@ class Quest_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Text Headings', 'Quest' ),
+        'title' => __( 'Text Headings', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -59,22 +59,22 @@ class Quest_Customize_Typography {
     );
 
     /* H1 */
-    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H1', 'Quest' ), 'h1' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H1', 'quest' ), 'h1' ) ;
 
     /* H2 */
-    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H2', 'Quest' ), 'h2' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H2', 'quest' ), 'h2' ) ;
 
     /* H3 */
-    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H3', 'Quest' ), 'h3' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H3', 'quest' ), 'h3' ) ;
 
     /* H4 */
-    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H4', 'Quest' ), 'h4' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H4', 'quest' ), 'h4' ) ;
 
     /* H5 */
-    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H5', 'Quest' ), 'h5' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H5', 'quest' ), 'h5' ) ;
 
     /* H6 */
-    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H6', 'Quest' ), 'h6' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id,  __( 'H6', 'quest' ), 'h6' ) ;
 
 
     /******************
@@ -85,7 +85,7 @@ class Quest_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Main Menu', 'Quest' ),
+        'title' => __( 'Main Menu', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -93,11 +93,11 @@ class Quest_Customize_Typography {
     );
 
     /* Menu Items */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Menu Items', 'Quest' ), '', true, array( 'line_height' ) ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Menu Items', 'quest' ), '', true, array( 'line_height' ) ) ;
 
 
     /* Sub Menu Items */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Sub Menu Items', 'Quest' ), 'sub' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Sub Menu Items', 'quest' ), 'sub' ) ;
 
 
     /******************************
@@ -108,7 +108,7 @@ class Quest_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Site Title & Tagline', 'Quest' ),
+        'title' => __( 'Site Title & Tagline', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -116,10 +116,10 @@ class Quest_Customize_Typography {
     );
 
     /* Site Title */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Title', 'Quest' ), 'title' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Title', 'quest' ), 'title' ) ;
 
     /* Site Tagline */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Tagline', 'Quest' ), 'tagline' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Site Tagline', 'quest' ), 'tagline' ) ;
 
 
     /******************************
@@ -130,7 +130,7 @@ class Quest_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Sidebar', 'Quest' ),
+        'title' => __( 'Sidebar', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -138,10 +138,10 @@ class Quest_Customize_Typography {
     );
 
     /* Site Title */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'Quest' ), 'title' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'quest' ), 'title' ) ;
 
     /* Site Tagline */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'Quest' ), 'body' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'quest' ), 'body' ) ;
 
 
     /******************************
@@ -152,7 +152,7 @@ class Quest_Customize_Typography {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Quest' ),
+        'title' => __( 'Footer', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -160,13 +160,13 @@ class Quest_Customize_Typography {
     );
 
     /* Widget Title */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'Quest' ), 'title' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Title', 'quest' ), 'title' ) ;
 
     /* Widget Body */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'Quest' ), 'body' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Widget Body', 'quest' ), 'body' ) ;
 
     /* Secondary Footer */
-    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Footer Text', 'Quest' ), 'text' ) ;
+    quest_generate_font_control ( $wp_customize, $section_id  ,  __( 'Footer Text', 'quest' ), 'text' ) ;
 
 
   }

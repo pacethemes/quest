@@ -29,10 +29,10 @@ if ( !function_exists( 'quest_setup' ) ):
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
          * If you're building a theme based on Quest, use a find and replace
-         * to change 'Quest' to the name of your theme in all the template files
+         * to change 'quest' to the name of your theme in all the template files
         */
-		if ( !load_theme_textdomain( 'Quest', get_stylesheet_directory() . '/languages' ) ) {
-			load_theme_textdomain( 'Quest', get_template_directory() . '/languages' );
+		if ( !load_theme_textdomain( 'quest', get_stylesheet_directory() . '/languages' ) ) {
+			load_theme_textdomain( 'quest', get_template_directory() . '/languages' );
 		}
 
 		// Add default posts and comments RSS feed links to head.
@@ -56,7 +56,7 @@ if ( !function_exists( 'quest_setup' ) ):
 		add_image_size( 'gallery', 280, 280, true );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'Quest' ), ) );
+		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'quest' ), ) );
 
 		/*
          * Switch default core markup for search form, comment form, and comments
@@ -86,7 +86,7 @@ if ( !function_exists( 'quest_widgets_init' ) ):
 	function quest_widgets_init() {
 
 		//register Main sidebar widgets
-		register_sidebar( array( 'name' => __( 'Sidebar', 'Quest' ), 'id' => 'sidebar-1', 'description' => '', 'before_widget' => '<aside id="%1$s" class="widget %2$s sidebar-widget clearfix">', 'after_widget' => '</aside>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>', ) );
+		register_sidebar( array( 'name' => __( 'Sidebar', 'quest' ), 'id' => 'sidebar-1', 'description' => '', 'before_widget' => '<aside id="%1$s" class="widget %2$s sidebar-widget clearfix">', 'after_widget' => '</aside>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>', ) );
 
 		$cols = quest_get_mod( 'layout_footer_widgets' );
 
@@ -109,7 +109,7 @@ if ( !function_exists( 'quest_widgets_init' ) ):
 		}
 
 		//Register Footer WIdgets
-		register_sidebar( array( 'name' => __( 'Footer Widget', 'Quest' ), 'id' => 'footer-widget', 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
+		register_sidebar( array( 'name' => __( 'Footer Widget', 'quest' ), 'id' => 'footer-widget', 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
 	}
 
 endif;
@@ -165,6 +165,10 @@ if ( !function_exists( 'quest_admin_scripts' ) ):
 		// Enqueue required styles
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'admin-panel', get_template_directory_uri() . '/custom-editor-style.css' );
+
+		wp_enqueue_script( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/jquery.reveal.js' );
+		wp_enqueue_style( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/reveal.css' );
+
 		wp_enqueue_style( 'admin-panel-css', get_template_directory_uri() . '/assets/css/admin.css' );
 
 		// Enqueue required scripts
@@ -175,6 +179,22 @@ if ( !function_exists( 'quest_admin_scripts' ) ):
 endif;
 
 add_action( 'admin_enqueue_scripts', 'quest_admin_scripts' );
+
+if ( !function_exists( 'quest_blog_favicon' ) ):
+
+	/**
+	 * Hook into wp_head and add custom favicon
+	 */
+	function quest_blog_favicon() {
+		$favicon =  quest_get_mod( 'logo_favicon' ); 
+		if ( $favicon !== '' ): ?>
+			<link rel="shortcut icon" href="<?php echo esc_url( $favicon ); ?>" />
+		<?php endif;
+	}
+
+endif;
+
+add_action('wp_head', 'quest_blog_favicon');
 
 if ( !class_exists( 'Quest_Main_Menu' ) ):
 
@@ -247,7 +267,7 @@ if ( !function_exists( 'quest_wp_page_menu' ) ):
 
 		// Show Home in the menu
 		if ( !empty( $args['show_home'] ) ) {
-			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] ) $text = __( 'Home', 'Quest' );
+			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] ) $text = __( 'Home', 'quest' );
 			else $text = $args['show_home'];
 			$class = '';
 			if ( is_front_page() && !is_paged() ) $class = 'class="current_page_item"';
@@ -353,7 +373,7 @@ if ( !function_exists( 'quest_search_menu_icon' ) ):
                     <li>
                     <form class="search" action="' . get_home_url() . '" method="get">
                         <div class="arrow-up"></div>
-                        <input name="s" type="text" placeholder="' . __( 'Search', 'Quest' ) . '...">
+                        <input name="s" type="text" placeholder="' . __( 'Search', 'quest' ) . '...">
                     </form>
                     </li>
                     </ul>

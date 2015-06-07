@@ -14,9 +14,27 @@ Below are some of the core features of Quest Theme
 * Custom Logo and Favicon
 * 3 blog layouts, choose the one that suits you the best
 
+Page Builder
+------------
+
+The Page Builder will let you create custom full width pages, to start using the Page Builder, select the Template as "Page Builder" and you can start adding sections, columns and modules
+
 
 Credits
 ------------
+
+* Animate.css - https://daneden.github.io/animate.css/
+* Bootstrap - http://getbootstrap.com/
+* Chosen - http://harvesthq.github.io/chosen/
+* Colorbox - http://www.jacklmoore.com/colorbox/
+* Font Awesome - http://fortawesome.github.io/Font-Awesome/
+* FullscreenSlitSlider - https://github.com/codrops/SlitSlider
+* Modernizr - http://modernizr.com/
+* Reveal - http://zurb.com/playground/reveal-modal-plugin
+* SmartMenus - https://github.com/vadikom/smartmenus
+* SmoothScroll - https://gist.github.com/galambalazs/6477177
+* Wow - https://github.com/matthieua/WOW
+
 
 All images used in the theme and the theme demo are licensed under CC0. Image sources listed below
 

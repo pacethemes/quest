@@ -55,7 +55,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hide Title', 'Quest' ),
+          'label'          => __( 'Hide Title', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox',
@@ -80,7 +80,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hide Tagline', 'Quest' ),
+          'label'          => __( 'Hide Tagline', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox',
@@ -102,7 +102,7 @@ class Quest_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Logo', 'Quest' ),
+        'title' => __( 'Logo', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -126,7 +126,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Logo', 'Quest' ),
+          'label'          => __( 'Logo', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -150,8 +150,8 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Favicon', 'Quest' ),
-          'description'    => __( '<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels', 'Quest' ),
+          'label'          => __( 'Favicon', 'quest' ),
+          'description'    => __( '<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -167,7 +167,7 @@ class Quest_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Social Profiles', 'Quest' ),
+        'title' => __( 'Social Profiles', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -190,7 +190,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Facebook URL', 'Quest' ),
+          'label'          => __( 'Facebook URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -214,7 +214,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Twitter URL', 'Quest' ),
+          'label'          => __( 'Twitter URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -237,7 +237,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Google+ URL', 'Quest' ),
+          'label'          => __( 'Google+ URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -260,7 +260,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'LinkedIn URL', 'Quest' ),
+          'label'          => __( 'LinkedIn URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -283,7 +283,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Youtube URL', 'Quest' ),
+          'label'          => __( 'Youtube URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -307,7 +307,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Vimeo URL', 'Quest' ),
+          'label'          => __( 'Vimeo URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -330,7 +330,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Instagram URL', 'Quest' ),
+          'label'          => __( 'Instagram URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -353,7 +353,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Flickr URL', 'Quest' ),
+          'label'          => __( 'Flickr URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -376,7 +376,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Pinterest URL', 'Quest' ),
+          'label'          => __( 'Pinterest URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -399,7 +399,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Dribbble URL', 'Quest' ),
+          'label'          => __( 'Dribbble URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -423,7 +423,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Digg URL', 'Quest' ),
+          'label'          => __( 'Digg URL', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -439,7 +439,7 @@ class Quest_Customize_General {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Sticky Posts', 'Quest' ),
+        'title' => __( 'Sticky Posts', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -462,7 +462,7 @@ class Quest_Customize_General {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sticky Label', 'Quest' ),
+          'label'          => __( 'Sticky Label', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )

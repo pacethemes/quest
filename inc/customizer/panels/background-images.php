@@ -31,7 +31,7 @@ class Quest_Customize_Background_Images {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Quest' ),
+        'title' => __( 'Global', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -47,7 +47,7 @@ class Quest_Customize_Background_Images {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Site', 'Quest' )
+          'label' => __( 'Site', 'quest' )
         )
       )
     );
@@ -68,7 +68,7 @@ class Quest_Customize_Background_Images {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Image', 'Quest' ),
+          'label'          => __( 'Background Image', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -84,7 +84,7 @@ class Quest_Customize_Background_Images {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Title Container', 'Quest' )
+          'label' => __( 'Title Container', 'quest' )
         )
       )
     );
@@ -105,7 +105,7 @@ class Quest_Customize_Background_Images {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Image', 'Quest' ),
+          'label'          => __( 'Background Image', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )

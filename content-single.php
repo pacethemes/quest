@@ -15,7 +15,7 @@ $view = quest_get_view();
 				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-normal' ); ?></a>
 				<div class="overlay">
 					<div class="caption">
-                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'Quest'); ?></a>
+                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'quest'); ?></a>
                     </div>
                     <a href="<?php the_permalink() ?>" class="expand">+</a>
                     <a href="#" class="close-overlay hidden">x</a>
@@ -40,7 +40,7 @@ $view = quest_get_view();
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages: ', 'Quest' ),
+				'before' => '<div class="page-links">' . __( 'Pages: ', 'quest' ),
 				'after'  => '</div>',
 			) );
 		?>
@@ -50,6 +50,6 @@ $view = quest_get_view();
 		<?php quest_post_author_info(); ?>
 		<?php quest_post_taxonomy( $view ); ?>
 		<?php quest_post_single_navigation(); ?>
-		<?php edit_post_link( __( 'Edit', 'Quest' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( 'Edit', 'quest' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

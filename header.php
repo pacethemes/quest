@@ -11,10 +11,6 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php $favicon =  quest_get_mod( 'logo_favicon' ); 
-if ( $favicon !== '' ): ?>
-	<link rel="icon" href="<?php echo esc_url( $favicon ); ?>" />
-<?php endif; ?>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
@@ -23,7 +19,7 @@ if ( $favicon !== '' ): ?>
 
 <body <?php body_class( quest_get_mod( 'layout_global_site' ) ); ?>>
 <div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'Quest' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'quest' ); ?></a>
 
 	<header id="masthead" class="main-header" role="banner">
 		<div class="container">
@@ -51,7 +47,7 @@ if ( $favicon !== '' ): ?>
 
 				<nav id="site-navigation" class="main-navigation col-md-8" role="navigation">
 					  <div class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-collapse">
-					    <span class="menu-text"><?php _e('Menu', 'infinite-framework') ?></span>
+					    <span class="menu-text"><?php _e('Menu', 'quest') ?></span>
 					      <i class="fa fa-reorder"></i>
 					  </div>
 					<div class="navbar-collapse collapse" id="main-menu-collapse">

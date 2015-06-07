@@ -27,6 +27,7 @@ if ( !function_exists( 'quest_mce_add_buttons' ) ):
 	 */
 	function quest_mce_add_buttons( $plugin_array ) {
 		$plugin_array['quest_icon_picker'] = get_template_directory_uri() . '/inc/editor/icon-picker/icon-picker.js';
+		$plugin_array['quest_button'] = get_template_directory_uri() . '/inc/editor/button/button.js';
 		return $plugin_array;
 	}
 
@@ -40,6 +41,7 @@ if ( !function_exists( 'quest_mce_register_buttons' ) ):
 	 */
 	function quest_mce_register_buttons( $buttons ) {
 		array_push( $buttons, 'quest_icon_picker' );
+		array_push( $buttons, 'quest_button' );
 		return $buttons;
 	}
 

@@ -17,9 +17,9 @@ if ( ! function_exists( 'quest_post_meta' ) ) :
 		echo '<span class="seperator">/</span>';
 
 		echo comments_popup_link(
-			__( '<i class="fa fa-comments"></i>&nbsp; No Comments', 'Quest' ),
-			__( '<i class="fa fa-comments"></i>&nbsp; 1 Comment', 'Quest' ),
-			__( '<i class="fa fa-comments"></i>&nbsp; % Comments', 'Quest' ) );
+			__( '<i class="fa fa-comments"></i>&nbsp; No Comments', 'quest' ),
+			__( '<i class="fa fa-comments"></i>&nbsp; 1 Comment', 'quest' ),
+			__( '<i class="fa fa-comments"></i>&nbsp; % Comments', 'quest' ) );
 
 	}
 endif;
@@ -43,12 +43,12 @@ if ( ! function_exists( 'quest_posted_on' ) ) :
 		);
 
 		$posted_on = sprintf(
-			_x( 'Posted on %s', 'post date', 'Quest' ),
+			_x( 'Posted on %s', 'post date', 'quest' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		$byline = sprintf(
-			_x( 'by %s', 'post author', 'Quest' ),
+			_x( 'by %s', 'post author', 'quest' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -63,7 +63,7 @@ if ( ! function_exists( 'quest_post_read_more' ) ) :
 	 */
 	function quest_post_read_more() {
 
-		echo ' <div class="read-more"><a href="'. get_permalink( get_the_ID() ) . '">'.__( 'Read More', 'Quest' ).' <i class="fa fa-angle-double-right "></i></a></div>';
+		echo ' <div class="read-more"><a href="'. get_permalink( get_the_ID() ) . '">'.__( 'Read More', 'quest' ).' <i class="fa fa-angle-double-right "></i></a></div>';
 
 	}
 endif;
@@ -81,45 +81,45 @@ if ( ! function_exists( 'the_archive_title' ) ) :
 	 */
 	function the_archive_title( $before = '', $after = '' ) {
 		if ( is_category() ) {
-			$title = sprintf( __( 'Category: %s', 'Quest' ), single_cat_title( '', false ) );
+			$title = sprintf( __( 'Category: %s', 'quest' ), single_cat_title( '', false ) );
 		} elseif ( is_tag() ) {
-			$title = sprintf( __( 'Tag: %s', 'Quest' ), single_tag_title( '', false ) );
+			$title = sprintf( __( 'Tag: %s', 'quest' ), single_tag_title( '', false ) );
 		} elseif ( is_author() ) {
-			$title = sprintf( __( 'Author: %s', 'Quest' ), '<span class="vcard">' . get_the_author() . '</span>' );
+			$title = sprintf( __( 'Author: %s', 'quest' ), '<span class="vcard">' . get_the_author() . '</span>' );
 		} elseif ( is_year() ) {
-			$title = sprintf( __( 'Year: %s', 'Quest' ), get_the_date( _x( 'Y', 'yearly archives date format', 'Quest' ) ) );
+			$title = sprintf( __( 'Year: %s', 'quest' ), get_the_date( _x( 'Y', 'yearly archives date format', 'quest' ) ) );
 		} elseif ( is_month() ) {
-			$title = sprintf( __( 'Month: %s', 'Quest' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'Quest' ) ) );
+			$title = sprintf( __( 'Month: %s', 'quest' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'quest' ) ) );
 		} elseif ( is_day() ) {
-			$title = sprintf( __( 'Day: %s', 'Quest' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'Quest' ) ) );
+			$title = sprintf( __( 'Day: %s', 'quest' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'quest' ) ) );
 		} elseif ( is_tax( 'post_format' ) ) {
 			if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-				$title = _x( 'Asides', 'post format archive title', 'Quest' );
+				$title = _x( 'Asides', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-				$title = _x( 'Galleries', 'post format archive title', 'Quest' );
+				$title = _x( 'Galleries', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-				$title = _x( 'Images', 'post format archive title', 'Quest' );
+				$title = _x( 'Images', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-				$title = _x( 'Videos', 'post format archive title', 'Quest' );
+				$title = _x( 'Videos', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-				$title = _x( 'Quotes', 'post format archive title', 'Quest' );
+				$title = _x( 'Quotes', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-				$title = _x( 'Links', 'post format archive title', 'Quest' );
+				$title = _x( 'Links', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-				$title = _x( 'Statuses', 'post format archive title', 'Quest' );
+				$title = _x( 'Statuses', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-				$title = _x( 'Audio', 'post format archive title', 'Quest' );
+				$title = _x( 'Audio', 'post format archive title', 'quest' );
 			} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-				$title = _x( 'Chats', 'post format archive title', 'Quest' );
+				$title = _x( 'Chats', 'post format archive title', 'quest' );
 			}
 		} elseif ( is_post_type_archive() ) {
-			$title = sprintf( __( 'Archives: %s', 'Quest' ), post_type_archive_title( '', false ) );
+			$title = sprintf( __( 'Archives: %s', 'quest' ), post_type_archive_title( '', false ) );
 		} elseif ( is_tax() ) {
 			$tax = get_taxonomy( get_queried_object()->taxonomy );
 			/* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
-			$title = sprintf( __( '%1$s: %2$s', 'Quest' ), $tax->labels->singular_name, single_term_title( '', false ) );
+			$title = sprintf( __( '%1$s: %2$s', 'quest' ), $tax->labels->singular_name, single_term_title( '', false ) );
 		} else {
-			$title = __( 'Archives', 'Quest' );
+			$title = __( 'Archives', 'quest' );
 		}
 
 		/**
@@ -250,8 +250,8 @@ if ( ! function_exists( 'quest_post_single_navigation' ) ) :
 		global $post;
 ?>
 	    <div class="pagination post-pagination row">
-	        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'Quest' ).'</div> <h4>%title</h4>' ); ?></div>
-	        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'Quest' ).'</div> <h4>%title</h4>' ); ?></div>
+	        <div class="previous col-md-6 col-sm-6"><?php previous_post_link( '%link',  '<i class="fa fa-chevron-left"></i><div class="text">'.__( 'Previous Article', 'quest' ).'</div> <h4>%title</h4>' ); ?></div>
+	        <div class="next col-md-6 col-sm-6"><?php next_post_link( '%link',  '<i class="fa fa-chevron-right"></i><div class="text">'.__( 'Next Article', 'quest' ).'</div> <h4>%title</h4>' ); ?></div>
 	    </div>
     <?php
 	}
@@ -268,7 +268,7 @@ if ( ! function_exists( 'quest_post_author_info' ) ) :
 		$auth_info = get_the_author_meta( 'description' );
 ?>
         <div id="about-author" class="clearfix author">
-            <h2><?php _e( 'by ', 'Quest' ) ?><?php the_author_posts_link(); ?></h2>
+            <h2><?php _e( 'by ', 'quest' ) ?><?php the_author_posts_link(); ?></h2>
             <div class="avatar">
                  <?php  echo get_avatar( get_the_author_meta( 'ID' ), 70 );    ?>
             </div>
@@ -344,7 +344,7 @@ if ( !function_exists( 'quest_page_title' ) ) :
 	 */
 	function quest_page_title() {
 		if ( is_search() ) {
-			echo __( 'Search results for: ', 'Quest' ) . get_search_query();
+			echo __( 'Search results for: ', 'quest' ) . get_search_query();
 		} else if ( is_archive() ) {
 				single_cat_title();
 			} else if ( is_home() ) {
@@ -370,7 +370,7 @@ if ( !function_exists( 'quest_comments' ) ) :
 	        <li class="pingback" id="comment-<?php comment_ID() ?>">
 	            <article <?php comment_class( 'clearfix' ) ?>>
 	                <div class="comment-meta">
-	                    <?php _e( 'Pingback:', 'Quest' ) ?>
+	                    <?php _e( 'Pingback:', 'quest' ) ?>
 	                    <?php edit_comment_link() ?>
 	                </div>
 	                <div class="comment-content">
@@ -402,7 +402,7 @@ if ( !function_exists( 'quest_comments' ) ) :
 	                </div>
 	                <div class="comment-content">
 	                    <?php if ( $comment->comment_approved == '0' ): ?>
-	                        <p><?php _e( 'Your comment is awaiting moderation', 'Quest' ) ?></p>
+	                        <p><?php _e( 'Your comment is awaiting moderation', 'quest' ) ?></p>
 	                    <?php endif; ?>
 	                    <?php comment_text(); ?>
 	                </div>
@@ -487,7 +487,7 @@ if ( !function_exists( 'quest_breadcrumb' ) ) :
 		if ( !is_front_page() ) {
 			echo '<li><a href="';
 			echo home_url();
-			echo '">' . __( 'Home', 'Quest' );
+			echo '">' . __( 'Home', 'quest' );
 			echo "</a></li>";
 		}
 
@@ -513,10 +513,10 @@ if ( !function_exists( 'quest_breadcrumb' ) ) :
 			echo '<li>' . "Tag: " . single_tag_title( '', FALSE ) . '</li>';
 		}
 		if ( is_404() ) {
-			echo '<li>' . __( "404 - Page not Found", 'Quest' ) . '</li>';
+			echo '<li>' . __( "404 - Page not Found", 'quest' ) . '</li>';
 		}
 		if ( is_search() ) {
-			echo '<li>' . __( "Search", 'Quest' ) . '</li>';
+			echo '<li>' . __( "Search", 'quest' ) . '</li>';
 		}
 		if ( is_year() ) {
 			echo '<li>' . get_the_time( 'Y' ) . '</li>';

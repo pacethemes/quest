@@ -29,7 +29,7 @@ class Quest_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Quest' ),
+        'title' => __( 'Global', 'quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -52,8 +52,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Accent Color', 'Quest' ),
-          'description'    => __( 'Used for Links & Buttons', 'Quest' ),
+          'label'          => __( 'Accent Color', 'quest' ),
+          'description'    => __( 'Used for Links & Buttons', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -76,8 +76,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Accent Shade Color', 'Quest' ),
-          'description'    => __( 'Used for Links & Buttons hover state', 'Quest' ),
+          'label'          => __( 'Accent Shade Color', 'quest' ),
+          'description'    => __( 'Used for Links & Buttons hover state', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -101,8 +101,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Alt Color', 'Quest' ),
-          'description'    => __( 'Used for Form Elements', 'Quest' ),
+          'label'          => __( 'Alt Color', 'quest' ),
+          'description'    => __( 'Used for Form Elements', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -126,8 +126,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Quest' ),
-          'description'    => __( 'Used for Borders for all content elements', 'Quest' ),
+          'label'          => __( 'Border Color', 'quest' ),
+          'description'    => __( 'Used for Borders for all content elements', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -150,8 +150,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Heading Color', 'Quest' ),
-          'description'    => __( 'Used for headings - h1 to h6', 'Quest' ),
+          'label'          => __( 'Heading Color', 'quest' ),
+          'description'    => __( 'Used for headings - h1 to h6', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -175,8 +175,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
-          'description'    => __( 'Used for content text', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
+          'description'    => __( 'Used for content text', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -199,8 +199,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Alt Color', 'Quest' ),
-          'description'    => __( 'Used for post meta & icons', 'Quest' ),
+          'label'          => __( 'Text Alt Color', 'quest' ),
+          'description'    => __( 'Used for post meta & icons', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -224,8 +224,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Site Background Color', 'Quest' ),
-          'description'    => __( 'Used for background color of the site', 'Quest' ),
+          'label'          => __( 'Site Background Color', 'quest' ),
+          'description'    => __( 'Used for background color of the site', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -249,8 +249,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Content Background Color', 'Quest' ),
-          'description'    => __( 'Used for background color of the site content', 'Quest' ),
+          'label'          => __( 'Content Background Color', 'quest' ),
+          'description'    => __( 'Used for background color of the site content', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -266,7 +266,7 @@ class Quest_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Header', 'Quest' ),
+        'title' => __( 'Header', 'quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -289,8 +289,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Quest' ),
-          'description'    => __( 'Header background color', 'Quest' ),
+          'label'          => __( 'Background Color', 'quest' ),
+          'description'    => __( 'Header background color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -314,8 +314,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
-          'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
+          'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -339,8 +339,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Quest' ),
-          'description'    => __( 'Header Bottom Border Color', 'Quest' ),
+          'label'          => __( 'Border Color', 'quest' ),
+          'description'    => __( 'Header Bottom Border Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -356,7 +356,7 @@ class Quest_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Main Menu', 'Quest' ),
+        'title' => __( 'Main Menu', 'quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -373,7 +373,7 @@ class Quest_Customize_Colors {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Menu Items', 'Quest' )
+          'label' => __( 'Menu Items', 'quest' )
         )
       )
     );
@@ -395,8 +395,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -420,8 +420,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Hover/Focus Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Text Hover/Focus Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -437,7 +437,7 @@ class Quest_Customize_Colors {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Sub Menu Items', 'Quest' )
+          'label' => __( 'Sub Menu Items', 'quest' )
         )
       )
     );
@@ -458,8 +458,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Background Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -483,8 +483,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Border Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -508,8 +508,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -533,8 +533,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hover/Focus Text Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Hover/Focus Text Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -557,8 +557,8 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Hover/Focus Background Color', 'Quest' ),
-          // 'description'    => __( 'Header Text Color', 'Quest' ),
+          'label'          => __( 'Hover/Focus Background Color', 'quest' ),
+          // 'description'    => __( 'Header Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -574,7 +574,7 @@ class Quest_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Title Container', 'Quest' ),
+        'title' => __( 'Title Container', 'quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -597,7 +597,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Quest' ),
+          'label'          => __( 'Background Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -621,7 +621,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -645,7 +645,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Quest' ),
+          'label'          => __( 'Border Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -661,7 +661,7 @@ class Quest_Customize_Colors {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Quest' ),
+        'title' => __( 'Footer', 'quest' ),
         'priority' => 35, 
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -679,7 +679,7 @@ class Quest_Customize_Colors {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Main Footer', 'Quest' )
+          'label' => __( 'Main Footer', 'quest' )
         )
       )
     );
@@ -700,7 +700,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Quest' ),
+          'label'          => __( 'Background Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -723,7 +723,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Heading Color', 'Quest' ),
+          'label'          => __( 'Heading Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -747,7 +747,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -771,7 +771,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Border Color', 'Quest' ),
+          'label'          => __( 'Border Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -788,7 +788,7 @@ class Quest_Customize_Colors {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Secondary Footer', 'Quest' )
+          'label' => __( 'Secondary Footer', 'quest' )
         )
       )
     );
@@ -809,7 +809,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Background Color', 'Quest' ),
+          'label'          => __( 'Background Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -832,7 +832,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Text Color', 'Quest' ),
+          'label'          => __( 'Text Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -856,7 +856,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Social Icon Color', 'Quest' ),
+          'label'          => __( 'Social Icon Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -879,7 +879,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Social Icon Hover Color', 'Quest' ),
+          'label'          => __( 'Social Icon Hover Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )
@@ -902,7 +902,7 @@ class Quest_Customize_Colors {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Social Icon Hover background Color', 'Quest' ),
+          'label'          => __( 'Social Icon Hover background Color', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id
         )

@@ -26,7 +26,7 @@ class Quest_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Global', 'Quest' ),
+        'title' => __( 'Global', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -49,7 +49,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Site Layout', 'Quest' ),
+          'label'          => __( 'Site Layout', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -67,7 +67,7 @@ class Quest_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Header', 'Quest' ),
+        'title' => __( 'Header', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -90,7 +90,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Search Icon', 'Quest' ),
+          'label'          => __( 'Show Search Icon', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -107,7 +107,7 @@ class Quest_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Footer', 'Quest' ),
+        'title' => __( 'Footer', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -130,7 +130,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Number of Widgets', 'Quest' ),
+          'label'          => __( 'Number of Widgets', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -156,7 +156,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Social Icons', 'Quest' ),
+          'label'          => __( 'Show Social Icons', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -174,7 +174,7 @@ class Quest_Customize_Layout {
 
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Blog (Posts Page)', 'Quest' ),
+        'title' => __( 'Blog (Posts Page)', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -198,7 +198,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Quest' ),
+          'label'          => __( 'Sidebar Position', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -224,7 +224,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Style', 'Quest' ),
+          'label'          => __( 'Style', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -249,7 +249,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Quest' ),
+          'label'          => __( 'Show Title Bar ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -268,7 +268,7 @@ class Quest_Customize_Layout {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Quest' )
+          'label' => __( 'Post Meta', 'quest' )
         )
       )
     );
@@ -290,7 +290,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Quest' ),
+          'label'          => __( 'Show Categories', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -314,7 +314,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Quest' ),
+          'label'          => __( 'Show Tags', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -332,7 +332,7 @@ class Quest_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Archives', 'Quest' ),
+        'title' => __( 'Archives', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -356,7 +356,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Quest' ),
+          'label'          => __( 'Sidebar Position', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -382,7 +382,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Style', 'Quest' ),
+          'label'          => __( 'Style', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -407,7 +407,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Quest' ),
+          'label'          => __( 'Show Title Bar ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -425,7 +425,7 @@ class Quest_Customize_Layout {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Quest' )
+          'label' => __( 'Post Meta', 'quest' )
         )
       )
     );
@@ -447,7 +447,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Quest' ),
+          'label'          => __( 'Show Categories', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -471,7 +471,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Quest' ),
+          'label'          => __( 'Show Tags', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -489,7 +489,7 @@ class Quest_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Search Results', 'Quest' ),
+        'title' => __( 'Search Results', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -513,7 +513,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Quest' ),
+          'label'          => __( 'Sidebar Position', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -539,7 +539,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Style', 'Quest' ),
+          'label'          => __( 'Style', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -564,7 +564,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Quest' ),
+          'label'          => __( 'Show Title Bar ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -583,7 +583,7 @@ class Quest_Customize_Layout {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Quest' )
+          'label' => __( 'Post Meta', 'quest' )
         )
       )
     );
@@ -605,7 +605,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Quest' ),
+          'label'          => __( 'Show Categories', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -629,7 +629,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Quest' ),
+          'label'          => __( 'Show Tags', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -647,7 +647,7 @@ class Quest_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Single Post', 'Quest' ),
+        'title' => __( 'Single Post', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -670,7 +670,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Quest' ),
+          'label'          => __( 'Sidebar Position', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -695,7 +695,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Quest' ),
+          'label'          => __( 'Show Title Bar ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -720,7 +720,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Post Title ?', 'Quest' ),
+          'label'          => __( 'Show Post Title ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -738,7 +738,7 @@ class Quest_Customize_Layout {
         array(
           'section'     => $section_id ,
           'type'        => 'heading',
-          'label' => __( 'Post Meta', 'Quest' )
+          'label' => __( 'Post Meta', 'quest' )
         )
       )
     );
@@ -760,7 +760,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Categories', 'Quest' ),
+          'label'          => __( 'Show Categories', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -784,7 +784,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Tags', 'Quest' ),
+          'label'          => __( 'Show Tags', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'checkbox'
@@ -802,7 +802,7 @@ class Quest_Customize_Layout {
     
     $wp_customize->add_section( $section_id ,
       array(
-        'title' => __( 'Single Page', 'Quest' ),
+        'title' => __( 'Single Page', 'quest' ),
         'priority' => 35,
         'capability' => 'edit_theme_options',
         'panel' => $panel_id
@@ -825,7 +825,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Sidebar Position', 'Quest' ),
+          'label'          => __( 'Sidebar Position', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -851,7 +851,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Title Bar ?', 'Quest' ),
+          'label'          => __( 'Show Title Bar ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',
@@ -876,7 +876,7 @@ class Quest_Customize_Layout {
         $wp_customize,
         $setting_id,
         array(
-          'label'          => __( 'Show Page Title ?', 'Quest' ),
+          'label'          => __( 'Show Page Title ?', 'quest' ),
           'section'        => $section_id,
           'settings'       => $setting_id,
           'type'           => 'select',

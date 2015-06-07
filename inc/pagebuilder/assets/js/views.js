@@ -97,10 +97,10 @@ var trPbApp = trPbApp || {};
             trPbApp.setHiddenInputAll(this.model, this.$el);
         },
 
-        removeSection: function(e) {
+        removeSection: function(e, confirm) {
             e.preventDefault();
 
-            var confirm = window.confirm("Are you sure you want to remove this section ? This step cannot be undone");
+            var confirm = confirm ? confirm : window.confirm("Are you sure you want to remove this section ? This step cannot be undone");
 
             if (confirm) {
                 trPbApp.Sections.remove(this.model);
@@ -299,6 +299,7 @@ var trPbApp = trPbApp || {};
 
         closeReveal: function() {
             var reveal = this.$el.find('.reveal-modal');
+            trPbApp.removeEditor('pt_pb_editor');
             reveal.trigger('reveal:close');
             setTimeout(function() {
                 reveal.remove();
@@ -365,7 +366,7 @@ var trPbApp = trPbApp || {};
 
         insertModule: function(e) {
             e.preventDefault();
-            var $target = $(e.target),
+            var $target = $(e.target).hasClass('column-module') ? $(e.target) : $(e.target).parent(),
                 module = $target.data('module').replace(/ /g, '').toProperCase();
 
             if (!trPbApp.Modules[module + 'Model']) return;
@@ -792,15 +793,19 @@ var trPbApp = trPbApp || {};
 
     trPbApp.Modules.TextView = Backbone.View.extend({
         template: _.template($('#pt-pb-module-text-template').html()),
+        $editTemplateId: $('#pt-pb-module-text-edit-template'),
+        editTemplate: '',
 
         events: {
             'click .content-preview': 'editModel',
-            'content:update': 'updateContent',
+            'click .save-text': 'updateContent',
             'click .edit-module .edit': 'editModel',
             'click .edit-module .remove': 'removeModel'
         },
 
-        initialize: function() {},
+        initialize: function() {
+            this.editTemplate = _.template(this.$editTemplateId.html());
+        },
 
         render: function(cls) {
             this.$el.html(this.template(this.model.toJSON()))
@@ -812,10 +817,10 @@ var trPbApp = trPbApp || {};
         },
 
         editModel: function(e) {
-            if (e) e.preventDefault();
-            trPbApp.setContent(this.$el.find('textarea.content-text').val());
-            trPbApp.cache.$editorModal.attr('data-textarea', this.model.id).reveal().find('.js-animations').val(this.model.get('animation'));
-            trPbApp.cache.$editorModal.find('input[name=admin_label]').val(this.model.get('admin_label'));
+           if (e) e.preventDefault();
+            this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('pt-pb-image-edit reveal-modal'));
+            trPbApp.createEditor(this.$el, this.model.get('content'));
+            this.$el.find('.reveal-modal').reveal();
         },
 
         removeModel: function(e){
@@ -823,11 +828,21 @@ var trPbApp = trPbApp || {};
             $('#'+this.model.get('parent')).trigger('remove-module')
         },
 
-        updateContent: function(e, data) {
-            this.model.set(data);
-            trPbApp.setHiddenInputAll(this.model, this.$el);
-            this.$el.find('.content-preview').html(this.model.get('content'));
-            this.$el.find('.admin-label').text(this.model.get('admin_label'));
+        updateContent: function(e) {
+            var id = this.model.get('id'),
+                parent = this.model.get('parent'),
+                view = this;
+
+            this.model.set(this.$el.find('.edit-content form').serializeObject());
+            this.model.set('content', trPbApp.getContent());
+
+            trPbApp.setColumnContent(parent, this.model);
+
+            this.$el.find('.reveal-modal').trigger('reveal:close');
+            trPbApp.removeEditor('pt_pb_editor');
+            setTimeout(function() {
+                view.render();
+            }, 300);
         }
 
     });
@@ -861,29 +876,14 @@ var trPbApp = trPbApp || {};
         editModel: function(e) {
             if (e) e.preventDefault();
             this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('pt-pb-hovericon-edit reveal-modal'));
-
-            var $preview = this.$el.find('.icon-grid');
-            if($preview.find('section').length === 0) {
-                $preview.html(window.trIcons);
-                $preview.find('.fa-hover a').on('click', function(e){
-                    e.preventDefault();
-                    var $a = $(this),
-                        $option = $a.closest('.pt-pb-option-container'),
-                        icon = $a.attr('href').replace('#', '');
-
-                    $option.children('.pt-pb-icon').val(icon);
-                    $option.children('.icon-preview').html('<i class="fa fa-2x '+icon+'"></i>');
-                    $preview.slideToggle();
-                });
-            }
-
+            trPbApp.createEditor(this.$el, this.model.get('content'));
             this.$el.find('.reveal-modal').reveal();
 
         },
 
         removeModel: function(e){
             e.preventDefault();
-            $('#'+this.model.get('parent')).trigger('remove-module')
+            $('#'+this.model.get('parent')).trigger('remove-module');
         },
 
         updateModel: function(e) {
@@ -892,11 +892,12 @@ var trPbApp = trPbApp || {};
                 view = this;
 
             this.model.set(this.$el.find('.edit-content form').serializeObject());
+            this.model.set('content', trPbApp.getContent());
 
             trPbApp.setColumnContent(parent, this.model);
 
             this.$el.find('.reveal-modal').trigger('reveal:close');
-
+            trPbApp.removeEditor('pt_pb_editor');
             setTimeout(function() {
                 view.render();
             }, 300);
@@ -906,10 +907,3 @@ var trPbApp = trPbApp || {};
 
 
 })(window, Backbone, jQuery, _, trPbApp);
-
-
-String.prototype.toProperCase = function() {
-    return this.replace(/\w\S*/g, function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-};

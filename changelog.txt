@@ -1,0 +1,11 @@
+## 1.0.2
+
+* Fixes issues as per Theme Review
+
+## 1.0.1
+
+* Fixes issues as per Theme Review
+
+## 1.0.0
+
+* Initial release

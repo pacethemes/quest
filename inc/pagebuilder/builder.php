@@ -58,7 +58,7 @@ class PT_PageBuilder {
 			) );
 
 		foreach ( $post_types as $post_type ) {
-			add_meta_box( 'pt-pb-layout', __( 'Quest Page Builder', 'Quest' ), array( $this, 'PageBuilderHtml' ), $post_type, 'normal', 'high' );
+			add_meta_box( 'pt-pb-layout', __( 'Quest Page Builder', 'quest' ), array( $this, 'PageBuilderHtml' ), $post_type, 'normal', 'high' );
 		}
 	}
 
@@ -96,18 +96,14 @@ class PT_PageBuilder {
 
 			wp_enqueue_style( 'animate-css', get_template_directory_uri().'/assets/plugins/animate/animate.css' );
 
-			wp_enqueue_script( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/jquery.reveal.js' );
-			wp_enqueue_style( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal	/reveal.css' );
-
-
 			wp_enqueue_script( 'pt_pb_models_js', self::$PT_PB_URI . '/assets/js/models.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone' ), self::$PT_PB_VERSION, true );
-			wp_enqueue_script( 'pt_pb_collections_js', self::$PT_PB_URI . '/assets/js/collections.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone' ), self::$PT_PB_VERSION, true );
-			wp_enqueue_script( 'pt_pb_views_js', self::$PT_PB_URI . '/assets/js/views.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone' ), self::$PT_PB_VERSION, true );
-			wp_enqueue_script( 'pt_pb_admin_js', self::$PT_PB_URI . '/assets/js/app.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone' ), self::$PT_PB_VERSION, true );
+			wp_enqueue_script( 'pt_pb_collections_js', self::$PT_PB_URI . '/assets/js/collections.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone', 'pt_pb_models_js' ), self::$PT_PB_VERSION, true );
+			wp_enqueue_script( 'pt_pb_views_js', self::$PT_PB_URI . '/assets/js/views.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone', 'pt_pb_collections_js' ), self::$PT_PB_VERSION, true );
+			wp_enqueue_script( 'pt_pb_admin_js', self::$PT_PB_URI . '/assets/js/app.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone', 'pt_pb_collections_js' ), self::$PT_PB_VERSION, true );
 
 			wp_localize_script( 'pt_pb_admin_js', 'trPbAppSections', get_post_meta( $post->ID, 'pt_pb_sections', true ) );
 
-			wp_enqueue_style( 'pt_pb_admin_css', self::$PT_PB_URI . '/assets//css/style.css', array(), self::$PT_PB_VERSION );
+			wp_enqueue_style( 'pt_pb_admin_css', self::$PT_PB_URI . '/assets/css/style.css', array(), self::$PT_PB_VERSION );
 
 		}
 	}
@@ -119,16 +115,20 @@ class PT_PageBuilder {
 	 */
 	public function PageBuilderHtml() {
 		wp_nonce_field( 'save', 'pt-pb-nonce' );
+			
+			/*
+			* Action hook to add custom templates
+			*/
+			do_action( 'pt_pb_before_stage' );
 		?>
-
-
+			
 			<div id="pt_pb_stage">
 				<div id="pt-pb-main-container">
 				</div>
 
 				<div class="pt-pb-add-section">
 					<input name="pt_pb_section[]" type="hidden" value="">
-					<a href="#" class="pt-pb-insert-section pt-pb-btn"><i class="dashicons dashicons-plus-alt"></i> <?php _e( 'Add New Section', 'Quest' ); ?></a>
+					<a href="#" class="pt-pb-insert-section pt-pb-btn"><i class="dashicons dashicons-plus-alt"></i> <?php _e( 'Add New Section', 'quest' ); ?></a>
 				</div>
 			</div>
 
@@ -144,29 +144,29 @@ class PT_PageBuilder {
 			<script type="text/template" id="pt-pb-module-header-template">
 				<div class="module-controls">
 					<div class="edit-module edit-module-<%= typeof module != 'undefined' ? module : 'module' %>">
-						<a href="#" title="<?php _e( 'Edit Module', 'Quest' ) ?>" class="edit"><i class="fa fa-pencil"></i></a>
-						<a href="#" title="<?php _e( 'Remove Module', 'Quest' ) ?>" class="remove"><i class="fa fa-remove"></i></a>
+						<a href="#" title="<?php _e( 'Edit Module', 'quest' ) ?>" class="edit"><i class="fa fa-pencil"></i></a>
+						<a href="#" title="<?php _e( 'Remove Module', 'quest' ) ?>" class="remove"><i class="fa fa-remove"></i></a>
 					</div>
 					<div class="admin-label"><%= admin_label %></div>
-					<a href="#" class="pt-pb-module-toggle" title="<?php _e( 'Click to toggle', 'Quest' ); ?>"><div class="handlediv"><br></div></a>
+					<a href="#" class="pt-pb-module-toggle" title="<?php _e( 'Click to toggle', 'quest' ); ?>"><div class="handlediv"><br></div></a>
 				</div>
 			</script>
 
 			<script type="text/template" id="pt-pb-form-css-class">
 				<div class="pt-pb-option">
-					<label for="css_class"><?php _e( 'CSS Class', 'Quest' ); ?>: </label>
+					<label for="css_class"><?php _e( 'CSS Class', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<input name="css_class" class="regular-text"  type="text" value="<%= css_class %>" />
 
-						<p class="description"><?php _e( 'CSS classes of the section, this will help you set custom styling. You can enter multiple classes by seperating them with spaces', 'Quest' )?></p>
+						<p class="description"><?php _e( 'CSS classes of the section, this will help you set custom styling. You can enter multiple classes by seperating them with spaces', 'quest' )?></p>
 					</div>
 				</div>
 			</script>
 
 			<script type="text/template" id="pt-pb-form-animation">
 				<div class="pt-pb-option">
-					<label for="animation"><?php _e( 'CSS3 Animation', 'Quest' ); ?>: </label>
+					<label for="animation"><?php _e( 'CSS3 Animation', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<select class="js-animations" name="animation">
@@ -274,7 +274,7 @@ class PT_PageBuilder {
 							</optgroup>
 						</select>
 
-						<p class="description"><?php _e( 'CSS Animation for the Module', 'Quest' )?></p>
+						<p class="description"><?php _e( 'CSS Animation for the Module', 'quest' )?></p>
 
 						<h3 class="animation-preview">Animate</h3>
 					</div>
@@ -283,12 +283,12 @@ class PT_PageBuilder {
 
 			<script type="text/template" id="pt-pb-form-admin-label">
 				<div class="pt-pb-option">
-					<label for="admin_label"><?php _e( 'Admin Label', 'Quest' ); ?>: </label>
+					<label for="admin_label"><?php _e( 'Admin Label', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<input name="admin_label" class="regular-text"  type="text" value="<%= admin_label %>" />
 
-						<p class="description"><?php _e( 'Admin label for the module, this is the label/title you will see in the Module title, it lets you name your modules and keep track of them', 'Quest' )?></p>
+						<p class="description"><?php _e( 'Admin label for the module, this is the label/title you will see in the Module title, it lets you name your modules and keep track of them', 'quest' )?></p>
 					</div>
 				</div>
 			</script>
@@ -297,132 +297,132 @@ class PT_PageBuilder {
 
 			<script type="text/template" id="pt-pb-section-template">
 				<div class="pt-pb-header">
-					<h3><?php _e( 'Section', 'Quest' ); ?></h3>
+					<h3><?php _e( 'Section', 'quest' ); ?></h3>
 					<div class="pt-pb-controls">
-						<a href="#" class="pt-pb-settings pt-pb-settings-section" title="<?php _e( 'Edit Section', 'Quest' ); ?>"><i class="fa fa-cog"></i></a>
-						<a href="#" class="pt-pb-clone pt-pb-clone-section" title="<?php _e( 'Clone Section', 'Quest' ); ?>"><i class="fa fa-copy"></i></a>
-						<a href="#" class="pt-pb-remove" title="<?php _e( 'Delete Section', 'Quest' ); ?>"><i class="fa fa-remove"></i></a>
+						<a href="#" class="pt-pb-settings pt-pb-settings-section" title="<?php _e( 'Edit Section', 'quest' ); ?>"><i class="fa fa-cog"></i></a>
+						<a href="#" class="pt-pb-clone pt-pb-clone-section" title="<?php _e( 'Clone Section', 'quest' ); ?>"><i class="fa fa-copy"></i></a>
+						<a href="#" class="pt-pb-remove" title="<?php _e( 'Delete Section', 'quest' ); ?>"><i class="fa fa-remove"></i></a>
 					</div>
-					<a href="#" class="pt-pb-section-toggle" title="<?php _e( 'Click to toggle', 'Quest' ); ?>"><div class="handlediv"><br></div></a>
+					<a href="#" class="pt-pb-section-toggle" title="<?php _e( 'Click to toggle', 'quest' ); ?>"><div class="handlediv"><br></div></a>
 				</div>
 				<div class="pt-pb-content-wrap">
-					<div class="pt-pb-column-edit <%=  (_.isArray(content) || content.attributes !== undefined) ? 'hidden' : ''  %>"><a href="#" class="edit-columns" title="<?php _e( 'Edit Columns', 'Quest' ); ?>"><i class="fa fa-columns"></i></a></div>
+					<div class="pt-pb-column-edit <%=  (_.isArray(content) || content.attributes !== undefined) ? 'hidden' : ''  %>"><a href="#" class="edit-columns" title="<?php _e( 'Edit Columns', 'quest' ); ?>"><i class="fa fa-columns"></i></a></div>
 					<div class="pt-pb-content clearfix">
-						<a href="#" class="section-type pt-pb-insert-column"><i class="fa fa-columns"></i> <?php _e( 'Columns', 'Quest' ); ?></a>
-						<a href="#" class="section-type pt-pb-insert-slider"><i class="dashicons dashicons-images-alt"></i> <?php _e( 'Image Slider', 'Quest' ); ?></a>
-						<a href="#" class="section-type pt-pb-insert-gallery"><i class="dashicons dashicons-format-gallery"></i> <?php _e( 'Gallery', 'Quest' ); ?></a>
+						<a href="#" class="section-type pt-pb-insert-column"><i class="fa fa-columns"></i> <?php _e( 'Columns', 'quest' ); ?></a>
+						<a href="#" class="section-type pt-pb-insert-slider"><i class="dashicons dashicons-images-alt"></i> <?php _e( 'Image Slider', 'quest' ); ?></a>
+						<a href="#" class="section-type pt-pb-insert-gallery"><i class="dashicons dashicons-format-gallery"></i> <?php _e( 'Gallery', 'quest' ); ?></a>
 					</div>
 				</div>
 			</script>
 
 			<script type="text/template" id="pt-pb-section-edit-template">
-				<h2><?php _e( 'Edit Section', 'Quest' ); ?></h2>
+				<h2><?php _e( 'Edit Section', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form action="#">
 
 						<div class="pt-pb-option">
-							<label for="bg_image"><?php _e( 'Background Image', 'Quest' ); ?>: </label>
+							<label for="bg_image"><?php _e( 'Background Image', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="bg_image" type="text" class="regular-text pt-pb-upload-field" value="<%= bg_image %>">
-								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Background Image', 'Quest' ); ?>" data-update="<?php _e( 'Select Image', 'Quest' ); ?>">
+								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Background Image', 'quest' ); ?>" data-update="<?php _e( 'Select Image', 'quest' ); ?>">
 								<input type="button" class="button pt-pb-remove-upload-button" value="Remove" data-type="image">
 
-								<p class="description"><?php _e( 'If defined, this image will be used as the background for this section. To remove a background image, simply delete the URL from the settings field.', 'Quest' ); ?></p>
+								<p class="description"><?php _e( 'If defined, this image will be used as the background for this section. To remove a background image, simply delete the URL from the settings field.', 'quest' ); ?></p>
 								<div class="screenshot"></div>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="bg_attach"><?php _e( 'Background Image Attachment', 'Quest' ); ?>: </label>
+							<label for="bg_attach"><?php _e( 'Background Image Attachment', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="bg_attach">
-									<option value="fixed" <%= bg_attach == 'fixed' ? 'selected' : void 0  %> ><?php _e( 'Fixed', 'Quest' ); ?></option>
-									<option value="scroll" <%= bg_attach == 'scroll' ? 'selected' : void 0  %> ><?php _e( 'Scroll', 'Quest' ); ?></option>
+									<option value="fixed" <%= bg_attach == 'fixed' ? 'selected' : void 0  %> ><?php _e( 'Fixed', 'quest' ); ?></option>
+									<option value="scroll" <%= bg_attach == 'scroll' ? 'selected' : void 0  %> ><?php _e( 'Scroll', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Scroll - The background scrolls along with the element. Fixed - The background is fixed with regard to the viewport', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Scroll - The background scrolls along with the element. Fixed - The background is fixed with regard to the viewport', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="bg_color"><?php _e( 'Background Color', 'Quest' ); ?>: </label>
+							<label for="bg_color"><?php _e( 'Background Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="bg_color" class="pt-pb-color"  type="text" value="<%= bg_color %>" />
 
-								<p class="description"><?php _e( 'Background Color for the section, leave it blank to set a transparent color', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Background Color for the section, leave it blank to set a transparent color', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="text_color"><?php _e( 'Text Color', 'Quest' ); ?>: </label>
+							<label for="text_color"><?php _e( 'Text Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="text_color" class="pt-pb-color"  type="text" value="<%= text_color %>" />
 
-								<p class="description"><?php _e( 'Text Color for the section', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Text Color for the section', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="padding_top"><?php _e( 'Padding Top', 'Quest' ); ?>: </label>
+							<label for="padding_top"><?php _e( 'Padding Top', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="padding_top" class="regular-text"  type="text" value="<%= padding_top %>" />
 
-								<p class="description"><?php _e( 'Padding (Spacing) at the top', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Padding (Spacing) at the top', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="padding_bottom"><?php _e( 'Padding Bottom', 'Quest' ); ?>: </label>
+							<label for="padding_bottom"><?php _e( 'Padding Bottom', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="padding_bottom" class="regular-text"  type="text" value="<%= padding_bottom %>" />
 
-								<p class="description"><?php _e( 'Padding (Spacing) at the Bottom', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Padding (Spacing) at the Bottom', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="border_top_width"><?php _e( 'Border Top Width', 'Quest' ); ?>: </label>
+							<label for="border_top_width"><?php _e( 'Border Top Width', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="border_top_width" class="regular-text"  type="text" value="<%= border_top_width %>" />
 
-								<p class="description"><?php _e( 'Border width for the section top', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Border width for the section top', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="border_bottom_width"><?php _e( 'Border Bottom Width', 'Quest' ); ?>: </label>
+							<label for="border_bottom_width"><?php _e( 'Border Bottom Width', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="border_bottom_width" class="regular-text"  type="text" value="<%= border_bottom_width %>" />
 
-								<p class="description"><?php _e( 'Border width for the section bottom', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Border width for the section bottom', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="border_top_color"><?php _e( 'Border Top Color', 'Quest' ); ?>: </label>
+							<label for="border_top_color"><?php _e( 'Border Top Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="border_top_color" class="pt-pb-color"  type="text" value="<%= border_top_color %>" />
 
-								<p class="description"><?php _e( 'Border color for the section top', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Border color for the section top', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="border_bottom_color"><?php _e( 'Border Bottom Color', 'Quest' ); ?>: </label>
+							<label for="border_bottom_color"><?php _e( 'Border Bottom Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="border_bottom_color" class="pt-pb-color"  type="text" value="<%= border_bottom_color %>" />
 
-								<p class="description"><?php _e( 'Border color for the section bottom', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Border color for the section bottom', 'quest' )?></p>
 							</div>
 						</div>
 
@@ -441,16 +441,16 @@ class PT_PageBuilder {
 					<div class="sortable-background column-sortable-background"></div>
 				</div>
 				<div class="pt-pb-column-content">
-					<a href="#" class="pt-pb-insert-module"><span><?php _e( 'Insert Module', 'Quest' ) ?></span></a>
+					<a href="#" class="pt-pb-insert-module"><span><?php _e( 'Insert Module', 'quest' ) ?></span></a>
 				</div>
 			</script>
 
 			<script type="text/template" id="pt-pb-column-edit-template">
-				<a href="#" class="pt-pb-insert-module"><span><?php _e( 'Insert Module', 'Quest' ) ?></span></a>
+				<a href="#" class="pt-pb-insert-module"><span><?php _e( 'Insert Module', 'quest' ) ?></span></a>
 			</script>
 
 			<script type="text/template" id="pt-pb-insert-column-template">
-				<h2><?php _e( 'Select Layout', 'Quest' ); ?></h2>
+				<h2><?php _e( 'Select Layout', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<ul class="column-layouts">
 						<li data-layout="1-1">
@@ -479,11 +479,11 @@ class PT_PageBuilder {
 
 				<div class="slider-container clearfix">
 					<div class="pt-pb-column-edit ">
-						<a href="#" class="pt-pb-settings pt-pb-settings-slider" title="<?php _e( 'Slider Settings', 'Quest' ) ?>"><i class="dashicons dashicons-images-alt"></i></a>
+						<a href="#" class="pt-pb-settings pt-pb-settings-slider" title="<?php _e( 'Slider Settings', 'quest' ) ?>"><i class="dashicons dashicons-images-alt"></i></a>
 					</div>
 					
 					<div class="pt-pb-add-slide">
-						<a href="#" class="pt-pb-insert-slide pt-pb-btn"><i class="dashicons dashicons-format-image"></i> <?php _e( 'New Slide', 'Quest' ) ?></a>
+						<a href="#" class="pt-pb-insert-slide pt-pb-btn"><i class="dashicons dashicons-format-image"></i> <?php _e( 'New Slide', 'quest' ) ?></a>
 					</div>
 
 				</div>
@@ -492,52 +492,52 @@ class PT_PageBuilder {
 				</div>
 			</script>
 
-			<script type="text/template" id="pt-pb-module-slider-edit-template" data-title="<?php _e( 'Slider Settings', 'Quest' ); ?>">
-				<h2><?php _e( 'Edit Slider', 'Quest' ); ?></h2>
+			<script type="text/template" id="pt-pb-module-slider-edit-template" data-title="<?php _e( 'Slider Settings', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Slider', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form>
 
 						<div class="pt-pb-option">
-							<label for="height"><?php _e( 'Slider Height', 'Quest' ); ?>: </label>
+							<label for="height"><?php _e( 'Slider Height', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="height" class="regular-text"  type="text" value="<%= height %>" />
 
-								<p class="description"><?php _e( 'Height of the slider', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Height of the slider', 'quest' )?></p>
 							</div>
 						</div>
 
 
 						<div class="pt-pb-option">
-							<label for="autoplay"><?php _e( 'Slider AutoPlay', 'Quest' ); ?>: </label>
+							<label for="autoplay"><?php _e( 'Slider AutoPlay', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="autoplay">
-									<option value="true" <%= autoplay == 'true' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'Quest' ); ?></option>
-									<option value="false" <%= autoplay == 'false' ? 'selected' : void 0  %> ><?php _e( 'No', 'Quest' ); ?></option>
+									<option value="true" <%= autoplay == 'true' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'quest' ); ?></option>
+									<option value="false" <%= autoplay == 'false' ? 'selected' : void 0  %> ><?php _e( 'No', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Do you want to enable AutoPlay for this slider ? If autoplay is turned on, you can control the interval below', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Do you want to enable AutoPlay for this slider ? If autoplay is turned on, you can control the interval below', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="interval"><?php _e( 'AutoPlay Interval', 'Quest' ); ?>: </label>
+							<label for="interval"><?php _e( 'AutoPlay Interval', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="interval" class="regular-text"  type="text" value="<%= interval %>" />
 
-								<p class="description"><?php _e( 'Interval between playing the next slide, specify the time in milliseconds ( 1 second = 1000 milliseconds. You already knew this, didn\'t you :) )', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Interval between playing the next slide, specify the time in milliseconds ( 1 second = 1000 milliseconds. You already knew this, didn\'t you :) )', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="speed"><?php _e( 'Transition Speed', 'Quest' ); ?>: </label>
+							<label for="speed"><?php _e( 'Transition Speed', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="speed" class="regular-text"  type="text" value="<%= speed %>" />
 
-								<p class="description"><?php _e( 'Speed of the CSS3 slide transitions, specify the time in milliseconds ( 1 second = 1000 milliseconds. You already knew this, didn\'t you :) )', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Speed of the CSS3 slide transitions, specify the time in milliseconds ( 1 second = 1000 milliseconds. You already knew this, didn\'t you :) )', 'quest' )?></p>
 							</div>
 						</div>
 
@@ -560,7 +560,7 @@ class PT_PageBuilder {
 					<%= partial('pt-pb-module-header-template', { admin_label: admin_label, module: 'slide' }) %>
 					<div class="slide-content-preview" <%= bg_image != '' ? 'style="background-image:url(' + bg_image + ');"' : void 0  %>>
 						<% if (bg_image == "") { %>
-							<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Slide', 'Quest' ); ?>"><i class="dashicons dashicons-format-image"></i></a></div>
+							<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Slide', 'quest' ); ?>"><i class="dashicons dashicons-format-image"></i></a></div>
 						<% }%>
 
 						<% if (heading == "" && text == "") { %>
@@ -578,142 +578,142 @@ class PT_PageBuilder {
 				</div>
 			</script>
 
-			<script type="text/template" id="pt-pb-module-slide-edit-template" data-title="<?php _e( 'Edit Slider', 'Quest' ); ?>">
-				<h2><?php _e( 'Edit Image', 'Quest' ); ?></h2>
+			<script type="text/template" id="pt-pb-module-slide-edit-template" data-title="<?php _e( 'Edit Slider', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Image', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form>
 
 						<div class="pt-pb-option">
-							<label for="bg_image"><?php _e( 'Select Image', 'Quest' ); ?>: </label>
+							<label for="bg_image"><?php _e( 'Select Image', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="bg_image" type="text" class="regular-text pt-pb-upload-field" value="<%= bg_image %>">
-								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'Quest' ); ?>" data-update="<?php _e( 'Select Image', 'Quest' ); ?>">
+								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'quest' ); ?>" data-update="<?php _e( 'Select Image', 'quest' ); ?>">
 								<input type="button" class="button pt-pb-remove-upload-button" value="Remove" data-type="image">
 
-								<p class="description"><?php _e( 'Select the slide image', 'Quest' ); ?></p>
+								<p class="description"><?php _e( 'Select the slide image', 'quest' ); ?></p>
 								<div class="screenshot"></div>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="bg_pos_x"><?php _e( 'Image Position - Horizontal', 'Quest' ); ?>: </label>
+							<label for="bg_pos_x"><?php _e( 'Image Position - Horizontal', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="bg_pos_x">
-									<option value="center" <%= bg_pos_x == 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'Quest' ); ?></option>
-									<option value="left" <%= bg_pos_x == 'left' ? 'selected' : void 0  %> ><?php _e( 'Left', 'Quest' ); ?></option>
-									<option value="right" <%= bg_pos_x == 'right' ? 'selected' : void 0  %> ><?php _e( 'Right', 'Quest' ); ?></option>
+									<option value="center" <%= bg_pos_x == 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'quest' ); ?></option>
+									<option value="left" <%= bg_pos_x == 'left' ? 'selected' : void 0  %> ><?php _e( 'Left', 'quest' ); ?></option>
+									<option value="right" <%= bg_pos_x == 'right' ? 'selected' : void 0  %> ><?php _e( 'Right', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Horizontal position of the Image, if the image width is more than the slider width then the image will be positioned as per this setting', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Horizontal position of the Image, if the image width is more than the slider width then the image will be positioned as per this setting', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="bg_pos_y"><?php _e( 'Image Position - Vertical', 'Quest' ); ?>: </label>
+							<label for="bg_pos_y"><?php _e( 'Image Position - Vertical', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="bg_pos_y">
-									<option value="center" <%= bg_pos_y == 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'Quest' ); ?></option>
-									<option value="top" <%= bg_pos_y == 'top' ? 'selected' : void 0  %> ><?php _e( 'Top', 'Quest' ); ?></option>
-									<option value="bottom" <%= bg_pos_y == 'bottom' ? 'selected' : void 0  %> ><?php _e( 'Bottom', 'Quest' ); ?></option>
+									<option value="center" <%= bg_pos_y == 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'quest' ); ?></option>
+									<option value="top" <%= bg_pos_y == 'top' ? 'selected' : void 0  %> ><?php _e( 'Top', 'quest' ); ?></option>
+									<option value="bottom" <%= bg_pos_y == 'bottom' ? 'selected' : void 0  %> ><?php _e( 'Bottom', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Vertical position of the Image, if the image height is more than the slider height then the image will be positioned as per this setting', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Vertical position of the Image, if the image height is more than the slider height then the image will be positioned as per this setting', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="heading"><?php _e( 'Slide Heading', 'Quest' ); ?>: </label>
+							<label for="heading"><?php _e( 'Slide Heading', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="heading" class="regular-text"  type="text" value="<%= heading %>" />
 
-								<p class="description"><?php _e( 'The heading for the slide, this will be the main heading/title displayed in the slide frontend', 'Quest' )?></p>
+								<p class="description"><?php _e( 'The heading for the slide, this will be the main heading/title displayed in the slide frontend', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="heading_color"><?php _e( 'Slide Heading Text Color', 'Quest' ); ?>: </label>
+							<label for="heading_color"><?php _e( 'Slide Heading Text Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="heading_color" class="pt-pb-color"  type="text" value="<%= heading_color %>" />
 
-								<p class="description"><?php _e( 'Text Color for the heading', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Text Color for the heading', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="text"><?php _e( 'Slide Text', 'Quest' ); ?>: </label>
+							<label for="text"><?php _e( 'Slide Text', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<textarea name="text" class="regular-text"><%= text %></textarea>
 
-								<p class="description"><?php _e( 'Content for the slide, this will be displayed in teh front end below the heading', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Content for the slide, this will be displayed in teh front end below the heading', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="text_color"><?php _e( 'Slide Text Color', 'Quest' ); ?>: </label>
+							<label for="text_color"><?php _e( 'Slide Text Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="text_color" class="pt-pb-color"  type="text" value="<%= text_color %>" />
 
-								<p class="description"><?php _e( 'Text Color for the text', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Text Color for the text', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="orientation"><?php _e( 'Slice Orientation', 'Quest' ); ?>: </label>
+							<label for="orientation"><?php _e( 'Slice Orientation', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="orientation">
-									<option value="vertical" <%= orientation == 'vertical' ? 'selected' : void 0  %> ><?php _e( 'Vertical', 'Quest' ); ?></option>
-									<option value="horizontal" <%= orientation == 'false' ? 'selected' : void 0  %> ><?php _e( 'Horizontal', 'Quest' ); ?></option>
+									<option value="vertical" <%= orientation == 'vertical' ? 'selected' : void 0  %> ><?php _e( 'Vertical', 'quest' ); ?></option>
+									<option value="horizontal" <%= orientation == 'false' ? 'selected' : void 0  %> ><?php _e( 'Horizontal', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Should the slices split vertically or horizontally ?', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Should the slices split vertically or horizontally ?', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="slice1_rotation"><?php _e( 'Slice 1 Rotation', 'Quest' ); ?>: </label>
+							<label for="slice1_rotation"><?php _e( 'Slice 1 Rotation', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="slice1_rotation" class="regular-text"  type="text" value="<%= slice1_rotation %>" />
 
-								<p class="description"><?php _e( 'Amount of rotation in degrees for the first slice', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Amount of rotation in degrees for the first slice', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="slice2_rotation"><?php _e( 'Slice 2 Rotation', 'Quest' ); ?>: </label>
+							<label for="slice2_rotation"><?php _e( 'Slice 2 Rotation', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="slice2_rotation" class="regular-text"  type="text" value="<%= slice2_rotation %>" />
 
-								<p class="description"><?php _e( 'Amount of rotation in degrees for the second slice', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Amount of rotation in degrees for the second slice', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="slice1_scale"><?php _e( 'Slice 1 Scale', 'Quest' ); ?>: </label>
+							<label for="slice1_scale"><?php _e( 'Slice 1 Scale', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="slice1_scale" class="regular-text"  type="text" value="<%= slice1_scale %>" />
 
-								<p class="description"><?php _e( 'How big should the slice 1 scale ?', 'Quest' )?></p>
+								<p class="description"><?php _e( 'How big should the slice 1 scale ?', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="slice2_scale"><?php _e( 'Slice 2 Scale', 'Quest' ); ?>: </label>
+							<label for="slice2_scale"><?php _e( 'Slice 2 Scale', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="slice2_scale" class="regular-text"  type="text" value="<%= slice2_scale %>" />
 
-								<p class="description"><?php _e( 'How big should the slice 2 scale ?', 'Quest' )?></p>
+								<p class="description"><?php _e( 'How big should the slice 2 scale ?', 'quest' )?></p>
 							</div>
 						</div>
 
@@ -732,13 +732,13 @@ class PT_PageBuilder {
 
 				<div class="gallery-container clearfix">
 					<div class="pt-pb-column-edit ">
-						<a href="#" class="pt-pb-settings pt-pb-settings-gallery" title="<?php _e( 'Gallery Settings', 'Quest' ) ?>"><i class="dashicons dashicons-format-gallery"></i></a>
+						<a href="#" class="pt-pb-settings pt-pb-settings-gallery" title="<?php _e( 'Gallery Settings', 'quest' ) ?>"><i class="dashicons dashicons-format-gallery"></i></a>
 					</div>
 					
 					<div class="images-container clearfix"></div>
 
 					<div class="pt-pb-add-image">
-						<a href="#" class="pt-pb-insert-gimage pt-pb-btn"><i class="dashicons dashicons-format-image"></i> <?php _e( 'New Image', 'Quest' ) ?></a>
+						<a href="#" class="pt-pb-insert-gimage pt-pb-btn"><i class="dashicons dashicons-format-image"></i> <?php _e( 'New Image', 'quest' ) ?></a>
 					</div>
 
 				</div>
@@ -747,21 +747,21 @@ class PT_PageBuilder {
 				</div>
 			</script>
 
-			<script type="text/template" id="pt-pb-module-gallery-edit-template" data-title="<?php _e( 'Gallery Settings', 'Quest' ); ?>">
-				<h2><?php _e( 'Edit Gallery', 'Quest' ); ?></h2>
+			<script type="text/template" id="pt-pb-module-gallery-edit-template" data-title="<?php _e( 'Gallery Settings', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Gallery', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form>
 
 						<div class="pt-pb-option">
-							<label for="shape"><?php _e( 'Thumbnails Shape', 'Quest' ); ?>: </label>
+							<label for="shape"><?php _e( 'Thumbnails Shape', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="shape">
-									<option value="rounded" <%= shape == 'rounded' ? 'selected' : void 0  %> ><?php _e( 'Round', 'Quest' ); ?></option>
-									<option value="square" <%= shape == 'square' ? 'selected' : void 0  %> ><?php _e( 'Square', 'Quest' ); ?></option>
+									<option value="rounded" <%= shape == 'rounded' ? 'selected' : void 0  %> ><?php _e( 'Round', 'quest' ); ?></option>
+									<option value="square" <%= shape == 'square' ? 'selected' : void 0  %> ><?php _e( 'Square', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Do you want to enable Fullscreen for this gallery preview ?', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Do you want to enable Fullscreen for this gallery preview ?', 'quest' )?></p>
 							</div>
 						</div>
 
@@ -784,27 +784,27 @@ class PT_PageBuilder {
 					<%= partial('pt-pb-module-header-template', { admin_label: admin_label, module: 'gimage' }) %>
 					<div class="gimage-content-preview" <%= src != '' ? 'style="background-image:url(' + src + ');"' : void 0  %>>
 						<% if (src == "") { %>
-							<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Image', 'Quest' ); ?>"><i class="dashicons dashicons-format-image"></i></a></div>
+							<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Image', 'quest' ); ?>"><i class="dashicons dashicons-format-image"></i></a></div>
 						<% }%>
 					</div>
 				</div>
 			</script>
 
-			<script type="text/template" id="pt-pb-module-gimage-edit-template" data-title="<?php _e( 'Edit Slider', 'Quest' ); ?>">
-				<h2><?php _e( 'Edit Image', 'Quest' ); ?></h2>
+			<script type="text/template" id="pt-pb-module-gimage-edit-template" data-title="<?php _e( 'Edit Slider', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Image', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form>
 
 						<div class="pt-pb-option">
-							<label for="src"><?php _e( 'Select Image', 'Quest' ); ?>: </label>
+							<label for="src"><?php _e( 'Select Image', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="src" type="text" class="regular-text pt-pb-upload-field" value="<%= src %>">
 								<input name="post_id" type="hidden" class="regular-text pt-pb-upload-field-id" value="<%= post_id %>">
-								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'Quest' ); ?>" data-update="<?php _e( 'Select Image', 'Quest' ); ?>">
+								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'quest' ); ?>" data-update="<?php _e( 'Select Image', 'quest' ); ?>">
 								<input type="button" class="button pt-pb-remove-upload-button" value="Remove" data-type="image">
 
-								<p class="description"><?php _e( 'Select the slide image', 'Quest' ); ?></p>
+								<p class="description"><?php _e( 'Select the slide image', 'quest' ); ?></p>
 								<div class="screenshot"></div>
 							</div>
 						</div>
@@ -821,7 +821,7 @@ class PT_PageBuilder {
 			</script>
 
 			<script type="text/template" id="pt-pb-insert-module-template">
-				<h2><?php _e( 'Select Module', 'Quest' ); ?></h2>
+				<h2><?php _e( 'Select Module', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<div class="column-modules">
 					<% _.each(modules, function(attr, module){ %>
@@ -837,91 +837,91 @@ class PT_PageBuilder {
 				<div class="content-preview" style="text-align:<%= align %>;"><img src="<%= src %>" /></div>
 			</script>
 
-			<script type="text/template" id="pt-pb-module-image-edit-template" data-title="<?php _e( 'Edit Image', 'Quest' ); ?>">
-				<h2><?php _e( 'Edit Image', 'Quest' ); ?></h2>
+			<script type="text/template" id="pt-pb-module-image-edit-template" data-title="<?php _e( 'Edit Image', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Image', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form>
 						<div class="pt-pb-option">
-							<label for="src"><?php _e( 'Select Image', 'Quest' ); ?>: </label>
+							<label for="src"><?php _e( 'Select Image', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="src" type="text" class="regular-text pt-pb-upload-field" value="<%= src %>">
-								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'Quest' ); ?>" data-update="<?php _e( 'Select Image', 'Quest' ); ?>">
+								<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image" data-choose="<?php _e( 'Select Image', 'quest' ); ?>" data-update="<?php _e( 'Select Image', 'quest' ); ?>">
 								<input type="button" class="button pt-pb-remove-upload-button" value="Remove" data-type="image">
 
-								<p class="description"><?php _e( 'Select the Image you want to insert', 'Quest' ); ?></p>
+								<p class="description"><?php _e( 'Select the Image you want to insert', 'quest' ); ?></p>
 								<div class="screenshot"></div>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="align"><?php _e( 'Alignment', 'Quest' ); ?>: </label>
+							<label for="align"><?php _e( 'Alignment', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="align">
-									<option value="left" <%= align === 'left' ? 'selected' : void 0  %> ><?php _e( 'Left', 'Quest' ); ?></option>
-									<option value="center" <%= align === 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'Quest' ); ?></option>
-									<option value="right" <%= align === 'right' ? 'selected' : void 0  %> ><?php _e( 'Right', 'Quest' ); ?></option>
+									<option value="left" <%= align === 'left' ? 'selected' : void 0  %> ><?php _e( 'Left', 'quest' ); ?></option>
+									<option value="center" <%= align === 'center' ? 'selected' : void 0  %> ><?php _e( 'Center', 'quest' ); ?></option>
+									<option value="right" <%= align === 'right' ? 'selected' : void 0  %> ><?php _e( 'Right', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'The alignment of the image', 'Quest' )?></p>
+								<p class="description"><?php _e( 'The alignment of the image', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="alt"><?php _e( 'Alt', 'Quest' ); ?>: </label>
+							<label for="alt"><?php _e( 'Alt', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="alt" class="regular-text"  type="text" value="<%= alt %>" />
 
-								<p class="description"><?php _e( 'HTML alt attribute for the image', 'Quest' )?></p>
+								<p class="description"><?php _e( 'HTML alt attribute for the image', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="title"><?php _e( 'Title', 'Quest' ); ?>: </label>
+							<label for="title"><?php _e( 'Title', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="title" class="regular-text"  type="text" value="<%= title %>" />
 
-								<p class="description"><?php _e( 'HTML title attribute for the image', 'Quest' )?></p>
+								<p class="description"><?php _e( 'HTML title attribute for the image', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="href"><?php _e( 'URL / Hyperlink', 'Quest' ); ?>: </label>
+							<label for="href"><?php _e( 'URL / Hyperlink', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="href" class="regular-text"  type="text" value="<%= href %>" />
 
-								<p class="description"><?php _e( 'If set the image will be wraped inside an anchor tag which will be opened if the user clicks on the image', 'Quest' )?></p>
+								<p class="description"><?php _e( 'If set the image will be wraped inside an anchor tag which will be opened if the user clicks on the image', 'quest' )?></p>
 							</div>
 						</div>
 
 
 						<div class="pt-pb-option">
-							<label for="target"><?php _e( 'URL should open in New Tab ?', 'Quest' ); ?>: </label>
+							<label for="target"><?php _e( 'URL should open in New Tab ?', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="target">
-									<option value="_blank" <%= target === '_blank' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'Quest' ); ?></option>
-									<option value="_self" <%= target === '_self' ? 'selected' : void 0  %> ><?php _e( 'No', 'Quest' ); ?></option>
+									<option value="_blank" <%= target === '_blank' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'quest' ); ?></option>
+									<option value="_self" <%= target === '_self' ? 'selected' : void 0  %> ><?php _e( 'No', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Do you want the URL to be opened in a new tab or the same tab ?', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Do you want the URL to be opened in a new tab or the same tab ?', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="lightbox"><?php _e( 'Image Lightbox', 'Quest' ); ?>: </label>
+							<label for="lightbox"><?php _e( 'Image Lightbox', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="lightbox">
-									<option value="true" <%= lightbox == 'true' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'Quest' ); ?></option>
-									<option value="false" <%= lightbox == 'false' ? 'selected' : void 0  %> ><?php _e( 'No', 'Quest' ); ?></option>
+									<option value="true" <%= lightbox == 'true' ? 'selected' : void 0  %> ><?php _e( 'Yes', 'quest' ); ?></option>
+									<option value="false" <%= lightbox == 'false' ? 'selected' : void 0  %> ><?php _e( 'No', 'quest' ); ?></option>
 								</select>
 
-								<p class="description"><?php _e( 'Do you want to show a lightbox for the image ? If set to yes it will override the URL and the image will be displayed in a lightbox when the image is clicked', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Do you want to show a lightbox for the image ? If set to yes it will override the URL and the image will be displayed in a lightbox when the image is clicked', 'quest' )?></p>
 							</div>
 						</div>
 
@@ -942,6 +942,32 @@ class PT_PageBuilder {
 				<div class="content-preview"><%= content %></div>
 			</script>
 
+			<script type="text/template" id="pt-pb-module-text-edit-template" data-title="<?php _e( 'Edit Text', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Image', 'quest' ); ?></h2>
+				<div class="edit-content">
+					<form>
+						
+						<div class="pt-pb-option">
+							<label for="content"><?php _e( 'Content', 'quest' ); ?>: </label>
+
+							<div class="pt-pb-option-container">
+								<textarea name="content" class="hidden"><%= content %> </textarea>
+
+								<p class="description"><?php _e( 'Content', 'quest' )?></p>
+							</div>
+						</div>
+
+						<%= partial('pt-pb-form-animation', { animation: animation }) %>
+						<%= partial('pt-pb-form-admin-label', { admin_label: admin_label }) %>
+
+					</form>
+				</div>
+				<div class="edit-bottom">
+					<input type="button" class="button button-primary save-text" value="Save" />
+					<input type="button" class="button close-model" value="Close" />
+				</div>
+			</script>
+
 			<script type="text/template" id="pt-pb-module-hovericon-template">
 				<%= partial('pt-pb-module-header-template', { admin_label: admin_label}) %>
 				<div class="content-preview hover-icon">
@@ -951,26 +977,26 @@ class PT_PageBuilder {
 				</div>
 			</script>
 
-			<script type="text/template" id="pt-pb-module-hovericon-edit-template" data-title="<?php _e( 'Edit Hover Icon', 'Quest' ); ?>">
-				<h2><?php _e( 'Edit Hover Icon', 'Quest' ); ?></h2>
+			<script type="text/template" id="pt-pb-module-hovericon-edit-template" data-title="<?php _e( 'Edit Hover Icon', 'quest' ); ?>">
+				<h2><?php _e( 'Edit Hover Icon', 'quest' ); ?></h2>
 				<div class="edit-content">
 					<form>
 
 						<div class="pt-pb-option">
-							<label for="align"><?php _e( 'Icon', 'Quest' ); ?>: </label>
+							<label for="align"><?php _e( 'Icon', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<div class="icon-preview"><i class="fa fa-2x <%= icon %>"></i></div>
 								<input name="icon" type="hidden" class="pt-pb-icon" value="<%= icon %>">
-								<input type="button" class="button pt-pb-icon-select" value="<?php _e( 'Select Icon', 'Quest' ); ?>">
+								<input type="button" class="button pt-pb-icon-select" value="<?php _e( 'Select Icon', 'quest' ); ?>">
 
-								<p class="description"><?php _e( 'Select the Icon you want to insert', 'Quest' ); ?></p>
+								<p class="description"><?php _e( 'Select the Icon you want to insert', 'quest' ); ?></p>
 								<div class="icon-grid"></div>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="align"><?php _e( 'Icon Size', 'Quest' ); ?>: </label>
+							<label for="align"><?php _e( 'Icon Size', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<select name="size">
@@ -981,47 +1007,47 @@ class PT_PageBuilder {
 									<option value="5" <%= size == '5' ? 'selected' : void 0  %> >5</option>
 								</select>
 
-								<p class="description"><?php _e( 'Size of the Icon', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Size of the Icon', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="color"><?php _e( 'Color', 'Quest' ); ?>: </label>
+							<label for="color"><?php _e( 'Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="color" class="pt-pb-color"  type="text" value="<%= color %>" />
 
-								<p class="description"><?php _e( 'Color of the Icon, this will be Icon Color and the border color', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Color of the Icon, this will be Icon Color and the border color', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="hover_color"><?php _e( 'Hover Color', 'Quest' ); ?>: </label>
+							<label for="hover_color"><?php _e( 'Hover Color', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="hover_color" class="pt-pb-color"  type="text" value="<%= hover_color %>" />
 
-								<p class="description"><?php _e( 'Background Color of the Icon, when a user hovers on the Icon the Color and Hover Color will be swapped', 'Quest' )?></p>
+								<p class="description"><?php _e( 'Background Color of the Icon, when a user hovers on the Icon the Color and Hover Color will be swapped', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="title"><?php _e( 'Icon Title', 'Quest' ); ?>: </label>
+							<label for="title"><?php _e( 'Icon Title', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
 								<input name="title" class="regular-text"  type="text" value="<%= title %>" />
 
-								<p class="description"><?php _e( 'This will be the heading/title below the Icon', 'Quest' )?></p>
+								<p class="description"><?php _e( 'This will be the heading/title below the Icon', 'quest' )?></p>
 							</div>
 						</div>
 
 						<div class="pt-pb-option">
-							<label for="content"><?php _e( 'Icon Text', 'Quest' ); ?>: </label>
+							<label for="content"><?php _e( 'Icon Text', 'quest' ); ?>: </label>
 
 							<div class="pt-pb-option-container">
-								<textarea name="content" class="regular-text"><%= content %> </textarea>
+								<textarea name="content" class="hidden"><%= content %> </textarea>
 
-								<p class="description"><?php _e( 'This will be the text below the Icon Title', 'Quest' )?></p>
+								<p class="description"><?php _e( 'This will be the text below the Icon Title', 'quest' )?></p>
 							</div>
 						</div>
 
@@ -1036,23 +1062,22 @@ class PT_PageBuilder {
 				</div>
 			</script>
 
+			<div id="pt-pb-editor-hidden">
+				<?php
+					wp_editor( '', 'pt_pb_editor', array(
+							'tinymce'       => array(
+								'wp_autoresize_on' => false,
+								'resize'           => false
+							),
+							'editor_height' => 260
+						) );
+				?>
+			</div>
+
 			<div id="pt-pb-editor-modal" class="reveal-modal">
-				<h2><?php _e( 'Edit Content', 'Quest' ); ?></h2>
+				<h2><?php _e( 'Edit Content', 'quest' ); ?></h2>
 				<div class="edit-content">
-					<div class="pt-pb-option">
-						<label for="pt_pb_editor"><?php _e( 'Content', 'Quest' ); ?>: </label>
-						<div class="pt-pb-option-container">
-							<?php
-								wp_editor( '', 'pt_pb_editor', array(
-										'tinymce'       => array(
-											'wp_autoresize_on' => false,
-											'resize'           => false
-										),
-										'editor_height' => 260
-									) );
-							?>
-						</div>
-					</div>
+
 					<div class="pt-pb-option">
 
 						<label for="animation">CSS3 Animation: </label>
@@ -1171,12 +1196,12 @@ class PT_PageBuilder {
 					</div>
 
 					<div class="pt-pb-option">
-						<label for="admin_label"><?php _e( 'Admin Label', 'Quest' ); ?>: </label>
+						<label for="admin_label"><?php _e( 'Admin Label', 'quest' ); ?>: </label>
 
 						<div class="pt-pb-option-container">
 							<input name="admin_label" class="regular-text"  type="text" value="" />
 
-							<p class="description"><?php _e( 'Admin label for the module, this is the label/title you will see in the Module title, it lets you name your modules and keep track of them', 'Quest' )?></p>
+							<p class="description"><?php _e( 'Admin label for the module, this is the label/title you will see in the Module title, it lets you name your modules and keep track of them', 'quest' )?></p>
 						</div>
 					</div>
 

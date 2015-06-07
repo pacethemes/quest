@@ -285,8 +285,8 @@ $quest_defaults = array (
 
 	'choices' => array (
 		'layout_global_site' => array(
-			'wide'   => __( 'Wide', 'Quest' ),
-			'boxed'  => __( 'Boxed', 'Quest' )
+			'wide'   => __( 'Wide', 'quest' ),
+			'boxed'  => __( 'Boxed', 'quest' )
 		),
 		'layout_footer_widgets' => array(
 			1   => '1',
@@ -295,18 +295,18 @@ $quest_defaults = array (
 			4  => '4',
 		),
 		'layout_blog_sidebar' => array(
-			'left'   => __( 'Left', 'Quest' ),
-			'right'  => __( 'Right', 'Quest' ),
-			'none'  => __( 'None', 'Quest' )
+			'left'   => __( 'Left', 'quest' ),
+			'right'  => __( 'Right', 'quest' ),
+			'none'  => __( 'None', 'quest' )
 		),
 		'layout_blog_style' => array(
-			'normal'   => __( 'Normal', 'Quest' ),
-			'medium'   => __( 'Medium', 'Quest' ),
-			'grid'  => __( 'Grid', 'Quest' )
+			'normal'   => __( 'Normal', 'quest' ),
+			'medium'   => __( 'Medium', 'quest' ),
+			'grid'  => __( 'Grid', 'quest' )
 		),
 		'layout_blog_title-bar' => array(
-			1   => __( 'Yes', 'Quest' ),
-			0   => __( 'No', 'Quest' )
+			1   => __( 'Yes', 'quest' ),
+			0   => __( 'No', 'quest' )
 		)
 	),
 
