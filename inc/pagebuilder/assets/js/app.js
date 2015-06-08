@@ -1,5 +1,5 @@
 window.partial = function(which, data) {
-    var tmpl = $('#' + which).html();
+    var tmpl = jQuery('#' + which).html();
     return _.template(tmpl)(data);
 };
 
