@@ -6,8 +6,8 @@
  */
 
 get_header(); ?>
-
-<div class="quest-row site-content" id="content">
+<div id="content">
+<div class="quest-row site-content">
     <div class="container">
 		<div class="row">
 
@@ -60,6 +60,7 @@ get_header(); ?>
 
 		</div><!-- .row -->
 	</div><!-- .container -->
+</div>
 </div><!-- #content -->
 
 <?php get_footer(); ?>

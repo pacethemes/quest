@@ -87,6 +87,7 @@ $font_15: 'FontAwesome';
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    line-height: 1.5em;
 }
 
 //original selectors
@@ -127,8 +128,8 @@ html {
 
 body {
     @extend %extend_1;
-    line-height: 100%;
-    font: 13px/19px $font_0, $font_1, $font_2, $font_3;
+    line-height: 1.5em;
+    font: 13px $font_0, $font_1, $font_2, $font_3;
     color: $color_ironside_gray_approx;
     overflow-x: hidden;
 }
@@ -1573,13 +1574,14 @@ hr {
 .button {
     @extend %extend_38;
     margin: 5px 5px 5px 0;
-    padding: 10px 16px;
+    padding: 1em 1.5em;
     &.small {
-        padding: 6px 12px;
+        // padding: 6px 12px;
+        font-size: 0.8em;
     }
     &.big {
-        padding: 15px 20px;
-        font-size: 1.1em;
+        // padding: 15px 20px;
+        font-size: 1.4em;
     }
     &:hover {
         @extend %extend_40;

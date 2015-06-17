@@ -471,6 +471,12 @@ class PT_PageBuilder {
 							<div class="column-layout column-layout-1_4"></div>
 							<div class="column-layout column-layout-1_4"></div>
 						</li>
+						<?php
+							/*
+							* Action hook to add custom templates
+							*/
+							do_action( 'pt_pb_column_layouts' );
+						?>
 					</ul>
 				</div>
 			</script>

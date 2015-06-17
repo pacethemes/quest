@@ -21,7 +21,6 @@ var trPbApp = trPbApp || {};
     trPbApp.cache = {
         $container: $('#pt-pb-main-container'),
         $editorModal: $('#pt-pb-editor-modal'),
-        $editor: $('#wp-pt_pb_editor-wrap'),
         $pageTemplate : $('#page_template'),
         $hiddenEditor: $('#pt-pb-editor-hidden'),
         editorHtml: ''
@@ -271,7 +270,7 @@ var trPbApp = trPbApp || {};
     };
 
     trPbApp.isVisualEditor = function() {
-        return trPbApp.cache.$editor.hasClass('tmce-active');
+        return $('#wp-pt_pb_editor-wrap').hasClass('tmce-active');
     };
 
     trPbApp.getContent = function() {

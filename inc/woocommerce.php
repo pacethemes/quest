@@ -36,7 +36,8 @@ function quest_woocommerce_before_main_content() {
 
 	// Begin content wrapper
 	?>
-	<div class="quest-row site-content" id="content">
+	<div  id="content">
+	<div class="quest-row site-content">
     	<div class="container">
 			<div class="row">
 
@@ -68,6 +69,7 @@ function quest_woocommerce_after_main_content() {
 
 			</div><!-- .row -->
 		</div><!-- .container -->
+	</div>
 	</div><!-- #content -->
 	<?php
 

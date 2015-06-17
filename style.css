@@ -23,7 +23,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  line-height: 1.5em; }
 
 span a, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, a {
   color: #333;
@@ -44,8 +45,8 @@ h1 .fa-1x, h1 .fa-2x, h1 .fa-3x, h1 .fa-4x, h1 .fa-5x, h1 .fa-6x, h2 .fa-1x, h2 
   margin-right: 10px; }
 
 body {
-  line-height: 100%;
-  font: 13px/19px "Open Sans", "Helvetica", "Arial", "sans-serif";
+  line-height: 1.5em;
+  font: 13px "Open Sans", "Helvetica", "Arial", "sans-serif";
   color: #6a6767;
   overflow-x: hidden; }
 
@@ -905,12 +906,11 @@ hr {
 
 .button {
   margin: 5px 5px 5px 0;
-  padding: 10px 16px; }
+  padding: 1em 1.5em; }
   .button.small {
-    padding: 6px 12px; }
+    font-size: 0.8em; }
   .button.big {
-    padding: 15px 20px;
-    font-size: 1.1em; }
+    font-size: 1.4em; }
 
 .wpcf7-submit {
   margin: 5px 5px 5px 0;

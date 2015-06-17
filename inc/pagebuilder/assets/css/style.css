@@ -6,6 +6,9 @@
   font-weight: 300 !important;
   /* Opt-in outside padding */
 }
+#pt-pb-layout a {
+  text-decoration: none !important;
+}
 #pt-pb-layout .ui-sortable-placeholder {
   border: 1px dashed #ddd !important;
 }

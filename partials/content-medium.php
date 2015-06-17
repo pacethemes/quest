@@ -1,75 +1,77 @@
 <?php $view = quest_get_view(); ?>
 
-<?php quest_title_bar( $view ); ?>
+<div id="content">
+	<?php quest_title_bar( $view ); ?>
 
-<div class="quest-row site-content" id="content">
-    <div class="container">
-		<div class="row">
-			
-			<?php quest_try_sidebar( $view, 'left' ); ?>
+	<div class="quest-row site-content">
+	    <div class="container">
+			<div class="row">
+				
+				<?php quest_try_sidebar( $view, 'left' ); ?>
 
-			<div id="primary" class="content-area <?php quest_main_cls(); ?>">
-				<main id="main" class="site-main" role="main">
+				<div id="primary" class="content-area <?php quest_main_cls(); ?>">
+					<main id="main" class="site-main" role="main">
 
-				<?php if ( have_posts() ) : ?>
+					<?php if ( have_posts() ) : ?>
 
-					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+						<?php /* Start the Loop */ ?>
+						<?php while ( have_posts() ) : the_post(); ?>
 
-						<article <?php post_class( 'post-half clearfix' ); ?> id="post-<?php the_ID(); ?>">
-							<?php get_template_part( 'partials/content', 'sticky' ); ?>
-							<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+							<article <?php post_class( 'post-half clearfix' ); ?> id="post-<?php the_ID(); ?>">
+								<?php get_template_part( 'partials/content', 'sticky' ); ?>
+								<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-								<?php if ( 'post' == get_post_type() ) : ?>
-									<div class="entry-meta">
-										<?php quest_post_meta(); ?>
-									</div><!-- .entry-meta -->
+									<?php if ( 'post' == get_post_type() ) : ?>
+										<div class="entry-meta">
+											<?php quest_post_meta(); ?>
+										</div><!-- .entry-meta -->
+									<?php endif; ?>
+
+
+								<?php if ( has_post_thumbnail() ) : ?>
+
+										<div class="post-image blog-normal effect slide-top">
+											<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-medium' ); ?></a>
+											<div class="overlay">
+												<div class="caption">
+			                                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'quest'); ?></a>
+			                                    </div>
+			                                    <a href="<?php the_permalink() ?>" class="expand">+</a>
+			                                    <a href="#" class="close-overlay hidden">x</a>
+			                                </div>
+										</div>
+
 								<?php endif; ?>
 
-
-							<?php if ( has_post_thumbnail() ) : ?>
-
-									<div class="post-image blog-normal effect slide-top">
-										<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-medium' ); ?></a>
-										<div class="overlay">
-											<div class="caption">
-		                                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'quest'); ?></a>
-		                                    </div>
-		                                    <a href="<?php the_permalink() ?>" class="expand">+</a>
-		                                    <a href="#" class="close-overlay hidden">x</a>
-		                                </div>
+									<div class="entry-content">
+										<?php the_excerpt() ?>
 									</div>
 
-							<?php endif; ?>
+								<footer class="entry-footer">
+									<?php quest_post_taxonomy( $view ); ?>
+									<?php quest_post_read_more(); ?>
+								</footer><!-- .entry-footer -->
 
-								<div class="entry-content">
-									<?php the_excerpt() ?>
-								</div>
+							</article><!-- #post-## -->
 
-							<footer class="entry-footer">
-								<?php quest_post_taxonomy( $view ); ?>
-								<?php quest_post_read_more(); ?>
-							</footer><!-- .entry-footer -->
+							</article>
 
-						</article><!-- #post-## -->
+						<?php endwhile; ?>
 
-						</article>
+						<?php quest_pagination( $pages = '', $range = 2 ); ?>
 
-					<?php endwhile; ?>
+					<?php else : ?>
 
-					<?php quest_pagination( $pages = '', $range = 2 ); ?>
+						<?php get_template_part( 'content', 'none' ); ?>
 
-				<?php else : ?>
+					<?php endif; ?>
 
-					<?php get_template_part( 'content', 'none' ); ?>
+					</main><!-- #main -->
+				</div><!-- #primary -->
 
-				<?php endif; ?>
+				<?php quest_try_sidebar( $view, 'right' ); ?>
 
-				</main><!-- #main -->
-			</div><!-- #primary -->
-
-			<?php quest_try_sidebar( $view, 'right' ); ?>
-
-		</div><!-- .row -->
-	</div><!-- .container -->
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</div><!-- .quest-row -->
 </div><!-- #content -->

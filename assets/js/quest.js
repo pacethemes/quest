@@ -1,6 +1,3 @@
-var mob = false;
-var menuOpen = false;
-var menuTimeout;
 var Quest = function($) {
 
     return {
@@ -48,14 +45,14 @@ var Quest = function($) {
 
         initMasonry: function() {
             var $container = $('#grid-container');
-            if ( $container.length > 0 ) {
+            if ($container.length > 0) {
                 $container.masonry({
-                  itemSelector: '.post-grid-wrap'
+                    itemSelector: '.post-grid-wrap'
                 });
             }
         },
 
-          //init image hover effects
+        //init image hover effects
         initImageEffects: function() {
             if (Modernizr.touch) {
                 $(".close-overlay").removeClass("hidden");
@@ -82,28 +79,37 @@ var Quest = function($) {
 
         },
 
-        showBackToTop: function(){
+        showBackToTop: function() {
             var offset = 300,
-            //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
-            offset_opacity = 1200,
-            //grab the "back to top" link
-            $back_to_top = $('.cd-top'),
-            $window = $(window);
-            ( $window.scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
-            if( $window.scrollTop() > offset_opacity ) { 
+                //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+                offset_opacity = 1200,
+                //grab the "back to top" link
+                $back_to_top = $('.cd-top'),
+                $window = $(window);
+            ($window.scrollTop() > offset) ? $back_to_top.addClass('cd-is-visible'): $back_to_top.removeClass('cd-is-visible cd-fade-out');
+            if ($window.scrollTop() > offset_opacity) {
                 $back_to_top.addClass('cd-fade-out');
             }
         },
 
-        initBackToTop: function(){
+        initBackToTop: function() {
             //smooth scroll to top
-            $('.cd-top').on('click', function(event){
+            $('.cd-top').on('click', function(event) {
                 event.preventDefault();
                 $('body,html').animate({
-                    scrollTop: 0 ,
-                    }, 700
-                );
+                    scrollTop: 0,
+                }, 700);
             });
+        },
+
+        init: function() {
+            new WOW({offset: $(window).height() / 3 }).init();
+            Quest.initImageEffects();
+            Quest.initColorbox();
+            Quest.initTooltip();
+            Quest.initBackToTop();
+            Quest.initMasonry();
+            Quest.initFormPlaceHolder();
         }
 
     };
@@ -114,56 +120,56 @@ var PageBuilder = (function($) {
 
     return {
 
-        initEvents : function() {
+        initEvents: function() {
 
-            $('.sl-slider-wrapper').each(function(){
+            $('.sl-slider-wrapper').each(function() {
                 var $el = $(this),
                     options = $el.data(),
                     defaults = {
                         autoplay: true,
-                        onBeforeChange : function( slide, pos ) {
-                            $nav.removeClass( 'nav-dot-current' );
-                            $nav.eq( pos ).addClass( 'nav-dot-current' );
+                        onBeforeChange: function(slide, pos) {
+                            $nav.removeClass('nav-dot-current');
+                            $nav.eq(pos).addClass('nav-dot-current');
                         }
                     },
                     cnt = $el.find('.sl-slide').length;
-                $.extend( defaults, options );
+                $.extend(defaults, options);
 
-                $el.append('<nav class="nav-dots">' + new Array(cnt + 1).join('<span></span>')+ '</nav>');
+                $el.append('<nav class="nav-dots">' + new Array(cnt + 1).join('<span></span>') + '</nav>');
 
-                var $nav = $el.find( '.nav-dots > span' );
+                var $nav = $el.find('.nav-dots > span');
                 $nav.first().addClass('nav-dot-current');
 
-                var slitslider = $el.slitslider( defaults ),
-                $next = $el.find('.slit-nav-buttons .next'),
-                $prev = $el.find('.slit-nav-buttons .prev');
+                var slitslider = $el.slitslider(defaults),
+                    $next = $el.find('.slit-nav-buttons .next'),
+                    $prev = $el.find('.slit-nav-buttons .prev');
 
-                $nav.each( function( i ) {
-                
-                    $( this ).on( 'click', function( event ) {
-                        
-                        var $dot = $( this );
-                        
-                        if( !slitslider.isActive() ) {
+                $nav.each(function(i) {
 
-                            $nav.removeClass( 'nav-dot-current' );
-                            $dot.addClass( 'nav-dot-current' );
-                        
+                    $(this).on('click', function(event) {
+
+                        var $dot = $(this);
+
+                        if (!slitslider.isActive()) {
+
+                            $nav.removeClass('nav-dot-current');
+                            $dot.addClass('nav-dot-current');
+
                         }
-                        
-                        slitslider.jump( i + 1 );
-                        return false;
-                    
-                    } );
-                    
-                } );
 
-                $next.on('click', function( event ) {
+                        slitslider.jump(i + 1);
+                        return false;
+
+                    });
+
+                });
+
+                $next.on('click', function(event) {
                     slitslider.next();
                     return false;
                 });
 
-                $prev.on('click', function( event ) { 
+                $prev.on('click', function(event) {
                     slitslider.previous();
                     return false;
                 });
@@ -183,11 +189,5 @@ jQuery(window).scroll(function() {
 
 jQuery(document).ready(function() {
     PageBuilder.initEvents();
-    new WOW().init();
-    Quest.initImageEffects();
-    Quest.initColorbox();
-    Quest.initTooltip();
-    Quest.initBackToTop();
-    Quest.initMasonry();
-    Quest.initFormPlaceHolder();
+    Quest.init();
 });

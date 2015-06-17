@@ -364,16 +364,30 @@ class PT_PageBuilder_Save {
 	 * @return string
 	 */
 	private function _getColumnClass( $type ) {
-		if ( $type === '1-2' )
-			return 'col-md-6';
+		$cls = '';
+		switch ($type) {
+			case '1-1':
+				$cls = 'col-md-12';
+				break;
 
-		if ( $type === '1-3' )
-			return 'col-md-4';
+			case '1-2':
+				$cls = 'col-md-6';
+				break;
 
-		if ( $type === '1-4' )
-			return 'col-md-3';
+			case '1-3':
+				$cls = 'col-md-4';
+				break;
 
-		return 'col-md-12';
+			case '1-4':
+				$cls = 'col-md-3';
+				break;
+			
+			default:
+				$cls = apply_filters('pt_pb_get_column_class', $cls, $type);
+				break;
+		}
+
+		return $cls;
 	}
 
 	/**
