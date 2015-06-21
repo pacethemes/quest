@@ -1,3 +1,11 @@
+## 1.0.5
+
+* Fixes An incorrect version upload issue
+
+## 1.0.4
+
+* Fixes issues as per Theme Review
+
 ## 1.0.3
 
 * Fixes jQuery $ issue for window.partial function

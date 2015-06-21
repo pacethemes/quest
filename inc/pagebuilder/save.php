@@ -354,7 +354,7 @@ class PT_PageBuilder_Save {
 	 * @return string $content
 	 */
 	private function generateImage( $image ) {
-		$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='' data-gallery=''>".wp_get_attachment_image( $image['post_id'], 'gallery' )."<span class='overlay'><i class='fa fa-expand'></i></span></a>";
+		$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='' data-gallery=''>".wp_get_attachment_image( $image['post_id'], 'quest-gallery' )."<span class='overlay'><i class='fa fa-expand'></i></span></a>";
 		return $content;
 	}
 

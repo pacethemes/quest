@@ -42,4 +42,8 @@ jQuery(document).ready(function($) {
         	$t.remove();
         }
     });
+    $('<a class="quest-plus-link" href="http://pacethemes.com/quest-download-pricing?utm_source=quest_free&utm_campaign=quest_104&utm_medium=customizer" target="_blank"><span class="quest-plus">Checkout Quest Plus</span></a>')
+    	.click(function(e){
+    		e.stopPropagation();
+    	}).appendTo($('#customize-controls .preview-notice'));
 });

@@ -300,7 +300,7 @@ if ( !function_exists( 'quest_main_cls' ) ) :
 	 * Prints the appropriate Bootstrap class for the main content area
 	 */
 	function quest_main_cls() {
-		$view = quest_get_view();
+		$view = quest_get_view(); 
 		$pos = quest_get_mod( 'layout_'.$view.'_sidebar' );
 		if ( $pos === 'none' ) {
 			echo 'col-md-12';

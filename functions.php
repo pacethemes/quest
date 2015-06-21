@@ -52,8 +52,8 @@ if ( !function_exists( 'quest_setup' ) ):
          * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
         */
 		add_theme_support( 'post-thumbnails' );
-		add_image_size( 'blog-grid', 540, 420, true );
-		add_image_size( 'gallery', 280, 280, true );
+		add_image_size( 'quest-blog-grid', 540, 420, true );
+		add_image_size( 'quest-gallery', 280, 280, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'quest' ), ) );
@@ -129,7 +129,7 @@ if ( !function_exists( 'quest_scripts' ) ):
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
 		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
 		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
-		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/example4/colorbox.css' );
+		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/colorbox.css' );
 		wp_enqueue_style( 'Quest-style', get_stylesheet_uri() );
 
 		// Enqueue required scripts
@@ -137,7 +137,7 @@ if ( !function_exists( 'quest_scripts' ) ):
 		wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array( 'jquery', 'masonry' ) );
 		wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/assets/plugins/smoothscroll/SmoothScroll.js' );
 		wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.js' );
-		wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.js', array( 'jquery' ) );
 		wp_enqueue_script( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js' );
 		wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/jquery.colorbox-min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/jquery.smartmenus.min.js' );
@@ -160,14 +160,17 @@ if ( !function_exists( 'quest_admin_scripts' ) ):
 	/**
 	 * Enqueue Admin scripts and styles.
 	 */
-	function quest_admin_scripts() {
+	function quest_admin_scripts( $hook ) {
 
-		// Enqueue required styles
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_style( 'admin-panel', get_template_directory_uri() . '/custom-editor-style.css' );
+		if ( in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) :
+			// Enqueue required styles
+			wp_enqueue_style( 'wp-color-picker' );
+			wp_enqueue_style( 'admin-panel', get_template_directory_uri() . '/custom-editor-style.css' );
 
-		wp_enqueue_script( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/jquery.reveal.js' );
-		wp_enqueue_style( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/reveal.css' );
+			wp_enqueue_script( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/jquery.reveal.js' );
+			wp_enqueue_style( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/reveal.css' );
+
+		endif;
 
 		wp_enqueue_style( 'admin-panel-css', get_template_directory_uri() . '/assets/css/admin.css' );
 
@@ -318,11 +321,6 @@ endif;
 if ( is_admin() )  :
 
 	/**
-	 * Editor Custom Functions
-	 */
-	require get_template_directory() . '/inc/editor/editor.php';
-
-	/**
 	 * Page Builder
 	 */
 	require get_template_directory() . '/inc/pagebuilder/builder.php';
@@ -369,15 +367,12 @@ if ( !function_exists( 'quest_search_menu_icon' ) ):
 		if ( quest_get_mod( 'layout_header_search' ) && $args->theme_location === 'primary' ) {
 			$items.= '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown" id="menu-item-search">
                     <a href="#"><i class="fa fa-search"></i></a>
-                    <ul class="dropdown-menu">
-                    <li>
-                    <form class="search" action="' . get_home_url() . '" method="get">
-                        <div class="arrow-up"></div>
-                        <input name="s" type="text" placeholder="' . __( 'Search', 'quest' ) . '...">
-                    </form>
-                    </li>
-                    </ul>
-                </li>';
+                    	<ul class="dropdown-menu">
+                    		<li>'.
+                    			get_search_form( false )
+                    		.'</li>
+                    	</ul>
+                	</li>';
 		}
 
 		return $items;

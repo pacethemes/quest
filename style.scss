@@ -1,10 +1,10 @@
 /**
  * Theme Name:  Quest
- * Theme URI:   http://pacethemes.com/quest
+ * Theme URI:   http://pacethemes.com/wordpress-themes/quest/
  * Author:      Pace Themes
  * Author URI:  http://pacethemes.com
  * Description: Your Quest for an awesome WordPress theme ends right here. Quest let's you create the website you need without having any coding knowledge. Quest offers a powerful click, drag and drop page builder to help you create amazing pages to showcase your content while offering a slick user interface therein increasing your user experience. Quest also includes powerful and flexible easy to understand and easy to use customization options to customize the entire layout of your site including background images, colors, typography and so on. Build your site now using Quest - blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't limit you when it comes to your creativity. Quest is built on the famous bootstrap framework which uses a mobile first approach, this will ensure your site works properly on all mobiles, tablets, laptops and desktops. Theme demo is available at http://demo.pacethemes.com/quest/
- * Version:     1.0.3
+ * Version:     1.0.5
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: quest
@@ -1630,113 +1630,6 @@ hr {
     width: 100%;
 }
 
-// .main-navigation {
-//     .nav {
-//         height: auto !important;
-//         line-height: 1.5em !important;
-//         margin: 7.5px -15px 0;
-//         text-align: left;
-//         display: block;
-//         float: none !important;
-//         .current-menu-item {
-//             border-top: none !important;
-//             > a {
-//                 margin-top: 0;
-//             }
-//         }
-//         .current-menu-ancestor {
-//             border-top: none !important;
-//             > a {
-//                 margin-top: 0;
-//             }
-//         }
-//         .current-menu-parent {
-//             border-top: none !important;
-//             > a {
-//                 margin-top: 0;
-//             }
-//         }
-//         #menu-item-search {
-//             display: none;
-//         }
-//         li {
-//             border-top: none !important;
-//             text-align: left;
-//             // float: none;
-//             &:hover a {
-//                 border-color: $border_color !important;
-//             }
-//         }
-//         a {
-//             padding: 10px !important;
-//             display: block;
-//             border-bottom: 1px solid $border_color;
-//         }
-//         .dropdown-menu {
-//             -webkit-box-shadow: none;
-//             //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-//             box-shadow: none;
-//             background: $white;
-//             position: static;
-//             border: none !important;
-//             float: none;
-//             .sub-arrow {
-//                 margin-top: 5px !important;
-//             }
-//             > li {
-//                 border: none;
-//                 a {
-//                     padding-left: 25px !important;
-//                     height: auto;
-//                     line-height: 1.5em;
-//                     &:hover {
-//                         background: $color_wild_sand_approx;
-//                     }
-//                     &:focus {
-//                         background: $color_wild_sand_approx;
-//                     }
-//                     &:before {
-//                         content: '- ';
-//                     }
-//                 }
-//             }
-//             .dropdown-menu > li > a {
-//                 padding-left: 35px !important;
-//                 &:before {
-//                     content: '-- ';
-//                 }
-//             }
-//         }
-//         .cart-menu-first.cart-menu {
-//             display: none;
-//         }
-//         > li {
-//             &:hover {
-//                 border-top: none !important;
-//             }
-//             &:focus {
-//                 border-top: none !important;
-//             }
-//         }
-//     }
-//     .navbar-toggle {
-//         // display: block !important;
-//         color: #fff;
-//     }
-//     .navbar-collapse {
-//         border-top: none;
-//     }
-//     .navbar-collapse.collapse {
-//         border: 1px solid $border_color;
-//         border-top: none;
-//         // display: none !important;
-//         overflow-y: hidden !important;
-//         > ul {
-//             display: block !important;
-//         }
-//     }
-// }
-
 
 .main-navigation {
     // float: none;
@@ -1968,6 +1861,7 @@ hr {
     }
     .fa-search {
         font-size: 16px;
+        top: 0px;
     }
     a {
         border-color: transparent;
@@ -4084,5 +3978,11 @@ article.post-normal h1.post-title {
             color: $white;
             background: $accent_color;
         }
+    }
+}
+
+.payment_methods{
+    li{
+        list-style-type: none !important;
     }
 }

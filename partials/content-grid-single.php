@@ -4,7 +4,7 @@
 		
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="post-image blog-normal effect slide-top">
-			<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-grid' ); ?></a>
+			<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'quest-blog-grid' ); ?></a>
 			<div class="overlay">
 				<div class="caption">
                     <a href="<?php the_permalink() ?>"><?php _e('View more', 'quest'); ?></a>

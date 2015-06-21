@@ -10,6 +10,7 @@ class PT_PageBuilder {
 	private static $PT_PB_VERSION ;
 	private static $PT_PB_DIR ;
 	private static $PT_PB_URI ;
+	private static $QUEST_PLUS_URI;
 
 	// Hold an instance of the class
 	private static $instance;
@@ -20,6 +21,7 @@ class PT_PageBuilder {
 		self::$PT_PB_VERSION = wp_get_theme()->Version ;
 		self::$PT_PB_DIR = trailingslashit( dirname( __FILE__ ) ) ;
 		self::$PT_PB_URI = get_template_directory_uri() . '/inc/pagebuilder' ;
+		self::$QUEST_PLUS_URI = "http://pacethemes.com/quest-download-pricing?utm_source=quest_free&utm_campaign=quest_104&utm_medium=banner";
 
 		//setup required Hooks and Filters
 		add_action( 'after_setup_theme', array( $this, 'InitializeMetaBox' ) );
@@ -122,6 +124,13 @@ class PT_PageBuilder {
 			do_action( 'pt_pb_before_stage' );
 		?>
 			
+			<div id="upgrade_message" class="quest-plus-message">
+				<p>
+					<strong> <?php _e( 'Need some Inspiration ?', 'quest' ); ?>  <span class="quest-plus">Quest Plus</span> </strong><br>
+					<a href="<?php echo self::$QUEST_PLUS_URI; ?>" target="_blank"><?php _e( 'Upgrade to Quest Plus', 'quest' ); ?></a> <?php _e( 'and get pre built layouts and the ability save/load any layout.', 'quest' ); ?>
+				</p>
+			</div>
+
 			<div id="pt_pb_stage">
 				<div id="pt-pb-main-container">
 				</div>
@@ -311,6 +320,10 @@ class PT_PageBuilder {
 						<a href="#" class="section-type pt-pb-insert-column"><i class="fa fa-columns"></i> <?php _e( 'Columns', 'quest' ); ?></a>
 						<a href="#" class="section-type pt-pb-insert-slider"><i class="dashicons dashicons-images-alt"></i> <?php _e( 'Image Slider', 'quest' ); ?></a>
 						<a href="#" class="section-type pt-pb-insert-gallery"><i class="dashicons dashicons-format-gallery"></i> <?php _e( 'Gallery', 'quest' ); ?></a>
+						<div class="quest-plus-message"> 
+							<strong><?php _e( 'Need more section options ?', 'quest' ); ?> <span class="quest-plus">Quest Plus</span> </strong> <br />
+							<a href="<?php echo self::$QUEST_PLUS_URI; ?>" target="_blank"><?php _e( 'Upgrade to Quest Plus', 'quest' ); ?></a>
+						</div>
 					</div>
 				</div>
 			</script>
@@ -452,6 +465,10 @@ class PT_PageBuilder {
 			<script type="text/template" id="pt-pb-insert-column-template">
 				<h2><?php _e( 'Select Layout', 'quest' ); ?></h2>
 				<div class="edit-content">
+					<div class="quest-plus-message"> 
+						<strong><?php _e( 'Need more layout options ?', 'quest' ); ?> <span class="quest-plus">Quest Plus</span> </strong> <br />
+						<a href="<?php echo self::$QUEST_PLUS_URI; ?>" target="_blank"><?php _e( 'Upgrade to Quest Plus', 'quest' ); ?></a>
+					</div>
 					<ul class="column-layouts">
 						<li data-layout="1-1">
 							<div class="column-layout full-width"></div>

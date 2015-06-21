@@ -67,9 +67,9 @@ function quest_woocommerce_after_main_content() {
 
 				<?php quest_try_sidebar( quest_get_view(), 'right' ); ?>
 
-			</div><!-- .row -->
-		</div><!-- .container -->
-	</div>
+				</div><!-- .row -->
+			</div><!-- .container -->
+		</div>
 	</div><!-- #content -->
 	<?php
 
