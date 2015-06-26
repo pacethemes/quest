@@ -2,7 +2,7 @@
 var trPbApp = trPbApp || {};
 trPbApp.Modules = trPbApp.Modules || {};
 
-(function(window, Backbone, $, _, trPbApp) {
+(function (window, Backbone, $, _, trPbApp) {
     'use strict';
 
     trPbApp.SectionModel = Backbone.Model.extend({

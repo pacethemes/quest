@@ -6,25 +6,26 @@
 $view = quest_get_view();
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('post-normal'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-normal' ); ?>>
 	<header class="entry-header">
 		<?php get_template_part( 'partials/content', 'sticky' ); ?>
-		<?php if(has_post_thumbnail()) : ?>
+		<?php if ( has_post_thumbnail() ) : ?>
 
-		<div class="post-image blog-normal effect slide-top">
+			<div class="post-image blog-normal effect slide-top">
 				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-normal' ); ?></a>
+
 				<div class="overlay">
 					<div class="caption">
-                        <a href="<?php the_permalink() ?>"><?php _e('View more', 'quest'); ?></a>
-                    </div>
-                    <a href="<?php the_permalink() ?>" class="expand">+</a>
-                    <a href="#" class="close-overlay hidden">x</a>
-                </div>
-		</div>
-		
+						<a href="<?php the_permalink() ?>"><?php _e( 'View more', 'quest' ); ?></a>
+					</div>
+					<a href="<?php the_permalink() ?>" class="expand">+</a>
+					<a href="#" class="close-overlay hidden">x</a>
+				</div>
+			</div>
+
 		<?php endif; ?>
 
-		<?php if ( quest_get_mod( 'layout_'.$view.'_title' ) ) : ?>
+		<?php if ( quest_get_mod( 'layout_' . $view . '_title' ) ) : ?>
 			<?php the_title( sprintf( '<h1 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 		<?php endif; ?>
 
@@ -33,23 +34,26 @@ $view = quest_get_view();
 				<?php quest_post_meta(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
-		
-	</header><!-- .entry-header -->
+
+	</header>
+	<!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages: ', 'quest' ),
-				'after'  => '</div>',
-			) );
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . __( 'Pages: ', 'quest' ),
+			'after'  => '</div>',
+		) );
 		?>
-	</div><!-- .entry-content -->
+	</div>
+	<!-- .entry-content -->
 
 	<footer class="entry-footer">
 		<?php quest_post_author_info(); ?>
 		<?php quest_post_taxonomy( $view ); ?>
 		<?php quest_post_single_navigation(); ?>
 		<?php edit_post_link( __( 'Edit', 'quest' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
+	</footer>
+	<!-- .entry-footer -->
 </article><!-- #post-## -->

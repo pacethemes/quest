@@ -9,12 +9,12 @@
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
-if ( !isset( $content_width ) ) {
+if ( ! isset( $content_width ) ) {
 	$content_width = 870;
 	/* pixels */
 }
 
-if ( !function_exists( 'quest_setup' ) ):
+if ( ! function_exists( 'quest_setup' ) ):
 
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -31,7 +31,7 @@ if ( !function_exists( 'quest_setup' ) ):
          * If you're building a theme based on Quest, use a find and replace
          * to change 'quest' to the name of your theme in all the template files
         */
-		if ( !load_theme_textdomain( 'quest', get_stylesheet_directory() . '/languages' ) ) {
+		if ( ! load_theme_textdomain( 'quest', get_stylesheet_directory() . '/languages' ) ) {
 			load_theme_textdomain( 'quest', get_template_directory() . '/languages' );
 		}
 
@@ -65,7 +65,10 @@ if ( !function_exists( 'quest_setup' ) ):
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', ) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'quest_custom_background_args', array( 'default-color' => 'ffffff', 'default-image' => '', ) ) );
+		add_theme_support( 'custom-background', apply_filters( 'quest_custom_background_args', array(
+			'default-color' => 'ffffff',
+			'default-image' => '',
+		) ) );
 
 		// Allows theme developers to link a custom stylesheet file to the TinyMCE visual editor
 		add_editor_style( 'custom-editor-style.css' );
@@ -76,7 +79,7 @@ endif;
 // quest_setup
 add_action( 'after_setup_theme', 'quest_setup' );
 
-if ( !function_exists( 'quest_widgets_init' ) ):
+if ( ! function_exists( 'quest_widgets_init' ) ):
 
 	/**
 	 * Register widget area.
@@ -86,37 +89,52 @@ if ( !function_exists( 'quest_widgets_init' ) ):
 	function quest_widgets_init() {
 
 		//register Main sidebar widgets
-		register_sidebar( array( 'name' => __( 'Sidebar', 'quest' ), 'id' => 'sidebar-1', 'description' => '', 'before_widget' => '<aside id="%1$s" class="widget %2$s sidebar-widget clearfix">', 'after_widget' => '</aside>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>', ) );
+		register_sidebar( array(
+			'name'          => __( 'Sidebar', 'quest' ),
+			'id'            => 'sidebar-1',
+			'description'   => '',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s sidebar-widget clearfix">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		) );
 
 		$cols = quest_get_mod( 'layout_footer_widgets' );
 
 		switch ( $cols ) {
-		case 1:
-			$span = 12;
-			break;
+			case 1:
+				$span = 12;
+				break;
 
-		case 2:
-			$span = 6;
-			break;
+			case 2:
+				$span = 6;
+				break;
 
-		case 3:
-			$span = 4;
-			break;
+			case 3:
+				$span = 4;
+				break;
 
-		case 4:
-			$span = 3;
-			break;
+			case 4:
+				$span = 3;
+				break;
 		}
 
 		//Register Footer WIdgets
-		register_sidebar( array( 'name' => __( 'Footer Widget', 'quest' ), 'id' => 'footer-widget', 'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">', 'after_widget' => "</article>\n", 'before_title' => '<h1>', 'after_title' => "</h1>\n" ) );
+		register_sidebar( array(
+			'name'          => __( 'Footer Widget', 'quest' ),
+			'id'            => 'footer-widget',
+			'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">',
+			'after_widget'  => "</article>\n",
+			'before_title'  => '<h1>',
+			'after_title'   => "</h1>\n"
+		) );
 	}
 
 endif;
 
 add_action( 'widgets_init', 'quest_widgets_init' );
 
-if ( !function_exists( 'quest_scripts' ) ):
+if ( ! function_exists( 'quest_scripts' ) ):
 
 	/**
 	 * Enqueue scripts and styles.
@@ -134,7 +152,10 @@ if ( !function_exists( 'quest_scripts' ) ):
 
 		// Enqueue required scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
-		wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array( 'jquery', 'masonry' ) );
+		wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array(
+			'jquery',
+			'masonry'
+		) );
 		wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/assets/plugins/smoothscroll/SmoothScroll.js' );
 		wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.js' );
 		wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.js', array( 'jquery' ) );
@@ -155,7 +176,7 @@ endif;
 
 add_action( 'wp_enqueue_scripts', 'quest_scripts' );
 
-if ( !function_exists( 'quest_admin_scripts' ) ):
+if ( ! function_exists( 'quest_admin_scripts' ) ):
 
 	/**
 	 * Enqueue Admin scripts and styles.
@@ -167,15 +188,15 @@ if ( !function_exists( 'quest_admin_scripts' ) ):
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_style( 'admin-panel', get_template_directory_uri() . '/custom-editor-style.css' );
 
-			wp_enqueue_script( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/jquery.reveal.js' );
-			wp_enqueue_style( 'jquery-reveal', get_template_directory_uri().'/assets/plugins/reveal/reveal.css' );
+			wp_enqueue_script( 'jquery-reveal', get_template_directory_uri() . '/assets/plugins/reveal/jquery.reveal.js' );
+			wp_enqueue_style( 'jquery-reveal', get_template_directory_uri() . '/assets/plugins/reveal/reveal.css' );
+
+			// Enqueue required scripts
+			wp_enqueue_script( 'quest_custom_js', get_template_directory_uri() . '/assets/js/admin.js' );
 
 		endif;
 
 		wp_enqueue_style( 'admin-panel-css', get_template_directory_uri() . '/assets/css/admin.css' );
-
-		// Enqueue required scripts
-		wp_enqueue_script( 'quest_custom_js', get_template_directory_uri() . '/assets/js/admin.js' );
 
 	}
 
@@ -183,36 +204,35 @@ endif;
 
 add_action( 'admin_enqueue_scripts', 'quest_admin_scripts' );
 
-if ( !function_exists( 'quest_blog_favicon' ) ):
+if ( ! function_exists( 'quest_blog_favicon' ) ):
 
 	/**
 	 * Hook into wp_head and add custom favicon
 	 */
 	function quest_blog_favicon() {
-		$favicon =  quest_get_mod( 'logo_favicon' ); 
+		$favicon = quest_get_mod( 'logo_favicon' );
 		if ( $favicon !== '' ): ?>
-			<link rel="shortcut icon" href="<?php echo esc_url( $favicon ); ?>" />
+			<link rel="shortcut icon" href="<?php echo esc_url( $favicon ); ?>"/>
 		<?php endif;
 	}
 
 endif;
 
-add_action('wp_head', 'quest_blog_favicon');
+add_action( 'wp_head', 'quest_blog_favicon' );
 
-if ( !class_exists( 'Quest_Main_Menu' ) ):
+if ( ! class_exists( 'Quest_Main_Menu' ) ):
 
 	/**
 	 * Quest_Main_Menu extends from Walker_Nav_Menu
 	 * Provides custom walker functions to add/edit additional markup for the theme menu
 	 */
-	class Quest_Main_Menu extends Walker_Nav_Menu
-	{
+	class Quest_Main_Menu extends Walker_Nav_Menu {
 
 		function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 			$id_field = $this->db_fields['id'];
 
 			if ( is_object( $args[0] ) ) {
-				$args[0]->has_children = !empty( $children_elements[$element->$id_field] );
+				$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
 			}
 
 			return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
@@ -233,13 +253,13 @@ if ( !class_exists( 'Quest_Main_Menu' ) ):
 			// depth dependent classes
 			$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' );
 
-			$output.= "\n" . $indent . '<ul class="dropdown-menu">' . "\n";
+			$output .= "\n" . $indent . '<ul class="dropdown-menu">' . "\n";
 		}
 	}
 
 endif;
 
-if ( !function_exists( 'quest_wp_page_menu' ) ):
+if ( ! function_exists( 'quest_wp_page_menu' ) ):
 
 	/**
 	 * Display or retrieve list of pages with optional home link.
@@ -250,8 +270,14 @@ if ( !function_exists( 'quest_wp_page_menu' ) ):
 	 * @return string html menu
 	 */
 	function quest_wp_page_menu( $args = array() ) {
-		$defaults = array( 'sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '' );
-		$args = wp_parse_args( $args, $defaults );
+		$defaults = array(
+			'sort_column' => 'menu_order, post_title',
+			'menu_class'  => 'menu',
+			'echo'        => true,
+			'link_before' => '',
+			'link_after'  => ''
+		);
+		$args     = wp_parse_args( $args, $defaults );
 
 		/**
 		 * Filter the arguments used to generate a page-based menu.
@@ -260,7 +286,7 @@ if ( !function_exists( 'quest_wp_page_menu' ) ):
 		 *
 		 * @see wp_page_menu()
 		 *
-		 * @param array   $args An array of page menu arguments.
+		 * @param array $args An array of page menu arguments.
 		 */
 		$args = apply_filters( 'wp_page_menu_args', $args );
 
@@ -269,31 +295,37 @@ if ( !function_exists( 'quest_wp_page_menu' ) ):
 		$list_args = $args;
 
 		// Show Home in the menu
-		if ( !empty( $args['show_home'] ) ) {
-			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] ) $text = __( 'Home', 'quest' );
-			else $text = $args['show_home'];
+		if ( ! empty( $args['show_home'] ) ) {
+			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] ) {
+				$text = __( 'Home', 'quest' );
+			} else {
+				$text = $args['show_home'];
+			}
 			$class = '';
-			if ( is_front_page() && !is_paged() ) $class = 'class="current_page_item"';
-			$menu.= '<li ' . $class . '><a href="' . home_url( '/' ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
+			if ( is_front_page() && ! is_paged() ) {
+				$class = 'class="current_page_item"';
+			}
+			$menu .= '<li ' . $class . '><a href="' . home_url( '/' ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
 
 			// If the front page is a page, add it to the exclude list
 			if ( get_option( 'show_on_front' ) == 'page' ) {
-				if ( !empty( $list_args['exclude'] ) ) {
-					$list_args['exclude'].= ',';
-				}
-				else {
+				if ( ! empty( $list_args['exclude'] ) ) {
+					$list_args['exclude'] .= ',';
+				} else {
 					$list_args['exclude'] = '';
 				}
-				$list_args['exclude'].= get_option( 'page_on_front' );
+				$list_args['exclude'] .= get_option( 'page_on_front' );
 			}
 		}
 
-		$list_args['echo'] = false;
-		$list_args['depth'] = 1;
+		$list_args['echo']     = false;
+		$list_args['depth']    = 1;
 		$list_args['title_li'] = '';
-		$menu.= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $list_args ) );
+		$menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $list_args ) );
 
-		if ( $menu ) $menu = '<ul class="nav navbar-nav">' . $menu . '</ul>';
+		if ( $menu ) {
+			$menu = '<ul class="nav navbar-nav">' . $menu . '</ul>';
+		}
 
 		$menu = '<div class="' . esc_attr( $args['menu_class'] ) . '">' . $menu . "</div>\n";
 
@@ -304,12 +336,16 @@ if ( !function_exists( 'quest_wp_page_menu' ) ):
 		 *
 		 * @see wp_page_menu()
 		 *
-		 * @param string  $menu The HTML output.
-		 * @param array   $args An array of arguments.
+		 * @param string $menu The HTML output.
+		 * @param array $args An array of arguments.
 		 */
 		$menu = apply_filters( 'wp_page_menu', $menu, $args );
-		if ( $args['echo'] ) echo $menu;
-		else return $menu;
+		if ( $args['echo'] ) {
+			echo $menu;
+		} else {
+			return $menu;
+		}
+
 		return '';
 	}
 endif;
@@ -355,7 +391,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 
-if ( !function_exists( 'quest_search_menu_icon' ) ):
+if ( ! function_exists( 'quest_search_menu_icon' ) ):
 
 	/**
 	 * Adds Seach Icon to the Primary Menu if the option is set in Theme Options
@@ -365,12 +401,12 @@ if ( !function_exists( 'quest_search_menu_icon' ) ):
 	function quest_search_menu_icon( $items, $args ) {
 
 		if ( quest_get_mod( 'layout_header_search' ) && $args->theme_location === 'primary' ) {
-			$items.= '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown" id="menu-item-search">
+			$items .= '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown" id="menu-item-search">
                     <a href="#"><i class="fa fa-search"></i></a>
                     	<ul class="dropdown-menu">
-                    		<li>'.
-                    			get_search_form( false )
-                    		.'</li>
+                    		<li>' .
+			          get_search_form( false )
+			          . '</li>
                     	</ul>
                 	</li>';
 		}

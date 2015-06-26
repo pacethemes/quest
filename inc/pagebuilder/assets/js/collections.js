@@ -1,7 +1,7 @@
 /* global Backbone, jQuery, _ */
 var trPbApp = trPbApp || {};
 
-(function(window, Backbone, $, _, trPbApp) {
+(function (window, Backbone, $, _, trPbApp) {
     'use strict';
 
     trPbApp.SectionCollection = Backbone.Collection.extend({

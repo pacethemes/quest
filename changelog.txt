@@ -1,3 +1,7 @@
+## 1.0.6
+
+* Fixes issues as per Theme Review
+
 ## 1.0.5
 
 * Fixes An incorrect version upload issue

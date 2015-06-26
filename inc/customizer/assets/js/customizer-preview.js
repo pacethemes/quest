@@ -1,3 +1,3 @@
 /*TO DO - Implement JS for Live Preview*/
-( function( $ ) {
-} )( jQuery );
+(function ($) {
+})(jQuery);

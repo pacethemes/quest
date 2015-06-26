@@ -12,8 +12,8 @@
  */
 
 get_header();
-$view = quest_get_view();
-$layout = quest_get_mod( 'layout_'.$view.'_style' ); ?>
+$view   = quest_get_view();
+$layout = quest_get_mod( 'layout_' . $view . '_style' ); ?>
 
 <?php get_template_part( 'partials/content', $layout ); ?>
 

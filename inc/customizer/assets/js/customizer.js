@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 
     var fontChosen,
         wpApi = wp.customize;
@@ -6,16 +6,16 @@
     fontChosen = {
         cache: {},
 
-        init: function() {
+        init: function () {
             fontChosen.buildFonts();
             fontChosen.showFonts();
         },
 
-        buildFonts: function() {
+        buildFonts: function () {
             fontChosen.cache.fonts = '';
             fontChosen.cache.chosen = {};
 
-            $.each(questCustomizerFontsL10n, function(name, options) {
+            $.each(questCustomizerFontsL10n, function (name, options) {
                 var disabled = '';
                 if (options['disabled'] !== undefined) {
                     disabled = ' disabled="disabled" ';
@@ -24,22 +24,22 @@
             });
         },
 
-        showFonts: function() {
-            $(".chosen-select").each(function() {
+        showFonts: function () {
+            $(".chosen-select").each(function () {
                 var $el = $(this),
                     key = $el.attr('data-customize-setting-link');
                 fontChosen.cache.chosen[key] = $(this);
-                wpApi(key, function(setting) {
-                    $el.on('chosen:ready', function() {
+                wpApi(key, function (setting) {
+                    $el.on('chosen:ready', function () {
                         var v = setting.get(),
                             $sel = $(this)
-                            .html(fontChosen.cache.fonts)
-                            .val(v);
-                        setTimeout(function() {
+                                .html(fontChosen.cache.fonts)
+                                .val(v);
+                        setTimeout(function () {
                             $el.trigger('chosen:updated');
                         }, 200);
                     });
-                    $el.on('change', function() {
+                    $el.on('change', function () {
                         var $select = $(this),
                             font = $select.val(),
                             $variant = $select.closest('li').next().find('select');
@@ -56,12 +56,12 @@
             fontChosen.showDefaultVariants();
         },
 
-        showDefaultVariants: function() {
-            $('[id$=_variant] select').each(function() {
+        showDefaultVariants: function () {
+            $('[id$=_variant] select').each(function () {
                 var $el = $(this),
                     key = $el.attr('data-customize-setting-link'),
                     parentKey = key.replace('_variant', '_family');
-                wpApi(key, function(setting) {
+                wpApi(key, function (setting) {
                     if (fontChosen.cache.chosen[parentKey] !== undefined && fontChosen.cache.chosen[parentKey].length > 0) {
                         $el.html(fontChosen.showVariants(questCustomizerFontsL10n[fontChosen.cache.chosen[parentKey].val()]['variants']))
                             .val(setting.get());
@@ -71,10 +71,10 @@
             });
         },
 
-        showVariants: function(variants) {
+        showVariants: function (variants) {
             var options = '';
-            $.each(variants, function(ind, val) {
-                var name = val.replace('italic', ' Italic').replace(/\w\S*/g, function(txt) {
+            $.each(variants, function (ind, val) {
+                var name = val.replace('italic', ' Italic').replace(/\w\S*/g, function (txt) {
                     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 });
                 options += '<option value="' + val + '">' + name + '</option>';
@@ -85,8 +85,12 @@
     };
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         fontChosen.init();
+        $('<a class="quest-plus-link" href="http://pacethemes.com/quest-download-pricing" target="_blank"><span class="quest-plus">Checkout Quest Plus</span></a>')
+            .click(function (e) {
+                e.stopPropagation();
+            }).appendTo($('#customize-controls .preview-notice'));
     });
 
 

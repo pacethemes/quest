@@ -15,7 +15,8 @@ class PT_PageBuilder_Save {
 	public function __construct() {
 		//If the template is set to Page Builder then save the Pagebuilder Meta and create content based on the meta
 		if ( isset( $_POST['page_template'] ) && $_POST['page_template'] === 'page-builder.php' &&
-			isset( $_POST[ 'pt-pb-nonce' ] ) && isset( $_POST[ 'pt_pb_section' ] ) && wp_verify_nonce( $_POST[ 'pt-pb-nonce' ], 'save' ) ) {
+		     isset( $_POST['pt-pb-nonce'] ) && isset( $_POST['pt_pb_section'] ) && wp_verify_nonce( $_POST['pt-pb-nonce'], 'save' )
+		) {
 			// Save the post's meta data
 			add_action( 'save_post', array( $this, 'SavePost' ), 10, 2 );
 
@@ -30,9 +31,10 @@ class PT_PageBuilder_Save {
 	 * @return PT_PageBuilder_Save
 	 */
 	public static function getInstance() {
-		if ( !isset( self::$instance ) ) {
+		if ( ! isset( self::$instance ) ) {
 			self::$instance = new static();
 		}
+
 		return self::$instance;
 	}
 
@@ -63,11 +65,13 @@ class PT_PageBuilder_Save {
 			return;
 		}
 
-		if ( $postarr['post_type'] === 'revision' || !isset( $postarr['pt_pb_section'] ) )
+		if ( $postarr['post_type'] === 'revision' || ! isset( $postarr['pt_pb_section'] ) ) {
 			return $data;
+		}
 
-		$this->_sections = $this->prepareSections( $postarr['pt_pb_section'] );
+		$this->_sections      = $this->prepareSections( $postarr['pt_pb_section'] );
 		$data['post_content'] = $this->generatePostContent();
+
 		return $data;
 	}
 
@@ -79,19 +83,20 @@ class PT_PageBuilder_Save {
 	private function prepareSections( $sections ) {
 		$sorted = array();
 		foreach ( $sections as $key => $section ) {
-			if ( $section == '' || empty( $section ) || !is_array( $section ) ) {
+			if ( $section == '' || empty( $section ) || ! is_array( $section ) ) {
 				continue;
 			}
 			//If the columns are not set or the current iteration is not a section then we dont have to sort the columns
 			if ( array_key_exists( 'col', $section ) ) {
-				$sorted[] =  $this->sortColumns( $section );
+				$sorted[] = $this->sortColumns( $section );
 			} elseif ( array_key_exists( 'slider', $section ) ) {
-				$sorted[] =  $this->sortSlides( $section );
+				$sorted[] = $this->sortSlides( $section );
 			} else {
-				$sorted[] =  $section;
+				$sorted[] = $section;
 			}
 
 		}
+
 		return $sorted;
 	}
 
@@ -105,19 +110,20 @@ class PT_PageBuilder_Save {
 		if ( isset( $column['module'] ) && is_array( $column['module'] ) ) {
 			foreach ( $column['module'] as $name => $value ) {
 
-				$column['module'][$name] = $this->_sanitizeValue( $name, $value );
+				$column['module'][ $name ] = $this->_sanitizeValue( $name, $value );
 
-				if ( isset( $column['module']['items'] ) && is_array( $column['module']['items']  ) ) {
+				if ( isset( $column['module']['items'] ) && is_array( $column['module']['items'] ) ) {
 					foreach ( $column['module']['items'] as $ind => $item ) {
 						foreach ( $item as $k => $v ) {
-							$item[$k] = $this->_sanitizeValue( $k, $v );
+							$item[ $k ] = $this->_sanitizeValue( $k, $v );
 						}
-						$column['module']['items'][$ind] = $item;
+						$column['module']['items'][ $ind ] = $item;
 					}
 
 				}
 			}
 		}
+
 		return $column;
 	}
 
@@ -131,10 +137,10 @@ class PT_PageBuilder_Save {
 		if ( strpos( $name, 'url' ) !== false ) {
 			$value = esc_url( $value );
 		} else if ( strpos( $name, 'content' ) !== false ) {
-				$value = $value;
-			} else if ( strpos( $name, 'color' ) !== false ) {
-				$value = $this->_sanitizeColor( $value );
-			}
+			$value = $value;
+		} else if ( strpos( $name, 'color' ) !== false ) {
+			$value = $this->_sanitizeColor( $value );
+		}
 
 		return $value;
 	}
@@ -145,12 +151,14 @@ class PT_PageBuilder_Save {
 	 * @return string $color
 	 */
 	private function _sanitizeColor( $color ) {
-		if ( '' === $color )
+		if ( '' === $color ) {
 			return '';
+		}
 
 		// 3 or 6 hex digits, or the empty string.
-		if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+		if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
 			return $color;
+		}
 
 		return null;
 	}
@@ -165,11 +173,12 @@ class PT_PageBuilder_Save {
 		$columns = array();
 
 		foreach ( $section['col'] as $column ) {
-			$column = $this->sanitizeColumn( $column );
+			$column    = $this->sanitizeColumn( $column );
 			$columns[] = apply_filters( 'quest_sort_modules', $column );
 		}
 
 		$section['col'] = $columns;
+
 		return $section;
 	}
 
@@ -183,8 +192,8 @@ class PT_PageBuilder_Save {
 		$slides = array();
 
 		foreach ( $section['slider'] as $k => $slide ) {
-			$key = is_numeric( $k ) ? ( count( $slides ) + 1 ) : $k;
-			$slides[$key] = $slide;
+			$key            = is_numeric( $k ) ? ( count( $slides ) + 1 ) : $k;
+			$slides[ $key ] = $slide;
 		}
 
 		$section['slider'] = $slides;
@@ -198,8 +207,9 @@ class PT_PageBuilder_Save {
 	 * @return string $content
 	 */
 	private function generatePostContent() {
-		if ( $this->_sections === '' || empty( $this->_sections ) )
+		if ( $this->_sections === '' || empty( $this->_sections ) ) {
 			return '';
+		}
 
 		$content = "";
 
@@ -218,10 +228,10 @@ class PT_PageBuilder_Save {
 	 */
 	private function generateSection( $section ) {
 
-		$css = $this->_getCssProperties( $section );
+		$css      = $this->_getCssProperties( $section );
 		$cssClass = $section['css_class'];
 
-		$addRow = !array_key_exists( 'slider', $section );
+		$addRow = ! array_key_exists( 'slider', $section );
 
 		$content = "<section class='quest-row $cssClass' style='" . $css . "'> ";
 
@@ -229,17 +239,17 @@ class PT_PageBuilder_Save {
 			$content .= "\n\t <div class='container'> \n\t\t <div class='row'> \n";
 		}
 
-		if ( array_key_exists( 'col', $section ) && !empty( $section['col'] ) ) {
+		if ( array_key_exists( 'col', $section ) && ! empty( $section['col'] ) ) {
 			foreach ( $section['col'] as $column ) {
 				$content .= $this->generateColumn( $column );
 			}
 		}
 
-		if ( array_key_exists( 'slider', $section ) && !empty( $section['slider'] ) ) {
+		if ( array_key_exists( 'slider', $section ) && ! empty( $section['slider'] ) ) {
 			$content .= $this->generateSlider( $section['slider'] );
 		}
 
-		if ( array_key_exists( 'gallery', $section ) && !empty( $section['gallery'] ) ) {
+		if ( array_key_exists( 'gallery', $section ) && ! empty( $section['gallery'] ) ) {
 			$content .= $this->generateGallery( $section['gallery'] );
 		}
 
@@ -259,16 +269,19 @@ class PT_PageBuilder_Save {
 	 */
 	private function generateColumn( $column ) {
 
-		if ( !isset( $column['type'] ) )
+		if ( ! isset( $column['type'] ) ) {
 			return '';
+		}
 
 		$cssClass = $this->_getColumnClass( $column['type'] );
-		$content = "\t\t\t<div class='$cssClass'>\n\t\t\t\t";
+		$content  = "\t\t\t<div class='$cssClass'>\n\t\t\t\t";
 
-		if ( isset( $column['module'] ) )
+		if ( isset( $column['module'] ) ) {
 			$content .= $this->generateModule( $column['module'] );
+		}
 
 		$content .= "\n\t\t\t</div>\n";
+
 		return $content;
 	}
 
@@ -279,8 +292,9 @@ class PT_PageBuilder_Save {
 	 */
 	private function generateModule( $module ) {
 		$cls = "PT_PageBuilder_" . ucwords( $module['type'] ) . "_Module";
-		if ( !class_exists( $cls ) )
+		if ( ! class_exists( $cls ) ) {
 			return "";
+		}
 
 		$handler = new $cls ( $module );
 
@@ -295,10 +309,15 @@ class PT_PageBuilder_Save {
 	 * @return string $content
 	 */
 	private function generateSlider( $slider ) {
-		$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" . PT_PageBuilder_Helper::GetDataAttributes( $slider, array( 'autoplay', 'interval', 'speed' ) )."><div class='sl-slider'>";
+		$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" . PT_PageBuilder_Helper::GetDataAttributes( $slider, array(
+				'autoplay',
+				'interval',
+				'speed'
+			) ) . "><div class='sl-slider'>";
 		foreach ( $slider as $slide ) {
-			if ( !is_array( $slide ) )
+			if ( ! is_array( $slide ) ) {
 				continue;
+			}
 
 			$content .= $this->generateSlide( $slide );
 		}
@@ -308,6 +327,7 @@ class PT_PageBuilder_Save {
 						<a href="#" class="next"><i class="fa fa-angle-right"></i></a>
 					</nav>
 					</div>';
+
 		return $content;
 	}
 
@@ -318,13 +338,20 @@ class PT_PageBuilder_Save {
 	 */
 	private function generateSlide( $slide ) {
 
-		$content = "<div class='sl-slide {$slide['css_class']}'". PT_PageBuilder_Helper::GetDataAttributes( $slide, array( 'orientation', 'slice1_rotation', 'slice2_rotation', 'slice1_scale', 'slice2_scale' ) ) ."><div class='sl-slide-inner'>";
+		$content = "<div class='sl-slide {$slide['css_class']}'" . PT_PageBuilder_Helper::GetDataAttributes( $slide, array(
+				'orientation',
+				'slice1_rotation',
+				'slice2_rotation',
+				'slice1_scale',
+				'slice2_scale'
+			) ) . "><div class='sl-slide-inner'>";
 		$content .= "<div class='sl-slide-inner' style='" . $this->_getCssProperties( $slide ) . "'>";
 
-		$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array( 'text_color' => $slide['heading_color'] ) ) . "'>". $slide['heading'] ."</h2>";
-		$content .= "<p class='sl-slide-text' style='" . $this->_getCssProperties( array( 'text_color' => $slide['text_color'] ) ) . "'>". $slide['text'] ."</p>";
+		$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array( 'text_color' => $slide['heading_color'] ) ) . "'>" . $slide['heading'] . "</h2>";
+		$content .= "<p class='sl-slide-text' style='" . $this->_getCssProperties( array( 'text_color' => $slide['text_color'] ) ) . "'>" . $slide['text'] . "</p>";
 
 		$content .= "</div></div></div>\n";
+
 		return $content;
 	}
 
@@ -337,14 +364,16 @@ class PT_PageBuilder_Save {
 	private function generateGallery( $gallery ) {
 		$content = "<div class='quest-gallery {$gallery['shape']} {$gallery['css_class']}' >";
 		foreach ( $gallery as $image ) {
-			if ( !is_array( $image ) )
+			if ( ! is_array( $image ) ) {
 				continue;
+			}
 
 			if ( $image['post_id'] != '' && is_numeric( $image['post_id'] ) ) {
 				$content .= $this->generateImage( $image );
 			}
 		}
 		$content .= "</div>";
+
 		return $content;
 	}
 
@@ -354,7 +383,8 @@ class PT_PageBuilder_Save {
 	 * @return string $content
 	 */
 	private function generateImage( $image ) {
-		$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='' data-gallery=''>".wp_get_attachment_image( $image['post_id'], 'quest-gallery' )."<span class='overlay'><i class='fa fa-expand'></i></span></a>";
+		$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='' data-gallery=''>" . wp_get_attachment_image( $image['post_id'], 'quest-gallery' ) . "<span class='overlay'><i class='fa fa-expand'></i></span></a>";
+
 		return $content;
 	}
 
@@ -365,7 +395,7 @@ class PT_PageBuilder_Save {
 	 */
 	private function _getColumnClass( $type ) {
 		$cls = '';
-		switch ($type) {
+		switch ( $type ) {
 			case '1-1':
 				$cls = 'col-md-12';
 				break;
@@ -381,9 +411,9 @@ class PT_PageBuilder_Save {
 			case '1-4':
 				$cls = 'col-md-3';
 				break;
-			
+
 			default:
-				$cls = apply_filters('pt_pb_get_column_class', $cls, $type);
+				$cls = apply_filters( 'pt_pb_get_column_class', $cls, $type );
 				break;
 		}
 
@@ -396,15 +426,28 @@ class PT_PageBuilder_Save {
 	 * @return string
 	 */
 	private function _getCssProperties( $section ) {
-		$css = array( 'bg_image' => 'background-image', 'bg_attach' => 'background-attachment', 'bg_color' => 'background-color', 'text_color' => 'color', 'padding_top' => 'padding-top', 'padding_bottom' => 'padding-bottom',
-			'border_top_width' => 'border-top-width', 'border_bottom_width' => 'border-bottom-width', 'border_top_color' => 'border-top-color', 'border_bottom_color' => 'border-bottom-color',
-			'height' => 'height', 'bg_pos_x' => 'background-position-x', 'bg_pos_y' => 'background-position-y' );
+		$css = array(
+			'bg_image'            => 'background-image',
+			'bg_attach'           => 'background-attachment',
+			'bg_color'            => 'background-color',
+			'text_color'          => 'color',
+			'padding_top'         => 'padding-top',
+			'padding_bottom'      => 'padding-bottom',
+			'border_top_width'    => 'border-top-width',
+			'border_bottom_width' => 'border-bottom-width',
+			'border_top_color'    => 'border-top-color',
+			'border_bottom_color' => 'border-bottom-color',
+			'height'              => 'height',
+			'bg_pos_x'            => 'background-position-x',
+			'bg_pos_y'            => 'background-position-y'
+		);
 
 		$properties = array();
 
 		foreach ( $section as $prop => $value ) {
-			if ( !array_key_exists( $prop, $css ) || trim( $value ) === '' )
-				continue ;
+			if ( ! array_key_exists( $prop, $css ) || trim( $value ) === '' ) {
+				continue;
+			}
 
 			if ( $prop == 'bg_image' ) {
 				$properties[] = "$css[$prop]:url($value)";
@@ -434,8 +477,8 @@ class PT_PageBuilder_Helper {
 		$content = "";
 
 		foreach ( $attributes as $attribute ) {
-			if ( array_key_exists( $attribute, $array ) && $array[$attribute] !== '' ) {
-				$value = esc_attr( $array[$attribute] );
+			if ( array_key_exists( $attribute, $array ) && $array[ $attribute ] !== '' ) {
+				$value = esc_attr( $array[ $attribute ] );
 				$content .= " $attribute='$value'";
 			}
 		}
@@ -452,11 +495,12 @@ class PT_PageBuilder_Helper {
 		$content = "";
 		foreach ( $properties as $prop ) {
 			if ( array_key_exists( $prop, $values ) ) {
-				$attr = str_replace( '_', '-', $prop );
-				$value = esc_attr( $values[$prop] );
+				$attr  = str_replace( '_', '-', $prop );
+				$value = esc_attr( $values[ $prop ] );
 				$content .= " data-$attr='$value'";
 			}
 		}
+
 		return $content;
 	}
 
@@ -476,18 +520,23 @@ class PT_PageBuilder_Slider_Module {
 	}
 
 	public function getContent() {
-		$image = $this->_module;
+		$image   = $this->_module;
 		$content = "<figure style='text-align:{$image['align']}'>";
 
 		$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
-			$content .= "<a" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
-			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='".esc_url( $image['href'] )."'";
+			$content .= "<a" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) );
+			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='" . esc_url( $image['href'] ) . "'";
 			$content .= $image['lightbox'] == 'true' ? " class='lightbox gallery'>" : '>';
 		}
 
-		$content .= "<img" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'src', 'title', 'alt', 'class' ) ) . " />";
+		$content .= "<img" . PT_PageBuilder_Helper::GetAttributes( $image, array(
+				'src',
+				'title',
+				'alt',
+				'class'
+			) ) . " />";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
 			$content .= "</a>";
@@ -513,18 +562,23 @@ class PT_PageBuilder_Image_Module {
 	}
 
 	public function getContent() {
-		$image = $this->_module;
+		$image   = $this->_module;
 		$content = "<figure style='text-align:{$image['align']}'>";
 
 		$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
-			$content .= "<a" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) ) ;
-			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='".esc_url( $image['href'] )."'";
+			$content .= "<a" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'target' ) );
+			$content .= $image['lightbox'] == 'true' ? " href='{$image['src']}'" : " href='" . esc_url( $image['href'] ) . "'";
 			$content .= $image['lightbox'] == 'true' ? " class='lightbox gallery'>" : '>';
 		}
 
-		$content .= "<img" . PT_PageBuilder_Helper::GetAttributes( $image, array( 'src', 'title', 'alt', 'class' ) ) . " />";
+		$content .= "<img" . PT_PageBuilder_Helper::GetAttributes( $image, array(
+				'src',
+				'title',
+				'alt',
+				'class'
+			) ) . " />";
 
 		if ( $image['lightbox'] == 'true' || $image['href'] !== '' ) {
 			$content .= "</a>";
@@ -551,7 +605,8 @@ class PT_PageBuilder_Text_Module {
 
 	public function getContent() {
 		$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
-		return "<div class='module-text$cls'>".$this->_module['content']."</div>";
+
+		return "<div class='module-text$cls'>" . $this->_module['content'] . "</div>";
 	}
 
 }
@@ -569,9 +624,10 @@ class PT_PageBuilder_Hovericon_Module {
 	}
 
 	public function getContent() {
-		$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
-		$color = $this->_module['color'];
+		$cls       = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
+		$color     = $this->_module['color'];
 		$color_alt = $this->_module['hover_color'];
+
 		return "<div class='hover-icon$cls' id='{$this->_module['id']}'>
 					<a href='#' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$this->_module['content']}
 				</div>";

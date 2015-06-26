@@ -11,6 +11,7 @@
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
+ *
  * @return array
  */
 function quest_body_classes( $classes ) {
@@ -21,6 +22,7 @@ function quest_body_classes( $classes ) {
 
 	return $classes;
 }
+
 add_filter( 'body_class', 'quest_body_classes' );
 
 if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
@@ -29,6 +31,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	 *
 	 * @param string $title Default title text for current view.
 	 * @param string $sep Optional separator.
+	 *
 	 * @return string The filtered title.
 	 */
 	function quest_wp_title( $title, $sep ) {
@@ -54,6 +57,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 
 		return $title;
 	}
+
 	add_filter( 'wp_title', 'quest_wp_title', 10, 2 );
 
 	/**
@@ -65,8 +69,9 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	function quest_render_title() {
 		?>
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
-		<?php
+	<?php
 	}
+
 	add_action( 'wp_head', 'quest_render_title' );
 endif;
 

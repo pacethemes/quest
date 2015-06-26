@@ -16,5 +16,6 @@ function quest_jetpack_setup() {
 		'footer'    => 'page',
 	) );
 }
+
 add_action( 'after_setup_theme', 'quest_jetpack_setup' );
 ?>

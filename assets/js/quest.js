@@ -1,19 +1,19 @@
-var Quest = function($) {
+var Quest = function ($) {
 
     return {
 
-        initFormPlaceHolder: function() {
+        initFormPlaceHolder: function () {
             if (!("placeholder" in document.createElement("input"))) {
-                $("input[placeholder], textarea[placeholder]").each(function() {
+                $("input[placeholder], textarea[placeholder]").each(function () {
                     var val = $(this).attr("placeholder");
                     if (this.value == "") {
                         this.value = val;
                     }
-                    $(this).focus(function() {
+                    $(this).focus(function () {
                         if (this.value == val) {
                             this.value = "";
                         }
-                    }).blur(function() {
+                    }).blur(function () {
                         if ($.trim(this.value) == "") {
                             this.value = val;
                         }
@@ -21,8 +21,8 @@ var Quest = function($) {
                 });
 
                 // Clear default placeholder values on form submit
-                $('form').submit(function() {
-                    $(this).find("input[placeholder], textarea[placeholder]").each(function() {
+                $('form').submit(function () {
+                    $(this).find("input[placeholder], textarea[placeholder]").each(function () {
                         if (this.value == $(this).attr("placeholder")) {
                             this.value = "";
                         }
@@ -31,7 +31,7 @@ var Quest = function($) {
             }
         },
 
-        initColorbox: function() {
+        initColorbox: function () {
             $('a.gallery').colorbox({
                 rel: 'gallery',
                 maxWidth: '95%',
@@ -39,11 +39,11 @@ var Quest = function($) {
             });
         },
 
-        initTooltip: function() {
+        initTooltip: function () {
             $('a[data-toggle=tooltip]').tooltip();
         },
 
-        initMasonry: function() {
+        initMasonry: function () {
             var $container = $('#grid-container');
             if ($container.length > 0) {
                 $container.masonry({
@@ -53,15 +53,15 @@ var Quest = function($) {
         },
 
         //init image hover effects
-        initImageEffects: function() {
+        initImageEffects: function () {
             if (Modernizr.touch) {
                 $(".close-overlay").removeClass("hidden");
-                $(".effects").click(function(e) {
+                $(".effects").click(function (e) {
                     if (!$(this).hasClass("hover")) {
                         $(this).addClass("hover");
                     }
                 });
-                $(".close-overlay").click(function(e) {
+                $(".close-overlay").click(function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     if ($(this).closest(".effects").hasClass("hover")) {
@@ -69,32 +69,32 @@ var Quest = function($) {
                     }
                 });
             } else {
-                $(".effect").mouseenter(function() {
-                        $(this).addClass("hover");
-                    })
-                    .mouseleave(function() {
+                $(".effect").mouseenter(function () {
+                    $(this).addClass("hover");
+                })
+                    .mouseleave(function () {
                         $(this).removeClass("hover");
                     });
             }
 
         },
 
-        showBackToTop: function() {
+        showBackToTop: function () {
             var offset = 300,
-                //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+            //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
                 offset_opacity = 1200,
-                //grab the "back to top" link
+            //grab the "back to top" link
                 $back_to_top = $('.cd-top'),
                 $window = $(window);
-            ($window.scrollTop() > offset) ? $back_to_top.addClass('cd-is-visible'): $back_to_top.removeClass('cd-is-visible cd-fade-out');
+            ($window.scrollTop() > offset) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
             if ($window.scrollTop() > offset_opacity) {
                 $back_to_top.addClass('cd-fade-out');
             }
         },
 
-        initBackToTop: function() {
+        initBackToTop: function () {
             //smooth scroll to top
-            $('.cd-top').on('click', function(event) {
+            $('.cd-top').on('click', function (event) {
                 event.preventDefault();
                 $('body,html').animate({
                     scrollTop: 0,
@@ -102,8 +102,8 @@ var Quest = function($) {
             });
         },
 
-        init: function() {
-            new WOW({offset: $(window).height() / 3 }).init();
+        init: function () {
+            new WOW({offset: $(window).height() / 3}).init();
             Quest.initImageEffects();
             Quest.initColorbox();
             Quest.initTooltip();
@@ -116,18 +116,18 @@ var Quest = function($) {
 
 }(jQuery);
 
-var PageBuilder = (function($) {
+var PageBuilder = (function ($) {
 
     return {
 
-        initEvents: function() {
+        initEvents: function () {
 
-            $('.sl-slider-wrapper').each(function() {
+            $('.sl-slider-wrapper').each(function () {
                 var $el = $(this),
                     options = $el.data(),
                     defaults = {
                         autoplay: true,
-                        onBeforeChange: function(slide, pos) {
+                        onBeforeChange: function (slide, pos) {
                             $nav.removeClass('nav-dot-current');
                             $nav.eq(pos).addClass('nav-dot-current');
                         }
@@ -144,9 +144,9 @@ var PageBuilder = (function($) {
                     $next = $el.find('.slit-nav-buttons .next'),
                     $prev = $el.find('.slit-nav-buttons .prev');
 
-                $nav.each(function(i) {
+                $nav.each(function (i) {
 
-                    $(this).on('click', function(event) {
+                    $(this).on('click', function (event) {
 
                         var $dot = $(this);
 
@@ -164,12 +164,12 @@ var PageBuilder = (function($) {
 
                 });
 
-                $next.on('click', function(event) {
+                $next.on('click', function (event) {
                     slitslider.next();
                     return false;
                 });
 
-                $prev.on('click', function(event) {
+                $prev.on('click', function (event) {
                     slitslider.previous();
                     return false;
                 });
@@ -183,11 +183,11 @@ var PageBuilder = (function($) {
 })(jQuery);
 
 
-jQuery(window).scroll(function() {
+jQuery(window).scroll(function () {
     Quest.showBackToTop();
 });
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     PageBuilder.initEvents();
     Quest.init();
 });

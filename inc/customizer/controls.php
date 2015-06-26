@@ -1,5 +1,5 @@
 <?php
-if ( class_exists( 'WP_Customize_Control' ) && !class_exists( 'Quest_Customize_Misc_Control' ) ):
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Quest_Customize_Misc_Control' ) ):
 
 	/**
 	 * Class Quest_Customize_Misc_Control
@@ -8,8 +8,7 @@ if ( class_exists( 'WP_Customize_Control' ) && !class_exists( 'Quest_Customize_M
 	 *
 	 * @since 1.0.0.
 	 */
-	class Quest_Customize_Misc_Control extends WP_Customize_Control
-	{
+	class Quest_Customize_Misc_Control extends WP_Customize_Control {
 
 		/**
 		 * The current setting name.
@@ -42,18 +41,18 @@ if ( class_exists( 'WP_Customize_Control' ) && !class_exists( 'Quest_Customize_M
 		 */
 		public function render_content() {
 			switch ( $this->type ) {
-			default:
-			case 'text':
-				echo '<p class="description">' . $this->description . '</p>';
-				break;
+				default:
+				case 'text':
+					echo '<p class="description">' . $this->description . '</p>';
+					break;
 
-			case 'heading':
-				echo '<span class="customize-control-title section-title">' . $this->label . '</span>';
-				break;
+				case 'heading':
+					echo '<span class="customize-control-title section-title">' . $this->label . '</span>';
+					break;
 
-			case 'line':
-				echo '<hr />';
-				break;
+				case 'line':
+					echo '<hr />';
+					break;
 			}
 		}
 	}

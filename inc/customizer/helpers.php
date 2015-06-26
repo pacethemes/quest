@@ -1,5 +1,5 @@
 <?php
-if ( !function_exists( 'quest_get_default' ) ):
+if ( ! function_exists( 'quest_get_default' ) ):
 
 	/**
 	 * Get default value for a theme option
@@ -11,14 +11,14 @@ if ( !function_exists( 'quest_get_default' ) ):
 		global $quest_defaults;
 
 		if ( array_key_exists( $name, $quest_defaults ) ) {
-			return $quest_defaults[$name];
+			return $quest_defaults[ $name ];
 		}
 
 		return '';
 	}
 endif;
 
-if ( !function_exists( 'quest_get_choices' ) ):
+if ( ! function_exists( 'quest_get_choices' ) ):
 
 	/**
 	 * Get all Choices/Options for a dropdown
@@ -30,14 +30,14 @@ if ( !function_exists( 'quest_get_choices' ) ):
 		global $quest_defaults;
 
 		if ( array_key_exists( $name, $quest_defaults['choices'] ) ) {
-			return $quest_defaults['choices'][$name];
+			return $quest_defaults['choices'][ $name ];
 		}
 
 		return array();
 	}
 endif;
 
-if ( !function_exists( 'quest_get_default_mod' ) ):
+if ( ! function_exists( 'quest_get_default_mod' ) ):
 
 	/**
 	 * Get the mod value or default value if mod is not set
@@ -48,18 +48,17 @@ if ( !function_exists( 'quest_get_default_mod' ) ):
 	function quest_get_default_mod( $name, $mods ) {
 		global $quest_defaults;
 
-		if ( array_key_exists( $name, $mods ) && $mods[$name] !== '' ) {
-			return $mods[$name];
+		if ( array_key_exists( $name, $mods ) && $mods[ $name ] !== '' ) {
+			return $mods[ $name ];
+		} else if ( array_key_exists( $name, $quest_defaults ) ) {
+			return $quest_defaults[ $name ];
 		}
-		else if ( array_key_exists( $name, $quest_defaults ) ) {
-				return $quest_defaults[$name];
-			}
 
 		return '';
 	}
 endif;
 
-if ( !function_exists( 'quest_get_default_mods' ) ):
+if ( ! function_exists( 'quest_get_default_mods' ) ):
 
 	/**
 	 * Get all Default Quest Mod Options and Values
@@ -69,11 +68,12 @@ if ( !function_exists( 'quest_get_default_mods' ) ):
 
 	function quest_get_default_mods() {
 		global $quest_defaults;
+
 		return $quest_defaults;
 	}
 endif;
 
-if ( !function_exists( 'quest_get_mods' ) ):
+if ( ! function_exists( 'quest_get_mods' ) ):
 
 	/**
 	 * Returns all Quest mods set by the user, returns the default values if any mod is not set
@@ -83,11 +83,12 @@ if ( !function_exists( 'quest_get_mods' ) ):
 
 	function quest_get_mods() {
 		$mods = get_theme_mods();
+
 		return array_merge( quest_get_default_mods(), $mods ? $mods : array() );
 	}
 endif;
 
-if ( !function_exists( 'quest_get_mod' ) ):
+if ( ! function_exists( 'quest_get_mod' ) ):
 
 	/**
 	 * Wrapper for wordpress 'get_theme_mod' function
@@ -100,7 +101,7 @@ if ( !function_exists( 'quest_get_mod' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_sanitize_float' ) ):
+if ( ! function_exists( 'quest_sanitize_float' ) ):
 
 	/**
 	 * Sanitize function for WP_Customize setting to sanitize float values
@@ -113,7 +114,7 @@ if ( !function_exists( 'quest_sanitize_float' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_sanitize_choice' ) ):
+if ( ! function_exists( 'quest_sanitize_choice' ) ):
 
 	/**
 	 * Sanitize function for WP_Customize setting to sanitize select
@@ -128,7 +129,7 @@ if ( !function_exists( 'quest_sanitize_choice' ) ):
 
 		$options = quest_get_choices( $setting );
 
-		if ( !in_array( $value, array_keys( $options ) ) ) {
+		if ( ! in_array( $value, array_keys( $options ) ) ) {
 			$value = quest_get_default( $setting );
 		}
 
@@ -136,7 +137,7 @@ if ( !function_exists( 'quest_sanitize_choice' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_sanitize_font_family' ) ):
+if ( ! function_exists( 'quest_sanitize_font_family' ) ):
 
 	/**
 	 * Sanitize function for WP_Customize setting to sanitize Font Family
@@ -150,18 +151,17 @@ if ( !function_exists( 'quest_sanitize_font_family' ) ):
 			$setting = $setting->id;
 		}
 
-		if ( !is_string( $value ) || $value === '' ) {
+		if ( ! is_string( $value ) || $value === '' ) {
 			return '';
+		} else if ( ! in_array( $value, array_keys( quest_get_all_fonts( false ) ) ) ) {
+			$value = quest_get_default( $setting );
 		}
-		else if ( !in_array( $value, array_keys( quest_get_all_fonts( false ) ) ) ) {
-				$value = quest_get_default( $setting );
-			}
 
 		return $value;
 	}
 endif;
 
-if ( !function_exists( 'quest_sanitize_font_variant' ) ):
+if ( ! function_exists( 'quest_sanitize_font_variant' ) ):
 
 	/**
 	 * Sanitize function for WP_Customize setting to sanitize Font Family Variant
@@ -171,20 +171,38 @@ if ( !function_exists( 'quest_sanitize_font_variant' ) ):
 
 	function quest_sanitize_font_variant( $value ) {
 
-		$options = array( "100", "100italic", "200", "200italic", "300", "300italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic", "italic", "regular" );
+		$options = array(
+			"100",
+			"100italic",
+			"200",
+			"200italic",
+			"300",
+			"300italic",
+			"500",
+			"500italic",
+			"600",
+			"600italic",
+			"700",
+			"700italic",
+			"800",
+			"800italic",
+			"900",
+			"900italic",
+			"italic",
+			"regular"
+		);
 
-		if ( !is_string( $value ) || $value === '' ) {
+		if ( ! is_string( $value ) || $value === '' ) {
 			return 'regular';
+		} else if ( in_array( $value, $options ) ) {
+			return $value;
 		}
-		else if ( in_array( $value, $options ) ) {
-				return $value;
-			}
 
 		return 'regular';
 	}
 endif;
 
-if ( !function_exists( 'quest_sanitize_font_text_transform' ) ):
+if ( ! function_exists( 'quest_sanitize_font_text_transform' ) ):
 
 	/**
 	 * Sanitize function for WP_Customize setting to sanitize Font Text Transform
@@ -196,18 +214,17 @@ if ( !function_exists( 'quest_sanitize_font_text_transform' ) ):
 
 		$options = array( 'none', 'uppercase', 'lowercase', );
 
-		if ( !is_string( $value ) || $value === '' ) {
+		if ( ! is_string( $value ) || $value === '' ) {
 			return 'none';
+		} else if ( in_array( $value, $options ) ) {
+			return $value;
 		}
-		else if ( in_array( $value, $options ) ) {
-				return $value;
-			}
 
 		return 'none';
 	}
 endif;
 
-if ( !function_exists( 'quest_get_color_mods' ) ):
+if ( ! function_exists( 'quest_get_color_mods' ) ):
 
 	/**
 	 * Determine if a mod is a color mod
@@ -219,7 +236,7 @@ if ( !function_exists( 'quest_get_color_mods' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_get_font_mods' ) ):
+if ( ! function_exists( 'quest_get_font_mods' ) ):
 
 	/**
 	 * Determine if a mod is a typography mod
@@ -231,7 +248,7 @@ if ( !function_exists( 'quest_get_font_mods' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_is_font_family' ) ):
+if ( ! function_exists( 'quest_is_font_family' ) ):
 
 	/**
 	 * Checks if a given mod is Font Family
@@ -243,7 +260,7 @@ if ( !function_exists( 'quest_is_font_family' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_string_ends_with' ) ):
+if ( ! function_exists( 'quest_string_ends_with' ) ):
 
 	/**
 	 * Determine if a string ends with a particulr value
@@ -255,7 +272,7 @@ if ( !function_exists( 'quest_string_ends_with' ) ):
 	}
 endif;
 
-if ( !function_exists( 'quest_font_settings' ) ):
+if ( ! function_exists( 'quest_font_settings' ) ):
 
 	/**
 	 * Prints the Font styles for a given section
@@ -263,24 +280,24 @@ if ( !function_exists( 'quest_font_settings' ) ):
 	 * @return string    CSS Font styles
 	 */
 	function quest_font_settings( $section, $options ) {
-?>
-  font: <?php
+		?>
+		font: <?php
 		printf( "%spx '%s'", quest_get_default_mod( $section . '_font_size', $options ), quest_get_default_mod( $section . '_font_family', $options ) ) ?>;
-            line-height: <?php
+		line-height: <?php
 		echo quest_get_default_mod( $section . '_line_height', $options ) === false ? 'inherit' : quest_get_default_mod( $section . '_line_height', $options ) . 'em' ?>;
-            font-weight: <?php
+		font-weight: <?php
 		$v = quest_get_default_mod( $section . '_font_variant', $options );
 		echo $v === 'regular' ? 'normal' : preg_replace( '/[^0-9]/', '', $v ); ?>;
-            font-style: <?php
+		font-style: <?php
 		$v = quest_get_default_mod( $section . '_font_variant', $options );
 		echo strpos( $v, 'italic' ) !== false ? 'italic' : 'normal'; ?>;
-            text-transform: <?php
+		text-transform: <?php
 		echo quest_get_default_mod( $section . '_text_transform', $options ) ?> ;
-            letter-spacing: <?php
+		letter-spacing: <?php
 		echo quest_get_default_mod( $section . '_letter_spacing', $options ) ?>px;
-            word-spacing: <?php
+		word-spacing: <?php
 		echo quest_get_default_mod( $section . '_word_spacing', $options ) ?>px;
-  <?php
+	<?php
 	}
 endif;
 

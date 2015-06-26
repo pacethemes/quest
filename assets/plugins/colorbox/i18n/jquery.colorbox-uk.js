@@ -1,9 +1,9 @@
 /*
-    jQuery ColorBox language configuration
-    language: Ukrainian (uk)
-    translated by: Andrew
-    http://acisoftware.com.ua
-*/
+ jQuery ColorBox language configuration
+ language: Ukrainian (uk)
+ translated by: Andrew
+ http://acisoftware.com.ua
+ */
 jQuery.extend(jQuery.colorbox.settings, {
     current: "зображення {current} з {total}",
     previous: "попереднє",
