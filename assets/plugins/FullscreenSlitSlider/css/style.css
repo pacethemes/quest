@@ -24,6 +24,7 @@
 
 .sl-slide-inner {
     background-size: cover;
+    text-align: center;
 }
 
 .sl-slide {
@@ -123,7 +124,7 @@
     position: relative;
 }
 
-.sl-slider h2, .sl-slider p {
+.sl-slider h2, .sl-slider .sl-slide-text {
     padding: 100px 30px 10px 30px;
     width: 80%;
     max-width: 960px;
@@ -155,7 +156,7 @@
     display: inline-block;
 }
 
-.sl-slider p {
+.sl-slider .sl-slide-text {
     font-size: 24px;
     padding-top: 10px;
     font-weight: 300;

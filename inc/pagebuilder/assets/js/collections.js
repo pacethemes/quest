@@ -8,6 +8,10 @@ var trPbApp = trPbApp || {};
         model: trPbApp.SectionModel
     });
 
+    trPbApp.RowCollection = Backbone.Collection.extend({
+        model: trPbApp.RowModel
+    });
+
     trPbApp.ColumnCollection = Backbone.Collection.extend({
         model: trPbApp.ColumnModel
     });

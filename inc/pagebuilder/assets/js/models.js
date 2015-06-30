@@ -9,7 +9,8 @@ trPbApp.Modules = trPbApp.Modules || {};
         defaults: {
             id: '',
             css_class: '',
-            content: [],
+            content: null,
+            content_type: 'boxed',
             columns: 1,
             bg_image: '',
             bg_attach: 'fixed',
@@ -20,7 +21,18 @@ trPbApp.Modules = trPbApp.Modules || {};
             border_top_width: '0px',
             border_bottom_width: '0px',
             border_top_color: '#e5e5e5',
-            border_bottom_color: '#e5e5e5'
+            border_bottom_color: '#e5e5e5',
+            hasRows: true,
+            rowNum: 1
+        }
+    });
+
+    trPbApp.RowModel = Backbone.Model.extend({
+        defaults: {
+            id: '',
+            content: null,
+            parent: '',
+            type: 'columns'
         }
     });
 
@@ -54,12 +66,15 @@ trPbApp.Modules = trPbApp.Modules || {};
             parent: '',
             css_class: '',
             bg_image: '',
+            bg_color: '#ddd',
             bg_pos_x: 'center',
             bg_pos_y: 'center',
             heading: '',
-            text: '',
+            content: '',
             heading_color: '',
+            heading_size: '42px',
             text_color: '',
+            text_size: '18px',
             orientation: 'vertical',
             slice1_rotation: '10',
             slice2_rotation: '-15',

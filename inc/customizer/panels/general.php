@@ -469,6 +469,7 @@ class Quest_Customize_General {
 			)
 		);
 
+
 	}
 }
 

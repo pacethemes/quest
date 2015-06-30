@@ -15,12 +15,11 @@ var trPbApp = trPbApp || {};
     'use strict';
 
     trPbApp.options = {
-        sectionId: /(pt_pb_section__([0-9]+)_([0-9]+)__col__([0-9]+)__module__items__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__col__([0-9]+)__module)|(pt_pb_section__([0-9]+)_([0-9]+)__col__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__slider(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__gallery(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+))/ig
+        sectionId: /(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module__items__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__slider(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__gallery(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+))/ig
     };
 
     trPbApp.cache = {
         $container: $('#pt-pb-main-container'),
-        $editorModal: $('#pt-pb-editor-modal'),
         $pageTemplate: $('#page_template'),
         $hiddenEditor: $('#pt-pb-editor-hidden'),
         editorHtml: ''
@@ -32,87 +31,18 @@ var trPbApp = trPbApp || {};
             id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + (trPbApp.Sections.length + 1) + '_' + Math.round(new Date().valueOf() / 1000),
             el = trPbApp.cache.$container.find('.pt-pb-section:nth-child(' + ind + ')');
 
-        if (model && model.attributes.content && model.attributes.content.length > 0) {
-            var contentArr = new trPbApp.ColumnCollection(),
-                colModels = (typeof model.attributes.content.models === 'undefined') ? model.attributes.content : model.attributes.content.toJSON();
+        newSection.set(model.attributes);
 
-            _.each(colModels, function (column, ind) {
-                var colId = id + '__col__' + (ind + 1),
-                    colModel = {
-                        parent: id,
-                        id: colId,
-                        type: column['type']
-                    };
-                if (column['content'] !== undefined && (column['content'].length > 0 || column['content'].attributes !== undefined || column['content']['type'] !== undefined)) {
+        if (model && model.attributes && model.attributes.hasRows && model.attributes.content.length) {
+            var rows = new trPbApp.RowCollection(),
+                rowArr = (typeof model.attributes.content.models === 'undefined') ? model.attributes.content : model.attributes.content.toJSON();
 
-                    var content = (typeof column['content'].attributes === 'undefined') ? column['content'] : column['content'].toJSON(),
-                        module = content['type'].toProperCase();
-                    if (!trPbApp.Modules[module + 'Model']) return;
-
-                    content['parent'] = colId;
-                    content['id'] = colId + '__module';
-                    colModel['content'] = new trPbApp.Modules[module + 'Model'](content);
-
-                }
-                contentArr.add(new trPbApp.ColumnModel(colModel));
+            _.each(rowArr, function (row, i) {
+                rows.add(trPbApp.AddRow(row, i, id));
             });
 
-            newSection.set(model.attributes);
-            newSection.set('content', contentArr);
-        } else if (model && (model.attributes.slider)) {
-            var sliderId = id + '__slider',
-                slideArr = new trPbApp.SlideCollection(),
-                slides = model.attributes.slider,
-                slider = new trPbApp.SliderModel();
+            newSection.set('content', rows);
 
-            slider.set('id', sliderId);
-
-            _.each(slides, function (slide, ind) {
-                if (typeof slide !== 'object') {
-                    slider.set(ind, slide);
-                } else {
-                    var newSlide = new trPbApp.SlideModel();
-                    newSlide.set(slide);
-                    newSlide['parent'] = sliderId;
-                    newSlide['id'] = sliderId + '__' + (slideArr.length + 1);
-                    slideArr.add(newSlide);
-                }
-            });
-
-            delete model.attributes['slider'];
-            slider.set('slides', slideArr);
-
-            newSection.set(model.attributes);
-            newSection.set('content', slider);
-
-        } else if (model && (model.attributes.images)) {
-            var galleryId = id + '__gallery',
-                imageArr = new trPbApp.GImageCollection(),
-                images = model.attributes.images,
-                gallery = new trPbApp.GalleryModel();
-
-            gallery.set('id', galleryId);
-
-            _.each(images, function (image, ind) {
-                if (typeof image !== 'object') {
-                    gallery.set(ind, image);
-                } else {
-                    var newImage = new trPbApp.GImageModel();
-                    newImage.set(image);
-                    newImage['parent'] = galleryId;
-                    newImage['id'] = galleryId + '__' + (imageArr.length + 1);
-                    imageArr.add(newImage);
-                }
-            });
-
-            delete model.attributes['images'];
-            gallery.set('images', imageArr);
-
-            newSection.set(model.attributes);
-            newSection.set('content', gallery);
-
-        } else if (model) {
-            newSection.set('attributes', model.attributes);
         }
 
         newSection.set('id', id);
@@ -140,25 +70,186 @@ var trPbApp = trPbApp || {};
 
     };
 
+    trPbApp.AddRow = function (row, i, id) {
+
+        var rowType = row.type || trPbApp.getRowType(row),
+            rowId = id + '__row__' + (i + 1),
+            newRow = new trPbApp.RowModel({
+                id: rowId,
+                parent: id,
+                type: rowType
+            });
+
+        if (rowType === 'slider') {
+
+            var sliderId = rowId + '__slider',
+                slideArr = new trPbApp.SlideCollection(),
+                slides = row.content.attributes.slides.models ? row.content.attributes.slides.toJSON() : row.content.attributes.slides,
+                slider = new trPbApp.SliderModel();
+
+            slider.set(row.content.attributes);
+
+            _.each(slides, function (slide, ind) {
+                if (typeof slide !== 'object') {
+                    slider.set(ind, slide);
+                } else {
+                    var newSlide = new trPbApp.SlideModel();
+                    newSlide.set(slide);
+                    newSlide['parent'] = sliderId;
+                    newSlide['id'] = sliderId + '__' + (slideArr.length + 1);
+                    slideArr.add(newSlide);
+                }
+            });
+
+            slider.set('slides', slideArr);
+            slider.set('id', sliderId);
+
+            newRow.set('content', slider);
+
+        } else if (rowType === 'gallery') {
+
+            var galleryId = rowId + '__gallery',
+                imageArr = new trPbApp.GImageCollection(),
+                images = row.content.attributes.images.models ? row.content.attributes.images.toJSON() : row.content.attributes.images,
+                gallery = new trPbApp.GalleryModel();
+
+            gallery.set(row.content.attributes);
+
+            _.each(images, function (image, ind) {
+                if (typeof image !== 'object') {
+                    gallery.set(ind, image);
+                } else {
+                    var newImage = new trPbApp.GImageModel();
+                    newImage.set(image);
+                    newImage['parent'] = galleryId;
+                    newImage['id'] = galleryId + '__' + (imageArr.length + 1);
+                    imageArr.add(newImage);
+                }
+            });
+
+            gallery.set('images', imageArr);
+            gallery.set('id', galleryId);
+
+            newRow.set('content', gallery);
+
+        } else if (rowType === 'columns') {
+
+            var contentArr = new trPbApp.ColumnCollection(),
+                colModels = row.content ? ((typeof row.content.models === 'undefined') ? row.content : row.content.toJSON()) : row.attributes.content.toJSON();
+
+            _.each(colModels, function (column, ind) {
+                var colId = rowId + '__col__' + (ind + 1),
+                    colModel = {
+                        parent: rowId,
+                        id: colId,
+                        type: column['type']
+                    };
+                if (column['content'] !== undefined && (column['content'].length > 0 || column['content'].attributes !== undefined || column['content']['type'] !== undefined)) {
+
+                    var content = (typeof column['content'].attributes === 'undefined') ? column['content'] : column['content'].toJSON(),
+                        module = content['type'].toProperCase();
+                    if (!trPbApp.Modules[module + 'Model']) return;
+
+                    content['parent'] = colId;
+                    content['id'] = colId + '__module';
+                    colModel['content'] = new trPbApp.Modules[module + 'Model'](content);
+
+                }
+                contentArr.add(new trPbApp.ColumnModel(colModel));
+            });
+
+            newRow.set('content', contentArr);
+
+        }
+        return newRow;
+
+
+    };
+
+    trPbApp.getRowType = function (row) {
+        if (typeof row.col !== 'undefined')
+            return 'columns';
+        else if (typeof row.slider !== 'undefined')
+            return 'slider';
+        else if (typeof row.gallery !== 'undefined')
+            return 'gallery';
+
+        return 'columns';
+    };
+
     trPbApp.generateSection = function (section, clone) {
         if (typeof section !== 'object')
             return;
         var newSection = {};
         newSection.attributes = section;
-        newSection.attributes.content = section.col ? section.col : section.slider;
-        if (section.col) {
-            newSection.attributes.content = [];
-            _.each(section.col, function (v, i) {
-                var n = {};
-                n.content = v.module;
-                n.type = v.type;
-                newSection.attributes.content.push(n);
-            });
-        } else if (section.slider) {
-            newSection.attributes.slider = section.slider;
-        } else if (section.gallery) {
-            newSection.attributes.images = section.gallery;
+
+        if (!section.row) {
+            var rowType = trPbApp.getRowType(section);
+            if (rowType === 'slider') {
+                section.row = {
+                    1: {
+                        slider: section.slider
+                    }
+                }
+                delete section.slider;
+            } else if (rowType === 'gallery') {
+                section.row = {
+                    1: {
+                        gallery: section.gallery
+                    }
+                }
+            } else if (rowType === 'columns') {
+                section.row = {
+                    1: {
+                        col: section.col
+                    }
+                }
+            }
+
         }
+
+
+        newSection.attributes.hasRows = true;
+        var rows = [];
+        _.each(section.row, function (r, k) {
+            var rowType = trPbApp.getRowType(r),
+                row = {
+                    content: {
+                        attributes: {}
+                    },
+                    type: rowType
+                };
+
+            if (rowType === 'slider') {
+                row.content.attributes.slides = [];
+                _.each(r.slider, function (s, i) {
+                    if (isNaN(i))
+                        row.content.attributes[i] = s;
+                    else
+                        row.content.attributes.slides.push(s)
+                });
+            } else if (rowType === 'gallery') {
+                row.content.attributes.images = [];
+                _.each(r.gallery, function (s, i) {
+                    if (isNaN(i))
+                        row.content.attributes[i] = s;
+                    else
+                        row.content.attributes.images.push(s)
+                });
+            } else if (rowType === 'columns') {
+                row.content = [];
+                _.each(r.col, function (v, i) {
+                    var n = {};
+                    n.content = v.module;
+                    n.type = v.type;
+                    n.id = v.id;
+                    row.content.push(n);
+                });
+            }
+            rows.push(row);
+        });
+        newSection.attributes.content = rows;
+
         if (clone) {
             trPbApp.AddSection(newSection, null, false, true);
         } else {
@@ -201,7 +292,7 @@ var trPbApp = trPbApp || {};
             $section;
 
         if (sectionId === null || model.attributes === undefined) return;
-        var text = (model.attributes.type === 'text') ? true : false;
+        
         sectionId = sectionId[0];
 
         if (el && el.length && el.length > 0) {
@@ -214,11 +305,11 @@ var trPbApp = trPbApp || {};
             if (typeof value !== 'string' || ['parent'].indexOf(key) > -1) return;
 
             var inputName = name + '[' + key + ']',
-                input = (text || key === 'content') ? $section.find('textarea[name="' + inputName + '"]') : $section.find('input[name="' + inputName + '"]');
+                input = (key === 'content') ? $section.find('textarea[name="' + inputName + '"]') : $section.find('input[name="' + inputName + '"]');
 
             if (input.length > 0) {
                 input.val(value);
-            } else if (text || key === 'content') {
+            } else if (key === 'content') {
                 $('<textarea />').attr({
                     'name': inputName,
                     'class': 'content-text hidden'
@@ -311,7 +402,6 @@ var trPbApp = trPbApp || {};
     };
 
     trPbApp.removeEditor = function (textarea_id) {
-        // $('#wp-pt_pb_editor-wrap').remove();
         if (typeof window.tinyMCE !== 'undefined') {
             window.tinyMCE.execCommand('mceRemoveEditor', false, textarea_id);
 
@@ -493,26 +583,6 @@ jQuery(document).ready(function ($) {
         $('.reveal-modal').find('.pt-pb-color').wpColorPicker();
     });
 
-    trPbApp.cache.$editorModal.on('click', '.save-content', function (e) {
-        e.preventDefault();
-        var textAreaId = trPbApp.cache.$editorModal.attr('data-textarea'),
-            content = trPbApp.getContent(),
-            animation = trPbApp.cache.$editorModal.find('.js-animations').val(),
-            admin_label = trPbApp.cache.$editorModal.find('input[name=admin_label]').val();
-        jQuery('#' + textAreaId).trigger('content:update', {
-            content: content,
-            animation: animation,
-            admin_label: admin_label
-        });
-        trPbApp.cache.$editorModal.trigger('reveal:close');
-    });
-
-    trPbApp.cache.$editorModal.on('click', '.close-model, .close-reveal-modal', function (e) {
-        e.preventDefault();
-        trPbApp.removeEditor('pt_pb_editor');
-        trPbApp.cache.$editorModal.trigger('reveal:close');
-    });
-
     $('.pt-pb-insert-section').on('click', function (e) {
         e.preventDefault();
         trPbApp.AddSection(null, null, true);
@@ -546,7 +616,6 @@ jQuery(document).ready(function ($) {
     });
 
     trPbApp.cache.$container.on('change', '.js-animations', trPbApp.animationPreview);
-    trPbApp.cache.$editorModal.on('change', '.js-animations', trPbApp.animationPreview);
 
     trPbApp.ModulesList = {};
     _.each(trPbApp.Modules, function (val, ind) {
@@ -554,5 +623,7 @@ jQuery(document).ready(function ($) {
             trPbApp.ModulesList[ind.replace('Model', '')] = new trPbApp.Modules[ind]().attributes;
         }
     });
+
+    $('#pt_pb_loader').slideUp();
 
 });

@@ -1,4 +1,8 @@
-#pt-pb-layout, #postdivrich {
+@accent1: #0073aa;
+@accent2: #ddd;
+
+// #pt-pb-layout, 
+#postdivrich {
   display: none;
 }
 
@@ -9,6 +13,10 @@
   }
   .ui-sortable-placeholder {
     border: 1px dashed #ddd !important;
+  }
+  .sortable-placeholder-pt-pb-row {
+    border: 1px dashed #999 !important;
+    margin-bottom: 25px;
   }
   .inside {
     padding: 0;
@@ -108,20 +116,20 @@ html[xmlns] .clearfix {
     text-decoration: none;
     // color: #999;
     &:hover {
-      // color: #0074a2;
+      // color: @accent1;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
   }
 }
 
 .pt-pb-section {
-  margin: 20px 0;
+  margin: 20px 10px !important;
   padding: 0;
-  border-bottom: 1px solid #0074a2;
+  border: 1px solid @accent1;
   background-color: #fff;
   a {
     &:focus {
-      color: #0074a2;
+      color: @accent1;
       -webkit-box-shadow: none;
       box-shadow: none;
     }
@@ -131,7 +139,7 @@ html[xmlns] .clearfix {
 .pt-pb-header {
   position: relative;
   cursor: move;
-  background-color: #0074a2;
+  background-color: @accent1;
   h3 {
     padding: 0 10px;
     color: #fff;
@@ -246,7 +254,7 @@ html[xmlns] .clearfix {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   // margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 15px 0;
   &.pt-pb-col-1_1 {
     width: 100%;
   }
@@ -288,6 +296,10 @@ html[xmlns] .clearfix {
   }
 }
 
+.section-type{
+  margin: 0 15px 25px;
+}
+
 //.pt-pb-insert-column, 
 .pt-pb-insert-module {
   font-size: 16px;
@@ -299,7 +311,7 @@ html[xmlns] .clearfix {
   color: #999;
   border: 1px solid #ccc;
   &:hover {
-    color: #0074a2;
+    color: @accent1;
   }
 }
 
@@ -568,4 +580,91 @@ textarea.regular-text {
 
 .hidden {
   display: none;
+}
+
+.pt-pb-row {
+  position: relative;
+  margin-bottom: 25px;
+  border: 1px solid @accent2;
+  background-color: #fff;
+  .pt-pb-row-header {
+    height: 30px;
+    line-height: 30px;
+    background-color: @accent2;
+    cursor: move;
+    // margin-bottom: 20px;
+    h3 {
+      padding-top: 4px !important;
+      color: #666 !important;
+      text-transform: uppercase;
+    }
+    .handlediv {
+      height: 30px;
+      width: 30px;
+      float: none;
+      position: absolute;
+      top: 0px;
+      border-left: 1px solid #aaa;
+      right: 0;
+      color: #666 !important;
+      &:before {
+        padding: 0 !important;
+        right: -4px !important;
+        top: 4px !important;
+      }
+    }
+    .pt-pb-controls {
+      position: absolute;
+      right: 40px;
+      top: 0;
+      a {
+        color: #666;
+        font-size: 16px;
+        margin-left: 6px;
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+  }
+  .pt-pb-btn {
+    padding: 8px 10px;
+    font-size: 15px;
+    .dashicons {
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+}
+
+.pt-pb-content-foot {
+  text-align: center;
+}
+
+@keyframes rotateLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#pt_pb_loader {
+  position: absolute;
+  background-color: #fff;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  height: 100%;
+  .pt-pb-spinner {
+    box-sizing: border-box;
+    height: 60px;
+    width: 60px;
+    margin: 80px auto;
+    border: 0px solid @accent1;
+    border-radius: 50%;
+    box-shadow: 0 -20px 0 24px @accent1 inset;
+    animation: rotateLoader 1s infinite linear;
+  }
 }

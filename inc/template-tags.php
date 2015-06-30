@@ -692,4 +692,20 @@ if ( ! function_exists( 'quest_get_view' ) ):
 	}
 endif;
 
+if ( ! function_exists( 'quest_get_footer_copyright' ) ):
+	/**
+	 * Return Quest footer copyright text.
+	 *
+	 * @return copyright text
+	 */
+function quest_get_footer_copyright() {
+
+	$copyright = "<a href='" . esc_url( 'http://wordpress.org/' ) ."'>" . sprintf( __( 'Proudly powered by %s', 'quest' ), 'WordPress' ) . '</a>';
+	$copyright .= '<span class="sep"> | </span>';
+	$copyright .=  sprintf( __( 'Theme: %1$s by %2$s.', 'quest' ), 'quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">' . wp_get_theme()->get( 'Author' ) . '</a>' );
+
+	return $copyright;
+}
+endif;
+
 ?>
