@@ -292,7 +292,7 @@ var trPbApp = trPbApp || {};
             $section;
 
         if (sectionId === null || model.attributes === undefined) return;
-        
+
         sectionId = sectionId[0];
 
         if (el && el.length && el.length > 0) {

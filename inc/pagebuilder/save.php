@@ -90,7 +90,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				//If the columns are not set or the current iteration is not a section then we dont have to sort the columns
 				if ( array_key_exists( 'row', $section ) ) {
 					$sorted[] = $this->sortRows( $section );
-				} 
+				}
 			}
 
 			return $sorted;
@@ -184,7 +184,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			$section['row'] = $sorted;
 
 			return $section;
-		}		
+		}
 
 		/**
 		 * Sorts columns in the order they are submitted and returns the sorted section
@@ -251,9 +251,9 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 */
 		private function generateSection( $section ) {
 
-			$css      = $this->_getCssProperties( $section );
-			$cssClass = $section['css_class'];
-			$container = $section['content_type'] === 'boxed' ? 'container' : 'container-fluid' ;
+			$css       = $this->_getCssProperties( $section );
+			$cssClass  = $section['css_class'];
+			$container = $section['content_type'] === 'boxed' ? 'container' : 'container-fluid';
 
 			$content = "<section class='quest-row $cssClass' style='" . $css . "'> ";
 
@@ -275,7 +275,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 */
 		private function generateRow( $row, $container ) {
 
-			$addRow = ! ( array_key_exists( 'slider', $row ) && $container !== 'container' ) ;
+			$addRow  = ! ( array_key_exists( 'slider', $row ) && $container !== 'container' );
 			$content = "";
 
 			if ( $addRow ) {
@@ -353,12 +353,12 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 * @return string $content
 		 */
 		private function generateSlider( $slider ) {
-			$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" . 
-				PT_PageBuilder_Helper::GetDataAttributes( $slider, array(
-					'autoplay',
-					'interval',
-					'speed'
-				) ) . "><div class='sl-slider'>";
+			$content = "<div class='sl-slider-wrapper {$slider['css_class']}' style='" . $this->_getCssProperties( $slider ) . "'" .
+			           PT_PageBuilder_Helper::GetDataAttributes( $slider, array(
+				           'autoplay',
+				           'interval',
+				           'speed'
+			           ) ) . "><div class='sl-slider'>";
 			foreach ( $slider as $slide ) {
 				if ( ! is_array( $slide ) ) {
 					continue;
@@ -383,18 +383,24 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 */
 		private function generateSlide( $slide ) {
 
-			$content = "<div class='sl-slide {$slide['css_class']}'" . 
-				PT_PageBuilder_Helper::GetDataAttributes( $slide, array(
-					'orientation',
-					'slice1_rotation',
-					'slice2_rotation',
-					'slice1_scale',
-					'slice2_scale'
-				) ) . "><div class='sl-slide-inner'>";
+			$content = "<div class='sl-slide {$slide['css_class']}'" .
+			           PT_PageBuilder_Helper::GetDataAttributes( $slide, array(
+				           'orientation',
+				           'slice1_rotation',
+				           'slice2_rotation',
+				           'slice1_scale',
+				           'slice2_scale'
+			           ) ) . "><div class='sl-slide-inner'>";
 			$content .= "<div class='sl-slide-inner' style='" . $this->_getCssProperties( $slide ) . "'>";
 
-			$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array( 'text_color' => $slide['heading_color'], 'text_size' => $slide['heading_size'] ) ) . "'>" . $slide['heading'] . "</h2>";
-			$content .= "<div class='sl-slide-text' style='" . $this->_getCssProperties( array( 'text_color' => $slide['text_color'], 'text_size' => $slide['text_size'] ) ) . "'>" . $slide['content'] . "</div>";
+			$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array(
+					'text_color' => $slide['heading_color'],
+					'text_size'  => $slide['heading_size']
+				) ) . "'>" . $slide['heading'] . "</h2>";
+			$content .= "<div class='sl-slide-text' style='" . $this->_getCssProperties( array(
+					'text_color' => $slide['text_color'],
+					'text_size'  => $slide['text_size']
+				) ) . "'>" . $slide['content'] . "</div>";
 
 			$content .= "</div></div></div>\n";
 
@@ -486,7 +492,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				'height'              => 'height',
 				'bg_pos_x'            => 'background-position-x',
 				'bg_pos_y'            => 'background-position-y',
-				'text_size'			  => 'font-size'
+				'text_size'           => 'font-size'
 			);
 
 			$properties = array();

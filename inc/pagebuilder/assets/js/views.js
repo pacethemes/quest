@@ -131,14 +131,14 @@ var trPbApp = trPbApp || {};
             this.$el.find('.reveal-modal').reveal();
         },
 
-        updateColumnsDialog: function(e) {
+        updateColumnsDialog: function (e) {
             e.preventDefault();
             e.stopPropagation();
             var cssClass = 'pt-pb-insert-columns update reveal-modal',
                 $view = this;
 
             $view.$el.append($('<div />').html(this.columnTemplate()).addClass(cssClass));
-            $view.$el.find('.column-layouts li').click(function(em){
+            $view.$el.find('.column-layouts li').click(function (em) {
                 var $e = em.target.tagName.toUpperCase() === 'LI' ? $(em.target) : $(em.target).closest('li');
                 $(e.target).closest('.pt-pb-row').trigger('update-columns', $e.data('layout'));
                 $view.closeReveal();
@@ -675,7 +675,7 @@ var trPbApp = trPbApp || {};
                 slides = this.model.get('slides'),
                 $content = this.$el.find('.slider-container');
 
-            if(params.text)
+            if (params.text)
                 slide.set('content', params.text)
 
             slide.set({
@@ -730,7 +730,7 @@ var trPbApp = trPbApp || {};
 
         initialize: function () {
             this.editTemplate = _.template(this.$editTemplateId.html());
-            if(this.model.get('content') == '' && this.model.get('text'))
+            if (this.model.get('content') == '' && this.model.get('text'))
                 this.model.set('content', this.model.get('text'));
         },
 

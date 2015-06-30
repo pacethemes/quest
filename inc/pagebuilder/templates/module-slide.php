@@ -6,7 +6,8 @@
 	<div class="pt-pb-column-content">
 		<%= partial('pt-pb-module-header-template', { admin_label: admin_label, module: 'slide' }) %>
 		<div class="slide-content-preview"
-		<%= bg_image != '' ? 'style="background-image:url(' + bg_image + ');background-color:' + bg_color + ';"' : void 0 %>>
+		<%= bg_image != '' ? 'style="background-image:url(' + bg_image + ');background-color:' + bg_color + ';"' : void
+		0 %>>
 		<% if (bg_image == "") { %>
 		<div class="slide-dummy-image"><a href="#" title="<?php _e( 'Edit Slide', 'quest' ); ?>"><i
 					class="dashicons dashicons-format-image"></i></a></div>

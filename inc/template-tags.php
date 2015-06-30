@@ -447,8 +447,9 @@ if ( ! function_exists( 'quest_comments' ) ) :
 						<span class="comment-date post-date"><i
 								class="fa fa-clock-o"></i><?php comment_date(); ?> <?php _e( 'at', 'quest' ) ?> <?php comment_time(); ?></span>
 	                    <span class="comment-reply"> <i class="fa fa-reply"></i>
-		                    <?php comment_reply_link( array_merge( $args, array( 'depth'     => $depth,
-		                                                                         'max_depth' => $args['max_depth']
+		                    <?php comment_reply_link( array_merge( $args, array(
+			                    'depth'     => $depth,
+			                    'max_depth' => $args['max_depth']
 		                    ) ) ); ?>
 	                    </span>
 					</div>
@@ -543,8 +544,8 @@ if ( ! function_exists( 'quest_breadcrumb' ) ) :
 
 
 	/**
-	* Prints breadcrumb HTML required by the theme
-	*/
+	 * Prints breadcrumb HTML required by the theme
+	 */
 	function quest_breadcrumb() {
 		global $post;
 
@@ -698,14 +699,14 @@ if ( ! function_exists( 'quest_get_footer_copyright' ) ):
 	 *
 	 * @return copyright text
 	 */
-function quest_get_footer_copyright() {
+	function quest_get_footer_copyright() {
 
-	$copyright = "<a href='" . esc_url( 'http://wordpress.org/' ) ."'>" . sprintf( __( 'Proudly powered by %s', 'quest' ), 'WordPress' ) . '</a>';
-	$copyright .= '<span class="sep"> | </span>';
-	$copyright .=  sprintf( __( 'Theme: %1$s by %2$s.', 'quest' ), 'quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">' . wp_get_theme()->get( 'Author' ) . '</a>' );
+		$copyright = "<a href='" . esc_url( 'http://wordpress.org/' ) . "'>" . sprintf( __( 'Proudly powered by %s', 'quest' ), 'WordPress' ) . '</a>';
+		$copyright .= '<span class="sep"> | </span>';
+		$copyright .= sprintf( __( 'Theme: %1$s by %2$s.', 'quest' ), 'quest', '<a href="' . wp_get_theme()->get( 'ThemeURI' ) . '" rel="designer">' . wp_get_theme()->get( 'Author' ) . '</a>' );
 
-	return $copyright;
-}
+		return $copyright;
+	}
 endif;
 
 ?>
