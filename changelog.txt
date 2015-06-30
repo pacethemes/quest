@@ -1,3 +1,9 @@
+## 1.0.7
+
+* Adds new Row model to Page Builder which allows a section to have multiple rows
+* Code cleanup - All Pagebuilder templates have their own template file now and also a  filter which can be used to overwrite any existing template
+* New filter for Footer copyright text
+
 ## 1.0.6
 
 * Fixes issues as per Theme Review

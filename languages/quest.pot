@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: quest\n"
-"POT-Creation-Date: 2015-04-22 00:30+0530\n"
-"PO-Revision-Date: 2015-04-22 00:32+0530\n"
+"POT-Creation-Date: 2015-07-01 02:05+0530\n"
+"PO-Revision-Date: 2015-07-01 02:06+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,1225 +13,1311 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: 404.php:19
+#: ../404.php:19
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: 404.php:23
+#: ../404.php:24
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
 msgstr ""
 
-#: 404.php:31
+#: ../404.php:32
 msgid "Most Used Categories"
 msgstr ""
 
-#. translators: %1$s: smiley
-#: 404.php:48
+#: ../404.php:49
 #, php-format
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
-#: comments.php:23
+#: ../comments.php:23
 msgid "No Comments"
 msgstr ""
 
-#: comments.php:24
+#: ../comments.php:24
 msgid "One Comment"
 msgstr ""
 
-#: comments.php:25
+#: ../comments.php:25
 msgid "% Comments"
 msgstr ""
 
-#: comments.php:38
+#: ../comments.php:38
 msgid "Older Comments"
 msgstr ""
 
-#: comments.php:39
+#: ../comments.php:39
 msgid "Newer Comments"
 msgstr ""
 
-#: comments.php:45
+#: ../comments.php:45
 msgid "Comments are closed."
 msgstr ""
 
-#: comments.php:55
+#: ../comments.php:55
 msgid "Name (required)"
 msgstr ""
 
-#: comments.php:56
+#: ../comments.php:56
 msgid "Email Address (required)"
 msgstr ""
 
-#: comments.php:57
+#: ../comments.php:57
 msgid "Website (required)"
 msgstr ""
 
-#: comments.php:62
+#: ../comments.php:62
 msgid "Your Comment..."
 msgstr ""
 
-#: content-none.php:13
+#: ../content-none.php:13
 msgid "Nothing Found"
 msgstr ""
 
-#: content-none.php:19
+#: ../content-none.php:20
 #, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: content-none.php:23
+#: ../content-none.php:24
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: content-none.php:28
+#: ../content-none.php:29
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
 
-#: content-page.php:19 content-single.php:18
-#: partials/content-grid.php:31 partials/content-medium.php:36
-#: partials/content-normal.php:28
+#: ../content-page.php:20 ../content-single.php:19
+#: ../partials/content-grid-single.php:11 ../partials/content-medium.php:38
+#: ../partials/content-normal.php:30
 msgid "View more"
 msgstr ""
 
-#: content-page.php:39 partials/content-normal.php:51
+#: ../content-page.php:41 ../partials/content-normal.php:54
 msgid "Pages:"
 msgstr ""
 
-#: content-page.php:46 content-single.php:53
+#: ../content-page.php:49 ../content-single.php:56
 msgid "Edit"
 msgstr ""
 
-#: content-single.php:43
+#: ../content-single.php:45
 msgid "Pages: "
 msgstr ""
 
-#: footer.php:25
-#, php-format
-msgid "Proudly powered by %s"
-msgstr ""
-
-#: footer.php:27
-#, php-format
-msgid "Theme: %1$s by %2$s."
-msgstr ""
-
-#: functions.php:59
+#: ../functions.php:59
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:89 inc/customizer/panels/typography.php:133
+#: ../functions.php:93 ../inc/customizer/panels/typography.php:133
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:112
+#: ../functions.php:124
 msgid "Footer Widget"
 msgstr ""
 
-#: functions.php:250 inc/template-tags.php:490
+#: ../functions.php:300 ../inc/template-tags.php:570
 msgid "Home"
 msgstr ""
 
-#: functions.php:349 inc/template-tags.php:519 searchform.php:10
-msgid "Search"
-msgstr ""
-
-#: header.php:26
+#: ../header.php:22
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:54
+#: ../header.php:53
 msgid "Menu"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:98
+#: ../inc/customizer/custom-controls/google-fonts-control.php:98
 msgid "Font Variant"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:99
+#: ../inc/customizer/custom-controls/google-fonts-control.php:99
 msgid ""
 "Different variants of the font, provides control over font-weight and italics"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:130
+#: ../inc/customizer/custom-controls/google-fonts-control.php:130
 msgid "Font Size (px)"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:157
+#: ../inc/customizer/custom-controls/google-fonts-control.php:157
 msgid "Line Height (em)"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:184
+#: ../inc/customizer/custom-controls/google-fonts-control.php:184
 msgid "Text Transform"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:189
-#: inc/customizer/defaults.php:300
+#: ../inc/customizer/custom-controls/google-fonts-control.php:189
+#: ../inc/customizer/defaults.php:249
 msgid "None"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:190
+#: ../inc/customizer/custom-controls/google-fonts-control.php:190
 msgid "Uppercase"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:191
+#: ../inc/customizer/custom-controls/google-fonts-control.php:191
 msgid "Lowercase"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:217
+#: ../inc/customizer/custom-controls/google-fonts-control.php:217
 msgid "Letter Spacing (px)"
 msgstr ""
 
-#: inc/customizer/custom-controls/google-fonts-control.php:244
+#: ../inc/customizer/custom-controls/google-fonts-control.php:244
 msgid "Word Spacing (px)"
 msgstr ""
 
-#: inc/customizer/defaults.php:288
+#: ../inc/customizer/defaults.php:237
 msgid "Wide"
 msgstr ""
 
-#: inc/customizer/defaults.php:289
+#: ../inc/customizer/defaults.php:238
+#: ../inc/pagebuilder/templates/section-edit.php:58
 msgid "Boxed"
 msgstr ""
 
-#: inc/customizer/defaults.php:298 inc/pagebuilder/builder.php:592
-#: inc/pagebuilder/builder.php:849
+#: ../inc/customizer/defaults.php:247
+#: ../inc/pagebuilder/templates/module-image-edit.php:28
+#: ../inc/pagebuilder/templates/module-slide-edit.php:34
 msgid "Left"
 msgstr ""
 
-#: inc/customizer/defaults.php:299 inc/pagebuilder/builder.php:593
-#: inc/pagebuilder/builder.php:851
+#: ../inc/customizer/defaults.php:248
+#: ../inc/pagebuilder/templates/module-image-edit.php:34
+#: ../inc/pagebuilder/templates/module-slide-edit.php:37
 msgid "Right"
 msgstr ""
 
-#: inc/customizer/defaults.php:303
+#: ../inc/customizer/defaults.php:252
 msgid "Normal"
 msgstr ""
 
-#: inc/customizer/defaults.php:304
+#: ../inc/customizer/defaults.php:253
 msgid "Medium"
 msgstr ""
 
-#: inc/customizer/defaults.php:305
+#: ../inc/customizer/defaults.php:254
 msgid "Grid"
 msgstr ""
 
-#: inc/customizer/defaults.php:308 inc/pagebuilder/builder.php:503
-#: inc/pagebuilder/builder.php:894 inc/pagebuilder/builder.php:907
+#: ../inc/customizer/defaults.php:257
+#: ../inc/pagebuilder/templates/module-image-edit.php:79
+#: ../inc/pagebuilder/templates/module-image-edit.php:94
+#: ../inc/pagebuilder/templates/module-slider-edit.php:23
 msgid "Yes"
 msgstr ""
 
-#: inc/customizer/defaults.php:309 inc/pagebuilder/builder.php:504
-#: inc/pagebuilder/builder.php:895 inc/pagebuilder/builder.php:908
+#: ../inc/customizer/defaults.php:258
+#: ../inc/pagebuilder/templates/module-image-edit.php:81
+#: ../inc/pagebuilder/templates/module-image-edit.php:96
+#: ../inc/pagebuilder/templates/module-slider-edit.php:25
 msgid "No"
 msgstr ""
 
-#: inc/customizer/panels/background-images.php:34
-#: inc/customizer/panels/colors.php:32
-#: inc/customizer/panels/layout.php:29
-#: inc/customizer/panels/typography.php:35
+#: ../inc/customizer/panels/background-images.php:34
+#: ../inc/customizer/panels/colors.php:32
+#: ../inc/customizer/panels/layout.php:29
+#: ../inc/customizer/panels/typography.php:35
 msgid "Global"
 msgstr ""
 
-#: inc/customizer/panels/background-images.php:50
+#: ../inc/customizer/panels/background-images.php:50
 msgid "Site"
 msgstr ""
 
-#: inc/customizer/panels/background-images.php:71
-#: inc/customizer/panels/background-images.php:108
-#: inc/pagebuilder/builder.php:324
+#: ../inc/customizer/panels/background-images.php:71
+#: ../inc/customizer/panels/background-images.php:108
+#: ../inc/pagebuilder/templates/section-edit.php:7
 msgid "Background Image"
 msgstr ""
 
-#: inc/customizer/panels/background-images.php:87
-#: inc/customizer/panels/colors.php:577
+#: ../inc/customizer/panels/background-images.php:87
+#: ../inc/customizer/panels/colors.php:577
 msgid "Title Container"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:55
+#: ../inc/customizer/panels/colors.php:55
 msgid "Accent Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:56
+#: ../inc/customizer/panels/colors.php:56
 msgid "Used for Links & Buttons"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:79
+#: ../inc/customizer/panels/colors.php:79
 msgid "Accent Shade Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:80
+#: ../inc/customizer/panels/colors.php:80
 msgid "Used for Links & Buttons hover state"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:104
+#: ../inc/customizer/panels/colors.php:104
 msgid "Alt Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:105
+#: ../inc/customizer/panels/colors.php:105
 msgid "Used for Form Elements"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:129
-#: inc/customizer/panels/colors.php:342
-#: inc/customizer/panels/colors.php:486
-#: inc/customizer/panels/colors.php:648
-#: inc/customizer/panels/colors.php:774
+#: ../inc/customizer/panels/colors.php:129
+#: ../inc/customizer/panels/colors.php:342
+#: ../inc/customizer/panels/colors.php:486
+#: ../inc/customizer/panels/colors.php:648
+#: ../inc/customizer/panels/colors.php:773
 msgid "Border Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:130
+#: ../inc/customizer/panels/colors.php:130
 msgid "Used for Borders for all content elements"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:153
-#: inc/customizer/panels/colors.php:726
+#: ../inc/customizer/panels/colors.php:153
+#: ../inc/customizer/panels/colors.php:725
 msgid "Heading Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:154
+#: ../inc/customizer/panels/colors.php:154
 msgid "Used for headings - h1 to h6"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:178
-#: inc/customizer/panels/colors.php:317
-#: inc/customizer/panels/colors.php:398
-#: inc/customizer/panels/colors.php:511
-#: inc/customizer/panels/colors.php:624
-#: inc/customizer/panels/colors.php:750
-#: inc/customizer/panels/colors.php:835 inc/pagebuilder/builder.php:347
+#: ../inc/customizer/panels/colors.php:178
+#: ../inc/customizer/panels/colors.php:317
+#: ../inc/customizer/panels/colors.php:398
+#: ../inc/customizer/panels/colors.php:511
+#: ../inc/customizer/panels/colors.php:624
+#: ../inc/customizer/panels/colors.php:749
+#: ../inc/customizer/panels/colors.php:834
+#: ../inc/pagebuilder/templates/section-edit.php:69
 msgid "Text Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:179
+#: ../inc/customizer/panels/colors.php:179
 msgid "Used for content text"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:202
+#: ../inc/customizer/panels/colors.php:202
 msgid "Text Alt Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:203
+#: ../inc/customizer/panels/colors.php:203
 msgid "Used for post meta & icons"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:227
+#: ../inc/customizer/panels/colors.php:227
 msgid "Site Background Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:228
+#: ../inc/customizer/panels/colors.php:228
 msgid "Used for background color of the site"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:252
+#: ../inc/customizer/panels/colors.php:252
 msgid "Content Background Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:253
+#: ../inc/customizer/panels/colors.php:253
 msgid "Used for background color of the site content"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:269
-#: inc/customizer/panels/layout.php:70
+#: ../inc/customizer/panels/colors.php:269
+#: ../inc/customizer/panels/layout.php:70
 msgid "Header"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:292
-#: inc/customizer/panels/colors.php:461
-#: inc/customizer/panels/colors.php:600
-#: inc/customizer/panels/colors.php:703
-#: inc/customizer/panels/colors.php:812 inc/pagebuilder/builder.php:337
+#: ../inc/customizer/panels/colors.php:292
+#: ../inc/customizer/panels/colors.php:461
+#: ../inc/customizer/panels/colors.php:600
+#: ../inc/customizer/panels/colors.php:702
+#: ../inc/customizer/panels/colors.php:811
+#: ../inc/pagebuilder/templates/section-edit.php:42
 msgid "Background Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:293
+#: ../inc/customizer/panels/colors.php:293
 msgid "Header background color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:318
+#: ../inc/customizer/panels/colors.php:318
 msgid "Header Text Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:343
+#: ../inc/customizer/panels/colors.php:343
 msgid "Header Bottom Border Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:359
-#: inc/customizer/panels/typography.php:88
+#: ../inc/customizer/panels/colors.php:359
+#: ../inc/customizer/panels/typography.php:88
 msgid "Main Menu"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:376
-#: inc/customizer/panels/typography.php:96
+#: ../inc/customizer/panels/colors.php:376
+#: ../inc/customizer/panels/typography.php:96
 msgid "Menu Items"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:423
+#: ../inc/customizer/panels/colors.php:423
 msgid "Text Hover/Focus Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:440
-#: inc/customizer/panels/typography.php:100
+#: ../inc/customizer/panels/colors.php:440
+#: ../inc/customizer/panels/typography.php:100
 msgid "Sub Menu Items"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:536
+#: ../inc/customizer/panels/colors.php:536
 msgid "Hover/Focus Text Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:560
+#: ../inc/customizer/panels/colors.php:560
 msgid "Hover/Focus Background Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:664
-#: inc/customizer/panels/layout.php:110
-#: inc/customizer/panels/typography.php:155
+#: ../inc/customizer/panels/colors.php:664
+#: ../inc/customizer/panels/layout.php:110
+#: ../inc/customizer/panels/typography.php:155
 msgid "Footer"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:682
+#: ../inc/customizer/panels/colors.php:681
 msgid "Main Footer"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:791
+#: ../inc/customizer/panels/colors.php:790
 msgid "Secondary Footer"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:859
+#: ../inc/customizer/panels/colors.php:858
 msgid "Social Icon Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:882
+#: ../inc/customizer/panels/colors.php:881
 msgid "Social Icon Hover Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:905
+#: ../inc/customizer/panels/colors.php:904
 msgid "Social Icon Hover background Color"
 msgstr ""
 
-#: inc/customizer/panels/general.php:58
+#: ../inc/customizer/panels/general.php:58
 msgid "Hide Title"
 msgstr ""
 
-#: inc/customizer/panels/general.php:83
+#: ../inc/customizer/panels/general.php:83
 msgid "Hide Tagline"
 msgstr ""
 
-#: inc/customizer/panels/general.php:105
-#: inc/customizer/panels/general.php:129
+#: ../inc/customizer/panels/general.php:105
+#: ../inc/customizer/panels/general.php:129
 msgid "Logo"
 msgstr ""
 
-#: inc/customizer/panels/general.php:153
+#: ../inc/customizer/panels/general.php:153
 msgid "Favicon"
 msgstr ""
 
-#: inc/customizer/panels/general.php:154
+#: ../inc/customizer/panels/general.php:154
 msgid ""
 "<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels"
 msgstr ""
 
-#: inc/customizer/panels/general.php:170
+#: ../inc/customizer/panels/general.php:170
 msgid "Social Profiles"
 msgstr ""
 
-#: inc/customizer/panels/general.php:193
+#: ../inc/customizer/panels/general.php:193
 msgid "Facebook URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:217
+#: ../inc/customizer/panels/general.php:217
 msgid "Twitter URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:240
+#: ../inc/customizer/panels/general.php:240
 msgid "Google+ URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:263
+#: ../inc/customizer/panels/general.php:263
 msgid "LinkedIn URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:286
+#: ../inc/customizer/panels/general.php:286
 msgid "Youtube URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:310
+#: ../inc/customizer/panels/general.php:310
 msgid "Vimeo URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:333
+#: ../inc/customizer/panels/general.php:333
 msgid "Instagram URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:356
+#: ../inc/customizer/panels/general.php:356
 msgid "Flickr URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:379
+#: ../inc/customizer/panels/general.php:379
 msgid "Pinterest URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:402
+#: ../inc/customizer/panels/general.php:402
 msgid "Dribbble URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:426
+#: ../inc/customizer/panels/general.php:426
 msgid "Digg URL"
 msgstr ""
 
-#: inc/customizer/panels/general.php:442
+#: ../inc/customizer/panels/general.php:442
 msgid "Sticky Posts"
 msgstr ""
 
-#: inc/customizer/panels/general.php:465
+#: ../inc/customizer/panels/general.php:465
 msgid "Sticky Label"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:52
+#: ../inc/customizer/panels/layout.php:52
 msgid "Site Layout"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:93
+#: ../inc/customizer/panels/layout.php:93
 msgid "Show Search Icon"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:133
+#: ../inc/customizer/panels/layout.php:133
 msgid "Number of Widgets"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:159
+#: ../inc/customizer/panels/layout.php:159
 msgid "Show Social Icons"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:177
+#: ../inc/customizer/panels/layout.php:176
 msgid "Blog (Posts Page)"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:201
-#: inc/customizer/panels/layout.php:359
-#: inc/customizer/panels/layout.php:516
-#: inc/customizer/panels/layout.php:673
-#: inc/customizer/panels/layout.php:828
+#: ../inc/customizer/panels/layout.php:200
+#: ../inc/customizer/panels/layout.php:358
+#: ../inc/customizer/panels/layout.php:515
+#: ../inc/customizer/panels/layout.php:672
+#: ../inc/customizer/panels/layout.php:827
 msgid "Sidebar Position"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:227
-#: inc/customizer/panels/layout.php:385
-#: inc/customizer/panels/layout.php:542
+#: ../inc/customizer/panels/layout.php:226
+#: ../inc/customizer/panels/layout.php:384
+#: ../inc/customizer/panels/layout.php:541
 msgid "Style"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:252
-#: inc/customizer/panels/layout.php:410
-#: inc/customizer/panels/layout.php:567
-#: inc/customizer/panels/layout.php:698
-#: inc/customizer/panels/layout.php:854
+#: ../inc/customizer/panels/layout.php:251
+#: ../inc/customizer/panels/layout.php:409
+#: ../inc/customizer/panels/layout.php:566
+#: ../inc/customizer/panels/layout.php:697
+#: ../inc/customizer/panels/layout.php:853
 msgid "Show Title Bar ?"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:271
-#: inc/customizer/panels/layout.php:428
-#: inc/customizer/panels/layout.php:586
-#: inc/customizer/panels/layout.php:741
+#: ../inc/customizer/panels/layout.php:270
+#: ../inc/customizer/panels/layout.php:427
+#: ../inc/customizer/panels/layout.php:585
+#: ../inc/customizer/panels/layout.php:740
 msgid "Post Meta"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:293
-#: inc/customizer/panels/layout.php:450
-#: inc/customizer/panels/layout.php:608
-#: inc/customizer/panels/layout.php:763
+#: ../inc/customizer/panels/layout.php:292
+#: ../inc/customizer/panels/layout.php:449
+#: ../inc/customizer/panels/layout.php:607
+#: ../inc/customizer/panels/layout.php:762
 msgid "Show Categories"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:317
-#: inc/customizer/panels/layout.php:474
-#: inc/customizer/panels/layout.php:632
-#: inc/customizer/panels/layout.php:787
+#: ../inc/customizer/panels/layout.php:316
+#: ../inc/customizer/panels/layout.php:473
+#: ../inc/customizer/panels/layout.php:631
+#: ../inc/customizer/panels/layout.php:786
 msgid "Show Tags"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:335 inc/template-tags.php:122
+#: ../inc/customizer/panels/layout.php:334 ../inc/template-tags.php:132
 msgid "Archives"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:492
+#: ../inc/customizer/panels/layout.php:491
 msgid "Search Results"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:650
+#: ../inc/customizer/panels/layout.php:649
 msgid "Single Post"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:723
+#: ../inc/customizer/panels/layout.php:722
 msgid "Show Post Title ?"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:805
+#: ../inc/customizer/panels/layout.php:804
 msgid "Single Page"
 msgstr ""
 
-#: inc/customizer/panels/layout.php:879
+#: ../inc/customizer/panels/layout.php:878
 msgid "Show Page Title ?"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:43
+#: ../inc/customizer/panels/typography.php:43
 msgid "Text"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:54
+#: ../inc/customizer/panels/typography.php:54
 msgid "Text Headings"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:62
+#: ../inc/customizer/panels/typography.php:62
 msgid "H1"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:65
+#: ../inc/customizer/panels/typography.php:65
 msgid "H2"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:68
+#: ../inc/customizer/panels/typography.php:68
 msgid "H3"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:71
+#: ../inc/customizer/panels/typography.php:71
 msgid "H4"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:74
+#: ../inc/customizer/panels/typography.php:74
 msgid "H5"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:77
+#: ../inc/customizer/panels/typography.php:77
 msgid "H6"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:111
+#: ../inc/customizer/panels/typography.php:111
 msgid "Site Title & Tagline"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:119
+#: ../inc/customizer/panels/typography.php:119
 msgid "Site Title"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:122
+#: ../inc/customizer/panels/typography.php:122
 msgid "Site Tagline"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:141
-#: inc/customizer/panels/typography.php:163
+#: ../inc/customizer/panels/typography.php:141
+#: ../inc/customizer/panels/typography.php:163
 msgid "Widget Title"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:144
-#: inc/customizer/panels/typography.php:166
+#: ../inc/customizer/panels/typography.php:144
+#: ../inc/customizer/panels/typography.php:166
 msgid "Widget Body"
 msgstr ""
 
-#: inc/customizer/panels/typography.php:169
+#: ../inc/customizer/panels/typography.php:169
 msgid "Footer Text"
 msgstr ""
 
-#: inc/extras.php:52
+#: ../inc/extras.php:55
 #, php-format
 msgid "Page %s"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:61
+#: ../inc/pagebuilder/builder.php:64
 msgid "Quest Page Builder"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:131
+#: ../inc/pagebuilder/builder.php:164
+msgid "Need some Inspiration ?"
+msgstr ""
+
+#: ../inc/pagebuilder/builder.php:167
+#: ../inc/pagebuilder/templates/column-insert.php:8
+#: ../inc/pagebuilder/templates/section.php:35
+msgid "Upgrade to Quest Plus"
+msgstr ""
+
+#: ../inc/pagebuilder/builder.php:167
+msgid "and get pre built layouts and the ability to save/load any layout."
+msgstr ""
+
+#: ../inc/pagebuilder/builder.php:178
 msgid "Add New Section"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:147
-msgid "Edit Module"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:148
-msgid "Remove Module"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:151 inc/pagebuilder/builder.php:306
-msgid "Click to toggle"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:157
-msgid "CSS Class"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:162
-msgid ""
-"CSS classes of the section, this will help you set custom styling. You can "
-"enter multiple classes by seperating them with spaces"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:169
-msgid "CSS3 Animation"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:277
-msgid "CSS Animation for the Module"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:286 inc/pagebuilder/builder.php:1161
-msgid "Admin Label"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:291 inc/pagebuilder/builder.php:1166
-msgid ""
-"Admin label for the module, this is the label/title you will see in the "
-"Module title, it lets you name your modules and keep track of them"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:300
-msgid "Section"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:302 inc/pagebuilder/builder.php:319
-msgid "Edit Section"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:303
-msgid "Clone Section"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:304
-msgid "Delete Section"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:309
-msgid "Edit Columns"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:311
-msgid "Columns"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:312
-msgid "Image Slider"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:313
-msgid "Gallery"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:328
-msgid "Select Background Image"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:328 inc/pagebuilder/builder.php:574
-#: inc/pagebuilder/builder.php:578 inc/pagebuilder/builder.php:786
-#: inc/pagebuilder/builder.php:791 inc/pagebuilder/builder.php:832
-#: inc/pagebuilder/builder.php:836
-msgid "Select Image"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:331
-msgid ""
-"If defined, this image will be used as the background for this section. To "
-"remove a background image, simply delete the URL from the settings field."
-msgstr ""
-
-#: inc/pagebuilder/builder.php:342
-msgid ""
-"Background Color for the section, leave it blank to set a transparent color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:352
-msgid "Text Color for the section"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:357
-msgid "Padding Top"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:362
-msgid "Padding (Spacing) at the top"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:367
-msgid "Padding Bottom"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:372
-msgid "Padding (Spacing) at the Bottom"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:377
-msgid "Border Top Width"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:382
-msgid "Border width for the section top"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:387
-msgid "Border Bottom Width"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:392
-msgid "Border width for the section bottom"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:397
-msgid "Border Top Color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:402
-msgid "Border color for the section top"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:407
-msgid "Border Bottom Color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:412
-msgid "Border color for the section bottom"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:431 inc/pagebuilder/builder.php:436
+#: ../inc/pagebuilder/templates/column-edit.php:2
+#: ../inc/pagebuilder/templates/column.php:7
 msgid "Insert Module"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:440
+#: ../inc/pagebuilder/templates/column-insert.php:2
 msgid "Select Layout"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:469 inc/pagebuilder/builder.php:482
-msgid "Slider Settings"
+#: ../inc/pagebuilder/templates/column-insert.php:5
+msgid "Need more layout options ?"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:473
-msgid "New Slide"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:483 inc/pagebuilder/builder.php:568
-#: inc/pagebuilder/builder.php:780
-msgid "Edit Slider"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:488
-msgid "Slider Height"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:493
-msgid "Height of the slider"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:499
-msgid "Slider AutoPlay"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:507
-msgid ""
-"Do you want to enable AutoPlay for this slider ? If autoplay is turned on, "
-"you can control the interval below"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:512
-msgid "AutoPlay Interval"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:517
-msgid ""
-"Interval between playing the next slide, specify the time in milliseconds "
-"( 1 second = 1000 milliseconds. You already knew this, didn't you :) )"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:522
-msgid "Transition Speed"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:527
-msgid ""
-"Speed of the CSS3 slide transitions, specify the time in milliseconds ( 1 "
-"second = 1000 milliseconds. You already knew this, didn't you :) )"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:550
-msgid "Edit Slide"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:569 inc/pagebuilder/builder.php:774
-#: inc/pagebuilder/builder.php:781 inc/pagebuilder/builder.php:827
-#: inc/pagebuilder/builder.php:828
-msgid "Edit Image"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:581 inc/pagebuilder/builder.php:794
-msgid "Select the slide image"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:587
-msgid "Image Position - Horizontal"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:591 inc/pagebuilder/builder.php:605
-#: inc/pagebuilder/builder.php:850
-msgid "Center"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:596
-msgid ""
-"Horizontal position of the Image, if the image width is more than the slider "
-"width then the image will be positioned as per this setting"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:601
-msgid "Image Position - Vertical"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:606
-msgid "Top"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:607
-msgid "Bottom"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:610
-msgid ""
-"Vertical position of the Image, if the image height is more than the slider "
-"height then the image will be positioned as per this setting"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:615
-msgid "Slide Heading"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:620
-msgid ""
-"The heading for the slide, this will be the main heading/title displayed in "
-"the slide frontend"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:625
-msgid "Slide Heading Text Color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:630
-msgid "Text Color for the heading"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:635
-msgid "Slide Text"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:640
-msgid ""
-"Content for the slide, this will be displayed in teh front end below the "
-"heading"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:645
-msgid "Slide Text Color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:650
-msgid "Text Color for the text"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:655
-msgid "Slice Orientation"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:659
-msgid "Vertical"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:660
-msgid "Horizontal"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:663
-msgid "Should the slices split vertically or horizontally ?"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:668
-msgid "Slice 1 Rotation"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:673
-msgid "Amount of rotation in degrees for the first slice"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:678
-msgid "Slice 2 Rotation"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:683
-msgid "Amount of rotation in degrees for the second slice"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:688
-msgid "Slice 1 Scale"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:693
-msgid "How big should the slice 1 scale ?"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:698
-msgid "Slice 2 Scale"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:703
-msgid "How big should the slice 2 scale ?"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:722 inc/pagebuilder/builder.php:737
-msgid "Gallery Settings"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:728
-msgid "New Image"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:738
-msgid "Edit Gallery"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:743
-msgid "Thumbnails Shape"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:747
-msgid "Round"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:748
-msgid "Square"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:751
-msgid "Do you want to enable Fullscreen for this gallery preview ?"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:811
+#: ../inc/pagebuilder/templates/insert-module.php:2
 msgid "Select Module"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:839
+#: ../inc/pagebuilder/templates/module-gallery-edit.php:2
+msgid "Edit Gallery"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gallery-edit.php:7
+msgid "Thumbnails Shape"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gallery-edit.php:13
+msgid "Round"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gallery-edit.php:16
+msgid "Square"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gallery-edit.php:19
+msgid "Do you want to enable Fullscreen for this gallery preview ?"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gallery.php:8
+msgid "New Image"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gimage-edit.php:2
+#: ../inc/pagebuilder/templates/module-gimage.php:11
+#: ../inc/pagebuilder/templates/module-image-edit.php:2
+#: ../inc/pagebuilder/templates/module-slide-edit.php:2
+#: ../inc/pagebuilder/templates/module-text-edit.php:2
+msgid "Edit Image"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gimage-edit.php:7
+#: ../inc/pagebuilder/templates/module-gimage-edit.php:14
+#: ../inc/pagebuilder/templates/module-gimage-edit.php:15
+#: ../inc/pagebuilder/templates/module-image-edit.php:6
+#: ../inc/pagebuilder/templates/module-image-edit.php:11
+#: ../inc/pagebuilder/templates/module-image-edit.php:12
+#: ../inc/pagebuilder/templates/module-slide-edit.php:7
+#: ../inc/pagebuilder/templates/module-slide-edit.php:13
+#: ../inc/pagebuilder/templates/module-slide-edit.php:14
+#: ../inc/pagebuilder/templates/section-edit.php:14
+msgid "Select Image"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-gimage-edit.php:19
+#: ../inc/pagebuilder/templates/module-slide-edit.php:18
+msgid "Select the slide image"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:2
+msgid "Edit Hover Icon"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:7
+msgid "Icon"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:13
+msgid "Select Icon"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:15
+msgid "Select the Icon you want to insert"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:22
+msgid "Icon Size"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:38
+msgid "Size of the Icon"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:43
+msgid "Color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:48
+msgid "Color of the Icon, this will be Icon Color and the border color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:53
+msgid "Hover Color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:58
+msgid ""
+"Background Color of the Icon, when a user hovers on the Icon the Color and "
+"Hover Color will be swapped"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:63
+msgid "Icon Title"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:68
+msgid "This will be the heading/title below the Icon"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:73
+msgid "Icon Text"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-hovericon-edit.php:78
+msgid "This will be the text below the Icon Title"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-image-edit.php:16
 msgid "Select the Image you want to insert"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:845
+#: ../inc/pagebuilder/templates/module-image-edit.php:23
 msgid "Alignment"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:854
+#: ../inc/pagebuilder/templates/module-image-edit.php:31
+#: ../inc/pagebuilder/templates/module-slide-edit.php:31
+#: ../inc/pagebuilder/templates/module-slide-edit.php:51
+msgid "Center"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-image-edit.php:37
 msgid "The alignment of the image"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:859
+#: ../inc/pagebuilder/templates/module-image-edit.php:42
 msgid "Alt"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:864
+#: ../inc/pagebuilder/templates/module-image-edit.php:47
 msgid "HTML alt attribute for the image"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:869
+#: ../inc/pagebuilder/templates/module-image-edit.php:52
 msgid "Title"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:874
+#: ../inc/pagebuilder/templates/module-image-edit.php:57
 msgid "HTML title attribute for the image"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:879
+#: ../inc/pagebuilder/templates/module-image-edit.php:62
 msgid "URL / Hyperlink"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:884
+#: ../inc/pagebuilder/templates/module-image-edit.php:67
 msgid ""
 "If set the image will be wraped inside an anchor tag which will be opened if "
 "the user clicks on the image"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:890
+#: ../inc/pagebuilder/templates/module-image-edit.php:73
 msgid "URL should open in New Tab ?"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:898
+#: ../inc/pagebuilder/templates/module-image-edit.php:84
 msgid "Do you want the URL to be opened in a new tab or the same tab ?"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:903
+#: ../inc/pagebuilder/templates/module-image-edit.php:89
 msgid "Image Lightbox"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:911
+#: ../inc/pagebuilder/templates/module-image-edit.php:99
 msgid ""
 "Do you want to show a lightbox for the image ? If set to yes it will "
 "override the URL and the image will be displayed in a lightbox when the "
 "image is clicked"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:941 inc/pagebuilder/builder.php:942
-msgid "Edit Hover Icon"
+#: ../inc/pagebuilder/templates/module-slide-edit.php:25
+msgid "Image Position - Horizontal"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:947
-msgid "Icon"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:952
-msgid "Select Icon"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:954
-msgid "Select the Icon you want to insert"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:960
-msgid "Icon Size"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:971
-msgid "Size of the Icon"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:976
-msgid "Color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:981
-msgid "Color of the Icon, this will be Icon Color and the border color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:986
-msgid "Hover Color"
-msgstr ""
-
-#: inc/pagebuilder/builder.php:991
+#: ../inc/pagebuilder/templates/module-slide-edit.php:40
 msgid ""
-"Background Color of the Icon, when a user hovers on the Icon the Color and "
-"Hover Color will be swapped"
+"Horizontal position of the Image, if the image width is more than the slider "
+"width then the image will be positioned as per this setting"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:996
-msgid "Icon Title"
+#: ../inc/pagebuilder/templates/module-slide-edit.php:45
+msgid "Image Position - Vertical"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:1001
-msgid "This will be the heading/title below the Icon"
+#: ../inc/pagebuilder/templates/module-slide-edit.php:53
+msgid "Top"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:1006
-msgid "Icon Text"
+#: ../inc/pagebuilder/templates/module-slide-edit.php:56
+msgid "Bottom"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:1011
-msgid "This will be the text below the Icon Title"
+#: ../inc/pagebuilder/templates/module-slide-edit.php:59
+msgid ""
+"Vertical position of the Image, if the image height is more than the slider "
+"height then the image will be positioned as per this setting"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:1027
-msgid "Edit Content"
+#: ../inc/pagebuilder/templates/module-slide-edit.php:64
+msgid "Slide Background Color"
 msgstr ""
 
-#: inc/pagebuilder/builder.php:1030
+#: ../inc/pagebuilder/templates/module-slide-edit.php:69
+msgid "Background Color for the slide"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:74
+msgid "Slide Heading"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:79
+msgid ""
+"The heading for the slide, this will be the main heading/title displayed in "
+"the slide frontend"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:84
+msgid "Slide Heading Text Color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:89
+msgid "Text Color for the heading"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:94
+msgid "Slide Heading Text Size"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:99
+msgid "Size of the heading text, enter in px"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:104
+msgid "Slide Text"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:109
+msgid ""
+"Content for the slide, this will be displayed in the front end below the "
+"heading"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:114
+msgid "Slide Text Color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:119
+msgid "Text Color for the text"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:124
+msgid "Slide Text Size"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:129
+msgid "Size of the slide text, enter in px"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:135
+msgid "Slice Orientation"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:141
+msgid "Vertical"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:144
+msgid "Horizontal"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:147
+msgid "Should the slices split vertically or horizontally ?"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:152
+msgid "Slice 1 Rotation"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:158
+msgid "Amount of rotation in degrees for the first slice"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:163
+msgid "Slice 2 Rotation"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:169
+msgid "Amount of rotation in degrees for the second slice"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:174
+msgid "Slice 1 Scale"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:179
+msgid "How big should the slice 1 scale ?"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:184
+msgid "Slice 2 Scale"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide-edit.php:189
+msgid "How big should the slice 2 scale ?"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slide.php:12
+msgid "Edit Slide"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:2
+msgid "Edit Slider"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:7
+msgid "Slider Height"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:12
+msgid "Height of the slider"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:18
+msgid "Slider AutoPlay"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:28
+msgid ""
+"Do you want to enable AutoPlay for this slider ? If autoplay is turned on, "
+"you can control the interval below"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:33
+msgid "AutoPlay Interval"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:38
+msgid ""
+"Interval between playing the next slide, specify the time in milliseconds "
+"( 1 second = 1000 milliseconds. You already knew this, didn't you :) )"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:43
+msgid "Transition Speed"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider-edit.php:48
+msgid ""
+"Speed of the CSS3 slide transitions, specify the time in milliseconds ( 1 "
+"second = 1000 milliseconds. You already knew this, didn't you :) )"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-slider.php:6
+msgid "New Slide"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/module-text-edit.php:7
+#: ../inc/pagebuilder/templates/module-text-edit.php:12
 msgid "Content"
 msgstr ""
 
-#: inc/template-tags.php:20
+#: ../inc/pagebuilder/templates/partial-admin-label.php:3
+msgid "Admin Label"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-admin-label.php:8
+msgid ""
+"Admin label for the module, this is the label/title you will see in the "
+"Module title, it lets you name your modules and keep track of them"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-css-class.php:3
+msgid "CSS Class"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-css-class.php:8
+msgid ""
+"CSS classes of the section, this will help you set custom styling. You can "
+"enter multiple classes by seperating them with spaces"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-form-animation.php:3
+msgid "CSS3 Animation"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-form-animation.php:111
+msgid "CSS Animation for the Module"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-module-header.php:4
+msgid "Edit Module"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-module-header.php:5
+msgid "Remove Module"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/partial-module-header.php:9
+#: ../inc/pagebuilder/templates/section.php:13
+msgid "Click to toggle"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/row.php:3
+msgid "Row"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:2
+#: ../inc/pagebuilder/templates/section.php:7
+msgid "Edit Section"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:13
+msgid "Select Background Image"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:18
+msgid ""
+"If defined, this image will be used as the background for this section. To "
+"remove a background image, simply delete the URL from the settings field."
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:25
+msgid "Background Image Attachment"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:31
+msgid "Fixed"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:34
+msgid "Scroll"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:37
+msgid ""
+"Scroll - The background scrolls along with the element. Fixed - The "
+"background is fixed with regard to the viewport"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:47
+msgid ""
+"Background Color for the section, leave it blank to set a transparent color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:52
+msgid "Content Type"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:61
+msgid "Fluid"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:64
+msgid ""
+"Boxed - Section content will be fixed to 1170px or corresponding device "
+"width. Fluid - Section content will be 100% width to the browser width"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:74
+msgid "Text Color for the section"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:79
+msgid "Padding Top"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:84
+msgid "Padding (Spacing) at the top"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:89
+msgid "Padding Bottom"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:95
+msgid "Padding (Spacing) at the Bottom"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:100
+msgid "Border Top Width"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:106
+msgid "Border width for the section top"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:111
+msgid "Border Bottom Width"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:117
+msgid "Border width for the section bottom"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:122
+msgid "Border Top Color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:128
+msgid "Border color for the section top"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:133
+msgid "Border Bottom Color"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section-edit.php:139
+msgid "Border color for the section bottom"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:3
+msgid "Section"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:9
+msgid "Clone Section"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:10
+msgid "Delete Section"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:24
+msgid "Columns"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:26
+msgid "Image Slider"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:28
+msgid "Gallery"
+msgstr ""
+
+#: ../inc/pagebuilder/templates/section.php:31
+msgid "Need more section options ?"
+msgstr ""
+
+#: ../inc/template-tags.php:24
 msgid "<i class=\"fa fa-comments\"></i>&nbsp; No Comments"
 msgstr ""
 
-#: inc/template-tags.php:21
+#: ../inc/template-tags.php:25
 msgid "<i class=\"fa fa-comments\"></i>&nbsp; 1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:22
+#: ../inc/template-tags.php:26
 msgid "<i class=\"fa fa-comments\"></i>&nbsp; % Comments"
 msgstr ""
 
-#: inc/template-tags.php:66
+#: ../inc/template-tags.php:74
 msgid "Read More"
 msgstr ""
 
-#: inc/template-tags.php:84
+#: ../inc/template-tags.php:94
 #, php-format
 msgid "Category: %s"
 msgstr ""
 
-#: inc/template-tags.php:86
+#: ../inc/template-tags.php:96
 #, php-format
 msgid "Tag: %s"
 msgstr ""
 
-#: inc/template-tags.php:88
+#: ../inc/template-tags.php:98
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: inc/template-tags.php:90
+#: ../inc/template-tags.php:100
 #, php-format
 msgid "Year: %s"
 msgstr ""
 
-#: inc/template-tags.php:92
+#: ../inc/template-tags.php:102
 #, php-format
 msgid "Month: %s"
 msgstr ""
 
-#: inc/template-tags.php:94
+#: ../inc/template-tags.php:104
 #, php-format
 msgid "Day: %s"
 msgstr ""
 
-#: inc/template-tags.php:116
+#: ../inc/template-tags.php:126
 #, php-format
 msgid "Archives: %s"
 msgstr ""
 
-#. translators: 1: Taxonomy singular name, 2: Current taxonomy term
-#: inc/template-tags.php:120
+#: ../inc/template-tags.php:130
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: inc/template-tags.php:253
+#: ../inc/template-tags.php:275
 msgid "Previous Article"
 msgstr ""
 
-#: inc/template-tags.php:254
+#: ../inc/template-tags.php:277
 msgid "Next Article"
 msgstr ""
 
-#: inc/template-tags.php:271
+#: ../inc/template-tags.php:296
 msgid "by "
 msgstr ""
 
-#: inc/template-tags.php:347
+#: ../inc/template-tags.php:394
 msgid "Search results for: "
 msgstr ""
 
-#: inc/template-tags.php:373
+#: ../inc/template-tags.php:422
 msgid "Pingback:"
 msgstr ""
 
-#: inc/template-tags.php:398
+#: ../inc/template-tags.php:448
 msgid "at"
 msgstr ""
 
-#: inc/template-tags.php:405
+#: ../inc/template-tags.php:458
 msgid "Your comment is awaiting moderation"
 msgstr ""
 
-#: inc/template-tags.php:516
+#: ../inc/template-tags.php:595
 msgid "404 - Page not Found"
 msgstr ""
 
-#: searchform.php:10
+#: ../inc/template-tags.php:598 ../searchform.php:14
+msgid "Search"
+msgstr ""
+
+#: ../inc/template-tags.php:704
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: ../inc/template-tags.php:706
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: ../searchform.php:13
 msgid "Search ..."
 msgstr ""
