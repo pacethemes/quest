@@ -132,7 +132,7 @@ class PT_PageBuilder {
 				'pt_pb_collections_js'
 			), self::$PT_PB_VERSION, true );
 
-			wp_localize_script( 'pt_pb_admin_js', 'trPbAppSections', get_post_meta( $post->ID, 'pt_pb_sections', true ) );
+			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', get_post_meta( $post->ID, 'pt_pb_sections', true ) );
 
 			wp_enqueue_style( 'pt_pb_admin_css', self::$PT_PB_URI . '/assets/css/style.css', array(), self::$PT_PB_VERSION );
 

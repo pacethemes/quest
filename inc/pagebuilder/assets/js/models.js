@@ -1,11 +1,11 @@
 /* global Backbone, jQuery, _ */
-var trPbApp = trPbApp || {};
-trPbApp.Modules = trPbApp.Modules || {};
+var ptPbApp = ptPbApp || {};
+ptPbApp.Modules = ptPbApp.Modules || {};
 
-(function (window, Backbone, $, _, trPbApp) {
+(function (window, Backbone, $, _, ptPbApp) {
     'use strict';
 
-    trPbApp.SectionModel = Backbone.Model.extend({
+    ptPbApp.SectionModel = Backbone.Model.extend({
         defaults: {
             id: '',
             css_class: '',
@@ -27,7 +27,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.RowModel = Backbone.Model.extend({
+    ptPbApp.RowModel = Backbone.Model.extend({
         defaults: {
             id: '',
             content: null,
@@ -36,7 +36,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.ColumnModel = Backbone.Model.extend({
+    ptPbApp.ColumnModel = Backbone.Model.extend({
         defaults: {
             id: '',
             content: [],
@@ -46,7 +46,7 @@ trPbApp.Modules = trPbApp.Modules || {};
     });
 
 
-    trPbApp.SliderModel = Backbone.Model.extend({
+    ptPbApp.SliderModel = Backbone.Model.extend({
         defaults: {
             id: '',
             css_class: '',
@@ -60,7 +60,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.SlideModel = Backbone.Model.extend({
+    ptPbApp.SlideModel = Backbone.Model.extend({
         defaults: {
             id: '',
             parent: '',
@@ -85,7 +85,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.GalleryModel = Backbone.Model.extend({
+    ptPbApp.GalleryModel = Backbone.Model.extend({
         defaults: {
             id: '',
             css_class: '',
@@ -96,7 +96,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.GImageModel = Backbone.Model.extend({
+    ptPbApp.GImageModel = Backbone.Model.extend({
         defaults: {
             id: '',
             css_class: '',
@@ -109,7 +109,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.Modules.ImageModel = Backbone.Model.extend({
+    ptPbApp.Modules.ImageModel = Backbone.Model.extend({
         defaults: {
             id: '',
             css_class: '',
@@ -128,7 +128,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.Modules.TextModel = Backbone.Model.extend({
+    ptPbApp.Modules.TextModel = Backbone.Model.extend({
         defaults: {
             id: '',
             animation: '',
@@ -140,7 +140,7 @@ trPbApp.Modules = trPbApp.Modules || {};
         }
     });
 
-    trPbApp.Modules.HovericonModel = Backbone.Model.extend({
+    ptPbApp.Modules.HovericonModel = Backbone.Model.extend({
         defaults: {
             id: '',
             animation: '',
@@ -158,4 +158,4 @@ trPbApp.Modules = trPbApp.Modules || {};
     });
 
 
-})(window, Backbone, jQuery, _, trPbApp);
+})(window, Backbone, jQuery, _, ptPbApp);

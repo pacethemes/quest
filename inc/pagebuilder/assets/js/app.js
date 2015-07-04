@@ -9,38 +9,38 @@ window.generateOption = function (selected, value, name) {
     return '<option value="' + value + '" ' + (value == selected ? 'selected' : '') + ' >' + name + '</option>';
 };
 
-var trPbApp = trPbApp || {};
+var ptPbApp = ptPbApp || {};
 
-(function ($, trPbApp) {
+(function ($, ptPbApp) {
     'use strict';
 
-    trPbApp.options = {
+    ptPbApp.options = {
         sectionId: /(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module__items__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__slider(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__gallery(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+))/ig
     };
 
-    trPbApp.cache = {
+    ptPbApp.cache = {
         $container: $('#pt-pb-main-container'),
         $pageTemplate: $('#page_template'),
         $hiddenEditor: $('#pt-pb-editor-hidden'),
         editorHtml: ''
     };
 
-    trPbApp.AddSection = function (model, ind, animate, clone) {
-        var newSection = new trPbApp.SectionModel({}),
-            ind = (ind || trPbApp.Sections.length),
-            id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + (trPbApp.Sections.length + 1) + '_' + Math.round(new Date().valueOf() / 1000),
-            el = trPbApp.cache.$container.find('.pt-pb-section:nth-child(' + ind + ')');
+    ptPbApp.AddSection = function (model, ind, animate, clone) {
+        var newSection = new ptPbApp.SectionModel({}),
+            ind = (ind || ptPbApp.Sections.length),
+            id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + (ptPbApp.Sections.length + 1) + '_' + Math.round(new Date().valueOf() / 1000),
+            el = ptPbApp.cache.$container.find('.pt-pb-section:nth-child(' + ind + ')');
 
-        if(model && model.attributes){
+        if (model && model.attributes) {
             newSection.set(model.attributes);
         }
 
         if (model && model.attributes && model.attributes.hasRows && model.attributes.content.length) {
-            var rows = new trPbApp.RowCollection(),
+            var rows = new ptPbApp.RowCollection(),
                 rowArr = (typeof model.attributes.content.models === 'undefined') ? model.attributes.content : model.attributes.content.toJSON();
 
             _.each(rowArr, function (row, i) {
-                rows.add(trPbApp.AddRow(row, i, id));
+                rows.add(ptPbApp.AddRow(row, i, id));
             });
 
             newSection.set('content', rows);
@@ -48,35 +48,35 @@ var trPbApp = trPbApp || {};
         }
 
         newSection.set('id', id);
-        trPbApp.Sections.add(newSection, {
+        ptPbApp.Sections.add(newSection, {
             at: ind
         });
 
-        var sectionView = new trPbApp.SectionView({
+        var sectionView = new ptPbApp.SectionView({
                 model: newSection
             }),
             $el = $(sectionView.render().el).hide();
 
         if (el.length === 0) {
-            trPbApp.cache.$container.append($el);
+            ptPbApp.cache.$container.append($el);
         } else {
             el.after($el);
         }
 
         if (animate) {
             $el.stop().slideDown();
-            trPbApp.scrollTo($el.offset().top - 50);
+            ptPbApp.scrollTo($el.offset().top - 50);
         } else {
             $el.show();
         }
 
     };
 
-    trPbApp.AddRow = function (row, i, id) {
+    ptPbApp.AddRow = function (row, i, id) {
 
-        var rowType = row.type || trPbApp.getRowType(row),
+        var rowType = row.type || ptPbApp.getRowType(row),
             rowId = id + '__row__' + (i + 1),
-            newRow = new trPbApp.RowModel({
+            newRow = new ptPbApp.RowModel({
                 id: rowId,
                 parent: id,
                 type: rowType
@@ -85,9 +85,9 @@ var trPbApp = trPbApp || {};
         if (rowType === 'slider') {
 
             var sliderId = rowId + '__slider',
-                slideArr = new trPbApp.SlideCollection(),
+                slideArr = new ptPbApp.SlideCollection(),
                 slides = row.content.attributes.slides.models ? row.content.attributes.slides.toJSON() : row.content.attributes.slides,
-                slider = new trPbApp.SliderModel();
+                slider = new ptPbApp.SliderModel();
 
             slider.set(row.content.attributes);
 
@@ -95,7 +95,7 @@ var trPbApp = trPbApp || {};
                 if (typeof slide !== 'object') {
                     slider.set(ind, slide);
                 } else {
-                    var newSlide = new trPbApp.SlideModel();
+                    var newSlide = new ptPbApp.SlideModel();
                     newSlide.set(slide);
                     newSlide['parent'] = sliderId;
                     newSlide['id'] = sliderId + '__' + (slideArr.length + 1);
@@ -111,9 +111,9 @@ var trPbApp = trPbApp || {};
         } else if (rowType === 'gallery') {
 
             var galleryId = rowId + '__gallery',
-                imageArr = new trPbApp.GImageCollection(),
+                imageArr = new ptPbApp.GImageCollection(),
                 images = row.content.attributes.images.models ? row.content.attributes.images.toJSON() : row.content.attributes.images,
-                gallery = new trPbApp.GalleryModel();
+                gallery = new ptPbApp.GalleryModel();
 
             gallery.set(row.content.attributes);
 
@@ -121,7 +121,7 @@ var trPbApp = trPbApp || {};
                 if (typeof image !== 'object') {
                     gallery.set(ind, image);
                 } else {
-                    var newImage = new trPbApp.GImageModel();
+                    var newImage = new ptPbApp.GImageModel();
                     newImage.set(image);
                     newImage['parent'] = galleryId;
                     newImage['id'] = galleryId + '__' + (imageArr.length + 1);
@@ -136,7 +136,7 @@ var trPbApp = trPbApp || {};
 
         } else if (rowType === 'columns') {
 
-            var contentArr = new trPbApp.ColumnCollection(),
+            var contentArr = new ptPbApp.ColumnCollection(),
                 colModels = row.content ? ((typeof row.content.models === 'undefined') ? row.content : row.content.toJSON()) : row.attributes.content.toJSON();
 
             _.each(colModels, function (column, ind) {
@@ -150,14 +150,14 @@ var trPbApp = trPbApp || {};
 
                     var content = (typeof column['content'].attributes === 'undefined') ? column['content'] : column['content'].toJSON(),
                         module = content['type'].toProperCase();
-                    if (!trPbApp.Modules[module + 'Model']) return;
+                    if (!ptPbApp.Modules[module + 'Model']) return;
 
                     content['parent'] = colId;
                     content['id'] = colId + '__module';
-                    colModel['content'] = new trPbApp.Modules[module + 'Model'](content);
+                    colModel['content'] = new ptPbApp.Modules[module + 'Model'](content);
 
                 }
-                contentArr.add(new trPbApp.ColumnModel(colModel));
+                contentArr.add(new ptPbApp.ColumnModel(colModel));
             });
 
             newRow.set('content', contentArr);
@@ -168,7 +168,7 @@ var trPbApp = trPbApp || {};
 
     };
 
-    trPbApp.getRowType = function (row) {
+    ptPbApp.getRowType = function (row) {
         if (typeof row.col !== 'undefined')
             return 'columns';
         else if (typeof row.slider !== 'undefined')
@@ -179,14 +179,14 @@ var trPbApp = trPbApp || {};
         return 'columns';
     };
 
-    trPbApp.generateSection = function (section, clone) {
+    ptPbApp.generateSection = function (section, clone) {
         if (typeof section !== 'object')
             return;
         var newSection = {};
         newSection.attributes = section;
 
         if (!section.row) {
-            var rowType = trPbApp.getRowType(section);
+            var rowType = ptPbApp.getRowType(section);
             if (rowType === 'slider') {
                 section.row = {
                     1: {
@@ -214,7 +214,7 @@ var trPbApp = trPbApp || {};
         newSection.attributes.hasRows = true;
         var rows = [];
         _.each(section.row, function (r, k) {
-            var rowType = trPbApp.getRowType(r),
+            var rowType = ptPbApp.getRowType(r),
                 row = {
                     content: {
                         attributes: {}
@@ -253,16 +253,16 @@ var trPbApp = trPbApp || {};
         newSection.attributes.content = rows;
 
         if (clone) {
-            trPbApp.AddSection(newSection, null, false, true);
+            ptPbApp.AddSection(newSection, null, false, true);
         } else {
-            trPbApp.AddSection(newSection);
+            ptPbApp.AddSection(newSection);
         }
     };
 
-    trPbApp.setHiddenInput = function (id, content, isText) {
+    ptPbApp.setHiddenInput = function (id, content, isText) {
 
         var name = (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section'),
-            sectionId = id.match(trPbApp.options.sectionId),
+            sectionId = id.match(ptPbApp.options.sectionId),
             input = isText ? $('textarea[name="' + name + '"]') : $('input[name="' + name + '"]');
 
         if (sectionId === null) return;
@@ -286,11 +286,11 @@ var trPbApp = trPbApp || {};
     };
 
 
-    trPbApp.setHiddenInputAll = function (model, el) {
+    ptPbApp.setHiddenInputAll = function (model, el) {
 
         var id = model.get('id'),
             name = (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section'),
-            sectionId = id.match(trPbApp.options.sectionId),
+            sectionId = id.match(ptPbApp.options.sectionId),
             $section;
 
         if (sectionId === null || model.attributes === undefined) return;
@@ -328,14 +328,14 @@ var trPbApp = trPbApp || {};
 
     };
 
-    trPbApp.setSectionOrder = function (order) {
+    ptPbApp.setSectionOrder = function (order) {
         $('[name="pt_pb_section[order]"]').val(order.join(",").replace(/pt_pb_section__/ig, ''));
     };
 
-    trPbApp.setColumnContent = function (id, content) {
+    ptPbApp.setColumnContent = function (id, content) {
 
-        var sections = trPbApp.Sections;
-        var section = trPbApp.Sections.find(function (item) {
+        var sections = ptPbApp.Sections;
+        var section = ptPbApp.Sections.find(function (item) {
             return item.get('id') === id.replace(/__col__[0-9]+/, '');
         });
 
@@ -358,52 +358,52 @@ var trPbApp = trPbApp || {};
         sections.set(section, {
             remove: false
         });
-        trPbApp.Sections = sections;
+        ptPbApp.Sections = sections;
 
     };
 
-    trPbApp.isVisualEditor = function () {
+    ptPbApp.isVisualEditor = function () {
         return $('#wp-pt_pb_editor-wrap').hasClass('tmce-active');
     };
 
-    trPbApp.getContent = function () {
-        if (trPbApp.isVisualEditor()) {
+    ptPbApp.getContent = function () {
+        if (ptPbApp.isVisualEditor()) {
             return tinyMCE.get('pt_pb_editor').getContent();
         }
 
         return $('#pt_pb_editor').val();
     };
 
-    trPbApp.setContent = function (content) {
-        if (trPbApp.isVisualEditor() && tinyMCE.get('pt_pb_editor') !== undefined) {
+    ptPbApp.setContent = function (content) {
+        if (ptPbApp.isVisualEditor() && tinyMCE.get('pt_pb_editor') !== undefined) {
             tinyMCE.get('pt_pb_editor').setContent(content);
         } else {
             $('#pt_pb_editor').val(content);
         }
     };
 
-    trPbApp.createEditor = function (el, text) {
+    ptPbApp.createEditor = function (el, text) {
         if (!el || el.length === 0) {
             return;
         }
 
         var $content = el.find('[name=content]');
-        $content.after(trPbApp.cache.editorHtml);
+        $content.after(ptPbApp.cache.editorHtml);
 
         setTimeout(function () {
             if (typeof window.switchEditors !== 'undefined') {
-                window.switchEditors.go('pt_pb_editor', trPbApp.getEditorMode());
+                window.switchEditors.go('pt_pb_editor', ptPbApp.getEditorMode());
             }
 
             window.wpActiveEditor = 'pt_pb_editor';
 
-            trPbApp.setContent(text);
+            ptPbApp.setContent(text);
 
         }, 100);
 
     };
 
-    trPbApp.removeEditor = function (textarea_id) {
+    ptPbApp.removeEditor = function (textarea_id) {
         if (typeof window.tinyMCE !== 'undefined') {
             window.tinyMCE.execCommand('mceRemoveEditor', false, textarea_id);
 
@@ -413,7 +413,7 @@ var trPbApp = trPbApp || {};
         }
     };
 
-    trPbApp.getEditorMode = function () {
+    ptPbApp.getEditorMode = function () {
         var mode = 'tinymce';
 
         if ('html' === getUserSetting('editor')) {
@@ -423,7 +423,7 @@ var trPbApp = trPbApp || {};
         return mode;
     };
 
-    trPbApp.toggleTemplate = function (event) {
+    ptPbApp.toggleTemplate = function (event) {
         event.preventDefault();
         var val = $(event.target).val();
 
@@ -438,7 +438,7 @@ var trPbApp = trPbApp || {};
 
     };
 
-    trPbApp.animationPreview = function (e) {
+    ptPbApp.animationPreview = function (e) {
         e.preventDefault();
         var $select = $(e.target),
             $preview = $select.siblings('.animation-preview');
@@ -448,17 +448,17 @@ var trPbApp = trPbApp || {};
         });
     };
 
-    trPbApp.scrollTo = function (top) {
+    ptPbApp.scrollTo = function (top) {
         $('html, body').stop().animate({
             scrollTop: top
         }, 600);
     };
 
-    trPbApp.Sections = new trPbApp.SectionCollection();
+    ptPbApp.Sections = new ptPbApp.SectionCollection();
 
-    trPbApp.Upload = {};
+    ptPbApp.Upload = {};
 
-    trPbApp.Upload.AddFile = function (event) {
+    ptPbApp.Upload.AddFile = function (event) {
 
         var frame,
             $el = $(event.target),
@@ -506,7 +506,7 @@ var trPbApp = trPbApp || {};
     };
 
 
-    trPbApp.Upload.RemoveFile = function (selector) {
+    ptPbApp.Upload.RemoveFile = function (selector) {
         selector.find('.pt-pb-upload-field').val('');
         selector.find('.screenshot').slideUp(200, function () {
             $(this).empty();
@@ -515,7 +515,7 @@ var trPbApp = trPbApp || {};
         selector.find('.pt-pb-upload-button').show();
     };
 
-    trPbApp.Upload.BindEvents = function () {
+    ptPbApp.Upload.BindEvents = function () {
         var that = this;
 
         $('.pt-pb-upload-field').each(function () {
@@ -539,9 +539,9 @@ var trPbApp = trPbApp || {};
         });
     };
 
-    trPbApp.Icons = {};
+    ptPbApp.Icons = {};
 
-    trPbApp.Icons.BindEvents = function () {
+    ptPbApp.Icons.BindEvents = function () {
         $('.pt-pb-icon-select').each(function () {
             var $icon = $(this)
             var $preview = $icon.siblings('.icon-grid');
@@ -565,32 +565,32 @@ var trPbApp = trPbApp || {};
     }
 
 
-})(jQuery, trPbApp);
+})(jQuery, ptPbApp);
 
 jQuery(document).ready(function ($) {
 
-    trPbApp.cache.editorHtml = trPbApp.cache.$hiddenEditor.html();
-    trPbApp.cache.$hiddenEditor.remove();
+    ptPbApp.cache.editorHtml = ptPbApp.cache.$hiddenEditor.html();
+    ptPbApp.cache.$hiddenEditor.remove();
 
-    trPbApp.cache.$pageTemplate.on('change', trPbApp.toggleTemplate)
+    ptPbApp.cache.$pageTemplate.on('change', ptPbApp.toggleTemplate)
         .trigger('change');
 
-    _.each(trPbAppSections, function (section, key) {
-        trPbApp.generateSection(section);
+    _.each(ptPbAppSections, function (section, key) {
+        ptPbApp.generateSection(section);
     });
 
     jQuery(document).on('reveal:open', function () {
-        trPbApp.Upload.BindEvents();
-        trPbApp.Icons.BindEvents();
+        ptPbApp.Upload.BindEvents();
+        ptPbApp.Icons.BindEvents();
         $('.reveal-modal').find('.pt-pb-color').wpColorPicker();
     });
 
     $('.pt-pb-insert-section').on('click', function (e) {
         e.preventDefault();
-        trPbApp.AddSection(null, null, true);
+        ptPbApp.AddSection(null, null, true);
     });
 
-    trPbApp.cache.$container.sortable({
+    ptPbApp.cache.$container.sortable({
         handle: '.pt-pb-header',
         forcePlaceholderSizeType: true,
         distance: 2,
@@ -603,26 +603,26 @@ jQuery(document).ready(function ($) {
                 updated.push($(this).attr('id'));
             });
 
-            trPbApp.Sections.models = _(trPbApp.Sections.models).sortBy(function (model) {
+            ptPbApp.Sections.models = _(ptPbApp.Sections.models).sortBy(function (model) {
                 return _.indexOf(updated, model.id);
             });
 
         }
     });
 
-    trPbApp.cache.$container.on('click', '.pt-pb-module-toggle', function (e) {
+    ptPbApp.cache.$container.on('click', '.pt-pb-module-toggle', function (e) {
         e.preventDefault();
         var content = $(this).closest('.module-controls').siblings('.content-preview, .slide-content-preview').slideToggle(300, function () {
             $(this).siblings('.module-controls').toggleClass('close');
         });
     });
 
-    trPbApp.cache.$container.on('change', '.js-animations', trPbApp.animationPreview);
+    ptPbApp.cache.$container.on('change', '.js-animations', ptPbApp.animationPreview);
 
-    trPbApp.ModulesList = {};
-    _.each(trPbApp.Modules, function (val, ind) {
+    ptPbApp.ModulesList = {};
+    _.each(ptPbApp.Modules, function (val, ind) {
         if (ind.match(/Model/) !== null) {
-            trPbApp.ModulesList[ind.replace('Model', '')] = new trPbApp.Modules[ind]().attributes;
+            ptPbApp.ModulesList[ind.replace('Model', '')] = new ptPbApp.Modules[ind]().attributes;
         }
     });
 

@@ -106,7 +106,7 @@
                 if (!locked) {
                     lockModal();
                     if (options.animation == "fadeAndPop") {
-                        if(!openModalBg){
+                        if (!openModalBg) {
                             modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
                         }
                         modal.animate({
@@ -118,7 +118,7 @@
                         });
                     }
                     if (options.animation == "fade") {
-                        if(!openModalBg){
+                        if (!openModalBg) {
                             modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
                         }
                         modal.animate({
@@ -130,7 +130,7 @@
                     }
                     if (options.animation == "none") {
                         modal.css({'visibility': 'hidden', 'display': 'block'});
-                        if(!openModalBg){
+                        if (!openModalBg) {
                             modalBG.css({'display': 'none'});
                         }
                     }

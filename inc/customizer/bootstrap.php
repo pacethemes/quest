@@ -131,11 +131,11 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 					continue;
 				}
 
-				foreach ($section['row'] as $j => $row) {
+				foreach ( $section['row'] as $j => $row ) {
 
 					if ( ! is_numeric( $j ) || ! array_key_exists( 'col', $row ) || empty( $row['col'] ) ) {
 						continue;
-					}					
+					}
 
 					foreach ( $row['col'] as $k => $col ) {
 						if ( ! is_numeric( $k ) || ! array_key_exists( 'module', $col ) || empty( $col['module'] ) ) {
@@ -147,7 +147,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 						}
 					}
 				}
-				
+
 			}
 
 			echo $css;
@@ -160,7 +160,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			return $output;
 		}
 
-		private static function BuildSectionCss( $section ){
+		private static function BuildSectionCss( $section ) {
 
 			return "#{$section['id']} h1, #{$section['id']}  h2, #{$section['id']}  h3, #{$section['id']}  h4, #{$section['id']}  h5, #{$section['id']} h6, #{$section['id']} p { color: {$section['text_color']}; } ";
 		}

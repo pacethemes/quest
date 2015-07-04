@@ -1,27 +1,27 @@
 /* global Backbone, jQuery, _ */
-var trPbApp = trPbApp || {};
+var ptPbApp = ptPbApp || {};
 
-(function (window, Backbone, $, _, trPbApp) {
+(function (window, Backbone, $, _, ptPbApp) {
     'use strict';
 
-    trPbApp.SectionCollection = Backbone.Collection.extend({
-        model: trPbApp.SectionModel
+    ptPbApp.SectionCollection = Backbone.Collection.extend({
+        model: ptPbApp.SectionModel
     });
 
-    trPbApp.RowCollection = Backbone.Collection.extend({
-        model: trPbApp.RowModel
+    ptPbApp.RowCollection = Backbone.Collection.extend({
+        model: ptPbApp.RowModel
     });
 
-    trPbApp.ColumnCollection = Backbone.Collection.extend({
-        model: trPbApp.ColumnModel
+    ptPbApp.ColumnCollection = Backbone.Collection.extend({
+        model: ptPbApp.ColumnModel
     });
 
-    trPbApp.GImageCollection = Backbone.Collection.extend({
-        model: trPbApp.GImageModel
+    ptPbApp.GImageCollection = Backbone.Collection.extend({
+        model: ptPbApp.GImageModel
     });
 
-    trPbApp.SlideCollection = Backbone.Collection.extend({
-        model: trPbApp.SlideModel
+    ptPbApp.SlideCollection = Backbone.Collection.extend({
+        model: ptPbApp.SlideModel
     });
 
-})(window, Backbone, jQuery, _, trPbApp);
+})(window, Backbone, jQuery, _, ptPbApp);
