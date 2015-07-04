@@ -13,7 +13,7 @@
 					class="dashicons dashicons-format-image"></i></a></div>
 		<% }%>
 
-		<% if (heading == "" && text == "") { %>
+		<% if (heading == "" && content == "") { %>
 
 		<% }%>
 
@@ -22,9 +22,9 @@
 			<%= heading %></h2>
 		<% }%>
 
-		<% if (text != "") { %>
-		<p class="slide-text" style="<%= text_color != '' ? 'color:' + text_color + ';' : void 0  %>"><%= text
-			%></h2>
+		<% if (content != "") { %>
+		<div class="slide-text" style="<%= text_color != '' ? 'color:' + text_color + ';' : void 0  %>"><%= content
+			%></div>
 			<% }%>
 	</div>
 	</div>

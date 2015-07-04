@@ -411,7 +411,8 @@ var trPbApp = trPbApp || {};
                 }
 
                 $content.append(new trPbApp.ColumnView({
-                    model: model
+                    model: model,
+                    parent: $view.model
                 }).render().el);
 
                 if (model.get('content') && model.get('content').attributes !== undefined) {
@@ -537,7 +538,6 @@ var trPbApp = trPbApp || {};
             if (content.attributes !== undefined) {
                 $content.html('');
                 var module = content.get('type').toProperCase();
-
                 $content.append(new trPbApp.Modules[module + 'View']({
                     model: content
                 }).render().el);
@@ -675,7 +675,7 @@ var trPbApp = trPbApp || {};
                 slides = this.model.get('slides'),
                 $content = this.$el.find('.slider-container');
 
-            if (params.text)
+            if (params && params.text)
                 slide.set('content', params.text)
 
             slide.set({

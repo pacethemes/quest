@@ -1324,7 +1324,7 @@ hr {
 //original selectors
 //#content textarea, #content select, #content input[type="text"], #content input[type="password"], #content input[type="datetime"], #content input[type="datetime-local"], #content input[type="date"], #content input[type="month"], #content input[type="time"], #content input[type="week"], #content input[type="number"], #content input[type="email"], #content input[type="url"], #content input[type="search"], #content input[type="tel"], #content input[type="color"]
 %extend_4 {
-  max-width: 340px;
+  max-width: 400px;
   //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
   border-radius: 0;
   border: 1px solid $border_color;
@@ -1424,7 +1424,7 @@ hr {
   // top: 6px;
 }
 
-#content {
+#content, .wpcf7 {
   background-color: $white;
   textarea {
     @extend %extend_4;
@@ -1616,12 +1616,16 @@ hr {
 .button {
   @extend %extend_38;
   margin: 5px 5px 5px 0;
-  padding: 1em 1.5em;
+  padding: 0.85em 1.4em;
   &.small {
     // padding: 6px 12px;
     font-size: 0.8em;
   }
   &.big {
+    // padding: 15px 20px;
+    font-size: 1em;
+  }
+  &.large {
     // padding: 15px 20px;
     font-size: 1.4em;
   }
@@ -1641,9 +1645,9 @@ hr {
 }
 
 .wpcf7-submit {
-  @extend %extend_38;
-  margin: 5px 5px 5px 0;
-  padding: 10px 16px;
+  // @extend %extend_38;
+  margin: 5px 5px 5px 0 !important;
+  padding: 10px 16px !important;
   &:hover {
     @extend %extend_40;
   }

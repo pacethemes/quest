@@ -252,10 +252,10 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		private function generateSection( $section ) {
 
 			$css       = $this->_getCssProperties( $section );
-			$cssClass  = $section['css_class'];
-			$container = $section['content_type'] === 'boxed' ? 'container' : 'container-fluid';
+			$cssClass  = isset( $section['css_class'] ) ? $section['css_class'] : "";
+			$container = ( isset( $section['content_type'] ) && $section['content_type'] === 'fluid' ) ? 'container-fluid' : 'container';
 
-			$content = "<section class='quest-row $cssClass' style='" . $css . "'> ";
+			$content = "<section class='quest-row $cssClass' style='$css' id='{$section['id']}' > ";
 
 			if ( array_key_exists( 'row', $section ) && ! empty( $section['row'] ) ) {
 				foreach ( $section['row'] as $row ) {

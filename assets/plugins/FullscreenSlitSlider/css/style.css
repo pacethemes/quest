@@ -23,7 +23,7 @@
 }
 
 .sl-slide-inner {
-    background-size: cover;
+    background-size: cover !important;
     text-align: center;
 }
 
@@ -125,7 +125,7 @@
 }
 
 .sl-slider h2, .sl-slider .sl-slide-text {
-    padding: 100px 30px 10px 30px;
+    padding: 130px 30px 10px 30px;
     width: 80%;
     max-width: 960px;
     color: #fff;

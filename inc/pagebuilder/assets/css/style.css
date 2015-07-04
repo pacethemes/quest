@@ -478,17 +478,23 @@ html[xmlns] .clearfix {
   background-position: center center;
   background-size: cover;
   padding: 20px;
+  overflow: hidden;
 }
 .slide-content-preview .slide-heading,
 .gimage-content-preview .slide-heading,
 .slide-content-preview .slide-text,
 .gimage-content-preview .slide-text {
-  color: #fff;
   width: 80%;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px !important;
   margin-top: 0 !important;
+}
+.slide-content-preview .slide-dummy-image,
+.gimage-content-preview .slide-dummy-image {
+  position: absolute;
+  right: 0;
+  left: 0;
 }
 .slide-content-preview .slide-dummy-image a,
 .gimage-content-preview .slide-dummy-image a,

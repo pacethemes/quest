@@ -539,8 +539,9 @@ html[xmlns] .clearfix {
   background-position: center center;
   background-size: cover;
   padding: 20px;
+  overflow: hidden;
   .slide-heading, .slide-text {
-    color: #fff;
+    // color: #fff;
     width: 80%;
     max-width: 960px;
     margin: 0 auto;
@@ -548,6 +549,9 @@ html[xmlns] .clearfix {
     margin-top: 0 !important;
   }
   .slide-dummy-image {
+    position: absolute;
+    right: 0;
+    left: 0;
     a, .dashicons {
       width: 100%;
       display: block;

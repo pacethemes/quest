@@ -102,11 +102,13 @@
             });
 
             //Closing Animation
-            modal.bind('reveal:close', function () {
+            modal.bind('reveal:close', function (e, openModalBg) {
                 if (!locked) {
                     lockModal();
                     if (options.animation == "fadeAndPop") {
-                        modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+                        if(!openModalBg){
+                            modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+                        }
                         modal.animate({
                             "top": $(document).scrollTop() - topOffset + 'px',
                             "opacity": 0
@@ -116,7 +118,9 @@
                         });
                     }
                     if (options.animation == "fade") {
-                        modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+                        if(!openModalBg){
+                            modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+                        }
                         modal.animate({
                             "opacity": 0
                         }, options.animationspeed, function () {
@@ -126,7 +130,9 @@
                     }
                     if (options.animation == "none") {
                         modal.css({'visibility': 'hidden', 'display': 'block'});
-                        modalBG.css({'display': 'none'});
+                        if(!openModalBg){
+                            modalBG.css({'display': 'none'});
+                        }
                     }
                 }
                 modal.unbind('reveal:close');

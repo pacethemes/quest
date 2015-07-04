@@ -31,7 +31,9 @@ var trPbApp = trPbApp || {};
             id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + (trPbApp.Sections.length + 1) + '_' + Math.round(new Date().valueOf() / 1000),
             el = trPbApp.cache.$container.find('.pt-pb-section:nth-child(' + ind + ')');
 
-        newSection.set(model.attributes);
+        if(model && model.attributes){
+            newSection.set(model.attributes);
+        }
 
         if (model && model.attributes && model.attributes.hasRows && model.attributes.content.length) {
             var rows = new trPbApp.RowCollection(),
