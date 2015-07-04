@@ -1,3 +1,11 @@
+## 1.0.8
+
+* Fixes page builder clone issues
+* Fixes slide padding issue
+* Fixes Reveal Modal close issue in case of multiple modal windows open at the same time
+* Adds Row save functionality for page builder
+* Adds Contact Form 7 styling support
+
 ## 1.0.7
 
 * Adds new Row model to Page Builder which allows a section to have multiple rows
