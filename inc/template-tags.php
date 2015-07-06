@@ -382,7 +382,7 @@ if ( ! function_exists( 'quest_page_title' ) ) :
 	 * Prints the Page Title inside the Title Container
 	 */
 	function quest_page_title() {
-		if ( function_exists( 'is_woocommerce' ) && is_woocommerce() && is_product() ) {
+		if ( (function_exists( 'is_woocommerce' ) && is_woocommerce() && is_product()) || (function_exists( 'is_bbpress' ) && is_bbpress()) ) {
 			the_title();
 		} else if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
 			woocommerce_page_title();
@@ -561,6 +561,17 @@ if ( ! function_exists( 'quest_breadcrumb' ) ) :
 			return;
 		}
 
+		if( function_exists( 'is_bbpress' ) && is_bbpress() ) {
+			echo '<ul class="breadcrumbs">';
+			bbp_breadcrumb( array(
+				'delimiter'   => '',
+				'before'      => '<li>',
+				'after'       => '</li>'
+			) );
+			echo '</ul>';
+			return;
+		}
+
 
 		echo '<ul class="breadcrumbs">';
 
@@ -670,10 +681,8 @@ if ( ! function_exists( 'quest_get_view' ) ):
 
 		$view = 'post';
 
-		if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
-			$view = 'woocommerce_shop';
-		} // Blog
-		else if ( is_home() ) {
+		// Blog
+		if ( is_home() ) {
 			$view = 'blog';
 		} // Archives
 		else if ( is_archive() ) {
@@ -709,4 +718,3 @@ if ( ! function_exists( 'quest_get_footer_copyright' ) ):
 	}
 endif;
 
-?>

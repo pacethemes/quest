@@ -65,7 +65,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 				return;
 			}
-
+ 
 			if ( $postarr['post_type'] === 'revision' || ! isset( $postarr['pt_pb_section'] ) ) {
 				return $data;
 			}
@@ -239,7 +239,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			foreach ( $this->_sections as $key => $section ) {
 				$content .= $this->generateSection( $section );
 			}
-
+ 
 			return $content;
 
 		}
@@ -284,7 +284,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 
 			if ( array_key_exists( 'col', $row ) && ! empty( $row['col'] ) ) {
 
-				foreach ( $row['col'] as $col ) {
+				foreach ( $row['col'] as $col ) { 
 					$content .= $this->generateColumn( $col );
 				}
 
@@ -400,7 +400,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			$content .= "<div class='sl-slide-text' style='" . $this->_getCssProperties( array(
 					'text_color' => $slide['text_color'],
 					'text_size'  => $slide['text_size']
-				) ) . "'>" . $slide['content'] . "</div>";
+				) ) . "'>" . PT_PageBuilder_Helper::getContent( $slide ) . "</div>";
 
 			$content .= "</div></div></div>\n";
 
@@ -560,6 +560,13 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 			return $content;
 		}
 
+		public static function getContent ( $module ) {
+			if( isset( $module['pt_pb_editor'] ) && $module['pt_pb_editor'] !== '' ) {
+				return $module['pt_pb_editor'];
+			}
+			return $module['content'];
+		}
+
 	}
 endif;
 
@@ -668,7 +675,7 @@ if ( ! class_exists( 'PT_PageBuilder_Text_Module' ) ) :
 		public function getContent() {
 			$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
 
-			return "<div class='module-text$cls'>" . $this->_module['content'] . "</div>";
+			return "<div class='module-text$cls'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
 		}
 
 	}
@@ -691,9 +698,10 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 			$cls       = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
 			$color     = $this->_module['color'];
 			$color_alt = $this->_module['hover_color'];
+			$content = PT_PageBuilder_Helper::getContent( $this->_module );
 
 			return "<div class='hover-icon$cls' id='{$this->_module['id']}'>
-					<a href='#' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$this->_module['content']}
+					<a href='#' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
 				</div>";
 		}
 

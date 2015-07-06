@@ -1,3 +1,9 @@
+## 1.0.10
+
+* Adds bbpress basic support
+* Fixes incorrect view 'woocommerce'
+* Fixes Text module content escape issue
+
 ## 1.0.9
 
 * Changed Javascript variable trPbApp to ptPbApp
