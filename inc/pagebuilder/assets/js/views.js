@@ -748,7 +748,7 @@ var ptPbApp = ptPbApp || {};
         editModel: function (e) {
             if (e) e.preventDefault();
             this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('pt-pb-slide-edit reveal-modal'));
-            ptPbApp.createEditor(this.$el, this.model.get('pt_pb_editor') || this.model.get('content'));
+            ptPbApp.createEditor(this.$el, this.model.get('content'));
             this.$el.find('.reveal-modal').reveal();
         },
 
@@ -1022,7 +1022,7 @@ var ptPbApp = ptPbApp || {};
         editModel: function (e) {
             if (e) e.preventDefault();
             this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('pt-pb-image-edit reveal-modal'));
-            ptPbApp.createEditor(this.$el, this.model.get('pt_pb_editor') || this.model.get('content'));
+            ptPbApp.createEditor(this.$el, this.model.get('content'));
             this.$el.find('.reveal-modal').reveal();
         },
 
@@ -1038,6 +1038,7 @@ var ptPbApp = ptPbApp || {};
 
             this.model.set(this.$el.find('.edit-content form').serializeObject());
             this.model.set('content', ptPbApp.getContent());
+
             ptPbApp.setColumnContent(parent, this.model);
 
             this.$el.find('.reveal-modal').trigger('reveal:close');
@@ -1078,7 +1079,7 @@ var ptPbApp = ptPbApp || {};
         editModel: function (e) {
             if (e) e.preventDefault();
             this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('pt-pb-hovericon-edit reveal-modal'));
-            ptPbApp.createEditor(this.$el, this.model.get('pt_pb_editor') || this.model.get('content'));
+            ptPbApp.createEditor(this.$el, this.model.get('content'));
             this.$el.find('.reveal-modal').reveal();
 
         },

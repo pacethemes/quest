@@ -271,11 +271,6 @@ var ptPbApp = ptPbApp || {};
 
         if (input.length > 0) {
             input.val(content);
-        } else if (isText) {
-            $('<textarea />').attr({
-                'name': name,
-                'class': 'content-text hidden'
-            }).html(content).appendTo($('#' + sectionId));
         } else {
             $('<input />').attr({
                 'name': name,
@@ -311,11 +306,6 @@ var ptPbApp = ptPbApp || {};
 
             if (input.length > 0) {
                 input.val(value);
-            } else if (key === 'content') {
-                $('<textarea />').attr({
-                    'name': inputName,
-                    'class': 'content-text hidden'
-                }).html(value).appendTo($section);
             } else {
                 $('<input />').attr({
                     'name': inputName,
