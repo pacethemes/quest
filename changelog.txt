@@ -1,3 +1,13 @@
+## 1.0.12
+
+* Adds Title and Description options for Gallery Images in Page Builder
+* Adds Icon Link option for Hovericons
+* Fixes Pagebuilder "content" issue by removing the old workaround of using "pt_pb_content"
+
+## 1.0.11
+
+* Changes PageBuilder "content" to use input[type=text] instead of a texture as custom markup in a textarea is filtered by PHP and this will cause the users to lose content
+
 ## 1.0.10
 
 * Adds bbpress basic support

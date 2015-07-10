@@ -79,6 +79,17 @@
 				</div>
 			</div>
 
+			<div class="pt-pb-option">
+				<label for="href"><?php _e( 'Icon Link', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<input name="href" class="regular-text" type="text" value="<%= href %>"/>
+
+					<p class="description"><?php _e( 'This is the link the Icon will be pointing to', 'quest' ) ?></p>
+				</div>
+			</div>
+
+
 			<%= partial('pt-pb-form-animation', { animation: animation }) %>
 			<%= partial('pt-pb-form-admin-label', { admin_label: admin_label }) %>
 

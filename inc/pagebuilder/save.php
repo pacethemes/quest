@@ -435,7 +435,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 * @return string $content
 		 */
 		private function generateImage( $image ) {
-			$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='' data-gallery=''>" . wp_get_attachment_image( $image['post_id'], 'quest-gallery' ) . "<span class='overlay'><i class='fa fa-expand'></i></span></a>";
+			$content = "<a href='{$image['src']}' class='quest-gallery-thumb gallery' title='{$image['desc']}' data-gallery=''>" . wp_get_attachment_image( $image['post_id'], 'quest-gallery' ) . "<span class='overlay'><i class='fa fa-expand'></i><div class='image-title'>{$image['title']}</div></span></a>";
 
 			return $content;
 		}
@@ -561,10 +561,10 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		}
 
 		public static function getContent ( $module ) {
-			if( isset( $module['pt_pb_editor'] ) && $module['pt_pb_editor'] !== '' ) {
-				return $module['pt_pb_editor'];
-			}
-			return $module['content'];
+			// if( isset( $module['pt_pb_editor'] ) && $module['pt_pb_editor'] !== '' ) {
+			// 	return $module['pt_pb_editor'];
+			// }
+			return isset( $module['content'] ) ? $module['content'] : "";
 		}
 
 	}
@@ -698,10 +698,11 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 			$cls       = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
 			$color     = $this->_module['color'];
 			$color_alt = $this->_module['hover_color'];
-			$content = PT_PageBuilder_Helper::getContent( $this->_module );
+			$content   = PT_PageBuilder_Helper::getContent( $this->_module );
+			$url       = esc_url( $this->_module['href'] );
 
 			return "<div class='hover-icon$cls' id='{$this->_module['id']}'>
-					<a href='#' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
+					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
 				</div>";
 		}
 

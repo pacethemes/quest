@@ -103,6 +103,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             src: '',
             post_id: '',
             href: '',
+            title: '',
+            desc: '',
             parent: '',
             admin_label: 'Image',
             icon: 'format-image'

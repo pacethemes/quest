@@ -22,6 +22,26 @@
 				</div>
 			</div>
 
+			<div class="pt-pb-option">
+				<label for="title"><?php _e( 'Image Title', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<input name="title" class="regular-text" type="text" value="<%= title %>"/>
+
+					<p class="description"><?php _e( 'This will be the heading/title below the Image thumbnail', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
+				<label for="desc"><?php _e( 'Image Description', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<textarea name="desc"><%= desc %> </textarea>
+
+					<p class="description"><?php _e( 'This will be the text below the Image in the lightbox/colorbox preview', 'quest' ) ?></p>
+				</div>
+			</div>
+
 			<%= partial('pt-pb-form-css-class', { css_class: css_class }) %>
 			<%= partial('pt-pb-form-admin-label', { admin_label: admin_label }) %>
 

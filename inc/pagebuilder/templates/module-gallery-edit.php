@@ -16,7 +16,7 @@
 						><?php _e( 'Square', 'quest' ); ?></option>
 					</select>
 
-					<p class="description"><?php _e( 'Do you want to enable Fullscreen for this gallery preview ?', 'quest' ) ?></p>
+					<p class="description"><?php _e( 'Do you want Rounded or Square Thumbnails ?', 'quest' ) ?></p>
 				</div>
 			</div>
 
