@@ -54,7 +54,7 @@ if ( post_password_required() ) {
 		$fields    = array(
 			'author'  => '<div class="col-md-4"><input type="text" placeholder="' . __( 'Name (required)', 'quest' ) . '" name="author" id="author" ' . $aria_req . '></div>',
 			'email'   => '<div class="col-md-4"><input type="text" placeholder="' . __( 'Email Address (required)', 'quest' ) . '" name="email" id="email" ' . $aria_req . '></div>',
-			'website' => '<div class="col-md-4"><input type="text" placeholder="' . __( 'Website (required)', 'quest' ) . '" name="url" id="url"></div>'
+			'website' => '<div class="col-md-4"><input type="text" placeholder="' . __( 'Website', 'quest' ) . '" name="url" id="url"></div>'
 		);
 
 		$comments_args = array(
