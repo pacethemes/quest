@@ -92,9 +92,6 @@ class PT_PageBuilder {
 
 			wp_enqueue_script( 'jquery-ui-core' );
 
-			// wp_enqueue_script( 'jquery-ui-dialog' );
-			// wp_enqueue_style( 'wp-jquery-ui-dialog' );
-
 			wp_enqueue_script( 'underscore' );
 			wp_enqueue_script( 'backbone' );
 
