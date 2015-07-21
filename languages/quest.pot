@@ -65,7 +65,7 @@ msgid "Email Address (required)"
 msgstr ""
 
 #: ../comments.php:57
-msgid "Website (required)"
+msgid "Website"
 msgstr ""
 
 #: ../comments.php:62

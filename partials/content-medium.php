@@ -19,7 +19,7 @@
 
 							<article <?php post_class( 'post-half clearfix' ); ?> id="post-<?php the_ID(); ?>">
 								<?php get_template_part( 'partials/content', 'sticky' ); ?>
-								<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+								<h1 class="post-title entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 									<?php if ( 'post' == get_post_type() ) : ?>
 								<div class="entry-meta">
