@@ -16,7 +16,7 @@ if ( ! function_exists( 'quest_post_meta' ) ) :
 	 * Prints HTML with meta information for the current post-date/time, author & comments.
 	 */
 	function quest_post_meta() {
-		echo '<time class="post-date"><i class="fa fa-clock-o"></i>' . get_the_time( get_option( 'date_format' ) ) . '</time>';
+		echo '<time class="post-date updated"><i class="fa fa-clock-o"></i>' . get_the_time( get_option( 'date_format' ) ) . '</time>';
 
 		echo '<span class="seperator">/</span>';
 
@@ -95,7 +95,7 @@ if ( ! function_exists( 'the_archive_title' ) ) :
 		} elseif ( is_tag() ) {
 			$title = sprintf( __( 'Tag: %s', 'quest' ), single_tag_title( '', false ) );
 		} elseif ( is_author() ) {
-			$title = sprintf( __( 'Author: %s', 'quest' ), '<span class="vcard">' . get_the_author() . '</span>' );
+			$title = sprintf( __( 'Author: %s', 'quest' ), '<span class="vcard author"><span class="fn">' . get_the_author() . '</span></span>' );
 		} elseif ( is_year() ) {
 			$title = sprintf( __( 'Year: %s', 'quest' ), get_the_date( _x( 'Y', 'yearly archives date format', 'quest' ) ) );
 		} elseif ( is_month() ) {
@@ -292,8 +292,8 @@ if ( ! function_exists( 'quest_post_author_info' ) ) :
 		global $post;
 		$auth_info = get_the_author_meta( 'description' );
 		?>
-		<div id="about-author" class="clearfix author">
-			<h2><?php _e( 'by ', 'quest' ) ?><?php the_author_posts_link(); ?></h2>
+		<div id="about-author" class="clearfix vcard author">
+			<h2 class="fn"><?php _e( 'by ', 'quest' ) ?><?php the_author_posts_link(); ?></h2>
 
 			<div class="avatar">
 				<?php echo get_avatar( get_the_author_meta( 'ID' ), 70 ); ?>

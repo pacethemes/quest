@@ -36,7 +36,7 @@
 
 										<?php endif; ?>
 
-										<?php the_title( sprintf( '<h1 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+										<?php the_title( sprintf( '<h1 class="post-title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 
 										<?php if ( 'post' == get_post_type() ) : ?>
 											<div class="entry-meta">
