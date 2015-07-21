@@ -33,7 +33,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 */
 		public static function getInstance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new static();
+				self::$instance = new self();
 			}
 
 			return self::$instance;

@@ -856,7 +856,7 @@ hr {
     padding-top: 30px !important; }
   #content .quest-row.np:last-child, .wpcf7 .quest-row.np:last-child {
     padding-bottom: 30px !important; }
-  #content article.error404 .search input, .wpcf7 article.error404 .search input {
+  #content article.error404 form.search input, .wpcf7 article.error404 form.search input {
     border: 1px solid #e5e5e5;
     padding: 5px 10px;
     font-size: 1.2em;
@@ -869,7 +869,7 @@ hr {
     background-color: #f5f5f5;
     max-width: 94%; }
 
-.search input {
+form.search input {
   padding: 5px;
   width: 100%;
   max-width: none !important;
@@ -879,12 +879,12 @@ hr {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.25s ease-in-out;
   background-color: #f5f5f5; }
-  .search input:focus {
+  form.search input:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-.search .text {
+form.search .text {
   position: relative; }
-.search .fa-search {
+form.search .fa-search {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -897,9 +897,9 @@ hr {
   padding: 0;
   right: 0;
   top: 5px; }
-  .search .fa-search:hover {
+  form.search .fa-search:hover {
     color: #504e4e; }
-  .search .fa-search:before {
+  form.search .fa-search:before {
     display: inline-block;
     width: 30px;
     height: 30px; }
@@ -1304,9 +1304,9 @@ article {
       margin: 0 2px; }
   article.page .post-image img {
     width: 100%; }
-  article.error404 .search .text {
+  article.error404 form.search .text {
     position: relative; }
-  article.error404 .search .fa-search {
+  article.error404 form.search .fa-search {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -1319,9 +1319,9 @@ article {
     right: 15px;
     top: 8px;
     font-size: 30px; }
-    article.error404 .search .fa-search:hover {
+    article.error404 form.search .fa-search:hover {
       color: #504e4e; }
-  article.error404 .search input:focus {
+  article.error404 form.search input:focus {
     border-color: #76c5e4;
     background-color: #fff; }
   article.error404 h2 {

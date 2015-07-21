@@ -46,7 +46,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 */
 		public static function getInstance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new static ();
+				self::$instance = new self ();
 			}
 
 			return self::$instance;

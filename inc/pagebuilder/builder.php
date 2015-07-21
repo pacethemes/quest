@@ -35,7 +35,7 @@ class PT_PageBuilder {
 	 */
 	public static function getInstance() {
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new static();
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -92,8 +92,8 @@ class PT_PageBuilder {
 
 			wp_enqueue_script( 'jquery-ui-core' );
 
-			wp_enqueue_script( 'jquery-ui-dialog' );
-			wp_enqueue_style( 'wp-jquery-ui-dialog' );
+			// wp_enqueue_script( 'jquery-ui-dialog' );
+			// wp_enqueue_style( 'wp-jquery-ui-dialog' );
 
 			wp_enqueue_script( 'underscore' );
 			wp_enqueue_script( 'backbone' );
