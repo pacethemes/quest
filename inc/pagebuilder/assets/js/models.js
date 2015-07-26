@@ -69,6 +69,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             bg_color: '#ddd',
             bg_pos_x: 'center',
             bg_pos_y: 'center',
+            content_pos_x: 'center',
+            content_pos_y: 'center',
             heading: '',
             content: '',
             heading_color: '',

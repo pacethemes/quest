@@ -39,7 +39,7 @@ if ( ! function_exists( 'quest_woocommerce_before_main_content' ) ) :
 		<div  id="content">
 		<?php quest_title_bar( quest_get_view() ); ?>
 		<div class="quest-row site-content">
-		<div class="container">
+		<div class="<?php echo apply_filters( 'quest_content_container_cls', 'container' ); ?>">
 		<div class="row">
 
 		<?php quest_try_sidebar( quest_get_view(), 'left' ); ?>

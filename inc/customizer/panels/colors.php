@@ -348,6 +348,185 @@ class Quest_Customize_Colors {
 		);
 
 
+		/********************************
+		 * // Secondary Header Section
+		 *********************************/
+
+		$section_id = 'colors_header2';
+
+		$wp_customize->add_section( $section_id,
+			array(
+				'title'      => __( 'Secondary Header', 'quest' ),
+				'priority'   => 35,
+				'capability' => 'edit_theme_options',
+				'panel'      => $panel_id
+			)
+		);
+
+		$setting_id = $section_id . '_bg';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Background Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+
+		$setting_id = $section_id . '_text';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Text Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+
+		$setting_id = $section_id . '_border_top';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Top Border Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_border_bottom';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Bottom Border Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_sc_si';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Social Icon Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_sc_si_hover';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Social Icon Hover Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_sc_si_hover_bg';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Social Icon Hover background Color', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
+
 		/******************
 		 * // Main Menu Section
 		 *******************/

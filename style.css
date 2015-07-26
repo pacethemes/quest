@@ -3,8 +3,8 @@
  * Theme URI:   http://pacethemes.com/wordpress-themes/quest/
  * Author:      Pace Themes
  * Author URI:  http://pacethemes.com
- * Description: Your Quest for an awesome WordPress theme ends right here. Quest let's you create the website you need without having any coding knowledge. Quest offers a powerful click, drag and drop page builder to help you create amazing pages to showcase your content while offering a slick user interface therein increasing your user experience. Quest also includes powerful and flexible easy to understand and easy to use customization options to customize the entire layout of your site including background images, colors, typography and so on. Build your site now using Quest - blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't limit you when it comes to your creativity. Quest is built on the famous bootstrap framework which uses a mobile first approach, this will ensure your site works properly on all mobiles, tablets, laptops and desktops. Theme demo is available at http://demo.pacethemes.com/quest/
- * Version:     1.0.13
+ * Description: Your Quest for an awesome WordPress theme ends right here. Quest let's you create the website you need without having any coding knowledge. Quest offers a powerful click, drag and drop page builder to help you create amazing pages to showcase your content while offering a slick user interface therein increasing your user experience. Quest also includes powerful and flexible easy to understand and easy to use customization options to customize the entire layout of your site including background images, colors, typography and so on. Build your site now using Quest - blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't limit you when it comes to your creativity. Quest is built on the famous bootstrap framework which uses a mobile first approach, this will ensure your site works properly on all mobiles, tablets, laptops and desktops. Theme demo is available at http://quest.demo.pacethemes.com/
+ * Version:     1.1.0
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: quest
@@ -35,7 +35,7 @@ span a, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, a {
   transition: all 0.1s ease-out; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Ubuntu", "Arial", "sans-serif";
+  font-family: "Open Sans", "Arial", "sans-serif";
   margin: 0.8em 0;
   line-height: 1.5em; }
 
@@ -231,7 +231,12 @@ q:after {
   content: "\201D";
   margin-left: 3px; }
 
-tt, kbd, pre, code, samp, var {
+tt,
+kbd,
+pre,
+code,
+samp,
+var {
   color: #c7254e;
   background-color: #f9f2f4;
   font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
@@ -251,7 +256,9 @@ pre {
 pre code {
   padding: 0; }
 
-abbr, acronym, dfn {
+abbr,
+acronym,
+dfn {
   font-size: .95em;
   cursor: help;
   letter-spacing: 1px;
@@ -262,7 +269,7 @@ details summary {
   font-weight: bold;
   margin-bottom: 22px; }
 
-details :focus {
+details:focus {
   outline: none; }
 
 mark {
@@ -275,10 +282,14 @@ small {
 big {
   font-size: 125%; }
 
-b, strong {
+b,
+strong {
   font-weight: bold; }
 
-dfn, cite, em, i {
+dfn,
+cite,
+em,
+i {
   font-style: italic; }
 
 figure {
@@ -294,7 +305,8 @@ hr {
   border: 0;
   border-top: 1px solid #e5e5e5; }
 
-ul, ol {
+ul,
+ol {
   margin: 0 0 22px 0;
   padding-left: 20px; }
 
@@ -304,7 +316,8 @@ ul {
 ol {
   list-style: decimal; }
 
-li > ul, li > ol {
+li > ul,
+li > ol {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
@@ -328,7 +341,8 @@ table caption {
   font-weight: bold;
   margin-bottom: 22px; }
 
-table th, table td {
+table th,
+table td {
   padding: 6px 10px;
   margin: 0; }
 
@@ -383,7 +397,9 @@ img.wp-smiley {
   margin: 11px 0;
   margin: 1.1rem 0; }
 
-embed, iframe, object {
+embed,
+iframe,
+object {
   max-width: 100%; }
 
 div.wp-video-shortcode {
@@ -733,7 +749,23 @@ hr {
 /*---------------------------------------------------------
 2. Form Elements
 -------------------------------------------------------- */
-#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"] {
+#content textarea,
+.wpcf7 textarea, #content select,
+.wpcf7 select, #content input[type="text"],
+.wpcf7 input[type="text"], #content input[type="password"],
+.wpcf7 input[type="password"], #content input[type="datetime"],
+.wpcf7 input[type="datetime"], #content input[type="datetime-local"],
+.wpcf7 input[type="datetime-local"], #content input[type="date"],
+.wpcf7 input[type="date"], #content input[type="month"],
+.wpcf7 input[type="month"], #content input[type="time"],
+.wpcf7 input[type="time"], #content input[type="week"],
+.wpcf7 input[type="week"], #content input[type="number"],
+.wpcf7 input[type="number"], #content input[type="email"],
+.wpcf7 input[type="email"], #content input[type="url"],
+.wpcf7 input[type="url"], #content input[type="search"],
+.wpcf7 input[type="search"], #content input[type="tel"],
+.wpcf7 input[type="tel"], #content input[type="color"],
+.wpcf7 input[type="color"] {
   max-width: 400px;
   border-radius: 0;
   border: 1px solid #e5e5e5;
@@ -769,7 +801,8 @@ hr {
   margin-top: 0;
   max-width: 100%; }
 
-.button, #submit, input[type="submit"] {
+.button, #submit,
+input[type="submit"] {
   border: none;
   font-family: inherit;
   font-size: inherit;
@@ -797,66 +830,88 @@ hr {
 #submit:active, .wpcf7-submit:active, .button-:active {
   -webkit-box-shadow: 0 0 #1e8449; }
 
-#content, .wpcf7 {
+#content,
+.wpcf7 {
   background-color: #fff; }
-  #content textarea, .wpcf7 textarea {
+  #content textarea,
+  .wpcf7 textarea {
     height: 10em;
     margin-top: 0; }
-    #content textarea:focus, .wpcf7 textarea:focus {
+    #content textarea:focus,
+    .wpcf7 textarea:focus {
       border-color: #76c5e4;
       background-color: #fff; }
-  #content select:focus, .wpcf7 select:focus {
+  #content select:focus,
+  .wpcf7 select:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="text"]:focus, .wpcf7 input[type="text"]:focus {
+  #content input[type="text"]:focus,
+  .wpcf7 input[type="text"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="password"]:focus, .wpcf7 input[type="password"]:focus {
+  #content input[type="password"]:focus,
+  .wpcf7 input[type="password"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="datetime"]:focus, .wpcf7 input[type="datetime"]:focus {
+  #content input[type="datetime"]:focus,
+  .wpcf7 input[type="datetime"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="datetime-local"]:focus, .wpcf7 input[type="datetime-local"]:focus {
+  #content input[type="datetime-local"]:focus,
+  .wpcf7 input[type="datetime-local"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="date"]:focus, .wpcf7 input[type="date"]:focus {
+  #content input[type="date"]:focus,
+  .wpcf7 input[type="date"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="month"]:focus, .wpcf7 input[type="month"]:focus {
+  #content input[type="month"]:focus,
+  .wpcf7 input[type="month"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="time"]:focus, .wpcf7 input[type="time"]:focus {
+  #content input[type="time"]:focus,
+  .wpcf7 input[type="time"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="week"]:focus, .wpcf7 input[type="week"]:focus {
+  #content input[type="week"]:focus,
+  .wpcf7 input[type="week"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="number"]:focus, .wpcf7 input[type="number"]:focus {
+  #content input[type="number"]:focus,
+  .wpcf7 input[type="number"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="email"]:focus, .wpcf7 input[type="email"]:focus {
+  #content input[type="email"]:focus,
+  .wpcf7 input[type="email"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="url"]:focus, .wpcf7 input[type="url"]:focus {
+  #content input[type="url"]:focus,
+  .wpcf7 input[type="url"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="search"]:focus, .wpcf7 input[type="search"]:focus {
+  #content input[type="search"]:focus,
+  .wpcf7 input[type="search"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="tel"]:focus, .wpcf7 input[type="tel"]:focus {
+  #content input[type="tel"]:focus,
+  .wpcf7 input[type="tel"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content input[type="color"]:focus, .wpcf7 input[type="color"]:focus {
+  #content input[type="color"]:focus,
+  .wpcf7 input[type="color"]:focus {
     border-color: #76c5e4;
     background-color: #fff; }
-  #content label, .wpcf7 label {
+  #content label,
+  .wpcf7 label {
     font-weight: bold; }
-  #content .quest-row.np:first-child, .wpcf7 .quest-row.np:first-child {
+  #content .quest-row.np:first-child,
+  .wpcf7 .quest-row.np:first-child {
     padding-top: 30px !important; }
-  #content .quest-row.np:last-child, .wpcf7 .quest-row.np:last-child {
+  #content .quest-row.np:last-child,
+  .wpcf7 .quest-row.np:last-child {
     padding-bottom: 30px !important; }
-  #content article.error404 form.search input, .wpcf7 article.error404 form.search input {
+  #content article.error404 form.search input,
+  .wpcf7 article.error404 form.search input {
     border: 1px solid #e5e5e5;
     padding: 5px 10px;
     font-size: 1.2em;
@@ -1011,7 +1066,8 @@ form.search .fa-search {
       right: 9px;
       top: 9px; }
   .main-navigation .navbar-collapse {
-    border-top: none; }
+    border-top: none;
+    padding-right: 0; }
   .main-navigation .cart-menu-dropdown {
     line-height: 1.5em !important; }
     .main-navigation .cart-menu-dropdown ul {
@@ -1019,13 +1075,21 @@ form.search .fa-search {
   .main-navigation ul > li ul {
     border: 1px solid #e5e5e5; }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .navbar-nav {
     float: right; } }
 @media (max-width: 991px) {
-  .site-branding, .main-navigation {
+  .site-branding,
+  .main-navigation {
     text-align: center;
-    margin-bottom: 0; } }
+    margin-bottom: 0;
+    float: none;
+    width: 100%; }
+    .site-branding .nav,
+    .main-navigation .nav {
+      float: none;
+      text-align: center;
+      display: inline-block; } }
 @media (max-width: 767px) {
   .main-navigation {
     margin-bottom: 30px; }
@@ -1036,6 +1100,8 @@ form.search .fa-search {
       border: 1px solid #e5e5e5;
       border-top: none;
       line-height: 48px;
+      display: block;
+      text-align: left;
       margin: 0; }
       .main-navigation .nav > li > a {
         text-align: left; }
@@ -1155,11 +1221,42 @@ h1.logo {
   text-align: center; }
 
 @media (max-width: 767px) {
-  .site-branding h1.logo, .site-branding .site-title, .site-branding .site-description {
+  .site-branding h1.logo,
+  .site-branding .site-title,
+  .site-branding .site-description {
     text-align: center !important; } }
 @media (max-width: 480px) {
   .main-header {
     border-bottom: none; } }
+.secondary-header {
+  border-top: 2px solid #27ae60;
+  border-bottom: 1px solid #e5e5e5; }
+  .secondary-header .callout {
+    height: 30px; }
+    .secondary-header .callout p {
+      margin: 6px 5px;
+      font-size: 12px; }
+  .secondary-header .social-icon-container {
+    margin: 2px 0;
+    text-align: right; }
+    .secondary-header .social-icon-container ul {
+      padding: 0 5px 0 0; }
+    .secondary-header .social-icon-container .social-icon {
+      font-size: 14px;
+      width: 24px;
+      line-height: 24px; }
+
+@media (max-width: 991px) {
+  .secondary-header .callout,
+  .secondary-header .social-icon-container {
+    width: 100%;
+    float: none;
+    text-align: center;
+    margin-bottom: 5px;
+    height: auto; }
+    .secondary-header .callout p,
+    .secondary-header .social-icon-container p {
+      margin-bottom: 0; } }
 /*---------------------------------------------------------
 5. Content
 -------------------------------------------------------- */
@@ -1387,6 +1484,42 @@ article {
     margin-bottom: 30px; }
   .quest-row .quest-row:first-child {
     padding-top: 10px; }
+
+.sl-slide-inner {
+  position: relative; }
+
+.sl-slider h2, .sl-slider .sl-slide-text {
+  padding: 20px 20px 0;
+  max-width: 1120px; }
+
+.sl-slide-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  right: 0;
+  left: 0; }
+
+.content-x-center .sl-slide-content h2, .content-x-center .sl-slide-content .sl-slide-text {
+  text-align: center; }
+
+.content-x-left .sl-slide-content h2, .content-x-left .sl-slide-content .sl-slide-text {
+  text-align: left; }
+
+.content-x-right .sl-slide-content h2, .content-x-right .sl-slide-content .sl-slide-text {
+  text-align: right; }
+
+.content-y-center .sl-slide-content {
+  top: 50%;
+  transform: translateY(-50%); }
+
+.content-y-top .sl-slide-content {
+  top: 20%;
+  transform: translateY(-20%); }
+
+.content-y-bottom .sl-slide-content {
+  top: 80%;
+  transform: translateY(-80%); }
 
 .entry-content {
   margin: 0; }
@@ -1752,7 +1885,8 @@ a.expand {
         animation: rotateScale 0.5s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .quest-gallery .quest-gallery-thumb:focus {
       outline: none; }
-  .quest-gallery.rounded img, .quest-gallery.rounded span {
+  .quest-gallery.rounded img,
+  .quest-gallery.rounded span {
     border-radius: 150px; }
 
 .read-more {
@@ -1852,10 +1986,13 @@ a.expand {
     -webkit-transition: all 0.3s; }
 
 /* Clearfix */
-.entry-content:before, .entry-content:after, .gallery:before, .gallery:after {
+.entry-content:before, .entry-content:after,
+.gallery:before,
+.gallery:after {
   content: ' ';
   display: table; }
-.entry-content:after, .gallery:after {
+.entry-content:after,
+.gallery:after {
   clear: both; }
 
 .blog-normal img {
@@ -2133,7 +2270,8 @@ a.expand {
 #comments .pingback {
   border-bottom-style: solid;
   padding: 10px 0; }
-  #comments .pingback .comment-content, #comments .pingback .comment-meta {
+  #comments .pingback .comment-content,
+  #comments .pingback .comment-meta {
     padding-left: 5px; }
 #comments li {
   border-bottom: 1px dashed #e5e5e5;
@@ -2277,10 +2415,15 @@ article.post-normal h1.post-title {
     margin-left: -7.5px;
     color: #fff; }
 
-.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+.cd-top.cd-is-visible,
+.cd-top.cd-fade-out,
+.no-touch .cd-top:hover {
   -webkit-transition: opacity .3s 0s, visibility 0s 0s;
   -moz-transition: opacity .3s 0s, visibility 0s 0s;
   transition: opacity .3s 0s, visibility 0s 0s; }
+
+.cd-top {
+  z-index: 100; }
 
 .cd-top.cd-is-visible {
   /* the button becomes visible */
@@ -2527,5 +2670,7 @@ article.post-normal h1.post-title {
 .payment_methods li {
   list-style-type: none !important; }
 
-#colorbox, #cboxOverlay, #cboxWrapper {
+#colorbox,
+#cboxOverlay,
+#cboxWrapper {
   z-index: 99999; }

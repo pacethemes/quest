@@ -98,6 +98,53 @@ class Quest_Customize_Layout {
 			)
 		);
 
+		$setting_id = $section_id . '_secondary';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'absint',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Show Secondary Header', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'     => 'checkbox'
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_callout';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'esc_html'
+			)
+		);
+
+		$wp_customize->add_control(
+			new Textarea_Custom_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Secondary Header Callout Text', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
+				)
+			)
+		);
+
 
 		/******************
 		 * // Footer Section

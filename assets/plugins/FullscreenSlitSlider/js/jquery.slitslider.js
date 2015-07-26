@@ -84,6 +84,7 @@
         keyboard: true,
         // time between transitions
         interval: 4000,
+        fullscreen: false,
         // callbacks
         onBeforeChange: function (slide, idx) {
             return false;
@@ -137,11 +138,13 @@
         },
         // gets the current container width & height
         _getSize: function () {
-
             this.size = {
                 width: this.$elWrapper.outerWidth(true),
-                height: this.$elWrapper.outerHeight(true)
             };
+            if (this.options.fullscreen)
+                this.size.height = $(window).height();
+            else
+                this.size.height = this.$elWrapper.outerHeight(true);
 
         },
         _layout: function () {
@@ -412,7 +415,7 @@
                 height: this.size.height
             };
 
-            this.$el.css(cssStyle).find('div.sl-content-wrapper').css(cssStyle);
+            this.$el.css(cssStyle).closest('.sl-slider-wrapper').css(cssStyle).find('div.sl-content-wrapper').css(cssStyle);
 
         },
         _loadEvents: function () {

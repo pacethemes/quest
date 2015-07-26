@@ -20,6 +20,8 @@ $quest_defaults = array(
 	/* Global */
 	'layout_global_site'                      => 'wide',
 	'layout_header_search'                    => 1,
+	'layout_header_secondary'                 => 1,
+	'layout_header_callout'                   => __( 'Call us Now! 1-999-999-9999 | Email us at info@example.com', 'quest' ),
 	'layout_footer_widgets'                   => 3,
 	/* Blog (Posts Page) */
 	'layout_blog_sidebar'                     => 'right',
@@ -71,6 +73,14 @@ $quest_defaults = array(
 	'colors_header_bg'                        => '#fff',
 	'colors_header_text'                      => '#333',
 	'colors_header_border'                    => '#e0e0e0',
+	/* Secondary Header */
+	'colors_header2_bg'                       => '#27ae60',
+	'colors_header2_text'                     => '#bdf0d2',
+	'colors_header2_border_top'               => '#239e57',
+	'colors_header2_border_bottom'            => '#e0e0e0',
+	'colors_header2_sc_si'                    => '#bdf0d2',
+	'colors_header2_sc_si_hover'              => '#fff',
+	'colors_header2_sc_si_hover_bg'           => '#27ae60',
 	/* Main Menu */
 	'colors_menu_text'                        => '#333',
 	'colors_menu_hover'                       => '#239e57',

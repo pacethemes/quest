@@ -19,10 +19,48 @@
 
 <body <?php body_class( quest_get_mod( 'layout_global_site' ) ); ?>>
 <div id="page" class="hfeed site">
+
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'quest' ); ?></a>
 
+	<?php
+
+	/**
+	 * Custom action before main header
+	 */
+	do_action( 'quest_before_header' );
+
+	/**
+	 * Filter Header container class
+	 */
+	$header_container_cls = apply_filters( 'quest_header_container_cls', 'container' );
+	?>
+
+	<?php if ( quest_get_mod( 'layout_header_secondary' ) ) : ?>
+		<header id="secondary-head" class="secondary-header" role="banner">
+			<div class="<?php echo $header_container_cls; ?>">
+				<div class="row">
+					<div class="callout col-md-8">
+						<p>
+							<?php echo esc_html( quest_get_mod( 'layout_header_callout' ) ); ?>
+						</p>
+					</div>
+					<!-- .callout -->
+
+					<div class="social-icon-container col-md-4">
+						<ul>
+							<?php quest_header_social_icons(); ?>
+						</ul>
+					</div>
+					<!-- .social-icon-container -->
+
+				</div>
+			</div>
+		</header>
+		<!-- #secondary-head -->
+	<?php endif; ?>
+
 	<header id="masthead" class="main-header" role="banner">
-		<div class="container">
+		<div class="<?php echo $header_container_cls; ?>">
 			<div class="row">
 				<div class="site-branding col-md-4">
 
@@ -72,3 +110,11 @@
 		</div>
 	</header>
 	<!-- #masthead -->
+
+	<?php
+
+	/**
+	 * Custom action after main header
+	 */
+	do_action( 'quest_after_header' );
+	?>

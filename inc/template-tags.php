@@ -357,7 +357,7 @@ if ( ! function_exists( 'quest_title_bar' ) ) :
 		$title_bar = quest_get_mod( 'layout_' . $view . '_title-bar' );
 		if ( $title_bar ) : ?>
 			<div class="quest-row" id="title-container">
-				<div class="container title-container">
+				<div class="<?php echo apply_filters( 'quest_content_container_cls', 'container' ); ?> title-container">
 					<div class="row">
 						<div class="col-md-6">
 							<h3><?php quest_page_title(); ?></h3>
@@ -382,7 +382,7 @@ if ( ! function_exists( 'quest_page_title' ) ) :
 	 * Prints the Page Title inside the Title Container
 	 */
 	function quest_page_title() {
-		if ( (function_exists( 'is_woocommerce' ) && is_woocommerce() && is_product()) || (function_exists( 'is_bbpress' ) && is_bbpress()) ) {
+		if ( ( function_exists( 'is_woocommerce' ) && is_woocommerce() && is_product() ) || ( function_exists( 'is_bbpress' ) && is_bbpress() ) ) {
 			the_title();
 		} else if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
 			woocommerce_page_title();
@@ -561,14 +561,15 @@ if ( ! function_exists( 'quest_breadcrumb' ) ) :
 			return;
 		}
 
-		if( function_exists( 'is_bbpress' ) && is_bbpress() ) {
+		if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
 			echo '<ul class="breadcrumbs">';
 			bbp_breadcrumb( array(
-				'delimiter'   => '',
-				'before'      => '<li>',
-				'after'       => '</li>'
+				'delimiter' => '',
+				'before'    => '<li>',
+				'after'     => '</li>'
 			) );
 			echo '</ul>';
+
 			return;
 		}
 
@@ -650,6 +651,43 @@ if ( ! function_exists( 'quest_footer_social_icons' ) ) :
 				<li>
 					<a data-toggle="tooltip" title="<?php echo $title; ?>" target="_blank"
 					   data-original-title="<?php echo $title; ?>"
+					   class="social-icon fa fa-<?php echo strtolower( $title ) ?>"
+					   href="<?php echo esc_url( $theme_mods[ $profile ] ) ?>"></a>
+				</li>
+			<?php endif;
+		endforeach;
+	}
+endif;
+
+if ( ! function_exists( 'quest_header_social_icons' ) ) :
+
+
+	/**
+	 * Prints Header Social Icons HTML markup
+	 */
+	function quest_header_social_icons() {
+
+		$social_profiles = array(
+			'social_facebook',
+			'social_twitter',
+			'social_google-plus',
+			'social_linkedin',
+			'social_youtube',
+			'social_vimeo-square',
+			'social_instagram',
+			'social_flickr',
+			'social_pinterest',
+			'social_dribbble',
+			'social_digg',
+		);
+		$theme_mods      = quest_get_mods();
+		foreach ( $social_profiles as $profile ) :
+			if ( array_key_exists( $profile, $theme_mods ) && esc_url( $theme_mods[ $profile ] ) !== '' ) :
+				$title = ucwords( str_replace( 'social_', '', $profile ) );
+				?>
+				<li>
+					<a data-toggle="tooltip" title="<?php echo $title; ?>" target="_blank"
+					   data-placement="bottom" data-original-title="<?php echo $title; ?>"
 					   class="social-icon fa fa-<?php echo strtolower( $title ) ?>"
 					   href="<?php echo esc_url( $theme_mods[ $profile ] ) ?>"></a>
 				</li>

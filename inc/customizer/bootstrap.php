@@ -1,5 +1,6 @@
 <?php
 require 'custom-controls/google-fonts.php';
+require 'custom-controls/text-area-control.php';
 require 'controls.php';
 require 'defaults.php';
 require 'helpers.php';
@@ -252,6 +253,17 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			echo quest_get_default_mod( 'colors_header_border', $colors ); ?> ; }
 			.main-header, .main-header a{ color: <?php
 			echo quest_get_default_mod( 'colors_header_text', $colors ); ?> ; }
+			.secondary-header{
+			color: <?php echo quest_get_default_mod( 'colors_header2_text', $colors ) ?>;
+			background-color: <?php echo quest_get_default_mod( 'colors_header2_bg', $colors ) ?>;
+			border-top-color: <?php echo quest_get_default_mod( 'colors_header2_border_top', $colors ) ?>;
+			border-bottom-color: <?php echo quest_get_default_mod( 'colors_header2_border_bottom', $colors ) ?>;
+			}
+			.secondary-header .social-icon-container .social-icon { color: <?php
+			echo quest_get_default_mod( 'colors_header2_sc_si', $colors ) ?>; }
+			.secondary-header .social-icon-container .social-icon:hover { color: <?php
+			echo quest_get_default_mod( 'colors_header2_sc_si_hover', $colors ); ?>; background-color: <?php
+			echo quest_get_default_mod( 'colors_header2_sc_si_hover_bg', $colors ); ?>;}
 			.main-navigation .nav > li > a { color: <?php
 			echo quest_get_default_mod( 'colors_menu_text', $colors ); ?> ; }
 			.main-navigation .nav > li:hover > a { color: <?php
@@ -286,9 +298,9 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			.copyright{ background-color: <?php
 			echo quest_get_default_mod( 'colors_footer_sc_bg', $colors ); ?> ; color: <?php
 			echo quest_get_default_mod( 'colors_footer_sc_text', $colors ); ?> ; }
-			.social-icon-container .social-icon { color: <?php
+			.copyright .social-icon-container .social-icon { color: <?php
 			echo quest_get_default_mod( 'colors_footer_sc_si', $colors ) ?>; }
-			.social-icon-container .social-icon:hover { color: <?php
+			.copyright .social-icon-container .social-icon:hover { color: <?php
 			echo quest_get_default_mod( 'colors_footer_sc_si_hover', $colors ); ?>; background-color: <?php
 			echo quest_get_default_mod( 'colors_footer_sc_si_hover_bg', $colors ); ?>;}
 

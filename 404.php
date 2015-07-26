@@ -8,7 +8,7 @@
 get_header(); ?>
 <div id="content">
 	<div class="quest-row site-content">
-		<div class="container">
+		<div class="<?php echo apply_filters( 'quest_content_container_cls', 'container' ); ?>">
 			<div class="row">
 
 				<div id="primary" class="content-area col-md-12">

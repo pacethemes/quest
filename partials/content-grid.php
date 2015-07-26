@@ -6,7 +6,7 @@ $view = quest_get_view();
 	<?php quest_title_bar( $view ); ?>
 
 	<div class="quest-row site-content">
-		<div class="container">
+		<div class="<?php echo apply_filters( 'quest_content_container_cls', 'container' ); ?>">
 			<div class="row">
 
 				<?php quest_try_sidebar( $view, 'left' ); ?>

@@ -71,6 +71,45 @@
 			</div>
 
 			<div class="pt-pb-option">
+				<label for="content_pos_x"><?php _e( 'Content Position - Horizontal', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<select name="content_pos_x">
+						<option value="center"
+						<%= content_pos_x == 'center' ? 'selected' : void 0 %>
+						><?php _e( 'Center', 'quest' ); ?></option>
+						<option value="left"
+						<%= content_pos_x == 'left' ? 'selected' : void 0 %>
+						><?php _e( 'Left', 'quest' ); ?></option>
+						<option value="right"
+						<%= content_pos_x == 'right' ? 'selected' : void 0 %>
+						><?php _e( 'Right', 'quest' ); ?></option>
+					</select>
+
+					<p class="description"><?php _e( 'Horizontal position of the Content', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
+				<label for="content_pos_y"><?php _e( 'Content Position - Vertical', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<select name="content_pos_y">
+						<option value="center"
+						<%= content_pos_y == 'center' ? 'selected' : void 0 %>
+						><?php _e( 'Center', 'quest' ); ?></option>
+						<option value="top"
+						<%= content_pos_y == 'top' ? 'selected' : void 0 %> ><?php _e( 'Top', 'quest' ); ?></option>
+						<option value="bottom"
+						<%= content_pos_y == 'bottom' ? 'selected' : void 0 %>
+						><?php _e( 'Bottom', 'quest' ); ?></option>
+					</select>
+
+					<p class="description"><?php _e( 'Vertical position of the Content', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
 				<label for="heading"><?php _e( 'Slide Heading', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
