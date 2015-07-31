@@ -28,7 +28,7 @@ var ptPbApp = ptPbApp || {};
     ptPbApp.AddSection = function (model, ind, animate, clone) {
         var newSection = new ptPbApp.SectionModel({}),
             ind = (ind || ptPbApp.Sections.length),
-            id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + (ptPbApp.Sections.length + 1) + '_' + Math.round(new Date().valueOf() / 1000),
+            id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + ptPbApp.getSectionNum() + '_' + Math.round(new Date().valueOf() / 1000),
             el = ptPbApp.cache.$container.find('.pt-pb-section:nth-child(' + ind + ')');
 
         if (model && model.attributes) {
@@ -40,7 +40,7 @@ var ptPbApp = ptPbApp || {};
                 rowArr = (typeof model.attributes.content.models === 'undefined') ? model.attributes.content : model.attributes.content.toJSON();
 
             _.each(rowArr, function (row, i) {
-                rows.add(ptPbApp.AddRow(row, i, id));
+                rows.add(ptPbApp.AddRow(row, (i + 1), id));
             });
 
             newSection.set('content', rows);
@@ -72,10 +72,11 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.AddRow = function (row, i, id) {
+    ptPbApp.AddRow = function (row, rowNum, id) {
+        // rowNum = rowNum === 0 ? 1 : rowNum;
 
         var rowType = row.type || ptPbApp.getRowType(row),
-            rowId = id + '__row__' + (i + 1),
+            rowId = id + '__row__' + rowNum ,
             newRow = new ptPbApp.RowModel({
                 id: rowId,
                 parent: id,
@@ -258,6 +259,23 @@ var ptPbApp = ptPbApp || {};
             ptPbApp.AddSection(newSection);
         }
     };
+
+    ptPbApp.getSectionNum = function() {
+        if( ptPbApp.Sections instanceof ptPbApp.SectionCollection ) {
+            var last = ptPbApp.Sections.last();
+            if( !last ) {
+                return 1;
+            }
+
+            var matches = last.get('id').match(/pt_pb_section__([0-9]+)_/);
+
+            if( matches.length > 1 ) {
+                return parseInt(matches[1]) + 1;
+            }
+
+        }
+        return 1;
+    },
 
     ptPbApp.setHiddenInput = function (id, content, isText) {
 

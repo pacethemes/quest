@@ -192,8 +192,26 @@ var ptPbApp = ptPbApp || {};
             this.model.set('content', rows);
         },
 
+        _getRowNum: function() {
+            var rows = this.model.get('content');
+            if( rows instanceof ptPbApp.RowCollection ) {
+                var last = rows.last();
+                if( !last ) {
+                    return 1;
+                }
+
+                var matches = last.get('id').match(/__row__([0-9]+)/);
+
+                if( matches.length > 1 ) {
+                    return parseInt(matches[1]) + 1;
+                }
+
+            }
+            return 1;
+        },
+
         _createRow: function (type) {
-            var rowNum = (this.model.get('rowNum') || this.model.get('content').length) + 1,
+            var rowNum = this._getRowNum(),
                 id = this.model.get('id'),
                 row = new ptPbApp.RowModel({
                     id: id + '__row__' + rowNum,
@@ -209,7 +227,7 @@ var ptPbApp = ptPbApp || {};
             var $row = $(e.target).closest('.pt-pb-row'),
                 rowId = $row.attr('id'),
                 rows = this.model.get('content'),
-                rowNum = (this.model.get('rowNum') || rows.length) + 1,
+                rowNum = this._getRowNum(),
                 row = ptPbApp.AddRow(rows.get(rowId).toJSON(), rowNum, this.model.get('id'))
 
             rows.add(row);
