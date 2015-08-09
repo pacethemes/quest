@@ -42,7 +42,8 @@
 				<label for="bg_color"><?php _e( 'Background Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="bg_color" class="pt-pb-color" type="text" value="<%= bg_color %>"/>
+					<input name="bg_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= bg_color %>"/>
 
 					<p class="description"><?php _e( 'Background Color for the section, leave it blank to set a transparent color', 'quest' ) ?></p>
 				</div>
@@ -69,7 +70,8 @@
 				<label for="text_color"><?php _e( 'Text Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="text_color" class="pt-pb-color" type="text" value="<%= text_color %>"/>
+					<input name="text_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= text_color %>"/>
 
 					<p class="description"><?php _e( 'Text Color for the section', 'quest' ) ?></p>
 				</div>
@@ -122,7 +124,7 @@
 				<label for="border_top_color"><?php _e( 'Border Top Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="border_top_color" class="pt-pb-color" type="text"
+					<input name="border_top_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
 					       value="<%= border_top_color %>"/>
 
 					<p class="description"><?php _e( 'Border color for the section top', 'quest' ) ?></p>
@@ -133,7 +135,7 @@
 				<label for="border_bottom_color"><?php _e( 'Border Bottom Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="border_bottom_color" class="pt-pb-color" type="text"
+					<input name="border_bottom_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
 					       value="<%= border_bottom_color %>"/>
 
 					<p class="description"><?php _e( 'Border color for the section bottom', 'quest' ) ?></p>

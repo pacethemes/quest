@@ -32,7 +32,10 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             id: '',
             content: null,
             parent: '',
-            type: 'columns'
+            type: 'columns',
+            padding_top: '0px',
+            padding_bottom: '0px',
+            vertical_align: 'default'
         }
     });
 
@@ -53,6 +56,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             slides: '',
             height: '400px',
             autoplay: 'true',
+            animation: 'slit',
             interval: '4000',
             speed: '800',
             admin_label: 'Slider',
@@ -74,8 +78,10 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             heading: '',
             content: '',
             heading_color: '',
+            heading_bg_color: '',
             heading_size: '42px',
             text_color: '',
+            text_bg_color: '',
             text_size: '18px',
             orientation: 'vertical',
             slice1_rotation: '10',
@@ -93,6 +99,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             css_class: '',
             images: '',
             shape: 'rounded',
+            columns: 'four',
+            padding: 'yes',
             admin_label: 'Gallery',
             title: 'Edit Gallery'
         }

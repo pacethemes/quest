@@ -64,7 +64,8 @@
 				<label for="bg_color"><?php _e( 'Slide Background Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="bg_color" class="pt-pb-color" type="text" value="<%= bg_color %>"/>
+					<input name="bg_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= bg_color %>"/>
 
 					<p class="description"><?php _e( 'Background Color for the slide', 'quest' ) ?></p>
 				</div>
@@ -123,9 +124,21 @@
 				<label for="heading_color"><?php _e( 'Slide Heading Text Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="heading_color" class="pt-pb-color" type="text" value="<%= heading_color %>"/>
+					<input name="heading_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= heading_color %>"/>
 
 					<p class="description"><?php _e( 'Text Color for the heading', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
+				<label for="heading_bg_color"><?php _e( 'Slide Heading Background Color', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<input name="heading_bg_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= heading_bg_color %>"/>
+
+					<p class="description"><?php _e( 'Background Color for the heading', 'quest' ) ?></p>
 				</div>
 			</div>
 
@@ -153,9 +166,21 @@
 				<label for="text_color"><?php _e( 'Slide Text Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="text_color" class="pt-pb-color" type="text" value="<%= text_color %>"/>
+					<input name="text_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= text_color %>"/>
 
 					<p class="description"><?php _e( 'Text Color for the text', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
+				<label for="text_bg_color"><?php _e( 'Slide Text Background Color', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<input name="text_bg_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= text_bg_color %>"/>
+
+					<p class="description"><?php _e( 'Background Color for the text', 'quest' ) ?></p>
 				</div>
 			</div>
 

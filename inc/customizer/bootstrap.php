@@ -199,16 +199,13 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 		public static function PrintCss() {
 
-			$mods   = quest_get_mods();
-			$colors = array_intersect_key( $mods, array_flip( array_filter( array_keys( $mods ), 'quest_get_color_mods' ) ) );
+			$accent_color       = quest_get_mod( 'colors_global_accent' );
+			$accent_shade_color = quest_get_mod( 'colors_global_accent_shade' );
+			$border_color       = quest_get_mod( 'colors_global_border' );
 
-			$accent_color       = quest_get_default_mod( 'colors_global_accent', $colors );
-			$accent_shade_color = quest_get_default_mod( 'colors_global_accent_shade', $colors );
-			$border_color       = quest_get_default_mod( 'colors_global_border', $colors );
+			$title_text = quest_get_mod( 'colors_title_text' );
 
-			$title_text = quest_get_default_mod( 'colors_title_text', $colors );
-
-			$footer_text = quest_get_default_mod( 'colors_footer_text', $colors );
+			$footer_text = quest_get_mod( 'colors_footer_text' );
 			?>
 
 			/* Theme/Text Colors */
@@ -226,7 +223,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			echo $accent_shade_color; ?> ; }
 
 			#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"], .entry-content blockquote, .action, a .action-icon, .action-icon, .post-grid, .recent-post, #comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text], #content article.error404 .search input, #menu-item-search form input, .main-sidebar .search input {  background-color: <?php
-			echo quest_get_default_mod( 'colors_global_alt', $colors ); ?> ;  }
+			echo quest_get_mod( 'colors_global_alt' ); ?> ;  }
 			#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"],article.post-normal .post-image-dummy, article.page .post-image-dummy, .post .post-image-dummy, .post-half .post-image-dummy,.post-grid, .recent-post,#comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text],.entry-content table,h2.section-head,article.post-normal,hr.fancy,#content article.error404 .search input,.main-header,.main-header.mobile .main-navigation .nav li:hover a,.main-header.mobile .main-navigation .nav a,.main-header.mobile .main-navigation .navbar-collapse.collapse,.main-navigation ul > li ul,#menu-item-search .dropdown-menu,#title-container,.post-image .empty-image,.pagination.post-pagination,#comments #reply-title,#comments li,#comments li li,#comments .post-comments-heading h3,#about-author,.main-sidebar .widget_nav_menu li,.main-sidebar .widget_nav_menu li ul.children,.main-sidebar .widget_categories li,.main-sidebar .widget_archive li,.main-sidebar .widget_archive li ul.children,.main-sidebar .widget_pages li,.main-sidebar .widget_pages li ul.children,.main-sidebar .widget_meta li,.main-sidebar .widget_meta li ul.children,.main-sidebar .widget_recent_comments li,.main-sidebar .widget_recent_comments li ul.children,.main-sidebar .widget_rss li,.main-sidebar .widget_rss li ul.children,.main-sidebar .widget_recent_entries li,.main-sidebar .widget_recent_entries li ul.children,.portfolio-grid-alt-bg,.pagination.post-pagination .previous,.gallery-container .gallery-item, #menu-item-search form input{  border-color: <?php
 			echo $border_color; ?> ;}
 			#menu-item-search form .arrow-up:before { border-bottom-color: <?php
@@ -237,112 +234,114 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			echo $accent_color; ?> ;  }}
 
 			h1,h2,h3,h4,h5,h6, h1 a,h2 a,h3 a,h4 a,h5 a,h6 a, .pagination.post-pagination a { color: <?php
-			echo quest_get_default_mod( 'colors_global_heading', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_global_heading' ); ?> ; }
 			body {color: <?php
-			echo quest_get_default_mod( 'colors_global_text', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_global_text' ); ?> ; }
 			.post-categories:before, .post-tags:before, article.post-normal .entry-meta, article.page .entry-meta, .post .entry-meta, .post-half .entry-meta, .post-date, .main-sidebar .widget_nav_menu li:before, .main-sidebar .widget_categories li:before, .main-sidebar .widget_archive li:before, .main-sidebar .widget_pages li:before, .main-sidebar .widget_meta li:before, .main-sidebar .widget_recent_comments li:before, .main-sidebar .widget_rss li:before, .main-sidebar .widget_recent_entries li:before, .comment-meta .fa { color: <?php
-			echo quest_get_default_mod( 'colors_global_text_alt', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_global_text_alt' ); ?> ; }
 
 			.boxed { background-color: <?php
-			echo quest_get_default_mod( 'colors_global_site_bg', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_global_site_bg' ); ?> ; }
 			#content { background-color: <?php
-			echo quest_get_default_mod( 'colors_global_content_bg', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_global_content_bg' ); ?> ; }
 
 			.main-header{ background-color: <?php
-			echo quest_get_default_mod( 'colors_header_bg', $colors ); ?> ; border-color: <?php
-			echo quest_get_default_mod( 'colors_header_border', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_header_bg' ); ?> ; border-color: <?php
+			echo quest_get_mod( 'colors_header_border' ); ?> ; }
 			.main-header, .main-header a{ color: <?php
-			echo quest_get_default_mod( 'colors_header_text', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_header_text' ); ?> ; }
 			.secondary-header{
-			color: <?php echo quest_get_default_mod( 'colors_header2_text', $colors ) ?>;
-			background-color: <?php echo quest_get_default_mod( 'colors_header2_bg', $colors ) ?>;
-			border-top-color: <?php echo quest_get_default_mod( 'colors_header2_border_top', $colors ) ?>;
-			border-bottom-color: <?php echo quest_get_default_mod( 'colors_header2_border_bottom', $colors ) ?>;
+			color: <?php echo quest_get_mod( 'colors_header2_text' ) ?>;
+			background-color: <?php echo quest_get_mod( 'colors_header2_bg' ) ?>;
+			border-top-color: <?php echo quest_get_mod( 'colors_header2_border_top' ) ?>;
+			border-bottom-color: <?php echo quest_get_mod( 'colors_header2_border_bottom' ) ?>;
 			}
 			.secondary-header .social-icon-container .social-icon { color: <?php
-			echo quest_get_default_mod( 'colors_header2_sc_si', $colors ) ?>; }
+			echo quest_get_mod( 'colors_header2_sc_si' ) ?>; }
 			.secondary-header .social-icon-container .social-icon:hover { color: <?php
-			echo quest_get_default_mod( 'colors_header2_sc_si_hover', $colors ); ?>; background-color: <?php
-			echo quest_get_default_mod( 'colors_header2_sc_si_hover_bg', $colors ); ?>;}
+			echo quest_get_mod( 'colors_header2_sc_si_hover' ); ?>; background-color: <?php
+			echo quest_get_mod( 'colors_header2_sc_si_hover_bg' ); ?>;}
 			.main-navigation .nav > li > a { color: <?php
-			echo quest_get_default_mod( 'colors_menu_text', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_menu_text' ); ?> ; }
 			.main-navigation .nav > li:hover > a { color: <?php
-			echo quest_get_default_mod( 'colors_menu_hover', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_menu_hover' ); ?> ; }
 			.main-navigation .nav .dropdown-menu a { color: <?php
-			echo quest_get_default_mod( 'colors_menu_sub_text', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_menu_sub_text' ); ?> ; }
 			.main-navigation .nav .dropdown-menu li:hover > a { color: <?php
-			echo quest_get_default_mod( 'colors_menu_sub_hover', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_menu_sub_hover' ); ?> ; }
 			.main-navigation .nav .dropdown-menu { border-color: <?php
-			echo quest_get_default_mod( 'colors_menu_sub_border', $colors ); ?>  ; background-color: <?php
-			echo quest_get_default_mod( 'colors_menu_sub_bg', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_menu_sub_border' ); ?>  ; background-color: <?php
+			echo quest_get_mod( 'colors_menu_sub_bg' ); ?> ; }
 			.main-navigation .nav .dropdown-menu li:hover > a, .main-navigation .nav .dropdown-menu li:focus > a, .main-navigation .nav .dropdown-menu li.current-menu-item a, .main-navigation .nav .dropdown-menu li.current-menu-ancestor > a { background-color: <?php
-			echo quest_get_default_mod( 'colors_menu_sub_hover_bg', $colors ); ?> ; color: <?php
-			echo quest_get_default_mod( 'colors_menu_sub_hover', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_menu_sub_hover_bg' ); ?> ; color: <?php
+			echo quest_get_mod( 'colors_menu_sub_hover' ); ?> ; }
 
 			#title-container { background-color: <?php
-			echo quest_get_default_mod( 'colors_title_bg', $colors ); ?> ; color: <?php
+			echo quest_get_mod( 'colors_title_bg' ); ?> ; color: <?php
 			echo $title_text; ?> ; border-color: <?php
-			echo quest_get_default_mod( 'colors_title_border', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_title_border' ); ?> ; }
 			#title-container h3 { color: <?php
 			echo $title_text; ?> ; }
 
 			.main-footer{ background-color: <?php
-			echo quest_get_default_mod( 'colors_footer_bg', $colors ); ?> ; color: <?php
+			echo quest_get_mod( 'colors_footer_bg' ); ?> ; color: <?php
 			echo $footer_text; ?> ; }
 			.main-footer h1 { color: <?php
-			echo quest_get_default_mod( 'colors_footer_heading', $colors ); ?> ;}
+			echo quest_get_mod( 'colors_footer_heading' ); ?> ;}
 			.main-footer p, .main-footer li { color: <?php
 			echo $footer_text; ?> ; }
 			.main-footer, .main-footer li, .main-footer li:last-child { border-color: <?php
-			echo quest_get_default_mod( 'colors_footer_border', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_footer_border' ); ?> ; }
 			.copyright{ background-color: <?php
-			echo quest_get_default_mod( 'colors_footer_sc_bg', $colors ); ?> ; color: <?php
-			echo quest_get_default_mod( 'colors_footer_sc_text', $colors ); ?> ; }
+			echo quest_get_mod( 'colors_footer_sc_bg' ); ?> ; color: <?php
+			echo quest_get_mod( 'colors_footer_sc_text' ); ?> ; }
 			.copyright .social-icon-container .social-icon { color: <?php
-			echo quest_get_default_mod( 'colors_footer_sc_si', $colors ) ?>; }
+			echo quest_get_mod( 'colors_footer_sc_si' ) ?>; }
 			.copyright .social-icon-container .social-icon:hover { color: <?php
-			echo quest_get_default_mod( 'colors_footer_sc_si_hover', $colors ); ?>; background-color: <?php
-			echo quest_get_default_mod( 'colors_footer_sc_si_hover_bg', $colors ); ?>;}
+			echo quest_get_mod( 'colors_footer_sc_si_hover' ); ?>; background-color: <?php
+			echo quest_get_mod( 'colors_footer_sc_si_hover_bg' ); ?>;}
 
 
 			/* Typography */
 			body, .tooltip { <?php
-			quest_font_settings( 'typography_global', $mods ) ?> }
+			quest_font_settings( 'typography_global' ) ?> }
 			h1 { <?php
-			quest_font_settings( 'typography_heading_h1', $mods ) ?> }
+			quest_font_settings( 'typography_heading_h1' ) ?> }
 			h2 {  <?php
-			quest_font_settings( 'typography_heading_h2', $mods ) ?> }
+			quest_font_settings( 'typography_heading_h2' ) ?> }
 			h3 { <?php
-			quest_font_settings( 'typography_heading_h3', $mods ) ?> }
+			quest_font_settings( 'typography_heading_h3' ) ?> }
 			h4 {  <?php
-			quest_font_settings( 'typography_heading_h4', $mods ) ?> }
+			quest_font_settings( 'typography_heading_h4' ) ?> }
 			h5 { <?php
-			quest_font_settings( 'typography_heading_h5', $mods ) ?> }
+			quest_font_settings( 'typography_heading_h5' ) ?> }
 			h6 {  <?php
-			quest_font_settings( 'typography_heading_h6', $mods ) ?> }
+			quest_font_settings( 'typography_heading_h6' ) ?> }
 			.main-navigation .nav > li > a  {  <?php
-			quest_font_settings( 'typography_menu', $mods ) ?> }
+			quest_font_settings( 'typography_menu' ) ?> }
 			.main-navigation .nav .dropdown-menu li a {  <?php
-			quest_font_settings( 'typography_menu_sub', $mods ) ?> }
+			quest_font_settings( 'typography_menu_sub' ) ?> }
 			.site-title { <?php
-			quest_font_settings( 'typography_site_title', $mods ) ?> }
+			quest_font_settings( 'typography_site_title' ) ?> }
 			.site-description { <?php
-			quest_font_settings( 'typography_site_tagline', $mods ) ?> }
+			quest_font_settings( 'typography_site_tagline' ) ?> }
 			#title-container ul li{ line-height: <?php
-			echo quest_get_default_mod( 'typography_heading_h3_font_size', $mods ) * quest_get_default_mod( 'typography_heading_h3_line_height', $mods ) ?>px; }
+			echo quest_get_mod( 'typography_heading_h3_font_size' ) * quest_get_mod( 'typography_heading_h3_line_height' ) ?>px; }
 			.main-sidebar .sidebar-widget { <?php
-			quest_font_settings( 'typography_sidebar_body', $mods ) ?> }
+			quest_font_settings( 'typography_sidebar_body' ) ?> }
 			.main-sidebar .sidebar-widget .widget-title { <?php
-			quest_font_settings( 'typography_sidebar_title', $mods ) ?> }
+			quest_font_settings( 'typography_sidebar_title' ) ?> }
 			.main-sidebar { <?php
-			quest_font_settings( 'typography_footer_body', $mods ) ?> }
+			quest_font_settings( 'typography_footer_body' ) ?> }
 			.main-footer h1, .main-footer h2, .main-footer h3 { <?php
-			quest_font_settings( 'typography_footer_title', $mods ) ?> }
+			quest_font_settings( 'typography_footer_title' ) ?> }
 			.copyright { <?php
-			quest_font_settings( 'typography_footer_text', $mods ) ?> }
+			quest_font_settings( 'typography_footer_text' ) ?> }
+
+			/* Background Images */
 			<?php
-			$site_bg  = esc_url( quest_get_default_mod( 'bgimages_global_site', $mods ) );
-			$title_bg = esc_url( quest_get_default_mod( 'bgimages_global_title_container', $mods ) );
+			$site_bg  = esc_url( quest_get_mod( 'bgimages_global_site' ) );
+			$title_bg = esc_url( quest_get_mod( 'bgimages_global_title_container' ) );
 			if ( $site_bg !== '' ): ?>
 				.boxed{ background-image: url(<?php
 				echo $site_bg; ?>); }
@@ -355,9 +354,102 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 				echo $title_bg; ?>); }
 			<?php
 			endif;
+
+
+			$single_post_align = quest_get_mod( 'layout_post_content_align' );
+
+			if ( $single_post_align === 'center' ) : ?>
+
+				.single-post .post-normal,
+				.single-post .post-normal h1,
+				.single-post .post-normal h2,
+				.single-post .post-normal h3,
+				.single-post .post-normal h4,
+				.single-post .post-normal h5,
+				.single-post .post-normal h6{
+				text-align: center;
+				}
+				.single-post .post-normal .post-image{
+				margin-left: auto;
+				margin-right: auto;
+				}
+				.single-post .post-normal #about-author .avatar{
+				float: none;
+				}
+			<?php elseif ( $single_post_align === 'right' ) : ?>
+
+				.single-post .post-normal,
+				.single-post .post-normal h1,
+				.single-post .post-normal h2,
+				.single-post .post-normal h3,
+				.single-post .post-normal h4,
+				.single-post .post-normal h5,
+				.single-post .post-normal h6{
+				text-align: right;
+				}
+
+				.single-post .post-normal .entry-header:after{
+				content: "";
+				display: table;
+				clear: both;
+				}
+				.single-post .post-normal .entry-header > *{
+				float: right;
+				clear: both;
+				}
+				.single-post .post-normal #about-author .avatar{
+				float: right;
+				}
+				.single-post .post-normal #about-author  .author-content{
+				margin-left: 0;
+				margin-right: 85px;
+				}
+			<?php
+			endif;
+
+			$single_page_align = quest_get_mod( 'layout_page_content_align' );
+			if ( $single_page_align === 'center' ) : ?>
+
+				.page .type-page,
+				.page .type-page h1,
+				.page .type-page h2,
+				.page .type-page h3,
+				.page .type-page h4,
+				.page .type-page h5,
+				.page .type-page h6{
+				text-align: center;
+				}
+				.page .type-page .post-image{
+				margin-left: auto;
+				margin-right: auto;
+				}
+
+			<?php elseif ( $single_page_align === 'right' ) : ?>
+
+				.page .type-page,
+				.page .type-page h1,
+				.page .type-page h2,
+				.page .type-page h3,
+				.page .type-page h4,
+				.page .type-page h5,
+				.page .type-page h6{
+				text-align: right;
+				}
+
+				.page .type-page .entry-header:after{
+				content: "";
+				display: table;
+				clear: both;
+				}
+				.page .type-page .entry-header > *{
+				float: right;
+				clear: both;
+				}
+
+			<?php
+			endif;
 		}
 	}
 endif;
 
 Quest_Customize::getInstance();
-?>

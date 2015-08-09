@@ -343,7 +343,7 @@
     animation: moveUp 1s ease-in-out both;
 }
 
-.sl-trans-elems blockquote {
+.sl-trans-elems .sl-slide-text {
     -webkit-animation: fadeIn 0.5s linear 0.5s both;
     -moz-animation: fadeIn 0.5s linear 0.5s both;
     -o-animation: fadeIn 0.5s linear 0.5s both;
@@ -367,7 +367,7 @@
     animation: fadeOut 1s ease-in-out both;
 }
 
-.sl-trans-back-elems blockquote {
+.sl-trans-back-elems .sl-slide-text {
     -webkit-animation: fadeOut 1s linear both;
     -moz-animation: fadeOut 1s linear both;
     -o-animation: fadeOut 1s linear both;

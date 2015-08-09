@@ -85,6 +85,7 @@
         // time between transitions
         interval: 4000,
         fullscreen: false,
+        animation: 'fade',
         // callbacks
         onBeforeChange: function (slide, idx) {
             return false;
@@ -168,7 +169,7 @@
             // set the right size of the slider/slides for the current window size
             this._setSize();
             // show first slide
-            this.$slides.eq(this.current).show();
+            this.$slides.eq(this.current).show().addClass('sl-trans-elems');
 
         },
         _navigate: function (dir, pos) {
@@ -255,6 +256,21 @@
             // or going "prev" according to the direction.
             // the idea is to make it more interesting by giving some animations to the respective slide's elements
             //( dir === 'next' ) ? $nextSlide.addClass( 'sl-trans-elems' ) : $currentSlide.addClass( 'sl-trans-back-elems' );
+
+            if (this.options.animation && this.options.animation === 'fade') {
+                $currentSlide.removeClass('sl-trans-elems').css('z-index', 10);
+                $nextSlide.css({'z-index': 5, 'display': 'block'});
+
+                setTimeout(function () {
+                    $nextSlide.addClass('sl-trans-elems');
+                }, this.options.speed / 2);
+
+                $currentSlide.fadeOut(this.options.speed, function () {
+                    self.isAnimating = false;
+                });
+
+                return;
+            }
 
             $currentSlide.removeClass('sl-trans-elems');
 

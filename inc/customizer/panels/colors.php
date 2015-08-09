@@ -352,18 +352,32 @@ class Quest_Customize_Colors {
 		 * // Secondary Header Section
 		 *********************************/
 
-		$section_id = 'colors_header2';
+		$head_section_id = 'colors_header2';
 
-		$wp_customize->add_section( $section_id,
-			array(
-				'title'      => __( 'Secondary Header', 'quest' ),
-				'priority'   => 35,
-				'capability' => 'edit_theme_options',
-				'panel'      => $panel_id
+		// $wp_customize->add_section( $section_id,
+		// 	array(
+		// 		'title'      => __( 'Secondary Header', 'quest' ),
+		// 		'priority'   => 35,
+		// 		'capability' => 'edit_theme_options',
+		// 		'panel'      => $panel_id
+		// 	)
+		// );
+
+		$setting_id = $section_id . '_second';
+
+		$wp_customize->add_control(
+			new Quest_Customize_Misc_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'section' => $section_id,
+					'type'    => 'heading',
+					'label'   => __( 'Secondary Header', 'quest' )
+				)
 			)
 		);
 
-		$setting_id = $section_id . '_bg';
+		$setting_id = $head_section_id . '_bg';
 
 		$wp_customize->add_setting(
 			$setting_id,
@@ -387,7 +401,7 @@ class Quest_Customize_Colors {
 		);
 
 
-		$setting_id = $section_id . '_text';
+		$setting_id = $head_section_id . '_text';
 
 		$wp_customize->add_setting(
 			$setting_id,
@@ -411,7 +425,7 @@ class Quest_Customize_Colors {
 		);
 
 
-		$setting_id = $section_id . '_border_top';
+		$setting_id = $head_section_id . '_border_top';
 
 		$wp_customize->add_setting(
 			$setting_id,
@@ -434,7 +448,7 @@ class Quest_Customize_Colors {
 			)
 		);
 
-		$setting_id = $section_id . '_border_bottom';
+		$setting_id = $head_section_id . '_border_bottom';
 
 		$wp_customize->add_setting(
 			$setting_id,
@@ -457,7 +471,7 @@ class Quest_Customize_Colors {
 			)
 		);
 
-		$setting_id = $section_id . '_sc_si';
+		$setting_id = $head_section_id . '_sc_si';
 
 		$wp_customize->add_setting(
 			$setting_id,
@@ -480,7 +494,7 @@ class Quest_Customize_Colors {
 			)
 		);
 
-		$setting_id = $section_id . '_sc_si_hover';
+		$setting_id = $head_section_id . '_sc_si_hover';
 
 		$wp_customize->add_setting(
 			$setting_id,
@@ -503,7 +517,7 @@ class Quest_Customize_Colors {
 			)
 		);
 
-		$setting_id = $section_id . '_sc_si_hover_bg';
+		$setting_id = $head_section_id . '_sc_si_hover_bg';
 
 		$wp_customize->add_setting(
 			$setting_id,

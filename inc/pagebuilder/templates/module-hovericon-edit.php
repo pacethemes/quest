@@ -43,7 +43,8 @@
 				<label for="color"><?php _e( 'Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="color" class="pt-pb-color" type="text" value="<%= color %>"/>
+					<input name="color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= color %>"/>
 
 					<p class="description"><?php _e( 'Color of the Icon, this will be Icon Color and the border color', 'quest' ) ?></p>
 				</div>
@@ -53,7 +54,8 @@
 				<label for="hover_color"><?php _e( 'Hover Color', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="hover_color" class="pt-pb-color" type="text" value="<%= hover_color %>"/>
+					<input name="hover_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
+					       value="<%= hover_color %>"/>
 
 					<p class="description"><?php _e( 'Background Color of the Icon, when a user hovers on the Icon the Color and Hover Color will be swapped', 'quest' ) ?></p>
 				</div>

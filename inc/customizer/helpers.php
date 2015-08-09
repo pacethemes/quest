@@ -279,24 +279,24 @@ if ( ! function_exists( 'quest_font_settings' ) ):
 	 *
 	 * @return string    CSS Font styles
 	 */
-	function quest_font_settings( $section, $options ) {
+	function quest_font_settings( $section ) {
 		?>
 		font: <?php
-		printf( "%spx '%s'", quest_get_default_mod( $section . '_font_size', $options ), quest_get_default_mod( $section . '_font_family', $options ) ) ?>;
+		printf( "%spx '%s'", quest_get_mod( $section . '_font_size' ), quest_get_mod( $section . '_font_family' ) ) ?>;
 		line-height: <?php
-		echo quest_get_default_mod( $section . '_line_height', $options ) === false ? 'inherit' : quest_get_default_mod( $section . '_line_height', $options ) . 'em' ?>;
+		echo quest_get_mod( $section . '_line_height' ) === false ? 'inherit' : quest_get_mod( $section . '_line_height' ) . 'em' ?>;
 		font-weight: <?php
-		$v = quest_get_default_mod( $section . '_font_variant', $options );
+		$v = quest_get_mod( $section . '_font_variant' );
 		echo $v === 'regular' ? 'normal' : preg_replace( '/[^0-9]/', '', $v ); ?>;
 		font-style: <?php
-		$v = quest_get_default_mod( $section . '_font_variant', $options );
+		$v = quest_get_mod( $section . '_font_variant' );
 		echo strpos( $v, 'italic' ) !== false ? 'italic' : 'normal'; ?>;
 		text-transform: <?php
-		echo quest_get_default_mod( $section . '_text_transform', $options ) ?> ;
+		echo quest_get_mod( $section . '_text_transform' ) ?> ;
 		letter-spacing: <?php
-		echo quest_get_default_mod( $section . '_letter_spacing', $options ) ?>px;
+		echo quest_get_mod( $section . '_letter_spacing' ) ?>px;
 		word-spacing: <?php
-		echo quest_get_default_mod( $section . '_word_spacing', $options ) ?>px;
+		echo quest_get_mod( $section . '_word_spacing' ) ?>px;
 	<?php
 	}
 endif;

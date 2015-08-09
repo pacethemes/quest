@@ -4,7 +4,7 @@
  * Author:      Pace Themes
  * Author URI:  http://pacethemes.com
  * Description: Your Quest for an awesome WordPress theme ends right here. Quest let's you create the website you need without having any coding knowledge. Quest offers a powerful click, drag and drop page builder to help you create amazing pages to showcase your content while offering a slick user interface therein increasing your user experience. Quest also includes powerful and flexible easy to understand and easy to use customization options to customize the entire layout of your site including background images, colors, typography and so on. Build your site now using Quest - blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't limit you when it comes to your creativity. Quest is built on the famous bootstrap framework which uses a mobile first approach, this will ensure your site works properly on all mobiles, tablets, laptops and desktops. Theme demo is available at http://quest.demo.pacethemes.com/
- * Version:     1.1.1
+ * Version:     1.1.4
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: quest
@@ -1245,18 +1245,48 @@ h1.logo {
       font-size: 14px;
       width: 24px;
       line-height: 24px; }
+  .secondary-header .search-form {
+    margin-top: 2.5px; }
+    .secondary-header .search-form .text {
+      text-align: right;
+      width: 200px;
+      float: right; }
+    .secondary-header .search-form form.search input {
+      padding: 2px 5px;
+      font-size: 12px;
+      line-height: 20px;
+      height: 22px;
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .secondary-header .search-form .fa-search {
+      top: -3px;
+      right: -3px; }
+  .secondary-header .row > .social-icon-container:first-child {
+    text-align: left; }
+  .secondary-header .row > .search-form:first-child .text {
+    float: none; }
+  .secondary-header .row > .callout:last-child {
+    text-align: right; }
 
 @media (max-width: 991px) {
   .secondary-header .callout,
-  .secondary-header .social-icon-container {
+  .secondary-header .social-icon-container,
+  .secondary-header .search-form {
     width: 100%;
     float: none;
-    text-align: center;
-    margin-bottom: 5px;
+    text-align: center !important;
+    margin-bottom: 10px;
     height: auto; }
     .secondary-header .callout p,
-    .secondary-header .social-icon-container p {
-      margin-bottom: 0; } }
+    .secondary-header .social-icon-container p,
+    .secondary-header .search-form p {
+      margin-bottom: 0; }
+  .secondary-header .search-form .text {
+    float: none;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 300px; } }
 /*---------------------------------------------------------
 5. Content
 -------------------------------------------------------- */
@@ -1471,7 +1501,8 @@ article {
 .boxed #page {
   -webkit-box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 0 auto; }
+  margin: 0 auto;
+  position: relative; }
 
 .quest-row {
   padding: 30px 0;
@@ -1485,6 +1516,18 @@ article {
   .quest-row .quest-row:first-child {
     padding-top: 10px; }
 
+.row.v-align-top > div[class*='col-'], .row.v-align-middle > div[class*='col-'], .row.v-align-bottom > div[class*='col-'] {
+  float: none;
+  display: table-cell;
+  vertical-align: middle; }
+.row.v-align-top > div[class*='col-'] {
+  vertical-align: top; }
+.row.v-align-bottom > div[class*='col-'] {
+  vertical-align: bottom; }
+
+@media (max-width: 991px) {
+  .row.v-align-top > div[class*='col-'], .row.v-align-middle > div[class*='col-'], .row.v-align-bottom > div[class*='col-'] {
+    display: block; } }
 .sl-slide-inner {
   position: relative; }
 
@@ -1499,15 +1542,23 @@ article {
   margin: auto;
   right: 0;
   left: 0; }
+  .sl-slide-content .sl-slide-title {
+    -webkit-animation: moveUp 1s ease-in-out both;
+    -moz-animation: moveUp 1s ease-in-out both;
+    -o-animation: moveUp 1s ease-in-out both;
+    -ms-animation: moveUp 1s ease-in-out both;
+    animation: moveUp 1s ease-in-out both; }
+  .sl-slide-content .sl-slide-text {
+    opacity: 0; }
 
 .content-x-center .sl-slide-content h2, .content-x-center .sl-slide-content .sl-slide-text {
   text-align: center; }
 
 .content-x-left .sl-slide-content h2, .content-x-left .sl-slide-content .sl-slide-text {
-  text-align: left; }
+  text-align: left !important; }
 
 .content-x-right .sl-slide-content h2, .content-x-right .sl-slide-content .sl-slide-text {
-  text-align: right; }
+  text-align: right !important; }
 
 .content-y-center .sl-slide-content {
   top: 50%;
@@ -1701,7 +1752,6 @@ article {
   position: absolute;
   z-index: 20;
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 5px;
   overflow: hidden;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -1888,7 +1938,170 @@ a.expand {
   .quest-gallery.rounded img,
   .quest-gallery.rounded span {
     border-radius: 150px; }
+  .quest-gallery.no-pad .quest-gallery-thumb-wrap {
+    padding: 0 !important; }
 
+.quest-gallery.rounded .quest-gallery-thumb-wrap .quest-gallery-thumb {
+  border-radius: 1000px; }
+
+.quest-gallery-thumb-wrap {
+  float: left; }
+  .quest-gallery-thumb-wrap .quest-gallery-thumb {
+    display: block;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    margin: 0; }
+    .quest-gallery-thumb-wrap .quest-gallery-thumb img {
+      width: 100%;
+      max-width: none;
+      transition: all .5s ease-in-out; }
+    .quest-gallery-thumb-wrap .quest-gallery-thumb:hover img {
+      transform: scale(1.1); }
+
+.quest-gallery.two-col {
+  margin: 20px -15px; }
+  .quest-gallery.two-col .quest-gallery-thumb-wrap {
+    width: 50%;
+    padding: 15px; }
+  .quest-gallery.two-col .quest-gallery-thumb .fa {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    margin-top: -60px;
+    margin-left: -60px;
+    font-size: 60px;
+    border-radius: 120px; }
+  .quest-gallery.two-col .image-title {
+    font-size: 2.2em;
+    top: 50%; }
+
+.quest-gallery.three-col {
+  margin: 20px -10px; }
+  .quest-gallery.three-col .quest-gallery-thumb-wrap {
+    width: 33.333%;
+    padding: 10px; }
+  .quest-gallery.three-col .quest-gallery-thumb .fa {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    margin-top: -45px;
+    margin-left: -45px;
+    font-size: 45px;
+    border-radius: 90px; }
+  .quest-gallery.three-col .image-title {
+    font-size: 1.8em;
+    top: 50%; }
+
+.quest-gallery.four-col {
+  margin: 20px -8px; }
+  .quest-gallery.four-col .quest-gallery-thumb-wrap {
+    width: 25%;
+    padding: 8px; }
+  .quest-gallery.four-col .quest-gallery-thumb .fa {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    font-size: 30px;
+    border-radius: 60px; }
+  .quest-gallery.four-col .image-title {
+    font-size: 1.5em;
+    top: 50%; }
+
+.quest-gallery.five-col {
+  margin: 20px -6px; }
+  .quest-gallery.five-col .quest-gallery-thumb-wrap {
+    width: 20%;
+    padding: 6px; }
+  .quest-gallery.five-col .quest-gallery-thumb .fa {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-radius: 40px; }
+  .quest-gallery.five-col .image-title {
+    font-size: 1.2em;
+    top: 50%; }
+
+.quest-gallery.six-col {
+  margin: 20px -5px; }
+  .quest-gallery.six-col .quest-gallery-thumb-wrap {
+    width: 16.6666%;
+    padding: 5px; }
+  .quest-gallery.six-col .quest-gallery-thumb .fa {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    font-size: 15px;
+    border-radius: 30px; }
+  .quest-gallery.six-col .image-title {
+    font-size: 1em;
+    top: 50%; }
+
+@media (max-width: 420px) {
+  .quest-gallery.two-col,
+  .quest-gallery.three-col,
+  .quest-gallery.four-col,
+  .quest-gallery.five-col,
+  .quest-gallery.six-col {
+    margin: 20px -10px; }
+    .quest-gallery.two-col .quest-gallery-thumb-wrap,
+    .quest-gallery.three-col .quest-gallery-thumb-wrap,
+    .quest-gallery.four-col .quest-gallery-thumb-wrap,
+    .quest-gallery.five-col .quest-gallery-thumb-wrap,
+    .quest-gallery.six-col .quest-gallery-thumb-wrap {
+      width: 100%;
+      padding: 10px; } }
+@media (max-width: 768px) {
+  .quest-gallery.two-col,
+  .quest-gallery.three-col,
+  .quest-gallery.four-col,
+  .quest-gallery.five-col,
+  .quest-gallery.six-col {
+    margin: 20px -10px; }
+    .quest-gallery.two-col .quest-gallery-thumb-wrap,
+    .quest-gallery.three-col .quest-gallery-thumb-wrap,
+    .quest-gallery.four-col .quest-gallery-thumb-wrap,
+    .quest-gallery.five-col .quest-gallery-thumb-wrap,
+    .quest-gallery.six-col .quest-gallery-thumb-wrap {
+      width: 50%;
+      padding: 10px; } }
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .quest-gallery.two-col,
+  .quest-gallery.three-col,
+  .quest-gallery.four-col,
+  .quest-gallery.five-col,
+  .quest-gallery.six-col {
+    margin: 20px -10px; }
+    .quest-gallery.two-col .quest-gallery-thumb-wrap,
+    .quest-gallery.three-col .quest-gallery-thumb-wrap,
+    .quest-gallery.four-col .quest-gallery-thumb-wrap,
+    .quest-gallery.five-col .quest-gallery-thumb-wrap,
+    .quest-gallery.six-col .quest-gallery-thumb-wrap {
+      width: 50%;
+      padding: 10px; } }
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .quest-gallery.two-col,
+  .quest-gallery.three-col,
+  .quest-gallery.four-col,
+  .quest-gallery.five-col,
+  .quest-gallery.six-col {
+    margin: 20px -10px; }
+    .quest-gallery.two-col .quest-gallery-thumb-wrap,
+    .quest-gallery.three-col .quest-gallery-thumb-wrap,
+    .quest-gallery.four-col .quest-gallery-thumb-wrap,
+    .quest-gallery.five-col .quest-gallery-thumb-wrap,
+    .quest-gallery.six-col .quest-gallery-thumb-wrap {
+      width: 33.33%;
+      padding: 10px; } }
 .read-more {
   margin: 0 30px 0 0;
   text-align: right; }
@@ -2107,7 +2320,7 @@ a.expand {
     .pagination.post-pagination a h4 {
       font-size: 18px; }
   .pagination.post-pagination .next {
-    text-align: right;
+    text-align: right !important;
     position: relative; }
     .pagination.post-pagination .next i {
       top: 10px;
@@ -2120,13 +2333,16 @@ a.expand {
     .pagination.post-pagination .next h4 {
       margin-left: 40px;
       margin-left: 0;
-      margin-right: 40px; }
+      margin-right: 40px;
+      text-align: right !important; }
   .pagination.post-pagination .previous {
-    position: relative; }
+    position: relative;
+    text-align: left !important; }
     .pagination.post-pagination .previous .text {
       margin-left: 40px; }
     .pagination.post-pagination .previous h4 {
-      margin-left: 40px; }
+      margin-left: 40px;
+      text-align: left !important; }
 .pagination .fa-angle-double-left {
   font-size: 12px; }
 .pagination .fa-angle-double-right {
@@ -2327,7 +2543,7 @@ a.expand {
 
 article.page h1.post-title {
   margin-top: 5px;
-  margin-bottom: 5px; }
+  margin-bottom: 20px; }
 
 article.post-normal h1.post-title {
   margin-top: 5px;
@@ -2447,6 +2663,14 @@ article.post-normal h1.post-title {
     width: 60px;
     right: 30px;
     bottom: 30px; } }
+.sl-slider h2 span, .sl-slider .sl-slide-text span {
+  padding: 5px 20px;
+  display: inline-block;
+  width: auto;
+  border-radius: 2px; }
+  .sl-slider h2 span p:last-child, .sl-slider .sl-slide-text span p:last-child {
+    margin-bottom: 0; }
+
 /*---------------------------------------------------------
 6. Sidebar
 -------------------------------------------------------- */

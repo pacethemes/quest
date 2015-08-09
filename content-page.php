@@ -4,15 +4,22 @@
  *
  * @package Quest
  */
-$view = quest_get_view();
+$view      = quest_get_view();
+$img_width = '';
+
+if ( ! quest_get_mod( 'layout_' . $view . '_ft-img-enlarge' ) && ! quest_get_mod( 'layout_' . $view . '_ft-img-hide' ) && has_post_thumbnail() ) {
+	$featured_image = wp_get_attachment_metadata( get_post_thumbnail_id( $post->ID, 'blog-normal' ), true );
+	$img_width      = "style='width:{$featured_image['width']}px;'";
+}
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 
-		<?php if ( has_post_thumbnail() ) : ?>
+		<?php if ( ! quest_get_mod( 'layout_' . $view . '_ft-img-hide' ) && has_post_thumbnail() ) : ?>
 
-			<div class="post-image blog-normal effect slide-top">
+			<div class="post-image blog-normal effect slide-top" <?php echo $img_width; ?>>
 				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'blog-normal' ); ?></a>
 
 				<div class="overlay">

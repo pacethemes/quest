@@ -46,7 +46,7 @@ var Quest = function ($) {
         initMasonry: function () {
             var $container = $('#grid-container');
             if ($container.length > 0) {
-                $container.imagesLoaded(function() {
+                $container.imagesLoaded(function () {
                     $container.masonry({
                         itemSelector: '.post-grid-wrap'
                     });

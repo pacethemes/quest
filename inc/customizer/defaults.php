@@ -21,6 +21,7 @@ $quest_defaults = array(
 	'layout_global_site'                      => 'wide',
 	'layout_header_search'                    => 1,
 	'layout_header_secondary'                 => 1,
+	'layout_header_secondary-layout'          => 'callout_icons',
 	'layout_header_callout'                   => __( 'Call us Now! 1-999-999-9999 | Email us at info@example.com', 'quest' ),
 	'layout_footer_widgets'                   => 3,
 	/* Blog (Posts Page) */
@@ -48,6 +49,9 @@ $quest_defaults = array(
 	'layout_post_sidebar'                     => 'right',
 	'layout_post_title-bar'                   => 0,
 	'layout_post_title'                       => 1,
+	'layout_post_ft-img-hide'                 => 0,
+	'layout_post_ft-img-enlarge'              => 1,
+	'layout_post_content_align'               => 'left',
 	'layout_post_meta'                        => '',
 	'layout_post_meta-cats'                   => 1,
 	'layout_post_meta-tags'                   => 1,
@@ -55,6 +59,9 @@ $quest_defaults = array(
 	'layout_page_sidebar'                     => 'right',
 	'layout_page_title-bar'                   => 0,
 	'layout_page_title'                       => 1,
+	'layout_page_ft-img-hide'                 => 0,
+	'layout_page_ft-img-enlarge'              => 1,
+	'layout_page_content_align'               => 'left',
 	/************
 	 ** Colors **
 	 *************/
@@ -243,29 +250,47 @@ $quest_defaults = array(
 	'bgimages_global_site'                    => '',
 	'bgimages_global_title_container'         => '',
 	'choices'                                 => array(
-		'layout_global_site'    => array(
+		'layout_global_site'             => array(
 			'wide'  => __( 'Wide', 'quest' ),
 			'boxed' => __( 'Boxed', 'quest' )
 		),
-		'layout_footer_widgets' => array(
+		'layout_footer_widgets'          => array(
 			1 => '1',
 			2 => '2',
 			3 => '3',
 			4 => '4',
 		),
-		'layout_blog_sidebar'   => array(
+		'layout_blog_sidebar'            => array(
 			'left'  => __( 'Left', 'quest' ),
 			'right' => __( 'Right', 'quest' ),
 			'none'  => __( 'None', 'quest' )
 		),
-		'layout_blog_style'     => array(
+		'layout_blog_style'              => array(
 			'normal' => __( 'Normal', 'quest' ),
 			'medium' => __( 'Medium', 'quest' ),
 			'grid'   => __( 'Grid', 'quest' )
 		),
-		'layout_blog_title-bar' => array(
+		'layout_blog_title-bar'          => array(
 			1 => __( 'Yes', 'quest' ),
 			0 => __( 'No', 'quest' )
+		),
+		'layout_post_content_align'      => array(
+			'left'   => __( 'Left', 'quest' ),
+			'center' => __( 'Center', 'quest' ),
+			'right'  => __( 'Right', 'quest' )
+		),
+		'layout_page_content_align'      => array(
+			'left'   => __( 'Left', 'quest' ),
+			'center' => __( 'Center', 'quest' ),
+			'right'  => __( 'Right', 'quest' )
+		),
+		'layout_header_secondary-layout' => array(
+			'callout_icons'  => __( 'Callout + Social Icons', 'quest' ),
+			'callout_search' => __( 'Callout + Search', 'quest' ),
+			'icons_callout'  => __( 'Social Icons + Callout', 'quest' ),
+			'search_callout' => __( 'Search + Callout', 'quest' ),
+			'icons_search'   => __( 'Social Icons + Search', 'quest' ),
+			'search_icons'   => __( 'Search + Social Icons', 'quest' )
 		)
 	),
 

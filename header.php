@@ -39,20 +39,9 @@
 		<header id="secondary-head" class="secondary-header" role="banner">
 			<div class="<?php echo $header_container_cls; ?>">
 				<div class="row">
-					<div class="callout col-md-8">
-						<p>
-							<?php echo esc_html( quest_get_mod( 'layout_header_callout' ) ); ?>
-						</p>
-					</div>
-					<!-- .callout -->
-
-					<div class="social-icon-container col-md-4">
-						<ul>
-							<?php quest_header_social_icons(); ?>
-						</ul>
-					</div>
-					<!-- .social-icon-container -->
-
+					<?php
+					quest_second_header();
+					?>
 				</div>
 			</div>
 		</header>

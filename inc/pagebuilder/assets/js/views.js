@@ -24,7 +24,7 @@ var ptPbApp = ptPbApp || {};
             'click .close-reveal-modal': 'closeReveal',
             'click .close-model': 'closeReveal',
             'click .insert .column-layouts li': 'insertColumns',
-            'click .columns .pt-pb-settings-row': 'updateColumnsDialog',
+            'click .columns .pt-pb-settings-columns': 'updateColumnsDialog',
             'click .pt-pb-clone-row': 'cloneRow'
         },
 
@@ -192,17 +192,17 @@ var ptPbApp = ptPbApp || {};
             this.model.set('content', rows);
         },
 
-        _getRowNum: function() {
+        _getRowNum: function () {
             var rows = this.model.get('content');
-            if( rows instanceof ptPbApp.RowCollection ) {
+            if (rows instanceof ptPbApp.RowCollection) {
                 var last = rows.last();
-                if( !last ) {
+                if (!last) {
                     return 1;
                 }
 
                 var matches = last.get('id').match(/__row__([0-9]+)/);
 
-                if( matches.length > 1 ) {
+                if (matches.length > 1) {
                     return parseInt(matches[1]) + 1;
                 }
 
@@ -284,11 +284,14 @@ var ptPbApp = ptPbApp || {};
     ptPbApp.RowView = Backbone.View.extend({
         template: _.template($('#pt-pb-row-template').html()),
         className: 'pt-pb-row clearfix',
+        editTemplate: _.template($('#pt-pb-row-edit-template').html()),
 
         events: {
             'click .pt-pb-remove-row': 'removeRow',
-            'click .slider .pt-pb-settings-row': 'editSlider',
-            'click .gallery .pt-pb-settings-row': 'editGallery',
+            'click .pt-pb-settings-row': 'editRow',
+            'click .save-row': 'saveRow',
+            'click .slider .pt-pb-settings-slider': 'editSlider',
+            'click .gallery .pt-pb-settings-gallery': 'editGallery',
             'click .pt-pb-row-toggle': 'toggleRow',
             'update-columns': 'updateColumns',
         },
@@ -363,6 +366,18 @@ var ptPbApp = ptPbApp || {};
                 section.get('content').remove(rowId);
                 $row.remove();
             }
+        },
+
+        editRow: function (e) {
+            e.preventDefault();
+            this.$el.append($('<div />').html(this.editTemplate(this.model.toJSON())).addClass('pt-pb-row-edit reveal-modal'));
+            this.$el.find('.reveal-modal').reveal();
+        },
+
+        saveRow: function (e) {
+            this.model.set(this.$el.find('form').serializeObject());
+            this.$el.find('.reveal-modal').trigger('reveal:close');
+            ptPbApp.setHiddenInputAll(this.model, this.$el);
         },
 
         editSlider: function (e) {

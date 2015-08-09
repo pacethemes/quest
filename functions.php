@@ -53,7 +53,7 @@ if ( ! function_exists( 'quest_setup' ) ):
         */
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'quest-blog-grid', 540, 420, true );
-		add_image_size( 'quest-gallery', 280, 280, true );
+		add_image_size( 'quest-gallery', 420, 420, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array( 'primary' => __( 'Primary Menu', 'quest' ), ) );

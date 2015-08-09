@@ -20,6 +20,40 @@
 				</div>
 			</div>
 
+			<div class="pt-pb-option">
+				<label for="columns"><?php _e( 'No. of Columns', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<select name="columns">
+						<option value="three"
+						<%= columns == 'three' ? 'selected' : void 0 %> ><?php _e( 'Three', 'quest' ); ?></option>
+						<option value="four"
+						<%= columns == 'four' ? 'selected' : void 0 %> ><?php _e( 'Four', 'quest' ); ?></option>
+						<option value="five"
+						<%= columns == 'five' ? 'selected' : void 0 %> ><?php _e( 'Five', 'quest' ); ?></option>
+						<option value="six"
+						<%= columns == 'six' ? 'selected' : void 0 %> ><?php _e( 'Six', 'quest' ); ?></option>
+					</select>
+
+					<p class="description"><?php _e( 'Number of columns', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
+				<label for="padding"><?php _e( 'Show Padding', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<select name="padding">
+						<option value="yes"
+						<%= padding == 'yes' ? 'selected' : void 0 %> ><?php _e( 'Yes', 'quest' ); ?></option>
+						<option value="no"
+						<%= padding == 'no' ? 'selected' : void 0 %> ><?php _e( 'No', 'quest' ); ?></option>
+					</select>
+
+					<p class="description"><?php _e( 'Do you want to show spacing between the items ?', 'quest' ) ?></p>
+				</div>
+			</div>
+
 			<%= partial('pt-pb-form-css-class', { css_class: css_class }) %>
 			<%= partial('pt-pb-form-admin-label', { admin_label: admin_label }) %>
 

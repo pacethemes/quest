@@ -40,6 +40,21 @@
 			</div>
 
 			<div class="pt-pb-option">
+				<label for="animation"><?php _e( 'Slider Transition', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<select name="animation">
+						<option value="slit"
+						<%= animation == 'slit' ? 'selected' : void 0 %> ><?php _e( 'Slit', 'quest' ); ?></option>
+						<option value="fade"
+						<%= animation == 'fade' ? 'selected' : void 0 %> ><?php _e( 'Fade', 'quest' ); ?></option>
+					</select>
+
+					<p class="description"><?php _e( 'Transition type for the slider, Slit or Fade ?', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
 				<label for="speed"><?php _e( 'Transition Speed', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">

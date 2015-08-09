@@ -736,3 +736,7 @@ textarea.regular-text {
     box-shadow: 0 -20px 0 24px #0073aa inset;
     animation: rotateLoader 1s infinite linear;
 }
+
+.pt-pb-controls .dashicons {
+    margin-top: 5px;
+}

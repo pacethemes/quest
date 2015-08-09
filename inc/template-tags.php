@@ -756,3 +756,76 @@ if ( ! function_exists( 'quest_get_footer_copyright' ) ):
 	}
 endif;
 
+
+if ( ! function_exists( 'quest_second_header_icons' ) ) :
+
+	/**
+	 * Prints markup for Secondary Header Social icons
+	 *
+	 */
+	function quest_second_header_icons() {
+		?>
+		<div class="social-icon-container col-md-6">
+			<ul>
+				<?php quest_header_social_icons(); ?>
+			</ul>
+		</div>
+		<!-- .social-icon-container -->
+	<?php
+	}
+endif;
+
+if ( ! function_exists( 'quest_second_header_callout' ) ) :
+
+	/**
+	 * Prints markup for Secondary Header Callout text
+	 *
+	 */
+	function quest_second_header_callout() {
+		?>
+		<div class="callout col-md-6">
+			<p>
+				<?php echo esc_html( quest_get_mod( 'layout_header_callout' ) ); ?>
+			</p>
+		</div>
+		<!-- .callout -->
+	<?php
+	}
+endif;
+
+if ( ! function_exists( 'quest_second_header_search' ) ) :
+
+	/**
+	 * Prints markup for Secondary Header Search
+	 *
+	 */
+	function quest_second_header_search() {
+		?>
+		<div class="search-form col-md-6">
+			<?php get_search_form(); ?>
+		</div>
+		<!-- .search-form -->
+	<?php
+	}
+endif;
+
+
+if ( ! function_exists( 'quest_second_header' ) ) :
+
+	/**
+	 * Prints markup for Secondary Header
+	 *
+	 */
+	function quest_second_header() {
+		$secondary_layout = explode( '_', quest_get_mod( 'layout_header_secondary-layout' ) );
+		if ( count( $secondary_layout ) !== 2 ) {
+			return;
+		}
+		foreach ( $secondary_layout as $item ) {
+			$callback = "quest_second_header_$item";
+			if ( function_exists( $callback ) ) {
+				call_user_func( $callback );
+			}
+		}
+	}
+endif;

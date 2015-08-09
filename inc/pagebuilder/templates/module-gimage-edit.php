@@ -23,6 +23,16 @@
 			</div>
 
 			<div class="pt-pb-option">
+				<label for="href"><?php _e( 'Link', 'quest' ); ?>: </label>
+
+				<div class="pt-pb-option-container">
+					<input name="href" class="regular-text" type="text" value="<%= href %>"/>
+
+					<p class="description"><?php _e( 'Link the image should be point to, the Gallery lighbox option should be set to "No"', 'quest' ) ?></p>
+				</div>
+			</div>
+
+			<div class="pt-pb-option">
 				<label for="title"><?php _e( 'Image Title', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">

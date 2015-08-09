@@ -122,6 +122,31 @@ class Quest_Customize_Layout {
 			)
 		);
 
+		$setting_id = $section_id . '_secondary-layout';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'quest_sanitize_choice'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Secondary Header Layout', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'     => 'select',
+					'choices'  => quest_get_choices( $setting_id )
+				)
+			)
+		);
+
 		$setting_id = $section_id . '_callout';
 
 		$wp_customize->add_setting(
@@ -750,6 +775,81 @@ class Quest_Customize_Layout {
 			)
 		);
 
+		$setting_id = $section_id . '_ft-img-hide';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'absint'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Hide Featured Image', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'     => 'checkbox'
+				)
+			)
+		);
+
+
+		$setting_id = $section_id . '_ft-img-enlarge';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'absint'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'       => __( 'Enlarge Featured Image', 'quest' ),
+					'section'     => $section_id,
+					'settings'    => $setting_id,
+					'type'        => 'checkbox',
+					'description' => __( 'Enalrge the featured image width to the 100% width of the view port/window', 'quest' )
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_content_align';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'quest_sanitize_choice'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Content Alignment', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'     => 'select',
+					'choices'  => quest_get_choices( $setting_id )
+				)
+			)
+		);
+
 		$setting_id = $section_id . '_title';
 
 		$wp_customize->add_setting(
@@ -898,6 +998,81 @@ class Quest_Customize_Layout {
 				$setting_id,
 				array(
 					'label'    => __( 'Show Title Bar ?', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'     => 'select',
+					'choices'  => quest_get_choices( $setting_id )
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_ft-img-hide';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'absint'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Hide Featured Image', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'     => 'checkbox'
+				)
+			)
+		);
+
+
+		$setting_id = $section_id . '_ft-img-enlarge';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'absint'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'       => __( 'Enlarge Featured Image', 'quest' ),
+					'section'     => $section_id,
+					'settings'    => $setting_id,
+					'type'        => 'checkbox',
+					'description' => __( 'Enalrge the featured image width to the 100% width of the view port/window', 'quest' )
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_content_align';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'quest_sanitize_choice'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Content Alignment', 'quest' ),
 					'section'  => $section_id,
 					'settings' => $setting_id,
 					'type'     => 'select',

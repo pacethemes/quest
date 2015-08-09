@@ -95,8 +95,9 @@ class PT_PageBuilder {
 			wp_enqueue_script( 'underscore' );
 			wp_enqueue_script( 'backbone' );
 
-			wp_enqueue_script( 'wp-color-picker' );
+			// wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_style( 'wp-color-picker' );
+			wp_enqueue_script( 'wp-color-picker-alpha', get_template_directory_uri() . '/assets/plugins/wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '1.1' );
 
 
 			wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
@@ -206,6 +207,7 @@ class PT_PageBuilder {
 
 		/* Row Templates */
 		self::LoadPageBuilderTemplate( 'row' );
+		self::LoadPageBuilderTemplate( 'row-edit' );
 
 		/* Column Templates */
 		self::LoadPageBuilderTemplate( 'column' );
@@ -268,5 +270,3 @@ class PT_PageBuilder {
 
 
 PT_PageBuilder::getInstance();
-
-?>
