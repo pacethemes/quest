@@ -1,3 +1,21 @@
+##1.1.4
+
+* Customizer Colors/Typography Preview issues
+* Row Vertical Alignment Options
+* Row padding options
+* Filters for Page Builder content generation, everything can be overwritten now using the new filters
+* RGBA color picker for Page Builder elements
+* Fade Transition for Image Slider
+* Image Slider Slide Title and Content background Color
+* Gallery Image href/link to any URL
+* Gallery Columns ( 3 to 6 columns)
+* Gallery padding option
+* Secondary Header Search bar
+* Secondary header Layout option (choose from the different layouts)
+* Featured Image Hide option in Single page & Post
+* Featured Image normal size or enlarged size option for Single Page & Post
+* Single Page or Post Content Alignment option
+
 ## 1.0.12
 
 * Adds Title and Description options for Gallery Images in Page Builder
