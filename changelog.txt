@@ -1,3 +1,6 @@
+##1.1.5
+* Fixes a fatal error with the PHP empty function in older PHP versions
+
 ##1.1.4
 
 * Customizer Colors/Typography Preview issues

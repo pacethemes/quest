@@ -417,7 +417,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 * @return string $content
 		 */
 		public function generateImage( $imageHtml, $image ) {
-			$link        = empty( esc_url( $image['href'] ) ) ? $image['src'] : esc_url( $image['href'] );
+			$link        = esc_url( $image['href'] ) == '' ? $image['src'] : esc_url( $image['href'] );
 			$gallery_cls = empty( $image['href'] ) ? 'gallery' : '';
 			$content     = "<div class='quest-gallery-thumb-wrap'>
 							<a href='$link' class='quest-gallery-thumb $gallery_cls' title='{$image['desc']}' data-gallery=''>" .
