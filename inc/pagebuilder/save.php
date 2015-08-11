@@ -188,7 +188,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 *
 		 * @return string $content
 		 */
-		private function generateSection( $sectionHtml, $section ) {
+		public function generateSection( $sectionHtml, $section ) {
 
 			$css       = $this->_getCssProperties( $section );
 			$cssClass  = isset( $section['css_class'] ) ? $section['css_class'] : "";
