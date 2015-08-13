@@ -1,9 +1,9 @@
-window.partial = function (which, data) {
+window.partial = function(which, data) {
     var tmpl = jQuery('#' + which).html();
     return _.template(tmpl)(data);
 };
 
-window.generateOption = function (selected, value, name) {
+window.generateOption = function(selected, value, name) {
     if (!name)
         name = value;
     return '<option value="' + value + '" ' + (value == selected ? 'selected' : '') + ' >' + name + '</option>';
@@ -11,7 +11,7 @@ window.generateOption = function (selected, value, name) {
 
 var ptPbApp = ptPbApp || {};
 
-(function ($, ptPbApp) {
+(function($, ptPbApp) {
     'use strict';
 
     ptPbApp.options = {
@@ -25,7 +25,7 @@ var ptPbApp = ptPbApp || {};
         editorHtml: ''
     };
 
-    ptPbApp.AddSection = function (model, ind, animate, clone) {
+    ptPbApp.AddSection = function(model, ind, animate, clone) {
         var newSection = new ptPbApp.SectionModel({}),
             ind = (ind || ptPbApp.Sections.length),
             id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + ptPbApp.getSectionNum() + '_' + Math.round(new Date().valueOf() / 1000),
@@ -39,7 +39,7 @@ var ptPbApp = ptPbApp || {};
             var rows = new ptPbApp.RowCollection(),
                 rowArr = (typeof model.attributes.content.models === 'undefined') ? model.attributes.content : model.attributes.content.toJSON();
 
-            _.each(rowArr, function (row, i) {
+            _.each(rowArr, function(row, i) {
                 rows.add(ptPbApp.AddRow(row, (i + 1), id));
             });
 
@@ -72,7 +72,7 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.AddRow = function (row, rowNum, id) {
+    ptPbApp.AddRow = function(row, rowNum, id) {
         // rowNum = rowNum === 0 ? 1 : rowNum;
 
         var rowType = row.type || ptPbApp.getRowType(row),
@@ -95,7 +95,7 @@ var ptPbApp = ptPbApp || {};
 
             slider.set(row.content.attributes);
 
-            _.each(slides, function (slide, ind) {
+            _.each(slides, function(slide, ind) {
                 if (typeof slide !== 'object') {
                     slider.set(ind, slide);
                 } else {
@@ -121,7 +121,7 @@ var ptPbApp = ptPbApp || {};
 
             gallery.set(row.content.attributes);
 
-            _.each(images, function (image, ind) {
+            _.each(images, function(image, ind) {
                 if (typeof image !== 'object') {
                     gallery.set(ind, image);
                 } else {
@@ -143,7 +143,7 @@ var ptPbApp = ptPbApp || {};
             var contentArr = new ptPbApp.ColumnCollection(),
                 colModels = row.content ? ((typeof row.content.models === 'undefined') ? row.content : row.content.toJSON()) : row.attributes.content.toJSON();
 
-            _.each(colModels, function (column, ind) {
+            _.each(colModels, function(column, ind) {
                 var colId = rowId + '__col__' + (ind + 1),
                     colModel = {
                         parent: rowId,
@@ -172,7 +172,7 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.getRowType = function (row) {
+    ptPbApp.getRowType = function(row) {
         if (typeof row.col !== 'undefined')
             return 'columns';
         else if (typeof row.slider !== 'undefined')
@@ -183,7 +183,7 @@ var ptPbApp = ptPbApp || {};
         return 'columns';
     };
 
-    ptPbApp.generateSection = function (section, clone) {
+    ptPbApp.generateSection = function(section, clone) {
         if (typeof section !== 'object')
             return;
         var newSection = {};
@@ -217,7 +217,7 @@ var ptPbApp = ptPbApp || {};
 
         newSection.attributes.hasRows = true;
         var rows = [];
-        _.each(section.row, function (r, k) {
+        _.each(section.row, function(r, k) {
             var rowType = ptPbApp.getRowType(r),
                 row = {
                     content: {
@@ -231,7 +231,7 @@ var ptPbApp = ptPbApp || {};
 
             if (rowType === 'slider') {
                 row.content.attributes.slides = [];
-                _.each(r.slider, function (s, i) {
+                _.each(r.slider, function(s, i) {
                     if (isNaN(i))
                         row.content.attributes[i] = s;
                     else
@@ -239,7 +239,7 @@ var ptPbApp = ptPbApp || {};
                 });
             } else if (rowType === 'gallery') {
                 row.content.attributes.images = [];
-                _.each(r.gallery, function (s, i) {
+                _.each(r.gallery, function(s, i) {
                     if (isNaN(i))
                         row.content.attributes[i] = s;
                     else
@@ -247,7 +247,7 @@ var ptPbApp = ptPbApp || {};
                 });
             } else if (rowType === 'columns') {
                 row.content = [];
-                _.each(r.col, function (v, i) {
+                _.each(r.col, function(v, i) {
                     var n = {};
                     n.content = v.module;
                     n.type = v.type;
@@ -266,24 +266,24 @@ var ptPbApp = ptPbApp || {};
         }
     };
 
-    ptPbApp.getSectionNum = function () {
-        if (ptPbApp.Sections instanceof ptPbApp.SectionCollection) {
-            var last = ptPbApp.Sections.last();
-            if (!last) {
-                return 1;
+    ptPbApp.getSectionNum = function() {
+            if (ptPbApp.Sections instanceof ptPbApp.SectionCollection) {
+                var last = ptPbApp.Sections.last();
+                if (!last) {
+                    return 1;
+                }
+
+                var matches = last.get('id').match(/pt_pb_section__([0-9]+)_/);
+
+                if (matches.length > 1) {
+                    return parseInt(matches[1]) + 1;
+                }
+
             }
+            return 1;
+        },
 
-            var matches = last.get('id').match(/pt_pb_section__([0-9]+)_/);
-
-            if (matches.length > 1) {
-                return parseInt(matches[1]) + 1;
-            }
-
-        }
-        return 1;
-    },
-
-        ptPbApp.setHiddenInput = function (id, content, isText) {
+        ptPbApp.setHiddenInput = function(id, content, isText) {
 
             var name = (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section'),
                 sectionId = id.match(ptPbApp.options.sectionId),
@@ -305,7 +305,7 @@ var ptPbApp = ptPbApp || {};
         };
 
 
-    ptPbApp.setHiddenInputAll = function (model, el) {
+    ptPbApp.setHiddenInputAll = function(model, el) {
 
         var id = model.get('id'),
             name = (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section'),
@@ -322,7 +322,7 @@ var ptPbApp = ptPbApp || {};
             $section = $('#' + sectionId);
         }
 
-        _.each(model.attributes, function (value, key) {
+        _.each(model.attributes, function(value, key) {
             if (typeof value !== 'string' || ['parent'].indexOf(key) > -1) return;
 
             var inputName = name + '[' + key + ']',
@@ -342,14 +342,14 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.setSectionOrder = function (order) {
+    ptPbApp.setSectionOrder = function(order) {
         $('[name="pt_pb_section[order]"]').val(order.join(",").replace(/pt_pb_section__/ig, ''));
     };
 
-    ptPbApp.setColumnContent = function (id, content) {
+    ptPbApp.setColumnContent = function(id, content) {
 
         var sections = ptPbApp.Sections;
-        var section = ptPbApp.Sections.find(function (item) {
+        var section = ptPbApp.Sections.find(function(item) {
             return item.get('id') === id.replace(/__col__[0-9]+/, '');
         });
 
@@ -357,7 +357,7 @@ var ptPbApp = ptPbApp || {};
 
         var columns = section.get('content');
 
-        var column = columns.find(function (item) {
+        var column = columns.find(function(item) {
             return item.get('id') === id;
         });
 
@@ -376,11 +376,11 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.isVisualEditor = function () {
+    ptPbApp.isVisualEditor = function() {
         return $('#wp-pt_pb_editor-wrap').hasClass('tmce-active');
     };
 
-    ptPbApp.getContent = function () {
+    ptPbApp.getContent = function() {
         if (ptPbApp.isVisualEditor()) {
             return tinyMCE.get('pt_pb_editor').getContent();
         }
@@ -388,7 +388,7 @@ var ptPbApp = ptPbApp || {};
         return $('#pt_pb_editor').val();
     };
 
-    ptPbApp.setContent = function (content) {
+    ptPbApp.setContent = function(content) {
         if (ptPbApp.isVisualEditor() && tinyMCE.get('pt_pb_editor') !== undefined) {
             tinyMCE.get('pt_pb_editor').setContent(content);
         } else {
@@ -396,7 +396,7 @@ var ptPbApp = ptPbApp || {};
         }
     };
 
-    ptPbApp.createEditor = function (el, text) {
+    ptPbApp.createEditor = function(el, text) {
         if (!el || el.length === 0) {
             return;
         }
@@ -404,7 +404,7 @@ var ptPbApp = ptPbApp || {};
         var $content = el.find('[name=content]');
         $content.after(ptPbApp.cache.editorHtml);
 
-        setTimeout(function () {
+        setTimeout(function() {
             if (typeof window.switchEditors !== 'undefined') {
                 window.switchEditors.go('pt_pb_editor', ptPbApp.getEditorMode());
             }
@@ -417,7 +417,7 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.removeEditor = function (textarea_id) {
+    ptPbApp.removeEditor = function(textarea_id) {
         if (typeof window.tinyMCE !== 'undefined') {
             window.tinyMCE.execCommand('mceRemoveEditor', false, textarea_id);
 
@@ -427,7 +427,7 @@ var ptPbApp = ptPbApp || {};
         }
     };
 
-    ptPbApp.getEditorMode = function () {
+    ptPbApp.getEditorMode = function() {
         var mode = 'tinymce';
 
         if ('html' === getUserSetting('editor')) {
@@ -437,13 +437,16 @@ var ptPbApp = ptPbApp || {};
         return mode;
     };
 
-    ptPbApp.toggleTemplate = function (event) {
+    ptPbApp.toggleTemplate = function(event) {
         event.preventDefault();
         var val = $(event.target).val();
 
         if (val === 'page-builder.php') {
             $('#postdivrich, #postimagediv').hide();
             $('#pt-pb-layout').show();
+            // if( ptPbApp.pbTourStarted ) {
+            //     $('.tourbus-leg:visible').find('.hidden').removeClass('hidden');
+            // }
         } else {
             $('#pt-pb-layout').hide();
             $('#postdivrich, #postimagediv').show();
@@ -452,17 +455,17 @@ var ptPbApp = ptPbApp || {};
 
     };
 
-    ptPbApp.animationPreview = function (e) {
+    ptPbApp.animationPreview = function(e) {
         e.preventDefault();
         var $select = $(e.target),
             $preview = $select.siblings('.animation-preview');
 
-        $preview.removeClass().addClass($select.val() + ' animated animation-preview').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+        $preview.removeClass().addClass($select.val() + ' animated animation-preview').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
             $(this).removeClass().addClass('animation-preview');
         });
     };
 
-    ptPbApp.scrollTo = function (top) {
+    ptPbApp.scrollTo = function(top) {
         $('html, body').stop().animate({
             scrollTop: top
         }, 600);
@@ -472,7 +475,7 @@ var ptPbApp = ptPbApp || {};
 
     ptPbApp.Upload = {};
 
-    ptPbApp.Upload.AddFile = function (event) {
+    ptPbApp.Upload.AddFile = function(event) {
 
         var frame,
             $el = $(event.target),
@@ -502,7 +505,7 @@ var ptPbApp = ptPbApp || {};
         });
 
         // When an image is selected, run a callback.
-        frame.on('select', function () {
+        frame.on('select', function() {
             // Grab the selected attachment.
             var attachment = frame.state().get('selection').first();
             frame.close();
@@ -520,19 +523,19 @@ var ptPbApp = ptPbApp || {};
     };
 
 
-    ptPbApp.Upload.RemoveFile = function (selector) {
+    ptPbApp.Upload.RemoveFile = function(selector) {
         selector.find('.pt-pb-upload-field').val('');
-        selector.find('.screenshot').slideUp(200, function () {
+        selector.find('.screenshot').slideUp(200, function() {
             $(this).empty();
         });
         selector.find('.pt-pb-remove-upload-button').hide();
         selector.find('.pt-pb-upload-button').show();
     };
 
-    ptPbApp.Upload.BindEvents = function () {
+    ptPbApp.Upload.BindEvents = function() {
         var that = this;
 
-        $('.pt-pb-upload-field').each(function () {
+        $('.pt-pb-upload-field').each(function() {
             var el = $(this);
             if (el.val() !== '') {
                 el.siblings('.pt-pb-upload-button').hide();
@@ -544,24 +547,24 @@ var ptPbApp = ptPbApp || {};
             }
         });
 
-        $('.pt-pb-remove-upload-button').on('click', function (event) {
+        $('.pt-pb-remove-upload-button').on('click', function(event) {
             that.RemoveFile($(event.target).parent());
         });
 
-        $('.pt-pb-upload-button').on('click', function (event) {
+        $('.pt-pb-upload-button').on('click', function(event) {
             that.AddFile(event);
         });
     };
 
     ptPbApp.Icons = {};
 
-    ptPbApp.Icons.BindEvents = function () {
-        $('.pt-pb-icon-select').each(function () {
+    ptPbApp.Icons.BindEvents = function() {
+        $('.pt-pb-icon-select').each(function() {
             var $icon = $(this)
             var $preview = $icon.siblings('.icon-grid');
             if ($preview.find('section').length === 0) {
                 $preview.html(window.ptIcons);
-                $preview.find('.fa-hover a').on('click', function (e) {
+                $preview.find('.fa-hover a').on('click', function(e) {
                     e.preventDefault();
                     var $a = $(this),
                         $option = $a.closest('.pt-pb-option-container'),
@@ -572,16 +575,165 @@ var ptPbApp = ptPbApp || {};
                     $preview.stop().slideToggle();
                 });
             }
-            $icon.on('click', function () {
+            $icon.on('click', function() {
                 $(this).siblings('.icon-grid').stop().slideToggle();
             })
         });
-    }
+    };
+
+    ptPbApp.tour = null,
+
+    ptPbApp.startPBTour = function() {
+
+        if( ptPbApp.Sections && ptPbApp.Sections.length > 0 ) {
+            var firstLeg = $('#pt-pb-tour li:first-child');
+            firstLeg.find('.content').html( $('#tour-pb-not-empty').html() );
+            firstLeg.find('.buttons a').hide();
+            firstLeg.find('.buttons .endtour').show();
+        }
+
+        ptPbApp.pbTourStarted = true;
+        
+        if ( ptPbApp.tour != null  ) {
+            ptPbApp.tour.trigger('depart.tourbus');
+            return;
+        }
+
+        var tour = $('#pt-pb-tour').tourbus({
+            autoDepart: true,
+            onLegStart: function(leg, bus) {
+                // auto-progress where required
+                if (leg.rawData.autoProgress) {
+                    var currentIndex = leg.index;
+                    setTimeout(
+                        function() {
+                            if (bus.currentLegIndex != currentIndex) {
+                                return;
+                            }
+                            bus.next();
+                        },
+                        leg.rawData.autoProgress
+                    );
+                }
+
+                // highlight where required
+                if (leg.rawData.highlight) {
+                    leg.$target.addClass('intro-tour-highlight');
+                    if(leg.$target.is('a')) {
+                        leg.$target.on('click', function(){
+                            if( ptPbApp.pbTourStarted ) {
+                                setTimeout(function(){
+                                    tour.trigger('next.tourbus');
+                                }, 700);
+                            }
+                        });
+                    } else if(leg.$target.is('select')) {
+                        leg.$target.on('change', function(){
+                            var pb = $('#pt-pb-layout:visible');
+                            function focusPB(){
+                                if(pb.length > 0) {
+                                    tour.trigger('next.tourbus');
+                                } else {
+                                    setTimeout(focusPB, 200);
+                                }
+                            }
+                            setTimeout(focusPB, 200);
+                        });
+                    } else if (leg.$target.hasClass('pt-pb-column')) {
+                        leg.$target.find('.pt-pb-insert-module').on('click', function(){
+                            if( ptPbApp.pbTourStarted ) {
+                                setTimeout(function(){
+                                    tour.trigger('next.tourbus');
+                                }, 700);
+                            }
+                        });
+                    }
+                    $('.intro-tour-overlay').show();
+                }
+
+                // fade/slide in first leg
+                if (leg.index == 0) {
+                    leg.$el
+                        .css({
+                            visibility: 'visible',
+                            opacity: 0,
+                            top: leg.options.top / 2
+                        })
+                        .animate({
+                                top: leg.options.top,
+                                opacity: 1.0
+                            }, 500,
+                            function() {
+                                leg.show();
+                            });
+                    return false;
+                }
+            },
+            onLegEnd: function(leg) {
+                // remove highlight when leaving this leg
+                if (leg.rawData.highlight) {
+                    leg.$target.removeClass('intro-tour-highlight');
+                    $('.intro-tour-overlay').hide();
+                }
+
+            }
+        }).on('stop.tourbus', function(){
+            ptPbApp.pbTourStarted = false;
+        });
+
+        ptPbApp.tour = tour;
+
+        ptPbApp.cache.$pageTemplate.val('default').trigger('change');
+        
+        $('body').on('click', '.tour-close-reveal' , function(){
+            if( ptPbApp.pbTourStarted ) {
+                $('.reveal-modal:visible').trigger('reveal:close');
+            }
+        }).on('click', '.tour-select-layout', function(){
+            $('.column-layouts li:nth-child(3)').trigger('click');
+            var row = $('.pt-pb-section:first-child .pt-pb-row:first-child');
+            function focusFirstRow(){
+                if(row.length > 0) {
+                    tour.trigger('next.tourbus');
+                } else {
+                    setTimeout(focusFirstRow, 200);
+                }
+            }
+            setTimeout(focusFirstRow, 200);
+        })
+        .on('click', '.tour-select-module', function(){
+            $('.column-module:first-child').trigger('click');
+            var module = $('.pt-pb-image-edit');
+            function focusFirstModule(){
+                if(module.length > 0) {
+                    tour.trigger('next.tourbus');
+                } else {
+                    setTimeout(focusFirstModule, 200);
+                }
+            }
+            setTimeout(focusFirstModule, 200);
+        })
+        .on('click', '.tour-close-module', function(){
+            var module = $('.pt-pb-section:first-child .pt-pb-row:first-child  .pt-pb-column:first-child');
+            function focusFirstModule(){
+                if(module.length > 0) {
+                    $('.reveal-modal:visible').trigger('reveal:close');
+                    tour.trigger('next.tourbus');
+                } else {
+                    setTimeout(focusFirstModule, 200);
+                }
+            }
+            setTimeout(focusFirstModule, 200);
+        }).on('click', '.tourbus-end', function(){
+            tour.trigger('stop.tourbus');
+        });
+
+    };
 
 
 })(jQuery, ptPbApp);
 
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function($) {
 
     ptPbApp.cache.editorHtml = ptPbApp.cache.$hiddenEditor.html();
     ptPbApp.cache.$hiddenEditor.remove();
@@ -589,17 +741,17 @@ jQuery(document).ready(function ($) {
     ptPbApp.cache.$pageTemplate.on('change', ptPbApp.toggleTemplate)
         .trigger('change');
 
-    _.each(ptPbAppSections, function (section, key) {
+    _.each(ptPbAppSections, function(section, key) {
         ptPbApp.generateSection(section);
     });
 
-    jQuery(document).on('reveal:open', function () {
+    jQuery(document).on('reveal:open', function() {
         ptPbApp.Upload.BindEvents();
         ptPbApp.Icons.BindEvents();
         $('.reveal-modal').find('.pt-pb-color').wpColorPicker();
     });
 
-    $('.pt-pb-insert-section').on('click', function (e) {
+    $('.pt-pb-insert-section').on('click', function(e) {
         e.preventDefault();
         ptPbApp.AddSection(null, null, true);
     });
@@ -611,30 +763,37 @@ jQuery(document).ready(function ($) {
         tolerance: 'pointer',
         items: '.pt-pb-section',
         cancel: '.pt-pb-settings, .pt-pb-clone, .pt-pb-remove, .pt-pb-section-add, .pt-pb-row-add, .pt-pb-insert-module, .pt-pb-insert-column, .pt-pb-content',
-        update: function (event, ui) {
+        update: function(event, ui) {
             var updated = [];
-            $(this).find('.pt-pb-section').each(function () {
+            $(this).find('.pt-pb-section').each(function() {
                 updated.push($(this).attr('id'));
             });
 
-            ptPbApp.Sections.models = _(ptPbApp.Sections.models).sortBy(function (model) {
+            ptPbApp.Sections.models = _(ptPbApp.Sections.models).sortBy(function(model) {
                 return _.indexOf(updated, model.id);
             });
 
         }
     });
 
-    ptPbApp.cache.$container.on('click', '.pt-pb-module-toggle', function (e) {
+    ptPbApp.cache.$container.on('click', '.pt-pb-module-toggle', function(e) {
         e.preventDefault();
-        var content = $(this).closest('.module-controls').siblings('.content-preview, .slide-content-preview').slideToggle(300, function () {
+        var content = $(this).closest('.module-controls').siblings('.content-preview, .slide-content-preview').slideToggle(300, function() {
             $(this).siblings('.module-controls').toggleClass('close');
         });
     });
 
     ptPbApp.cache.$container.on('change', '.js-animations', ptPbApp.animationPreview);
 
+    var tourLink = $('<div id="start-pt-pb-tour" class="screen-meta-toggle"><a href="#">Page Builder Tour</a></div>')
+        .click(function(e) {
+            e.preventDefault();
+            ptPbApp.startPBTour();
+        });
+    $('#screen-meta-links').append(tourLink);
+
     ptPbApp.ModulesList = {};
-    _.each(ptPbApp.Modules, function (val, ind) {
+    _.each(ptPbApp.Modules, function(val, ind) {
         if (ind.match(/Model/) !== null) {
             ptPbApp.ModulesList[ind.replace('Model', '')] = new ptPbApp.Modules[ind]().attributes;
         }
