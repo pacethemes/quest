@@ -1,14 +1,13 @@
 <?php
-require 'custom-controls/google-fonts.php';
-require 'custom-controls/text-area-control.php';
-require 'controls.php';
-require 'defaults.php';
-require 'helpers.php';
-require 'panels/general.php';
-require 'panels/layout.php';
-require 'panels/background-images.php';
-require 'panels/colors.php';
-require 'panels/typography.php';
+/**
+ * @package Quest
+ */
+
+$quest_customizer_path = trailingslashit( get_template_directory() ) . 'inc/customizer/';
+
+require $quest_customizer_path . "defaults.php";
+require $quest_customizer_path . "helpers.php";
+require $quest_customizer_path . "google-fonts.php";
 
 if ( ! class_exists( 'Quest_Customize' ) ):
 
@@ -68,6 +67,21 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 * @since MyTheme 1.0
 		 */
 		public static function Register( $wp_customize ) {
+			$quest_customizer_path  = trailingslashit( get_template_directory() ) . 'inc/customizer/';
+
+			// Load all custom controls
+			require $quest_customizer_path . "custom-controls/google-fonts-control.php";
+			require $quest_customizer_path . "custom-controls/text-area-control.php";
+			require $quest_customizer_path . "custom-controls/misc-control.php";
+			require $quest_customizer_path . "custom-controls/multiple-checkbox-control.php";
+
+			// Load all Customizer Panels
+			require $quest_customizer_path . "panels/general.php";
+			require $quest_customizer_path . "panels/layout.php";
+			require $quest_customizer_path . "panels/background-images.php";
+			require $quest_customizer_path . "panels/colors.php";
+			require $quest_customizer_path . "panels/typography.php";
+
 			Quest_Customize_General::register( $wp_customize );
 			Quest_Customize_Layout::register( $wp_customize );
 			Quest_Customize_Background_Images::register( $wp_customize );
@@ -172,6 +186,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 				'jquery',
 				'wp-color-picker'
 			), '', true );
+
 			wp_enqueue_script( 'quest-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/customizer.js', array(), '', true );
 
 			wp_localize_script( 'quest-customizer', 'questCustomizerFontsL10n', quest_get_all_fonts() );
@@ -180,9 +195,42 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		}
 
 		public function EnqueueFonts() {
-			$mods = quest_get_mods();
 
-			$fonts      = array_intersect_key( $mods, array_flip( array_filter( array_keys( $mods ), 'quest_is_font_family' ) ) );
+			$fonts = array(
+				'typography_global_font_family'         => quest_get_mod( 'typography_global_font_family' ),
+				'typography_global_font_variant'        => quest_get_mod( 'typography_global_font_variant' ),
+				'typography_heading_h1_font_family'     => quest_get_mod( 'typography_heading_h1_font_family' ),
+				'typography_heading_h1_font_variant'    => quest_get_mod( 'typography_heading_h1_font_variant' ),
+				'typography_heading_h2_font_family'     => quest_get_mod( 'typography_heading_h2_font_family' ),
+				'typography_heading_h2_font_variant'    => quest_get_mod( 'typography_heading_h2_font_variant' ),
+				'typography_heading_h3_font_family'     => quest_get_mod( 'typography_heading_h3_font_family' ),
+				'typography_heading_h3_font_variant'    => quest_get_mod( 'typography_heading_h3_font_variant' ),
+				'typography_heading_h4_font_family'     => quest_get_mod( 'typography_heading_h4_font_family' ),
+				'typography_heading_h4_font_variant'    => quest_get_mod( 'typography_heading_h4_font_variant' ),
+				'typography_heading_h5_font_family'     => quest_get_mod( 'typography_heading_h5_font_family' ),
+				'typography_heading_h5_font_variant'    => quest_get_mod( 'typography_heading_h5_font_variant' ),
+				'typography_heading_h6_font_family'     => quest_get_mod( 'typography_heading_h6_font_family' ),
+				'typography_heading_h6_font_variant'    => quest_get_mod( 'typography_heading_h6_font_variant' ),
+				'typography_menu_font_family'           => quest_get_mod( 'typography_menu_font_family' ),
+				'typography_menu_font_variant'          => quest_get_mod( 'typography_menu_font_variant' ),
+				'typography_menu_sub_font_family'       => quest_get_mod( 'typography_menu_sub_font_family' ),
+				'typography_menu_sub_font_variant'      => quest_get_mod( 'typography_menu_sub_font_variant' ),
+				'typography_site_title_font_family'     => quest_get_mod( 'typography_site_title_font_family' ),
+				'typography_site_title_font_variant'    => quest_get_mod( 'typography_site_title_font_variant' ),
+				'typography_site_tagline_font_family'   => quest_get_mod( 'typography_site_tagline_font_family' ),
+				'typography_site_tagline_font_variant'  => quest_get_mod( 'typography_site_tagline_font_variant' ),
+				'typography_sidebar_title_font_family'  => quest_get_mod( 'typography_sidebar_title_font_family' ),
+				'typography_sidebar_title_font_variant' => quest_get_mod( 'typography_sidebar_title_font_variant' ),
+				'typography_sidebar_body_font_family'   => quest_get_mod( 'typography_sidebar_body_font_family' ),
+				'typography_sidebar_body_font_variant'  => quest_get_mod( 'typography_sidebar_body_font_variant' ),
+				'typography_footer_title_font_family'   => quest_get_mod( 'typography_footer_title_font_family' ),
+				'typography_footer_title_font_variant'  => quest_get_mod( 'typography_footer_title_font_variant' ),
+				'typography_footer_body_font_family'    => quest_get_mod( 'typography_footer_body_font_family' ),
+				'typography_footer_body_font_variant'   => quest_get_mod( 'typography_footer_body_font_variant' ),
+				'typography_footer_text_font_family'    => quest_get_mod( 'typography_footer_text_font_family' ),
+				'typography_footer_text_font_variant'   => quest_get_mod( 'typography_footer_text_font_variant' )
+			);
+
 			$used_fonts = array();
 			$defaults   = array_keys( quest_get_standard_fonts() );
 
@@ -194,7 +242,14 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			}
 
 			$protocol = is_ssl() ? 'https' : 'http';
-			wp_enqueue_style( 'google-fonts', "$protocol://fonts.googleapis.com/css?family=" . implode( '|', array_values( $used_fonts ) ), false, false );
+
+			$query_args = array(
+				'family' => str_replace( " ", "+", implode( '|', array_values( $used_fonts ) ) ),
+				'subset' => implode( ',', quest_get_mod( 'typography_options_subsets' ) )
+			);
+
+			wp_enqueue_style( 'google-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
+
 		}
 
 		public static function PrintCss() {
@@ -360,13 +415,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 			if ( $single_post_align === 'center' ) : ?>
 
-				.single-post .post-normal,
-				.single-post .post-normal h1,
-				.single-post .post-normal h2,
-				.single-post .post-normal h3,
-				.single-post .post-normal h4,
-				.single-post .post-normal h5,
-				.single-post .post-normal h6{
+				.single-post .post-normal,.single-post .post-normal h1,.single-post .post-normal h2,.single-post .post-normal h3,.single-post .post-normal h4,.single-post .post-normal h5,.single-post .post-normal h6{
 				text-align: center;
 				}
 				.single-post .post-normal .post-image{
@@ -378,13 +427,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 				}
 			<?php elseif ( $single_post_align === 'right' ) : ?>
 
-				.single-post .post-normal,
-				.single-post .post-normal h1,
-				.single-post .post-normal h2,
-				.single-post .post-normal h3,
-				.single-post .post-normal h4,
-				.single-post .post-normal h5,
-				.single-post .post-normal h6{
+				.single-post .post-normal,.single-post .post-normal h1,.single-post .post-normal h2,.single-post .post-normal h3,.single-post .post-normal h4,.single-post .post-normal h5,.single-post .post-normal h6{
 				text-align: right;
 				}
 
@@ -410,13 +453,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			$single_page_align = quest_get_mod( 'layout_page_content_align' );
 			if ( $single_page_align === 'center' ) : ?>
 
-				.page .type-page,
-				.page .type-page h1,
-				.page .type-page h2,
-				.page .type-page h3,
-				.page .type-page h4,
-				.page .type-page h5,
-				.page .type-page h6{
+				.page .type-page,.page .type-page h1,.page .type-page h2,.page .type-page h3,.page .type-page h4,.page .type-page h5,.page .type-page h6{
 				text-align: center;
 				}
 				.page .type-page .post-image{
@@ -426,13 +463,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 			<?php elseif ( $single_page_align === 'right' ) : ?>
 
-				.page .type-page,
-				.page .type-page h1,
-				.page .type-page h2,
-				.page .type-page h3,
-				.page .type-page h4,
-				.page .type-page h5,
-				.page .type-page h6{
+				.page .type-page,.page .type-page h1,.page .type-page h2,.page .type-page h3,.page .type-page h4,.page .type-page h5,.page .type-page h6{
 				text-align: right;
 				}
 

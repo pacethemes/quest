@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package Quest
+ */
+
+
 if ( ! function_exists( 'quest_get_default' ) ):
 
 	/**
@@ -221,6 +226,22 @@ if ( ! function_exists( 'quest_sanitize_font_text_transform' ) ):
 		}
 
 		return 'none';
+	}
+endif;
+
+if ( ! function_exists( 'quest_sanitize_font_subsets' ) ):
+
+	/**
+	 * Sanitize function for WP_Customize setting to sanitize Font Subsets
+	 *
+	 * @return string
+	 */
+	
+	function quest_sanitize_font_subsets( $values ) {
+
+	    $multi_values = !is_array( $values ) ? explode( ',', $values ) : $values;
+
+	    return !empty( $multi_values ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
 	}
 endif;
 

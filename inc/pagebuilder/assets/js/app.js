@@ -419,7 +419,9 @@ var ptPbApp = ptPbApp || {};
 
     ptPbApp.removeEditor = function(textarea_id) {
         if (typeof window.tinyMCE !== 'undefined') {
-            window.tinyMCE.execCommand('mceRemoveEditor', false, textarea_id);
+            try{
+                window.tinyMCE.execCommand('mceRemoveEditor', false, textarea_id);
+            } catch(e) {}
 
             if (typeof window.tinyMCE.get(textarea_id) !== 'undefined') {
                 window.tinyMCE.remove('#' + textarea_id);
@@ -444,9 +446,6 @@ var ptPbApp = ptPbApp || {};
         if (val === 'page-builder.php') {
             $('#postdivrich, #postimagediv').hide();
             $('#pt-pb-layout').show();
-            // if( ptPbApp.pbTourStarted ) {
-            //     $('.tourbus-leg:visible').find('.hidden').removeClass('hidden');
-            // }
         } else {
             $('#pt-pb-layout').hide();
             $('#postdivrich, #postimagediv').show();

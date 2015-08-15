@@ -792,8 +792,8 @@ var ptPbApp = ptPbApp || {};
 
             $view.model.set($view.$el.find('.edit-content form').serializeObject());
             this.model.set('content', ptPbApp.getContent());
-            $reveal.trigger('reveal:close');
             ptPbApp.removeEditor('pt_pb_editor');
+            $reveal.trigger('reveal:close');
 
             setTimeout(function () {
                 $view.render();
@@ -1074,8 +1074,8 @@ var ptPbApp = ptPbApp || {};
 
             ptPbApp.setColumnContent(parent, this.model);
 
-            this.$el.find('.reveal-modal').trigger('reveal:close');
             ptPbApp.removeEditor('pt_pb_editor');
+            this.$el.find('.reveal-modal').trigger('reveal:close');
             setTimeout(function () {
                 view.render();
             }, 300);
@@ -1132,8 +1132,8 @@ var ptPbApp = ptPbApp || {};
 
             ptPbApp.setColumnContent(parent, this.model);
 
-            this.$el.find('.reveal-modal').trigger('reveal:close');
             ptPbApp.removeEditor('pt_pb_editor');
+            this.$el.find('.reveal-modal').trigger('reveal:close');
             setTimeout(function () {
                 view.render();
             }, 300);

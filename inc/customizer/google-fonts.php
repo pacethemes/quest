@@ -26,21 +26,21 @@ endif;
 
 if ( !function_exists( 'quest_get_standard_fonts' ) ):
 	/**
-	 * Returns an Array of al the Available Standard Fonts
+	 * Returns an Array of all the Available Standard Fonts
 	 *
 	 */
 	function quest_get_standard_fonts() {
-		return array(
-			'Serif' => array ( 'variants' => array( 'regular' ) ),
-			'Sans Serif' => array ( 'variants' => array( 'regular' ) ),
-			'Monospaced' => array ( 'variants' => array( 'regular' ) ),
-		);
+		return apply_filters( "quest_get_standard_fonts", array(
+				'Serif' => array ( 'variants' => array( 'regular' ) ),
+				'Sans Serif' => array ( 'variants' => array( 'regular' ) ),
+				'Monospaced' => array ( 'variants' => array( 'regular' ) ),
+			) );
 	}
 endif;
 
 if ( !function_exists( 'quest_get_google_fonts' ) ):
 	/**
-	 * Returns an Array of al the Available Google Fonts
+	 * Returns an Array of all the Available Google Fonts
 	 *
 	 */
 	function quest_get_google_fonts() {

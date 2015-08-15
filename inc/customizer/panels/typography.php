@@ -1,6 +1,8 @@
 <?php
+/**
+ * @package Quest
+ */
 
-require_once dirname( __FILE__ ) . "/../custom-controls/google-fonts-control.php";
 
 /**
  * Contains methods for customizing the theme customization screen.
@@ -23,6 +25,43 @@ class Quest_Customize_Typography {
 			'title'          => 'Typography',
 			'description'    => '',
 		) );
+
+		/******************
+		 * // Subsets Section
+		 *******************/
+
+		$section_id = 'typography_options';
+
+		$setting_id = $section_id . '_subsets';
+
+		$wp_customize->add_section( $section_id,
+			array(
+				'title'      => __( 'Font Options', 'quest' ),
+				'priority'   => 35,
+				'capability' => 'edit_theme_options',
+				'panel'      => $panel_id
+			)
+		);
+
+		$wp_customize->add_setting(
+	        $setting_id,
+	        array(
+	            'default'           =>  quest_get_default( $setting_id ),
+	            'sanitize_callback' => 'quest_sanitize_font_subsets'
+	        )
+	    );
+
+	    $wp_customize->add_control(
+	        new Quest_Customize_Control_Checkbox_Multiple(
+	            $wp_customize,
+	            $setting_id,
+	            array(
+	                'section' => $section_id,
+	                'label'   => __( 'Choose Font Subsets', 'quest' ),
+	                'choices' => quest_get_choices( $setting_id )
+	            )
+	        )
+	    );
 
 		/******************
 		 * // Global Section
@@ -171,5 +210,3 @@ class Quest_Customize_Typography {
 
 	}
 }
-
-?>

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Quest
+ */
 
 /**
  * Contains methods for adding Layout Customization Panel and all settings under it

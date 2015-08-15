@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Quest
+ */
 
 $quest_defaults = array(
 
@@ -113,6 +116,9 @@ $quest_defaults = array(
 	/*****************
 	 ** Typography **
 	 ******************/
+
+	/* Font Options */
+	'typography_options_subsets'           	  => array( 'latin' ),
 
 	/* Global */
 	'typography_global_font_family'           => 'Open Sans',
@@ -291,7 +297,20 @@ $quest_defaults = array(
 			'search_callout' => __( 'Search + Callout', 'quest' ),
 			'icons_search'   => __( 'Social Icons + Search', 'quest' ),
 			'search_icons'   => __( 'Search + Social Icons', 'quest' )
+		),
+		'typography_options_subsets' => array(
+			'latin'  => __( 'Latin', 'quest' ),
+			'latin-ext' => __( 'Latin Extended', 'quest' ),
+			'greek'  => __( 'Greek', 'quest' ),
+			'greek-ext' => __( 'Greek Extended', 'quest' ),
+			'cyrillic'   => __( 'Cyrillic', 'quest' ),
+			'cyrillic-ext' => __( 'Cyrillic Extended', 'quest' ),
+			'vietnamese' => __( 'Vietnamese', 'quest' ),
+			'arabic'   => __( 'Arabic', 'quest' ),
+			'khmer'  => __( 'Khmer', 'quest' ),
+			'devanagari'   => __( 'Devanagari', 'quest' )
 		)
+
 	),
 
 

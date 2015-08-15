@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package Quest
+ */
+
+
 if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Quest_Customize_Misc_Control' ) ):
 
 	/**
