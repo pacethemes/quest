@@ -57,7 +57,7 @@ class Quest_Customize_Typography {
 	            $setting_id,
 	            array(
 	                'section' => $section_id,
-	                'label'   => __( 'Choose Font Subsets', 'quest' ),
+	                'label'   => __( 'Choose Google Font Subsets', 'quest' ),
 	                'choices' => quest_get_choices( $setting_id )
 	            )
 	        )

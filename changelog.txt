@@ -1,3 +1,7 @@
+##1.1.9
+* Fixes Customizer Font Variant Preview issue
+* Code cleanup
+
 ##1.1.8
 * More Code cleanup
 

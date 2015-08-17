@@ -194,7 +194,19 @@ if ( ! function_exists( 'quest_sanitize_font_variant' ) ):
 			"900",
 			"900italic",
 			"italic",
-			"regular"
+			"regular",
+			"thin",
+			"thin-italic",
+			"bold",
+			"bold-italic",
+			"medium",
+			"medium-italic",
+			"extra-light",
+			"extra-light-italic",
+			"light",
+			"light-italic",
+			"serif",
+			"serif-italic"
 		);
 
 		if ( ! is_string( $value ) || $value === '' ) {

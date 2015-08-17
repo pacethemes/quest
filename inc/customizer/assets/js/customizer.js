@@ -44,7 +44,9 @@
                             font = $select.val(),
                             $variant = $select.closest('li').next().find('select');
                         if ($variant.length > 0 && questCustomizerFontsL10n[font] !== undefined) {
-                            $variant.html(fontChosen.showVariants(questCustomizerFontsL10n[font]['variants'])).val('regular');
+                            $variant.html(fontChosen.showVariants(questCustomizerFontsL10n[font]['variants']))
+                                    .children('option:first').attr('selected','selected');
+                            $variant.trigger('change');
                         }
                     });
                     $el.chosen({

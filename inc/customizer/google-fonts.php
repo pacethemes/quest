@@ -9,9 +9,9 @@ if ( !function_exists( 'quest_get_all_fonts' ) ):
 
 		if ( $show_header ) {
 			return array_merge(
-				array( '-------Standard Fonts-------' => array ( 'disabled' => true, 'variants' => array() ) ),
+				array( '------- Standard Fonts -------' => array ( 'disabled' => true, 'variants' => array() ) ),
 				quest_get_standard_fonts(),
-				array( '-------Google Fonts-------' => array ( 'disabled' => true, 'variants' => array() ) ),
+				array( '------- Google Fonts -------' => array ( 'disabled' => true, 'variants' => array() ) ),
 				quest_get_google_fonts()
 			);
 		}
