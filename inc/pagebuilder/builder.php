@@ -277,13 +277,13 @@ class PT_PageBuilder {
 
 		<div class='intro-tour-overlay'></div>
 
-		<div id="tour-pb-not-empty">
+		<div id="tour-pb-not-empty" style="display:none">
 			<p>
 				<?php _e( 'Looks like this Page is not empty and it has some existing Page Builder sections. The tour only works on a blank Page Builder page. Please go to Pages > Add New and then start the tour', 'quest' ) ?>
 			</p>
 		</div>
 
-		<ol class='tourbus-legs' id='pt-pb-tour'>
+		<ol class='tourbus-legs' id='pt-pb-tour' style="display:none">
 			
 			<li data-scroll-to='0' data-highlight='true' data-width='500' data-orientation='centered' data-top='150'>
 				<div class='content'>

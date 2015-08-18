@@ -581,6 +581,7 @@ var ptPbApp = ptPbApp || {};
     };
 
     ptPbApp.tour = null,
+    ptPbApp.validTour = true,
 
     ptPbApp.startPBTour = function() {
 
@@ -589,6 +590,7 @@ var ptPbApp = ptPbApp || {};
             firstLeg.find('.content').html( $('#tour-pb-not-empty').html() );
             firstLeg.find('.buttons a').hide();
             firstLeg.find('.buttons .endtour').show();
+            ptPbApp.validTour = false;
         }
 
         ptPbApp.pbTourStarted = true;
@@ -681,6 +683,9 @@ var ptPbApp = ptPbApp || {};
         });
 
         ptPbApp.tour = tour;
+
+        if( !ptPbApp.validTour )
+            return;
 
         ptPbApp.cache.$pageTemplate.val('default').trigger('change');
         
