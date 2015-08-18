@@ -1,6 +1,5 @@
 ##1.1.10
 * Fixes Issue with Page Builder Tour
-* Code cleanup
 
 ##1.1.9
 * Fixes Customizer Font Variant Preview issue
