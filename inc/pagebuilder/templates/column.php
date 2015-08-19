@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-column-template">
+<script type="text/template" id="pt-pb-tmpl-column">
 	<div title="Drag-and-drop this column into place"
 	     class="pt-pb-column-header pt-pb-column-sortable ui-sortable-handle">
 		<div class="sortable-background column-sortable-background"></div>

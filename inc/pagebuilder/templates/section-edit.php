@@ -1,14 +1,13 @@
-<script type="text/template" id="pt-pb-section-edit-template">
+<script type="text/template" id="pt-pb-tmpl-section-edit">
 	<h2><?php _e( 'Edit Section', 'quest' ); ?></h2>
 	<div class="edit-content">
 		<form action="#">
-
 			<div class="pt-pb-option">
 				<label for="bg_image"><?php _e( 'Background Image', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
 					<input name="bg_image" type="text" class="regular-text pt-pb-upload-field"
-					       value="<%= bg_image %>">
+					       value="{{{bg_image}}}">
 					<input type="button" class="button pt-pb-upload-button" value="Upload" data-type="image"
 					       data-choose="<?php _e( 'Select Background Image', 'quest' ); ?>"
 					       data-update="<?php _e( 'Select Image', 'quest' ); ?>">
@@ -27,10 +26,10 @@
 				<div class="pt-pb-option-container">
 					<select name="bg_attach">
 						<option value="fixed"
-						<%= bg_attach == 'fixed' ? 'selected' : void 0 %>
+						{{{bg_attach == 'fixed' ? 'selected' : void 0}}}
 						><?php _e( 'Fixed', 'quest' ); ?></option>
 						<option value="scroll"
-						<%= bg_attach == 'scroll' ? 'selected' : void 0 %>
+						{{{bg_attach == 'scroll' ? 'selected' : void 0}}}
 						><?php _e( 'Scroll', 'quest' ); ?></option>
 					</select>
 
@@ -43,7 +42,7 @@
 
 				<div class="pt-pb-option-container">
 					<input name="bg_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
-					       value="<%= bg_color %>"/>
+					       value="{{{bg_color}}}"/>
 
 					<p class="description"><?php _e( 'Background Color for the section, leave it blank to set a transparent color', 'quest' ) ?></p>
 				</div>
@@ -55,10 +54,10 @@
 				<div class="pt-pb-option-container">
 					<select name="content_type">
 						<option value="boxed"
-						<%= content_type == 'boxed' ? 'selected' : void 0 %>
+						{{{content_type == 'boxed' ? 'selected' : void 0}}}
 						><?php _e( 'Boxed', 'quest' ); ?></option>
 						<option value="fluid"
-						<%= content_type == 'fluid' ? 'selected' : void 0 %>
+						{{{content_type == 'fluid' ? 'selected' : void 0}}}
 						><?php _e( 'Fluid', 'quest' ); ?></option>
 					</select>
 
@@ -71,7 +70,7 @@
 
 				<div class="pt-pb-option-container">
 					<input name="text_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
-					       value="<%= text_color %>"/>
+					       value="{{{text_color}}}"/>
 
 					<p class="description"><?php _e( 'Text Color for the section', 'quest' ) ?></p>
 				</div>
@@ -81,7 +80,7 @@
 				<label for="padding_top"><?php _e( 'Padding Top', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<input name="padding_top" class="regular-text" type="text" value="<%= padding_top %>"/>
+					<input name="padding_top" class="regular-text" type="text" value="{{{padding_top}}}"/>
 
 					<p class="description"><?php _e( 'Padding (Spacing) at the top', 'quest' ) ?></p>
 				</div>
@@ -92,7 +91,7 @@
 
 				<div class="pt-pb-option-container">
 					<input name="padding_bottom" class="regular-text" type="text"
-					       value="<%= padding_bottom %>"/>
+					       value="{{{padding_bottom}}}"/>
 
 					<p class="description"><?php _e( 'Padding (Spacing) at the Bottom', 'quest' ) ?></p>
 				</div>
@@ -103,7 +102,7 @@
 
 				<div class="pt-pb-option-container">
 					<input name="border_top_width" class="regular-text" type="text"
-					       value="<%= border_top_width %>"/>
+					       value="{{{border_top_width}}}"/>
 
 					<p class="description"><?php _e( 'Border width for the section top', 'quest' ) ?></p>
 				</div>
@@ -114,7 +113,7 @@
 
 				<div class="pt-pb-option-container">
 					<input name="border_bottom_width" class="regular-text" type="text"
-					       value="<%= border_bottom_width %>"/>
+					       value="{{{border_bottom_width}}}"/>
 
 					<p class="description"><?php _e( 'Border width for the section bottom', 'quest' ) ?></p>
 				</div>
@@ -125,7 +124,7 @@
 
 				<div class="pt-pb-option-container">
 					<input name="border_top_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
-					       value="<%= border_top_color %>"/>
+					       value="{{{border_top_color}}}"/>
 
 					<p class="description"><?php _e( 'Border color for the section top', 'quest' ) ?></p>
 				</div>
@@ -136,13 +135,13 @@
 
 				<div class="pt-pb-option-container">
 					<input name="border_bottom_color" class="pt-pb-color color-picker" data-alpha="true" type="text"
-					       value="<%= border_bottom_color %>"/>
+					       value="{{{border_bottom_color}}}"/>
 
 					<p class="description"><?php _e( 'Border color for the section bottom', 'quest' ) ?></p>
 				</div>
 			</div>
 
-			<%= partial('pt-pb-form-css-class', { css_class: css_class }) %>
+			{{{ptPbApp.partial('form-css-class', { css_class: css_class })}}}
 
 		</form>
 	</div>

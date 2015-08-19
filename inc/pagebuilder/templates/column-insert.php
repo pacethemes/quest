@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-insert-column-template">
+<script type="text/template" id="pt-pb-tmpl-insert-column">
 	<h2><?php _e( 'Select Layout', 'quest' ); ?></h2>
 	<div class="edit-content">
 		<div class="quest-plus-message">

@@ -107,11 +107,19 @@ class PT_PageBuilder {
 
 			wp_enqueue_script( 'pt_pb_tour', self::$PT_PB_URI . '/assets/js/jquery-tourbus.js', array( 'jquery' ), self::$PT_PB_VERSION, true );
 
-			wp_enqueue_script( 'pt_pb_models_js', self::$PT_PB_URI . '/assets/js/models.js', array(
+			wp_enqueue_script( 'pt_pb_util_js', self::$PT_PB_URI . '/assets/js/util.js', array(
 				'jquery',
 				'jquery-ui-core',
 				'underscore',
 				'backbone'
+			), self::$PT_PB_VERSION, true );
+
+			wp_enqueue_script( 'pt_pb_models_js', self::$PT_PB_URI . '/assets/js/models.js', array(
+				'jquery',
+				'jquery-ui-core',
+				'underscore',
+				'backbone',
+				'pt_pb_util_js'
 			), self::$PT_PB_VERSION, true );
 			wp_enqueue_script( 'pt_pb_collections_js', self::$PT_PB_URI . '/assets/js/collections.js', array(
 				'jquery',

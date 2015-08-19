@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-module-text-edit-template">
+<script type="text/template" id="pt-pb-tmpl-module-text-edit">
 	<h2><?php _e( 'Edit Image', 'quest' ); ?></h2>
 	<div class="edit-content">
 		<form>
@@ -7,14 +7,14 @@
 				<label for="content"><?php _e( 'Content', 'quest' ); ?>: </label>
 
 				<div class="pt-pb-option-container">
-					<textarea name="content" class="hidden"><%= content %> </textarea>
+					<textarea name="content" class="hidden">{{{content}}} </textarea>
 
 					<p class="description"><?php _e( 'Content', 'quest' ) ?></p>
 				</div>
 			</div>
 
-			<%= partial('pt-pb-form-animation', { animation: animation }) %>
-			<%= partial('pt-pb-form-admin-label', { admin_label: admin_label }) %>
+			{{{ptPbApp.partial('form-animation', { animation: animation })}}}
+			{{{ptPbApp.partial('form-admin-label', { admin_label: admin_label })}}}
 
 		</form>
 	</div>

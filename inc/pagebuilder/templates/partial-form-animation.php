@@ -1,110 +1,110 @@
-<script type="text/template" id="pt-pb-form-animation">
+<script type="text/template" id="pt-pb-tmpl-form-animation">
 	<div class="pt-pb-option">
 		<label for="animation"><?php _e( 'CSS3 Animation', 'quest' ); ?>: </label>
 
 		<div class="pt-pb-option-container">
 			<select class="js-animations" name="animation">
-				<%= generateOption(animation, '') %>
+					{{{ptPbApp.generateOption(animation, '', 'none')}}}
 				<optgroup label="Attention Seekers">
-					<%= generateOption(animation, 'bounce') %>
-					<%= generateOption(animation, 'flash') %>
-					<%= generateOption(animation, 'pulse') %>
-					<%= generateOption(animation, 'rubberBand') %>
-					<%= generateOption(animation, 'shake') %>
-					<%= generateOption(animation, 'swing') %>
-					<%= generateOption(animation, 'tada') %>
-					<%= generateOption(animation, 'wobble') %>
+					{{{ptPbApp.generateOption(animation, 'bounce')}}}
+					{{{ptPbApp.generateOption(animation, 'flash')}}}
+					{{{ptPbApp.generateOption(animation, 'pulse')}}}
+					{{{ptPbApp.generateOption(animation, 'rubberBand')}}}
+					{{{ptPbApp.generateOption(animation, 'shake')}}}
+					{{{ptPbApp.generateOption(animation, 'swing')}}}
+					{{{ptPbApp.generateOption(animation, 'tada')}}}
+					{{{ptPbApp.generateOption(animation, 'wobble')}}}
 				</optgroup>
 
 				<optgroup label="Bouncing Entrances">
-					<%= generateOption(animation, 'bounceIn') %>
-					<%= generateOption(animation, 'bounceInDown') %>
-					<%= generateOption(animation, 'bounceInLeft') %>
-					<%= generateOption(animation, 'bounceInRight') %>
-					<%= generateOption(animation, 'bounceInUp') %>
+					{{{ptPbApp.generateOption(animation, 'bounceIn')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceInDown')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceInLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceInRight')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceInUp')}}}
 				</optgroup>
 
 				<optgroup label="Bouncing Exits">
-					<%= generateOption(animation, 'bounceOut') %>
-					<%= generateOption(animation, 'bounceOutDown') %>
-					<%= generateOption(animation, 'bounceOutLeft') %>
-					<%= generateOption(animation, 'bounceOutRight') %>
-					<%= generateOption(animation, 'bounceOutUp') %>
+					{{{ptPbApp.generateOption(animation, 'bounceOut')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceOutDown')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceOutLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceOutRight')}}}
+					{{{ptPbApp.generateOption(animation, 'bounceOutUp')}}}
 				</optgroup>
 
 				<optgroup label="Fading Entrances">
-					<%= generateOption(animation, 'fadeIn') %>
-					<%= generateOption(animation, 'fadeInDown') %>
-					<%= generateOption(animation, 'fadeInDownBig') %>
-					<%= generateOption(animation, 'fadeInLeft') %>
-					<%= generateOption(animation, 'fadeInLeftBig') %>
-					<%= generateOption(animation, 'fadeInRight') %>
-					<%= generateOption(animation, 'fadeInRightBig') %>
-					<%= generateOption(animation, 'fadeInUp') %>
-					<%= generateOption(animation, 'fadeInUpBig') %>
+					{{{ptPbApp.generateOption(animation, 'fadeIn')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInDown')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInDownBig')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInLeftBig')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInRight')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInRightBig')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInUp')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeInUpBig')}}}
 				</optgroup>
 
 				<optgroup label="Fading Exits">
-					<%= generateOption(animation, 'fadeOut') %>
-					<%= generateOption(animation, 'fadeOutDown') %>
-					<%= generateOption(animation, 'fadeOutDownBig') %>
-					<%= generateOption(animation, 'fadeOutLeft') %>
-					<%= generateOption(animation, 'fadeOutLeftBig') %>
-					<%= generateOption(animation, 'fadeOutRight') %>
-					<%= generateOption(animation, 'fadeOutRightBig') %>
-					<%= generateOption(animation, 'fadeOutUp') %>
-					<%= generateOption(animation, 'fadeOutUpBig') %>
+					{{{ptPbApp.generateOption(animation, 'fadeOut')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutDown')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutDownBig')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutLeftBig')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutRight')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutRightBig')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutUp')}}}
+					{{{ptPbApp.generateOption(animation, 'fadeOutUpBig')}}}
 				</optgroup>
 
 				<optgroup label="Flippers">
-					<%= generateOption(animation, 'flip') %>
-					<%= generateOption(animation, 'flipInX') %>
-					<%= generateOption(animation, 'flipInY') %>
-					<%= generateOption(animation, 'flipOutX') %>
-					<%= generateOption(animation, 'flipOutY') %>
+					{{{ptPbApp.generateOption(animation, 'flip')}}}
+					{{{ptPbApp.generateOption(animation, 'flipInX')}}}
+					{{{ptPbApp.generateOption(animation, 'flipInY')}}}
+					{{{ptPbApp.generateOption(animation, 'flipOutX')}}}
+					{{{ptPbApp.generateOption(animation, 'flipOutY')}}}
 				</optgroup>
 
 				<optgroup label="Lightspeed">
-					<%= generateOption(animation, 'lightSpeedIn') %>
-					<%= generateOption(animation, 'lightSpeedOut') %>
+					{{{ptPbApp.generateOption(animation, 'lightSpeedIn')}}}
+					{{{ptPbApp.generateOption(animation, 'lightSpeedOut')}}}
 				</optgroup>
 
 				<optgroup label="Rotating Entrances">
-					<%= generateOption(animation, 'rotateIn') %>
-					<%= generateOption(animation, 'rotateInDownLeft') %>
-					<%= generateOption(animation, 'rotateInDownRight') %>
-					<%= generateOption(animation, 'rotateInUpLeft') %>
-					<%= generateOption(animation, 'rotateInUpRight') %>
+					{{{ptPbApp.generateOption(animation, 'rotateIn')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateInDownLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateInDownRight')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateInUpLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateInUpRight')}}}
 				</optgroup>
 
 				<optgroup label="Rotating Exits">
-					<%= generateOption(animation, 'rotateOut') %>
-					<%= generateOption(animation, 'rotateOutDownLeft') %>
-					<%= generateOption(animation, 'rotateOutDownRight') %>
-					<%= generateOption(animation, 'rotateOutUpLeft') %>
-					<%= generateOption(animation, 'rotateOutUpRight') %>
+					{{{ptPbApp.generateOption(animation, 'rotateOut')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateOutDownLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateOutDownRight')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateOutUpLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'rotateOutUpRight')}}}
 				</optgroup>
 
 				<optgroup label="Specials">
-					<%= generateOption(animation, 'hinge') %>
-					<%= generateOption(animation, 'rollIn') %>
-					<%= generateOption(animation, 'rollOut') %>
+					{{{ptPbApp.generateOption(animation, 'hinge')}}}
+					{{{ptPbApp.generateOption(animation, 'rollIn')}}}
+					{{{ptPbApp.generateOption(animation, 'rollOut')}}}
 				</optgroup>
 
 				<optgroup label="Zoom Entrances">
-					<%= generateOption(animation, 'zoomIn') %>
-					<%= generateOption(animation, 'zoomInDown') %>
-					<%= generateOption(animation, 'zoomInLeft') %>
-					<%= generateOption(animation, 'zoomInRight') %>
-					<%= generateOption(animation, 'zoomInUp') %>
+					{{{ptPbApp.generateOption(animation, 'zoomIn')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomInDown')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomInLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomInRight')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomInUp')}}}
 				</optgroup>
 
 				<optgroup label="Zoom Exits">
-					<%= generateOption(animation, 'zoomOut') %>
-					<%= generateOption(animation, 'zoomOutDown') %>
-					<%= generateOption(animation, 'zoomOutLeft') %>
-					<%= generateOption(animation, 'zoomOutRight') %>
-					<%= generateOption(animation, 'zoomOutUp') %>
+					{{{ptPbApp.generateOption(animation, 'zoomOut')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomOutDown')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomOutLeft')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomOutRight')}}}
+					{{{ptPbApp.generateOption(animation, 'zoomOutUp')}}}
 				</optgroup>
 			</select>
 

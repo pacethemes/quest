@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-module-slider-template">
+<script type="text/template" id="pt-pb-tmpl-module-slider">
 	<div class="slider-container clearfix">
 
 		<div class="pt-pb-add-slide">

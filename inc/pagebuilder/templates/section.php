@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-section-template">
+<script type="text/template" id="pt-pb-tmpl-section">
 	<div class="pt-pb-header">
 		<h3><?php _e( 'Section', 'quest' ); ?></h3>
 

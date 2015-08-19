@@ -1,15 +1,14 @@
 /* global Backbone, jQuery, _, wp:true */
 var ptPbApp = ptPbApp || {};
 
+
 (function (window, Backbone, $, _, ptPbApp) {
     'use strict';
 
     ptPbApp.SectionView = Backbone.View.extend({
-        template: _.template($('#pt-pb-section-template').html()),
-        $editTemplateId: $('#pt-pb-section-edit-template'),
-        editTemplate: '',
-        $columnTemplateId: $('#pt-pb-insert-column-template'),
-        columnTemplate: '',
+        template: ptPbApp.template('section'),
+        editTemplate: ptPbApp.template('section-edit'),
+        columnTemplate: ptPbApp.template('insert-column'),
         className: 'pt-pb-section grid',
 
         events: {
@@ -29,8 +28,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function (options) {
-            this.editTemplate = _.template(this.$editTemplateId.html());
-            this.columnTemplate = _.template(this.$columnTemplateId.html());
 
             if (!this.model.get('content'))
                 this.model.set('content', new ptPbApp.RowCollection())
@@ -282,9 +279,9 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.RowView = Backbone.View.extend({
-        template: _.template($('#pt-pb-row-template').html()),
+        template: ptPbApp.template('row'),
         className: 'pt-pb-row clearfix',
-        editTemplate: _.template($('#pt-pb-row-edit-template').html()),
+        editTemplate: ptPbApp.template('row-edit'),
 
         events: {
             'click .pt-pb-remove-row': 'removeRow',
@@ -532,10 +529,9 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.ColumnView = Backbone.View.extend({
-        template: _.template($('#pt-pb-column-template').html()),
-        editTemplate: _.template($('#pt-pb-column-edit-template').html()),
-        $moduleTemplateId: $('#pt-pb-insert-module-template'),
-        moduleTemplate: '',
+        template: ptPbApp.template('column'),
+        editTemplate: ptPbApp.template('column-edit'),
+        moduleTemplate: ptPbApp.template('insert-module'),
         className: 'pt-pb-column',
         colClass: 'pt-pb-col-1-1',
         $parent: '',
@@ -555,8 +551,6 @@ var ptPbApp = ptPbApp || {};
             this.colClass = 'pt-pb-col-' + this.model.get('type');
             if (this.model.get('last') === true)
                 this.colClass += ' last';
-            this.moduleTemplate = _.template(this.$moduleTemplateId.html());
-
         },
 
         render: function (cls) {
@@ -639,9 +633,8 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.Modules.SliderView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-slider-template').html()),
-        $editTemplateId: $('#pt-pb-module-slider-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-slider'),
+        editTemplate: ptPbApp.template('module-slider-edit'),
         className: 'pt-pb-slide',
 
         events: {
@@ -652,7 +645,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
             if (this.model.get('slides') === '') {
                 this.model.set('slides', new ptPbApp.SlideCollection())
             }
@@ -750,9 +742,8 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.Modules.SlideView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-slide-template').html()),
-        $editTemplateId: $('#pt-pb-module-slide-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-slide'),
+        editTemplate: ptPbApp.template('module-slide-edit'),
         className: 'pt-pb-column pt-pb-col-1-1',
 
         events: {
@@ -762,7 +753,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
             if (this.model.get('content') == '' && this.model.get('text'))
                 this.model.set('content', this.model.get('text'));
         },
@@ -803,9 +793,8 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.GalleryView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-gallery-template').html()),
-        $editTemplateId: $('#pt-pb-module-gallery-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-gallery'),
+        editTemplate: ptPbApp.template('module-gallery-edit'),
         className: 'pt-pb-gimage',
 
         events: {
@@ -816,7 +805,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
             if (this.model.get('images') === '') {
                 var model = new ptPbApp.GImageCollection();
                 for (var i = 1; i < 5; i++) {
@@ -924,9 +912,8 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.GImageView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-gimage-template').html()),
-        $editTemplateId: $('#pt-pb-module-gimage-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-gimage'),
+        editTemplate: ptPbApp.template('module-gimage-edit'),
         className: 'pt-pb-column pt-pb-col-1-4',
 
         events: {
@@ -936,7 +923,7 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
+
         },
 
         render: function (cls) {
@@ -972,9 +959,8 @@ var ptPbApp = ptPbApp || {};
     });
 
     ptPbApp.Modules.ImageView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-image-template').html()),
-        $editTemplateId: $('#pt-pb-module-image-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-image'),
+        editTemplate: ptPbApp.template('module-image-edit'),
 
         events: {
             'click .save-image': 'updateImage',
@@ -984,7 +970,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
         },
 
         render: function (cls) {
@@ -1028,9 +1013,8 @@ var ptPbApp = ptPbApp || {};
 
 
     ptPbApp.Modules.TextView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-text-template').html()),
-        $editTemplateId: $('#pt-pb-module-text-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-text'),
+        editTemplate: ptPbApp.template('module-text-edit'),
 
         events: {
             'click .content-preview': 'editModel',
@@ -1040,7 +1024,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
         },
 
         render: function (cls) {
@@ -1085,9 +1068,8 @@ var ptPbApp = ptPbApp || {};
 
 
     ptPbApp.Modules.HovericonView = Backbone.View.extend({
-        template: _.template($('#pt-pb-module-hovericon-template').html()),
-        $editTemplateId: $('#pt-pb-module-hovericon-edit-template'),
-        editTemplate: '',
+        template: ptPbApp.template('module-hovericon'),
+        editTemplate: ptPbApp.template('module-hovericon-edit'),
 
         events: {
             'click .content-preview': 'editModel',
@@ -1097,7 +1079,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         initialize: function () {
-            this.editTemplate = _.template(this.$editTemplateId.html());
         },
 
         render: function (cls) {

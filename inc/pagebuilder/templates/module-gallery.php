@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-module-gallery-template">
+<script type="text/template" id="pt-pb-tmpl-module-gallery">
 	<div class="gallery-container clearfix">
 
 		<div class="images-container clearfix"></div>

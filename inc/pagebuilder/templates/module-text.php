@@ -1,4 +1,4 @@
-<script type="text/template" id="pt-pb-module-text-template">
-	<%= partial('pt-pb-module-header-template', { admin_label: admin_label}) %>
-	<div class="content-preview"><%= content %></div>
+<script type="text/template" id="pt-pb-tmpl-module-text">
+	{{{ptPbApp.partial('module-header', { admin_label: admin_label})}}}
+	<div class="content-preview">{{{content}}}</div>
 </script>
