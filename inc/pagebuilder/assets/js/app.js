@@ -4,20 +4,22 @@ var ptPbApp = ptPbApp || {};
     'use strict';
 
     ptPbApp.options = {
-        sectionId: /(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module__items__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__slider(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__gallery(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+))/ig
+        sectionId: /(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module__([0-9]+)__items__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+)__module__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__col__([0-9]+))|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__slider(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)__gallery(__[0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+)__row__([0-9]+)?)|(pt_pb_section__([0-9]+)_([0-9]+))/ig
     };
 
     ptPbApp.cache = {
         $container: $('#pt-pb-main-container'),
         $pageTemplate: $('#page_template'),
         $hiddenEditor: $('#pt-pb-editor-hidden'),
-        editorHtml: ''
+        editorHtml: '',
+        sectionNum: 0
     };
 
     ptPbApp.AddSection = function(model, ind, animate, clone) {
         var newSection = new ptPbApp.SectionModel({}),
             ind = (ind || ptPbApp.Sections.length),
-            id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : 'pt_pb_section__' + ptPbApp.getSectionNum() + '_' + Math.round(new Date().valueOf() / 1000),
+            newId = 'pt_pb_section__' + ptPbApp.getSectionNum(),
+            id = (model && model.attributes && model.attributes.id && !clone) ? model.attributes.id : newId + '_' + Math.round(new Date().valueOf() / 1000),
             el = ptPbApp.cache.$container.find('.pt-pb-section:nth-child(' + ind + ')');
 
         if (model && model.attributes) {
@@ -57,12 +59,12 @@ var ptPbApp = ptPbApp || {};
             ptPbApp.scrollTo($el.offset().top - 50);
         } else {
             $el.show();
+            $el.find('.handlediv').parent().trigger('click');
         }
 
     };
 
     ptPbApp.AddRow = function(row, rowNum, id) {
-        // rowNum = rowNum === 0 ? 1 : rowNum;
 
         var rowType = row.type || ptPbApp.getRowType(row),
             rowId = id + '__row__' + rowNum,
@@ -139,15 +141,29 @@ var ptPbApp = ptPbApp || {};
                         id: colId,
                         type: column['type']
                     };
-                if (column['content'] !== undefined && (column['content'].length > 0 || column['content'].attributes !== undefined || column['content']['type'] !== undefined)) {
 
-                    var content = (typeof column['content'].attributes === 'undefined') ? column['content'] : column['content'].toJSON(),
-                        module = content['type'].toProperCase();
-                    if (!ptPbApp.Modules[module + 'Model']) return;
+                if (column['content'] !== undefined && (!$.isEmptyObject(column['content']) || (column['content'].length > 0 || column['content'].attributes !== undefined || column['content']['type'] !== undefined))) {
 
-                    content['parent'] = colId;
-                    content['id'] = colId + '__module';
-                    colModel['content'] = new ptPbApp.Modules[module + 'Model'](content);
+                    var content = (typeof column['content'].attributes === 'undefined' || !$.isEmptyObject(column['content'])) ? column['content'] : column['content'].toJSON();
+
+                    if (content && typeof content.type !== 'undefined') {
+                        content = [content];
+                    } else if (content) {
+                        content = _(content).toArray();
+                    }
+
+                    colModel['content'] = [];
+
+                    _.each(content, function(mod, k) {
+
+                        var module = mod['type'].toProperCase();
+
+                        if (!ptPbApp.Modules[module + 'Model']) return;
+
+                        mod['parent'] = colId;
+                        mod['id'] = colId + '__module__' + (k+1);
+                        colModel['content'].push(new ptPbApp.Modules[module + 'Model'](mod));
+                    });
 
                 }
                 contentArr.add(new ptPbApp.ColumnModel(colModel));
@@ -255,43 +271,43 @@ var ptPbApp = ptPbApp || {};
         }
     };
 
-    ptPbApp.getSectionNum = function() {
-            if (ptPbApp.Sections instanceof ptPbApp.SectionCollection) {
-                var last = ptPbApp.Sections.last();
-                if (!last) {
-                    return 1;
-                }
+    ptPbApp.getSectionNum = function() {            
+        // if (ptPbApp.Sections instanceof ptPbApp.SectionCollection) {
+        //     var last = ptPbApp.Sections.last();
+        //     if (!last) {
+        //         return 1;
+        //     }
 
-                var matches = last.get('id').match(/pt_pb_section__([0-9]+)_/);
+        //     var matches = last.get('id').match(/pt_pb_section__([0-9]+)_/);
 
-                if (matches.length > 1) {
-                    return parseInt(matches[1]) + 1;
-                }
+        //     if (matches.length > 1) {
+        //         return parseInt(matches[1]) + 1;
+        //     }
 
-            }
-            return 1;
-        },
+        // }
+        return ++ptPbApp.cache.sectionNum;
+    },
 
-        ptPbApp.setHiddenInput = function(id, content, isText) {
+    ptPbApp.setHiddenInput = function(id, content, isText) {
 
-            var name = (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section'),
-                sectionId = id.match(ptPbApp.options.sectionId),
-                input = isText ? $('textarea[name="' + name + '"]') : $('input[name="' + name + '"]');
+        var name = (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section'),
+            sectionId = id.match(ptPbApp.options.sectionId),
+            input = isText ? $('textarea[name="' + name + '"]') : $('input[name="' + name + '"]');
 
-            if (sectionId === null) return;
+        if (sectionId === null) return;
 
-            sectionId = sectionId[0];
+        sectionId = sectionId[0];
 
-            if (input.length > 0) {
-                input.val(content);
-            } else {
-                $('<input />').attr({
-                    'name': name,
-                    'type': 'hidden',
-                    'value': content
-                }).appendTo($('#' + sectionId));
-            }
-        };
+        if (input.length > 0) {
+            input.val(content);
+        } else {
+            $('<input />').attr({
+                'name': name,
+                'type': 'hidden',
+                'value': content
+            }).appendTo($('#' + sectionId));
+        }
+    };
 
 
     ptPbApp.setHiddenInputAll = function(model, el) {

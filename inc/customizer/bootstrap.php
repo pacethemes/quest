@@ -253,6 +253,11 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		}
 
 		public static function PrintCss() {
+			global $post;
+			$is_pagebuilder = false;
+			if ( null !== $post && get_page_template_slug( $post->ID ) === 'page-builder.php' ) {
+				$is_pagebuilder = true;
+			}
 
 			$accent_color       = quest_get_mod( 'colors_global_accent' );
 			$accent_shade_color = quest_get_mod( 'colors_global_accent_shade' );
@@ -451,7 +456,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			endif;
 
 			$single_page_align = quest_get_mod( 'layout_page_content_align' );
-			if ( $single_page_align === 'center' ) : ?>
+			if ( !$is_pagebuilder && $single_page_align === 'center' ) : ?>
 
 				.page .type-page,.page .type-page h1,.page .type-page h2,.page .type-page h3,.page .type-page h4,.page .type-page h5,.page .type-page h6{
 				text-align: center;
@@ -461,7 +466,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 				margin-right: auto;
 				}
 
-			<?php elseif ( $single_page_align === 'right' ) : ?>
+			<?php elseif ( !$is_pagebuilder && $single_page_align === 'right' ) : ?>
 
 				.page .type-page,.page .type-page h1,.page .type-page h2,.page .type-page h3,.page .type-page h4,.page .type-page h5,.page .type-page h6{
 				text-align: right;

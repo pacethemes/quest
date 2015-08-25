@@ -211,6 +211,7 @@ class PT_PageBuilder {
 
 		/* Partial Templates */
 		self::LoadPageBuilderTemplate( 'partial-module-header' );
+		self::LoadPageBuilderTemplate( 'partial-module-padding' );
 		self::LoadPageBuilderTemplate( 'partial-css-class' );
 		self::LoadPageBuilderTemplate( 'partial-admin-label' );
 		self::LoadPageBuilderTemplate( 'partial-form-animation' );

@@ -17,11 +17,11 @@
      Listener for data-reveal-id attributes
      ----------------------------*/
 
-    $('a[data-reveal-id]').live('click', function (e) {
-        e.preventDefault();
-        var modalLocation = $(this).attr('data-reveal-id');
-        $('#' + modalLocation).reveal($(this).data());
-    });
+    // $('a[data-reveal-id]').live('click', function (e) {
+    //     e.preventDefault();
+    //     var modalLocation = $(this).attr('data-reveal-id');
+    //     $('#' + modalLocation).reveal($(this).data());
+    // });
 
     /*---------------------------
      Extend and Execute
@@ -68,7 +68,7 @@
             //Entrance Animations
             modal.bind('reveal:open', function () {
                 modalBG.unbind('click.modalEvent');
-                $('.' + options.dismissmodalclass).unbind('click.modalEvent');
+                // $('.' + options.dismissmodalclass).unbind('click.modalEvent');
                 if (!locked) {
                     lockModal();
                     if (options.animation == "fadeAndPop") {
@@ -145,9 +145,9 @@
             modal.trigger('reveal:open')
 
             //Close Modal Listeners
-            var closeButton = $('.' + options.dismissmodalclass).bind('click.modalEvent', function () {
-                modal.trigger('reveal:close')
-            });
+            // var closeButton = $('.' + options.dismissmodalclass).bind('click.modalEvent', function () {
+            //     modal.trigger('reveal:close')
+            // });
 
             if (options.closeonbackgroundclick) {
                 modalBG.css({"cursor": "pointer"})

@@ -6,8 +6,10 @@
 					class="fa fa-remove"></i></a>
 		</div>
 		<div class="admin-label">{{{admin_label}}}</div>
+		<# if( typeof hideToggle === 'undefined' || !hideToggle ) { #>
 		<a href="#" class="pt-pb-module-toggle" title="<?php _e( 'Click to toggle', 'quest' ); ?>">
 			<div class="handlediv"><br></div>
 		</a>
+		<# } #>
 	</div>
 </script>

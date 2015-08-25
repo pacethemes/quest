@@ -4,7 +4,7 @@
 		<div class="sortable-background column-sortable-background"></div>
 	</div>
 	<div class="pt-pb-column-content">
-		{{{ptPbApp.partial('module-header', { admin_label: admin_label, module: 'gimage' })}}}
+		{{{ptPbApp.partial('module-header', { admin_label: admin_label, module: 'gimage', hideToggle: true })}}}
 		<div class="gimage-content-preview"
 		{{{src != '' ? 'style="background-image:url(' + src + ');"' : void 0}}}>
 		<#if (src == "") {#>

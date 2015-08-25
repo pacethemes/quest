@@ -1,3 +1,14 @@
+##1.2.0
+* Fixes PHP ASP Tags issue caused by BackBoneJS template tags
+* Fixes Slider Settings not saving issue in Safari
+* Fixes Page Builder content being lost issues
+* Fixes Child Theme styles not loaded in correct order issue by defining dependencies for style.css file
+* Updates wow.js to latest version
+* Adds ability to insert Multiple Modules into a single column
+* Adds Module Padding Bottom option
+* Adds ability to insert Multiple Modules into a single column
+* Updates Page Builder UI Colors
+
 ##1.1.10
 * Fixes Issue with Page Builder Tour
 

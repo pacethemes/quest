@@ -23,7 +23,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             border_top_color: '#e5e5e5',
             border_bottom_color: '#e5e5e5',
             hasRows: true,
-            rowNum: 1
+            rowNum: 0
         }
     });
 
@@ -44,7 +44,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             id: '',
             content: [],
             type: '1-1',
-            parent: ''
+            parent: '',
+            moduleNum: 0
         }
     });
 
@@ -60,7 +61,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             interval: '4000',
             speed: '800',
             admin_label: 'Slider',
-            title: 'Edit Slider'
+            title: 'Edit Slider',
+            itemNum: 0
         }
     });
 
@@ -102,7 +104,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             columns: 'four',
             padding: 'yes',
             admin_label: 'Gallery',
-            title: 'Edit Gallery'
+            title: 'Edit Gallery',
+            itemNum: 0
         }
     });
 
@@ -133,6 +136,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             lightbox: false,
             target: '',
             align: 'left',
+            padding_bottom: '20px',
             type: 'image',
             parent: '',
             admin_label: 'Image',
@@ -145,6 +149,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             id: '',
             animation: '',
             content: '',
+            padding_bottom: '20px',
             type: 'text',
             parent: '',
             admin_label: 'Text',
@@ -163,6 +168,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             hover_color: '#fff',
             title: '',
             content: '',
+            padding_bottom: '20px',
             type: 'hovericon',
             parent: '',
             admin_label: 'Hover Icon'

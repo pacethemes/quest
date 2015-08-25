@@ -30,7 +30,9 @@ var ptPbApp = ptPbApp || {};
         initialize: function (options) {
 
             if (!this.model.get('content'))
-                this.model.set('content', new ptPbApp.RowCollection())
+                this.model.set('content', new ptPbApp.RowCollection());
+
+            this.model.set('rowNum', 0);
 
         },
 
@@ -50,6 +52,7 @@ var ptPbApp = ptPbApp || {};
                         model: row
                     }).render().el);
                 });
+                $view.model.set('rowNum', content.models.length)
             }
 
             this.makeRowsSortable();
@@ -190,21 +193,10 @@ var ptPbApp = ptPbApp || {};
         },
 
         _getRowNum: function () {
-            var rows = this.model.get('content');
-            if (rows instanceof ptPbApp.RowCollection) {
-                var last = rows.last();
-                if (!last) {
-                    return 1;
-                }
-
-                var matches = last.get('id').match(/__row__([0-9]+)/);
-
-                if (matches.length > 1) {
-                    return parseInt(matches[1]) + 1;
-                }
-
-            }
-            return 1;
+            var rowNum = this.model.get('rowNum');
+            rowNum++;
+            this.model.set('rowNum');
+            return rowNum;
         },
 
         _createRow: function (type) {
@@ -315,7 +307,7 @@ var ptPbApp = ptPbApp || {};
                 rowId = row.attributes.id,
                 rowContent = row.get('content');
 
-            if (row.get('type') === 'columns') {
+            if (row.get('type') === 'columns' && rowContent && rowContent.models) {
                 _.each(rowContent.models, function (column, ind) {
                     var model = new ptPbApp.ColumnModel(column.attributes || {});
                     model.set('parent', rowId);
@@ -350,6 +342,16 @@ var ptPbApp = ptPbApp || {};
             }
         },
 
+        expandRow: function( callback ){
+            var $head = this.$el.find('.pt-pb-row-header'),
+                $body = $head.siblings('.pt-pb-row-content');
+            $body.slideDown(400, function () {
+                $head.removeClass('close');
+                if(typeof callback === 'function' )
+                    callback();
+            });
+        },
+
         removeRow: function (e, confirm) {
             e.preventDefault();
 
@@ -379,12 +381,18 @@ var ptPbApp = ptPbApp || {};
 
         editSlider: function (e) {
             e.preventDefault();
-            this.$el.find('.pt-pb-slide:first').trigger('edit-slider');
+            var $view = this;
+            this.expandRow(function(){
+                $view.$el.find('.pt-pb-slide:first').trigger('edit-slider');
+            });
         },
 
         editGallery: function (e) {
             e.preventDefault();
-            this.$el.find('.pt-pb-gimage:first').trigger('edit-gallery');
+            var $view = this;
+            this.expandRow(function(){
+                $view.$el.find('.pt-pb-gimage:first').trigger('edit-gallery');
+            });
         },
 
         insertColumns: function (columns) {
@@ -562,12 +570,15 @@ var ptPbApp = ptPbApp || {};
             var $content = this.$el.children('.pt-pb-column-content'),
                 $view = this,
                 content = this.model.get('content');
-            if (content.attributes !== undefined) {
-                $content.html('');
-                var module = content.get('type').toProperCase();
-                $content.append(new ptPbApp.Modules[module + 'View']({
-                    model: content
-                }).render().el);
+
+            if (content.length !== undefined) {
+                _.each(content, function(mod, k) {
+                    var module = mod.get('type').toProperCase();
+                    $content.append(new ptPbApp.Modules[module + 'View']({
+                        model: mod
+                    }).render().el);
+                });
+                this.model.set('moduleNum', content.length);
             }
 
             ptPbApp.setHiddenInputAll(this.model, this.$el);
@@ -593,31 +604,36 @@ var ptPbApp = ptPbApp || {};
 
             var $col = this,
                 $content = this.$el.children('.pt-pb-column-content'),
+                modules = this.model.get('content'),
+                moduleNum = this._getModuleNum(),
                 atts = {};
 
-
-            $content.html('');
-
             atts['parent'] = this.model.id;
-            atts['id'] = this.model.id + '__module';
+            atts['id'] = this.model.id + '__module__' + moduleNum;
             var model = new ptPbApp.Modules[module + 'Model'](atts),
                 view = new ptPbApp.Modules[module + 'View']({
                     model: model
                 });
 
             $content.append(view.render().el);
-            this.model.set('content', model);
+            modules.push(model);
+            this.model.set('content', modules);
             this.cache.parent.get('content').add(this.model, {merge: true});
             this.closeReveal(true);
             view.editModel();
 
         },
 
-        removeModule: function (e) {
+        removeModule: function (e, data) {
             var confirm = window.confirm("Are you sure you want to remove this Module ? This step cannot be undone");
-            if (confirm) {
-                this.model.set('content', []);
-                this.render();
+            if (confirm && data && data.moduleId) {
+                var modules = modules = this.model.get('content');
+                _.each(modules, function(module, i) {
+                    if( data.moduleId === module.get('id') )
+                        modules.splice(i, 1);
+                });
+                this.model.set('content', modules);
+                $('#' + data.moduleId).remove();
             }
         },
 
@@ -629,6 +645,13 @@ var ptPbApp = ptPbApp || {};
                 reveal.remove();
             }, 500);
         },
+
+        _getModuleNum: function(){
+            var num = this.model.get('moduleNum');
+            ++num;
+            this.model.set('moduleNum', num);
+            return num;
+        }
 
     });
 
@@ -667,8 +690,8 @@ var ptPbApp = ptPbApp || {};
 
         makeSlidesSortable: function () {
             var $view = this;
-            $view.$el.sortable({
-                handle: '.pt-pb-column-sortable',
+            $view.$el.children('.slider-container').sortable({
+                handle: '.module-controls',
                 forcePlaceholderSizeType: true,
                 distance: 5,
                 tolerance: 'pointer',
@@ -698,14 +721,15 @@ var ptPbApp = ptPbApp || {};
         _addSlide: function (params, animate) {
             var slide = params || new ptPbApp.SlideModel({}),
                 slides = this.model.get('slides'),
-                $content = this.$el.find('.slider-container');
+                $content = this.$el.find('.slider-container'),
+                newId = this.model.id + '__' + this._getItemNum();
 
             if (params && params.text)
                 slide.set('content', params.text)
 
             slide.set({
                 'parent': this.model.id,
-                'id': params ? params.id : this.model.id + '__' + (slides.length + 1)
+                'id': newId
             });
 
             slides.add(slide, {
@@ -737,6 +761,13 @@ var ptPbApp = ptPbApp || {};
                 this.model.get('slides').remove(id);
                 $slide.remove();
             }
+        },
+
+         _getItemNum: function(){
+            var num = this.model.get('itemNum');
+            ++num;
+            this.model.set('itemNum', num);
+            return num;
         }
 
     });
@@ -810,7 +841,7 @@ var ptPbApp = ptPbApp || {};
                 for (var i = 1; i < 5; i++) {
                     var image = new ptPbApp.GImageModel({
                         'parent': this.model.id,
-                        'id': this.model.id + '__' + i
+                        'id': this.model.id + '__' + this._getItemNum()
                     });
                     model.add(image);
                 }
@@ -838,8 +869,8 @@ var ptPbApp = ptPbApp || {};
 
         makeImagesSortable: function () {
             var $view = this;
-            $view.$el.sortable({
-                handle: '.pt-pb-column-sortable',
+            $view.$el.find('.images-container').sortable({
+                handle: '.module-controls',
                 forcePlaceholderSizeType: true,
                 distance: 5,
                 tolerance: 'pointer',
@@ -871,11 +902,12 @@ var ptPbApp = ptPbApp || {};
         _addImage: function (params, animate) {
             var image = params || new ptPbApp.GImageModel({}),
                 images = this.model.get('images'),
-                $content = this.$el.find('.images-container');
+                $content = this.$el.find('.images-container'),
+                newId = this.model.id + '__' + this._getItemNum();
 
             image.set({
                 'parent': this.model.id,
-                'id': params ? params.id : this.model.id + '__' + (images.length + 1)
+                'id': newId
             });
 
             images.add(image, {
@@ -907,6 +939,13 @@ var ptPbApp = ptPbApp || {};
                 this.model.get('images').remove(id);
                 $image.remove();
             }
+        },
+
+         _getItemNum: function(){
+            var num = this.model.get('itemNum');
+            ++num;
+            this.model.set('itemNum', num);
+            return num;
         }
 
     });
@@ -961,6 +1000,7 @@ var ptPbApp = ptPbApp || {};
     ptPbApp.Modules.ImageView = Backbone.View.extend({
         template: ptPbApp.template('module-image'),
         editTemplate: ptPbApp.template('module-image-edit'),
+        className: 'pt-pb-module-preview',
 
         events: {
             'click .save-image': 'updateImage',
@@ -989,7 +1029,7 @@ var ptPbApp = ptPbApp || {};
 
         removeModel: function (e) {
             e.preventDefault();
-            $('#' + this.model.get('parent')).trigger('remove-module')
+            $('#' + this.model.get('parent')).trigger('remove-module', {moduleId: this.model.get('id')});
         },
 
         updateImage: function () {
@@ -1015,6 +1055,7 @@ var ptPbApp = ptPbApp || {};
     ptPbApp.Modules.TextView = Backbone.View.extend({
         template: ptPbApp.template('module-text'),
         editTemplate: ptPbApp.template('module-text-edit'),
+        className: 'pt-pb-module-preview',
 
         events: {
             'click .content-preview': 'editModel',
@@ -1044,7 +1085,7 @@ var ptPbApp = ptPbApp || {};
 
         removeModel: function (e) {
             e.preventDefault();
-            $('#' + this.model.get('parent')).trigger('remove-module')
+            $('#' + this.model.get('parent')).trigger('remove-module', {moduleId: this.model.get('id')})
         },
 
         updateContent: function (e) {
@@ -1070,6 +1111,7 @@ var ptPbApp = ptPbApp || {};
     ptPbApp.Modules.HovericonView = Backbone.View.extend({
         template: ptPbApp.template('module-hovericon'),
         editTemplate: ptPbApp.template('module-hovericon-edit'),
+        className: 'pt-pb-module-preview',
 
         events: {
             'click .content-preview': 'editModel',
@@ -1100,7 +1142,7 @@ var ptPbApp = ptPbApp || {};
 
         removeModel: function (e) {
             e.preventDefault();
-            $('#' + this.model.get('parent')).trigger('remove-module');
+            $('#' + this.model.get('parent')).trigger('remove-module', {moduleId: this.model.get('id')});
         },
 
         updateModel: function (e) {

@@ -80,7 +80,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				return;
 			}
 
-			if ( $postarr['post_type'] === 'revision' || ! isset( $postarr['pt_pb_section'] ) ) {
+			if ( ! isset( $postarr['pt_pb_section'] ) ) {
 				return $data;
 			}
 
@@ -280,8 +280,10 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			$cssClass = $this->_getColumnClass( $column['type'] );
 			$content  = "\t\t\t<div class='$cssClass'>\n\t\t\t\t";
 
-			if ( isset( $column['module'] ) ) {
-				$content .= $this->generateModule( $column['module'] );
+			if ( isset( $column['module'] ) && !empty( $column['module'] ) ) {
+				foreach ( $column['module'] as $module ) {
+					$content .= $this->generateModule( $module );
+				}
 			}
 
 			$content .= "\n\t\t\t</div>\n";
@@ -295,6 +297,10 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 * @return string
 		 */
 		private function generateModule( $module ) {
+			
+			if ( !isset( $module['type'] ) || empty( $module['type'] ) )
+				return '';
+
 			$cls = "PT_PageBuilder_" . ucwords( $module['type'] ) . "_Module";
 			if ( ! class_exists( $cls ) ) {
 				return "";
@@ -663,7 +669,7 @@ if ( ! class_exists( 'PT_PageBuilder_Image_Module' ) ) :
 
 		public function getContent() {
 			$image   = $this->_module;
-			$content = "<figure style='text-align:{$image['align']}'>";
+			$content = "<figure style='text-align:{$image['align']};padding-bottom:{$image['padding_bottom']};'>";
 
 			$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
@@ -708,7 +714,7 @@ if ( ! class_exists( 'PT_PageBuilder_Text_Module' ) ) :
 		public function getContent() {
 			$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
 
-			return "<div class='module-text$cls'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
+			return "<div class='module-text$cls' style='padding-bottom:{$this->_module['padding_bottom']};'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
 		}
 
 	}
@@ -734,7 +740,7 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 			$content   = PT_PageBuilder_Helper::getContent( $this->_module );
 			$url       = esc_url( $this->_module['href'] );
 
-			return "<div class='hover-icon$cls' id='{$this->_module['id']}'>
+			return "<div class='hover-icon$cls' id='{$this->_module['id']}' style='padding-bottom:{$this->_module['padding_bottom']};'>
 					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
 				</div>";
 		}

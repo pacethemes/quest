@@ -148,7 +148,14 @@ if ( ! function_exists( 'quest_scripts' ) ):
 		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
 		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
 		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/colorbox.css' );
-		wp_enqueue_style( 'Quest-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), 	array(
+        	'quest-bootstrap',
+        	'smartmenus',
+        	'font-awesome',
+        	'animate-css',
+        	'slit-slider',
+        	'colorbox'
+    	) );
 
 		// Enqueue required scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
@@ -157,7 +164,7 @@ if ( ! function_exists( 'quest_scripts' ) ):
 			'masonry'
 		) );
 		wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/assets/plugins/smoothscroll/SmoothScroll.js' );
-		wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.js' );
+		wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.min.js' );
 		wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.js', array( 'jquery' ) );
 		wp_enqueue_script( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js' );
 		wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/jquery.colorbox-min.js', array( 'jquery' ) );

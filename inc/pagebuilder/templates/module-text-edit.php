@@ -12,7 +12,7 @@
 					<p class="description"><?php _e( 'Content', 'quest' ) ?></p>
 				</div>
 			</div>
-
+			{{{ptPbApp.partial('module-padding', { padding_bottom: padding_bottom })}}}
 			{{{ptPbApp.partial('form-animation', { animation: animation })}}}
 			{{{ptPbApp.partial('form-admin-label', { admin_label: admin_label })}}}
 
