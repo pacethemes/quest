@@ -157,7 +157,13 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 							continue;
 						}
 
-						if ( $col['module']['type'] === 'hovericon' ) {
+						if( is_array( $col['module'] ) ) {
+							foreach ( $col['module'] as $l => $module ) {
+								if ( $module['type'] === 'hovericon' ){
+									$css .= self::BuildHoverIconCss( $module );
+								}
+							}
+						} elseif ( isset( $col['module']['type'] ) && $col['module']['type'] === 'hovericon' ) {
 							$css .= self::BuildHoverIconCss( $col['module'] );
 						}
 					}

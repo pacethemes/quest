@@ -1,3 +1,6 @@
+##1.2.1
+* Fixes Hovericon Color issue caused my Multiple modules feature
+
 ##1.2.0
 * Fixes PHP ASP Tags issue caused by BackBoneJS template tags
 * Fixes Slider Settings not saving issue in Safari
