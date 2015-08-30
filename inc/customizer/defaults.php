@@ -99,6 +99,10 @@ $quest_defaults = array(
 	'colors_menu_sub_hover_bg'                => '#fff',
 	'colors_menu_sub_bg'                      => '#f5f5f5',
 	'colors_menu_sub_border'                  => '#e0e0e0',
+	/*Mobile menu*/
+	'colors_menu_mob_bg'	             	=> '#f5f5f5',
+	'colors_menu_mob'		             	=> '#444444',
+	'colors_menu_mob_hover'	             	=> '#222222',
 	/* Title Container */
 	'colors_title_bg'                         => '#f5f5f5',
 	'colors_title_text'                       => '#333',

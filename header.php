@@ -77,8 +77,9 @@
 
 				<nav id="site-navigation" class="main-navigation col-md-8" role="navigation">
 					<div class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-collapse">
-						<span class="menu-text"><?php _e( 'Menu', 'quest' ) ?></span>
-						<i class="fa fa-reorder"></i>
+						<a href="#" title="<?php _e( 'Menu', 'quest' ) ?>">
+							<i class="fa fa-reorder"></i>
+						</a>
 					</div>
 					<div class="navbar-collapse collapse" id="main-menu-collapse">
 						<?php if ( has_nav_menu( 'primary' ) ) {

@@ -1,3 +1,9 @@
+##1.2.2
+* Fixes Slider Text responsive issue on Mobile Devices
+* Fixes Safari compaitibility issues
+* Changes Mobile Menu Toggle Layout
+* Adds Mobile Menu Background, Item Color and Item Hover Color options to customizer
+
 ##1.2.1
 * Fixes Hovericon Color issue caused my Multiple modules feature
 

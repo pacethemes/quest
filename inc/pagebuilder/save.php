@@ -368,14 +368,22 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				           'slice1_scale',
 				           'slice2_scale'
 			           ) ) . "><div class='sl-slide-inner'>";
+			           
 			$content .= "<div class='sl-slide-inner' style='" . $this->_getCssProperties( $slide ) . "'>";
 
-			$content .= "<div class='sl-slide-content'><h2 class='sl-slide-title' style='" . $this->_getCssProperties( array(
+			$content .= "<div class='sl-slide-content'>";
+
+			if( !empty( $slide['heading'] ) ) :
+
+			$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array(
 					'text_color' => $slide['heading_color'],
 					'text_size'  => $slide['heading_size']
 				) ) . "'> <span style='" . $this->_getCssProperties( array(
 					'bg_color' => $slide['heading_bg_color'],
 				) ) . "'>" . $slide['heading'] . "</span></h2>";
+
+			endif;
+
 			$content .= "<div class='sl-slide-text' style='" . $this->_getCssProperties( array(
 					'text_color' => $slide['text_color'],
 					'text_size'  => $slide['text_size']

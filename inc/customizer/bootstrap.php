@@ -157,14 +157,19 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 							continue;
 						}
 
-						if( is_array( $col['module'] ) ) {
+						if( is_array( $col['module'] ) && !array_key_exists('id', $col['module'] ) ) {
 							foreach ( $col['module'] as $l => $module ) {
 								if ( $module['type'] === 'hovericon' ){
 									$css .= self::BuildHoverIconCss( $module );
 								}
+								$css .= apply_filters( "pt_pb_css_module_{$module['type']}", '', $module );
 							}
-						} elseif ( isset( $col['module']['type'] ) && $col['module']['type'] === 'hovericon' ) {
-							$css .= self::BuildHoverIconCss( $col['module'] );
+						} elseif ( isset( $col['module']['type'] ) ) {
+							if( $col['module']['type'] === 'hovericon' ) {
+								$css .= self::BuildHoverIconCss( $col['module'] );
+							}
+
+							$css .= apply_filters( "pt_pb_css_module_{$col['module']['type']}", '', $col['module'] );
 						}
 					}
 				}
@@ -275,9 +280,9 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			?>
 
 			/* Theme/Text Colors */
-			.entry-content blockquote,.action-icon.normal,.action, .pagination>.active>a, .pagination .current, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle, .main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent { border-color: <?php
+			.entry-content blockquote,.action-icon.normal,.action, .pagination>.active>a, .pagination .current, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent { border-color: <?php
 			echo $accent_color; ?> ; }
-			.button, input[type="submit"],#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle,.quest-gallery .quest-gallery-thumb .fa, .sticky-post-label,.cd-top  { background-color: <?php
+			.button, input[type="submit"],#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .quest-gallery .quest-gallery-thumb .fa, .sticky-post-label,.cd-top  { background-color: <?php
 			echo $accent_color; ?> ; }
 			span a, p a,a,a.tag,.pagination a,.action-icon.normal, .pagination>li>a, .pagination>li>span, .main-navigation .nav > li.current-menu-item > a, .main-navigation .nav > li.current-menu-parent > a { color: <?php
 			echo $accent_color; ?> ; }
@@ -327,7 +332,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			.secondary-header .social-icon-container .social-icon:hover { color: <?php
 			echo quest_get_mod( 'colors_header2_sc_si_hover' ); ?>; background-color: <?php
 			echo quest_get_mod( 'colors_header2_sc_si_hover_bg' ); ?>;}
-			.main-navigation .nav > li > a { color: <?php
+			.main-navigation .nav > li > a, .main-navigation .navbar-toggle { color: <?php
 			echo quest_get_mod( 'colors_menu_text' ); ?> ; }
 			.main-navigation .nav > li:hover > a { color: <?php
 			echo quest_get_mod( 'colors_menu_hover' ); ?> ; }
@@ -341,6 +346,26 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			.main-navigation .nav .dropdown-menu li:hover > a, .main-navigation .nav .dropdown-menu li:focus > a, .main-navigation .nav .dropdown-menu li.current-menu-item a, .main-navigation .nav .dropdown-menu li.current-menu-ancestor > a { background-color: <?php
 			echo quest_get_mod( 'colors_menu_sub_hover_bg' ); ?> ; color: <?php
 			echo quest_get_mod( 'colors_menu_sub_hover' ); ?> ; }
+
+			@media (max-width: 767px) {
+			.main-header .main-navigation .navbar-collapse{
+			background-color: <?php echo quest_get_mod( 'colors_menu_mob_bg' ); ?> !important;
+			}
+			.main-header .main-navigation .nav li a {
+			color: <?php echo quest_get_mod( 'colors_menu_mob' ); ?> !important;
+			}
+			.main-header .main-navigation .nav li a:hover, .main-navigation .nav .dropdown-menu li:hover > a, .main-navigation .nav .dropdown-menu li:focus > a, .main-navigation .nav .dropdown-menu li.current-menu-item a, .main-navigation .nav .dropdown-menu li.current-menu-ancestor > a {
+			color: <?php echo quest_get_mod( 'colors_menu_mob_hover' ); ?> !important;
+			background-color: transparent !important;
+			}
+			.main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent{
+				border-color: transparent !important;
+			}
+			.main-navigation .nav .dropdown-menu{
+			background-color: transparent !important;
+			}
+			}
+
 
 			#title-container { background-color: <?php
 			echo quest_get_mod( 'colors_title_bg' ); ?> ; color: <?php
