@@ -3,7 +3,7 @@
 		<label for="animation"><?php _e( 'CSS3 Animation', 'quest' ); ?>: </label>
 
 		<div class="pt-pb-option-container">
-			<select class="js-animations" name="animation">
+			<select class="js-animations" name="{{{pre}}}[animation]">
 					{{{ptPbApp.generateOption(animation, '', 'none')}}}
 				<optgroup label="Attention Seekers">
 					{{{ptPbApp.generateOption(animation, 'bounce')}}}

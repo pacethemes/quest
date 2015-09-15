@@ -4,7 +4,7 @@
  * Author:      Pace Themes
  * Author URI:  http://pacethemes.com
  * Description: Your Quest for an awesome WordPress theme ends right here. Quest let's you create the website you need without having any coding knowledge. Quest offers a powerful click, drag and drop page builder to help you create amazing pages to showcase your content while offering a slick user interface therein increasing your user experience. Quest also includes powerful and flexible easy to understand and easy to use customization options to customize the entire layout of your site including background images, colors, typography and so on. Build your site now using Quest - blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't limit you when it comes to your creativity. Quest is built on the famous bootstrap framework which uses a mobile first approach, this will ensure your site works properly on all mobiles, tablets, laptops and desktops. Theme demo is available at http://quest.demo.pacethemes.com/
- * Version:     1.2.2
+ * Version:     1.2.5
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: quest
@@ -2029,7 +2029,7 @@ form.search {
 }
 
 @media(max-width: 480px) {
-    .col-md-3 h1.logo {
+    .col-md-3 .logo {
         text-align: center;
         padding: 0;
     }
@@ -2070,20 +2070,35 @@ form.search {
     }
 }
 
-h1.logo {
+.logo {
     margin: 0;
     text-align: left;
     //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
     transition: all 0.2s ease;
+    .retina{
+        display: none;
+    }
 }
 
-.col-md-12 h1.logo {
+
+@media(min-width: 2500px) {
+    .logo{
+        .normal{
+            display: none;
+        }
+        .retina{
+            display: block;
+        }
+    }
+}
+
+.col-md-12 .logo {
     text-align: center;
 }
 
 @media(max-width: 767px) {
     .site-branding {
-        h1.logo,
+        .logo,
         .site-title,
         .site-description {
             text-align: center !important;

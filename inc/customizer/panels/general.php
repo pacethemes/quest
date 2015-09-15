@@ -133,6 +133,30 @@ class Quest_Customize_General {
 			)
 		);
 
+		$setting_id = $section_id . '_logo_retina';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'esc_url_raw'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    		=> __( 'Retina Logo', 'quest' ),
+					'description'   => __( 'Will be visible only on devices with screen width more than 2500px', 'quest' ),
+					'section'  		=> $section_id,
+					'settings' 		=> $setting_id
+				)
+			)
+		);
+
 
 		$setting_id = $section_id . '_favicon';
 

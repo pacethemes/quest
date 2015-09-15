@@ -14,6 +14,7 @@ $quest_defaults = array(
 	'title_tagline_hide_tagline'              => 0,
 	/* Logo */
 	'logo_logo'                               => '',
+	'logo_logo_retina'                        => '',
 	'logo_favicon'                            => '',
 	'sticky_label'                            => 'Featured',
 	/************

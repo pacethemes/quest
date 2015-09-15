@@ -1,4 +1,5 @@
 /* global Backbone, jQuery, _ */
+
 var ptPbApp = ptPbApp || {};
 ptPbApp.Modules = ptPbApp.Modules || {};
 
@@ -23,7 +24,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             border_top_color: '#e5e5e5',
             border_bottom_color: '#e5e5e5',
             hasRows: true,
-            rowNum: 0
+            rowNum: 0,
+            admin_label: 'Section'
         }
     });
 
@@ -35,7 +37,8 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             type: 'columns',
             padding_top: '0px',
             padding_bottom: '0px',
-            vertical_align: 'default'
+            vertical_align: 'default',
+            admin_label: ''
         }
     });
 
@@ -136,7 +139,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             lightbox: false,
             target: '',
             align: 'left',
-            padding_bottom: '20px',
+            margin_bottom: '20px',
             type: 'image',
             parent: '',
             admin_label: 'Image',
@@ -149,7 +152,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             id: '',
             animation: '',
             content: '',
-            padding_bottom: '20px',
+            margin_bottom: '20px',
             type: 'text',
             parent: '',
             admin_label: 'Text',
@@ -168,7 +171,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             hover_color: '#fff',
             title: '',
             content: '',
-            padding_bottom: '20px',
+            margin_bottom: '20px',
             type: 'hovericon',
             parent: '',
             admin_label: 'Hover Icon'

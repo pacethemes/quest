@@ -64,7 +64,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				return;
 			}
 
-			update_post_meta( $post_id, 'pt_pb_sections', $this->_sections );
+			update_post_meta( $post_id, 'pt_pb_sections', PT_PageBuilder_Helper::encode_pb_section_metadata( $this->_sections ) );
 
 		}
 
@@ -112,6 +112,8 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				//If the columns are not set or the current iteration is not a section then we dont have to sort the columns
 				if ( array_key_exists( 'row', $section ) ) {
 					$sorted[] = $this->sortRows( $section );
+				} else {
+					$sorted[] = $section;
 				}
 			}
 
@@ -656,7 +658,53 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		}
 
 		public static function getContent( $module ) {
-			return isset( $module['content'] ) ? $module['content'] : "";
+			return isset( $module['content'] ) ? wp_kses_post( stripslashes( $module['content'] ) ) : "";
+		}
+
+		/**
+		 * Decodes Page Builder Meta Data if it's encoded, uses `json_decode` and `base64_decode`
+		 * @since  1.2.5
+		 * 
+		 * @return string $decode
+		 */
+		public static function decode_pb_section_metadata( $meta ){
+			// If the meta is an array we are dealing with non encoded older Meta Data
+			if( is_array( $meta ) )
+				return $meta;
+
+			// Perform base64 decode on the encoded meta string
+			$decode = base64_decode( $meta );
+
+			if( $decode ) {
+				// Perform json decode on the meta
+				$decode = json_decode( $decode );
+
+				if( $decode )
+					return $decode;
+			}
+
+			return;
+		}
+
+		/**
+		 * Encodes Page Builder Meta Data to base64 format to handle PHP `serialize` issues with UTF8 characters
+		 * WordPress `update_post_meta` serializes the data and in some cases (probably depends on hostng env.)
+		 * the serialized data is not being unserialized. So we convert the Meta Data into base64 and then serialize it
+		 * Uses `json_encode` and `base64_encode`
+		 * 
+		 * @since  1.2.5
+		 * 
+		 * @return string $decode
+		 */
+		public static function encode_pb_section_metadata( $meta ){
+
+			//convert the array to json so that we can perform a base64 encode
+			$encode = json_encode( $meta );
+
+			//convert the json string to base64
+			$encode = base64_encode( $encode );
+
+			return $encode;
 		}
 
 	}
@@ -677,7 +725,8 @@ if ( ! class_exists( 'PT_PageBuilder_Image_Module' ) ) :
 
 		public function getContent() {
 			$image   = $this->_module;
-			$content = "<figure style='text-align:{$image['align']};padding-bottom:{$image['padding_bottom']};'>";
+			$mb 	 = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
+			$content = "<figure style='text-align:{$image['align']};margin-bottom:$mb;'>";
 
 			$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
@@ -721,8 +770,8 @@ if ( ! class_exists( 'PT_PageBuilder_Text_Module' ) ) :
 
 		public function getContent() {
 			$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
-
-			return "<div class='module-text$cls' style='padding-bottom:{$this->_module['padding_bottom']};'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
+			$mb  = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
+			return "<div class='module-text$cls' style='margin-bottom:$mb;'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
 		}
 
 	}
@@ -747,8 +796,9 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 			$color_alt = $this->_module['hover_color'];
 			$content   = PT_PageBuilder_Helper::getContent( $this->_module );
 			$url       = esc_url( $this->_module['href'] );
+			$mb 	   = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
 
-			return "<div class='hover-icon$cls' id='{$this->_module['id']}' style='padding-bottom:{$this->_module['padding_bottom']};'>
+			return "<div class='hover-icon$cls' id='{$this->_module['id']}' style='margin-bottom:$mb;'>
 					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
 				</div>";
 		}

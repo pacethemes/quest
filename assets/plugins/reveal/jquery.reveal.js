@@ -34,7 +34,8 @@
             animation: 'fade', //fade, fadeAndPop, none
             animationspeed: 300, //how fast animtions are
             closeonbackgroundclick: true, //if you click background will modal close?
-            dismissmodalclass: 'close-reveal-modal1' //the class of a button or element that will close an open modal
+            dismissmodalclass: 'close-reveal-modal', //the class of a button or element that will close an open modal
+            openImmediate: false
         };
 
         //Extend dem' options
@@ -55,18 +56,26 @@
              Create Modal BG
              ----------------------------*/
             if (modalBG.length == 0) {
-                modalBG = $('<div class="reveal-modal-bg" />').insertAfter(modal);
+                modalBG = $('<div class="reveal-modal-bg" />').appendTo($('body'));
             }
 
             if (modal.find('.close-reveal-modal').length == 0) {
                 modal.append('<a class="close-reveal-modal">×</a>');
             }
 
+            modal.find('.close-reveal-modal, .close-model').bind('click', function(e){
+                e.preventDefault();
+                modal.trigger('reveal:close');
+            });
+
             /*---------------------------
              Open & Close Animations
              ----------------------------*/
             //Entrance Animations
             modal.bind('reveal:open', function () {
+                $("body").css({
+                    overflow: 'hidden'
+                });
                 modalBG.unbind('click.modalEvent');
                 // $('.' + options.dismissmodalclass).unbind('click.modalEvent');
                 if (!locked) {
@@ -98,15 +107,23 @@
                         unlockModal()
                     }
                 }
-                modal.unbind('reveal:open');
+                // modal.unbind('reveal:open');
             });
 
             //Closing Animation
-            modal.bind('reveal:close', function (e, openModalBg) {
+            modal.bind('reveal:close', function (e, data) {
+                data = data || {};
                 if (!locked) {
                     lockModal();
+                    if (data.immediate || options.animation == "none") {
+                        modal.css({'visibility': 'hidden', 'display': 'none'});
+                        if (!data.openModalBg) {
+                            modalBG.css({'display': 'none'});
+                        }
+                        return;
+                    }
                     if (options.animation == "fadeAndPop") {
-                        if (!openModalBg) {
+                        if (!data.openModalBg) {
                             modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
                         }
                         modal.animate({
@@ -118,7 +135,7 @@
                         });
                     }
                     if (options.animation == "fade") {
-                        if (!openModalBg) {
+                        if (!data.openModalBg) {
                             modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
                         }
                         modal.animate({
@@ -128,21 +145,26 @@
                             unlockModal();
                         });
                     }
-                    if (options.animation == "none") {
-                        modal.css({'visibility': 'hidden', 'display': 'block'});
-                        if (!openModalBg) {
-                            modalBG.css({'display': 'none'});
-                        }
-                    }
                 }
-                modal.unbind('reveal:close');
+
+                //remove tinyMCE editor whenever Reveal modal is closed
+                if(!data.keepEditor && ptPbApp && ptPbApp.removeEditor) {
+                    ptPbApp.removeEditor();
+                }
+                // modal.unbind('reveal:close');
+                
+                $("body").css({
+                    overflow: 'inherit'
+                });
             });
 
             /*---------------------------
              Open and add Closing Listeners
              ----------------------------*/
-            //Open Modal Immediately
-            modal.trigger('reveal:open')
+            if(options.openImmediate) {
+                //Open Modal Immediately
+                modal.trigger('reveal:open');
+            }
 
             //Close Modal Listeners
             // var closeButton = $('.' + options.dismissmodalclass).bind('click.modalEvent', function () {

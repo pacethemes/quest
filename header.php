@@ -53,14 +53,19 @@
 			<div class="row">
 				<div class="site-branding col-md-4">
 
-					<?php $logo = quest_get_mod( 'logo_logo' );
+					<?php 
+					$logo = quest_get_mod( 'logo_logo' );
+					$logo_retina = quest_get_mod( 'logo_logo_retina' );
+					$logo_retina = $logo_retina === '' ? $logo : $logo_retina ;
 					if ( $logo !== '' ): ?>
-						<h1 class="logo">
+						<div class="logo">
 							<a href="<?php echo esc_url( home_url() ); ?>">
-								<img src="<?php echo esc_url( $logo ); ?>"
+								<img class="normal" src="<?php echo esc_url( $logo ); ?>"
+								     alt="<?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?>">
+								<img class="retina" src="<?php echo esc_url( $logo_retina ); ?>"
 								     alt="<?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?>">
 							</a>
-						</h1>
+						</div>
 					<?php endif; ?>
 
 					<?php if ( ! quest_get_mod( 'title_tagline_hide_title' ) ) : ?>

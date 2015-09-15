@@ -15,7 +15,7 @@ $view = quest_get_view();
 					<main id="main" class="site-main" role="main">
 
 						<?php if ( have_posts() ) : ?>
-							<div id="grid-container" class="clearfix">
+							<div class="clearfix grid-container">
 
 								<?php /* Start the Loop */ ?>
 								<?php while ( have_posts() ) : the_post(); ?>
