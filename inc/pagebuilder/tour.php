@@ -7,7 +7,7 @@
 </div>
 
 <ol class='tourbus-legs' id='pt-pb-tour' style="display:none">
-	
+
 	<li data-scroll-to='0' data-highlight='true' data-width='500' data-orientation='centered' data-top='150'>
 		<div class='content'>
 			<h3><?php _e( 'Welcome to the Page Builder Tour', 'quest' ) ?></h3>
@@ -21,18 +21,22 @@
 
 		<div class='buttons'>
 			<a href='javascript:void(0);'
-			   class='button remove-bottom tourbus-stop'><span>&times;</span> <?php _e( 'Not interested...', 'quest' ) ?></a>
-			<a href='http://pacethemes.com/knowledgebase/' class='button remove-bottom' target='_blank'><?php _e( 'Got any docs?', 'quest' ) ?></a>
+			   class='button remove-bottom tourbus-stop'><span>&times;</span> <?php _e( 'Not interested...', 'quest' ) ?>
+			</a>
+			<a href='http://pacethemes.com/knowledgebase/' class='button remove-bottom'
+			   target='_blank'><?php _e( 'Got any docs?', 'quest' ) ?></a>
 			<a href='javascript:void(0);' style='float: right;'
-			   class='button button-primary remove-bottom tourbus-next'><?php _e( 'Continue', 'quest' ) ?> <span>&raquo;</span></a>
+			   class='button button-primary remove-bottom tourbus-next'><?php _e( 'Continue', 'quest' ) ?>
+				<span>&raquo;</span></a>
 			<a href='javascript:void(0);'
-			   class='button remove-bottom tourbus-stop endtour' style='display:none'><?php _e( 'End Tour', 'quest' ) ?></a>
+			   class='button remove-bottom tourbus-stop endtour'
+			   style='display:none'><?php _e( 'End Tour', 'quest' ) ?></a>
 		</div>
 	</li>
 
 	<li id='pt-pb-tour-page-template' data-el='#page_template' data-highlight='true' data-width='220'
 	    data-orientation='bottom' data-align='center'>
-		
+
 		<p>
 			<?php _e( 'Change the Template to Page Builder to start using the Page Builder. Change it now to continue', 'quest' ) ?>
 		</p>

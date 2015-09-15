@@ -148,14 +148,14 @@ if ( ! function_exists( 'quest_scripts' ) ):
 		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
 		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
 		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/colorbox.css' );
-		wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), 	array(
-        	'quest-bootstrap',
-        	'smartmenus',
-        	'font-awesome',
-        	'animate-css',
-        	'slit-slider',
-        	'colorbox'
-    	) );
+		wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array(
+			'quest-bootstrap',
+			'smartmenus',
+			'font-awesome',
+			'animate-css',
+			'slit-slider',
+			'colorbox'
+		) );
 
 		// Enqueue required scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );

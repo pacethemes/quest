@@ -67,7 +67,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 * @since MyTheme 1.0
 		 */
 		public static function Register( $wp_customize ) {
-			$quest_customizer_path  = trailingslashit( get_template_directory() ) . 'inc/customizer/';
+			$quest_customizer_path = trailingslashit( get_template_directory() ) . 'inc/customizer/';
 
 			// Load all custom controls
 			require $quest_customizer_path . "custom-controls/google-fonts-control.php";
@@ -157,15 +157,15 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 							continue;
 						}
 
-						if( is_array( $col['module'] ) && !array_key_exists('id', $col['module'] ) ) {
+						if ( is_array( $col['module'] ) && ! array_key_exists( 'id', $col['module'] ) ) {
 							foreach ( $col['module'] as $l => $module ) {
-								if ( $module['type'] === 'hovericon' ){
+								if ( $module['type'] === 'hovericon' ) {
 									$css .= self::BuildHoverIconCss( $module );
 								}
 								$css .= apply_filters( "pt_pb_css_module_{$module['type']}", '', $module );
 							}
 						} elseif ( isset( $col['module']['type'] ) ) {
-							if( $col['module']['type'] === 'hovericon' ) {
+							if ( $col['module']['type'] === 'hovericon' ) {
 								$css .= self::BuildHoverIconCss( $col['module'] );
 							}
 
@@ -358,7 +358,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			background-color: transparent !important;
 			}
 			.main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent{
-				border-color: transparent !important;
+			border-color: transparent !important;
 			}
 			.main-navigation .nav .dropdown-menu{
 			background-color: transparent !important;
@@ -486,7 +486,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			endif;
 
 			$single_page_align = quest_get_mod( 'layout_page_content_align' );
-			if ( !$is_pagebuilder && $single_page_align === 'center' ) : ?>
+			if ( ! $is_pagebuilder && $single_page_align === 'center' ) : ?>
 
 				.page .type-page,.page .type-page h1,.page .type-page h2,.page .type-page h3,.page .type-page h4,.page .type-page h5,.page .type-page h6{
 				text-align: center;
@@ -496,7 +496,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 				margin-right: auto;
 				}
 
-			<?php elseif ( !$is_pagebuilder && $single_page_align === 'right' ) : ?>
+			<?php elseif ( ! $is_pagebuilder && $single_page_align === 'right' ) : ?>
 
 				.page .type-page,.page .type-page h1,.page .type-page h2,.page .type-page h3,.page .type-page h4,.page .type-page h5,.page .type-page h6{
 				text-align: right;

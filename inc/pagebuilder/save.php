@@ -282,7 +282,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			$cssClass = $this->_getColumnClass( $column['type'] );
 			$content  = "\t\t\t<div class='$cssClass'>\n\t\t\t\t";
 
-			if ( isset( $column['module'] ) && !empty( $column['module'] ) ) {
+			if ( isset( $column['module'] ) && ! empty( $column['module'] ) ) {
 				foreach ( $column['module'] as $module ) {
 					$content .= $this->generateModule( $module );
 				}
@@ -299,9 +299,10 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 * @return string
 		 */
 		private function generateModule( $module ) {
-			
-			if ( !isset( $module['type'] ) || empty( $module['type'] ) )
+
+			if ( ! isset( $module['type'] ) || empty( $module['type'] ) ) {
 				return '';
+			}
 
 			$cls = "PT_PageBuilder_" . ucwords( $module['type'] ) . "_Module";
 			if ( ! class_exists( $cls ) ) {
@@ -370,19 +371,19 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				           'slice1_scale',
 				           'slice2_scale'
 			           ) ) . "><div class='sl-slide-inner'>";
-			           
+
 			$content .= "<div class='sl-slide-inner' style='" . $this->_getCssProperties( $slide ) . "'>";
 
 			$content .= "<div class='sl-slide-content'>";
 
-			if( !empty( $slide['heading'] ) ) :
+			if ( ! empty( $slide['heading'] ) ) :
 
-			$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array(
-					'text_color' => $slide['heading_color'],
-					'text_size'  => $slide['heading_size']
-				) ) . "'> <span style='" . $this->_getCssProperties( array(
-					'bg_color' => $slide['heading_bg_color'],
-				) ) . "'>" . $slide['heading'] . "</span></h2>";
+				$content .= "<h2 class='sl-slide-title' style='" . $this->_getCssProperties( array(
+						'text_color' => $slide['heading_color'],
+						'text_size'  => $slide['heading_size']
+					) ) . "'> <span style='" . $this->_getCssProperties( array(
+						'bg_color' => $slide['heading_bg_color'],
+					) ) . "'>" . $slide['heading'] . "</span></h2>";
 
 			endif;
 
@@ -664,23 +665,25 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		/**
 		 * Decodes Page Builder Meta Data if it's encoded, uses `json_decode` and `base64_decode`
 		 * @since  1.2.5
-		 * 
+		 *
 		 * @return string $decode
 		 */
-		public static function decode_pb_section_metadata( $meta ){
+		public static function decode_pb_section_metadata( $meta ) {
 			// If the meta is an array we are dealing with non encoded older Meta Data
-			if( is_array( $meta ) )
+			if ( is_array( $meta ) ) {
 				return $meta;
+			}
 
 			// Perform base64 decode on the encoded meta string
 			$decode = base64_decode( $meta );
 
-			if( $decode ) {
+			if ( $decode ) {
 				// Perform json decode on the meta
 				$decode = json_decode( $decode );
 
-				if( $decode )
+				if ( $decode ) {
 					return $decode;
+				}
 			}
 
 			return;
@@ -691,12 +694,12 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 * WordPress `update_post_meta` serializes the data and in some cases (probably depends on hostng env.)
 		 * the serialized data is not being unserialized. So we convert the Meta Data into base64 and then serialize it
 		 * Uses `json_encode` and `base64_encode`
-		 * 
+		 *
 		 * @since  1.2.5
-		 * 
+		 *
 		 * @return string $decode
 		 */
-		public static function encode_pb_section_metadata( $meta ){
+		public static function encode_pb_section_metadata( $meta ) {
 
 			//convert the array to json so that we can perform a base64 encode
 			$encode = json_encode( $meta );
@@ -725,7 +728,7 @@ if ( ! class_exists( 'PT_PageBuilder_Image_Module' ) ) :
 
 		public function getContent() {
 			$image   = $this->_module;
-			$mb 	 = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
+			$mb      = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
 			$content = "<figure style='text-align:{$image['align']};margin-bottom:$mb;'>";
 
 			$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
@@ -771,6 +774,7 @@ if ( ! class_exists( 'PT_PageBuilder_Text_Module' ) ) :
 		public function getContent() {
 			$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
 			$mb  = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
+
 			return "<div class='module-text$cls' style='margin-bottom:$mb;'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
 		}
 
@@ -796,7 +800,7 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 			$color_alt = $this->_module['hover_color'];
 			$content   = PT_PageBuilder_Helper::getContent( $this->_module );
 			$url       = esc_url( $this->_module['href'] );
-			$mb 	   = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
+			$mb        = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
 
 			return "<div class='hover-icon$cls' id='{$this->_module['id']}' style='margin-bottom:$mb;'>
 					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}

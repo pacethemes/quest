@@ -53,10 +53,10 @@
 			<div class="row">
 				<div class="site-branding col-md-4">
 
-					<?php 
-					$logo = quest_get_mod( 'logo_logo' );
+					<?php
+					$logo        = quest_get_mod( 'logo_logo' );
 					$logo_retina = quest_get_mod( 'logo_logo_retina' );
-					$logo_retina = $logo_retina === '' ? $logo : $logo_retina ;
+					$logo_retina = $logo_retina === '' ? $logo : $logo_retina;
 					if ( $logo !== '' ): ?>
 						<div class="logo">
 							<a href="<?php echo esc_url( home_url() ); ?>">

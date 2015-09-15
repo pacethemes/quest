@@ -27,8 +27,9 @@ class PT_PageBuilder {
 		add_action( 'after_setup_theme', array( $this, 'InitializeMetaBox' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'EnqueueAssets' ), 10, 1 );
 
-		if ( in_array( $GLOBALS['pagenow'], array( 'edit.php', 'post.php' , 'post-new.php' ) ) )
+		if ( in_array( $GLOBALS['pagenow'], array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 			add_action( 'admin_footer', array( $this, 'PageBuilderTour' ) );
+		}
 	}
 
 	/**

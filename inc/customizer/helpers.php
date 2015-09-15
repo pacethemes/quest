@@ -248,12 +248,12 @@ if ( ! function_exists( 'quest_sanitize_font_subsets' ) ):
 	 *
 	 * @return string
 	 */
-	
+
 	function quest_sanitize_font_subsets( $values ) {
 
-	    $multi_values = !is_array( $values ) ? explode( ',', $values ) : $values;
+		$multi_values = ! is_array( $values ) ? explode( ',', $values ) : $values;
 
-	    return !empty( $multi_values ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
+		return ! empty( $multi_values ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
 	}
 endif;
 

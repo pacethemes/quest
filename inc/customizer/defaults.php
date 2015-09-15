@@ -101,9 +101,9 @@ $quest_defaults = array(
 	'colors_menu_sub_bg'                      => '#f5f5f5',
 	'colors_menu_sub_border'                  => '#e0e0e0',
 	/*Mobile menu*/
-	'colors_menu_mob_bg'	             	=> '#f5f5f5',
-	'colors_menu_mob'		             	=> '#444444',
-	'colors_menu_mob_hover'	             	=> '#222222',
+	'colors_menu_mob_bg'                      => '#f5f5f5',
+	'colors_menu_mob'                         => '#444444',
+	'colors_menu_mob_hover'                   => '#222222',
 	/* Title Container */
 	'colors_title_bg'                         => '#f5f5f5',
 	'colors_title_text'                       => '#333',
@@ -123,8 +123,7 @@ $quest_defaults = array(
 	 ******************/
 
 	/* Font Options */
-	'typography_options_subsets'           	  => array( 'latin' ),
-
+	'typography_options_subsets'              => array( 'latin' ),
 	/* Global */
 	'typography_global_font_family'           => 'Open Sans',
 	'typography_global_font_variant'          => '300',
@@ -303,16 +302,16 @@ $quest_defaults = array(
 			'icons_search'   => __( 'Social Icons + Search', 'quest' ),
 			'search_icons'   => __( 'Search + Social Icons', 'quest' )
 		),
-		'typography_options_subsets' => array(
-			'latin'  => __( 'Latin', 'quest' ),
-			'latin-ext' => __( 'Latin Extended', 'quest' ),
-			'greek'  => __( 'Greek', 'quest' ),
-			'greek-ext' => __( 'Greek Extended', 'quest' ),
-			'cyrillic'   => __( 'Cyrillic', 'quest' ),
+		'typography_options_subsets'     => array(
+			'latin'        => __( 'Latin', 'quest' ),
+			'latin-ext'    => __( 'Latin Extended', 'quest' ),
+			'greek'        => __( 'Greek', 'quest' ),
+			'greek-ext'    => __( 'Greek Extended', 'quest' ),
+			'cyrillic'     => __( 'Cyrillic', 'quest' ),
 			'cyrillic-ext' => __( 'Cyrillic Extended', 'quest' ),
-			'vietnamese' => __( 'Vietnamese', 'quest' ),
-			'arabic'   => __( 'Arabic', 'quest' ),
-			'khmer'  => __( 'Khmer', 'quest' ),
+			'vietnamese'   => __( 'Vietnamese', 'quest' ),
+			'arabic'       => __( 'Arabic', 'quest' ),
+			'khmer'        => __( 'Khmer', 'quest' ),
 			'devanagari'   => __( 'Devanagari', 'quest' )
 		)
 

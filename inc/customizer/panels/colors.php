@@ -774,9 +774,9 @@ class Quest_Customize_Colors {
 				$wp_customize,
 				$setting_id,
 				array(
-					'label'       => __( 'Mobile Menu Background Color', 'quest-plus' ),
-					'section'     => $section_id,
-					'settings'    => $setting_id
+					'label'    => __( 'Mobile Menu Background Color', 'quest-plus' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
 				)
 			)
 		);
@@ -797,9 +797,9 @@ class Quest_Customize_Colors {
 				$wp_customize,
 				$setting_id,
 				array(
-					'label'       => __( 'Mobile Menu Item Color', 'quest-plus' ),
-					'section'     => $section_id,
-					'settings'    => $setting_id
+					'label'    => __( 'Mobile Menu Item Color', 'quest-plus' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
 				)
 			)
 		);
@@ -820,9 +820,9 @@ class Quest_Customize_Colors {
 				$wp_customize,
 				$setting_id,
 				array(
-					'label'       => __( 'Mobile Menu Item Hover Color', 'quest-plus' ),
-					'section'     => $section_id,
-					'settings'    => $setting_id
+					'label'    => __( 'Mobile Menu Item Hover Color', 'quest-plus' ),
+					'section'  => $section_id,
+					'settings' => $setting_id
 				)
 			)
 		);

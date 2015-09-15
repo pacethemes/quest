@@ -149,10 +149,10 @@ class Quest_Customize_General {
 				$wp_customize,
 				$setting_id,
 				array(
-					'label'    		=> __( 'Retina Logo', 'quest' ),
-					'description'   => __( 'Will be visible only on devices with screen width more than 2500px', 'quest' ),
-					'section'  		=> $section_id,
-					'settings' 		=> $setting_id
+					'label'       => __( 'Retina Logo', 'quest' ),
+					'description' => __( 'Will be visible only on devices with screen width more than 2500px', 'quest' ),
+					'section'     => $section_id,
+					'settings'    => $setting_id
 				)
 			)
 		);

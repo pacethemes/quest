@@ -4,7 +4,7 @@
  *
  * @package Quest
  */
-$view      = quest_get_view();
+$view = quest_get_view();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

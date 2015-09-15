@@ -44,24 +44,24 @@ class Quest_Customize_Typography {
 		);
 
 		$wp_customize->add_setting(
-	        $setting_id,
-	        array(
-	            'default'           =>  quest_get_default( $setting_id ),
-	            'sanitize_callback' => 'quest_sanitize_font_subsets'
-	        )
-	    );
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'sanitize_callback' => 'quest_sanitize_font_subsets'
+			)
+		);
 
-	    $wp_customize->add_control(
-	        new Quest_Customize_Control_Checkbox_Multiple(
-	            $wp_customize,
-	            $setting_id,
-	            array(
-	                'section' => $section_id,
-	                'label'   => __( 'Choose Google Font Subsets', 'quest' ),
-	                'choices' => quest_get_choices( $setting_id )
-	            )
-	        )
-	    );
+		$wp_customize->add_control(
+			new Quest_Customize_Control_Checkbox_Multiple(
+				$wp_customize,
+				$setting_id,
+				array(
+					'section' => $section_id,
+					'label'   => __( 'Choose Google Font Subsets', 'quest' ),
+					'choices' => quest_get_choices( $setting_id )
+				)
+			)
+		);
 
 		/******************
 		 * // Global Section
