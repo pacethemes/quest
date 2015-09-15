@@ -1,3 +1,11 @@
+##1.2.5
+* Fixes Page Builder Data `serialize` issue
+* Changes the way Page Builder hidden input elements are created to save Page Builder Data, this should improve performance
+* Adds Retina Logo option
+* Adds Section Label option in Page Builder
+* Adds Row Label option in Page Builder
+* Code Cleanup
+
 ##1.2.2
 * Fixes Slider Text responsive issue on Mobile Devices
 * Fixes Safari compaitibility issues
