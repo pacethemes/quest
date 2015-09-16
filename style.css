@@ -1090,7 +1090,10 @@ form.search .fa-search {
     .main-navigation .nav {
       float: none;
       text-align: center;
-      display: inline-block; } }
+      display: inline-block; }
+
+  .logo {
+    text-align: center !important; } }
 @media (max-width: 767px) {
   .main-navigation .navbar-collapse {
     padding: 0; }
