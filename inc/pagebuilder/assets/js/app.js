@@ -300,7 +300,7 @@ var ptPbApp = ptPbApp || {};
         }
     };
 
-    ptPbApp.createEditor = function(el, text) {
+    ptPbApp.createEditor = function(el) {
         if (!el || el.length === 0) {
             return;
         }
@@ -314,7 +314,7 @@ var ptPbApp = ptPbApp || {};
 
             window.wpActiveEditor = 'pt_pb_editor';
 
-            ptPbApp.setContent(text);
+            ptPbApp.setContent(el.val());
 
         }, 100);
     };

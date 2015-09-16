@@ -800,7 +800,7 @@ var ptPbApp = ptPbApp || {};
 
         editModel: function(e) {
             if (e) e.preventDefault();
-            ptPbApp.createEditor(this.$content, this.model.get('content'));
+            ptPbApp.createEditor(this.$content);
             this.$reveal.trigger('reveal:open');
         },
 
@@ -1070,7 +1070,7 @@ var ptPbApp = ptPbApp || {};
 
         editModel: function(e) {
             if (e) e.preventDefault();
-            ptPbApp.createEditor(this.$content, this.model.get('content'));
+            ptPbApp.createEditor(this.$content);
             this.$reveal.trigger('reveal:open');
         },
 
@@ -1127,7 +1127,7 @@ var ptPbApp = ptPbApp || {};
 
         editModel: function(e) {
             if (e) e.preventDefault();
-            ptPbApp.createEditor(this.$content, this.model.get('content'));
+            ptPbApp.createEditor(this.$content);
             this.$reveal.trigger('reveal:open');
         },
 

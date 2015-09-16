@@ -87,7 +87,7 @@
 					<label for="content"><?php _e( 'Icon Text', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
-						<input name="{{{pre}}}[content]" class="hidden" value="{{content}}" type="hidden" />
+						<input name="{{{pre}}}[content]" class="hidden" value="{{{ptPbApp.htmlEncode(content)}}}" type="hidden" />
 
 						<p class="description"><?php _e( 'This will be the text below the Icon Title', 'quest' ) ?></p>
 					</div>

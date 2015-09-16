@@ -14,7 +14,7 @@
 					<label for="content"><?php _e( 'Content', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
-						<input name="{{{pre}}}[content]" class="hidden" value="{{content}}" type="hidden" />
+						<input name="{{{pre}}}[content]" class="hidden" value="{{{ptPbApp.htmlEncode(content)}}}" type="hidden" />
 
 						<p class="description"><?php _e( 'Content', 'quest' ) ?></p>
 					</div>

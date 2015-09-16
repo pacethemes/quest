@@ -3,22 +3,22 @@
 
 var ptPbApp = ptPbApp || {};
 
-(function ($, _) {
-	
-	String.prototype.toProperCase = function () {
-	    return this.replace(/\w\S*/g, function (txt) {
-	        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	    });
-	};
+(function($, _) {
+
+    String.prototype.toProperCase = function() {
+        return this.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    };
 
     /**
      * Serializes an array / params to a javascript object
      * @return object
      */
-    $.fn.serializeObject = function () {
+    $.fn.serializeObject = function() {
         var o = {};
         var a = this.serializeArray();
-        $.each(a, function () {
+        $.each(a, function() {
             if (o[this.name] !== undefined) {
                 if (!o[this.name].push) {
                     o[this.name] = [o[this.name]];
@@ -35,11 +35,11 @@ var ptPbApp = ptPbApp || {};
      * Bind all reveal events
      */
     $.fn.revealBind = function() {
-    	// Initialize reveal
-	    this.reveal();
+        // Initialize reveal
+        this.reveal();
 
-	    //Bind media upload events
-	    this.find('.pt-pb-upload-field').each(function() {
+        //Bind media upload events
+        this.find('.pt-pb-upload-field').each(function() {
             var el = $(this);
             if (el.val() !== '') {
                 el.siblings('.pt-pb-upload-button').hide();
@@ -85,69 +85,78 @@ var ptPbApp = ptPbApp || {};
         this.find('.pt-pb-color').wpColorPicker();
 
         this.find('.js-animations').on('change', function(e) {
-	        e.preventDefault();
-	        var $select = $(e.target),
-	            $preview = $select.siblings('.animation-preview');
+            e.preventDefault();
+            var $select = $(e.target),
+                $preview = $select.siblings('.animation-preview');
 
-	        $preview.removeClass().addClass($select.val() + ' animated animation-preview').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-	            $(this).removeClass().addClass('animation-preview');
-	        });
-	    });
+            $preview.removeClass().addClass($select.val() + ' animated animation-preview').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $(this).removeClass().addClass('animation-preview');
+            });
+        });
 
-	    return this;
-	};
+        return this;
+    };
 
-	/**
-	 * ptPbApp.template( id )
-	 *
-	 * Fetch a JavaScript template for an id, and return a templating function for it.
-	 *
-	 * @param  {string} id   A string that corresponds to a DOM element with an id prefixed with "tmpl-".
-	 *                       For example, "attachment" maps to "tmpl-attachment".
-	 * @return {function}    A function that lazily-compiles the template requested.
-	 */
-	ptPbApp.template = _.memoize(function ( id ) {
-		var compiled,
-			/*
-			 * Underscore's default ERB-style templates are incompatible with PHP
-			 * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
-			 *
-			 * code reference - @see trac ticket #22344.
-			 */
-			options = {
-				evaluate:    /<#([\s\S]+?)#>/g,
-				interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
-				escape:      /\{\{([^\}]+?)\}\}(?!\})/g
-			};
+    /**
+     * ptPbApp.template( id )
+     *
+     * Fetch a JavaScript template for an id, and return a templating function for it.
+     *
+     * @param  {string} id   A string that corresponds to a DOM element with an id prefixed with "tmpl-".
+     *                       For example, "attachment" maps to "tmpl-attachment".
+     * @return {function}    A function that lazily-compiles the template requested.
+     */
+    ptPbApp.template = _.memoize(function(id) {
+        var compiled,
+            /*
+             * Underscore's default ERB-style templates are incompatible with PHP
+             * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
+             *
+             * code reference - @see trac ticket #22344.
+             */
+            options = {
+                evaluate: /<#([\s\S]+?)#>/g,
+                interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
+                escape: /\{\{([^\}]+?)\}\}(?!\})/g
+            };
 
-		return function ( data ) {
-			compiled = compiled || _.template( $( '#pt-pb-tmpl-' + id ).html(), null, options );
-			return compiled( data );
-		};
-	});
+        return function(data) {
+            compiled = compiled || _.template($('#pt-pb-tmpl-' + id).html(), null, options);
+            return compiled(data);
+        };
+    });
 
-	ptPbApp.partial = function(which, data) {
-	    return ptPbApp.template(which)(data);
-	};
+    ptPbApp.partial = function(which, data) {
+        return ptPbApp.template(which)(data);
+    };
 
-	ptPbApp.generateOption = function(selected, value, name) {
-	    if (!name)
-	        name = value;
-	    return '<option value="' + value + '" ' + (value == selected ? 'selected' : '') + ' >' + name + '</option>';
-	};
+    ptPbApp.generateOption = function(selected, value, name) {
+        if (!name)
+            name = value;
+        return '<option value="' + value + '" ' + (value == selected ? 'selected' : '') + ' >' + name + '</option>';
+    };
 
-	ptPbApp.getInputPrefix = function(id){
-		return (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section');
-	};
+    ptPbApp.getInputPrefix = function(id) {
+        return (id.split('__').join('][') + ']').replace('pt_pb_section]', 'pt_pb_section');
+    };
 
-	ptPbApp.serializeElms = function(elm){
-		var arr = elm.serializeObject(),
-			result = {};
-		$.each(arr, function(i,v){
-			var n = i.split('][').slice(-1)[0].replace(']','') || 'nn' ;
-			result[n] = v;
-		});
-		return result;
-	};
+    ptPbApp.serializeElms = function(elm) {
+        var arr = elm.serializeObject(),
+            result = {};
+        $.each(arr, function(i, v) {
+            var n = i.split('][').slice(-1)[0].replace(']', '') || 'nn';
+            result[n] = v;
+        });
+        return result;
+    };
+
+    ptPbApp.htmlEncode = function(value) {
+        return String(value.replace(/\\\"/g, '"'))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    };
 
 }(jQuery, _));

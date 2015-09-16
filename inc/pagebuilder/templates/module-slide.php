@@ -188,7 +188,7 @@
 					<label for="text"><?php _e( 'Slide Text', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
-						<input name="{{{pre}}}[content]" class="hidden" value="{{content}}" type="hidden" />
+						<input name="{{{pre}}}[content]" class="hidden" value="{{{ptPbApp.htmlEncode(content)}}}" type="hidden" />
 
 						<p class="description"><?php _e( 'Content for the slide, this will be displayed in the front end below the heading', 'quest' ) ?></p>
 					</div>
