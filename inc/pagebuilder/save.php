@@ -666,7 +666,7 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 * Decodes Page Builder Meta Data if it's encoded, uses `json_decode` and `base64_decode`
 		 * @since  1.2.5
 		 *
-		 * @return string $decode
+		 * @return string 
 		 */
 		public static function decode_pb_section_metadata( $meta ) {
 			// If the meta is an array we are dealing with non encoded older Meta Data
@@ -674,19 +674,8 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 				return $meta;
 			}
 
-			// Perform base64 decode on the encoded meta string
-			$decode = base64_decode( $meta );
-
-			if ( $decode ) {
-				// Perform json decode on the meta
-				$decode = json_decode( $decode );
-
-				if ( $decode ) {
-					return $decode;
-				}
-			}
-
-			return;
+			// Perform json decode on the meta
+			return json_decode( $meta );
 		}
 
 		/**
@@ -697,17 +686,12 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @since  1.2.5
 		 *
-		 * @return string $decode
+		 * @return string 
 		 */
 		public static function encode_pb_section_metadata( $meta ) {
 
-			//convert the array to json so that we can perform a base64 encode
-			$encode = json_encode( $meta );
-
-			//convert the json string to base64
-			$encode = base64_encode( $encode );
-
-			return $encode;
+			//convert the array to json so that we can save it as a string in the post_meta table
+			return wp_slash( json_encode( $meta ) );
 		}
 
 	}

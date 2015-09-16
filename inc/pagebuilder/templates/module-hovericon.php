@@ -6,7 +6,7 @@
 				<a href="#{{{href}}}" class="fa fa-{{{size}}}x {{{icon}}}"></a>
 
 				<h3 class="icon-title">{{{title}}}</h3>
-				{{{content}}}
+				{{{ptPbApp.stripslashes(content)}}}
 			</div>
 		</div>
 

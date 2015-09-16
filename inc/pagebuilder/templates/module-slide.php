@@ -25,7 +25,7 @@
 				<#}#>
 
 				<# if (content != "") {#>
-				<div class="slide-text" style="{{{text_color != '' ? 'color:' + text_color + ';' : void 0 }}}">{{{content}}}
+				<div class="slide-text" style="{{{text_color != '' ? 'color:' + text_color + ';' : void 0 }}}">{{{ptPbApp.stripslashes(content)}}}
 				</div>
 				<# }#>
 			</div>

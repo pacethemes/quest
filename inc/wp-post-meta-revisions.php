@@ -151,10 +151,10 @@ if ( ! class_exists( 'WP_Post_Meta_Revisioning' ) ) :
 			$post_id  = $revision->post_parent;
 			// Save revisioned meta fields.
 			foreach ( $this->_wp_post_revision_meta_keys() as $meta_key ) {
-				$meta_value = get_post_meta( $post_id, $meta_key );
+				$meta_value = get_post_meta( $post_id, $meta_key, true );
 
 				// Don't save blank meta values
-				if ( array_key_exists( 0, $meta_value ) && '' !== $meta_value[0] ) {
+				if ( '' !== $meta_value ) {
 
 					/*
 					 * Use the underlying add_metadata() function vs add_post_meta()
@@ -183,6 +183,8 @@ if ( ! class_exists( 'WP_Post_Meta_Revisioning' ) ) :
 						foreach ( $meta_values as $meta_value ) {
 							add_post_meta( $post_id, $meta_key, $meta_value );
 						}
+					} else if( !empty( $meta_values ) ) {
+						add_post_meta( $post_id, $meta_key, wp_slash( $meta_values ) );
 					}
 				}
 			}

@@ -2,7 +2,7 @@
 	<div class="pt-pb-wrap">
 		<div class="pt-pb-text-preview">
 			{{{ptPbApp.partial('module-header', { admin_label: admin_label})}}}
-			<div class="content-preview">{{{content}}}</div>
+			<div class="content-preview">{{{ptPbApp.stripslashes(content)}}}</div>
 		</div>
 
 		<div class="pt-pb-text-edit reveal-modal">
