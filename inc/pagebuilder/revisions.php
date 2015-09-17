@@ -1,8 +1,10 @@
 <?php
 
-if ( ! class_exists( 'WP_Post_Meta_Revisioning' ) ) :
+require trailingslashit( dirname( __FILE__ ) ) . 'helper.php';
 
-	class WP_Post_Meta_Revisioning {
+if ( ! class_exists( 'Quest_WP_Post_Meta_Revisioning' ) ) :
+
+	class Quest_WP_Post_Meta_Revisioning {
 
 		/**
 		 * Set up the plugin actions
@@ -74,7 +76,10 @@ if ( ! class_exists( 'WP_Post_Meta_Revisioning' ) ) :
 						/**
 						 * Add the revisions meta data to the autosave.
 						 */
-						add_metadata( 'post', $new_autosave['ID'], $meta_key, $posted_data[ $meta_key ] );
+						
+						$encoded = PT_PageBuilder_Helper::encode_pb_section_metadata( $posted_data[ $meta_key ] );
+
+						add_metadata( 'post', $new_autosave['ID'], $meta_key, $encoded );
 					}
 				}
 			}
@@ -160,33 +165,32 @@ if ( ! class_exists( 'WP_Post_Meta_Revisioning' ) ) :
 					 * Use the underlying add_metadata() function vs add_post_meta()
 					 * to ensure metadata is added to the revision post and not its parent.
 					 */
+					 if( $meta_key === 'pt_pb_sections' ){
+					 	$meta_value = wp_slash( $meta_value );
+					 }
+
 					add_metadata( 'post', $revision_id, $meta_key, $meta_value );
 				}
 			}
 			// Save the revisioned meta keys so we know which meta keys were revisioned
-			add_metadata( 'post', $revision_id, '_wp_post_revision_meta_keys', $this->_wp_post_revision_meta_keys() );
+			// add_metadata( 'post', $revision_id, '_wp_post_revision_meta_keys', $this->_wp_post_revision_meta_keys() );
 		}
 
 		/**
 		 * Restore the revisioned meta values for a post
 		 */
 		public function _wp_restore_post_revision_meta( $post_id, $revision_id ) {
-			// Restore revisioned meta fields; first get the keys for this revision
-			$metas_revisioned = wp_unslash( get_metadata( 'post', $revision_id, '_wp_post_revision_meta_keys' ) );
-			if ( 0 !== sizeof( $metas_revisioned[0] ) ) {
-				foreach ( $metas_revisioned[0] as $meta_key ) {
-					// Clear any existing metas
-					delete_post_meta( $post_id, $meta_key );
-					// Get the stored meta, not stored === blank
-					$meta_values = get_post_meta( $revision_id, $meta_key, true );
-					if ( 0 !== sizeof( $meta_values ) && is_array( $meta_values ) ) {
-						foreach ( $meta_values as $meta_value ) {
-							add_post_meta( $post_id, $meta_key, $meta_value );
-						}
-					} else if( !empty( $meta_values ) ) {
-						add_post_meta( $post_id, $meta_key, wp_slash( $meta_values ) );
-					}
+			// Clear any existing metas
+			$meta_key = 'pt_pb_sections';
+			delete_post_meta( $post_id, $meta_key );
+			// Get the stored meta, not stored === blank
+			$meta_values = get_post_meta( $revision_id, $meta_key , true );
+			if ( 0 !== sizeof( $meta_values ) && is_array( $meta_values ) ) {
+				foreach ( $meta_values as $meta_value ) {
+					add_post_meta( $post_id, $meta_key, wp_slash( $meta_value ) );
 				}
+			} else if( !empty( $meta_values ) ) {
+				add_post_meta( $post_id, $meta_key, wp_slash( $meta_values ) );
 			}
 		}
 
@@ -231,7 +235,7 @@ if ( ! class_exists( 'WP_Post_Meta_Revisioning' ) ) :
 
 endif;
 
-$wp_Post_Meta_Revisioning = new WP_Post_Meta_Revisioning;
+$Quest_wp_Post_Meta_Revisioning = new Quest_WP_Post_Meta_Revisioning;
 
 //Only works with WordPress version 4.1+
 if ( version_compare( $wp_version, '4.1', '>=' ) ) {

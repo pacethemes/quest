@@ -138,7 +138,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			}
 
 			$css      = "\n/* Hover Icons */\n";
-			$sections = get_post_meta( $post->ID, 'pt_pb_sections', true );
+			$sections = PT_PageBuilder_Helper::decode_pb_section_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) );
 
 			foreach ( $sections as $key => $section ) {
 				$css .= self::BuildSectionCss( $section );

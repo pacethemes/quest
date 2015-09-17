@@ -1,3 +1,7 @@
+##1.2.6
+* Fixes Page Builder meta data encode method
+* Fixes Hover Icon Colors issue
+
 ##1.2.5
 * Fixes Page Builder Data `serialize` issue
 * Changes the way Page Builder hidden input elements are created to save Page Builder Data, this should improve performance

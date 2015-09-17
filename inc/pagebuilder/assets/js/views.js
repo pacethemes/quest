@@ -187,7 +187,7 @@ var ptPbApp = ptPbApp || {};
         _getRowNum: function() {
             var rowNum = this.model.get('rowNum');
             rowNum++;
-            this.model.set('rowNum');
+            this.model.set('rowNum', rowNum);
             return rowNum;
         },
 
@@ -209,13 +209,15 @@ var ptPbApp = ptPbApp || {};
                 rowId = $row.attr('id'),
                 rows = this.model.get('content'),
                 rowNum = this._getRowNum(),
-                row = ptPbApp.AddRow(rows.get(rowId).toJSON(), rowNum, this.model.get('id'));
+                row = ptPbApp.AddRow(rows.get(rowId).toJSON(), rowNum, this.model.get('id')),
+                rowEl = new ptPbApp.RowView({
+                    model: row,
+                    parent: this.model
+                }).render().el;
 
             rows.add(row);
-            $row.after(new ptPbApp.RowView({
-                model: row,
-                parent: this.model
-            }).render().el);
+            $row.after(rowEl);
+            ptPbApp.scrollTo($(rowEl).offset().top - 50);
             this.model.set('content', rows);
 
         },

@@ -1,5 +1,7 @@
 <?php
 
+require trailingslashit( dirname( __FILE__ ) ) . 'helper.php';
+
 if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 	/**
 	 * PT_PageBuilder_Save class provides functionality to generate HTML markup based on the sections & modules built using the Page Builder
@@ -10,7 +12,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		private static $instance;
 
 		//Holds the prepared sections posted by Page Builder
-		private $_sections;
+		private $_sections = array();
 
 
 		public function __construct() {
@@ -64,7 +66,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				return;
 			}
 
-			update_post_meta( $post_id, 'pt_pb_sections', PT_PageBuilder_Helper::encode_pb_section_metadata( $this->_sections ) );
+			update_post_meta( $post_id, 'pt_pb_sections', $this->getSections( true ) );
 
 		}
 
@@ -84,18 +86,28 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				return $data;
 			}
 
-			$this->_sections = $this->prepareSections( $postarr['pt_pb_section'] );
-
 			/**
 			 * Custom action before updating page content
 			 *
 			 * Since 1.1.2
 			 */
-			do_action( 'pt_pb_insert_post_data', $postarr, $this->_sections );
+			do_action( 'pt_pb_insert_post_data', $postarr, $this->getSections() );
 
 			$data['post_content'] = $this->generatePostContent();
 
 			return $data;
+		}
+
+		private function getSections( $encode = false ){
+			if ( empty( $this->_sections ) && isset( $_POST['pt_pb_section'] ) ) {
+				$this->_sections = $this->prepareSections( $_POST['pt_pb_section'] );
+			}
+
+			if( $encode ) {
+				return PT_PageBuilder_Helper::encode_pb_section_metadata( $this->_sections );
+			}
+
+			return $this->_sections;
 		}
 
 		/**
@@ -613,88 +625,6 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 
 	}
 
-endif;
-
-if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
-	/**
-	 * Helper class for PT_PageBuilder
-	 *
-	 */
-	class PT_PageBuilder_Helper {
-
-		/**
-		 * Generates Attributes
-		 *
-		 * @return string $content
-		 */
-		public static function GetAttributes( $array, $attributes ) {
-			$content = "";
-
-			foreach ( $attributes as $attribute ) {
-				if ( array_key_exists( $attribute, $array ) && $array[ $attribute ] !== '' ) {
-					$value = esc_attr( $array[ $attribute ] );
-					$content .= " $attribute='$value'";
-				}
-			}
-
-			return $content;
-		}
-
-		/**
-		 * Generates Data Attributes
-		 *
-		 * @return string $content
-		 */
-		public static function GetDataAttributes( $values, $properties ) {
-			$content = "";
-			foreach ( $properties as $prop ) {
-				if ( array_key_exists( $prop, $values ) ) {
-					$attr  = str_replace( '_', '-', $prop );
-					$value = esc_attr( $values[ $prop ] );
-					$content .= " data-$attr='$value'";
-				}
-			}
-
-			return $content;
-		}
-
-		public static function getContent( $module ) {
-			return isset( $module['content'] ) ? wp_kses_post( stripslashes( $module['content'] ) ) : "";
-		}
-
-		/**
-		 * Decodes Page Builder Meta Data if it's encoded, uses `json_decode` and `base64_decode`
-		 * @since  1.2.5
-		 *
-		 * @return string 
-		 */
-		public static function decode_pb_section_metadata( $meta ) {
-			// If the meta is an array we are dealing with non encoded older Meta Data
-			if ( is_array( $meta ) ) {
-				return $meta;
-			}
-
-			// Perform json decode on the meta
-			return json_decode( $meta );
-		}
-
-		/**
-		 * Encodes Page Builder Meta Data to base64 format to handle PHP `serialize` issues with UTF8 characters
-		 * WordPress `update_post_meta` serializes the data and in some cases (probably depends on hostng env.)
-		 * the serialized data is not being unserialized. So we convert the Meta Data into base64 and then serialize it
-		 * Uses `json_encode` and `base64_encode`
-		 *
-		 * @since  1.2.5
-		 *
-		 * @return string 
-		 */
-		public static function encode_pb_section_metadata( $meta ) {
-
-			//convert the array to json so that we can save it as a string in the post_meta table
-			return wp_slash( json_encode( $meta ) );
-		}
-
-	}
 endif;
 
 if ( ! class_exists( 'PT_PageBuilder_Image_Module' ) ) :

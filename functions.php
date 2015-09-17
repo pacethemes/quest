@@ -394,7 +394,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Meta Revisions for PageBuilder.
  */
-require get_template_directory() . '/inc/wp-post-meta-revisions.php';
+require get_template_directory() . '/inc/pagebuilder/revisions.php';
 
 /**
  * Woocommerce

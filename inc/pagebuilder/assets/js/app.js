@@ -67,7 +67,6 @@ var ptPbApp = ptPbApp || {};
     };
 
     ptPbApp.AddRow = function(row, rowNum, id) {
-
         var rowType = row.type || ptPbApp.getRowType(row),
             rowId = id + '__row__' + rowNum,
             newRow = new ptPbApp.RowModel({
@@ -159,16 +158,16 @@ var ptPbApp = ptPbApp || {};
 
                     _.each(content, function(mod, k) {
 
-                        if (mod.attributes) {
-                            mod = mod.attributes;
-                        }
-                        var module = mod.type.toProperCase();
+                        var newMod = mod.attributes ? mod.toJSON() : mod,
+                            module = newMod.type.toProperCase(),
+                            newModel;
 
                         if (!ptPbApp.Modules[module + 'Model']) return;
 
-                        mod.parent = colId;
-                        mod.id = colId + '__module__' + (k + 1);
-                        colModel.content.push(new ptPbApp.Modules[module + 'Model'](mod));
+                        newModel = new ptPbApp.Modules[module + 'Model'](newMod);
+                        newModel.set('parent', colId);
+                        newModel.set('id', colId + '__module__' + (k + 1));
+                        colModel.content.push(newModel);
                     });
 
                 }
