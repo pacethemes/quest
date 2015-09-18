@@ -1,3 +1,6 @@
+##1.2.7
+* Fixes Page Builder Meta Data UTF8 characters decoding issue
+
 ##1.2.6
 * Fixes Page Builder meta data encode method
 * Fixes Hover Icon Colors issue
