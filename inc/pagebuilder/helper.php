@@ -47,10 +47,10 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		}
 
 		/**
-		 * Decodes Page Builder Meta Data if it's encoded, uses `json_decode` and `base64_decode`
+		 * Decodes Page Builder Meta Data if it's encoded, uses `json_decode` and `htmlspecialchars_decode`
 		 * @since  1.2.5
 		 *
-		 * @return string 
+		 * @return array
 		 */
 		public static function decode_pb_section_metadata( $meta ) {
 			// If the meta is an array we are dealing with non encoded older Meta Data
@@ -58,8 +58,16 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 				return $meta;
 			}
 
-			// Perform json decode on the meta
-			return json_decode( wp_unslash( $meta ), true );
+			// Perform json decode on the meta, for unicode characters add extra slashes so that the wp_unslash function doesn't strip them
+			$decoded = json_decode( wp_unslash( preg_replace( '/\\\u([0-9a-f]{4})/i', '\\\\\\u$1', $meta ) ), true );
+
+			// Convert quotes (single and double) entities back to quotes
+			if ( is_array( $decoded ) ) {
+				$decoded = self::normalize_meta_data( $decoded );
+			}
+
+			return $decoded;
+
 		}
 
 		/**
@@ -70,19 +78,58 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @since  1.2.5
 		 *
-		 * @return string 
+		 * @return string
 		 */
 		public static function encode_pb_section_metadata( $meta ) {
 
-			if( !is_array( $meta ) ) {
+			if ( ! is_array( $meta ) ) {
 				return wp_slash( $meta );
 			}
 
-			if( defined('JSON_HEX_QUOT') )
-				//convert the array to json so that we can save it as a string in the post_meta table
-				return wp_slash( json_encode( $meta, JSON_HEX_QUOT | JSON_HEX_APOS | JSON_UNESCAPED_UNICODE ) );
+			return wp_slash( json_encode( self::sanitize_meta_data( $meta ) ) );
+		}
 
-			return wp_slash( json_encode( $meta ) );
+		/**
+		 * Sanitizes Page Builder Meta Data
+		 * Converts quotes and tags to html entities so that json_encode doesn't have issues
+		 * @since  1.2.7
+		 *
+		 * @return array
+		 */
+		public static function sanitize_meta_data( $arr ) {
+			$result = array();
+			foreach ( $arr as $key => $value ) {
+				if ( is_array( $value ) ) {
+					$value = self::sanitize_meta_data( $value );
+				} else if ( $key === 'content' ) {
+					// try to unslash first incase the server already escaped quotes
+					$value = htmlspecialchars( wp_unslash( $value ), ENT_QUOTES );
+				}
+				$result[ $key ] = $value;
+			}
+
+			return $result;
+		}
+
+		/**
+		 * Normalizes Page Builder Meta Data
+		 * Converts quotes and tags html entities back to their original state
+		 * @since  1.2.7
+		 *
+		 * @return array
+		 */
+		public static function normalize_meta_data( $arr ) {
+			$result = array();
+			foreach ( $arr as $key => $value ) {
+				if ( is_array( $value ) ) {
+					$value = self::normalize_meta_data( $value );
+				} else if ( $key === 'content' ) {
+					$value = htmlspecialchars_decode( $value, ENT_QUOTES );
+				}
+				$result[ $key ] = $value;
+			}
+
+			return $result;
 		}
 
 	}
