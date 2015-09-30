@@ -9,6 +9,9 @@ $view = quest_get_view();
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'post-normal' ); ?>>
 	<header class="entry-header">
 		<?php get_template_part( 'partials/content', 'sticky' ); ?>
+
+		<?php do_action('quest_single_' . $view . '_before_ft_img'); ?>
+
 		<?php if ( ! quest_get_mod( 'layout_' . $view . '_ft-img-hide' ) && has_post_thumbnail() ) : ?>
 
 			<div class="post-image blog-normal effect slide-top" <?php echo quest_featured_image_width( $view ) ?>>
@@ -24,6 +27,8 @@ $view = quest_get_view();
 			</div>
 
 		<?php endif; ?>
+
+		<?php do_action('quest_single_' . $view . '_after_ft_img'); ?>
 
 		<?php if ( quest_get_mod( 'layout_' . $view . '_title' ) ) : ?>
 			<?php the_title( sprintf( '<h1 class="post-title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>

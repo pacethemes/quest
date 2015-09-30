@@ -845,7 +845,7 @@ if ( ! function_exists( 'quest_featured_image_width' ) ) :
 		if ( ! quest_get_mod( 'layout_' . $view . '_ft-img-enlarge' ) && ! quest_get_mod( 'layout_' . $view . '_ft-img-hide' ) && has_post_thumbnail() ) {
 			$featured_image = wp_get_attachment_metadata( get_post_thumbnail_id( $post->ID, 'blog-normal' ), true );
 			$width          = $featured_image['width'] >= 1140 ? 1140 : $featured_image['width'];
-			$img_width      = "style='width:{$width}px;'";
+			$img_width      = "style='width:{$width}px;max-width:100%'";
 		}
 
 		return $img_width;

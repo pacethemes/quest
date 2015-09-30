@@ -43,7 +43,7 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		}
 
 		public static function getContent( $module ) {
-			return isset( $module['content'] ) ? wp_kses_post( stripslashes( $module['content'] ) ) : "";
+			return isset( $module['content'] ) ? stripslashes( $module['content'] ) : "";
 		}
 
 		/**
@@ -58,8 +58,11 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 				return $meta;
 			}
 
+			// Escape the slash characters as we will unslash before decoding
+			$meta = addcslashes($meta, '\\');
+
 			// Perform json decode on the meta, for unicode characters add extra slashes so that the wp_unslash function doesn't strip them
-			$decoded = json_decode( wp_unslash( preg_replace( '/\\\u([0-9a-f]{4})/i', '\\\\\\u$1', $meta ) ), true );
+			$decoded = json_decode( wp_unslash( $meta ), true );
 
 			// Convert quotes (single and double) entities back to quotes
 			if ( is_array( $decoded ) ) {

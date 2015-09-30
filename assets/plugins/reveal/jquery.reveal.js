@@ -120,6 +120,7 @@
                         if (!data.openModalBg) {
                             modalBG.css({'display': 'none'});
                         }
+                        unlockModal();
                         return;
                     }
                     if (options.animation == "fadeAndPop") {

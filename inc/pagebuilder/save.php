@@ -65,7 +65,6 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 				return;
 			}
-
 			update_post_meta( $post_id, 'pt_pb_sections', $this->getSections( true ) );
 
 		}
@@ -92,7 +91,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			 * Since 1.1.2
 			 */
 			do_action( 'pt_pb_insert_post_data', $postarr, $this->getSections() );
-
+			
 			$data['post_content'] = $this->generatePostContent();
 
 			return $data;
@@ -239,6 +238,9 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 
 			if ( $addRow ) {
 				$content .= "\n\t <div class='$container'> \n\t\t <div class='row$valign' style='" . $this->_getCssProperties( $row ) . "'> \n";
+			} else if ( array_key_exists( 'slider', $row ) ) {
+				$row['slider']['margin_bottom'] = $row['padding_bottom'];
+				$row['slider']['margin_top'] = $row['padding_top'];
 			}
 
 			if ( array_key_exists( 'col', $row ) && ! empty( $row['col'] ) ) {
@@ -595,6 +597,8 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				'text_color'          => 'color',
 				'padding_top'         => 'padding-top',
 				'padding_bottom'      => 'padding-bottom',
+				'margin_top'          => 'margin-top',
+				'margin_bottom'       => 'margin-bottom',
 				'border_top_width'    => 'border-top-width',
 				'border_bottom_width' => 'border-bottom-width',
 				'border_top_color'    => 'border-top-color',

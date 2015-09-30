@@ -1904,11 +1904,11 @@ a.expand {
 .quest-gallery {
   text-align: center; }
   .quest-gallery .quest-gallery-thumb {
-    display: inline-block;
+    display: block;
     margin: 10px;
     position: relative; }
     .quest-gallery .quest-gallery-thumb img {
-      max-width: 272px; }
+      width: 100%; }
     .quest-gallery .quest-gallery-thumb .overlay {
       background: rgba(0, 0, 0, 0.8);
       width: 100%;

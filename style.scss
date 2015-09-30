@@ -3140,11 +3140,12 @@ a.expand {
 .quest-gallery {
     text-align: center;
     .quest-gallery-thumb {
-        display: inline-block;
+        display: block;
         margin: 10px;
         position: relative;
         img {
-            max-width: 272px;
+            // max-width: 272px;
+            width: 100%;
         }
         .overlay {
             background: rgba(0, 0, 0, 0.8);

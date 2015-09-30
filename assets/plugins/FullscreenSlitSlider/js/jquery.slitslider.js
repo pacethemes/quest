@@ -75,7 +75,7 @@
         // amount (%) to translate both slices - adjust as necessary
         translateFactor: 230,
         // maximum possible angle
-        maxAngle: 25,
+        maxAngle: 40,
         // maximum possible scale
         maxScale: 2,
         // slideshow on / off
@@ -215,10 +215,10 @@
                 config = {};
 
             config.orientation = configData.orientation || 'horizontal',
-                config.slice1angle = configData.slice1Rotation || 0,
-                config.slice1scale = configData.slice1Scale || 1,
-                config.slice2angle = configData.slice2Rotation || 0,
-                config.slice2scale = configData.slice2Scale || 1;
+            config.slice1angle = configData.slice1Rotation || 0,
+            config.slice1scale = configData.slice1Scale || 1,
+            config.slice2angle = configData.slice2Rotation || 0,
+            config.slice2scale = configData.slice2Scale || 1;
 
             this._validateValues(config);
 

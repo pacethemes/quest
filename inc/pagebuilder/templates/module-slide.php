@@ -236,7 +236,7 @@
 							{{{orientation == 'vertical' ? 'selected' : void 0}}}
 							><?php _e( 'Vertical', 'quest' ); ?></option>
 							<option value="horizontal"
-							{{{orientation == 'false' ? 'selected' : void 0}}}
+							{{{orientation == 'horizontal' ? 'selected' : void 0}}}
 							><?php _e( 'Horizontal', 'quest' ); ?></option>
 						</select>
 
