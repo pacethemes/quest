@@ -6,6 +6,9 @@
 				<div class="sortable-background column-sortable-background">
 				<?php _e('Column', 'quest'); ?> : {{{ type }}}
 				</div>
+				<div class="pt-pb-controls">
+					<a href="#" class="pt-pb-settings-column" title="Column Settings"><i class="fa fa-cog"></i></a>
+				</div>
 			</div>
 			<div class="pt-pb-column-content"></div>
 			<div class="pt-pb-column-foot">
@@ -14,6 +17,73 @@
 		</div>
 		<input name="{{{pre}}}[id]" type="hidden" value="{{{id}}}">
 		<input name="{{{pre}}}[type]" type="hidden" value="{{{type}}}">
+
+		<div class="pt-pb-column-edit-r reveal-modal">
+			<h2><?php _e( 'Edit Column', 'quest' ); ?></h2>
+			<div class="edit-content">
+
+				<div class="pt-pb-option">
+					<label for="bg_color"><?php _e( 'Background Color', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<input name="{{{pre}}}[bg_color]" class="pt-pb-color color-picker" data-alpha="true" type="text"
+						       value="{{{bg_color}}}"/>
+
+						<p class="description"><?php _e( 'Background Color for the column, leave it blank if you dont want a Background Color', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
+					<label for="border_left_width"><?php _e( 'Border Left Width', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<input name="{{{pre}}}[border_left_width]" class="regular-text" type="text"
+						       value="{{{border_left_width}}}"/>
+
+						<p class="description"><?php _e( 'Border width for the section left', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
+					<label for="border_right_width"><?php _e( 'Border Right Width', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<input name="{{{pre}}}[border_right_width]" class="regular-text" type="text"
+						       value="{{{border_right_width}}}"/>
+
+						<p class="description"><?php _e( 'Border width for the section right', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
+					<label for="border_left_color"><?php _e( 'Border Left Color', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<input name="{{{pre}}}[border_left_color]" class="pt-pb-color color-picker" data-alpha="true" type="text"
+						       value="{{{border_left_color}}}"/>
+
+						<p class="description"><?php _e( 'Border color for the section left', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
+					<label for="border_right_color"><?php _e( 'Border Right Color', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<input name="{{{pre}}}[border_right_color]" class="pt-pb-color color-picker" data-alpha="true" type="text"
+						       value="{{{border_right_color}}}"/>
+
+						<p class="description"><?php _e( 'Border color for the section right', 'quest' ) ?></p>
+					</div>
+				</div>
+				
+			</div>
+			<div class="edit-bottom">
+				<input type="button" class="button button-primary save-column" value="Save"/>
+				<input type="button" class="button close-model" value="Close"/>
+			</div>
+		</div>
+
 
 		<div class="pt-pb-insert-modules reveal-modal">
 			<h2><?php _e( 'Select Module', 'quest' ); ?></h2>

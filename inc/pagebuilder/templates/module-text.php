@@ -19,7 +19,13 @@
 						<p class="description"><?php _e( 'Content', 'quest' ) ?></p>
 					</div>
 				</div>
-				{{{ptPbApp.partial('module-margin', { margin_bottom: margin_bottom, pre: pre })}}}
+				{{{ptPbApp.partial('module-margin', { margin_bottom: margin_bottom, 
+										pre: pre, 
+										padding_top: padding_top, 
+										padding_bottom: padding_bottom, 
+										padding_left: padding_left, 
+										padding_right: padding_right 
+									})}}}
 				{{{ptPbApp.partial('form-animation', { animation: animation, pre: pre })}}}
 				{{{ptPbApp.partial('form-admin-label', { admin_label: admin_label, pre: pre })}}}
 			</div>

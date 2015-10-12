@@ -37,6 +37,10 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			add_action( 'customize_preview_init', array( $this, 'LivePreview' ) );
 
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'EnqueueScripts' ) );
+
+			add_filter( 'body_class', array( $this, 'BodyClasses' ) );
+
+			add_action( 'quest_pb_header_css', array( $this, 'PBHeaderCss' ) );
 		}
 
 		/**
@@ -133,9 +137,11 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		public static function PrintPBCss() {
 			global $post;
 
-			if ( null === $post || get_page_template_slug( $post->ID ) !== 'page-builder.php' ) {
+			if ( !quest_is_pb_template() ) {
 				return;
 			}
+
+			do_action( 'quest_pb_header_css' );
 
 			$css      = "\n/* Hover Icons */\n";
 			$sections = PT_PageBuilder_Helper::decode_pb_section_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) );
@@ -177,6 +183,48 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			}
 
 			echo $css;
+
+		}
+
+		public static function BodyClasses( $classes ) {
+			global $post;
+			if ( quest_is_pb_template() && quest_get_meta( array(), '_quest_pb_header' ) === 'transparent' ) {
+				$classes[] = 'transparent-header';
+			}
+
+			return $classes;
+		}
+
+		public static function PBHeaderCss() {
+			$color       = quest_get_meta( array(), '_quest_pb_menu' );
+			$hover_color = quest_get_meta( array(), '_quest_pb_menu_hover' );
+			?>
+			@media (min-width: 768px) {
+			.transparent-header .main-header,
+			.transparent-header .main-header a,
+			.transparent-header .main-header .main-navigation .nav > li > a {
+			color: <?php echo $color; ?>;
+			}
+
+			.transparent-header .main-header a:hover,
+			.transparent-header .main-header .main-navigation .nav > li > a:hover,
+			.transparent-header .main-header .main-navigation .nav > li.current-menu-item > a,
+			.transparent-header .main-header .main-navigation .nav > li.current-menu-parent > a {
+			color: <?php echo $hover_color; ?>;
+			}
+
+			.transparent-header .main-header .navbar-toggle a:hover{
+			color: <?php echo $hover_color; ?>!important;
+			}
+			.transparent-header .main-header .navbar-toggle a:hover.fa{
+			color: <?php echo $hover_color; ?>!important;
+			}
+
+			.transparent-header .main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent{
+			border-color: <?php echo quest_get_meta( array(), '_quest_pb_menu_active' ); ?>!important;
+			}
+			}
+			<?php
 		}
 
 		private static function BuildHoverIconCss( $module ) {
@@ -294,6 +342,8 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 			#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"], .entry-content blockquote, .action, a .action-icon, .action-icon, .post-grid, .recent-post, #comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text], #content article.error404 .search input, #menu-item-search form input, .main-sidebar .search input {  background-color: <?php
 			echo quest_get_mod( 'colors_global_alt' ); ?> ;  }
+			#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"], .entry-content blockquote, .action, a .action-icon, .action-icon, .post-grid, .recent-post, #comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text], #content article.error404 .search input, #menu-item-search form input, .main-sidebar .search input {  color: <?php
+			echo quest_get_mod( 'colors_global_alt_text' ); ?> ;  }
 			#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"],article.post-normal .post-image-dummy, article.page .post-image-dummy, .post .post-image-dummy, .post-half .post-image-dummy,.post-grid, .recent-post,#comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text],.entry-content table,h2.section-head,article.post-normal,hr.fancy,#content article.error404 .search input,.main-header,.main-header.mobile .main-navigation .nav li:hover a,.main-header.mobile .main-navigation .nav a,.main-header.mobile .main-navigation .navbar-collapse.collapse,.main-navigation ul > li ul,#menu-item-search .dropdown-menu,#title-container,.post-image .empty-image,.pagination.post-pagination,#comments #reply-title,#comments li,#comments li li,#comments .post-comments-heading h3,#about-author,.main-sidebar .widget_nav_menu li,.main-sidebar .widget_nav_menu li ul.children,.main-sidebar .widget_categories li,.main-sidebar .widget_archive li,.main-sidebar .widget_archive li ul.children,.main-sidebar .widget_pages li,.main-sidebar .widget_pages li ul.children,.main-sidebar .widget_meta li,.main-sidebar .widget_meta li ul.children,.main-sidebar .widget_recent_comments li,.main-sidebar .widget_recent_comments li ul.children,.main-sidebar .widget_rss li,.main-sidebar .widget_rss li ul.children,.main-sidebar .widget_recent_entries li,.main-sidebar .widget_recent_entries li ul.children,.portfolio-grid-alt-bg,.pagination.post-pagination .previous,.gallery-container .gallery-item, #menu-item-search form input{  border-color: <?php
 			echo $border_color; ?> ;}
 			#menu-item-search form .arrow-up:before { border-bottom-color: <?php

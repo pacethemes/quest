@@ -22,6 +22,7 @@ var ptPbApp = ptPbApp || {};
             'click .pt-pb-remove': 'removeSection',
             'click .save-section': 'saveSection',
             'click .pt-pb-insert-slider': 'insertSlider',
+            'click .pt-pb-insert-generic-slider': 'insertGenericSlider',
             'click .pt-pb-insert-gallery': 'insertGallery',
             'click .pt-pb-insert-column': 'insertColumnsDialog',
             'click .insert .column-layouts li': 'insertColumns',
@@ -170,6 +171,20 @@ var ptPbApp = ptPbApp || {};
             this.model.set('content', rows);
         },
 
+        insertGenericSlider: function(e) {
+            e.preventDefault();
+            var slType = $(e.target).data('slider'),
+                $content = this.$el.find('.pt-pb-content'),
+                row = this._createRow('generic-slider', slType),
+                rows = this.model.get('content'),
+                rowView = new ptPbApp.RowView({
+                    model: row
+                });
+            $content.append(rowView.render().el);
+            rows.add(rowView.model);
+            this.model.set('content', rows);
+        },
+
         insertGallery: function(e) {
             e.preventDefault();
             var $content = this.$el.find('.pt-pb-content'),
@@ -191,13 +206,14 @@ var ptPbApp = ptPbApp || {};
             return rowNum;
         },
 
-        _createRow: function(type) {
+        _createRow: function(type, slType) {
             var rowNum = this._getRowNum(),
                 id = this.model.get('id'),
                 row = new ptPbApp.RowModel({
                     id: id + '__row__' + rowNum,
                     parent: id,
-                    type: type
+                    type: type,
+                    genSlider: slType || ''
                 });
             this.model.set('rowNum', rowNum);
             return row;
@@ -256,7 +272,6 @@ var ptPbApp = ptPbApp || {};
             this.$reveal.trigger('reveal:close');
         }
 
-
     });
 
     ptPbApp.RowView = Backbone.View.extend({
@@ -270,6 +285,7 @@ var ptPbApp = ptPbApp || {};
             'click .pt-pb-settings-row': 'editRow',
             'click .save-row': 'saveRow',
             'click .slider .pt-pb-settings-slider': 'editSlider',
+            'click .pt-pb-settings-generic-slider': 'editGenericSlider',
             'click .gallery .pt-pb-settings-gallery': 'editGallery',
             'click .pt-pb-row-toggle': 'toggleRow',
             'update-columns': 'updateColumns',
@@ -277,9 +293,11 @@ var ptPbApp = ptPbApp || {};
 
         initialize: function(options) {
             this.model.set('pre', ptPbApp.getInputPrefix(this.model.id));
-            if (this.model.get('admin_label') === '') {
-                this.model.set('admin_label', 'Row - ' + this.model.get('type'));
-            }
+            var rType = this.model.get('type');
+            this.model.set('admin_label', 'Row - ' + 
+                                ( rType === 'generic-slider' ? 
+                                    ( this.model.get('genSlider') || this.model.get('content').attributes.type ) + ' Slider' 
+                                    : rType ) );
         },
 
         render: function(cls) {
@@ -317,6 +335,8 @@ var ptPbApp = ptPbApp || {};
                 $view._addGallery(row, rowContent);
             } else if (row.get('type') === 'slider') {
                 $view._addSlider(rowContent);
+            } else if (row.get('type') === 'generic-slider') {
+                $view._addGenericSlider(rowContent, row.get('genSlider') || rowContent.get('type'));
             }
         },
 
@@ -379,6 +399,14 @@ var ptPbApp = ptPbApp || {};
             var $view = this;
             this.expandRow(function() {
                 $view.$el.find('.pt-pb-slide:first').trigger('edit-slider');
+            });
+        },
+
+        editGenericSlider: function(e) {
+            e.preventDefault();
+            var $view = this;
+            this.expandRow(function() {
+                $view.$el.find('.pt-pb-generic-slider').trigger('edit-generic-slider');
             });
         },
 
@@ -478,6 +506,34 @@ var ptPbApp = ptPbApp || {};
             return slider;
         },
 
+        _addGenericSlider: function(params, type) {
+
+            var rows = this.model.get('content'),
+                rowId = this.model.get('id'),
+                sliderId = rowId + '__generic_slider',
+                slider = params || new ptPbApp.GenericSliderModel({}),
+                $content = this.$el.find('.pt-pb-row-content');
+
+            slider.set({
+                'parent': rowId,
+                'id': sliderId,
+                'type' : type || params.type
+            });
+
+            this.model.set('content', slider);
+
+            $content.append(new ptPbApp.GenericSliderView({
+                model: slider
+            }).render().el);
+
+            var icon = "ptPbApp" + slider.get('type').toProperCase() + "Slider";
+            if( icon in window && window[icon].icon ) {
+                this.$el.find('.pt-pb-row-header .pt-pb-settings-generic-slider').html( window[icon].icon );
+            }
+
+            return slider;
+        },
+
         _addGallery: function(row, params) {
             var rowId = this.model.get('id'),
                 galleryId = rowId + '__gallery',
@@ -531,6 +587,8 @@ var ptPbApp = ptPbApp || {};
     ptPbApp.ColumnView = Backbone.View.extend({
         template: ptPbApp.template('column'),
         $insertModule: null,
+        $reveal: null,
+        $formElms: null,
         className: 'pt-pb-column',
         colClass: 'pt-pb-col-1-1',
         $parent: '',
@@ -539,6 +597,8 @@ var ptPbApp = ptPbApp || {};
         },
 
         events: {
+            'click .save-column': 'updateColumn',
+            'click .pt-pb-settings-column': 'editColumn',
             'click .pt-pb-insert-module': 'insertModuleDialog',
             'click .column-module': 'insertModule',
             'remove-module': 'removeModule'
@@ -582,6 +642,8 @@ var ptPbApp = ptPbApp || {};
             }
 
             this.$insertModule = this.$el.find('.pt-pb-insert-modules').revealBind();
+            this.$reveal = this.$el.find('.pt-pb-column-edit-r').revealBind();
+            this.$formElms = this.$reveal.find(':input');
 
             return this;
         },
@@ -641,6 +703,16 @@ var ptPbApp = ptPbApp || {};
                 immediate: immediate,
                 openModalBg: true
             });
+        },
+
+        editColumn: function(e){
+            if (e) e.preventDefault();
+            this.$reveal.trigger('reveal:open');
+        },
+
+        updateColumn: function(e) {
+            this.model.set(ptPbApp.serializeElms(this.$formElms));
+            this.$reveal.trigger('reveal:close');
         },
 
         _getModuleNum: function() {
@@ -817,6 +889,45 @@ var ptPbApp = ptPbApp || {};
             setTimeout(function() {
                 view.render();
             }, 300);
+        }
+
+    });
+
+    ptPbApp.GenericSliderView = Backbone.View.extend({
+        template: ptPbApp.template('module-generic-slider'),
+        className: 'pt-pb-generic-slider',
+        $reveal: null,
+        $formElms: null,
+
+        events: {
+            'click .save-generic-slider': 'updateSlider',
+            'edit-generic-slider': 'editModel'
+        },
+
+        initialize: function() {
+            this.model.set('pre', ptPbApp.getInputPrefix(this.model.id));
+        },
+
+        render: function(cls) {
+            this.$el.html(this.template(this.model.toJSON()))
+                .attr({
+                    'id': this.model.id
+                });
+
+            this.$reveal = this.$el.find('.pt-pb-generic-slider-edit').revealBind();
+            this.$formElms = this.$reveal.find(':input');
+            return this;
+        },
+
+        editModel: function(e) {
+            if (e) e.preventDefault();
+            this.$reveal.trigger('reveal:open');
+        },
+
+        updateSlider: function() {
+            this.model.set(ptPbApp.serializeElms(this.$formElms));
+            this.$el.find('.generic-slider-container').html('<b>Slider ID : </b>' + this.model.get('slider_id') );
+            this.$reveal.trigger('reveal:close');
         }
 
     });
@@ -1122,6 +1233,62 @@ var ptPbApp = ptPbApp || {};
                     'id': this.model.id
                 });
             this.$reveal = this.$el.find('.pt-pb-hovericon-edit').revealBind();
+            this.$formElms = this.$reveal.find(':input');
+            this.$content = this.$reveal.find('input[name="' + this.model.get('pre') + '[content]"]');
+            return this;
+        },
+
+        editModel: function(e) {
+            if (e) e.preventDefault();
+            ptPbApp.createEditor(this.$content);
+            this.$reveal.trigger('reveal:open');
+        },
+
+        removeModel: function(e) {
+            e.preventDefault();
+            $('#' + this.model.get('parent')).trigger('remove-module', {
+                moduleId: this.model.get('id')
+            });
+        },
+
+        updateModel: function(e) {
+            var view = this;
+
+            this.model.set(ptPbApp.serializeElms(this.$formElms));
+            this.model.set('content', ptPbApp.getContent());
+
+            this.$reveal.trigger('reveal:close');
+            setTimeout(function() {
+                view.render();
+            }, 300);
+        }
+
+    });
+
+    ptPbApp.Modules.FeatureboxView = Backbone.View.extend({
+        template: ptPbApp.template('module-featurebox'),
+        className: 'pt-pb-module-preview',
+        $reveal: null,
+        $formElms: null,
+        $content: null,
+
+        events: {
+            'click .content-preview': 'editModel',
+            'click .save-featurebox': 'updateModel',
+            'click .edit-module .edit': 'editModel',
+            'click .edit-module .remove': 'removeModel'
+        },
+
+        initialize: function() {
+            this.model.set('pre', ptPbApp.getInputPrefix(this.model.id));
+        },
+
+        render: function(cls) {
+            this.$el.html(this.template(this.model.toJSON()))
+                .attr({
+                    'id': this.model.id
+                });
+            this.$reveal = this.$el.find('.pt-pb-featurebox-edit').revealBind();
             this.$formElms = this.$reveal.find(':input');
             this.$content = this.$reveal.find('input[name="' + this.model.get('pre') + '[content]"]');
             return this;

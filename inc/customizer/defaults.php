@@ -74,6 +74,7 @@ $quest_defaults = array(
 	'colors_global_accent'                    => '#27ae60',
 	'colors_global_accent_shade'              => '#239e57',
 	'colors_global_alt'                       => '#f5f5f5',
+	'colors_global_alt_text'                  => '#333333',
 	'colors_global_border'                    => '#e0e0e0',
 	'colors_global_heading'                   => '#222',
 	'colors_global_text'                      => '#333',

@@ -39,9 +39,7 @@
 		<header id="secondary-head" class="secondary-header" role="banner">
 			<div class="<?php echo $header_container_cls; ?>">
 				<div class="row">
-					<?php
-					quest_second_header();
-					?>
+					<?php quest_second_header(); ?>
 				</div>
 			</div>
 		</header>
@@ -51,34 +49,7 @@
 	<header id="masthead" class="main-header" role="banner">
 		<div class="<?php echo $header_container_cls; ?>">
 			<div class="row">
-				<div class="site-branding col-md-4">
-
-					<?php
-					$logo        = quest_get_mod( 'logo_logo' );
-					$logo_retina = quest_get_mod( 'logo_logo_retina' );
-					$logo_retina = $logo_retina === '' ? $logo : $logo_retina;
-					if ( $logo !== '' ): ?>
-						<div class="logo">
-							<a href="<?php echo esc_url( home_url() ); ?>">
-								<img class="normal" src="<?php echo esc_url( $logo ); ?>"
-								     alt="<?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?>">
-								<img class="retina" src="<?php echo esc_url( $logo_retina ); ?>"
-								     alt="<?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?>">
-							</a>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( ! quest_get_mod( 'title_tagline_hide_title' ) ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
-						                          rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php endif; ?>
-
-					<?php if ( ! quest_get_mod( 'title_tagline_hide_tagline' ) ) : ?>
-						<span class="site-description"><?php bloginfo( 'description' ); ?></span>
-					<?php endif; ?>
-
-				</div>
-				<!-- .site-branding -->
+				<?php quest_site_branding( 'col-md-4' ); ?>
 
 				<nav id="site-navigation" class="main-navigation col-md-8" role="navigation">
 					<div class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-collapse">
@@ -87,17 +58,7 @@
 						</a>
 					</div>
 					<div class="navbar-collapse collapse" id="main-menu-collapse">
-						<?php if ( has_nav_menu( 'primary' ) ) {
-							wp_nav_menu( array(
-								'theme_location' => 'primary',
-								'menu_class'     => 'nav navbar-nav',
-								'container'      => false,
-								'walker'         => new Quest_Main_Menu()
-							) );
-						} else {
-							quest_wp_page_menu();
-						}
-						?>
+						<?php quest_site_menu(); ?>
 					</div>
 				</nav>
 				<!-- #site-navigation -->

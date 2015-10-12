@@ -112,7 +112,7 @@
 
             //Closing Animation
             modal.bind('reveal:close', function (e, data) {
-                data = data || {};
+                data = data || options;
                 if (!locked) {
                     lockModal();
                     if (data.immediate || options.animation == "none") {

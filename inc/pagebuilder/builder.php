@@ -29,6 +29,7 @@ class PT_PageBuilder {
 
 		if ( in_array( $GLOBALS['pagenow'], array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 			add_action( 'admin_footer', array( $this, 'PageBuilderTour' ) );
+			add_action( 'admin_footer', array( $this, 'PtPBIconPicker' ) );
 		}
 	}
 
@@ -99,7 +100,6 @@ class PT_PageBuilder {
 			wp_enqueue_script( 'underscore' );
 			wp_enqueue_script( 'backbone' );
 
-			// wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker-alpha', get_template_directory_uri() . '/assets/plugins/wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '1.1' );
 
@@ -145,6 +145,11 @@ class PT_PageBuilder {
 			), self::$PT_PB_VERSION, true );
 
 			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', PT_PageBuilder_Helper::decode_pb_section_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) ) );
+			wp_localize_script( 'pt_pb_views_js', 'ptPbAppMetaSlider', array( 
+						'exists' => class_exists( 'MetaSliderPlugin' ), 
+						'icon' => "<img src=' " . plugins_url("ml-slider/assets/metaslider/matchalabs.png") . "' />"
+					) );
+			
 
 			wp_enqueue_style( 'pt_pb_tour_css', self::$PT_PB_URI . '/assets/css/jquery-tourbus.css', array(), self::$PT_PB_VERSION );
 			wp_enqueue_style( 'pt_pb_admin_css', self::$PT_PB_URI . '/assets/css/style.css', array(), self::$PT_PB_VERSION );
@@ -230,6 +235,9 @@ class PT_PageBuilder {
 		self::LoadPageBuilderTemplate( 'module-slider' );
 		self::LoadPageBuilderTemplate( 'module-slide' );
 
+		/* Meta Slider Templates */
+		self::LoadPageBuilderTemplate( 'module-generic-slider' );
+
 		/* Gallery Templates */
 		self::LoadPageBuilderTemplate( 'module-gallery' );
 		self::LoadPageBuilderTemplate( 'module-gimage' );
@@ -242,6 +250,9 @@ class PT_PageBuilder {
 
 		/* Hovericon Module Templates */
 		self::LoadPageBuilderTemplate( 'module-hovericon' );
+
+		/* Feature Box Module Templates */
+		self::LoadPageBuilderTemplate( 'module-featurebox' );
 
 		/*
 		* Action hook to add custom templates
@@ -269,6 +280,24 @@ class PT_PageBuilder {
 
 	public function PageBuilderTour() {
 		include( self::$PT_PB_DIR . 'tour.php' );
+	}
+
+	public function PtPBIconPicker() {
+		include( self::$PT_PB_DIR . 'icon-picker.php' );
+	}
+
+	public static function GetMetaSliders(){
+		$ml_sliders   = new WP_Query( array(
+						'post_type' => 'ml-slider'
+					) );
+		ob_start();
+		$ml_sliders = $ml_sliders->get_posts();
+		foreach ($ml_sliders as $slider) {
+		?>
+			<option value="<?php echo $slider->ID ?>" {{{ <?php echo $slider->ID; ?> == slider_id ? 'selected' : void 0 }}} ><?php echo $slider->post_title; ?></option>
+		<?php 
+		}
+		return ob_get_clean();
 	}
 
 }

@@ -13,6 +13,10 @@
 					<#} else if (type === "slider") {#>
 					<a href="#" class="pt-pb-settings-slider" title="Slider Settings"><i
 							class="dashicons dashicons-images-alt"></i></a>
+					<#} else if (type === "generic-slider") {#>
+					<a href="#" class="pt-pb-settings-generic-slider" title="Meta Slider Settings">
+						
+					</a>
 					<#}#>
 
 					<a href="#" class="pt-pb-settings-row" title="Row Settings"><i class="fa fa-cog"></i></a>
@@ -31,6 +35,24 @@
 			<input name="{{{pre}}}[id]" type="hidden" value="{{{id}}}">
 			<input name="{{{pre}}}[type]" type="hidden" value="{{{type}}}">
 			<div class="edit-content">
+
+				<div class="pt-pb-option">
+					<label for="gutter"><?php _e( 'Space Between Columns', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<select name="{{{pre}}}[gutter]">
+							<option value="yes"
+							{{{gutter == 'yes' ? 'selected' : void 0}}}
+							><?php _e( 'Yes', 'quest' ); ?></option>
+							<option value="no"
+							{{{gutter == 'no' ? 'selected' : void 0}}}
+							><?php _e( 'No', 'quest' ); ?></option>
+						</select>
+
+						<p class="description"><?php _e( 'Show Space/Padding between Columns ?', 'quest' ) ?></p>
+					</div>
+				</div>
+
 				<div class="pt-pb-option">
 					<label for="vertical_align"><?php _e( 'Columns Vertical Alignment', 'quest' ); ?>: </label>
 

@@ -851,3 +851,63 @@ if ( ! function_exists( 'quest_featured_image_width' ) ) :
 		return $img_width;
 	}
 endif;
+
+if ( ! function_exists( 'quest_site_branding' ) ) :
+
+	/**
+	 * Prints Site Logo or branding
+	 *
+	 */
+	function quest_site_branding( $cls = '' ) {
+		?>
+		<div class="site-branding <?php echo $cls; ?>">
+		<?php
+			$logo        = quest_get_mod( 'logo_logo' );
+			$logo_retina = quest_get_mod( 'logo_logo_retina' );
+			$logo_retina = $logo_retina === '' ? $logo : $logo_retina;
+			if ( $logo !== '' ): ?>
+				<div class="logo">
+					<a href="<?php echo esc_url( home_url() ); ?>">
+						<img class="normal" src="<?php echo esc_url( $logo ); ?>"
+						     alt="<?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?>">
+						<img class="retina" src="<?php echo esc_url( $logo_retina ); ?>"
+						     alt="<?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?>">
+					</a>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( ! quest_get_mod( 'title_tagline_hide_title' ) ) : ?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+				                          rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<?php endif; ?>
+
+			<?php if ( ! quest_get_mod( 'title_tagline_hide_tagline' ) ) : ?>
+				<span class="site-description"><?php bloginfo( 'description' ); ?></span>
+			<?php endif; ?>
+		</div>
+		<!-- .site-branding -->
+		<?php
+	}
+
+endif;
+
+if ( ! function_exists( 'quest_site_menu' ) ) :
+
+	/**
+	 * Prints Site Menu
+	 *
+	 */
+	function quest_site_menu() {
+		if ( has_nav_menu( 'primary' ) ) {
+			wp_nav_menu( array(
+				'theme_location' => 'primary',
+				'menu_class'     => 'nav navbar-nav',
+				'container'      => false,
+				'walker'         => new Quest_Main_Menu()
+			) );
+		} else {
+			quest_wp_page_menu();
+		}
+	}
+
+endif;

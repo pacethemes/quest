@@ -101,7 +101,31 @@ class Quest_Customize_Colors {
 				$wp_customize,
 				$setting_id,
 				array(
-					'label'       => __( 'Alt Color', 'quest' ),
+					'label'       => __( 'Form Elements Background Color', 'quest' ),
+					'description' => __( 'Used for Form Elements', 'quest' ),
+					'section'     => $section_id,
+					'settings'    => $setting_id
+				)
+			)
+		);
+
+		$setting_id = $section_id . '_alt_text';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'maybe_hash_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'       => __( 'Form Elements Text Color', 'quest' ),
 					'description' => __( 'Used for Form Elements', 'quest' ),
 					'section'     => $section_id,
 					'settings'    => $setting_id

@@ -60,24 +60,12 @@ var ptPbApp = ptPbApp || {};
         });
 
         //Bind Icon select events
-        this.find('.pt-pb-icon-select').each(function() {
-            var $icon = $(this);
-            var $preview = $icon.siblings('.icon-grid');
-            if ($preview.find('section').length === 0) {
-                $preview.html(window.ptIcons);
-                $preview.find('.fa-hover a').on('click', function(e) {
-                    e.preventDefault();
-                    var $a = $(this),
-                        $option = $a.closest('.pt-pb-option-container'),
-                        icon = $a.attr('href').replace('#', '');
-
-                    $option.children('.pt-pb-icon').val(icon);
-                    $option.children('.icon-preview').html('<i class="fa fa-2x ' + icon + '"></i>');
-                    $preview.stop().slideToggle();
-                });
-            }
-            $icon.on('click', function() {
-                $(this).siblings('.icon-grid').stop().slideToggle();
+        this.find('.pt-pb-icon-select').click(function() {
+            var $select = $(this);
+            ptPbApp.iconPicker(function(icon){
+                var $option = $select.closest('.pt-pb-option-container');
+                $option.children('.pt-pb-icon').val(icon);
+                $option.children('.icon-preview').html('<i class="fa fa-2x ' + icon + '"></i>');
             });
         });
 
@@ -187,5 +175,23 @@ var ptPbApp = ptPbApp || {};
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;');
     };
+
+    ptPbApp.iconPicker = function(cb){
+        if(typeof cb !== 'function'){
+            return;
+        }
+        var $p = $('#quest_icon_picker_reveal');
+        $p.off('click')
+          .on('click', '.fa-hover a', function(e) {
+                e.preventDefault();
+                var $a = $(this),
+                    icon = $a.attr('href').replace('#', '');
+                cb.call(this, icon);
+                $p.trigger('reveal:close', {openModalBg: true, keepEditor: true});
+            })
+            .trigger('reveal:open');
+    };
+
+    $('#quest_icon_picker_reveal').reveal({animation: 'none', openModalBg: true, keepEditor: true});
 
 }(jQuery, _));

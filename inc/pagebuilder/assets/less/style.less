@@ -1,9 +1,9 @@
 @accent1: #3386ba;
-@accent2: #ddd;
-@rowClr: #33BAAB;
-@colClr: #df6491;
-@modClr: #815aa1;
-@itemClr: #838CC7;
+@accent2: #bbb;
+@rowClr: #d6d6d6;
+@colClr: #d6d6d6;
+@modClr: #d6d6d6;
+@itemClr: #d6d6d6;
 // #pt-pb-layout, 
 #postdivrich {
     display: none;
@@ -115,7 +115,7 @@ html[xmlns] .clearfix {
         font-size: 20px;
         text-decoration: none;
         // color: #999;
-        &:hover {
+        &:hover, &:focus {
             // color: @accent1;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
@@ -158,7 +158,7 @@ html[xmlns] .clearfix {
             text-align: center;
             text-decoration: none;
             color: #ddd;
-            &:hover {
+            &:hover, &:focus {
                 color: #fff;
             }
         }
@@ -170,7 +170,7 @@ html[xmlns] .clearfix {
         float: none;
         height: 38px;
         color: #ddd;
-        &:hover {
+        &:hover, &:focus {
             color: #fff;
         }
         &:before {
@@ -288,7 +288,7 @@ html[xmlns] .clearfix {
     width: 260px;
     text-align: center;
     transition: all 0.3s;
-    &:hover,
+    &:hover, &:focus,
     &:focus {
         color: #222 !important;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -321,7 +321,7 @@ html[xmlns] .clearfix {
     display: inline-block;
     padding: 8px 10px;
     background-color: @modClr;
-    color: #fff !important;
+    color: #676869 !important;
     border-radius: 2px;
 }
 
@@ -367,6 +367,7 @@ html[xmlns] .clearfix {
 
 .pt-pb-column-header {
     padding: 0 15px;
+    position: relative;
     a {
         text-decoration: none;
         color: #333;
@@ -375,13 +376,26 @@ html[xmlns] .clearfix {
             margin-left: 5px;
         }
     }
+
+    .pt-pb-controls{
+        position: absolute;
+        right: 10px;
+        top: -1px;
+        a{
+            font-size: 15px;
+            color: #676869 !important;
+            &:hover, &:focus {
+                color: darken( #676869, 20 ) !important;
+            }
+        }
+    }
 }
 
 .pt-pb-row-header {
     background-color: @rowClr !important;
     border-color: @rowClr !important;
     h3 {
-        color: #fff !important;
+        color: #676869 !important;
     }
 }
 
@@ -392,12 +406,12 @@ html[xmlns] .clearfix {
 .pt-pb-column-sortable {
     background-color: @colClr;
     border-color: @colClr !important;
-    color: #fff !important;
+    color: #676869 !important;
 }
 
 .pt-pb-column-content {
     border-color: @colClr !important;
-    color: @colClr !important;
+    color: #676869 !important;
 }
 
 .slide-content-preview,
@@ -417,25 +431,25 @@ html[xmlns] .clearfix {
         height: 25px;
         .admin-label {
             position: static;
-            color: #fff;
+            color: #676869;
             line-height: 25px;
         }
         .edit-module,
         .handlediv {
             right: 35px;
             a {
-                color: #ddd !important;
-                &:hover {
-                    color: #fff !important;
+                color: #676869 !important;
+                &:hover, &:focus {
+                    color: darken( #676869, 20 ) !important;
                 }
             }
             top: 10px;
         }
         .handlediv {
             right: 10px;
-            color: #ddd !important;
-            &:hover {
-                color: #fff !important;
+            color: #676869 !important;
+            &:hover, &:focus {
+                color: darken( #676869, 20 ) !important;
             }
             top: 10px;
         }
@@ -492,7 +506,7 @@ html[xmlns] .clearfix {
         color: #888;
         display: inline-block;
         padding: 0 4px;
-        &:hover {
+        &:hover, &:focus {
             color: #333;
         }
     }
@@ -603,7 +617,7 @@ html[xmlns] .clearfix {
     font-size: 16px;
     color: #666;
     text-decoration: none;
-    &:hover {
+    &:hover, &:focus {
         color: #222;
     }
     -webkit-transition: all 0.3s ease;
@@ -614,24 +628,28 @@ html[xmlns] .clearfix {
 .pt-pb-insert-section {
     background-color: @accent1;
     color: #fff;
+    &:hover, &:focus{
+        color: #fff;
+    }
 }
 
 .pt-pb-insert-column,
 .pt-pb-insert-slider,
+.pt-pb-insert-generic-slider,
 .pt-pb-insert-gallery {
     background-color: @rowClr;
-    color: #efefef !important;
-    &:hover {
-        color: #fff !important;
+    color: #676869 !important;
+    &:hover, &:focus {
+        color: darken( #676869, 20 ) !important;
     }
 }
 
 .pt-pb-insert-slide,
 .pt-pb-insert-gimage {
     background-color: @modClr;
-    color: #efefef !important;
-    &:hover {
-        color: #fff !important;
+    color: #676869 !important;
+    &:hover, &:focus {
+        color: darken( #676869, 20 ) !important;
     }
 }
 
@@ -665,9 +683,9 @@ html[xmlns] .clearfix {
             display: block;
             font-size: 60px;
             min-height: 60px;
-            color: #a78bbe;
-            &:hover {
-                color: #815aa1;
+            color: @accent2;
+            &:hover, &:focus {
+                color: darken( @accent2, 20);
             }
         }
     }
@@ -697,7 +715,7 @@ textarea.regular-text {
 .pt-pb-row {
     position: relative;
     margin-bottom: 25px;
-    border: 1px solid @accent2;
+    border: 1px solid darken( @accent2, 20 );
     background-color: #fff;
     .pt-pb-row-header {
         height: 30px;
@@ -707,7 +725,7 @@ textarea.regular-text {
         // margin-bottom: 20px;
         h3 {
             padding-top: 4px !important;
-            // color: #eee !important;
+            color: #676869 !important;
             text-transform: uppercase;
         }
         .handlediv {
@@ -716,9 +734,9 @@ textarea.regular-text {
             float: none;
             position: absolute;
             top: 0px;
-            border-left: 1px solid #fff;
+            border-left: 1px solid #bbb;
             right: 0;
-            color: #eee !important;
+            color: #676869 !important;
             &:before {
                 padding: 0 !important;
                 right: -4px !important;
@@ -731,11 +749,11 @@ textarea.regular-text {
             right: 40px;
             top: 0;
             a {
-                color: #eee;
+                color: #676869;
                 font-size: 16px;
                 margin-left: 6px;
-                &:hover {
-                    color: #fff;
+                &:hover, &:focus {
+                    color: #444444;
                 }
             }
         }
@@ -755,7 +773,7 @@ textarea.regular-text {
 }
 
 .content-preview {
-    color: @modClr;
+    color: #666;
 }
 
 .slider-container,
@@ -805,9 +823,9 @@ textarea.regular-text {
 // }
 
 .layout-btn {
-    color: #efefef !important;
-    &:hover {
-        color: #fff !important;
+    color: #666 !important;
+    &:hover, &:focus {
+        color: #333 !important;
     }
     &.save {
         background-color: @rowClr;
@@ -882,4 +900,17 @@ textarea.regular-text {
     .module-controls{
         cursor: move;
     }
+}
+.generic-slider-container{
+    padding: 10px;
+}
+
+.pt-pb-settings-generic-slider{
+    i:before{
+        vertical-align: sub;
+    }
+}
+
+.pt-pb-color{
+    min-width: 175px;
 }

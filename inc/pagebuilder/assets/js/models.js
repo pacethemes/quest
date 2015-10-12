@@ -38,6 +38,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             padding_top: '0px',
             padding_bottom: '0px',
             vertical_align: 'default',
+            gutter: 'yes',
             admin_label: ''
         }
     });
@@ -48,7 +49,12 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             content: [],
             type: '1-1',
             parent: '',
-            moduleNum: 0
+            moduleNum: 0,
+            bg_color: '',
+            border_left_width: '0px',
+            border_right_width: '0px',
+            border_left_color: '',
+            border_right_color: '',
         }
     });
 
@@ -98,6 +104,18 @@ ptPbApp.Modules = ptPbApp.Modules || {};
         }
     });
 
+    ptPbApp.GenericSliderModel = Backbone.Model.extend({
+        defaults: {
+            id: '',
+            css_class: '',
+            slider_id: '',
+            type: '',
+            admin_label: 'Slider',
+            title: 'Edit Slider',
+            itemNum: 0
+        }
+    });
+
     ptPbApp.GalleryModel = Backbone.Model.extend({
         defaults: {
             id: '',
@@ -140,6 +158,10 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             target: '',
             align: 'left',
             margin_bottom: '20px',
+            padding_top: '0px',
+            padding_bottom: '0px',
+            padding_left: '0px',
+            padding_right: '0px',
             type: 'image',
             parent: '',
             admin_label: 'Image',
@@ -153,6 +175,10 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             animation: '',
             content: '',
             margin_bottom: '20px',
+            padding_top: '0px',
+            padding_bottom: '0px',
+            padding_left: '0px',
+            padding_right: '0px',
             type: 'text',
             parent: '',
             admin_label: 'Text',
@@ -172,9 +198,35 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             title: '',
             content: '',
             margin_bottom: '20px',
+            padding_top: '0px',
+            padding_bottom: '0px',
+            padding_left: '0px',
+            padding_right: '0px',
             type: 'hovericon',
             parent: '',
             admin_label: 'Hover Icon'
+        }
+    });
+
+    ptPbApp.Modules.FeatureboxModel = Backbone.Model.extend({
+        defaults: {
+            id: '',
+            animation: '',
+            icon: 'awards',
+            size: 3,
+            href: '',
+            color: '#27ae60',
+            hover_color: '#fff',
+            title: '',
+            content: '',
+            margin_bottom: '20px',
+            padding_top: '0px',
+            padding_bottom: '0px',
+            padding_left: '0px',
+            padding_right: '0px',
+            type: 'featurebox',
+            parent: '',
+            admin_label: 'Feature Box'
         }
     });
 

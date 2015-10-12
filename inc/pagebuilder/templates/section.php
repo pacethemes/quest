@@ -26,6 +26,12 @@
 							class="dashicons dashicons-images-alt"></i> <?php _e( 'Image Slider', 'quest' ); ?></a>
 					<a href="#" class="section-type pt-pb-insert-gallery"><i
 							class="dashicons dashicons-format-gallery"></i> <?php _e( 'Gallery', 'quest' ); ?></a>
+					<# if(ptPbApp.isMetaSliderActive()) { #>
+					<a href="#" class="section-type pt-pb-insert-generic-slider" data-slider="meta">
+						<img src="<?php echo plugins_url('ml-slider/assets/metaslider/matchalabs.png') ?>" alt="">
+						<?php _e( 'Meta Slider', 'quest' ); ?>
+					</a>
+					<# } #>
 
 					<div class="quest-plus-message">
 						<strong><?php _e( 'Need more section options ?', 'quest' ); ?> <span

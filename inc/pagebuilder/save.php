@@ -37,6 +37,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				add_filter( 'pt_pb_generate_gallery', array( $this, 'generateGallery' ), 10, 2 );
 				add_filter( 'pt_pb_generate_slider', array( $this, 'generateSlider' ), 10, 2 );
 				add_filter( 'pt_pb_generate_slide', array( $this, 'generateSlide' ), 10, 2 );
+				add_filter( 'pt_pb_generate_generic_slider', array( $this, 'generateGenericSlider' ), 10, 2 );
 				add_filter( 'pt_pb_generate_gallery_image', array( $this, 'generateImage' ), 10, 2 );
 
 			}
@@ -232,12 +233,13 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 */
 		public function generateRow( $rowHtml, $row, $container ) {
 
-			$addRow  = ! ( array_key_exists( 'slider', $row ) && $container !== 'container' );
-			$valign  = $row['vertical_align'] === 'default' ? '' : " v-align-{$row['vertical_align']}";
+			$addRow  = ! ( ( array_key_exists( 'slider', $row ) || array_key_exists( 'generic_slider', $row ) ) && $container !== 'container' );
+			$valign  = $row['vertical_align'] === 'default' ? '' : "v-align-{$row['vertical_align']}";
+			$gutter  = $row['gutter'] === 'no' ? 'no-gutter' : '';
 			$content = "";
 
 			if ( $addRow ) {
-				$content .= "\n\t <div class='$container'> \n\t\t <div class='row$valign' style='" . $this->_getCssProperties( $row ) . "'> \n";
+				$content .= "\n\t <div class='$container'> \n\t\t <div class='row $valign $gutter' style='" . $this->_getCssProperties( $row ) . "'> \n";
 			} else if ( array_key_exists( 'slider', $row ) ) {
 				$row['slider']['margin_bottom'] = $row['padding_bottom'];
 				$row['slider']['margin_top'] = $row['padding_top'];
@@ -272,6 +274,15 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				 */
 				$content .= apply_filters( "pt_pb_generate_slider", '', $row['slider'] );
 
+			} else if ( array_key_exists( 'generic_slider', $row ) && ! empty( $row['generic_slider'] ) ) {
+
+				/**
+				 * Filter Generic Slider markup
+				 *
+				 * Since 1.3.0
+				 */
+				$content .= apply_filters( "pt_pb_generate_generic_slider", '', $row['generic_slider'] );
+
 			}
 
 
@@ -294,15 +305,19 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			}
 
 			$cssClass = $this->_getColumnClass( $column['type'] );
-			$content  = "\t\t\t<div class='$cssClass'>\n\t\t\t\t";
+			$content  = "\t\t\t<div class='$cssClass' style='" . $this->_getCssProperties( $column ) . "'>\n\t\t\t\t";
+			$content .= "<div class='quest-col-wrap'>";
 
 			if ( isset( $column['module'] ) && ! empty( $column['module'] ) ) {
 				foreach ( $column['module'] as $module ) {
+					$cls      = ( array_key_exists( 'animation', $module ) && $module['animation'] != '' )  ? " wow {$module['animation']}" : "";
+					$content .= "<div class='quest-module-wrap $cls' style='" . $this->_getCssProperties( $module ) . "'>";
 					$content .= $this->generateModule( $module );
+					$content .= '</div>';
 				}
 			}
 
-			$content .= "\n\t\t\t</div>\n";
+			$content .= "\n\t\t\t</div></div>\n";
 
 			return $content;
 		}
@@ -357,9 +372,9 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			}
 			$content .= "</div>";
 			$content .= '<nav class="slit-nav-buttons">
-						<a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
-						<a href="#" class="next"><i class="fa fa-angle-right"></i></a>
-					</nav>
+							<a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
+							<a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+						</nav>
 					</div>';
 
 			return $content;
@@ -411,6 +426,24 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			$content .= "</div></div></div>\n";
 
 			return $content;
+		}
+
+		/**
+		 * Generates Generic Slider markup
+		 *
+		 * @return string $content
+		 */
+		public function generateGenericSlider( $sliderHtml, $slider ) {
+			if( isset( $slider['slider_id'] ) && !empty( $slider['slider_id'] ) ) {
+				$content = "<div class='{$slider['type']}-slider-wrapper {$slider['css_class']}'>";
+				$cb_func = "quest_{$slider['type']}_slider_shortcode";
+				if( function_exists( $cb_func ) ) {
+					$content .= call_user_func( $cb_func, $slider['slider_id'] );
+				}
+				$content .= '</div>';
+				return $content;
+			}
+			return '';
 		}
 
 		/**
@@ -597,12 +630,18 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				'text_color'          => 'color',
 				'padding_top'         => 'padding-top',
 				'padding_bottom'      => 'padding-bottom',
+				'padding_left'        => 'padding-left',
+				'padding_right'       => 'padding-right',
 				'margin_top'          => 'margin-top',
 				'margin_bottom'       => 'margin-bottom',
 				'border_top_width'    => 'border-top-width',
 				'border_bottom_width' => 'border-bottom-width',
 				'border_top_color'    => 'border-top-color',
 				'border_bottom_color' => 'border-bottom-color',
+				'border_left_width'   => 'border-left-width',
+				'border_right_width'  => 'border-right-width',
+				'border_left_color'   => 'border-left-color',
+				'border_right_color'  => 'border-right-color',
 				'height'              => 'height',
 				'bg_pos_x'            => 'background-position-x',
 				'bg_pos_y'            => 'background-position-y',
@@ -646,8 +685,7 @@ if ( ! class_exists( 'PT_PageBuilder_Image_Module' ) ) :
 
 		public function getContent() {
 			$image   = $this->_module;
-			$mb      = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
-			$content = "<figure style='text-align:{$image['align']};margin-bottom:$mb;'>";
+			$content = "<figure style='text-align:{$image['align']};'>";
 
 			$image['class'] = $image['animation'] != '' ? "wow {$image['animation']}" : "";
 
@@ -690,10 +728,7 @@ if ( ! class_exists( 'PT_PageBuilder_Text_Module' ) ) :
 		}
 
 		public function getContent() {
-			$cls = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
-			$mb  = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
-
-			return "<div class='module-text$cls' style='margin-bottom:$mb;'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
+			return "<div class='module-text'>" . PT_PageBuilder_Helper::getContent( $this->_module ) . "</div>";
 		}
 
 	}
@@ -713,15 +748,42 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 		}
 
 		public function getContent() {
-			$cls       = $this->_module['animation'] != '' ? " wow {$this->_module['animation']}" : "";
 			$color     = $this->_module['color'];
 			$color_alt = $this->_module['hover_color'];
 			$content   = PT_PageBuilder_Helper::getContent( $this->_module );
 			$url       = esc_url( $this->_module['href'] );
-			$mb        = isset( $this->_module['margin_bottom'] ) ? $this->_module['margin_bottom'] : $this->_module['padding_bottom'];
 
-			return "<div class='hover-icon$cls' id='{$this->_module['id']}' style='margin-bottom:$mb;'>
+			return "<div class='hover-icon' id='{$this->_module['id']}'>
 					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
+				</div>";
+		}
+
+	}
+endif;
+
+if ( ! class_exists( 'PT_PageBuilder_Featurebox_Module' ) ) :
+	/**
+	 * Class to handle HTML generation for Feature Box Module
+	 *
+	 */
+	class PT_PageBuilder_Featurebox_Module {
+
+		private $_module;
+
+		public function __construct( $module ) {
+			$this->_module = $module;
+		}
+
+		public function getContent() {
+			$color     = $this->_module['color'];
+			$content   = PT_PageBuilder_Helper::getContent( $this->_module );
+
+			return "<div class='feature-box size-{$this->_module['size']}' id='{$this->_module['id']}'>
+					<div class='icon-wrap'><i class='fa fa-{$this->_module['size']}x {$this->_module['icon']}' style='color:$color;'>&nbsp;</i></div>
+					<div class='feature-box-content'>
+						<h3 class='feature-box-title' style='color:$color;'>{$this->_module['title']}</h3>
+						<div class='feature-box-text'>{$content}</div>
+					</div>
 				</div>";
 		}
 
@@ -740,3 +802,6 @@ function pt_pb_get_builder_save() {
 //Hook into admin_init and create an instance of PT_PageBuilder_Save to initialize Page Builder Save Methods
 add_action( 'admin_init', 'pt_pb_get_builder_save' );
 
+function quest_meta_slider_shortcode( $slider_id ) {
+	return "[metaslider id=$slider_id]";
+}

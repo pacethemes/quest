@@ -403,6 +403,39 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
+/**
+ * CMB2
+ */
+require get_template_directory() . '/inc/metaboxes.php';
+
+/**
+ *TGM Plugin activation.
+ */
+require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+
+add_action( 'tgmpa_register', 'quest_recommended_plugins' );
+
+if ( ! function_exists( 'quest_recommended_plugins' ) ):
+
+	/**
+	 * Hook into TGMPA and add recommended plugins
+	 *
+	 * @return void
+	 */
+	function quest_recommended_plugins() {
+	 
+	    $plugins = array(
+	        array(
+	            'name'               => 'Meta Slider',
+	            'slug'               => 'ml-slider',
+	            'required'           => false
+	        )          
+	    );
+	 
+	    tgmpa( $plugins);
+	 
+	}
+endif;
 
 if ( ! function_exists( 'quest_search_menu_icon' ) ):
 
@@ -430,5 +463,24 @@ if ( ! function_exists( 'quest_search_menu_icon' ) ):
 endif;
 
 add_filter( 'wp_nav_menu_items', 'quest_search_menu_icon', 10, 2 );
+
+
+/**
+ * Add filter to Meta Slider hoplink
+ *
+ * @return string link
+ */
+function quest_metaslider_hoplink( $link ) {
+    return "https://getdpd.com/cart/hoplink/15318?referrer=163zqrxlk328s84";
+}
+
+if( class_exists( 'MetaSliderPlugin' ) ) {
+	/**
+	 * Filter the MetaSlider Hop Link
+	 *
+	 * @return string link
+	 */
+	add_filter( 'metaslider_hoplink', 'quest_metaslider_hoplink', 10, 1 );
+}
 
 ?>

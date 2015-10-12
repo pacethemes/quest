@@ -1,5 +1,5 @@
 
-/* global jQuery, _, tinyMCE, wp, getUserSetting, ptPbAppSections */
+/* global jQuery, _, tinyMCE, wp, getUserSetting, ptPbAppSections, ptPbAppMetaSlider */
 
 var ptPbApp = ptPbApp || {};
 
@@ -62,7 +62,7 @@ var ptPbApp = ptPbApp || {};
             ptPbApp.scrollTo($el.offset().top - 50);
         } else {
             $el.show();
-            $el.find('.handlediv').parent().trigger('click');
+            //$el.find('.handlediv').parent().trigger('click');
         }
     };
 
@@ -76,10 +76,15 @@ var ptPbApp = ptPbApp || {};
                 padding_top: row.padding_top,
                 padding_bottom: row.padding_bottom,
                 vertical_align: row.vertical_align,
+                gutter: row.gutter,
                 admin_label: row.admin_label
             });
 
-        if (rowType === 'slider') {
+        if (rowType === 'generic-slider') {
+            var slider = new ptPbApp.GenericSliderModel();
+            slider.set(row.content.attributes);
+            newRow.set('content', slider);
+        } else if (rowType === 'slider') {
 
             var sliderId = rowId + '__slider',
                 slideArr = new ptPbApp.SlideCollection(),
@@ -141,7 +146,12 @@ var ptPbApp = ptPbApp || {};
                     colModel = {
                         parent: rowId,
                         id: colId,
-                        type: column.type
+                        type: column.type,
+                        bg_color: column.bg_color || '',
+                        border_left_width: column.border_left_width || '',
+                        border_right_width: column.border_right_width || '',
+                        border_left_color: column.border_left_color || '',
+                        border_right_color: column.border_right_color || ''
                     };
 
                 if (column.content !== undefined && (!$.isEmptyObject(column.content) || (column.content.length > 0 || column.content.attributes !== undefined || column.content.type !== undefined))) {
@@ -177,6 +187,7 @@ var ptPbApp = ptPbApp || {};
             newRow.set('content', contentArr);
 
         }
+
         return newRow;
     };
 
@@ -185,6 +196,8 @@ var ptPbApp = ptPbApp || {};
             return 'columns';
         else if (typeof row.slider !== 'undefined')
             return 'slider';
+        else if (typeof row.generic_slider !== 'undefined')
+            return 'generic-slider';
         else if (typeof row.gallery !== 'undefined')
             return 'gallery';
 
@@ -235,6 +248,7 @@ var ptPbApp = ptPbApp || {};
                     padding_top: r.padding_top || '0px',
                     padding_bottom: r.padding_bottom || '0px',
                     vertical_align: r.vertical_align || 'default',
+                    gutter: r.gutter || 'yes',
                     admin_label: r.admin_label || ''
                 };
 
@@ -246,6 +260,8 @@ var ptPbApp = ptPbApp || {};
                     else
                         row.content.attributes.slides.push(s);
                 });
+            } if (rowType === 'generic-slider') {
+                row.content.attributes = r.generic_slider;
             } else if (rowType === 'gallery') {
                 row.content.attributes.images = [];
                 _.each(r.gallery, function(s, i) {
@@ -261,6 +277,11 @@ var ptPbApp = ptPbApp || {};
                     n.content = v.module;
                     n.type = v.type;
                     n.id = v.id;
+                    n.bg_color = v.bg_color || '';
+                    n.border_left_width = v.border_left_width || '' ;
+                    n.border_right_width = v.border_right_width || '' ;
+                    n.border_left_color = v.border_left_color || '' ;
+                    n.border_right_color = v.border_right_color || '' ;
                     row.content.push(n);
                 });
             }
@@ -358,6 +379,10 @@ var ptPbApp = ptPbApp || {};
         $('html, body').stop().animate({
             scrollTop: top
         }, 600);
+    };
+
+    ptPbApp.isMetaSliderActive = function(){
+        return ptPbAppMetaSlider && ptPbAppMetaSlider.exists && ptPbAppMetaSlider.exists == 1;
     };
 
     ptPbApp.Sections = new ptPbApp.SectionCollection();

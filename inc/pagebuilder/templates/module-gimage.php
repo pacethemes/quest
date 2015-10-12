@@ -45,7 +45,7 @@
 					<div class="pt-pb-option-container">
 						<input name="{{{pre}}}[href]" class="regular-text" type="text" value="{{{href}}}"/>
 
-						<p class="description"><?php _e( 'Link the image should be point to, the Gallery lighbox option should be set to "No"', 'quest' ) ?></p>
+						<p class="description"><?php _e( 'Link the image should be pointing to, leave it blank to open the image in a Lightbox', 'quest' ) ?></p>
 					</div>
 				</div>
 
