@@ -73,6 +73,7 @@ var ptPbApp = ptPbApp || {};
                 id: rowId,
                 parent: id,
                 type: rowType,
+                content_type: row.content_type,
                 padding_top: row.padding_top,
                 padding_bottom: row.padding_bottom,
                 vertical_align: row.vertical_align,
@@ -245,6 +246,7 @@ var ptPbApp = ptPbApp || {};
                         attributes: {}
                     },
                     type: rowType,
+                    content_type: r.content_type || 'parent',
                     padding_top: r.padding_top || '0px',
                     padding_bottom: r.padding_bottom || '0px',
                     vertical_align: r.vertical_align || 'default',

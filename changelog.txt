@@ -1,13 +1,17 @@
 ##1.3.0
 * Adds Generic Slider to support Meta Slider
 * Adds Feature Box Module
+* Adds Column settings/options
 * Adds Gutter(spacing) option for Columns in a row
 * Adds Border (left & right) option for Column
 * Adds Background color option for Column
 * Adds Form Elements Color option
 * Adds Transparent Header option for Page Builder Pages
+* Adds 'Content Type' option for Row
+* Adds 'Quest Info' page
 * Changes Page Builder UI colors back to older colors
 * Changes Section/Row expand on Page Builder open (Now the sections/rows stay open)
+* Updates screenshot
 
 ##1.2.7
 * Fixes Page Builder Meta Data UTF8 characters decoding issue

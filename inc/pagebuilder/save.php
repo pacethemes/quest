@@ -233,6 +233,9 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 */
 		public function generateRow( $rowHtml, $row, $container ) {
 
+			$container = $row['content_type'] === 'parent' ? $container 
+													: ( $row['content_type'] === 'fluid' ? 'container-fluid' : 'container' );
+
 			$addRow  = ! ( ( array_key_exists( 'slider', $row ) || array_key_exists( 'generic_slider', $row ) ) && $container !== 'container' );
 			$valign  = $row['vertical_align'] === 'default' ? '' : "v-align-{$row['vertical_align']}";
 			$gutter  = $row['gutter'] === 'no' ? 'no-gutter' : '';

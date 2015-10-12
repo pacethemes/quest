@@ -409,6 +409,11 @@ if ( class_exists( 'WooCommerce' ) ) {
 require get_template_directory() . '/inc/metaboxes.php';
 
 /**
+ * Theme info
+ */
+require get_template_directory() . '/inc/theme-info.php';
+
+/**
  *TGM Plugin activation.
  */
 require get_template_directory() . '/inc/class-tgm-plugin-activation.php';

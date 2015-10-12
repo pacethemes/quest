@@ -37,6 +37,26 @@
 			<div class="edit-content">
 
 				<div class="pt-pb-option">
+					<label for="content_type"><?php _e( 'Content Type', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<select name="{{{pre}}}[content_type]">
+							<option value="parent"
+							{{{content_type == 'parent' ? 'selected' : void 0}}}
+							><?php _e( 'Default', 'quest' ); ?></option>
+							<option value="boxed"
+							{{{content_type == 'boxed' ? 'selected' : void 0}}}
+							><?php _e( 'Boxed', 'quest' ); ?></option>
+							<option value="fluid"
+							{{{content_type == 'fluid' ? 'selected' : void 0}}}
+							><?php _e( 'Fluid', 'quest' ); ?></option>
+						</select>
+
+						<p class="description"><?php _e( 'Default - Inherits Section "Content Type" setting . Boxed - Row content will be fixed to 1170px or corresponding device width. Fluid - Row content will be 100% width to the browser width', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
 					<label for="gutter"><?php _e( 'Space Between Columns', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">

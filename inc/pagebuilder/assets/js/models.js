@@ -35,6 +35,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
             content: null,
             parent: '',
             type: 'columns',
+            content_type: 'parent',
             padding_top: '0px',
             padding_bottom: '0px',
             vertical_align: 'default',
