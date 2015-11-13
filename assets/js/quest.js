@@ -35,7 +35,9 @@ var Quest = function ($) {
             $('a.gallery').colorbox({
                 rel: 'gallery',
                 maxWidth: '95%',
-                maxHeight: '90%'
+                maxHeight: '90%',
+                retinaImage: true
+                // iframe: true
             });
         },
 

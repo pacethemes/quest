@@ -47,7 +47,7 @@ ptPbApp.Modules = ptPbApp.Modules || {};
     ptPbApp.ColumnModel = Backbone.Model.extend({
         defaults: {
             id: '',
-            content: [],
+            content: null,
             type: '1-1',
             parent: '',
             moduleNum: 0,

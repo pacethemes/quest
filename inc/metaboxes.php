@@ -32,7 +32,7 @@ if ( ! function_exists( 'quest_meta_get_default' ) ):
 	function quest_meta_get_default( $key ) {
 
 		$meta = array(
-			'_quest_pb_header'            => 'transparent',
+			'_quest_pb_header'            => 'normal',
 			'_quest_pb_menu'              => '#333333',
 			'_quest_pb_menu_hover'        => '#2fbc00',
 			'_quest_pb_menu_active'       => '#2fbc00'

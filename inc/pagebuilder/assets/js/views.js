@@ -173,7 +173,7 @@ var ptPbApp = ptPbApp || {};
 
         insertGenericSlider: function(e) {
             e.preventDefault();
-            var slType = $(e.target).data('slider'),
+            var slType = $(e.target).data('genSlider'),
                 $content = this.$el.find('.pt-pb-content'),
                 row = this._createRow('generic-slider', slType),
                 rows = this.model.get('content'),
@@ -433,11 +433,11 @@ var ptPbApp = ptPbApp || {};
                 if (columns.length === (index + 1))
                     column.last = true;
 
-                var model = new ptPbApp.ColumnModel(column);
-                contentArr.add(model);
+                var m = new ptPbApp.ColumnModel(column);
+                contentArr.add(m);
 
                 $content.append(new ptPbApp.ColumnView({
-                    model: model,
+                    model: m,
                     parent: $view.model
                 }).render().el);
             });
@@ -445,7 +445,6 @@ var ptPbApp = ptPbApp || {};
         },
 
         updateColumns: function(e, layouts) {
-
             var columns = layouts.replace(/ /g, '').split(','),
                 $content = this.$el.find('.pt-pb-row-content'),
                 contentArr = new ptPbApp.ColumnCollection(),
@@ -611,14 +610,20 @@ var ptPbApp = ptPbApp || {};
             if (this.model.get('last') === true)
                 this.colClass += ' last';
             this.model.set('pre', ptPbApp.getInputPrefix(this.model.id));
-
-            ptPbApp.ModulesList = {};
-            _.each(ptPbApp.Modules, function(val, ind) {
-                if (ind.match(/Model/) !== null) {
-                    ptPbApp.ModulesList[ind.replace('Model', '')] = new ptPbApp.Modules[ind]().attributes;
-                }
-            });
             this.model.set('modules', ptPbApp.ModulesList);
+
+            if(this.model.get('content') === null){
+                this.model.set('content', []);
+            }
+
+            if( !ptPbApp.ModulesList ) {
+                ptPbApp.ModulesList = {};
+                _.each(ptPbApp.Modules, function(val, ind) {
+                    if (ind.match(/Model/) !== null) {
+                        ptPbApp.ModulesList[ind.replace('Model', '')] = new ptPbApp.Modules[ind]().attributes;
+                    }
+                });
+            }
         },
 
         render: function(cls) {
@@ -629,16 +634,16 @@ var ptPbApp = ptPbApp || {};
 
             var $content = this.$el.find('.pt-pb-column-content'),
                 $view = this,
-                content = this.model.get('content');
+                modules = this.model.get('content');
 
-            if (content.length !== undefined) {
-                _.each(content, function(mod, k) {
+            if (modules.length !== undefined) {
+                _.each(modules, function(mod, k) {
                     var module = mod.get('type').toProperCase();
                     $content.append(new ptPbApp.Modules[module + 'View']({
                         model: mod
                     }).render().el);
                 });
-                this.model.set('moduleNum', content.length);
+                this.model.set('moduleNum', modules.length);
             }
 
             this.$insertModule = this.$el.find('.pt-pb-insert-modules').revealBind();
@@ -676,13 +681,8 @@ var ptPbApp = ptPbApp || {};
 
             $content.append(view.render().el);
             modules.push(model);
-            this.model.set('content', modules);
-            this.cache.parent.get('content').add(this.model, {
-                merge: true
-            });
             this.closeReveal(true);
             view.editModel();
-
         },
 
         removeModule: function(e, data) {

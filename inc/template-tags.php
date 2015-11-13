@@ -901,7 +901,7 @@ if ( ! function_exists( 'quest_site_menu' ) ) :
 		if ( has_nav_menu( 'primary' ) ) {
 			wp_nav_menu( array(
 				'theme_location' => 'primary',
-				'menu_class'     => 'nav navbar-nav',
+				'menu_class'     => 'nav navbar-nav navbar-right',
 				'container'      => false,
 				'walker'         => new Quest_Main_Menu()
 			) );

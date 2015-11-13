@@ -1,7 +1,7 @@
 <script type="text/template" id="pt-pb-tmpl-row">
 	<div class="pt-pb-wrap">
 		<div class="pt-pb-row-preview">
-			<div class="pt-pb-row-header {{{type}}}">
+			<div class="pt-pb-row-header {{{type === 'slider' ? 'gen-slider' : type}}}">
 				<h3 class="pt-pb-row-label">{{{admin_label}}}</h3>
 
 				<div class="pt-pb-controls">

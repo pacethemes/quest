@@ -471,6 +471,8 @@ html[xmlns] .clearfix {
   position: absolute;
   left: 0px;
   padding: 0 10px;
+  height: 23px;
+  overflow: hidden;
   color: #666;
   text-transform: uppercase;
   letter-spacing: 0.8px;

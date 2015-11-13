@@ -6,6 +6,9 @@
  * @package Quest
  */
 
+define( 'QUEST_MINIFY_SCRIPTS', true );
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -141,38 +144,54 @@ if ( ! function_exists( 'quest_scripts' ) ):
 	 */
 	function quest_scripts() {
 
-		// Enqueue required styles
-		wp_enqueue_style( 'quest-bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap.min.css' );
-		wp_enqueue_style( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css' );
-		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
-		wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
-		wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
-		wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/colorbox.css' );
-		wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array(
-			'quest-bootstrap',
-			'smartmenus',
-			'font-awesome',
-			'animate-css',
-			'slit-slider',
-			'colorbox'
-		) );
+		if( defined( 'QUEST_MINIFY_SCRIPTS' ) && QUEST_MINIFY_SCRIPTS ) {
 
-		// Enqueue required scripts
-		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
-		wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array(
-			'jquery',
-			'masonry'
-		) );
-		wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/assets/plugins/smoothscroll/SmoothScroll.js' );
-		wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.min.js' );
-		wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.js', array( 'jquery' ) );
-		wp_enqueue_script( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js' );
-		wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/jquery.colorbox-min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/plugins/imagesloaded/imagesloaded.pkgd.js', array( 'jquery' ) );
-		wp_enqueue_script( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/jquery.smartmenus.min.js' );
-		wp_enqueue_script( 'bs-smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js' );
-		wp_enqueue_script( 'smartmenus-keyboard', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js' );
-		wp_enqueue_script( 'quest-js', get_template_directory_uri() . '/assets/js/quest.js' );
+			// Enqueue required styles
+			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/quest-all.css' );
+			wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array( 'quest-all-css' ) );
+
+			// Enqueue required scripts
+			wp_enqueue_script( 'quest-all-js', get_template_directory_uri() . '/assets/js/quest-all.min.js', array(
+				'jquery',
+				'masonry'
+			) );
+
+		} else {
+
+			// Enqueue required styles
+			wp_enqueue_style( 'quest-bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap.min.css' );
+			wp_enqueue_style( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css' );
+			wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
+			wp_enqueue_style( 'animate-css', get_template_directory_uri() . '/assets/plugins/animate/animate.css' );
+			wp_enqueue_style( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/css/style.css' );
+			wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/colorbox.css' );
+			wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array(
+				'quest-bootstrap',
+				'smartmenus',
+				'font-awesome',
+				'animate-css',
+				'slit-slider',
+				'colorbox'
+			) );
+
+			// Enqueue required scripts
+			wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/plugins/modernizr/modernizr.custom.js' );
+			wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/js/bootstrap.js', array(
+				'jquery',
+				'masonry'
+			) );
+			wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/assets/plugins/smoothscroll/SmoothScroll.js' );
+			wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/plugins/wow/wow.min.js' );
+			wp_enqueue_script( 'ba-cond', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.js', array( 'jquery' ) );
+			wp_enqueue_script( 'slit-slider', get_template_directory_uri() . '/assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js' );
+			wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/assets/plugins/colorbox/jquery.colorbox-min.js', array( 'jquery' ) );
+			wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/plugins/imagesloaded/imagesloaded.pkgd.js', array( 'jquery' ) );
+			wp_enqueue_script( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/jquery.smartmenus.min.js' );
+			wp_enqueue_script( 'bs-smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js' );
+			wp_enqueue_script( 'smartmenus-keyboard', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js' );
+			wp_enqueue_script( 'quest-js', get_template_directory_uri() . '/assets/js/quest.js' );
+
+		}
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
