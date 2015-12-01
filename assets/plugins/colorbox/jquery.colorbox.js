@@ -1021,7 +1021,7 @@
 
             photo = settings.get('createImg');
 
-            if(href.split('.').pop() === 'svg'){
+            if(href.split('.').pop() === 'svg'){ console.log(href)
                 // if the image is SVG, IE cannot read the actual width and height, so perform an ajax request and get svg width and height
                 $.ajax({
                     url: href,
@@ -1030,8 +1030,11 @@
                     success: function(svgxml) {
                         /* now with access to the source of the SVG, lookup the values you want... */
                         var attrs = svgxml.documentElement.attributes;
-                        photo.width = parseInt(attrs.width.value);
-                        photo.height = parseInt(attrs.height.value);
+                        if(typeof attrs.width !== 'undefined')
+                            photo.width = parseInt(attrs.width.value);
+
+                        if(typeof attrs.height !== 'undefined')
+                            photo.height = parseInt(attrs.height.value);
                     }
                 });
             }
