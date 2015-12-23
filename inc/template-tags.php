@@ -785,7 +785,7 @@ if ( ! function_exists( 'quest_second_header_callout' ) ) :
 		?>
 		<div class="callout col-md-6">
 			<p>
-				<?php echo esc_html( quest_get_mod( 'layout_header_callout' ) ); ?>
+				<?php echo html_entity_decode( quest_get_mod( 'layout_header_callout' ) ); ?>
 			</p>
 		</div>
 		<!-- .callout -->

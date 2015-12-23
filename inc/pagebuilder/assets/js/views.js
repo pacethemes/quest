@@ -284,7 +284,7 @@ var ptPbApp = ptPbApp || {};
             'click .pt-pb-remove-row': 'removeRow',
             'click .pt-pb-settings-row': 'editRow',
             'click .save-row': 'saveRow',
-            'click .slider .pt-pb-settings-slider': 'editSlider',
+            'click .pt-pb-settings-slider': 'editSlider',
             'click .pt-pb-settings-generic-slider': 'editGenericSlider',
             'click .gallery .pt-pb-settings-gallery': 'editGallery',
             'click .pt-pb-row-toggle': 'toggleRow',
@@ -609,8 +609,6 @@ var ptPbApp = ptPbApp || {};
             this.colClass = 'pt-pb-col-' + this.model.get('type');
             if (this.model.get('last') === true)
                 this.colClass += ' last';
-            this.model.set('pre', ptPbApp.getInputPrefix(this.model.id));
-            this.model.set('modules', ptPbApp.ModulesList);
 
             if(this.model.get('content') === null){
                 this.model.set('content', []);
@@ -624,6 +622,9 @@ var ptPbApp = ptPbApp || {};
                     }
                 });
             }
+
+            this.model.set('pre', ptPbApp.getInputPrefix(this.model.id));
+            this.model.set('modules', ptPbApp.ModulesList);
         },
 
         render: function(cls) {
