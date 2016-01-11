@@ -149,7 +149,7 @@
                 }
 
                 //remove tinyMCE editor whenever Reveal modal is closed
-                if(!data.keepEditor && ptPbApp && ptPbApp.removeEditor) {
+                if(!data.keepEditor && ptPbApp && ptPbApp.removeEditor && modal.find('.wp-editor-area').length > 0) {
                     ptPbApp.removeEditor();
                 }
                 // modal.unbind('reveal:close');

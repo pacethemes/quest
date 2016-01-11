@@ -24,7 +24,7 @@
 					<a href="#" class="pt-pb-remove-row" title="Delete Row"><i class="fa fa-remove"></i></a>
 				</div>
 				<a href="#" class="pt-pb-row-toggle" title="Click to toggle">
-					<div class="handlediv"><br></div>
+					<div class="handlediv"><i class="fa fa-caret-up"></i><i class="fa fa-caret-down"></i></div>
 				</a>
 			</div>
 			<div class="pt-pb-row-content"></div>

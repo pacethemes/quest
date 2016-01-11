@@ -30,7 +30,7 @@
 				{{{ptPbApp.partial('form-admin-label', { admin_label: admin_label, pre: pre })}}}
 			</div>
 			<div class="edit-bottom">
-				<input type="button" class="button button-primary save-text" value="Save"/>
+				<input type="button" class="button button-primary save-text save-module" value="Save"/>
 				<input type="button" class="button close-model" value="Close"/>
 			</div>
 		</div>

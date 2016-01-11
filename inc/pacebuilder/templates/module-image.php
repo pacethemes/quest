@@ -120,7 +120,7 @@
 
 			</div>
 			<div class="edit-bottom">
-				<input type="button" class="button button-primary save-image" value="Save"/>
+				<input type="button" class="button button-primary save-image save-module" value="Save"/>
 				<input type="button" class="button close-model" value="Close"/>
 			</div>
 		</div>

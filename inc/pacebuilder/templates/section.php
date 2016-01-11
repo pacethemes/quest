@@ -13,7 +13,7 @@
 							class="fa fa-remove"></i></a>
 				</div>
 				<a href="#" class="pt-pb-section-toggle" title="<?php _e( 'Click to toggle', 'quest' ); ?>">
-					<div class="handlediv"><br></div>
+					<div class="handlediv"><i class="fa fa-caret-up"></i><i class="fa fa-caret-down"></i></div>
 				</a>
 			</div>
 			<div class="pt-pb-content-wrap">

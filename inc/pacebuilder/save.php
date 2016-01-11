@@ -1,7 +1,5 @@
 <?php
 
-require trailingslashit( dirname( __FILE__ ) ) . 'helper.php';
-
 if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 	/**
 	 * PT_PageBuilder_Save class provides functionality to generate HTML markup based on the sections & modules built using the Page Builder
@@ -148,6 +146,8 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 					$sorted[] = $this->sortColumns( $row );
 				} elseif ( array_key_exists( 'slider', $row ) ) {
 					$sorted[] = $this->sortSlides( $row );
+				} elseif ( array_key_exists( 'gallery', $row ) ) {
+					$sorted[] = $this->sortGallery( $row );
 				} else {
 					$sorted[] = $row;
 				}
@@ -162,39 +162,58 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		/**
 		 * Sorts columns in the order they are submitted and returns the sorted section
 		 *
-		 * @return array $section
+		 * @return array $row
 		 */
-		private function sortColumns( $section ) {
+		private function sortColumns( $row ) {
 
 			$columns = array();
 
-			foreach ( $section['col'] as $column ) {
+			foreach ( $row['col'] as $column ) {
 				$column    = $this->_sanitizeColumn( $column );
 				$columns[] = apply_filters( 'quest_sort_modules', $column );
 			}
 
-			$section['col'] = $columns;
+			$row['col'] = $columns;
 
-			return $section;
+			return $row;
 		}
 
 		/**
 		 * Sorts slides and returns sorted slides
 		 *
-		 * @return array $section
+		 * @return array $row
 		 */
-		private function sortSlides( $section ) {
+		private function sortSlides( $row ) {
 
 			$slides = array();
 
-			foreach ( $section['slider'] as $k => $slide ) {
+			foreach ( $row['slider'] as $k => $slide ) {
 				$key            = is_numeric( $k ) ? ( count( $slides ) + 1 ) : $k;
 				$slides[ $key ] = $slide;
 			}
 
-			$section['slider'] = $slides;
+			$row['slider'] = $slides;
 
-			return $section;
+			return $row;
+		}
+
+		/**
+		 * Sorts Gallery Images and returns sorted gallery
+		 *
+		 * @return array $row
+		 */
+		private function sortGallery( $row ) {
+
+			$images = array();
+
+			foreach ( $row['gallery'] as $k => $image ) {
+				$key            = is_numeric( $k ) ? ( count( $images ) + 1 ) : $k;
+				$images[ $key ] = $image;
+			}
+
+			$row['gallery'] = $images;
+
+			return $row;
 		}
 
 		/**

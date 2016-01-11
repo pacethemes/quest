@@ -20,7 +20,7 @@ class PT_PageBuilder {
 		//set the Page Builder specific variables
 		self::$PT_PB_VERSION  = wp_get_theme()->Version;
 		self::$PT_PB_DIR      = trailingslashit( dirname( __FILE__ ) );
-		self::$PT_PB_URI      = get_template_directory_uri() . '/inc/pagebuilder';
+		self::$PT_PB_URI      = get_template_directory_uri() . '/inc/pacebuilder';
 		self::$QUEST_PLUS_URI = "http://pacethemes.com/quest-download-pricing";
 
 		//setup required Hooks and Filters
@@ -153,6 +153,11 @@ class PT_PageBuilder {
 
 			wp_enqueue_style( 'pt_pb_tour_css', self::$PT_PB_URI . '/assets/css/jquery-tourbus.css', array(), self::$PT_PB_VERSION );
 			wp_enqueue_style( 'pt_pb_admin_css', self::$PT_PB_URI . '/assets/css/style.css', array(), self::$PT_PB_VERSION );
+
+			wp_localize_script( 'pt_pb_models_js', 'ptPbAppLocalization', array( 
+						'remove_module' => __( 'Are you sure you want to remove this Module ? This step cannot be undone.', 'quest' ),
+						'resize_columns' => __( 'You are about to resize the columns to a lower size than the existing columns, it may remove the last columns and will result in data/module loss. Do you really want to do this ?', 'quest' )
+					) );
 
 		}
 	}

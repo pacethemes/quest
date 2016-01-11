@@ -1,6 +1,6 @@
-<script type="text/template" id="pt-pb-tmpl-module-hovericon">
+<script type="text/template" id="pt-pb-tmpl-module-featurebox">
 	<div class="pt-pb-wrap">
-		<div class="pt-pb-hovericon-preview">
+		<div class="pt-pb-featurebox-preview">
 			{{{ptPbApp.partial('module-header', { admin_label: admin_label})}}}
 			<div class="content-preview hover-icon">
 				<a href="#{{{href}}}" class="fa fa-{{{size}}}x {{{icon}}}"></a>
@@ -10,10 +10,10 @@
 			</div>
 		</div>
 
-		<div class="pt-pb-hovericon-edit reveal-modal">
-			<h2><?php _e( 'Edit Hover Icon', 'quest' ); ?></h2>
+		<div class="pt-pb-featurebox-edit reveal-modal">
+			<h2><?php _e( 'Edit Feature Box', 'quest' ); ?></h2>
 			<input name="{{{pre}}}[id]" type="hidden" value="{{{id}}}">
-			<input name="{{{pre}}}[type]" type="hidden" value="hovericon">
+			<input name="{{{pre}}}[type]" type="hidden" value="featurebox">
 			<div class="edit-content">
 				<div class="pt-pb-option">
 					<label for="align"><?php _e( 'Icon', 'quest' ); ?>: </label>
@@ -52,7 +52,7 @@
 				</div>
 
 				<div class="pt-pb-option">
-					<label for="color"><?php _e( 'Color', 'quest' ); ?>: </label>
+					<label for="color"><?php _e( 'Icon Color', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<input name="{{{pre}}}[color]" class="pt-pb-color color-picker" data-alpha="true" type="text"
@@ -63,18 +63,7 @@
 				</div>
 
 				<div class="pt-pb-option">
-					<label for="hover_color"><?php _e( 'Hover Color', 'quest' ); ?>: </label>
-
-					<div class="pt-pb-option-container">
-						<input name="{{{pre}}}[hover_color]" class="pt-pb-color color-picker" data-alpha="true" type="text"
-						       value="{{{hover_color}}}"/>
-
-						<p class="description"><?php _e( 'Background Color of the Icon, when a user hovers on the Icon the Color and Hover Color will be swapped', 'quest' ) ?></p>
-					</div>
-				</div>
-
-				<div class="pt-pb-option">
-					<label for="title"><?php _e( 'Icon Title', 'quest' ); ?>: </label>
+					<label for="title"><?php _e( 'Title', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<input name="{{{pre}}}[title]" class="regular-text" type="text" value="{{{title}}}"/>
@@ -84,22 +73,12 @@
 				</div>
 
 				<div class="pt-pb-option">
-					<label for="content"><?php _e( 'Icon Text', 'quest' ); ?>: </label>
+					<label for="content"><?php _e( 'Text', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<input name="{{{pre}}}[content]" class="hidden" value="{{{ptPbApp.htmlEncode(content)}}}" type="hidden" />
 
 						<p class="description"><?php _e( 'This will be the text below the Icon Title', 'quest' ) ?></p>
-					</div>
-				</div>
-
-				<div class="pt-pb-option">
-					<label for="href"><?php _e( 'Icon Link', 'quest' ); ?>: </label>
-
-					<div class="pt-pb-option-container">
-						<input name="{{{pre}}}[href]" class="regular-text" type="text" value="{{{href}}}"/>
-
-						<p class="description"><?php _e( 'This is the link the Icon will be pointing to', 'quest' ) ?></p>
 					</div>
 				</div>
 
@@ -114,7 +93,7 @@
 				{{{ptPbApp.partial('form-admin-label', { admin_label: admin_label, pre: pre })}}}
 			</div>
 			<div class="edit-bottom">
-				<input type="button" class="button button-primary save-icon" value="Save"/>
+				<input type="button" class="button button-primary save-featurebox save-module" value="Save"/>
 				<input type="button" class="button close-model" value="Close"/>
 			</div>
 		</div>		

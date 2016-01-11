@@ -377,18 +377,10 @@ if ( ! function_exists( 'quest_wp_page_menu' ) ):
 	}
 endif;
 
-
 /**
- * Admin includes
+ * Pace Builder Helper
  */
-if ( is_admin() )  :
-
-	/**
-	 * Page Builder
-	 */
-	require get_template_directory() . '/inc/pagebuilder/builder.php';
-
-endif;
+require get_template_directory() . '/inc/pacebuilder/helper.php';
 
 /**
  * Custom template tags for this theme.
@@ -411,11 +403,6 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Meta Revisions for PageBuilder.
- */
-require get_template_directory() . '/inc/pagebuilder/revisions.php';
-
-/**
  * Woocommerce
  */
 if ( class_exists( 'WooCommerce' ) ) {
@@ -436,6 +423,24 @@ require get_template_directory() . '/inc/theme-info.php';
  *TGM Plugin activation.
  */
 require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+
+
+/**
+ * Admin includes
+ */
+if ( is_admin() )  :
+
+	/**
+	 * Pace Builder
+	 */
+	require get_template_directory() . '/inc/pacebuilder/builder.php';
+
+	/**
+	 * Meta Revisions for PaceBuilder.
+	 */
+	require get_template_directory() . '/inc/pacebuilder/revisions.php';
+
+endif;
 
 add_action( 'tgmpa_register', 'quest_recommended_plugins' );
 

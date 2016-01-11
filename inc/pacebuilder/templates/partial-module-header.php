@@ -8,7 +8,7 @@
 		<div class="admin-label">{{{admin_label}}}</div>
 		<# if( typeof hideToggle === 'undefined' || !hideToggle ) { #>
 		<a href="#" class="pt-pb-module-toggle" title="<?php _e( 'Click to toggle', 'quest' ); ?>">
-			<div class="handlediv"><br></div>
+			<div class="handlediv"><i class="fa fa-caret-up"></i><i class="fa fa-caret-down"></i></div>
 		</a>
 		<# } #>
 	</div>
