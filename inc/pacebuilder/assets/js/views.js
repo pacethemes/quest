@@ -1,5 +1,5 @@
 /*jshint unused:false*/
-/* global Backbone, jQuery, _, console, ptPbAppLocalization */
+/* global Backbone, jQuery, _, console, ptPbAppLocalization, ptPbAppSliders */
 
 var ptPbApp = ptPbApp || {};
 ptPbApp.Views = ptPbApp.Views || {};
@@ -85,7 +85,7 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         removeSection: function(e, confirm) {
             if(e) e.preventDefault();
-            if (confirm || window.confirm(ptPbAppLocalization.remove_module)) {
+            if (confirm || window.confirm(ptPbAppLocalization.remove_section)) {
                 this.model.trigger('destroy', this.model);
             }
         },
@@ -110,7 +110,6 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         insertColumnsDialog: function(e) {
             e.preventDefault();
-            e.stopPropagation();
             var cssClass = e.target.className.match(/fa-|edit-columns/) !== null ? 'update' : 'insert',
                 rowId = cssClass === 'update' ? $(e.target).closest('.pt-pb-row').attr('id') : '';
             this.$insertColumns.data('rowId', rowId).removeClass('update insert').addClass(cssClass).trigger('reveal:open');
@@ -151,35 +150,19 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         insertGenericSlider: function(e) {
             e.preventDefault();
-            var slType = $(e.target).data('genSlider'),
-                $content = this.$el.find('.pt-pb-content'),
-                row = this._createRow('generic-slider', slType),
-                rows = this.model.get('content'),
-                rowView = new ptPbApp.Views.Row({
-                    model: row
-                });
-            $content.append(rowView.render().el);
-            rows.add(rowView.model);
-            this.model.set('content', rows);
+            var slType = $(e.target).attr('data-gen-slider');
+            this.renderRow(
+                this.model.addRow( {
+                    'type': 'generic-slider',
+                    'generic_slider': { type: slType }
+                } )
+            );
         },
 
         updateColumns: function(e) {
             var $e = e.target.tagName.toUpperCase() === 'LI' ? $(e.target) : $(e.target).closest('li');
             $('#' + this.$insertColumns.data('rowId')).trigger('update-columns', $e.data('layout'));
             this.$insertColumns.trigger('reveal:close');
-        },
-
-        _createRow: function(type, slType) {
-            var rowNum = this._getRowNum(),
-                id = this.model.get('id'),
-                row = new ptPbApp.RowModel({
-                    id: id + '__row__' + rowNum,
-                    parent: id,
-                    type: type,
-                    genSlider: slType || ''
-                });
-            this.model.set('rowNum', rowNum);
-            return row;
         },
 
         cloneRow: function(e, row) {
@@ -247,8 +230,6 @@ ptPbApp.Views = ptPbApp.Views || {};
             this.renderContent()
                 .makeColumnsSortable();
 
-            this.model.set('admin_label', 'Row - ' + this.model.get('type'));
-
             return this;
         },
 
@@ -280,12 +261,13 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         renderGenericSlider: function(slider) {
-            console.log(new ptPbApp.Views.GenericSlider({
-                model: slider
-            }).render().el)
+            var sliderType = slider.get('type').toLowerCase();
             this.$content.append(new ptPbApp.Views.GenericSlider({
                 model: slider
             }).render().el);
+            if (sliderType in ptPbAppSliders && ptPbAppSliders[sliderType].icon) {
+                this.$el.find('.pt-pb-row-header .pt-pb-settings-generic-slider').html(ptPbAppSliders[sliderType].icon);
+            }
         },
 
         renderGallery: function(gallery) {
@@ -297,32 +279,6 @@ ptPbApp.Views = ptPbApp.Views || {};
         adminLabel: function(model, value) {
             this.$('.pt-pb-row-label').text(value);
         },
-
-        // addRow: function(row) {
-        //     row = new ptPbApp.RowModel(row.attributes || {});
-        //     var $content = this.$el.find('.pt-pb-row-content'),
-        //         $view = this,
-        //         rowId = row.attributes.id,
-        //         rowContent = row.get('content');
-
-        //     if (row.get('type') === 'columns' && rowContent && rowContent.models) {
-        //         _.each(rowContent.models, function(column, ind) {
-        //             var model = new ptPbApp.ColumnModel(column.attributes || {});
-        //             model.set('parent', rowId);
-        //             model.set('id', rowId + '__col__' + (ind + 1));
-        //             $content.append(new ptPbApp.Views.Column({
-        //                 model: model,
-        //                 parent: $view.model
-        //             }).render().el);
-        //         });
-        //     } else if (row.get('type') === 'gallery') {
-        //         $view._addGallery(row, rowContent);
-        //     } else if (row.get('type') === 'slider') {
-        //         $view._addSlider(rowContent);
-        //     } else if (row.get('type') === 'generic-slider') {
-        //         $view._addGenericSlider(rowContent, row.get('genSlider') || rowContent.get('type'));
-        //     }
-        // },
 
         toggleRow: function(e) {
             e.preventDefault();
@@ -343,8 +299,8 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         removeRow: function(e, confirm) {
-            e.preventDefault();
-            if (confirm || window.confirm(ptPbAppLocalization.remove_module)) {
+            if(e) e.preventDefault();
+            if (confirm || window.confirm(ptPbAppLocalization.remove_row)) {
                 this.model.trigger('destroy', this.model);
             }
         },
@@ -392,34 +348,6 @@ ptPbApp.Views = ptPbApp.Views || {};
             this.model.updateColumns( columns );
         },
 
-        _addGenericSlider: function(params, type) {
-
-            var rows = this.model.get('content'),
-                rowId = this.model.get('id'),
-                sliderId = rowId + '__generic_slider',
-                slider = params || new ptPbApp.GenericSliderModel({}),
-                $content = this.$el.find('.pt-pb-row-content');
-
-            slider.set({
-                'parent': rowId,
-                'id': sliderId,
-                'type': type || params.type
-            });
-
-            this.model.set('content', slider);
-
-            $content.append(new ptPbApp.Views.GenericSlider({
-                model: slider
-            }).render().el);
-
-            var icon = "ptPbApp" + slider.get('type').toProperCase() + "Slider";
-            if (icon in window && window[icon].icon) {
-                this.$el.find('.pt-pb-row-header .pt-pb-settings-generic-slider').html(window[icon].icon);
-            }
-
-            return slider;
-        },
-
         makeColumnsSortable: function() {
             this.$el.sortable({
                 handle: '.pt-pb-column-sortable',
@@ -459,8 +387,6 @@ ptPbApp.Views = ptPbApp.Views || {};
             'click .column-module': 'insertModule'
         },
 
-        initialize: function(options) {},
-
         render: function(cls) {
             this.$el.html(this.template(this.model.toJSON()));
             this.$content = this.$el.find('.pt-pb-column-content');
@@ -489,7 +415,6 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         insertModuleDialog: function(e) {
             e.preventDefault();
-            e.stopPropagation();
             this.$insertModule.trigger('reveal:open');
         },
 
@@ -660,7 +585,7 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         removeSlide: function(e) {
             e.preventDefault();
-            if (window.confirm(ptPbAppLocalization.remove_module)) {
+            if (window.confirm(ptPbAppLocalization.remove_slide)) {
                 this.model.trigger('destroy', this.model);
             }
         }
@@ -821,7 +746,7 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         removeImage: function(e) {
             e.preventDefault();
-            if (window.confirm(ptPbAppLocalization.remove_module)) {
+            if (window.confirm(ptPbAppLocalization.remove_image)) {
                 this.model.trigger('destroy', this.model);
             }
         },

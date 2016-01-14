@@ -145,16 +145,21 @@ class PT_PageBuilder {
 			), self::$PT_PB_VERSION, true );
 
 			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', PT_PageBuilder_Helper::decode_pb_section_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) ) );
-			wp_localize_script( 'pt_pb_views_js', 'ptPbAppMetaSlider', array( 
+			wp_localize_script( 'pt_pb_views_js', 'ptPbAppSliders', 
+					apply_filters( 'pt_pb_generic_sliders', array( 'meta' => array( 
 						'exists' => class_exists( 'MetaSliderPlugin' ), 
 						'icon' => "<img src=' " . plugins_url("ml-slider/assets/metaslider/matchalabs.png") . "' />"
-					) );
+					) ) ) );
 			
 
 			wp_enqueue_style( 'pt_pb_tour_css', self::$PT_PB_URI . '/assets/css/jquery-tourbus.css', array(), self::$PT_PB_VERSION );
 			wp_enqueue_style( 'pt_pb_admin_css', self::$PT_PB_URI . '/assets/css/style.css', array(), self::$PT_PB_VERSION );
 
-			wp_localize_script( 'pt_pb_models_js', 'ptPbAppLocalization', array( 
+			wp_localize_script( 'pt_pb_models_js', 'ptPbAppLocalization', array(
+						'remove_section' => __( 'Are you sure you want to remove this Section ? This step cannot be undone.', 'quest' ),
+						'remove_row' => __( 'Are you sure you want to remove this Row ? This step cannot be undone.', 'quest' ),
+						'remove_slide' => __( 'Are you sure you want to remove this Slide ? This step cannot be undone.', 'quest' ),
+						'remove_image' => __( 'Are you sure you want to remove this Image ? This step cannot be undone.', 'quest' ),
 						'remove_module' => __( 'Are you sure you want to remove this Module ? This step cannot be undone.', 'quest' ),
 						'resize_columns' => __( 'You are about to resize the columns to a lower size than the existing columns, it may remove the last columns and will result in data/module loss. Do you really want to do this ?', 'quest' )
 					) );

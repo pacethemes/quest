@@ -119,7 +119,7 @@ var ptPbApp = ptPbApp || {};
     };
 
     ptPbApp.isMetaSliderActive = function() {
-        return ptPbAppMetaSlider && ptPbAppMetaSlider.exists && ptPbAppMetaSlider.exists == 1;
+        return ptPbAppSliders && ptPbAppSliders.meta && ptPbAppSliders.meta.exists == 1;
     };
 
     ptPbApp.Upload = {};

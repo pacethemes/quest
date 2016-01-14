@@ -150,7 +150,8 @@ ptPbApp.Models = ptPbApp.Models || {};
             } else if (this.get('generic_slider')) {
                 this.set({
                         'content': this.addGenericSlider(this.get('generic_slider')),
-                        'type': 'generic-slider'
+                        'type': 'generic-slider',
+                        'admin_label' : 'Row - ' + _.extend({ 'type' : '' }, this.get('generic_slider')).type + ' Slider'
                     })
                     .unset('generic_slider', {
                         silent: true

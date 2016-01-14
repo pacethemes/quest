@@ -14,8 +14,7 @@
 					<a href="#" class="pt-pb-settings-slider" title="Slider Settings"><i
 							class="dashicons dashicons-images-alt"></i></a>
 					<#} else if (type === "generic-slider") {#>
-					<a href="#" class="pt-pb-settings-generic-slider" title="Meta Slider Settings">
-						
+					<a href="#" class="pt-pb-settings-generic-slider" title="Slider Settings">
 					</a>
 					<#}#>
 
