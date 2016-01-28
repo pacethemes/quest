@@ -12,6 +12,7 @@
 			<h2><?php _e( 'Edit Slider', 'quest' ); ?></h2>
 			<input name="{{{pre}}}[id]" type="hidden" value="{{{id}}}">
 			<div class="edit-content">
+			
 				<div class="pt-pb-option">
 					<label for="height"><?php _e( 'Slider Height', 'quest' ); ?>: </label>
 
@@ -19,6 +20,21 @@
 						<input name="{{{pre}}}[height]" class="regular-text" type="text" value="{{{height}}}"/>
 
 						<p class="description"><?php _e( 'Height of the slider', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
+					<label for="fullscreen"><?php _e( 'Slider Fullscreen', 'quest-plus' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<select name="{{{pre}}}[fullscreen]">
+							<option value="true"
+							 {{{ fullscreen == 'true' ? 'selected' : void 0 }}} ><?php _e( 'Yes', 'quest-plus' ); ?></option>
+							<option value="false"
+							 {{{ fullscreen == 'false' ? 'selected' : void 0 }}} ><?php _e( 'No', 'quest-plus' ); ?></option>
+						</select>
+
+						<p class="description"><?php _e( 'If set to FullScreen Slider height will be ignored and the slider will always be 100% to the browser viewport', 'quest-plus' ) ?></p>
 					</div>
 				</div>
 

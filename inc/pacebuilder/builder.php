@@ -24,12 +24,12 @@ class PT_PageBuilder {
 		self::$QUEST_PLUS_URI = "http://pacethemes.com/quest-download-pricing";
 
 		//setup required Hooks and Filters
-		add_action( 'after_setup_theme', array( $this, 'InitializeMetaBox' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'EnqueueAssets' ), 10, 1 );
+		add_action( 'after_setup_theme', array( $this, 'initialize_meta_box' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ), 10, 1 );
 
 		if ( in_array( $GLOBALS['pagenow'], array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
-			add_action( 'admin_footer', array( $this, 'PageBuilderTour' ) );
-			add_action( 'admin_footer', array( $this, 'PtPBIconPicker' ) );
+			add_action( 'admin_footer', array( $this, 'pagebuilder_tour' ) );
+			add_action( 'admin_footer', array( $this, 'icon_picker' ) );
 		}
 	}
 
@@ -38,7 +38,7 @@ class PT_PageBuilder {
 	 *
 	 * @return PT_PageBuilder
 	 */
-	public static function getInstance() {
+	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
 		}
@@ -47,12 +47,12 @@ class PT_PageBuilder {
 	}
 
 	/**
-	 * calls add_action on 'add_meta_boxes' hook and attaches the 'AddMetaBox' function
+	 * calls add_action on 'add_meta_boxes' hook and attaches the 'add_meta_box' function
 	 *
 	 * @return void
 	 */
-	public function InitializeMetaBox() {
-		add_action( 'add_meta_boxes', array( $this, 'AddMetaBox' ) );
+	public function initialize_meta_box() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 	}
 
 	/**
@@ -60,7 +60,7 @@ class PT_PageBuilder {
 	 *
 	 * @return void
 	 */
-	public function AddMetaBox() {
+	public function add_meta_box() {
 		$post_types = apply_filters( 'pt_pb_builder_post_types', array(
 			'page'
 		) );
@@ -68,7 +68,7 @@ class PT_PageBuilder {
 		foreach ( $post_types as $post_type ) {
 			add_meta_box( 'pt-pb-layout', __( 'Quest Page Builder', 'quest' ), array(
 				$this,
-				'PageBuilderHtml'
+				'pagebuilder_html'
 			), $post_type, 'normal', 'high' );
 		}
 	}
@@ -78,7 +78,7 @@ class PT_PageBuilder {
 	 *
 	 * @return void
 	 */
-	public function EnqueueAssets( $hook ) {
+	public function enqueue_assets( $hook ) {
 		global $typenow, $post;
 
 		if ( ! in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) {
@@ -96,6 +96,8 @@ class PT_PageBuilder {
 		if ( isset( $typenow ) && in_array( $typenow, $post_types ) ) {
 
 			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-draggable' );
+			wp_enqueue_script( 'jquery-ui-droppable' );
 
 			wp_enqueue_script( 'underscore' );
 			wp_enqueue_script( 'backbone' );
@@ -116,40 +118,30 @@ class PT_PageBuilder {
 			), self::$PT_PB_VERSION, true );
 
 			wp_enqueue_script( 'pt_pb_models_js', self::$PT_PB_URI . '/assets/js/models.js', array(
-				'jquery',
-				'jquery-ui-core',
-				'underscore',
-				'backbone',
 				'pt_pb_util_js'
 			), self::$PT_PB_VERSION, true );
 			wp_enqueue_script( 'pt_pb_collections_js', self::$PT_PB_URI . '/assets/js/collections.js', array(
-				'jquery',
-				'jquery-ui-core',
-				'underscore',
-				'backbone',
 				'pt_pb_models_js'
 			), self::$PT_PB_VERSION, true );
 			wp_enqueue_script( 'pt_pb_views_js', self::$PT_PB_URI . '/assets/js/views.js', array(
-				'jquery',
-				'jquery-ui-core',
-				'underscore',
-				'backbone',
 				'pt_pb_collections_js'
 			), self::$PT_PB_VERSION, true );
 			wp_enqueue_script( 'pt_pb_admin_js', self::$PT_PB_URI . '/assets/js/app.js', array(
-				'jquery',
-				'jquery-ui-core',
-				'underscore',
-				'backbone',
 				'pt_pb_collections_js'
 			), self::$PT_PB_VERSION, true );
 
-			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', PT_PageBuilder_Helper::decode_pb_section_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) ) );
+			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', PT_PageBuilder_Helper::decode_pb_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) ) );
 			wp_localize_script( 'pt_pb_views_js', 'ptPbAppSliders', 
 					apply_filters( 'pt_pb_generic_sliders', array( 'meta' => array( 
 						'exists' => class_exists( 'MetaSliderPlugin' ), 
-						'icon' => "<img src=' " . plugins_url("ml-slider/assets/metaslider/matchalabs.png") . "' />"
+						'icon' => "<img src=' " . plugins_url("ml-slider/assets/metaslider/matchalabs.png") . "' />",
+						'sliders' => PT_PageBuilder::get_meta_sliders(),
+						'name' => 'Meta Slider'
 					) ) ) );
+
+			wp_localize_script( 'pt_pb_models_js', 'ptPbAppPlugins', 
+					apply_filters( 'pt_pb_wp_plugins', array( 'Contactform7' => class_exists( 'WPCF7' ) ? 1 : 0 ) ) 
+					);
 			
 
 			wp_enqueue_style( 'pt_pb_tour_css', self::$PT_PB_URI . '/assets/css/jquery-tourbus.css', array(), self::$PT_PB_VERSION );
@@ -172,7 +164,7 @@ class PT_PageBuilder {
 	 *
 	 * @return void
 	 */
-	public function PageBuilderHtml() {
+	public function pagebuilder_html() {
 		wp_nonce_field( 'save', 'pt-pb-nonce' );
 		?>
 
@@ -226,43 +218,46 @@ class PT_PageBuilder {
 		do_action( 'pt_pb_before_templates' );
 
 		/* Partial Templates */
-		self::LoadPageBuilderTemplate( 'partial-module-header' );
-		self::LoadPageBuilderTemplate( 'partial-module-margin' );
-		self::LoadPageBuilderTemplate( 'partial-css-class' );
-		self::LoadPageBuilderTemplate( 'partial-admin-label' );
-		self::LoadPageBuilderTemplate( 'partial-form-animation' );
+		self::load_pb_template( 'partial-module-header' );
+		self::load_pb_template( 'partial-module-margin' );
+		self::load_pb_template( 'partial-css-class' );
+		self::load_pb_template( 'partial-admin-label' );
+		self::load_pb_template( 'partial-form-animation' );
 
 		/* Section Templates */
-		self::LoadPageBuilderTemplate( 'section' );
+		self::load_pb_template( 'section' );
 
 		/* Row Templates */
-		self::LoadPageBuilderTemplate( 'row' );
+		self::load_pb_template( 'row' );
 
 		/* Column Templates */
-		self::LoadPageBuilderTemplate( 'column' );
+		self::load_pb_template( 'column' );
 
 		/* Slider Templates */
-		self::LoadPageBuilderTemplate( 'module-slider' );
-		self::LoadPageBuilderTemplate( 'module-slide' );
+		self::load_pb_template( 'module-slider' );
+		self::load_pb_template( 'module-slide' );
 
 		/* Meta Slider Templates */
-		self::LoadPageBuilderTemplate( 'module-generic-slider' );
+		self::load_pb_template( 'module-generic-slider' );
 
 		/* Gallery Templates */
-		self::LoadPageBuilderTemplate( 'module-gallery' );
-		self::LoadPageBuilderTemplate( 'module-gimage' );
+		self::load_pb_template( 'module-gallery' );
+		self::load_pb_template( 'module-gimage' );
 
 		/* Image Module Templates */
-		self::LoadPageBuilderTemplate( 'module-image' );
+		self::load_pb_template( 'module-image' );
 
 		/* Text Module Templates */
-		self::LoadPageBuilderTemplate( 'module-text' );
+		self::load_pb_template( 'module-text' );
 
 		/* Hovericon Module Templates */
-		self::LoadPageBuilderTemplate( 'module-hovericon' );
+		self::load_pb_template( 'module-hovericon' );
 
 		/* Feature Box Module Templates */
-		self::LoadPageBuilderTemplate( 'module-featurebox' );
+		self::load_pb_template( 'module-featurebox' );
+
+		/* Contact Form 7 */
+		self::load_pb_template( 'module-cf7' );
 
 		/*
 		* Action hook to add custom templates
@@ -276,7 +271,7 @@ class PT_PageBuilder {
 	 *
 	 * @return void
 	 */
-	private static function LoadPageBuilderTemplate( $name ) {
+	private static function load_pb_template( $name ) {
 
 		ob_start(); // turn on output buffering
 		include( self::$PT_PB_DIR . "/templates/$name.php" );
@@ -288,15 +283,15 @@ class PT_PageBuilder {
 		echo apply_filters( "pt_pb_load_template_$name", $template );
 	}
 
-	public function PageBuilderTour() {
+	public function pagebuilder_tour() {
 		include( self::$PT_PB_DIR . 'tour.php' );
 	}
 
-	public function PtPBIconPicker() {
+	public function icon_picker() {
 		include( self::$PT_PB_DIR . 'icon-picker.php' );
 	}
 
-	public static function GetMetaSliders(){
+	public static function get_meta_sliders(){
 		$ml_sliders   = new WP_Query( array(
 						'post_type' => 'ml-slider'
 					) );
@@ -313,4 +308,4 @@ class PT_PageBuilder {
 }
 
 
-PT_PageBuilder::getInstance();
+PT_PageBuilder::get_instance();

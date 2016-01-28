@@ -114,6 +114,26 @@ var ptPbApp = ptPbApp || {};
         };
     });
 
+    ptPbApp.htmlTemplate = _.memoize(function(template) {
+        var compiled,
+            /*
+             * Underscore's default ERB-style templates are incompatible with PHP
+             * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
+             *
+             * code reference - @see trac ticket #22344.
+             */
+            options = {
+                evaluate: /<#([\s\S]+?)#>/g,
+                interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
+                escape: /\{\{([^\}]+?)\}\}(?!\})/g
+            };
+
+        return function(data) {
+            compiled = compiled || _.template(template, null, options);
+            return compiled(data);
+        };
+    });
+
     ptPbApp.partial = function(which, data) {
         return ptPbApp.template(which)(data);
     };

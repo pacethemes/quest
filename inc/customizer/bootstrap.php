@@ -25,22 +25,22 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		public function __construct() {
 
 			// Setup the Theme Customizer settings and controls...
-			add_action( 'customize_register', array( $this, 'Register' ) );
+			add_action( 'customize_register', array( $this, 'register' ) );
 
 			// Output custom CSS to live site
-			add_action( 'wp_head', array( $this, 'HeaderOutput' ) );
+			add_action( 'wp_head', array( $this, 'header_output' ) );
 
 			//enqueue required fonts
-			add_action( 'wp_enqueue_scripts', array( $this, 'EnqueueFonts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_fonts' ) );
 
 			// Enqueue live preview javascript in Theme Customizer admin screen
-			add_action( 'customize_preview_init', array( $this, 'LivePreview' ) );
+			add_action( 'customize_preview_init', array( $this, 'live_preview' ) );
 
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'EnqueueScripts' ) );
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-			add_filter( 'body_class', array( $this, 'BodyClasses' ) );
+			add_filter( 'body_class', array( $this, 'body_classes' ) );
 
-			add_action( 'quest_pb_header_css', array( $this, 'PBHeaderCss' ) );
+			add_action( 'quest_pb_header_css', array( $this, 'pb_header_css' ) );
 		}
 
 		/**
@@ -48,7 +48,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 *
 		 * @return Quest_Customize
 		 */
-		public static function getInstance() {
+		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self ();
 			}
@@ -70,7 +70,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 * @link http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
 		 * @since MyTheme 1.0
 		 */
-		public static function Register( $wp_customize ) {
+		public static function register( $wp_customize ) {
 			$quest_customizer_path = trailingslashit( get_template_directory() ) . 'inc/customizer/';
 
 			// Load all custom controls
@@ -101,14 +101,14 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 * @see add_action('wp_head',$func)
 		 * @since MyTheme 1.0
 		 */
-		public static function HeaderOutput() {
+		public static function header_output() {
 			?>
 			<!--Customizer CSS-->
 			<style type="text/css">
 				<?php
-			self::PrintCss(); ?>
+			self::print_css(); ?>
 				<?php
-			self::PrintPBCss(); ?>
+			self::print_pb_css(); ?>
 			</style>
 			<!--/Customizer CSS-->
 		<?php
@@ -125,7 +125,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 		 * @see add_action('customize_preview_init',$func)
 		 * @since MyTheme 1.0
 		 */
-		public static function LivePreview() {
+		public static function live_preview() {
 
 			/*TO DO - Implement Live Preview using Javascript and postMessage Transport*/
 
@@ -134,7 +134,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 		}
 
-		public static function PrintPBCss() {
+		public static function print_pb_css() {
 			global $post;
 
 			if ( !quest_is_pb_template() ) {
@@ -144,10 +144,10 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			do_action( 'quest_pb_header_css' );
 
 			$css      = "\n/* Hover Icons */\n";
-			$sections = PT_PageBuilder_Helper::decode_pb_section_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) );
+			$sections = PT_PageBuilder_Helper::decode_pb_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) );
 
 			foreach ( $sections as $key => $section ) {
-				$css .= self::BuildSectionCss( $section );
+				$css .= self::build_section_css( $section );
 				if ( ! is_numeric( $key ) || ! array_key_exists( 'row', $section ) || empty( $section['row'] ) ) {
 					continue;
 				}
@@ -166,13 +166,13 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 						if ( is_array( $col['module'] ) && ! array_key_exists( 'id', $col['module'] ) ) {
 							foreach ( $col['module'] as $l => $module ) {
 								if ( $module['type'] === 'hovericon' ) {
-									$css .= self::BuildHoverIconCss( $module );
+									$css .= self::build_hovericon_css( $module );
 								}
 								$css .= apply_filters( "pt_pb_css_module_{$module['type']}", '', $module );
 							}
 						} elseif ( isset( $col['module']['type'] ) ) {
 							if ( $col['module']['type'] === 'hovericon' ) {
-								$css .= self::BuildHoverIconCss( $col['module'] );
+								$css .= self::build_hovericon_css( $col['module'] );
 							}
 
 							$css .= apply_filters( "pt_pb_css_module_{$col['module']['type']}", '', $col['module'] );
@@ -186,7 +186,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 		}
 
-		public static function BodyClasses( $classes ) {
+		public static function body_classes( $classes ) {
 			global $post;
 			if ( quest_is_pb_template() && quest_get_meta( array(), '_quest_pb_header' ) === 'transparent' ) {
 				$classes[] = 'transparent-header';
@@ -195,7 +195,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			return $classes;
 		}
 
-		public static function PBHeaderCss() {
+		public static function pb_header_css() {
 			$color       = quest_get_meta( array(), '_quest_pb_menu' );
 			$hover_color = quest_get_meta( array(), '_quest_pb_menu_hover' );
 			?>
@@ -227,19 +227,19 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			<?php
 		}
 
-		private static function BuildHoverIconCss( $module ) {
+		private static function build_hovericon_css( $module ) {
 			$output = "#{$module['id']}.hover-icon .fa { background-color : {$module['hover_color']}; color: {$module['color']} ; box-shadow: 0 0 0 4px {$module['color']}; } \n";
 			$output .= "#{$module['id']}.hover-icon .fa:hover { background-color : {$module['color']}; color: {$module['hover_color']} ; box-shadow: 0 0 0 8px {$module['color']}; } \n";
 
 			return $output;
 		}
 
-		private static function BuildSectionCss( $section ) {
+		private static function build_section_css( $section ) {
 
 			return "#{$section['id']} h1, #{$section['id']}  h2, #{$section['id']}  h3, #{$section['id']}  h4, #{$section['id']}  h5, #{$section['id']} h6, #{$section['id']} p { color: {$section['text_color']}; } ";
 		}
 
-		public function EnqueueScripts() {
+		public function enqueue_scripts() {
 
 			wp_enqueue_script( 'chosen', get_template_directory_uri() . '/assets/plugins/chosen/chosen.jquery.js', array(
 				'jquery',
@@ -253,7 +253,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			wp_enqueue_style( 'chosen', get_template_directory_uri() . '/assets/plugins/chosen/chosen.min.css' );
 		}
 
-		public function EnqueueFonts() {
+		public function enqueue_fonts() {
 
 			$fonts = array(
 				'typography_global_font_family'         => quest_get_mod( 'typography_global_font_family' ),
@@ -311,7 +311,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 		}
 
-		public static function PrintCss() {
+		public static function print_css() {
 			global $post;
 			$is_pagebuilder = false;
 			if ( null !== $post && get_page_template_slug( $post->ID ) === 'page-builder.php' ) {
@@ -568,4 +568,4 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 	}
 endif;
 
-Quest_Customize::getInstance();
+Quest_Customize::get_instance();

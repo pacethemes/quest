@@ -304,23 +304,37 @@ html[xmlns] .clearfix {
     display: inline-block;
     background-color: #e0e0e0;
     border-radius: 3px;
-    padding: 15px;
+    padding: 15px 12px;
     font-size: 16px;
     color: #666;
     text-decoration: none;
     margin: 15px;
-    width: 260px;
+    width: 195px;
     text-align: center;
     transition: all 0.3s;
-    &:hover,
-    &:focus,
-    &:focus {
-        color: #222 !important;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 0 #aaa !important;
+    box-shadow: 0 2px 0 #aaa !important;
+    &:hover, &:focus, &:active{
+        background-color: lighten(@modClr, 10%);
+        color: darken(#676869, 10%) !important;
+        border-color: darken(@modClr, 30%);
     }
+    // &:hover,
+    // &:focus,
+    // &:focus {
+    //     color: #222 !important;
+    //     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    // }
     .fa,
     .dashicons {
         margin-right: 5px;
+    }
+}
+
+.column-module{
+    width: 188px;
+    a{
+        // text-align: left;
     }
 }
 
@@ -452,6 +466,7 @@ html[xmlns] .clearfix {
 .pt-pb-column-content {
     border-color: @colClr !important;
     color: #676869 !important;
+    min-height: 50px;
 }
 
 .slide-content-preview,
@@ -469,12 +484,14 @@ html[xmlns] .clearfix {
         position: static;
         background: @modClr;
         height: 25px;
+        cursor: move;
         .admin-label {
             position: static;
             color: #676869;
             line-height: 25px;
         }
         .edit-module,
+        .edit-list-item
         .handlediv {
             right: 35px;
             a {
@@ -501,6 +518,15 @@ html[xmlns] .clearfix {
     }
     &:empty {
         padding: 0;
+    }
+}
+
+.pt-pb-slide-preview {
+    .module-controls .handlediv{
+        top: 0;
+    }
+    .pt-pb-column-content{
+        min-height: auto;
     }
 }
 
@@ -533,7 +559,7 @@ html[xmlns] .clearfix {
     margin-bottom: 10px;
 }
 
-.edit-module {
+.edit-module, .edit-list-item {
     position: absolute;
     top: -4px;
     right: 25px;
@@ -541,7 +567,7 @@ html[xmlns] .clearfix {
     // border: 1px solid #ccc;
     width: 50px;
     height: 25px;
-    line-height: 25px;
+    line-height: 25px !important;
     text-align: center;
     cursor: pointer;
     a {
@@ -553,6 +579,11 @@ html[xmlns] .clearfix {
             color: #333;
         }
     }
+}
+
+.edit-list-item{
+    top: 0;
+    right: 5px;
 }
 
 .admin-label {
@@ -700,9 +731,12 @@ html[xmlns] .clearfix {
 .pt-pb-insert-gallery {
     background-color: @rowClr;
     color: #676869 !important;
+    box-shadow: 0 2px 0 #aaa;
     &:hover,
     &:focus {
         color: darken( #676869, 20) !important;
+        background-color: lighten( @rowClr, 5) !important;
+        box-shadow: 0 2px 0 #aaa !important;
     }
 }
 
@@ -853,6 +887,7 @@ textarea.regular-text {
             border: none !important;
         }
         .pt-pb-column-content .module-controls .edit-module,
+        .pt-pb-column-content .module-controls .edit-list-item
         .pt-pb-column-content .module-controls .handlediv {
             top: 0;
             right: 25px;
@@ -878,7 +913,9 @@ textarea.regular-text {
     position: relative;
     .module-controls {
         .handlediv,
-        .edit-module {
+        .edit-module,
+        .edit-list-item
+         {
             top: 0 !important;
             right: 25px !important;
         }
@@ -991,4 +1028,8 @@ textarea.regular-text {
 
 .pt-pb-color {
     min-width: 175px;
+}
+
+.pt-pb-drop-highlight{
+    border: 2px dashed #bbb;
 }

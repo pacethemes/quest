@@ -26,12 +26,12 @@
 							class="dashicons dashicons-images-alt"></i> <?php _e( 'Image Slider', 'quest' ); ?></a>
 					<a href="#" class="section-type pt-pb-insert-gallery"><i
 							class="dashicons dashicons-format-gallery"></i> <?php _e( 'Gallery', 'quest' ); ?></a>
-					<# if(ptPbApp.isMetaSliderActive()) { #>
-					<a href="#" class="section-type pt-pb-insert-generic-slider" data-gen-slider="meta">
-						<img src="<?php echo plugins_url('ml-slider/assets/metaslider/matchalabs.png') ?>" alt="">
-						<?php _e( 'Meta Slider', 'quest' ); ?>
+					<# _.each(ptPbAppSliders, function(slider, name) { #>
+					<a href="#" class="section-type pt-pb-insert-generic-slider" data-gen-slider="{{{name}}}">
+						{{{slider.icon}}}
+						{{{slider.name}}}
 					</a>
-					<# } #>
+					<# }) #>
 
 					<div class="quest-plus-message">
 						<strong><?php _e( 'Need more section options ?', 'quest' ); ?> <span
@@ -187,6 +187,13 @@
 							<p class="description"><?php _e( 'Border color for the section bottom', 'quest' ) ?></p>
 						</div>
 					</div>
+
+					<?php
+					/*
+					* Action hook to add more section options
+					*/
+					do_action( 'pt_pb_section_options' );
+					?>
 
 					{{{ptPbApp.partial('form-css-class', { css_class: css_class, pre: pre })}}}
 					{{{ptPbApp.partial('form-admin-label', { admin_label: admin_label, pre: pre })}}}

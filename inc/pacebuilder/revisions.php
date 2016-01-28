@@ -77,7 +77,7 @@ if ( ! class_exists( 'Quest_WP_Post_Meta_Revisioning' ) ) :
 						 * Add the revisions meta data to the autosave.
 						 */
 						
-						$encoded = PT_PageBuilder_Helper::encode_pb_section_metadata( $posted_data[ $meta_key ] );
+						$encoded = PT_PageBuilder_Helper::encode_pb_metadata( $posted_data[ $meta_key ] );
 
 						add_metadata( 'post', $new_autosave['ID'], $meta_key, $encoded );
 					}

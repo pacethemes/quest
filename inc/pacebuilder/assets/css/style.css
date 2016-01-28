@@ -264,30 +264,35 @@ html[xmlns] .clearfix {
   display: inline-block;
   background-color: #e0e0e0;
   border-radius: 3px;
-  padding: 15px;
+  padding: 15px 12px;
   font-size: 16px;
   color: #666;
   text-decoration: none;
   margin: 15px;
-  width: 260px;
+  width: 195px;
   text-align: center;
   -webkit-transition: all 0.3s;
           transition: all 0.3s;
+  box-shadow: 0 2px 0 #aaa !important;
 }
 .section-type:hover,
 .column-module:hover,
 .section-type:focus,
 .column-module:focus,
-.section-type:focus,
-.column-module:focus {
-  color: #222 !important;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+.section-type:active,
+.column-module:active {
+  background-color: #f0f0f0;
+  color: #4e4f4f !important;
+  border-color: #8a8a8a;
 }
 .section-type .fa,
 .column-module .fa,
 .section-type .dashicons,
 .column-module .dashicons {
   margin-right: 5px;
+}
+.column-module {
+  width: 188px;
 }
 .section-type {
   margin: 0 15px 25px;
@@ -399,6 +404,7 @@ html[xmlns] .clearfix {
 .pt-pb-column-content {
   border-color: #d6d6d6 !important;
   color: #676869 !important;
+  min-height: 50px;
 }
 .slide-content-preview,
 .gimage-content-preview {
@@ -415,6 +421,7 @@ html[xmlns] .clearfix {
   position: static;
   background: #d6d6d6;
   height: 25px;
+  cursor: move;
 }
 .pt-pb-column-content .module-controls .admin-label {
   position: static;
@@ -422,18 +429,18 @@ html[xmlns] .clearfix {
   line-height: 25px;
 }
 .pt-pb-column-content .module-controls .edit-module,
-.pt-pb-column-content .module-controls .handlediv {
+.pt-pb-column-content .module-controls .edit-list-item .handlediv {
   right: 35px;
   top: 10px;
 }
 .pt-pb-column-content .module-controls .edit-module a,
-.pt-pb-column-content .module-controls .handlediv a {
+.pt-pb-column-content .module-controls .edit-list-item .handlediv a {
   color: #676869 !important;
 }
 .pt-pb-column-content .module-controls .edit-module a:hover,
-.pt-pb-column-content .module-controls .handlediv a:hover,
+.pt-pb-column-content .module-controls .edit-list-item .handlediv a:hover,
 .pt-pb-column-content .module-controls .edit-module a:focus,
-.pt-pb-column-content .module-controls .handlediv a:focus {
+.pt-pb-column-content .module-controls .edit-list-item .handlediv a:focus {
   color: #343536 !important;
 }
 .pt-pb-column-content .module-controls .handlediv {
@@ -450,6 +457,12 @@ html[xmlns] .clearfix {
 }
 .pt-pb-column-content:empty {
   padding: 0;
+}
+.pt-pb-slide-preview .module-controls .handlediv {
+  top: 0;
+}
+.pt-pb-slide-preview .pt-pb-column-content {
+  min-height: auto;
 }
 .module-controls {
   position: absolute;
@@ -478,24 +491,32 @@ html[xmlns] .clearfix {
   display: block;
   margin-bottom: 10px;
 }
-.edit-module {
+.edit-module,
+.edit-list-item {
   position: absolute;
   top: -4px;
   right: 25px;
   width: 50px;
   height: 25px;
-  line-height: 25px;
+  line-height: 25px !important;
   text-align: center;
   cursor: pointer;
 }
-.edit-module a {
+.edit-module a,
+.edit-list-item a {
   color: #888;
   display: inline-block;
   padding: 0 4px;
 }
 .edit-module a:hover,
-.edit-module a:focus {
+.edit-list-item a:hover,
+.edit-module a:focus,
+.edit-list-item a:focus {
   color: #333;
+}
+.edit-list-item {
+  top: 0;
+  right: 5px;
 }
 .admin-label {
   position: absolute;
@@ -621,6 +642,7 @@ html[xmlns] .clearfix {
 .pt-pb-insert-gallery {
   background-color: #d6d6d6;
   color: #676869 !important;
+  box-shadow: 0 2px 0 #aaa;
 }
 .pt-pb-insert-column:hover,
 .pt-pb-insert-slider:hover,
@@ -631,6 +653,8 @@ html[xmlns] .clearfix {
 .pt-pb-insert-generic-slider:focus,
 .pt-pb-insert-gallery:focus {
   color: #343536 !important;
+  background-color: #e3e3e3 !important;
+  box-shadow: 0 2px 0 #aaa !important;
 }
 .pt-pb-insert-slide,
 .pt-pb-insert-gimage {
@@ -782,8 +806,8 @@ textarea.regular-text {
 }
 .slider-container .pt-pb-column .pt-pb-column-content .module-controls .edit-module,
 .gallery-container .pt-pb-column .pt-pb-column-content .module-controls .edit-module,
-.slider-container .pt-pb-column .pt-pb-column-content .module-controls .handlediv,
-.gallery-container .pt-pb-column .pt-pb-column-content .module-controls .handlediv {
+.slider-container .pt-pb-column .pt-pb-column-content .module-controls .edit-list-item .pt-pb-column-content .module-controls .handlediv,
+.gallery-container .pt-pb-column .pt-pb-column-content .module-controls .edit-list-item .pt-pb-column-content .module-controls .handlediv {
   top: 0;
   right: 25px;
 }
@@ -805,7 +829,8 @@ textarea.regular-text {
   position: relative;
 }
 .pt-pb-module-preview .module-controls .handlediv,
-.pt-pb-module-preview .module-controls .edit-module {
+.pt-pb-module-preview .module-controls .edit-module,
+.pt-pb-module-preview .module-controls .edit-list-item {
   top: 0 !important;
   right: 25px !important;
 }
@@ -908,4 +933,7 @@ textarea.regular-text {
 }
 .pt-pb-color {
   min-width: 175px;
+}
+.pt-pb-drop-highlight {
+  border: 2px dashed #bbb;
 }

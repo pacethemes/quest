@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _ */
+/* global Backbone, jQuery, _, ptPbAppPlugins */
 
 var ptPbApp = ptPbApp || {};
 ptPbApp.Models = ptPbApp.Models || {};
@@ -35,8 +35,19 @@ ptPbApp.Models = ptPbApp.Models || {};
 
             ptPbApp.ModulesList = {};
             _.each(ptPbApp.Models, function(val, key) {
-                if (key.match(/.Module/))
-                    ptPbApp.ModulesList[key] = new ptPbApp.Models[key]().defaults;
+                if (key.match(/.Module/)) {
+                    var pluginName = key.replace('Module', '');
+                    if(ptPbAppPlugins.hasOwnProperty(pluginName)){
+                        if(ptPbAppPlugins[pluginName] == 1)
+                            ptPbApp.ModulesList[key] = ptPbApp.Models[key].prototype.defaults;
+                        else{
+                            delete ptPbApp.Models[key] ;
+                            delete ptPbApp.Views[key] ;
+                        }
+                    }
+                    else
+                        ptPbApp.ModulesList[key] = ptPbApp.Models[key].prototype.defaults;
+                }
             });
 
         },
@@ -94,7 +105,7 @@ ptPbApp.Models = ptPbApp.Models || {};
         },
 
         initialize: function() {
-            this.set('pre', ptPbApp.getInputPrefix(this.id));
+            this.set('pre', ptPbApp.getInputPrefix(this.get('id')));
             this.importContent();
         },
 
@@ -105,7 +116,10 @@ ptPbApp.Models = ptPbApp.Models || {};
             if (this.get('col')) {
                 _.each(this.get('col') || [], this.addColumn, this);
 
-                this.set('type', 'columns')
+                this.set({
+                    'type': 'columns',
+                    'admin_label' : this.get('admin_label') == '' ? 'Row - Columns' : this.get('admin_label')
+                    })
                     .unset('col', {
                         silent: true
                     });
@@ -114,15 +128,16 @@ ptPbApp.Models = ptPbApp.Models || {};
                 var slides = _.filter(this.get('slider'), function(val, key) {
                         return $.isNumeric(key);
                     }),
-                    sliderOpts = _.reduce(this.get('slider'), function(obj, val, key) {
+                    sliderOpts = _.extend(_.reduce(this.get('slider'), function(obj, val, key) {
                         if (!$.isNumeric(key))
                             obj[key] = val;
                         return obj;
-                    }, {});
+                    }, {}), {id: this.get('id') + '__slider' });
 
                 this.set({
                         'content': this.addSlider(sliderOpts, slides),
-                        'type': 'slider'
+                        'type': 'slider',
+                        'admin_label' : this.get('admin_label') == '' ? 'Row - Image Slider' : this.get('admin_label')
                     })
                     .unset('slider', {
                         silent: true
@@ -133,15 +148,16 @@ ptPbApp.Models = ptPbApp.Models || {};
                 var images = _.filter(this.get('gallery'), function(val, key) {
                         return $.isNumeric(key);
                     }),
-                    galOpts = _.reduce(this.get('gallery'), function(obj, val, key) {
+                    galOpts = _.extend(_.reduce(this.get('gallery'), function(obj, val, key) {
                         if (!$.isNumeric(key))
                             obj[key] = val;
                         return obj;
-                    }, {});
+                    }, {}), {id: this.get('id') + '__gallery' });
 
                 this.set({
                         'content': this.addGallery(galOpts, images),
-                        'type': 'gallery'
+                        'type': 'gallery',
+                        'admin_label' : this.get('admin_label') == '' ? 'Row - Gallery' : this.get('admin_label')
                     })
                     .unset('gallery', {
                         silent: true
@@ -149,9 +165,9 @@ ptPbApp.Models = ptPbApp.Models || {};
 
             } else if (this.get('generic_slider')) {
                 this.set({
-                        'content': this.addGenericSlider(this.get('generic_slider')),
+                        'content': this.addGenericSlider(_.extend(this.get('generic_slider'), {id: this.get('id') + '__generic_slider' } )),
                         'type': 'generic-slider',
-                        'admin_label' : 'Row - ' + _.extend({ 'type' : '' }, this.get('generic_slider')).type + ' Slider'
+                        'admin_label' : this.get('admin_label') == '' ? 'Row - ' + _.extend({ 'type' : '' }, this.get('generic_slider')).type + ' Slider' : this.get('admin_label')
                     })
                     .unset('generic_slider', {
                         silent: true
@@ -163,9 +179,12 @@ ptPbApp.Models = ptPbApp.Models || {};
                         type: col
                     }));
                 }, this);
-                this.unset('columns', {
-                    silent: true
-                });
+                this.set({
+                    'admin_label' : this.get('admin_label') == '' ? 'Row - Columns' : this.get('admin_label')
+                    })
+                    .unset('columns', {
+                        silent: true
+                    });
             }
         },
 
@@ -286,6 +305,12 @@ ptPbApp.Models = ptPbApp.Models || {};
             if (!this.get('module'))
                 return;
 
+            //if module has admin_label property then create an empty object with the module object
+            //required for backward compatibility for initial versions of page builder
+            if(this.get('module').hasOwnProperty('admin_label')){
+                this.set('module', { 0: this.get('module') } )
+            }
+
             //if module is an object, create an array of objects
             //required for backward compatibility for initial versions of page builder
             _.each(_.filter(this.get('module'), function(val, key) {
@@ -298,7 +323,6 @@ ptPbApp.Models = ptPbApp.Models || {};
         },
 
         addModule: function(attr) {
-            attr = attr || {};
             var moduleName = attr && attr.type ? this.properName(attr.type) : '';
 
             if (!ptPbApp.Models[moduleName])
@@ -345,6 +369,7 @@ ptPbApp.Models = ptPbApp.Models || {};
             slides: '',
             height: '400px',
             autoplay: 'true',
+            fullscreen: 'false',
             animation: 'slit',
             interval: '4000',
             speed: '800',
@@ -540,9 +565,7 @@ ptPbApp.Models = ptPbApp.Models || {};
     ptPbApp.Models.Module = Backbone.Model.extend({
 
         initialize: function() {
-            this.set({
-                'pre': ptPbApp.getInputPrefix(this.get('id'))
-            });
+            this.set( 'pre', ptPbApp.getInputPrefix(this.get('id')) );
         },
 
         properName: function(t) {
@@ -634,6 +657,24 @@ ptPbApp.Models = ptPbApp.Models || {};
             type: 'featurebox',
             parent: '',
             admin_label: 'Feature Box'
+        }
+    });
+
+    ptPbApp.Models.Contactform7Module = ptPbApp.Models.Module.extend({
+        defaults: {
+            id: '',
+            animation: '',
+            parent: '',
+            type: 'contactform7',
+            form_id: '',
+            title: '',
+            margin_bottom: '20px',
+            padding_top: '0px',
+            padding_bottom: '0px',
+            padding_left: '0px',
+            padding_right: '0px',
+            admin_label: 'Contact Form 7',
+            icon: 'email-alt'
         }
     });
 

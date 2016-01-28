@@ -1142,6 +1142,9 @@ a .action-icon {
   -moz-box-sizing: content-box !important;
        box-sizing: content-box !important; }
 
+.flexslider .slides {
+  padding-left: 0; }
+
 .arrow-container .left-arrow-small, .arrow-container .right-arrow-small {
   width: 25px;
   height: 30px;

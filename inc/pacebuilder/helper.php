@@ -11,7 +11,7 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @return string $content
 		 */
-		public static function GetAttributes( $array, $attributes ) {
+		public static function generate_attr( $array, $attributes ) {
 			$content = "";
 
 			foreach ( $attributes as $attribute ) {
@@ -29,7 +29,7 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @return string $content
 		 */
-		public static function GetDataAttributes( $values, $properties ) {
+		public static function generate_data_attr( $values, $properties ) {
 			$content = "";
 			foreach ( $properties as $prop ) {
 				if ( array_key_exists( $prop, $values ) ) {
@@ -42,7 +42,62 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 			return $content;
 		}
 
-		public static function getContent( $module ) {
+		/**
+		 * Generates CSS Properties for a array
+		 *
+		 * @return string
+		 */
+		public static function generate_css( $arr ) {
+			$css = array(
+				'bg_image'            => 'background-image',
+				'bg_attach'           => 'background-attachment',
+				'bg_color'            => 'background-color',
+				'text_color'          => 'color',
+				'padding_top'         => 'padding-top',
+				'padding_bottom'      => 'padding-bottom',
+				'padding_left'        => 'padding-left',
+				'padding_right'       => 'padding-right',
+				'margin_top'          => 'margin-top',
+				'margin_bottom'       => 'margin-bottom',
+				'border_top_width'    => 'border-top-width',
+				'border_bottom_width' => 'border-bottom-width',
+				'border_top_color'    => 'border-top-color',
+				'border_bottom_color' => 'border-bottom-color',
+				'border_left_width'   => 'border-left-width',
+				'border_right_width'  => 'border-right-width',
+				'border_left_color'   => 'border-left-color',
+				'border_right_color'  => 'border-right-color',
+				'height'              => 'height',
+				'bg_pos_x'            => 'background-position-x',
+				'bg_pos_y'            => 'background-position-y',
+				'text_size'           => 'font-size'
+			);
+
+			$properties = array();
+
+			foreach ( $arr as $prop => $value ) {
+				if ( ! array_key_exists( $prop, $css ) || trim( $value ) === '' ) {
+					continue;
+				}
+
+				if ( $prop == 'bg_image' ) {
+					$url = esc_url( $value );
+					$properties[] = "$css[$prop]:url($url)";
+				} else {
+					$properties[] = "$css[$prop]:$value";
+				}
+			}
+
+			return esc_attr( implode( '; ', $properties ) );
+
+		}
+
+		/**
+		 * strips slashes for HTML content in a module
+		 *
+		 * @return string
+		 */
+		public static function get_content( $module ) {
 			return isset( $module['content'] ) ? stripslashes( $module['content'] ) : "";
 		}
 
@@ -52,7 +107,7 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @return array
 		 */
-		public static function decode_pb_section_metadata( $meta ) {
+		public static function decode_pb_metadata( $meta ) {
 			// If the meta is an array we are dealing with non encoded older Meta Data
 			if ( is_array( $meta ) ) {
 				return $meta;
@@ -66,7 +121,7 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 
 			// Convert quotes (single and double) entities back to quotes
 			if ( is_array( $decoded ) ) {
-				$decoded = self::normalize_meta_data( $decoded );
+				$decoded = self::normalize_metadata( $decoded );
 			}
 
 			return $decoded;
@@ -83,13 +138,13 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @return string
 		 */
-		public static function encode_pb_section_metadata( $meta ) {
+		public static function encode_pb_metadata( $meta ) {
 
 			if ( ! is_array( $meta ) ) {
 				return wp_slash( $meta );
 			}
 
-			return wp_slash( json_encode( self::sanitize_meta_data( $meta ) ) );
+			return wp_slash( json_encode( self::sanitize_metadata( $meta ) ) );
 		}
 
 		/**
@@ -99,11 +154,11 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @return array
 		 */
-		public static function sanitize_meta_data( $arr ) {
+		public static function sanitize_metadata( $arr ) {
 			$result = array();
 			foreach ( $arr as $key => $value ) {
 				if ( is_array( $value ) ) {
-					$value = self::sanitize_meta_data( $value );
+					$value = self::sanitize_metadata( $value );
 				} else if ( $key === 'content' ) {
 					// try to unslash first incase the server already escaped quotes
 					$value = htmlspecialchars( wp_unslash( $value ), ENT_QUOTES );
@@ -121,11 +176,11 @@ if ( ! class_exists( 'PT_PageBuilder_Helper' ) ) :
 		 *
 		 * @return array
 		 */
-		public static function normalize_meta_data( $arr ) {
+		public static function normalize_metadata( $arr ) {
 			$result = array();
 			foreach ( $arr as $key => $value ) {
 				if ( is_array( $value ) ) {
-					$value = self::normalize_meta_data( $value );
+					$value = self::normalize_metadata( $value );
 				} else if ( $key === 'content' ) {
 					$value = htmlspecialchars_decode( $value, ENT_QUOTES );
 				}
