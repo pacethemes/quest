@@ -1,1323 +1,2906 @@
+# Copyright (C) 2016 Pace Themes
+# This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: quest\n"
-"POT-Creation-Date: 2015-07-01 02:05+0530\n"
-"PO-Revision-Date: 2015-07-01 02:06+0530\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: Quest 1.3.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2016-01-29 06:31:41+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ..\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
 
-#: ../404.php:19
+#: 404.php:19
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: ../404.php:24
+#: 404.php:24
 msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+"It looks like nothing was found at this location. Maybe try one of the "
+"links below or a search?"
 msgstr ""
 
-#: ../404.php:32
+#: 404.php:32
 msgid "Most Used Categories"
 msgstr ""
 
-#: ../404.php:49
-#, php-format
+#: 404.php:49
+#. translators: %1$s: smiley
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
-#: ../comments.php:23
+#: comments.php:23
 msgid "No Comments"
 msgstr ""
 
-#: ../comments.php:24
+#: comments.php:24
 msgid "One Comment"
 msgstr ""
 
-#: ../comments.php:25
+#: comments.php:25
 msgid "% Comments"
 msgstr ""
 
-#: ../comments.php:38
+#: comments.php:38
 msgid "Older Comments"
 msgstr ""
 
-#: ../comments.php:39
+#: comments.php:39
 msgid "Newer Comments"
 msgstr ""
 
-#: ../comments.php:45
+#: comments.php:45
 msgid "Comments are closed."
 msgstr ""
 
-#: ../comments.php:55
+#: comments.php:55
 msgid "Name (required)"
 msgstr ""
 
-#: ../comments.php:56
+#: comments.php:56
 msgid "Email Address (required)"
 msgstr ""
 
-#: ../comments.php:57
+#: comments.php:57
 msgid "Website"
 msgstr ""
 
-#: ../comments.php:62
+#: comments.php:62
 msgid "Your Comment..."
 msgstr ""
 
-#: ../content-none.php:13
+#: content-none.php:13
 msgid "Nothing Found"
 msgstr ""
 
-#: ../content-none.php:20
-#, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+#: content-none.php:20
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: ../content-none.php:24
+#: content-none.php:24
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: ../content-none.php:29
+#: content-none.php:29
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
 
-#: ../content-page.php:20 ../content-single.php:19
-#: ../partials/content-grid-single.php:11 ../partials/content-medium.php:38
-#: ../partials/content-normal.php:30
+#: content-page.php:20 content-single.php:22
+#: partials/content-grid-single.php:11 partials/content-medium.php:38
+#: partials/content-normal.php:30
 msgid "View more"
 msgstr ""
 
-#: ../content-page.php:41 ../partials/content-normal.php:54
+#: content-page.php:41 partials/content-normal.php:54
 msgid "Pages:"
 msgstr ""
 
-#: ../content-page.php:49 ../content-single.php:56
+#: content-page.php:49 content-single.php:61
 msgid "Edit"
 msgstr ""
 
-#: ../content-single.php:45
+#: content-single.php:50
 msgid "Pages: "
 msgstr ""
 
-#: ../functions.php:59
+#: functions.php:62
 msgid "Primary Menu"
 msgstr ""
 
-#: ../functions.php:93 ../inc/customizer/panels/typography.php:133
+#: functions.php:96 inc/customizer/panels/typography.php:172
 msgid "Sidebar"
 msgstr ""
 
-#: ../functions.php:124
+#: functions.php:127
 msgid "Footer Widget"
 msgstr ""
 
-#: ../functions.php:300 ../inc/template-tags.php:570
+#: functions.php:327 inc/template-tags.php:582
 msgid "Home"
 msgstr ""
 
-#: ../header.php:22
+#: header.php:23
 msgid "Skip to content"
 msgstr ""
 
-#: ../header.php:53
+#: header.php:56
 msgid "Menu"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:98
-msgid "Font Variant"
+#: inc/CMB2/includes/CMB2.php:112
+msgid "Metabox configuration is required to have an ID parameter"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:99
-msgid ""
-"Different variants of the font, provides control over font-weight and italics"
+#: inc/CMB2/includes/CMB2.php:622
+#: inc/pacebuilder/templates/partial-module-header.php:10
+#: inc/pacebuilder/templates/section.php:15
+msgid "Click to toggle"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:130
-msgid "Font Size (px)"
+#: inc/CMB2/includes/CMB2_Ajax.php:40
+msgid "Please Try Again"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:157
-msgid "Line Height (em)"
+#: inc/CMB2/includes/CMB2_Ajax.php:137
+msgid "Remove Embed"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:184
-msgid "Text Transform"
+#: inc/CMB2/includes/CMB2_Ajax.php:141
+msgid "No oEmbed Results Found for %s. View more info at"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:189
-#: ../inc/customizer/defaults.php:249
+#: inc/CMB2/includes/CMB2_Field.php:152
+msgid "Add Group"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_Field.php:153
+msgid "Remove Group"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_Field.php:182 inc/CMB2/includes/CMB2_Field.php:186
+#: inc/customizer/custom-controls/google-fonts-control.php:189
+#: inc/customizer/defaults.php:277
 msgid "None"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:190
+#: inc/CMB2/includes/CMB2_JS.php:92 inc/CMB2/includes/CMB2_JS.php:125
+msgid "Clear"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:93 inc/pacebuilder/templates/row.php:45
+#: inc/pacebuilder/templates/row.php:82
+msgid "Default"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:94
+msgid "Select Color"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:95
+msgid "Current Color"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:116
+msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:117
+msgid "Su, Mo, Tu, We, Th, Fr, Sa"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:118
+msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:119
+msgid ""
+"January, February, March, April, May, June, July, August, September, "
+"October, November, December"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:120
+msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:121 inc/pacebuilder/tour.php:629
+msgid "Next"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:122
+msgid "Prev"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:123
+msgid "Today"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:124 inc/CMB2/includes/CMB2_JS.php:134
+msgid "Done"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:128
+msgid "Choose Time"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:129
+msgid "Time"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:130
+msgid "Hour"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:131
+msgid "Minute"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:132
+msgid "Second"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:133
+msgid "Now"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:141
+msgid "Use this file"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:142 inc/CMB2/includes/CMB2_Types.php:968
+msgid "Remove Image"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:143 inc/CMB2/includes/CMB2_Types.php:184
+#: inc/CMB2/includes/CMB2_Types.php:989
+msgid "Remove"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:144 inc/CMB2/includes/CMB2_Types.php:984
+msgid "File:"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:145 inc/CMB2/includes/CMB2_Types.php:987
+msgid "Download"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:146
+msgid "Select / Deselect All"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_Types.php:92
+msgid "Add Row"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_Types.php:761 inc/CMB2/includes/CMB2_Types.php:810
+msgid "No terms"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_Types.php:873
+msgid "Add or Upload Files"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_Types.php:1024
+msgid "Add or Upload File"
+msgstr ""
+
+#: inc/CMB2/includes/helper-functions.php:274
+msgid "Save"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:333
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:334
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:335
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:336
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:337
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:342
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:347
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:352
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:357
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:362
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:367
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:372
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:377
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:382
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:387
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:392
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:397
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:398
+msgid "Return to the dashboard"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:399
+#: inc/class-tgm-plugin-activation.php:3025
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:400
+#: inc/class-tgm-plugin-activation.php:2828
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:401
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:402
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:403
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:404
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:405
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:520
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:521
+msgid "Update Required"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:635
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:824
+#: inc/class-tgm-plugin-activation.php:3434
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:931
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:931
+#: inc/class-tgm-plugin-activation.php:934
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:934
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2163
+msgid "Required"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2166
+msgid "Recommended"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2182
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2185
+msgid "External Source"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2188
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2205
+msgid "Not Installed"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2209
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2211
+msgid "Active"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2217
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2220
+msgid "Requires Update"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2223
+msgid "Update recommended"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2279
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:2282
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:2285
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:2375
+msgid "Installed version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2383
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2395
+msgid "Available version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2418
+msgid ""
+"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
+"Dashboard</a>"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2432
+msgid "Plugin"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2433
+msgid "Source"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2434
+msgid "Type"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2438
+msgid "Version"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2439
+msgid "Status"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2566
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2599
+msgid "Install"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2605
+msgid "Update"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2608
+msgid "Activate"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2639
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2641
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2677
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2679
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2784
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2810
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3024
+msgid "Plugin activation failed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3358
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3360
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3361
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3365
+msgid ""
+"The installation and activation process is starting. This process may take "
+"a while on some hosts, so please be patient."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3366
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3366
+#: inc/class-tgm-plugin-activation.php:3372
+msgid "Show Details"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3366
+#: inc/class-tgm-plugin-activation.php:3372
+msgid "Hide Details"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3367
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3368
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3371
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3372
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3373
+msgid "All installations have been completed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3374
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/customizer/custom-controls/google-fonts-control.php:98
+msgid "Font Variant"
+msgstr ""
+
+#: inc/customizer/custom-controls/google-fonts-control.php:99
+msgid ""
+"Different variants of the font, provides control over font-weight and "
+"italics"
+msgstr ""
+
+#: inc/customizer/custom-controls/google-fonts-control.php:130
+msgid "Font Size (px)"
+msgstr ""
+
+#: inc/customizer/custom-controls/google-fonts-control.php:157
+msgid "Line Height (em)"
+msgstr ""
+
+#: inc/customizer/custom-controls/google-fonts-control.php:184
+msgid "Text Transform"
+msgstr ""
+
+#: inc/customizer/custom-controls/google-fonts-control.php:190
 msgid "Uppercase"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:191
+#: inc/customizer/custom-controls/google-fonts-control.php:191
 msgid "Lowercase"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:217
+#: inc/customizer/custom-controls/google-fonts-control.php:217
 msgid "Letter Spacing (px)"
 msgstr ""
 
-#: ../inc/customizer/custom-controls/google-fonts-control.php:244
+#: inc/customizer/custom-controls/google-fonts-control.php:244
 msgid "Word Spacing (px)"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:237
+#: inc/customizer/defaults.php:29
+msgid "Call us Now! 1-999-999-9999 | Email us at info@example.com"
+msgstr ""
+
+#: inc/customizer/defaults.php:265
 msgid "Wide"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:238
-#: ../inc/pagebuilder/templates/section-edit.php:58
+#: inc/customizer/defaults.php:266 inc/pacebuilder/templates/row.php:48
+#: inc/pacebuilder/templates/section.php:105
 msgid "Boxed"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:247
-#: ../inc/pagebuilder/templates/module-image-edit.php:28
-#: ../inc/pagebuilder/templates/module-slide-edit.php:34
+#: inc/customizer/defaults.php:275 inc/customizer/defaults.php:289
+#: inc/customizer/defaults.php:294
+#: inc/pacebuilder/templates/module-image.php:36
+#: inc/pacebuilder/templates/module-slide.php:66
+#: inc/pacebuilder/templates/module-slide.php:116
 msgid "Left"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:248
-#: ../inc/pagebuilder/templates/module-image-edit.php:34
-#: ../inc/pagebuilder/templates/module-slide-edit.php:37
+#: inc/customizer/defaults.php:276 inc/customizer/defaults.php:291
+#: inc/customizer/defaults.php:296
+#: inc/pacebuilder/templates/module-image.php:42
+#: inc/pacebuilder/templates/module-slide.php:69
+#: inc/pacebuilder/templates/module-slide.php:119
 msgid "Right"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:252
+#: inc/customizer/defaults.php:280 inc/metaboxes.php:113
 msgid "Normal"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:253
+#: inc/customizer/defaults.php:281
 msgid "Medium"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:254
+#: inc/customizer/defaults.php:282
 msgid "Grid"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:257
-#: ../inc/pagebuilder/templates/module-image-edit.php:79
-#: ../inc/pagebuilder/templates/module-image-edit.php:94
-#: ../inc/pagebuilder/templates/module-slider-edit.php:23
+#: inc/customizer/defaults.php:285
+#: inc/pacebuilder/templates/module-gallery.php:62
+#: inc/pacebuilder/templates/module-image.php:87
+#: inc/pacebuilder/templates/module-image.php:102
+#: inc/pacebuilder/templates/module-slider.php:32
+#: inc/pacebuilder/templates/module-slider.php:48
+#: inc/pacebuilder/templates/row.php:65
 msgid "Yes"
 msgstr ""
 
-#: ../inc/customizer/defaults.php:258
-#: ../inc/pagebuilder/templates/module-image-edit.php:81
-#: ../inc/pagebuilder/templates/module-image-edit.php:96
-#: ../inc/pagebuilder/templates/module-slider-edit.php:25
+#: inc/customizer/defaults.php:286
+#: inc/pacebuilder/templates/module-gallery.php:64
+#: inc/pacebuilder/templates/module-image.php:89
+#: inc/pacebuilder/templates/module-image.php:104
+#: inc/pacebuilder/templates/module-slider.php:34
+#: inc/pacebuilder/templates/module-slider.php:50
+#: inc/pacebuilder/templates/row.php:68
 msgid "No"
 msgstr ""
 
-#: ../inc/customizer/panels/background-images.php:34
-#: ../inc/customizer/panels/colors.php:32
-#: ../inc/customizer/panels/layout.php:29
-#: ../inc/customizer/panels/typography.php:35
+#: inc/customizer/defaults.php:290 inc/customizer/defaults.php:295
+#: inc/pacebuilder/templates/module-image.php:39
+#: inc/pacebuilder/templates/module-slide.php:63
+#: inc/pacebuilder/templates/module-slide.php:83
+#: inc/pacebuilder/templates/module-slide.php:113
+#: inc/pacebuilder/templates/module-slide.php:133
+msgid "Center"
+msgstr ""
+
+#: inc/customizer/defaults.php:299
+msgid "Callout + Social Icons"
+msgstr ""
+
+#: inc/customizer/defaults.php:300
+msgid "Callout + Search"
+msgstr ""
+
+#: inc/customizer/defaults.php:301
+msgid "Social Icons + Callout"
+msgstr ""
+
+#: inc/customizer/defaults.php:302
+msgid "Search + Callout"
+msgstr ""
+
+#: inc/customizer/defaults.php:303
+msgid "Social Icons + Search"
+msgstr ""
+
+#: inc/customizer/defaults.php:304
+msgid "Search + Social Icons"
+msgstr ""
+
+#: inc/customizer/defaults.php:307
+msgid "Latin"
+msgstr ""
+
+#: inc/customizer/defaults.php:308
+msgid "Latin Extended"
+msgstr ""
+
+#: inc/customizer/defaults.php:309
+msgid "Greek"
+msgstr ""
+
+#: inc/customizer/defaults.php:310
+msgid "Greek Extended"
+msgstr ""
+
+#: inc/customizer/defaults.php:311
+msgid "Cyrillic"
+msgstr ""
+
+#: inc/customizer/defaults.php:312
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: inc/customizer/defaults.php:313
+msgid "Vietnamese"
+msgstr ""
+
+#: inc/customizer/defaults.php:314
+msgid "Arabic"
+msgstr ""
+
+#: inc/customizer/defaults.php:315
+msgid "Khmer"
+msgstr ""
+
+#: inc/customizer/defaults.php:316
+msgid "Devanagari"
+msgstr ""
+
+#: inc/customizer/panels/background-images.php:34
+#: inc/customizer/panels/colors.php:32 inc/customizer/panels/layout.php:32
+#: inc/customizer/panels/typography.php:74
 msgid "Global"
 msgstr ""
 
-#: ../inc/customizer/panels/background-images.php:50
+#: inc/customizer/panels/background-images.php:50
 msgid "Site"
 msgstr ""
 
-#: ../inc/customizer/panels/background-images.php:71
-#: ../inc/customizer/panels/background-images.php:108
-#: ../inc/pagebuilder/templates/section-edit.php:7
+#: inc/customizer/panels/background-images.php:71
+#: inc/customizer/panels/background-images.php:108
+#: inc/pacebuilder/templates/section.php:53
 msgid "Background Image"
 msgstr ""
 
-#: ../inc/customizer/panels/background-images.php:87
-#: ../inc/customizer/panels/colors.php:577
+#: inc/customizer/panels/background-images.php:87
+#: inc/customizer/panels/colors.php:863
 msgid "Title Container"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:55
+#: inc/customizer/panels/colors.php:55
 msgid "Accent Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:56
+#: inc/customizer/panels/colors.php:56
 msgid "Used for Links & Buttons"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:79
+#: inc/customizer/panels/colors.php:79
 msgid "Accent Shade Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:80
+#: inc/customizer/panels/colors.php:80
 msgid "Used for Links & Buttons hover state"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:104
-msgid "Alt Color"
+#: inc/customizer/panels/colors.php:104
+msgid "Form Elements Background Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:105
+#: inc/customizer/panels/colors.php:105 inc/customizer/panels/colors.php:129
 msgid "Used for Form Elements"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:129
-#: ../inc/customizer/panels/colors.php:342
-#: ../inc/customizer/panels/colors.php:486
-#: ../inc/customizer/panels/colors.php:648
-#: ../inc/customizer/panels/colors.php:773
+#: inc/customizer/panels/colors.php:128
+msgid "Form Elements Text Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:153 inc/customizer/panels/colors.php:366
+#: inc/customizer/panels/colors.php:703 inc/customizer/panels/colors.php:934
+#: inc/customizer/panels/colors.php:1059
 msgid "Border Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:130
+#: inc/customizer/panels/colors.php:154
 msgid "Used for Borders for all content elements"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:153
-#: ../inc/customizer/panels/colors.php:725
+#: inc/customizer/panels/colors.php:177 inc/customizer/panels/colors.php:1011
 msgid "Heading Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:154
+#: inc/customizer/panels/colors.php:178
 msgid "Used for headings - h1 to h6"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:178
-#: ../inc/customizer/panels/colors.php:317
-#: ../inc/customizer/panels/colors.php:398
-#: ../inc/customizer/panels/colors.php:511
-#: ../inc/customizer/panels/colors.php:624
-#: ../inc/customizer/panels/colors.php:749
-#: ../inc/customizer/panels/colors.php:834
-#: ../inc/pagebuilder/templates/section-edit.php:69
+#: inc/customizer/panels/colors.php:202 inc/customizer/panels/colors.php:341
+#: inc/customizer/panels/colors.php:444 inc/customizer/panels/colors.php:615
+#: inc/customizer/panels/colors.php:728 inc/customizer/panels/colors.php:910
+#: inc/customizer/panels/colors.php:1035 inc/customizer/panels/colors.php:1120
+#: inc/pacebuilder/templates/section.php:116
 msgid "Text Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:179
+#: inc/customizer/panels/colors.php:203
 msgid "Used for content text"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:202
+#: inc/customizer/panels/colors.php:226
 msgid "Text Alt Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:203
+#: inc/customizer/panels/colors.php:227
 msgid "Used for post meta & icons"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:227
+#: inc/customizer/panels/colors.php:251
 msgid "Site Background Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:228
+#: inc/customizer/panels/colors.php:252
 msgid "Used for background color of the site"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:252
+#: inc/customizer/panels/colors.php:276
 msgid "Content Background Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:253
+#: inc/customizer/panels/colors.php:277
 msgid "Used for background color of the site content"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:269
-#: ../inc/customizer/panels/layout.php:70
+#: inc/customizer/panels/colors.php:293 inc/customizer/panels/layout.php:73
 msgid "Header"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:292
-#: ../inc/customizer/panels/colors.php:461
-#: ../inc/customizer/panels/colors.php:600
-#: ../inc/customizer/panels/colors.php:702
-#: ../inc/customizer/panels/colors.php:811
-#: ../inc/pagebuilder/templates/section-edit.php:42
+#: inc/customizer/panels/colors.php:316 inc/customizer/panels/colors.php:420
+#: inc/customizer/panels/colors.php:678 inc/customizer/panels/colors.php:886
+#: inc/customizer/panels/colors.php:988 inc/customizer/panels/colors.php:1097
+#: inc/pacebuilder/templates/column.php:26
+#: inc/pacebuilder/templates/section.php:88
 msgid "Background Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:293
+#: inc/customizer/panels/colors.php:317
 msgid "Header background color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:318
+#: inc/customizer/panels/colors.php:342
 msgid "Header Text Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:343
+#: inc/customizer/panels/colors.php:367
 msgid "Header Bottom Border Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:359
-#: ../inc/customizer/panels/typography.php:88
-msgid "Main Menu"
+#: inc/customizer/panels/colors.php:399
+msgid "Secondary Header"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:376
-#: ../inc/customizer/panels/typography.php:96
-msgid "Menu Items"
+#: inc/customizer/panels/colors.php:468
+msgid "Top Border Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:423
-msgid "Text Hover/Focus Color"
+#: inc/customizer/panels/colors.php:491
+msgid "Bottom Border Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:440
-#: ../inc/customizer/panels/typography.php:100
-msgid "Sub Menu Items"
-msgstr ""
-
-#: ../inc/customizer/panels/colors.php:536
-msgid "Hover/Focus Text Color"
-msgstr ""
-
-#: ../inc/customizer/panels/colors.php:560
-msgid "Hover/Focus Background Color"
-msgstr ""
-
-#: ../inc/customizer/panels/colors.php:664
-#: ../inc/customizer/panels/layout.php:110
-#: ../inc/customizer/panels/typography.php:155
-msgid "Footer"
-msgstr ""
-
-#: ../inc/customizer/panels/colors.php:681
-msgid "Main Footer"
-msgstr ""
-
-#: ../inc/customizer/panels/colors.php:790
-msgid "Secondary Footer"
-msgstr ""
-
-#: ../inc/customizer/panels/colors.php:858
+#: inc/customizer/panels/colors.php:514 inc/customizer/panels/colors.php:1144
 msgid "Social Icon Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:881
+#: inc/customizer/panels/colors.php:537 inc/customizer/panels/colors.php:1167
 msgid "Social Icon Hover Color"
 msgstr ""
 
-#: ../inc/customizer/panels/colors.php:904
+#: inc/customizer/panels/colors.php:560 inc/customizer/panels/colors.php:1190
 msgid "Social Icon Hover background Color"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:58
+#: inc/customizer/panels/colors.php:576
+#: inc/customizer/panels/typography.php:127
+msgid "Main Menu"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:593
+#: inc/customizer/panels/typography.php:135
+msgid "Menu Items"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:640
+msgid "Text Hover/Focus Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:657
+#: inc/customizer/panels/typography.php:139
+msgid "Sub Menu Items"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:753
+msgid "Hover/Focus Text Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:777
+msgid "Hover/Focus Background Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:801
+msgid "Mobile Menu Background Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:824
+msgid "Mobile Menu Item Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:847
+msgid "Mobile Menu Item Hover Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:950 inc/customizer/panels/layout.php:185
+#: inc/customizer/panels/typography.php:194
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:967
+msgid "Main Footer"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:1076
+msgid "Secondary Footer"
+msgstr ""
+
+#: inc/customizer/panels/general.php:58
 msgid "Hide Title"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:83
+#: inc/customizer/panels/general.php:83
 msgid "Hide Tagline"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:105
-#: ../inc/customizer/panels/general.php:129
+#: inc/customizer/panels/general.php:105 inc/customizer/panels/general.php:129
 msgid "Logo"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:153
+#: inc/customizer/panels/general.php:152
+msgid "Retina Logo"
+msgstr ""
+
+#: inc/customizer/panels/general.php:153
+msgid "Will be visible only on devices with screen width more than 2500px"
+msgstr ""
+
+#: inc/customizer/panels/general.php:177
 msgid "Favicon"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:154
-msgid ""
-"<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels"
+#: inc/customizer/panels/general.php:178
+msgid "<b>.png</b> or <b>.ico</b> format. Recommended dimensions 32 x 32 pixels"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:170
+#: inc/customizer/panels/general.php:194
 msgid "Social Profiles"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:193
+#: inc/customizer/panels/general.php:217
 msgid "Facebook URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:217
+#: inc/customizer/panels/general.php:241
 msgid "Twitter URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:240
+#: inc/customizer/panels/general.php:264
 msgid "Google+ URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:263
+#: inc/customizer/panels/general.php:287
 msgid "LinkedIn URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:286
+#: inc/customizer/panels/general.php:310
 msgid "Youtube URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:310
+#: inc/customizer/panels/general.php:334
 msgid "Vimeo URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:333
+#: inc/customizer/panels/general.php:357
 msgid "Instagram URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:356
+#: inc/customizer/panels/general.php:380
 msgid "Flickr URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:379
+#: inc/customizer/panels/general.php:403
 msgid "Pinterest URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:402
+#: inc/customizer/panels/general.php:426
 msgid "Dribbble URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:426
+#: inc/customizer/panels/general.php:450
 msgid "Digg URL"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:442
+#: inc/customizer/panels/general.php:466
 msgid "Sticky Posts"
 msgstr ""
 
-#: ../inc/customizer/panels/general.php:465
+#: inc/customizer/panels/general.php:489
 msgid "Sticky Label"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:52
+#: inc/customizer/panels/layout.php:55
 msgid "Site Layout"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:93
+#: inc/customizer/panels/layout.php:96
 msgid "Show Search Icon"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:133
+#: inc/customizer/panels/layout.php:120
+msgid "Show Secondary Header"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:144
+msgid "Secondary Header Layout"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:169
+msgid "Secondary Header Callout Text"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:208
 msgid "Number of Widgets"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:159
+#: inc/customizer/panels/layout.php:234
 msgid "Show Social Icons"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:176
+#: inc/customizer/panels/layout.php:251
 msgid "Blog (Posts Page)"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:200
-#: ../inc/customizer/panels/layout.php:358
-#: ../inc/customizer/panels/layout.php:515
-#: ../inc/customizer/panels/layout.php:672
-#: ../inc/customizer/panels/layout.php:827
+#: inc/customizer/panels/layout.php:275 inc/customizer/panels/layout.php:433
+#: inc/customizer/panels/layout.php:590 inc/customizer/panels/layout.php:747
+#: inc/customizer/panels/layout.php:977
 msgid "Sidebar Position"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:226
-#: ../inc/customizer/panels/layout.php:384
-#: ../inc/customizer/panels/layout.php:541
+#: inc/customizer/panels/layout.php:301 inc/customizer/panels/layout.php:459
+#: inc/customizer/panels/layout.php:616
 msgid "Style"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:251
-#: ../inc/customizer/panels/layout.php:409
-#: ../inc/customizer/panels/layout.php:566
-#: ../inc/customizer/panels/layout.php:697
-#: ../inc/customizer/panels/layout.php:853
+#: inc/customizer/panels/layout.php:326 inc/customizer/panels/layout.php:484
+#: inc/customizer/panels/layout.php:641 inc/customizer/panels/layout.php:772
+#: inc/customizer/panels/layout.php:1003
 msgid "Show Title Bar ?"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:270
-#: ../inc/customizer/panels/layout.php:427
-#: ../inc/customizer/panels/layout.php:585
-#: ../inc/customizer/panels/layout.php:740
+#: inc/customizer/panels/layout.php:345 inc/customizer/panels/layout.php:502
+#: inc/customizer/panels/layout.php:660 inc/customizer/panels/layout.php:890
 msgid "Post Meta"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:292
-#: ../inc/customizer/panels/layout.php:449
-#: ../inc/customizer/panels/layout.php:607
-#: ../inc/customizer/panels/layout.php:762
+#: inc/customizer/panels/layout.php:367 inc/customizer/panels/layout.php:524
+#: inc/customizer/panels/layout.php:682 inc/customizer/panels/layout.php:912
 msgid "Show Categories"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:316
-#: ../inc/customizer/panels/layout.php:473
-#: ../inc/customizer/panels/layout.php:631
-#: ../inc/customizer/panels/layout.php:786
+#: inc/customizer/panels/layout.php:391 inc/customizer/panels/layout.php:548
+#: inc/customizer/panels/layout.php:706 inc/customizer/panels/layout.php:936
 msgid "Show Tags"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:334 ../inc/template-tags.php:132
+#: inc/customizer/panels/layout.php:409 inc/template-tags.php:132
 msgid "Archives"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:491
+#: inc/customizer/panels/layout.php:566
 msgid "Search Results"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:649
+#: inc/customizer/panels/layout.php:724
 msgid "Single Post"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:722
+#: inc/customizer/panels/layout.php:797 inc/customizer/panels/layout.php:1028
+msgid "Hide Featured Image"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:822 inc/customizer/panels/layout.php:1053
+msgid "Enlarge Featured Image"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:826 inc/customizer/panels/layout.php:1057
+msgid "Enalrge the featured image width to the 100% width of the view port/window"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:847 inc/customizer/panels/layout.php:1078
+msgid "Content Alignment"
+msgstr ""
+
+#: inc/customizer/panels/layout.php:872
 msgid "Show Post Title ?"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:804
+#: inc/customizer/panels/layout.php:954
 msgid "Single Page"
 msgstr ""
 
-#: ../inc/customizer/panels/layout.php:878
+#: inc/customizer/panels/layout.php:1103
 msgid "Show Page Title ?"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:43
+#: inc/customizer/panels/typography.php:39
+msgid "Font Options"
+msgstr ""
+
+#: inc/customizer/panels/typography.php:60
+msgid "Choose Google Font Subsets"
+msgstr ""
+
+#: inc/customizer/panels/typography.php:82
+#: inc/pacebuilder/templates/module-featurebox.php:76
 msgid "Text"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:54
+#: inc/customizer/panels/typography.php:93
 msgid "Text Headings"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:62
+#: inc/customizer/panels/typography.php:101
 msgid "H1"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:65
+#: inc/customizer/panels/typography.php:104
 msgid "H2"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:68
+#: inc/customizer/panels/typography.php:107
 msgid "H3"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:71
+#: inc/customizer/panels/typography.php:110
 msgid "H4"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:74
+#: inc/customizer/panels/typography.php:113
 msgid "H5"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:77
+#: inc/customizer/panels/typography.php:116
 msgid "H6"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:111
+#: inc/customizer/panels/typography.php:150
 msgid "Site Title & Tagline"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:119
+#: inc/customizer/panels/typography.php:158
 msgid "Site Title"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:122
+#: inc/customizer/panels/typography.php:161
 msgid "Site Tagline"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:141
-#: ../inc/customizer/panels/typography.php:163
+#: inc/customizer/panels/typography.php:180
+#: inc/customizer/panels/typography.php:202
 msgid "Widget Title"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:144
-#: ../inc/customizer/panels/typography.php:166
+#: inc/customizer/panels/typography.php:183
+#: inc/customizer/panels/typography.php:205
 msgid "Widget Body"
 msgstr ""
 
-#: ../inc/customizer/panels/typography.php:169
+#: inc/customizer/panels/typography.php:208
 msgid "Footer Text"
 msgstr ""
 
-#: ../inc/extras.php:55
-#, php-format
+#: inc/extras.php:55
 msgid "Page %s"
 msgstr ""
 
-#: ../inc/pagebuilder/builder.php:64
+#: inc/metaboxes.php:99
+msgid "Quest Page Options"
+msgstr ""
+
+#: inc/metaboxes.php:107
+msgid "Header Type"
+msgstr ""
+
+#: inc/metaboxes.php:108
+msgid "Which header type do you want to show for this page ?"
+msgstr ""
+
+#: inc/metaboxes.php:112
+msgid "Transparent"
+msgstr ""
+
+#: inc/metaboxes.php:120
+msgid "Menu Text Color"
+msgstr ""
+
+#: inc/metaboxes.php:121
+msgid ""
+"Color of the top level menu item. Applies only for transparent header and "
+"top level menu items"
+msgstr ""
+
+#: inc/metaboxes.php:129
+msgid "Menu Text Hover Color"
+msgstr ""
+
+#: inc/metaboxes.php:130
+msgid ""
+"Color of the top level menu item when it's hovered. Applies only for "
+"transparent header and top level menu items"
+msgstr ""
+
+#: inc/metaboxes.php:138
+msgid "Menu Active Item Border Color"
+msgstr ""
+
+#: inc/metaboxes.php:139
+msgid ""
+"Color of the active menu item top border. Applies only for transparent "
+"header and top level menu items"
+msgstr ""
+
+#: inc/pacebuilder/builder.php:69
 msgid "Quest Page Builder"
 msgstr ""
 
-#: ../inc/pagebuilder/builder.php:164
+#: inc/pacebuilder/builder.php:151
+msgid "Are you sure you want to remove this Section ? This step cannot be undone."
+msgstr ""
+
+#: inc/pacebuilder/builder.php:152
+msgid "Are you sure you want to remove this Row ? This step cannot be undone."
+msgstr ""
+
+#: inc/pacebuilder/builder.php:153
+msgid "Are you sure you want to remove this Slide ? This step cannot be undone."
+msgstr ""
+
+#: inc/pacebuilder/builder.php:154
+msgid "Are you sure you want to remove this Image ? This step cannot be undone."
+msgstr ""
+
+#: inc/pacebuilder/builder.php:155
+msgid "Are you sure you want to remove this Module ? This step cannot be undone."
+msgstr ""
+
+#: inc/pacebuilder/builder.php:156
+msgid ""
+"You are about to resize the columns to a lower size than the existing "
+"columns, it may remove the last columns and will result in data/module "
+"loss. Do you really want to do this ?"
+msgstr ""
+
+#: inc/pacebuilder/builder.php:184
 msgid "Need some Inspiration ?"
 msgstr ""
 
-#: ../inc/pagebuilder/builder.php:167
-#: ../inc/pagebuilder/templates/column-insert.php:8
-#: ../inc/pagebuilder/templates/section.php:35
+#: inc/pacebuilder/builder.php:187 inc/pacebuilder/templates/section.php:41
+#: inc/pacebuilder/templates/section.php:215
 msgid "Upgrade to Quest Plus"
 msgstr ""
 
-#: ../inc/pagebuilder/builder.php:167
+#: inc/pacebuilder/builder.php:187
 msgid "and get pre built layouts and the ability to save/load any layout."
 msgstr ""
 
-#: ../inc/pagebuilder/builder.php:178
+#: inc/pacebuilder/builder.php:198
 msgid "Add New Section"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/column-edit.php:2
-#: ../inc/pagebuilder/templates/column.php:7
-msgid "Insert Module"
+#: inc/pacebuilder/templates/column.php:7
+msgid "Column"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/column-insert.php:2
-msgid "Select Layout"
+#: inc/pacebuilder/templates/column.php:15
+msgid "Add Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/column-insert.php:5
-msgid "Need more layout options ?"
+#: inc/pacebuilder/templates/column.php:22
+msgid "Edit Column"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/insert-module.php:2
+#: inc/pacebuilder/templates/column.php:32
+msgid ""
+"Background Color for the column, leave it blank if you dont want a "
+"Background Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:37
+msgid "Border Left Width"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:43
+msgid "Border width for the section left"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:48
+msgid "Border Right Width"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:54
+msgid "Border width for the section right"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:59
+msgid "Border Left Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:65
+msgid "Border color for the section left"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:70
+msgid "Border Right Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:76
+msgid "Border color for the section right"
+msgstr ""
+
+#: inc/pacebuilder/templates/column.php:89
 msgid "Select Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gallery-edit.php:2
-msgid "Edit Gallery"
+#: inc/pacebuilder/templates/module-cf7.php:11
+msgid "Form ID"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gallery-edit.php:7
-msgid "Thumbnails Shape"
+#: inc/pacebuilder/templates/module-cf7.php:16
+msgid "Edit Contact Form 7"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gallery-edit.php:13
-msgid "Round"
+#: inc/pacebuilder/templates/module-cf7.php:21
+msgid "Select Form"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gallery-edit.php:16
-msgid "Square"
+#: inc/pacebuilder/templates/module-cf7.php:32
+msgid "Select the Contact Form 7 you want to show"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gallery-edit.php:19
-msgid "Do you want to enable Fullscreen for this gallery preview ?"
+#: inc/pacebuilder/templates/module-cf7.php:38
+msgid "Form Title"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gallery.php:8
-msgid "New Image"
+#: inc/pacebuilder/templates/module-cf7.php:43
+msgid "Title for the Form"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gimage-edit.php:2
-#: ../inc/pagebuilder/templates/module-gimage.php:11
-#: ../inc/pagebuilder/templates/module-image-edit.php:2
-#: ../inc/pagebuilder/templates/module-slide-edit.php:2
-#: ../inc/pagebuilder/templates/module-text-edit.php:2
-msgid "Edit Image"
+#: inc/pacebuilder/templates/module-featurebox.php:14
+msgid "Edit Feature Box"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-gimage-edit.php:7
-#: ../inc/pagebuilder/templates/module-gimage-edit.php:14
-#: ../inc/pagebuilder/templates/module-gimage-edit.php:15
-#: ../inc/pagebuilder/templates/module-image-edit.php:6
-#: ../inc/pagebuilder/templates/module-image-edit.php:11
-#: ../inc/pagebuilder/templates/module-image-edit.php:12
-#: ../inc/pagebuilder/templates/module-slide-edit.php:7
-#: ../inc/pagebuilder/templates/module-slide-edit.php:13
-#: ../inc/pagebuilder/templates/module-slide-edit.php:14
-#: ../inc/pagebuilder/templates/section-edit.php:14
-msgid "Select Image"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-gimage-edit.php:19
-#: ../inc/pagebuilder/templates/module-slide-edit.php:18
-msgid "Select the slide image"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:2
-msgid "Edit Hover Icon"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:7
+#: inc/pacebuilder/templates/module-featurebox.php:19
+#: inc/pacebuilder/templates/module-hovericon.php:19
 msgid "Icon"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:13
+#: inc/pacebuilder/templates/module-featurebox.php:25
+#: inc/pacebuilder/templates/module-hovericon.php:25
 msgid "Select Icon"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:15
+#: inc/pacebuilder/templates/module-featurebox.php:27
+#: inc/pacebuilder/templates/module-hovericon.php:27
 msgid "Select the Icon you want to insert"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:22
+#: inc/pacebuilder/templates/module-featurebox.php:34
+#: inc/pacebuilder/templates/module-hovericon.php:34
 msgid "Icon Size"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:38
+#: inc/pacebuilder/templates/module-featurebox.php:50
+#: inc/pacebuilder/templates/module-hovericon.php:50
 msgid "Size of the Icon"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:43
-msgid "Color"
+#: inc/pacebuilder/templates/module-featurebox.php:55
+msgid "Icon Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:48
+#: inc/pacebuilder/templates/module-featurebox.php:61
+#: inc/pacebuilder/templates/module-hovericon.php:61
 msgid "Color of the Icon, this will be Icon Color and the border color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:53
+#: inc/pacebuilder/templates/module-featurebox.php:66
+#: inc/pacebuilder/templates/module-image.php:60
+msgid "Title"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-featurebox.php:71
+#: inc/pacebuilder/templates/module-hovericon.php:82
+msgid "This will be the heading/title below the Icon"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-featurebox.php:81
+#: inc/pacebuilder/templates/module-hovericon.php:92
+msgid "This will be the text below the Icon Title"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:10
+msgid "New Image"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:17
+msgid "Edit Gallery"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:21
+msgid "Thumbnails Shape"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:27
+msgid "Round"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:30
+msgid "Square"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:33
+msgid "Do you want Rounded or Square Thumbnails ?"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:38
+msgid "No. of Columns"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:43
+msgid "Three"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:45
+msgid "Four"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:47
+msgid "Five"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:49
+msgid "Six"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:52
+msgid "Number of columns"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:57
+msgid "Show Padding"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gallery.php:67
+msgid "Do you want to show spacing between the items ?"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-generic-slider.php:5
+msgid "Slider ID"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-generic-slider.php:10
+#: inc/pacebuilder/templates/module-slider.php:12
+msgid "Edit Slider"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-generic-slider.php:15
+#: inc/pacebuilder/templates/module-generic-slider.php:20
+msgid "Select Slider"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-generic-slider.php:23
+msgid "Select the Slider"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:13
+#: inc/pacebuilder/templates/module-gimage.php:20
+#: inc/pacebuilder/templates/module-image.php:9
+#: inc/pacebuilder/templates/module-slide.php:35
+#: inc/pacebuilder/templates/module-text.php:9
+msgid "Edit Image"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:24
+#: inc/pacebuilder/templates/module-gimage.php:31
+#: inc/pacebuilder/templates/module-gimage.php:32
+#: inc/pacebuilder/templates/module-image.php:14
+#: inc/pacebuilder/templates/module-image.php:19
+#: inc/pacebuilder/templates/module-image.php:20
+#: inc/pacebuilder/templates/module-slide.php:39
+#: inc/pacebuilder/templates/module-slide.php:45
+#: inc/pacebuilder/templates/module-slide.php:46
+#: inc/pacebuilder/templates/section.php:60
+msgid "Select Image"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:36
+#: inc/pacebuilder/templates/module-slide.php:50
+msgid "Select the slide image"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:43
+msgid "Link"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:48
+msgid ""
+"Link the image should be pointing to, leave it blank to open the image in a "
+"Lightbox"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:53
+msgid "Image Title"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:58
+msgid "This will be the heading/title below the Image thumbnail"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:63
+msgid "Image Description"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-gimage.php:68
+msgid "This will be the text below the Image in the lightbox/colorbox preview"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:14
+msgid "Edit Hover Icon"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:55
+msgid "Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:66
 msgid "Hover Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:58
+#: inc/pacebuilder/templates/module-hovericon.php:72
 msgid ""
 "Background Color of the Icon, when a user hovers on the Icon the Color and "
 "Hover Color will be swapped"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:63
+#: inc/pacebuilder/templates/module-hovericon.php:77
 msgid "Icon Title"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:68
-msgid "This will be the heading/title below the Icon"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:73
+#: inc/pacebuilder/templates/module-hovericon.php:87
 msgid "Icon Text"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-hovericon-edit.php:78
-msgid "This will be the text below the Icon Title"
+#: inc/pacebuilder/templates/module-hovericon.php:97
+msgid "Icon Link"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:16
+#: inc/pacebuilder/templates/module-hovericon.php:102
+msgid "This is the link the Icon will be pointing to"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-image.php:24
 msgid "Select the Image you want to insert"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:23
+#: inc/pacebuilder/templates/module-image.php:31
 msgid "Alignment"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:31
-#: ../inc/pagebuilder/templates/module-slide-edit.php:31
-#: ../inc/pagebuilder/templates/module-slide-edit.php:51
-msgid "Center"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-image-edit.php:37
+#: inc/pacebuilder/templates/module-image.php:45
 msgid "The alignment of the image"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:42
+#: inc/pacebuilder/templates/module-image.php:50
 msgid "Alt"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:47
+#: inc/pacebuilder/templates/module-image.php:55
 msgid "HTML alt attribute for the image"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:52
-msgid "Title"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-image-edit.php:57
+#: inc/pacebuilder/templates/module-image.php:65
 msgid "HTML title attribute for the image"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:62
+#: inc/pacebuilder/templates/module-image.php:70
 msgid "URL / Hyperlink"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:67
+#: inc/pacebuilder/templates/module-image.php:75
 msgid ""
-"If set the image will be wraped inside an anchor tag which will be opened if "
-"the user clicks on the image"
+"If set the image will be wraped inside an anchor tag which will be opened "
+"if the user clicks on the image"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:73
+#: inc/pacebuilder/templates/module-image.php:81
 msgid "URL should open in New Tab ?"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:84
+#: inc/pacebuilder/templates/module-image.php:92
 msgid "Do you want the URL to be opened in a new tab or the same tab ?"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:89
+#: inc/pacebuilder/templates/module-image.php:97
 msgid "Image Lightbox"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-image-edit.php:99
+#: inc/pacebuilder/templates/module-image.php:107
 msgid ""
 "Do you want to show a lightbox for the image ? If set to yes it will "
 "override the URL and the image will be displayed in a lightbox when the "
 "image is clicked"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:25
+#: inc/pacebuilder/templates/module-slide.php:14
+msgid "Edit Slide"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:57
 msgid "Image Position - Horizontal"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:40
+#: inc/pacebuilder/templates/module-slide.php:72
 msgid ""
-"Horizontal position of the Image, if the image width is more than the slider "
-"width then the image will be positioned as per this setting"
+"Horizontal position of the Image, if the image width is more than the "
+"slider width then the image will be positioned as per this setting"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:45
+#: inc/pacebuilder/templates/module-slide.php:77
 msgid "Image Position - Vertical"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:53
+#: inc/pacebuilder/templates/module-slide.php:85
+#: inc/pacebuilder/templates/module-slide.php:135
+#: inc/pacebuilder/templates/row.php:85
 msgid "Top"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:56
+#: inc/pacebuilder/templates/module-slide.php:88
+#: inc/pacebuilder/templates/module-slide.php:138
+#: inc/pacebuilder/templates/row.php:91
 msgid "Bottom"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:59
+#: inc/pacebuilder/templates/module-slide.php:91
 msgid ""
 "Vertical position of the Image, if the image height is more than the slider "
 "height then the image will be positioned as per this setting"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:64
+#: inc/pacebuilder/templates/module-slide.php:96
 msgid "Slide Background Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:69
+#: inc/pacebuilder/templates/module-slide.php:102
 msgid "Background Color for the slide"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:74
+#: inc/pacebuilder/templates/module-slide.php:107
+msgid "Content Position - Horizontal"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:122
+msgid "Horizontal position of the Content"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:127
+msgid "Content Position - Vertical"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:141
+msgid "Vertical position of the Content"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:146
 msgid "Slide Heading"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:79
+#: inc/pacebuilder/templates/module-slide.php:151
 msgid ""
 "The heading for the slide, this will be the main heading/title displayed in "
 "the slide frontend"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:84
+#: inc/pacebuilder/templates/module-slide.php:156
 msgid "Slide Heading Text Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:89
+#: inc/pacebuilder/templates/module-slide.php:162
 msgid "Text Color for the heading"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:94
+#: inc/pacebuilder/templates/module-slide.php:167
+msgid "Slide Heading Background Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:173
+msgid "Background Color for the heading"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:178
 msgid "Slide Heading Text Size"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:99
+#: inc/pacebuilder/templates/module-slide.php:183
 msgid "Size of the heading text, enter in px"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:104
+#: inc/pacebuilder/templates/module-slide.php:188
 msgid "Slide Text"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:109
+#: inc/pacebuilder/templates/module-slide.php:193
 msgid ""
 "Content for the slide, this will be displayed in the front end below the "
 "heading"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:114
+#: inc/pacebuilder/templates/module-slide.php:198
 msgid "Slide Text Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:119
+#: inc/pacebuilder/templates/module-slide.php:204
 msgid "Text Color for the text"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:124
+#: inc/pacebuilder/templates/module-slide.php:209
+msgid "Slide Text Background Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:215
+msgid "Background Color for the text"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slide.php:220
 msgid "Slide Text Size"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:129
+#: inc/pacebuilder/templates/module-slide.php:225
 msgid "Size of the slide text, enter in px"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:135
+#: inc/pacebuilder/templates/module-slide.php:231
 msgid "Slice Orientation"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:141
+#: inc/pacebuilder/templates/module-slide.php:237
 msgid "Vertical"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:144
+#: inc/pacebuilder/templates/module-slide.php:240
 msgid "Horizontal"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:147
+#: inc/pacebuilder/templates/module-slide.php:243
 msgid "Should the slices split vertically or horizontally ?"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:152
+#: inc/pacebuilder/templates/module-slide.php:248
 msgid "Slice 1 Rotation"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:158
+#: inc/pacebuilder/templates/module-slide.php:254
 msgid "Amount of rotation in degrees for the first slice"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:163
+#: inc/pacebuilder/templates/module-slide.php:259
 msgid "Slice 2 Rotation"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:169
+#: inc/pacebuilder/templates/module-slide.php:265
 msgid "Amount of rotation in degrees for the second slice"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:174
+#: inc/pacebuilder/templates/module-slide.php:270
 msgid "Slice 1 Scale"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:179
+#: inc/pacebuilder/templates/module-slide.php:275
 msgid "How big should the slice 1 scale ?"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:184
+#: inc/pacebuilder/templates/module-slide.php:280
 msgid "Slice 2 Scale"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide-edit.php:189
+#: inc/pacebuilder/templates/module-slide.php:285
 msgid "How big should the slice 2 scale ?"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slide.php:12
-msgid "Edit Slide"
+#: inc/pacebuilder/templates/module-slider.php:7
+msgid "New Slide"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:2
-msgid "Edit Slider"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-slider-edit.php:7
+#: inc/pacebuilder/templates/module-slider.php:17
 msgid "Slider Height"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:12
+#: inc/pacebuilder/templates/module-slider.php:22
 msgid "Height of the slider"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:18
+#: inc/pacebuilder/templates/module-slider.php:27
+msgid "Slider Fullscreen"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slider.php:37
+msgid ""
+"If set to FullScreen Slider height will be ignored and the slider will "
+"always be 100% to the browser viewport"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slider.php:43
 msgid "Slider AutoPlay"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:28
+#: inc/pacebuilder/templates/module-slider.php:53
 msgid ""
 "Do you want to enable AutoPlay for this slider ? If autoplay is turned on, "
 "you can control the interval below"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:33
+#: inc/pacebuilder/templates/module-slider.php:58
 msgid "AutoPlay Interval"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:38
+#: inc/pacebuilder/templates/module-slider.php:63
 msgid ""
-"Interval between playing the next slide, specify the time in milliseconds "
-"( 1 second = 1000 milliseconds. You already knew this, didn't you :) )"
+"Interval between playing the next slide, specify the time in milliseconds ( "
+"1 second = 1000 milliseconds. You already knew this, didn't you :) )"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:43
+#: inc/pacebuilder/templates/module-slider.php:68
+msgid "Slider Transition"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slider.php:73
+msgid "Slit"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slider.php:75
+msgid "Fade"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slider.php:78
+msgid "Transition type for the slider, Slit or Fade ?"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-slider.php:83
 msgid "Transition Speed"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider-edit.php:48
+#: inc/pacebuilder/templates/module-slider.php:88
 msgid ""
 "Speed of the CSS3 slide transitions, specify the time in milliseconds ( 1 "
 "second = 1000 milliseconds. You already knew this, didn't you :) )"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/module-slider.php:6
-msgid "New Slide"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/module-text-edit.php:7
-#: ../inc/pagebuilder/templates/module-text-edit.php:12
+#: inc/pacebuilder/templates/module-text.php:14
+#: inc/pacebuilder/templates/module-text.php:19
 msgid "Content"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-admin-label.php:3
+#: inc/pacebuilder/templates/partial-admin-label.php:3
 msgid "Admin Label"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-admin-label.php:8
+#: inc/pacebuilder/templates/partial-admin-label.php:8
 msgid ""
 "Admin label for the module, this is the label/title you will see in the "
 "Module title, it lets you name your modules and keep track of them"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-css-class.php:3
+#: inc/pacebuilder/templates/partial-css-class.php:3
 msgid "CSS Class"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-css-class.php:8
+#: inc/pacebuilder/templates/partial-css-class.php:8
 msgid ""
 "CSS classes of the section, this will help you set custom styling. You can "
 "enter multiple classes by seperating them with spaces"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-form-animation.php:3
+#: inc/pacebuilder/templates/partial-form-animation.php:3
 msgid "CSS3 Animation"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-form-animation.php:111
+#: inc/pacebuilder/templates/partial-form-animation.php:111
 msgid "CSS Animation for the Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-module-header.php:4
+#: inc/pacebuilder/templates/partial-module-header.php:4
 msgid "Edit Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-module-header.php:5
+#: inc/pacebuilder/templates/partial-module-header.php:5
 msgid "Remove Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/partial-module-header.php:9
-#: ../inc/pagebuilder/templates/section.php:13
-msgid "Click to toggle"
+#: inc/pacebuilder/templates/partial-module-margin.php:3
+#: inc/pacebuilder/templates/row.php:99
+#: inc/pacebuilder/templates/section.php:127
+msgid "Padding Top"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/row.php:3
-msgid "Row"
+#: inc/pacebuilder/templates/partial-module-margin.php:9
+msgid "Padding (Spacing) at the Top inside this Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:2
-#: ../inc/pagebuilder/templates/section.php:7
+#: inc/pacebuilder/templates/partial-module-margin.php:13
+#: inc/pacebuilder/templates/row.php:109
+#: inc/pacebuilder/templates/section.php:137
+msgid "Padding Bottom"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:19
+msgid "Padding (Spacing) at the Bottom inside this Module"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:23
+msgid "Padding Left"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:29
+msgid "Padding (Spacing) at the Left inside this Module"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:33
+msgid "Padding Right"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:39
+msgid "Padding (Spacing) at the Right inside this Module"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:43
+msgid "Margin Bottom"
+msgstr ""
+
+#: inc/pacebuilder/templates/partial-module-margin.php:49
+msgid ""
+"Margin (Spacing) at the Bottom for this Module (Padding is space inside the "
+"module, Margin is space outside the module)"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:33
+msgid "Edit Row"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:39
+#: inc/pacebuilder/templates/section.php:99
+msgid "Content Type"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:51
+#: inc/pacebuilder/templates/section.php:108
+msgid "Fluid"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:54
+msgid ""
+"Default - Inherits Section \"Content Type\" setting . Boxed - Row content "
+"will be fixed to 1170px or corresponding device width. Fluid - Row content "
+"will be 100% width to the browser width"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:59
+msgid "Space Between Columns"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:71
+msgid "Show Space/Padding between Columns ?"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:76
+msgid "Columns Vertical Alignment"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:88
+msgid "Middle"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:94
+msgid "Vertical Alignment of the columns"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:104
+#: inc/pacebuilder/templates/section.php:132
+msgid "Padding (Spacing) at the top"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:115
+#: inc/pacebuilder/templates/section.php:143
+msgid "Padding (Spacing) at the Bottom"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:9
+#: inc/pacebuilder/templates/section.php:48
 msgid "Edit Section"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:13
+#: inc/pacebuilder/templates/section.php:11
+msgid "Clone Section"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:12
+msgid "Delete Section"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:24 inc/pacebuilder/tour.php:75
+msgid "Columns"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:26
+msgid "Image Slider"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:28
+msgid "Gallery"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:37
+msgid "Need more section options ?"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:59
 msgid "Select Background Image"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:18
+#: inc/pacebuilder/templates/section.php:64
 msgid ""
 "If defined, this image will be used as the background for this section. To "
 "remove a background image, simply delete the URL from the settings field."
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:25
+#: inc/pacebuilder/templates/section.php:71
 msgid "Background Image Attachment"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:31
+#: inc/pacebuilder/templates/section.php:77
 msgid "Fixed"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:34
+#: inc/pacebuilder/templates/section.php:80
 msgid "Scroll"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:37
+#: inc/pacebuilder/templates/section.php:83
 msgid ""
 "Scroll - The background scrolls along with the element. Fixed - The "
 "background is fixed with regard to the viewport"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:47
-msgid ""
-"Background Color for the section, leave it blank to set a transparent color"
+#: inc/pacebuilder/templates/section.php:94
+msgid "Background Color for the section, leave it blank to set a transparent color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:52
-msgid "Content Type"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/section-edit.php:61
-msgid "Fluid"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/section-edit.php:64
+#: inc/pacebuilder/templates/section.php:111
 msgid ""
 "Boxed - Section content will be fixed to 1170px or corresponding device "
 "width. Fluid - Section content will be 100% width to the browser width"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:74
+#: inc/pacebuilder/templates/section.php:122
 msgid "Text Color for the section"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:79
-msgid "Padding Top"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/section-edit.php:84
-msgid "Padding (Spacing) at the top"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/section-edit.php:89
-msgid "Padding Bottom"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/section-edit.php:95
-msgid "Padding (Spacing) at the Bottom"
-msgstr ""
-
-#: ../inc/pagebuilder/templates/section-edit.php:100
+#: inc/pacebuilder/templates/section.php:148
 msgid "Border Top Width"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:106
+#: inc/pacebuilder/templates/section.php:154
 msgid "Border width for the section top"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:111
+#: inc/pacebuilder/templates/section.php:159
 msgid "Border Bottom Width"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:117
+#: inc/pacebuilder/templates/section.php:165
 msgid "Border width for the section bottom"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:122
+#: inc/pacebuilder/templates/section.php:170
 msgid "Border Top Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:128
+#: inc/pacebuilder/templates/section.php:176
 msgid "Border color for the section top"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:133
+#: inc/pacebuilder/templates/section.php:181
 msgid "Border Bottom Color"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section-edit.php:139
+#: inc/pacebuilder/templates/section.php:187
 msgid "Border color for the section bottom"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:3
+#: inc/pacebuilder/templates/section.php:209
+msgid "Select Layout"
+msgstr ""
+
+#: inc/pacebuilder/templates/section.php:212
+msgid "Need more layout options ?"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:5
+msgid ""
+"Looks like this Page is not empty and it has some existing Page Builder "
+"sections. The tour only works on a blank Page Builder page. Please go to "
+"Pages > Add New and then start the tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:13
+msgid "Welcome to the Page Builder Tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:16
+msgid ""
+"We will take you through the important aspects of the Page Builder. Once "
+"you complete this tour you will have a good understanding of the Page "
+"Builder terms and usage."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:19
+msgid "Let's get started"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:24
+msgid "Not interested..."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:27
+msgid "Got any docs?"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:29
+msgid "Continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:33 inc/pacebuilder/tour.php:624
+msgid "End Tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:41
+msgid ""
+"Change the Template to Page Builder to start using the Page Builder. Change "
+"it now to continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:53
+msgid ""
+"This is the Page Builder \"Stage\" area where all the content is built, you "
+"can see all items you are building. The preview here doesn't mirror 100% of "
+"the frontend due to space issues, it is recommended that you save the page "
+"and view the front end anytime you want to preview the page you are building"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:63
+msgid "Page Builder Overview"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:65
+msgid ""
+"There are few Page Builder Concepts you need to understand to use the Page "
+"Builder effectively"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:67
 msgid "Section"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:9
-msgid "Clone Section"
+#: inc/pacebuilder/tour.php:69
+msgid ""
+"A section is the base building block, think of a section like a group of "
+"elements in a page. A section will have 1 or more rows."
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:10
-msgid "Delete Section"
+#: inc/pacebuilder/tour.php:71
+msgid "Row"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:24
-msgid "Columns"
+#: inc/pacebuilder/tour.php:73
+msgid ""
+"As the name suggests a row will hold exactly one row of elements, a row can "
+"contain columns, gallery or an image slider"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:26
-msgid "Image Slider"
+#: inc/pacebuilder/tour.php:77
+msgid ""
+"A column always contains a module, the column width depends on the column "
+"layout selected"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:28
-msgid "Gallery"
+#: inc/pacebuilder/tour.php:79
+msgid "Module"
 msgstr ""
 
-#: ../inc/pagebuilder/templates/section.php:31
-msgid "Need more section options ?"
+#: inc/pacebuilder/tour.php:81
+msgid ""
+"A module is what represents your content. A Text Module will let you insert "
+"Text, while an image module lets you insert an image and so on"
 msgstr ""
 
-#: ../inc/template-tags.php:24
+#: inc/pacebuilder/tour.php:84
+msgid ""
+"Below is an overview of the different elements of the Page Builder, we will "
+"be going through each of these elements individually in this tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:102
+msgid "Let's create a section now by clicking the \"Add New Section\" button"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:104
+msgid "Click the \"Add New Section\" button to continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:116
+msgid ""
+"This is the section you just created, it is an empty section and we have to "
+"start adding content to it"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:118
+msgid ""
+"A Section can hold one or more rows, while a row can only hold Columns, "
+"Image Slider or Gallery"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:120
+msgid ""
+"We add Rows to this section by clicking on one of the below three buttons "
+"\"Columns\", \"Image Slider\" or \"Gallery\"."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:122
+msgid ""
+"Columns - Add a column layout row to the section, Quest has 4 default "
+"column layouts, Quest Plus provides an additional 14 column layouts."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:124
+msgid ""
+"Image Slider - Add an Image Slider row to the section. Create slides with "
+"heading and text to attract users"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:126
+msgid ""
+"Gallery - Add a Gallery Row to the Section, choose between 3 to 6 columns, "
+"spacing and rounded or square thumbnails for the gallery."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:128 inc/pacebuilder/tour.php:157
+#: inc/pacebuilder/tour.php:172 inc/pacebuilder/tour.php:187
+#: inc/pacebuilder/tour.php:229 inc/pacebuilder/tour.php:243
+#: inc/pacebuilder/tour.php:258 inc/pacebuilder/tour.php:274
+#: inc/pacebuilder/tour.php:289
+msgid "Click Next to continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:141
+msgid ""
+"This is the section settings icon, clicking on this icon will open the "
+"section settings modal box"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:143
+msgid "Click the Settings Icon to continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:155
+msgid ""
+"This is the section settings modal box, here you can change different "
+"settings of a section like Background Color/Image, Padding, Border etc. "
+"Take a look at all the options available, Quest Plus provides more Section "
+"Options like Backgorund Videos, Section Seperators etc."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:170
+msgid ""
+"Clicking this clone icon will clone this section with all the Rows and "
+"Modules inside this Section."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:185
+msgid ""
+"Clicking this delete icon will remove the Section, Do not click the icon "
+"now, we need this section to continue the tour."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:200
+msgid "Let's create a Columns row, click the \"Columns\" button."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:212
+msgid ""
+"This is the column layouts modal box, here you can select the column layout "
+"you want to insert into the row."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:214
+msgid "\tClick Next and we will auto select the column layout"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:227
+msgid ""
+"This is the Columns Row we just created, you can see the 3 column layout we "
+"selected, each of these columns will hold a Module."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:241
+msgid ""
+"The Column Layouts Icon let's you change the column layout for this row, "
+"once you click this icon it re-opens the Column Layout modal box and you "
+"can select a different layout. If you select a layout which has less "
+"columns the extra columns (Along with the modules inside these columns) "
+"will be deleted."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:256
+msgid ""
+"This is the Row settings icon, clicking on this icon will open the row "
+"settings modal box. You can set the Row padding and Vertical Alignment "
+"options"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:272
+msgid ""
+"Clicking this clone icon will clone this row with all the Content/Columns "
+"and Modules inside this Row."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:287
+msgid ""
+"Clicking this delete icon will remove the Row, Do not click the icon now, "
+"we need this row to continue the tour."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:301
+msgid ""
+"This is a Column, we can insert a Module into this Column. Click the "
+"\"Insert Module\" link to continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:312
+msgid ""
+"This is the Insert Module modal box, here you can select the module you "
+"want to insert into the column. Quest Plus provides 18 additional modules"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:314
+msgid "Click Next and we will auto select the Image Module"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:326
+msgid ""
+"After you select a module, the Module Settings Modal box will open and you "
+"can edit/update the settings as per your needs"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:328
+msgid "Click Next to Continue"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:340
+msgid "This is the Image Module we just inserted"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:352
+msgid ""
+"This is the Module Admin label, it helps you name and manage your modules "
+"better, this name can be changed from Module Settings/Options"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:364
+msgid ""
+"This is the Module Settings Icon, click this to open the Module Settings "
+"Modal box. Module Settings vary based on the module type"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:376
+msgid ""
+"This is the Remove Module Icon, Click this to remove the module, once the "
+"module is removed you can insert a different module into this column"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:388
+msgid ""
+"This is the Module Content, this does not reflect 100% of the actual "
+"frontend preview, this only points the important settings/items for this "
+"module"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:401
+msgid ""
+"Now let's create an Image Slider Row, click the \"Image Slider\" button to "
+"create an Image Slider Row and continue the Tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:412
+msgid "This is the Image Slider Row we just added"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:424
+msgid ""
+"This is the Image Slider Settings Icon, click this to Open the Image Slider "
+"Settings Modal Box to change the slider settings like autoplay, transition, "
+"height etc."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:436
+msgid ""
+"Now let's add a new slide to the Image Slider by clicking the \"New Slide\" "
+"button."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:447
+msgid "This is the Slide we just added"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:459
+msgid "This is the Slide Title, you can change this from Slide Settings."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:471
+msgid ""
+"This is Slide Settings Icon, click this to edit the Slide Settings like "
+"Image, color, Title etc."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:483
+msgid "This is Slide Delete Icon, click this to Delete the Slide."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:495
+msgid "This is the Slide Preview, You can see the Slide Image and Text here"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:507
+msgid ""
+"Now let's create a Gallery Row, click the \"Gallery\" button to create a "
+"Gallery Row"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:519
+msgid ""
+"This is the Gallery Row we just added, by default four blank images are "
+"added to a new gallery, you can edit or delete these images"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:531
+msgid ""
+"This is the Gallery Settings Icon, click this to Open the Gallery Settings "
+"Modal Box to change the Gallery settings like columns, thumbnails etc."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:543
+msgid "This is a Gallery Image"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:555
+msgid ""
+"This is Gallery Image Settings Icon, click this to edit the Slide Settings "
+"like Image, link, Title etc."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:567
+msgid "This is Gallery Image Delete Icon, click this to Delete the Image."
+msgstr ""
+
+#: inc/pacebuilder/tour.php:579
+msgid "This is the Image Preview, You can see the Gallery Image here"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:591
+msgid "To add a New Image to the Gallery, click the \"New Image\" button"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:603
+msgid "End of Tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:605
+msgid "You have reached the end of the Page Builder Tour"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:607
+msgid ""
+"The Page Builder offers great control on your page layouts, let your "
+"creative juices flow and start building awesome layouts with the Page "
+"Builder"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:609
+msgid ""
+"Quest Plus provides more Column Layouts, Modules, Section Options and more, "
+"do checkout Quest Plus"
+msgstr ""
+
+#: inc/pacebuilder/tour.php:611
+msgid ""
+"If you are seeing issues with the Page Builder or need any other help, "
+"create a new topic on the support forum"
+msgstr ""
+
+#: inc/template-tags.php:24
 msgid "<i class=\"fa fa-comments\"></i>&nbsp; No Comments"
 msgstr ""
 
-#: ../inc/template-tags.php:25
+#: inc/template-tags.php:25
 msgid "<i class=\"fa fa-comments\"></i>&nbsp; 1 Comment"
 msgstr ""
 
-#: ../inc/template-tags.php:26
+#: inc/template-tags.php:26
 msgid "<i class=\"fa fa-comments\"></i>&nbsp; % Comments"
 msgstr ""
 
-#: ../inc/template-tags.php:74
+#: inc/template-tags.php:74
 msgid "Read More"
 msgstr ""
 
-#: ../inc/template-tags.php:94
-#, php-format
+#: inc/template-tags.php:94
 msgid "Category: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:96
-#, php-format
+#: inc/template-tags.php:96
 msgid "Tag: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:98
-#, php-format
+#: inc/template-tags.php:98
 msgid "Author: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:100
-#, php-format
+#: inc/template-tags.php:100
 msgid "Year: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:102
-#, php-format
+#: inc/template-tags.php:102
 msgid "Month: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:104
-#, php-format
+#: inc/template-tags.php:104
 msgid "Day: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:126
-#, php-format
+#: inc/template-tags.php:126
 msgid "Archives: %s"
 msgstr ""
 
-#: ../inc/template-tags.php:130
-#, php-format
+#: inc/template-tags.php:130
+#. translators: 1: Taxonomy singular name, 2: Current taxonomy term
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: ../inc/template-tags.php:275
+#: inc/template-tags.php:275
 msgid "Previous Article"
 msgstr ""
 
-#: ../inc/template-tags.php:277
+#: inc/template-tags.php:277
 msgid "Next Article"
 msgstr ""
 
-#: ../inc/template-tags.php:296
+#: inc/template-tags.php:296
 msgid "by "
 msgstr ""
 
-#: ../inc/template-tags.php:394
+#: inc/template-tags.php:394
 msgid "Search results for: "
 msgstr ""
 
-#: ../inc/template-tags.php:422
+#: inc/template-tags.php:422
 msgid "Pingback:"
 msgstr ""
 
-#: ../inc/template-tags.php:448
+#: inc/template-tags.php:448
 msgid "at"
 msgstr ""
 
-#: ../inc/template-tags.php:458
+#: inc/template-tags.php:458
 msgid "Your comment is awaiting moderation"
 msgstr ""
 
-#: ../inc/template-tags.php:595
+#: inc/template-tags.php:607
 msgid "404 - Page not Found"
 msgstr ""
 
-#: ../inc/template-tags.php:598 ../searchform.php:14
+#: inc/template-tags.php:610 searchform.php:14
 msgid "Search"
 msgstr ""
 
-#: ../inc/template-tags.php:704
-#, php-format
+#: inc/template-tags.php:751
 msgid "Proudly powered by %s"
 msgstr ""
 
-#: ../inc/template-tags.php:706
-#, php-format
+#: inc/template-tags.php:753
 msgid "Theme: %1$s by %2$s."
 msgstr ""
 
-#: ../searchform.php:13
+#: inc/theme-info.php:11 inc/theme-info.php:18
+msgid "Quest Info"
+msgstr ""
+
+#: inc/theme-info.php:19
+msgid "Theme demo"
+msgstr ""
+
+#: inc/theme-info.php:20
+msgid "Documentation"
+msgstr ""
+
+#: inc/theme-info.php:21
+msgid "Support"
+msgstr ""
+
+#: inc/theme-info.php:22
+msgid "Quest Plus"
+msgstr ""
+
+#: searchform.php:13
 msgid "Search ..."
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Your Quest for an awesome WordPress theme ends right here. Quest let's you "
+"create the website you need without having any coding knowledge. Quest "
+"offers a powerful click, drag and drop page builder to help you create "
+"amazing pages to showcase your content while offering a slick user "
+"interface therein increasing your user experience. Quest also includes "
+"powerful and flexible easy to understand and easy to use customization "
+"options to customize the entire layout of your site including background "
+"images, colors, typography and so on. Build your site now using Quest - "
+"blog, portfolio, eCommerce, magazine, photography and so on, Quest doesn't "
+"limit you when it comes to your creativity. Quest is built on the famous "
+"bootstrap framework which uses a mobile first approach, this will ensure "
+"your site works properly on all mobiles, tablets, laptops and desktops. "
+"Theme demo is available at http://quest.demo.pacethemes.com/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Page Builder"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:115
+msgctxt "Valid formatDate string for jquery-ui datepicker"
+msgid "mm/dd/yy"
+msgstr ""
+
+#: inc/CMB2/includes/CMB2_JS.php:135
+msgctxt ""
+"Valid formatting string, as per "
+"http://trentrichardson.com/examples/timepicker/"
+msgid "hh:mm TT"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:1112
+#: inc/class-tgm-plugin-activation.php:2824
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:1877
+msgctxt "%s = version number"
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2231
+msgctxt "%1$s = install status, %2$s = update status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2276
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:2367
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2487
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2491
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Update %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2496
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/template-tags.php:52
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#: inc/template-tags.php:57
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:100
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: inc/template-tags.php:102
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: inc/template-tags.php:104
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
+#: inc/template-tags.php:107
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr ""
+
+#: inc/template-tags.php:109
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr ""
+
+#: inc/template-tags.php:111
+msgctxt "post format archive title"
+msgid "Images"
+msgstr ""
+
+#: inc/template-tags.php:113
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr ""
+
+#: inc/template-tags.php:115
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr ""
+
+#: inc/template-tags.php:117
+msgctxt "post format archive title"
+msgid "Links"
+msgstr ""
+
+#: inc/template-tags.php:119
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr ""
+
+#: inc/template-tags.php:121
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr ""
+
+#: inc/template-tags.php:123
+msgctxt "post format archive title"
+msgid "Chats"
 msgstr ""

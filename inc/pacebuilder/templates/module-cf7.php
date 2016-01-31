@@ -8,17 +8,17 @@ $cf7_forms = get_posts( $args );
 		<div class="pt-pb-cf7-preview">
 			{{{ ptPbApp.partial('module-header', { admin_label: admin_label}) }}}
 			<div class="content-preview">
-				<?php _e( 'Form ID', 'quest-plus' ) ?>:  {{{ form_id }}}
+				<?php _e( 'Form ID', 'quest' ) ?>:  {{{ form_id }}}
 			</div>
 		</div>
 
 		<div class="pt-pb-cf7-edit reveal-modal">
-			<h2><?php _e( 'Edit Contact Form 7', 'quest-plus' ); ?></h2>
+			<h2><?php _e( 'Edit Contact Form 7', 'quest' ); ?></h2>
 			<input name="{{{pre}}}[id]" type="hidden" value="{{{id}}}">
 			<input name="{{{pre}}}[type]" type="hidden" value="contactform7">
 			<div class="edit-content">
 				<div class="pt-pb-option">
-					<label for="form_id"><?php _e( 'Select Form', 'quest-plus' ); ?>: </label>
+					<label for="form_id"><?php _e( 'Select Form', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<select name="{{{pre}}}[form_id]" >
@@ -29,18 +29,18 @@ $cf7_forms = get_posts( $args );
 							<?php } ?>
 						</select>
 
-						<p class="description"><?php _e( 'Select the Contact Form 7 you want to show', 'quest-plus' ) ?></p>
+						<p class="description"><?php _e( 'Select the Contact Form 7 you want to show', 'quest' ) ?></p>
 					</div>
 				</div>
 
 
 				<div class="pt-pb-option">
-					<label for="title"><?php _e( 'Form Title', 'quest-plus' ); ?>: </label>
+					<label for="title"><?php _e( 'Form Title', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<input name="{{{pre}}}[title]" class="regular-text" type="text" value="{{{ title }}}"/>
 
-						<p class="description"><?php _e( 'Title for the Form', 'quest-plus' ) ?></p>
+						<p class="description"><?php _e( 'Title for the Form', 'quest' ) ?></p>
 					</div>
 				</div>
 

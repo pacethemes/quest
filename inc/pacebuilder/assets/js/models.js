@@ -38,15 +38,15 @@ ptPbApp.Models = ptPbApp.Models || {};
                 if (key.match(/.Module/)) {
                     var pluginName = key.replace('Module', '');
                     if(ptPbAppPlugins.hasOwnProperty(pluginName)){
-                        if(ptPbAppPlugins[pluginName] == 1)
+                        if(ptPbAppPlugins[pluginName] === 1){
                             ptPbApp.ModulesList[key] = ptPbApp.Models[key].prototype.defaults;
-                        else{
+                        } else {
                             delete ptPbApp.Models[key] ;
                             delete ptPbApp.Views[key] ;
                         }
-                    }
-                    else
+                    } else {
                         ptPbApp.ModulesList[key] = ptPbApp.Models[key].prototype.defaults;
+                    }
                 }
             });
 
@@ -118,7 +118,7 @@ ptPbApp.Models = ptPbApp.Models || {};
 
                 this.set({
                     'type': 'columns',
-                    'admin_label' : this.get('admin_label') == '' ? 'Row - Columns' : this.get('admin_label')
+                    'admin_label' : this.get('admin_label') === '' ? 'Row - Columns' : this.get('admin_label')
                     })
                     .unset('col', {
                         silent: true
@@ -129,15 +129,16 @@ ptPbApp.Models = ptPbApp.Models || {};
                         return $.isNumeric(key);
                     }),
                     sliderOpts = _.extend(_.reduce(this.get('slider'), function(obj, val, key) {
-                        if (!$.isNumeric(key))
+                        if (!$.isNumeric(key)){
                             obj[key] = val;
+                        }
                         return obj;
                     }, {}), {id: this.get('id') + '__slider' });
 
                 this.set({
                         'content': this.addSlider(sliderOpts, slides),
                         'type': 'slider',
-                        'admin_label' : this.get('admin_label') == '' ? 'Row - Image Slider' : this.get('admin_label')
+                        'admin_label' : this.get('admin_label') === '' ? 'Row - Image Slider' : this.get('admin_label')
                     })
                     .unset('slider', {
                         silent: true
@@ -149,15 +150,16 @@ ptPbApp.Models = ptPbApp.Models || {};
                         return $.isNumeric(key);
                     }),
                     galOpts = _.extend(_.reduce(this.get('gallery'), function(obj, val, key) {
-                        if (!$.isNumeric(key))
+                        if (!$.isNumeric(key)){
                             obj[key] = val;
+                        }
                         return obj;
                     }, {}), {id: this.get('id') + '__gallery' });
 
                 this.set({
                         'content': this.addGallery(galOpts, images),
                         'type': 'gallery',
-                        'admin_label' : this.get('admin_label') == '' ? 'Row - Gallery' : this.get('admin_label')
+                        'admin_label' : this.get('admin_label') === '' ? 'Row - Gallery' : this.get('admin_label')
                     })
                     .unset('gallery', {
                         silent: true
@@ -167,7 +169,7 @@ ptPbApp.Models = ptPbApp.Models || {};
                 this.set({
                         'content': this.addGenericSlider(_.extend(this.get('generic_slider'), {id: this.get('id') + '__generic_slider' } )),
                         'type': 'generic-slider',
-                        'admin_label' : this.get('admin_label') == '' ? 'Row - ' + _.extend({ 'type' : '' }, this.get('generic_slider')).type + ' Slider' : this.get('admin_label')
+                        'admin_label' : this.get('admin_label') === '' ? 'Row - ' + _.extend({ 'type' : '' }, this.get('generic_slider')).type + ' Slider' : this.get('admin_label')
                     })
                     .unset('generic_slider', {
                         silent: true
@@ -180,7 +182,7 @@ ptPbApp.Models = ptPbApp.Models || {};
                     }));
                 }, this);
                 this.set({
-                    'admin_label' : this.get('admin_label') == '' ? 'Row - Columns' : this.get('admin_label')
+                    'admin_label' : this.get('admin_label') === '' ? 'Row - Columns' : this.get('admin_label')
                     })
                     .unset('columns', {
                         silent: true
@@ -302,13 +304,14 @@ ptPbApp.Models = ptPbApp.Models || {};
         },
 
         importModules: function() {
-            if (!this.get('module'))
+            if (!this.get('module')){
                 return;
+            }
 
             //if module has admin_label property then create an empty object with the module object
             //required for backward compatibility for initial versions of page builder
             if(this.get('module').hasOwnProperty('admin_label')){
-                this.set('module', { 0: this.get('module') } )
+                this.set('module', { 0: this.get('module') } );
             }
 
             //if module is an object, create an array of objects
@@ -325,8 +328,9 @@ ptPbApp.Models = ptPbApp.Models || {};
         addModule: function(attr) {
             var moduleName = attr && attr.type ? this.properName(attr.type) : '';
 
-            if (!ptPbApp.Models[moduleName])
+            if (!ptPbApp.Models[moduleName]){
                 return false;
+            }
 
             var moduleNum = this._getModuleNum(),
                 module = new ptPbApp.Models[moduleName](_.extend(
@@ -388,8 +392,9 @@ ptPbApp.Models = ptPbApp.Models || {};
 
         importSlides: function() {
 
-            if (!this.get('slideArr'))
+            if (!this.get('slideArr')){
                 return;
+            }
 
             _.each(this.get('slideArr') || [], this.addSlide, this);
 
@@ -504,8 +509,9 @@ ptPbApp.Models = ptPbApp.Models || {};
 
         importImages: function() {
 
-            if (!this.get('imageArr'))
+            if (!this.get('imageArr')){
                 return;
+            }
 
             _.each(this.get('imageArr') || [], this.addImage, this);
 

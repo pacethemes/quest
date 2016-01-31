@@ -147,11 +147,11 @@ if ( ! function_exists( 'quest_scripts' ) ):
 		if( defined( 'QUEST_MINIFY_SCRIPTS' ) && QUEST_MINIFY_SCRIPTS ) {
 
 			// Enqueue required styles
-			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/quest-all.css' );
+			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/plugins-all.min.css' );
 			wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array( 'quest-all-css' ) );
 
 			// Enqueue required scripts
-			wp_enqueue_script( 'quest-all-js', get_template_directory_uri() . '/assets/js/quest-all.min.js', array(
+			wp_enqueue_script( 'quest-all-js', get_template_directory_uri() . '/assets/js/quest-and-plugins.js', array(
 				'jquery',
 				'masonry'
 			) );

@@ -139,9 +139,10 @@ var ptPbApp = ptPbApp || {};
     };
 
     ptPbApp.generateOption = function(selected, value, name) {
-        if (!name)
+        if (!name){
             name = value;
-        return '<option value="' + value + '" ' + (value == selected ? 'selected' : '') + ' >' + name + '</option>';
+        }
+        return '<option value="' + value + '" ' + (value === selected ? 'selected' : '') + ' >' + name + '</option>';
     };
 
     ptPbApp.getInputPrefix = function(id) {

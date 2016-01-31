@@ -6,30 +6,36 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
+        pkg: grunt.file.readJSON('package.json'),
+
         // watch for changes and trigger compass, jshint, uglify and livereload
         watch: {
             options: {
                 livereload: true,
             },
-            compass: {
-                files: ['assets/scss/**/*.{scss,sass}'],
-                tasks: ['compass']
+            sass: {
+                files: ['**/*.scss'],
+                tasks: ['sass']
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify']
+                tasks: ['jshint']
             },
             livereload: {
                 files: ['*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
-        // compass and scss
-        compass: {
+        // sass
+        sass: {
             dist: {
-                options: {
-                    config: 'config.rb',
-                    force: true
+                options: { // Target options
+                    style: 'expanded'
+                },
+                files: {
+                    'style.css': 'style.scss',
+                    'assets/css/admin.css': 'assets/sass/admin.scss',
+                    'inc/pacebuilder/assets/css/style.css': 'inc/pacebuilder/assets/sass/style.scss'
                 }
             }
         },
@@ -41,28 +47,62 @@ module.exports = function(grunt) {
                 "force": true
             },
             all: [
-                'Gruntfile.js',
-                'assets/js/source/**/*.js'
+                'assets/js/admin.js',
+                'assets/js/quest.js',
+                'inc/pacebuilder/assets/js/util.js',
+                'inc/pacebuilder/assets/js/models.js',
+                'inc/pacebuilder/assets/js/collections.js',
+                'inc/pacebuilder/assets/js/views.js',
+                'inc/pacebuilder/assets/js/app.js',
             ]
         },
 
         concat: {
-            dist: {
+            js: {
+                options: {
+                    banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                        ' * Copyright (c) <%= grunt.template.today("yyyy") %>\n' +
+                        ' * Licensed GPLv2+ \n' +
+                        ' */\n',
+                    process: function(src, filepath) {
+                        return '\n// Source: ' + filepath + '\n' + src;
+                    },
+                },
                 src: [
                     'assets/plugins/modernizr/modernizr.custom.js',
-                    'assets/plugins/bootstrap/js/bootstrap.js',
-                    'assets/plugins/smoothscroll/SmoothScroll.js',
-                    'assets/plugins/wow/wow.js',
-                    'assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.js',
-                    'assets/plugins/FullscreenSlitSlider/js/jquery.slitslider.js',
-                    'assets/plugins/colorbox/jquery.colorbox.js',
-                    'assets/plugins/imagesloaded/imagesloaded.pkgd.js',
-                    'assets/plugins/smartmenus/jquery.smartmenus.js',
-                    'assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js',
-                    'assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js',
-                    'assets/js/quest.js'
+                    'assets/plugins/bootstrap/js/bootstrap.min.js',
+                    'assets/plugins/smoothscroll/SmoothScroll-min.js',
+                    'assets/plugins/wow/wow.min.js',
+                    'assets/plugins/FullscreenSlitSlider/js/jquery.ba-cond.min.js',
+                    'assets/plugins/FullscreenSlitSlider/js/jquery.slitslider-min.js',
+                    'assets/plugins/colorbox/jquery.colorbox-min.js',
+                    'assets/plugins/imagesloaded/imagesloaded.pkgd-min.js',
+                    'assets/plugins/smartmenus/jquery.smartmenus.min.js',
+                    'assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.min.js',
+                    'assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.min.js',
+                    'assets/js/quest.min.js'
                 ],
-                dest: 'assets/js/quest-all.js'
+                dest: 'assets/js/quest-and-plugins.js'
+            },
+            css: {
+                options: {
+                    banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                        ' * Copyright (c) <%= grunt.template.today("yyyy") %>\n' +
+                        ' * Licensed GPLv2+ \n' +
+                        ' */\n',
+                    process: function(src, filepath) {
+                        return '\n/* Source: ' + filepath + '*/\n' + src.replace(/\.\.\/fonts\//g, '../plugins/font-awesome/fonts/');
+                    },
+                },
+                src: [
+                    'assets/plugins/bootstrap/css/bootstrap.min.css',
+                    'assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css',
+                    'assets/plugins/font-awesome/css/font-awesome.min.css',
+                    'assets/plugins/animate/animate.css',
+                    'assets/plugins/FullscreenSlitSlider/css/style.css',
+                    'assets/plugins/colorbox/colorbox.css'
+                ],
+                dest: 'assets/css/plugins-all.css'
             }
         },
 
@@ -70,59 +110,114 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 options: {
-                    sourceMap: 'assets/js/map/quest-all.js',
-                    preserveComments: 'some'
+                    // sourceMap: 'assets/js/map/quest-all.js',
+                    banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                        ' * <%= pkg.homepage %>\n' +
+                        ' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+                        ' * Licensed GPLv2+' +
+                        ' */\n',
                 },
                 files: {
-                    'assets/js/quest-all.min.js': ['assets/js/quest-all.js']
+                    'assets/js/quest.min.js': ['assets/js/quest.js']
                 }
             }
         },
 
-        // image optimization
-        imagemin: {
+        cssmin: {
             dist: {
                 options: {
-                    optimizationLevel: 7,
-                    progressive: true
+                    banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                        ' * <%= pkg.homepage %>\n' +
+                        ' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+                        ' * Licensed GPLv2+' +
+                        ' */\n',
                 },
-                files: [{
-                    expand: true,
-                    cwd: 'assets/images/',
-                    src: '**/*',
-                    dest: 'assets/images/'
-                }]
+                files: {
+                    'assets/css/plugins-all.min.css': ['assets/css/plugins-all.css']
+                }
             }
         },
 
-        // deploy via rsync
-        deploy: {
-            staging: {
-                src: "./",
-                dest: "~/path/to/theme",
-                host: "user@host.com",
-                recursive: true,
-                syncDest: true,
-                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc']
+        addtextdomain: {
+            options: {
+                textdomain: 'quest', // Project text domain.
+                updateDomains: ['quest-plus', 'cmb2', 'tgmpa'] // List of text domains to replace.
             },
-            production: {
-                src: "./",
-                dest: "~/path/to/theme",
-                host: "user@host.com",
-                recursive: true,
-                syncDest: true,
-                exclude: '<%= rsync.staging.exclude %>'
+            target: {
+                files: {
+                    src: [
+                        '*.php',
+                        '**/*.php',
+                        '!node_modules/**',
+                        '!tests/**'
+                    ]
+                }
+            }
+        },
+
+        makepot: {
+            target: {
+                options: {
+                    domainPath: 'languages',
+                    mainFile: 'style.css',
+                    include: [
+                        '[^*?"<>]*.php'
+                    ],
+                    type: 'wp-theme',
+                    processPot: function(pot) {
+                        var translation,
+                            excluded_meta = [
+                                'Theme URI of the plugin/theme',
+                                'Theme Name of the plugin/theme',
+                                'Author of the plugin/theme',
+                                'Author URI of the plugin/theme'
+                            ];
+
+                        for (translation in pot.translations['']) {
+                            if ('undefined' !== typeof pot.translations[''][translation].comments.extracted) {
+                                if (excluded_meta.indexOf(pot.translations[''][translation].comments.extracted) >= 0) {
+                                    console.log('Excluded meta: ' + pot.translations[''][translation].comments.extracted);
+                                    delete pot.translations[''][translation];
+                                }
+                            }
+                        }
+
+                        return pot;
+                    },
+                }
+            }
+        },
+
+        compress: {
+            dist: {
+                options: {
+                    archive: '../dist/quest.<%= pkg.version %>.zip',
+                    mode: 'zip'
+                },
+                files: [{
+                    src: ['**/*', '!**node_modules/**', '!**tests/**', '!**sass/**', '!*.{scss,sass}', '.DS_Store', '.sass-cache', '!*karma.conf.js', '!*package.json', '!*config.codekit']
+                }]
             }
         }
 
     });
 
-    // rename tasks
-    // grunt.renameTask('rsync', 'deploy');
+    grunt.registerTask('updateVersion', 'Update Theme version to the latest version from package.json file', function() {
+        var styleFile = grunt.file.read('style.scss'),
+            regex = /\* Version\:     (\d*\.?\d*\.?\d*)/,
+            pkg = grunt.file.readJSON('package.json'),
+            versionStr = styleFile.match(regex);
+        if (versionStr.length && versionStr.length > 1 && parseFloat(versionStr[1]) !== pkg.version) {
+            styleFile = styleFile.replace(regex, '* Version:     ' + pkg.version);
+            grunt.log.writeln('Theme version is ' + versionStr[1] + ' in the style.scss file and ' + pkg.version + ' in the package.json file');
+            grunt.log.writeln('Updating the Theme version in the style.scss file');
+            grunt.file.write('style.scss', styleFile);
+        }
+    });
 
     // register task
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('default', ['concat']);
-    grunt.registerTask('assets', ['concat', 'uglify']);
+    grunt.registerTask('zip', ['compress']);
+    grunt.registerTask('assets', ['uglify', 'concat', 'cssmin']);
 
 };

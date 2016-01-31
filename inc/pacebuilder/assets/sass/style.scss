@@ -1,9 +1,9 @@
-@accent1: #3386ba;
-@accent2: #bbb;
-@rowClr: #d6d6d6;
-@colClr: #d6d6d6;
-@modClr: #d6d6d6;
-@itemClr: #d6d6d6;
+$accent1: #3386ba;
+$accent2: #bbb;
+$rowClr: #d6d6d6;
+$colClr: #d6d6d6;
+$modClr: #d6d6d6;
+$itemClr: #d6d6d6;
 // #pt-pb-layout, 
 #postdivrich {
     display: none;
@@ -43,7 +43,7 @@
     .grid:after {
         display: table;
         clear: both;
-        /* Or @extend clearfix */
+        /* Or $extend clearfix */
         content: '';
     }
     [class*='col-'] {
@@ -125,7 +125,7 @@ html[xmlns] .clearfix {
         // color: #999;
         &:hover,
         &:focus {
-            // color: @accent1;
+            // color: $accent1;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
     }
@@ -134,11 +134,11 @@ html[xmlns] .clearfix {
 .pt-pb-section {
     margin: 20px 10px !important;
     padding: 0;
-    border: 1px solid @accent1;
+    border: 1px solid $accent1;
     background-color: #fff;
     a {
         &:focus {
-            color: @accent1;
+            color: $accent1;
             -webkit-box-shadow: none;
             box-shadow: none;
         }
@@ -148,7 +148,7 @@ html[xmlns] .clearfix {
 .pt-pb-header {
     position: relative;
     cursor: move;
-    background-color: @accent1;
+    background-color: $accent1;
     h3 {
         padding: 0 10px;
         color: #fff;
@@ -315,9 +315,9 @@ html[xmlns] .clearfix {
     -webkit-box-shadow: 0 2px 0 #aaa !important;
     box-shadow: 0 2px 0 #aaa !important;
     &:hover, &:focus, &:active{
-        background-color: lighten(@modClr, 10%);
+        background-color: lighten($modClr, 10%);
         color: darken(#676869, 10%) !important;
-        border-color: darken(@modClr, 30%);
+        border-color: darken($modClr, 30%);
     }
     // &:hover,
     // &:focus,
@@ -344,7 +344,7 @@ html[xmlns] .clearfix {
 
 .pt-pb-column-foot {
     padding: 10px 0;
-    border: 1px solid @colClr;
+    border: 1px solid $colClr;
     border-top-width: 0px;
     text-align: center;
 }
@@ -359,17 +359,17 @@ html[xmlns] .clearfix {
     color: #999;
     display: inline-block;
     padding: 8px 10px;
-    background-color: lighten(@modClr, 2%);
+    background-color: lighten($modClr, 2%);
     color: #676869 !important;
     border-radius: 2px;
     border-width: 1px;
-    border-color: lighten(@modClr, 2%);
+    border-color: lighten($modClr, 2%);
     -webkit-box-shadow: 0 2px 0 #aaa;
     box-shadow: 0 2px 0 #aaa;
     &:hover, &:focus{
-        background-color: lighten(@modClr, 5%);
+        background-color: lighten($modClr, 5%);
         color: darken(#676869, 5%) !important;
-        border-color: darken(@modClr, 30%);
+        border-color: darken($modClr, 30%);
     }
 }
 
@@ -446,32 +446,32 @@ html[xmlns] .clearfix {
 }
 
 .pt-pb-row-header {
-    background-color: @rowClr !important;
-    border-color: @rowClr !important;
+    background-color: $rowClr !important;
+    border-color: $rowClr !important;
     h3 {
         color: #676869 !important;
     }
 }
 
 .pt-pb-row {
-    border-color: @rowClr !important;
+    border-color: $rowClr !important;
 }
 
 .pt-pb-column-sortable {
-    background-color: @colClr;
-    border-color: @colClr !important;
+    background-color: $colClr;
+    border-color: $colClr !important;
     color: #676869 !important;
 }
 
 .pt-pb-column-content {
-    border-color: @colClr !important;
+    border-color: $colClr !important;
     color: #676869 !important;
     min-height: 50px;
 }
 
 .slide-content-preview,
 .gimage-content-preview {
-    border-color: @modClr !important;
+    border-color: $modClr !important;
 }
 
 .pt-pb-column-content {
@@ -482,7 +482,7 @@ html[xmlns] .clearfix {
     padding: 10px;
     .module-controls {
         position: static;
-        background: @modClr;
+        background: $modClr;
         height: 25px;
         cursor: move;
         .admin-label {
@@ -514,7 +514,7 @@ html[xmlns] .clearfix {
         }
     }
     .content-preview {
-        border-color: @modClr;
+        border-color: $modClr;
     }
     &:empty {
         padding: 0;
@@ -605,7 +605,7 @@ html[xmlns] .clearfix {
     &:after {
         display: table;
         clear: both;
-        /* Or @extend clearfix */
+        /* Or $extend clearfix */
         content: '';
     }
     &:last-child {
@@ -698,29 +698,29 @@ html[xmlns] .clearfix {
     color: #999;
     display: inline-block;
     padding: 8px 10px;
-    background-color: lighten(@modClr, 2%);
+    background-color: lighten($modClr, 2%);
     color: #676869 !important;
     border-radius: 2px;
     border-width: 1px;
-    border-color: lighten(@modClr, 2%);
+    border-color: lighten($modClr, 2%);
     -webkit-box-shadow: 0 2px 0 #aaa !important;
     box-shadow: 0 2px 0 #aaa !important;
     &:hover, &:focus, &:active{
-        background-color: lighten(@modClr, 5%);
+        background-color: lighten($modClr, 5%);
         color: darken(#676869, 5%) !important;
-        border-color: darken(@modClr, 30%);
+        border-color: darken($modClr, 30%);
     }
 }
 
 .pt-pb-insert-section {
-    background-color: @accent1 !important;
+    background-color: $accent1 !important;
     color: #fafafa !important;
-    -webkit-box-shadow: 0 4px 0 darken(@accent1, 10%) !important;
-    box-shadow: 0 4px 0 darken(@accent1, 10%) !important;
+    -webkit-box-shadow: 0 4px 0 darken($accent1, 10%) !important;
+    box-shadow: 0 4px 0 darken($accent1, 10%) !important;
     padding: 15px !important;
     &:hover,
     &:focus {
-        background-color: darken(@accent1, 5%) !important;
+        background-color: darken($accent1, 5%) !important;
         color: #fff !important;
     }
 }
@@ -729,20 +729,20 @@ html[xmlns] .clearfix {
 .pt-pb-insert-slider,
 .pt-pb-insert-generic-slider,
 .pt-pb-insert-gallery {
-    background-color: @rowClr;
+    background-color: $rowClr;
     color: #676869 !important;
     box-shadow: 0 2px 0 #aaa;
     &:hover,
     &:focus {
         color: darken( #676869, 20) !important;
-        background-color: lighten( @rowClr, 5) !important;
+        background-color: lighten( $rowClr, 5) !important;
         box-shadow: 0 2px 0 #aaa !important;
     }
 }
 
 .pt-pb-insert-slide,
 .pt-pb-insert-gimage {
-    background-color: @modClr;
+    background-color: $modClr;
     color: #676869 !important;
     &:hover,
     &:focus {
@@ -780,10 +780,10 @@ html[xmlns] .clearfix {
             display: block;
             font-size: 60px;
             min-height: 60px;
-            color: @accent2;
+            color: $accent2;
             &:hover,
             &:focus {
-                color: darken( @accent2, 20);
+                color: darken( $accent2, 20);
             }
         }
     }
@@ -813,12 +813,12 @@ textarea.regular-text {
 .pt-pb-row {
     position: relative;
     margin-bottom: 25px;
-    border: 1px solid darken( @accent2, 20);
+    border: 1px solid darken( $accent2, 20);
     background-color: #fff;
     .pt-pb-row-header {
         height: 30px;
         line-height: 30px;
-        background-color: @accent2;
+        background-color: $accent2;
         cursor: move;
         // margin-bottom: 20px;
         h3 {
@@ -940,13 +940,13 @@ textarea.regular-text {
         color: #333 !important;
     }
     &.save {
-        background-color: @rowClr;
+        background-color: $rowClr;
     }
     &.load {
-        background-color: @modClr;
+        background-color: $modClr;
     }
     &.clear {
-        background-color: @colClr;
+        background-color: $colClr;
     }
 }
 
@@ -971,9 +971,9 @@ textarea.regular-text {
         height: 60px;
         width: 60px;
         margin: 80px auto;
-        border: 0px solid @accent1;
+        border: 0px solid $accent1;
         border-radius: 50%;
-        box-shadow: 0 -20px 0 24px @accent1 inset;
+        box-shadow: 0 -20px 0 24px $accent1 inset;
         animation: rotateLoader 1s infinite linear;
     }
 }
@@ -987,13 +987,13 @@ textarea.regular-text {
     height: 28px;
     margin: 0 0 0 6px;
     border-top: none;
-    background: @accent1;
+    background: $accent1;
     -webkit-box-shadow: 0 1px 1px -1px rgba(0, 0, 0, .1);
     box-shadow: 0 1px 1px -1px rgba(0, 0, 0, .1);
     a {
         color: #555;
         border-color: #ccc;
-        background: @accent1;
+        background: $accent1;
         color: #fff;
         line-height: 1.7;
         padding: 0 15px;

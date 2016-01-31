@@ -24,17 +24,17 @@
 				</div>
 
 				<div class="pt-pb-option">
-					<label for="fullscreen"><?php _e( 'Slider Fullscreen', 'quest-plus' ); ?>: </label>
+					<label for="fullscreen"><?php _e( 'Slider Fullscreen', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
 						<select name="{{{pre}}}[fullscreen]">
 							<option value="true"
-							 {{{ fullscreen == 'true' ? 'selected' : void 0 }}} ><?php _e( 'Yes', 'quest-plus' ); ?></option>
+							 {{{ fullscreen == 'true' ? 'selected' : void 0 }}} ><?php _e( 'Yes', 'quest' ); ?></option>
 							<option value="false"
-							 {{{ fullscreen == 'false' ? 'selected' : void 0 }}} ><?php _e( 'No', 'quest-plus' ); ?></option>
+							 {{{ fullscreen == 'false' ? 'selected' : void 0 }}} ><?php _e( 'No', 'quest' ); ?></option>
 						</select>
 
-						<p class="description"><?php _e( 'If set to FullScreen Slider height will be ignored and the slider will always be 100% to the browser viewport', 'quest-plus' ) ?></p>
+						<p class="description"><?php _e( 'If set to FullScreen Slider height will be ignored and the slider will always be 100% to the browser viewport', 'quest' ) ?></p>
 					</div>
 				</div>
 

@@ -61,11 +61,11 @@ ptPbApp.Views = ptPbApp.Views || {};
 
         renderRow: function(row, el, animate) {
             var after = el && el.length,
-                animate = animate === false ? false : true,
                 addTo = after ? $(el) : this.$content;
             var v = $(new ptPbApp.Views.Row({
                 model: row
             }).render().el);
+            animate = animate === false ? false : true;
             ptPbApp.addAndAnimate(v, addTo, animate, 100, after);
         },
 
@@ -90,7 +90,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         removeSection: function(e, confirm) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             if (confirm || window.confirm(ptPbAppLocalization.remove_section)) {
                 this.model.trigger('destroy', this.model);
             }
@@ -334,7 +334,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         removeRow: function(e, confirm) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             if (confirm || window.confirm(ptPbAppLocalization.remove_row)) {
                 this.model.trigger('destroy', this.model);
             }
@@ -382,7 +382,7 @@ ptPbApp.Views = ptPbApp.Views || {};
 
             if (models.length > columns.length && !window.confirm(ptPbAppLocalization.resize_columns)) {
                 return;
-            } else if (models.length == columns.length) {
+            } else if (models.length === columns.length) {
                 return;
             }
 
@@ -465,15 +465,20 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         renderModule: function(module, key, clctn, el) {
-            if (!ptPbApp.Views.hasOwnProperty(module.properName()))
+            if (!ptPbApp.Views.hasOwnProperty(module.properName())){
                 return;
+            }
+
             var moduleView = new ptPbApp.Views[module.properName()]({
                 model: module
             });
-            if (el)
+
+            if (el){
                 el.after(moduleView.render().el);
-            else
+            } else {
                 this.$content.append(moduleView.render().el);
+            }
+
             return moduleView;
         },
 
@@ -490,8 +495,9 @@ ptPbApp.Views = ptPbApp.Views || {};
                     type: moduleName
                 });
 
-            if (!module)
+            if (!module){
                 return;
+            }
 
             var view = this.renderModule(module);
 
@@ -512,7 +518,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editColumn: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.$reveal.trigger('reveal:open');
         },
 
@@ -619,7 +625,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editSlider: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.$reveal.trigger('reveal:open');
         },
 
@@ -629,7 +635,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         insertSlide: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.renderSlide(this.model.addSlide(), true);
         }
 
@@ -667,7 +673,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editSlide: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             ptPbApp.createEditor(this.$content);
             this.$reveal.trigger('reveal:open');
         },
@@ -711,7 +717,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editSlider: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.$reveal.trigger('reveal:open');
         },
 
@@ -788,7 +794,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editGallery: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.$reveal.trigger('reveal:open');
         },
 
@@ -798,7 +804,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         insertImage: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.renderImage(this.model.addImage(), true);
         }
 
@@ -834,7 +840,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editImage: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             this.$reveal.trigger('reveal:open');
         },
 
@@ -886,7 +892,7 @@ ptPbApp.Views = ptPbApp.Views || {};
         },
 
         editModule: function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             ptPbApp.createEditor(this.$content);
             this.$reveal.trigger('reveal:open');
         },
