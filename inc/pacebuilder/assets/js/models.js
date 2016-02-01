@@ -38,7 +38,7 @@ ptPbApp.Models = ptPbApp.Models || {};
                 if (key.match(/.Module/)) {
                     var pluginName = key.replace('Module', '');
                     if(ptPbAppPlugins.hasOwnProperty(pluginName)){
-                        if(ptPbAppPlugins[pluginName] === 1){
+                        if(parseInt(ptPbAppPlugins[pluginName]) === 1){
                             ptPbApp.ModulesList[key] = ptPbApp.Models[key].prototype.defaults;
                         } else {
                             delete ptPbApp.Models[key] ;
@@ -58,6 +58,10 @@ ptPbApp.Models = ptPbApp.Models || {};
                 'rows': new ptPbApp.Collections.Row(),
                 'pre': ptPbApp.getInputPrefix(this.get('id'))
             });
+
+            if(this.get('col')){
+                this.set('row', [{'col': this.get('col')}]);
+            }
 
             _.each(this.get('row') || [], this.addRow, this);
 
@@ -327,7 +331,7 @@ ptPbApp.Models = ptPbApp.Models || {};
 
         addModule: function(attr) {
             var moduleName = attr && attr.type ? this.properName(attr.type) : '';
-
+            
             if (!ptPbApp.Models[moduleName]){
                 return false;
             }

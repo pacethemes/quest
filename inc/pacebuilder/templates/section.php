@@ -9,7 +9,7 @@
 					   title="<?php _e( 'Edit Section', 'quest' ); ?>"><i class="fa fa-cog"></i></a>
 					<a href="#" class="pt-pb-clone pt-pb-clone-section"
 					   title="<?php _e( 'Clone Section', 'quest' ); ?>"><i class="fa fa-copy"></i></a>
-					<a href="#" class="pt-pb-remove" title="<?php _e( 'Delete Section', 'quest' ); ?>"><i
+					<a href="#" class="pt-pb-remove remove-section" title="<?php _e( 'Delete Section', 'quest' ); ?>"><i
 							class="fa fa-remove"></i></a>
 				</div>
 				<a href="#" class="pt-pb-section-toggle" title="<?php _e( 'Click to toggle', 'quest' ); ?>">
