@@ -6,7 +6,7 @@ if ( ! function_exists( 'quest_is_pb_template' ) ):
 	 * Is the current page a Page Builder Page ?
 	 *
 	 * @since  1.3.0
-	 * @return string html menu
+	 * @return bool
 	 */
 	function quest_is_pb_template() {
 		global $post;
@@ -26,16 +26,16 @@ if ( ! function_exists( 'quest_meta_get_default' ) ):
 	 * Get Page Builder Meta Default Value
 	 *
 	 * @since  1.3.0
-	 * @return string html menu
+	 * @return string default value
 	 */
 		
 	function quest_meta_get_default( $key ) {
 
 		$meta = array(
 			'_quest_pb_header'            => 'normal',
-			'_quest_pb_menu'              => '#333333',
-			'_quest_pb_menu_hover'        => '#2fbc00',
-			'_quest_pb_menu_active'       => '#2fbc00'
+			'_quest_pb_menu'              => quest_get_mod( 'colors_menu_text' ),
+			'_quest_pb_menu_hover'        => quest_get_mod( 'colors_menu_hover' ),
+			'_quest_pb_menu_active'       => quest_get_mod( 'colors_menu_hover' )
 		);
 
 		if ( array_key_exists( $key, $meta ) ) {
@@ -53,7 +53,7 @@ if ( ! function_exists( 'quest_get_meta' ) ):
 	 * Get Page Builder Meta
 	 *
 	 * @since  1.3.0
-	 * @return string html menu
+	 * @return string meta
 	 */
 	function quest_get_meta( $meta, $key ) {
 		global $post;
@@ -84,7 +84,7 @@ if ( is_admin() )  :
 		/**
 		 * Adds Quest Page Builder Metaboxes
 		 *
-		 * @return string html menu
+		 * @return void
 		 */
 		function quest_pb_metaboxes( ) {
 

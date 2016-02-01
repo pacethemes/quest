@@ -2118,6 +2118,7 @@ form.search {
     z-index: 10000;
     background: $white;
     border-bottom: 1px solid $border_color;
+    width: inherit;
     &.mobile {
         .logo-container {
             @extend %extend_14;
@@ -2637,6 +2638,7 @@ article {
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 0 auto;
     position: relative;
+    width: inherit;
 }
 
 .quest-row {
