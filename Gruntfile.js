@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
+    grunt.util.linefeed = '\n';
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
@@ -195,7 +195,7 @@ module.exports = function(grunt) {
                     mode: 'zip'
                 },
                 files: [{
-                    src: ['**/*', '!**node_modules/**', '!**tests/**', '!**sass/**', '!*.{scss,sass}', '.DS_Store', '.sass-cache', '!*karma.conf.js', '!*package.json', '!*config.codekit']
+                    src: ['**/*', '!**node_modules/**', '!**tests/**', '!**/sass/**', '!*.{scss,sass}', '!.DS_Store', '!.sass-cache', '!karma.conf.js', '!Gruntfile.js', '!package.json', '!*config.codekit']
                 }]
             }
         }
