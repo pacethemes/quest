@@ -8,7 +8,7 @@
 //Add the theme page
 add_action('admin_menu', 'quest_add_theme_info');
 function quest_add_theme_info(){
-	$theme_info = add_theme_page( __('Quest Info','quest'), __('Quest Info','quest'), 'manage_options', 'quest-info', 'quest_info_page' );
+	add_theme_page( __('Quest Info','quest'), __('Quest Info','quest'), 'manage_options', 'quest-info', 'quest_info_page' );
 }
 
 //Callback

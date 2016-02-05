@@ -57,6 +57,39 @@ module.exports = function(grunt) {
             ]
         },
 
+        phplint: {
+            options: {
+                phpArgs: {
+                    // '-lf': null
+                }
+            },
+            all: {
+                src: [
+                    '*.php',
+                    '**/*.php',
+                    '!node_modules/**'
+                ]
+            }
+        },
+
+        'phpmd-runner': {
+            options: {
+                phpmd: '/usr/local/bin/phpmd',
+                reportFormat: 'html',
+                reportFile: 'md.html',
+                rulesets: [
+                    'cleancode',
+                    'codesize',
+                    // 'controversial',
+                    'design',
+                    'naming',
+                    'unusedcode'
+                ],
+                strict: true
+            },
+            files: ['**/*.php','!node_modules/**', '!inc/CMB2/**', '!**/class-tgm-plugin-activation.php']
+        },
+
         concat: {
             js: {
                 options: {
@@ -195,6 +228,7 @@ module.exports = function(grunt) {
                     mode: 'zip'
                 },
                 files: [{
+                    dest: 'quest',
                     src: ['**/*', '!**node_modules/**', '!**tests/**', '!**/sass/**', '!*.{scss,sass}', '!.DS_Store', '!.sass-cache', '!karma.conf.js', '!Gruntfile.js', '!package.json', '!*config.codekit']
                 }]
             }

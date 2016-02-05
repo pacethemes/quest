@@ -56,6 +56,11 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			return self::$instance;
 		}
 
+		// Temporary fix to prevent fatal errors
+		public static function getInstance(){
+			return self::get_instance();
+		}
+
 		/**
 		 * This hooks into 'customize_register' (available as of WP 3.4) and allows
 		 * you to add new sections and controls to the Theme Customize screen.

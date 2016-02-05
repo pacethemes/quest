@@ -530,7 +530,7 @@ if ( ! function_exists( 'quest_pagination' ) ) :
 			'next_text' => '<i class="fa fa-angle-double-right"></i>',
 		) );
 		if ( is_array( $pages ) ) {
-			$paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
+			//$paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
 			echo '<div class="center"><ul class="pagination">';
 			foreach ( $pages as $page ) {
 				echo "<li>$page</li>";
@@ -586,8 +586,7 @@ if ( ! function_exists( 'quest_breadcrumb' ) ) :
 		if ( is_category() || is_single() && ! is_singular( 'portfolio' ) ) {
 			$category = get_the_category();
 			if ( isset( $category[0] ) ) {
-				$ID = $category[0]->cat_ID;
-				echo '<li>' . get_category_parents( $ID, true, '', false ) . '</li>';
+				echo '<li>' . get_category_parents( $category[0]->cat_ID, true, '', false ) . '</li>';
 			}
 		}
 
@@ -905,9 +904,10 @@ if ( ! function_exists( 'quest_site_menu' ) ) :
 				'container'      => false,
 				'walker'         => new Quest_Main_Menu()
 			) );
-		} else {
-			quest_wp_page_menu();
+			return;
 		}
+		
+		quest_wp_page_menu();
 	}
 
 endif;

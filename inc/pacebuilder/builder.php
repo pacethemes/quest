@@ -45,7 +45,12 @@ class PT_PageBuilder {
 
 		return self::$instance;
 	}
-
+		
+	// Temporary fix to prevent fatal errors
+	public static function getInstance(){
+		return self::get_instance();
+	}
+		
 	/**
 	 * calls add_action on 'add_meta_boxes' hook and attaches the 'add_meta_box' function
 	 *

@@ -1,3 +1,6 @@
+##1.4.1
+* Fixes fatal error due to wrong method invocation (Old method being called)
+
 ##1.4.0
 * Adds Contact Form 7 Module for Pagebuilder
 * Adds Fullscreen option for Image Slider

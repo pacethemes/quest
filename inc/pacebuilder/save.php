@@ -54,6 +54,11 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			return self::$instance;
 		}
 
+		// Temporary fix to prevent fatal errors
+		public static function getInstance(){
+			return self::get_instance();
+		}
+
 		/**
 		 * Updates Post Meta key 'pt_pb_sections' with the prepared sections array
 		 *
