@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Quest 1.3.5\n"
+"Project-Id-Version: Quest 1.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2016-01-29 06:31:41+00:00\n"
+"POT-Creation-Date: 2016-03-15 12:59:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -126,12 +126,8 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: header.php:23
+#: header.php:30
 msgid "Skip to content"
-msgstr ""
-
-#: header.php:56
-msgid "Menu"
 msgstr ""
 
 #: inc/CMB2/includes/CMB2.php:112
@@ -166,7 +162,7 @@ msgstr ""
 
 #: inc/CMB2/includes/CMB2_Field.php:182 inc/CMB2/includes/CMB2_Field.php:186
 #: inc/customizer/custom-controls/google-fonts-control.php:189
-#: inc/customizer/defaults.php:277
+#: inc/customizer/defaults.php:280
 msgid "None"
 msgstr ""
 
@@ -714,48 +710,48 @@ msgstr ""
 msgid "Word Spacing (px)"
 msgstr ""
 
-#: inc/customizer/defaults.php:29
+#: inc/customizer/defaults.php:30
 msgid "Call us Now! 1-999-999-9999 | Email us at info@example.com"
 msgstr ""
 
-#: inc/customizer/defaults.php:265
+#: inc/customizer/defaults.php:268
 msgid "Wide"
 msgstr ""
 
-#: inc/customizer/defaults.php:266 inc/pacebuilder/templates/row.php:48
+#: inc/customizer/defaults.php:269 inc/pacebuilder/templates/row.php:48
 #: inc/pacebuilder/templates/section.php:105
 msgid "Boxed"
 msgstr ""
 
-#: inc/customizer/defaults.php:275 inc/customizer/defaults.php:289
-#: inc/customizer/defaults.php:294
+#: inc/customizer/defaults.php:278 inc/customizer/defaults.php:292
+#: inc/customizer/defaults.php:297
 #: inc/pacebuilder/templates/module-image.php:36
 #: inc/pacebuilder/templates/module-slide.php:66
 #: inc/pacebuilder/templates/module-slide.php:116
 msgid "Left"
 msgstr ""
 
-#: inc/customizer/defaults.php:276 inc/customizer/defaults.php:291
-#: inc/customizer/defaults.php:296
+#: inc/customizer/defaults.php:279 inc/customizer/defaults.php:294
+#: inc/customizer/defaults.php:299
 #: inc/pacebuilder/templates/module-image.php:42
 #: inc/pacebuilder/templates/module-slide.php:69
 #: inc/pacebuilder/templates/module-slide.php:119
 msgid "Right"
 msgstr ""
 
-#: inc/customizer/defaults.php:280 inc/metaboxes.php:113
+#: inc/customizer/defaults.php:283 inc/metaboxes.php:113
 msgid "Normal"
 msgstr ""
 
-#: inc/customizer/defaults.php:281
+#: inc/customizer/defaults.php:284
 msgid "Medium"
 msgstr ""
 
-#: inc/customizer/defaults.php:282
+#: inc/customizer/defaults.php:285
 msgid "Grid"
 msgstr ""
 
-#: inc/customizer/defaults.php:285
+#: inc/customizer/defaults.php:288
 #: inc/pacebuilder/templates/module-gallery.php:62
 #: inc/pacebuilder/templates/module-image.php:87
 #: inc/pacebuilder/templates/module-image.php:102
@@ -765,7 +761,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: inc/customizer/defaults.php:286
+#: inc/customizer/defaults.php:289
 #: inc/pacebuilder/templates/module-gallery.php:64
 #: inc/pacebuilder/templates/module-image.php:89
 #: inc/pacebuilder/templates/module-image.php:104
@@ -775,7 +771,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: inc/customizer/defaults.php:290 inc/customizer/defaults.php:295
+#: inc/customizer/defaults.php:293 inc/customizer/defaults.php:298
 #: inc/pacebuilder/templates/module-image.php:39
 #: inc/pacebuilder/templates/module-slide.php:63
 #: inc/pacebuilder/templates/module-slide.php:83
@@ -784,67 +780,67 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
-#: inc/customizer/defaults.php:299
+#: inc/customizer/defaults.php:302
 msgid "Callout + Social Icons"
 msgstr ""
 
-#: inc/customizer/defaults.php:300
+#: inc/customizer/defaults.php:303
 msgid "Callout + Search"
 msgstr ""
 
-#: inc/customizer/defaults.php:301
+#: inc/customizer/defaults.php:304
 msgid "Social Icons + Callout"
 msgstr ""
 
-#: inc/customizer/defaults.php:302
+#: inc/customizer/defaults.php:305
 msgid "Search + Callout"
 msgstr ""
 
-#: inc/customizer/defaults.php:303
+#: inc/customizer/defaults.php:306
 msgid "Social Icons + Search"
 msgstr ""
 
-#: inc/customizer/defaults.php:304
+#: inc/customizer/defaults.php:307
 msgid "Search + Social Icons"
 msgstr ""
 
-#: inc/customizer/defaults.php:307
+#: inc/customizer/defaults.php:310
 msgid "Latin"
 msgstr ""
 
-#: inc/customizer/defaults.php:308
+#: inc/customizer/defaults.php:311
 msgid "Latin Extended"
 msgstr ""
 
-#: inc/customizer/defaults.php:309
+#: inc/customizer/defaults.php:312
 msgid "Greek"
 msgstr ""
 
-#: inc/customizer/defaults.php:310
+#: inc/customizer/defaults.php:313
 msgid "Greek Extended"
 msgstr ""
 
-#: inc/customizer/defaults.php:311
+#: inc/customizer/defaults.php:314
 msgid "Cyrillic"
 msgstr ""
 
-#: inc/customizer/defaults.php:312
+#: inc/customizer/defaults.php:315
 msgid "Cyrillic Extended"
 msgstr ""
 
-#: inc/customizer/defaults.php:313
+#: inc/customizer/defaults.php:316
 msgid "Vietnamese"
 msgstr ""
 
-#: inc/customizer/defaults.php:314
+#: inc/customizer/defaults.php:317
 msgid "Arabic"
 msgstr ""
 
-#: inc/customizer/defaults.php:315
+#: inc/customizer/defaults.php:318
 msgid "Khmer"
 msgstr ""
 
-#: inc/customizer/defaults.php:316
+#: inc/customizer/defaults.php:319
 msgid "Devanagari"
 msgstr ""
 
@@ -987,15 +983,15 @@ msgstr ""
 msgid "Bottom Border Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:514 inc/customizer/panels/colors.php:1144
+#: inc/customizer/panels/colors.php:514 inc/customizer/panels/colors.php:1190
 msgid "Social Icon Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:537 inc/customizer/panels/colors.php:1167
+#: inc/customizer/panels/colors.php:537 inc/customizer/panels/colors.php:1213
 msgid "Social Icon Hover Color"
 msgstr ""
 
-#: inc/customizer/panels/colors.php:560 inc/customizer/panels/colors.php:1190
+#: inc/customizer/panels/colors.php:560 inc/customizer/panels/colors.php:1236
 msgid "Social Icon Hover background Color"
 msgstr ""
 
@@ -1049,6 +1045,14 @@ msgstr ""
 
 #: inc/customizer/panels/colors.php:1076
 msgid "Secondary Footer"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:1143
+msgid "Link Color"
+msgstr ""
+
+#: inc/customizer/panels/colors.php:1166
+msgid "Link Hover Color"
 msgstr ""
 
 #: inc/customizer/panels/general.php:58
@@ -1133,6 +1137,14 @@ msgstr ""
 
 #: inc/customizer/panels/general.php:489
 msgid "Sticky Label"
+msgstr ""
+
+#: inc/customizer/panels/general.php:504
+msgid "Custom"
+msgstr ""
+
+#: inc/customizer/panels/general.php:527
+msgid "Custom CSS"
 msgstr ""
 
 #: inc/customizer/panels/layout.php:55
@@ -1356,51 +1368,51 @@ msgid ""
 "header and top level menu items"
 msgstr ""
 
-#: inc/pacebuilder/builder.php:69
+#: inc/pacebuilder/builder.php:74
 msgid "Quest Page Builder"
 msgstr ""
 
-#: inc/pacebuilder/builder.php:151
+#: inc/pacebuilder/builder.php:156
 msgid "Are you sure you want to remove this Section ? This step cannot be undone."
 msgstr ""
 
-#: inc/pacebuilder/builder.php:152
+#: inc/pacebuilder/builder.php:157
 msgid "Are you sure you want to remove this Row ? This step cannot be undone."
 msgstr ""
 
-#: inc/pacebuilder/builder.php:153
+#: inc/pacebuilder/builder.php:158
 msgid "Are you sure you want to remove this Slide ? This step cannot be undone."
 msgstr ""
 
-#: inc/pacebuilder/builder.php:154
+#: inc/pacebuilder/builder.php:159
 msgid "Are you sure you want to remove this Image ? This step cannot be undone."
 msgstr ""
 
-#: inc/pacebuilder/builder.php:155
+#: inc/pacebuilder/builder.php:160
 msgid "Are you sure you want to remove this Module ? This step cannot be undone."
 msgstr ""
 
-#: inc/pacebuilder/builder.php:156
+#: inc/pacebuilder/builder.php:161
 msgid ""
 "You are about to resize the columns to a lower size than the existing "
 "columns, it may remove the last columns and will result in data/module "
 "loss. Do you really want to do this ?"
 msgstr ""
 
-#: inc/pacebuilder/builder.php:184
+#: inc/pacebuilder/builder.php:189
 msgid "Need some Inspiration ?"
 msgstr ""
 
-#: inc/pacebuilder/builder.php:187 inc/pacebuilder/templates/section.php:41
+#: inc/pacebuilder/builder.php:192 inc/pacebuilder/templates/section.php:41
 #: inc/pacebuilder/templates/section.php:215
 msgid "Upgrade to Quest Plus"
 msgstr ""
 
-#: inc/pacebuilder/builder.php:187
+#: inc/pacebuilder/builder.php:192
 msgid "and get pre built layouts and the ability to save/load any layout."
 msgstr ""
 
-#: inc/pacebuilder/builder.php:198
+#: inc/pacebuilder/builder.php:203
 msgid "Add New Section"
 msgstr ""
 
@@ -1454,7 +1466,7 @@ msgstr ""
 msgid "Border color for the section right"
 msgstr ""
 
-#: inc/pacebuilder/templates/column.php:89
+#: inc/pacebuilder/templates/column.php:91
 msgid "Select Module"
 msgstr ""
 
@@ -1516,7 +1528,7 @@ msgid "Icon Color"
 msgstr ""
 
 #: inc/pacebuilder/templates/module-featurebox.php:61
-#: inc/pacebuilder/templates/module-hovericon.php:61
+#: inc/pacebuilder/templates/module-hovericon.php:82
 msgid "Color of the Icon, this will be Icon Color and the border color"
 msgstr ""
 
@@ -1526,12 +1538,12 @@ msgid "Title"
 msgstr ""
 
 #: inc/pacebuilder/templates/module-featurebox.php:71
-#: inc/pacebuilder/templates/module-hovericon.php:82
+#: inc/pacebuilder/templates/module-hovericon.php:103
 msgid "This will be the heading/title below the Icon"
 msgstr ""
 
 #: inc/pacebuilder/templates/module-featurebox.php:81
-#: inc/pacebuilder/templates/module-hovericon.php:92
+#: inc/pacebuilder/templates/module-hovericon.php:113
 msgid "This will be the text below the Icon Title"
 msgstr ""
 
@@ -1666,32 +1678,60 @@ msgid "Edit Hover Icon"
 msgstr ""
 
 #: inc/pacebuilder/templates/module-hovericon.php:55
-msgid "Color"
+msgid "Icon Hover Effect"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:60
+msgid "Slide From Left"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:62
+msgid "Slide From Right"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:64
+msgid "Slide From Top"
 msgstr ""
 
 #: inc/pacebuilder/templates/module-hovericon.php:66
+msgid "Slide From Bottom"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:68
+msgid "Rotate"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:71
+msgid "Icon Effect when hovered"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:76
+msgid "Color"
+msgstr ""
+
+#: inc/pacebuilder/templates/module-hovericon.php:87
 msgid "Hover Color"
 msgstr ""
 
-#: inc/pacebuilder/templates/module-hovericon.php:72
+#: inc/pacebuilder/templates/module-hovericon.php:93
 msgid ""
 "Background Color of the Icon, when a user hovers on the Icon the Color and "
 "Hover Color will be swapped"
 msgstr ""
 
-#: inc/pacebuilder/templates/module-hovericon.php:77
+#: inc/pacebuilder/templates/module-hovericon.php:98
 msgid "Icon Title"
 msgstr ""
 
-#: inc/pacebuilder/templates/module-hovericon.php:87
+#: inc/pacebuilder/templates/module-hovericon.php:108
 msgid "Icon Text"
 msgstr ""
 
-#: inc/pacebuilder/templates/module-hovericon.php:97
+#: inc/pacebuilder/templates/module-hovericon.php:118
 msgid "Icon Link"
 msgstr ""
 
-#: inc/pacebuilder/templates/module-hovericon.php:102
+#: inc/pacebuilder/templates/module-hovericon.php:123
 msgid "This is the link the Icon will be pointing to"
 msgstr ""
 
@@ -2008,12 +2048,12 @@ msgid ""
 msgstr ""
 
 #: inc/pacebuilder/templates/partial-css-class.php:3
-msgid "CSS Class"
+msgid "CSS Class(es)"
 msgstr ""
 
 #: inc/pacebuilder/templates/partial-css-class.php:8
 msgid ""
-"CSS classes of the section, this will help you set custom styling. You can "
+"Additional CSS classes, this will help you set custom styling. You can "
 "enter multiple classes by seperating them with spaces"
 msgstr ""
 
@@ -2719,20 +2759,24 @@ msgstr ""
 msgid "Your comment is awaiting moderation"
 msgstr ""
 
-#: inc/template-tags.php:607
+#: inc/template-tags.php:606
 msgid "404 - Page not Found"
 msgstr ""
 
-#: inc/template-tags.php:610 searchform.php:14
+#: inc/template-tags.php:609 searchform.php:14
 msgid "Search"
 msgstr ""
 
-#: inc/template-tags.php:751
+#: inc/template-tags.php:750
 msgid "Proudly powered by %s"
 msgstr ""
 
-#: inc/template-tags.php:753
+#: inc/template-tags.php:752
 msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: inc/template-tags.php:926
+msgid "Menu"
 msgstr ""
 
 #: inc/theme-info.php:11 inc/theme-info.php:18
