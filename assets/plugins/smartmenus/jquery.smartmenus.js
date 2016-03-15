@@ -173,12 +173,12 @@
                     initMouseDetection();
                 }
 
+                this.$firstLink = this.$root.find('a').eq(0);
+
                 // init sub menus
                 this.$firstSub = this.$root.find('ul').each(function () {
                     self.menuInit($(this));
                 }).eq(0);
-
-                this.$firstLink = this.$root.find('a').eq(0);
 
                 // find current item
                 if (this.opts.markCurrentItem) {
@@ -553,7 +553,7 @@
                     return;
                 }
                 $sub.stop(true, true);
-                if ($sub.is(':visible')) {
+                if ($sub.is(':visible')||$sub.hasClass('awake')) {
                     var complete = function () {
                         // unset z-index
                         $sub.css('z-index', '');
@@ -655,6 +655,10 @@
                         $ul.dataSM('parent-a').addClass('has-submenu')[this.opts.subIndicatorsPos](this.$subArrow.clone());
                     }
                 }
+                // var pl = this;
+                // $ul.find('.dropdown').each(function(){
+                    this.menuPosition($ul);    
+                // });
             },
             menuPosition: function ($sub) {
                 var $a = $sub.dataSM('parent-a'),
@@ -949,7 +953,7 @@
                             }
                         }
                     }
-                    this.menuPosition($sub);
+                    // this.menuPosition($sub);
                     // insert IE iframe shim
                     if ($sub.dataSM('ie-shim')) {
                         $sub.dataSM('ie-shim').insertBefore($sub);

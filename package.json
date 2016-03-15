@@ -30,6 +30,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-phplint": "0.0.8",
     "grunt-phpmd-runner": "^0.1.4",
+    "grunt-postcss": "^0.8.0",
     "grunt-wp-i18n": "^0.5.3",
     "jquery": "^2.1.4",
     "karma": "^0.13.16",

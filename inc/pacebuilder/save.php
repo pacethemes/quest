@@ -31,7 +31,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				 */
 				add_filter( 'pt_pb_generate_section', array( $this, 'generate_section' ), 10, 2 );
 				add_filter( 'pt_pb_generate_row', array( $this, 'generate_row' ), 10, 3 );
-				add_filter( 'pt_pb_generate_column', array( $this, 'generate_column' ), 10, 2 );
+				add_filter( 'pt_pb_generate_column', array( $this, 'generate_column' ), 10, 4 );
 				add_filter( 'pt_pb_generate_gallery', array( $this, 'generate_gallery' ), 10, 2 );
 				add_filter( 'pt_pb_generate_slider', array( $this, 'generate_slider' ), 10, 2 );
 				add_filter( 'pt_pb_generate_slide', array( $this, 'generate_slide' ), 10, 2 );
@@ -295,13 +295,13 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 
 			if ( array_key_exists( 'col', $row ) && ! empty( $row['col'] ) ) {
 
-				foreach ( $row['col'] as $col ) {
+				foreach ( $row['col'] as $key => $col ) {
 					/**
 					 * Filter Column markup
 					 *
 					 * Since 1.1.2
 					 */
-					$content .= apply_filters( "pt_pb_generate_column", '', $col );
+					$content .= apply_filters( "pt_pb_generate_column", '', $col, $key, count($row['col']) );
 				}
 
 			} else if ( array_key_exists( 'gallery', $row ) && ! empty( $row['gallery'] ) ) {
@@ -346,22 +346,28 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 *
 		 * @return string $content
 		 */
-		public function generate_column( $column_html, $column ) {
+		public function generate_column( $column_html, $column, $i, $colCnt ) {
 
 			if ( ! isset( $column['type'] ) ) {
 				return '';
 			}
 
-			$cssClass = $this->get_column_class( $column['type'] );
+			$cssClass = sprintf( "%s %s", 
+									$this->get_column_class( $column['type'] ),
+									isset( $column['css_class'] ) ? $column['css_class'] : ''
+								 );
 			$content  = "\t\t\t<div class='$cssClass' style='" . PT_PageBuilder_Helper::generate_css( $column ) . "'>\n\t\t\t\t";
 			$content .= "<div class='quest-col-wrap'>";
 
 			if ( isset( $column['module'] ) && ! empty( $column['module'] ) ) {
 				foreach ( $column['module'] as $module ) {
 					$cls      = ( array_key_exists( 'animation', $module ) && $module['animation'] != '' )  ? " wow {$module['animation']}" : "";
-					$content .= "<div class='quest-module-wrap $cls' style='" . PT_PageBuilder_Helper::generate_css( $module ) . "'>";
-					$content .= $this->generate_module( $module );
-					$content .= '</div>';
+					$content .= sprintf( "<div data-wow-delay='%dms' class='quest-module-wrap %s' style='%s'>%s</div>",
+											(((int)$i) + 1 + $colCnt) * 200,
+											$cls,
+											PT_PageBuilder_Helper::generate_css( $module ),
+											$this->generate_module( $module ) 
+										);
 				}
 			}
 
@@ -755,9 +761,10 @@ if ( ! class_exists( 'PT_PageBuilder_Hovericon_Module' ) ) :
 			$color_alt = $this->_module['hover_color'];
 			$content   = PT_PageBuilder_Helper::get_content( $this->_module );
 			$url       = esc_url( $this->_module['href'] );
+			$effect	   = $this->_module['hover_effect'];
 
 			return "<div class='hover-icon' id='{$this->_module['id']}'>
-					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']}'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
+					<a href='$url' class='fa fa-{$this->_module['size']}x {$this->_module['icon']} $effect'>&nbsp;</a><h3 class='icon-title'>{$this->_module['title']}</h3>{$content}
 				</div>";
 		}
 

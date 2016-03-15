@@ -493,6 +493,45 @@ class Quest_Customize_General {
 			)
 		);
 
+		/******************************
+		 * // Custom Section
+		 *******************************/
+
+		$section_id = 'custom';
+
+		$wp_customize->add_section( $section_id,
+			array(
+				'title'      => __( 'Custom', 'quest' ),
+				'priority'   => 35,
+				'capability' => 'edit_theme_options',
+				'panel'      => $panel_id
+			)
+		);
+
+		$setting_id = $section_id . '_css';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				'sanitize_callback' => 'wp_kses'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Custom CSS', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'type'	   => 'textarea'
+				)
+			)
+		);
+
 
 	}
 }

@@ -295,7 +295,8 @@ ptPbApp.Models = ptPbApp.Models || {};
             border_left_width: '0px',
             border_right_width: '0px',
             border_left_color: '',
-            border_right_color: ''
+            border_right_color: '',
+            css_class: ''
         },
 
         initialize: function() {
@@ -633,6 +634,7 @@ ptPbApp.Models = ptPbApp.Models || {};
             icon: 'heart',
             size: 3,
             href: '',
+            hover_effect: '',
             color: '#27ae60',
             hover_color: '#fff',
             title: '',

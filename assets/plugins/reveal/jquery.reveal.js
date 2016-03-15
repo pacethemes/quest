@@ -65,7 +65,12 @@
 
             modal.find('.close-reveal-modal, .close-model').bind('click', function(e){
                 e.preventDefault();
-                modal.trigger('reveal:close');
+                if(modal.hasClass('button-picker')){
+                    modal.trigger('reveal:close', { openModalBg: true, keepEditor: true });
+                } else {
+                    modal.trigger('reveal:close');    
+                }
+                
             });
 
             /*---------------------------

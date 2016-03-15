@@ -110,10 +110,17 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			?>
 			<!--Customizer CSS-->
 			<style type="text/css">
+				/* Custom CSS from Customizer Options for Quest */
+				<?php self::print_css(); ?>
+				/* Custom CSS from Quest Page Options */
+				<?php self::print_pb_css(); ?>
+				/* Custom CSS from the Custom CSS setting */
 				<?php
-			self::print_css(); ?>
-				<?php
-			self::print_pb_css(); ?>
+					$css = esc_textarea( quest_get_mod( 'custom_css' ) );
+					if( $css !== '' ) {
+						echo $css;
+					}
+				?>
 			</style>
 			<!--/Customizer CSS-->
 		<?php
@@ -370,9 +377,10 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			#content { background-color: <?php
 			echo quest_get_mod( 'colors_global_content_bg' ); ?> ; }
 
-			.main-header{ background-color: <?php
-			echo quest_get_mod( 'colors_header_bg' ); ?> ; border-color: <?php
-			echo quest_get_mod( 'colors_header_border' ); ?> ; }
+			.main-header{ 
+				background-color: <?php echo quest_get_mod( 'colors_header_bg' ); ?> ; 
+				border-color: <?php echo quest_get_mod( 'colors_header_border' ); ?> ;
+			}
 			.main-header, .main-header a{ color: <?php
 			echo quest_get_mod( 'colors_header_text' ); ?> ; }
 			.secondary-header{
@@ -440,6 +448,8 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			.copyright{ background-color: <?php
 			echo quest_get_mod( 'colors_footer_sc_bg' ); ?> ; color: <?php
 			echo quest_get_mod( 'colors_footer_sc_text' ); ?> ; }
+			.copyright a{ color: <?php echo quest_get_mod( 'colors_footer_sc_link' ); ?> ; }
+			.copyright a:hover{ color: <?php echo quest_get_mod( 'colors_footer_sc_link_hover' ); ?> ; }
 			.copyright .social-icon-container .social-icon { color: <?php
 			echo quest_get_mod( 'colors_footer_sc_si' ) ?>; }
 			.copyright .social-icon-container .social-icon:hover { color: <?php

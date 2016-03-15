@@ -17,6 +17,7 @@ $quest_defaults = array(
 	'logo_logo_retina'                        => '',
 	'logo_favicon'                            => '',
 	'sticky_label'                            => 'Featured',
+	'custom_css'                              => '',
 	/************
 	 ** Layout **
 	 *************/
@@ -116,6 +117,8 @@ $quest_defaults = array(
 	'colors_footer_border'                    => '#c1c1c1',
 	'colors_footer_sc_bg'                     => '#2B3A42',
 	'colors_footer_sc_text'                   => '#d4d7d9',
+	'colors_footer_sc_link'                   => '#dddddd',
+	'colors_footer_sc_link_hover'             => '#ffffff',
 	'colors_footer_sc_si'                     => '#959ca0',
 	'colors_footer_sc_si_hover'               => '#fff',
 	'colors_footer_sc_si_hover_bg'            => '#27ae60',

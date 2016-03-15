@@ -52,6 +52,27 @@
 				</div>
 
 				<div class="pt-pb-option">
+					<label for="align"><?php _e( 'Icon Hover Effect', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<select name="{{{pre}}}[hover_effect]">
+							<option value=""
+							{{{hover_effect == '' ? 'selected' : void 0}}} ><?php _e( 'Slide From Left', 'quest' ); ?></option>
+							<option value="from-right"
+							{{{hover_effect == 'from-right' ? 'selected' : void 0}}} ><?php _e( 'Slide From Right', 'quest' ); ?></option>
+							<option value="from-top"
+							{{{hover_effect == 'from-top' ? 'selected' : void 0}}} ><?php _e( 'Slide From Top', 'quest' ); ?></option>
+							<option value="from-bottom"
+							{{{hover_effect == 'from-bottom' ? 'selected' : void 0}}} ><?php _e( 'Slide From Bottom', 'quest' ); ?></option>
+							<option value="rotate"
+							{{{hover_effect == 'rotate' ? 'selected' : void 0}}} ><?php _e( 'Rotate', 'quest' ); ?></option>
+						</select>
+
+						<p class="description"><?php _e( 'Icon Effect when hovered', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
 					<label for="color"><?php _e( 'Color', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">

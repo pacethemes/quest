@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: ['**/*.scss'],
-                tasks: ['sass']
+                tasks: ['sass', 'postcss']
             },
             js: {
                 files: '<%= jshint.all %>',
@@ -37,6 +37,26 @@ module.exports = function(grunt) {
                     'assets/css/admin.css': 'assets/sass/admin.scss',
                     'inc/pacebuilder/assets/css/style.css': 'inc/pacebuilder/assets/sass/style.scss'
                 }
+            }
+        },
+
+        postcss: {
+            options: {
+                map: true, // inline sourcemaps
+
+                // or
+                // map: {
+                //     inline: false, // save all sourcemaps as separate files...
+                //     // annotation: 'dist/css/maps/' // ...to the specified directory
+                // },
+
+                processors: [
+                    require('autoprefixer')({ browsers: 'last 10 versions' }), // add vendor prefixes
+                    // require('cssnano')() // minify the result
+                ]
+            },
+            dist: {
+                src: '*.css'
             }
         },
 
@@ -87,7 +107,7 @@ module.exports = function(grunt) {
                 ],
                 strict: true
             },
-            files: ['**/*.php','!node_modules/**', '!inc/CMB2/**', '!**/class-tgm-plugin-activation.php']
+            files: ['**/*.php', '!node_modules/**', '!inc/CMB2/**', '!**/class-tgm-plugin-activation.php']
         },
 
         concat: {

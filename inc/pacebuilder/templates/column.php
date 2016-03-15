@@ -76,6 +76,8 @@
 						<p class="description"><?php _e( 'Border color for the section right', 'quest' ) ?></p>
 					</div>
 				</div>
+
+				{{{ptPbApp.partial('form-css-class', { css_class: css_class, pre: pre })}}}
 				
 			</div>
 			<div class="edit-bottom">

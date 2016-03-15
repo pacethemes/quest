@@ -896,11 +896,11 @@ if ( ! function_exists( 'quest_site_menu' ) ) :
 	 * Prints Site Menu
 	 *
 	 */
-	function quest_site_menu() {
+	function quest_site_menu( $location = 'primary', $cls = 'nav navbar-nav navbar-right' ) {
 		if ( has_nav_menu( 'primary' ) ) {
 			wp_nav_menu( array(
-				'theme_location' => 'primary',
-				'menu_class'     => 'nav navbar-nav navbar-right',
+				'theme_location' => $location,
+				'menu_class'     => $cls,
 				'container'      => false,
 				'walker'         => new Quest_Main_Menu()
 			) );
@@ -908,6 +908,32 @@ if ( ! function_exists( 'quest_site_menu' ) ) :
 		}
 		
 		quest_wp_page_menu();
+	}
+
+endif;
+
+if ( ! function_exists( 'quest_main_menu_html' ) ) :
+
+	/**
+	 * Prints Main Menu Html
+	 *
+	 */
+	function quest_main_menu_html( ) {
+		ob_start(); // turn on output buffering	
+		?>
+		<nav id="site-navigation" class="main-navigation col-md-8" role="navigation">
+			<div class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-collapse">
+				<a href="#" title="<?php _e( 'Menu', 'quest' ) ?>">
+					<i class="fa fa-reorder"></i>
+				</a>
+			</div>
+			<div class="navbar-collapse collapse" id="main-menu-collapse">
+				<?php quest_site_menu(); ?>
+			</div>
+		</nav>
+		<!-- #site-navigation -->
+		<?php
+		return apply_filters( 'quest_main_menu_html', ob_get_clean() );
 	}
 
 endif;

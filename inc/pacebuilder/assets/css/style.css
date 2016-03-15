@@ -587,10 +587,10 @@ html[xmlns] .clearfix {
   font-size: 1.1em;
   float: left;
   display: block;
-  width: 25%;
+  width: 20%;
 }
 .pt-pb-option .pt-pb-option-container {
-  width: 75%;
+  width: 80%;
   float: left;
 }
 .pt-pb-option .description {

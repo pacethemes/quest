@@ -1,4 +1,4 @@
-/* global Modernizr, WOW */
+/* global Modernizr, WOW, console */
 
 var Quest = (function($) {
 
@@ -95,6 +95,7 @@ var Quest = (function($) {
 
             if ($window.scrollTop() > offset) {
                 $back_to_top.addClass('cd-is-visible');
+                $('body').addClass('scrolled');
             } else {
                 $back_to_top.removeClass('cd-is-visible cd-fade-out');
             }
@@ -114,9 +115,75 @@ var Quest = (function($) {
             });
         },
 
+        initMenu: function(){
+            // init all menus
+            $('ul.navbar-nav').each(function () {
+                var $this = $(this);
+                $this.addClass('sm').smartmenus({
+
+                    // these are some good default options that should work for all
+                    // you can, of course, tweak these as you like
+                    subMenusSubOffsetX: 2,
+                    subMenusSubOffsetY: -6,
+                    subIndicatorsPos: 'append',
+                    subIndicatorsText: '...',
+                    collapsibleShowFunction: null,
+                    collapsibleHideFunction: null,
+                    rightToLeftSubMenus: $this.hasClass('navbar-right'),
+                    bottomToTopSubMenus: $this.closest('.navbar').hasClass('navbar-fixed-bottom'),
+                    showFunction: function(elm, cb){
+                        elm.addClass('awake');
+                        cb.call(this);
+                    },
+                    hideFunction: function(elm, cb){
+                        elm.removeClass('awake');
+                        cb.call(this);
+                    }
+                })
+                    // set Bootstrap's "active" class to SmartMenus "current" items (should someone decide to enable markCurrentItem: true)
+                    .find('a.current').parent().addClass('active');
+            })
+            .bind({
+                // set/unset proper Bootstrap classes for some menu elements
+                'show.smapi': function (e, menu) {
+                    var $menu = $(menu),
+                        $scrollArrows = $menu.dataSM('scroll-arrows'),
+                        obj = $(this).data('smartmenus');
+                    if ($scrollArrows) {
+                        // they inherit border-color from body, so we can use its background-color too
+                        $scrollArrows.css('background-color', $(document.body).css('background-color'));
+                    }
+                    $menu.parent().addClass('open' + (obj.isCollapsible() ? ' collapsible' : ''));
+                },
+                'hide.smapi': function (e, menu) {
+                    $(menu).parent().removeClass('open collapsible');
+                },
+                // click the parent item to toggle the sub menus (and reset deeper levels and other branches on click)
+                'click.smapi': function (e, item) {
+                    var obj = $(this).data('smartmenus');
+                    if (obj.isCollapsible()) {
+                        var $item = $(item),
+                            $sub = $item.parent().dataSM('sub');
+                        if ($sub && $sub.dataSM('shown-before') && $sub.is(':visible')) {
+                            obj.itemActivate($item);
+                            obj.menuHide($sub);
+                            return false;
+                        }
+                    }
+                }
+            });
+            if(!$('body').hasClass('header-version2')){
+                var $logo = $('div.logo');
+                $logo.imagesLoaded(function(){
+                    $('nav.main-navigation ul.nav').css('line-height', ($logo.height() - 3) + 'px');
+                });
+            }
+        },
+
         init: function() {
+            Quest.initMenu();
             new WOW({
-                offset: $(window).height() / 3
+                offset: 100
             }).init();
             Quest.initImageEffects();
             Quest.initColorbox();
