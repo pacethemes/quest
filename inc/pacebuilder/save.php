@@ -281,10 +281,11 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 			$container = $row['content_type'] === 'parent' ? $container 
 													: ( $row['content_type'] === 'fluid' ? 'container-fluid' : 'container' );
 
-			$addRow  = ! ( ( array_key_exists( 'slider', $row ) || array_key_exists( 'generic_slider', $row ) ) && $container !== 'container' );
-			$valign  = $row['vertical_align'] === 'default' ? '' : "v-align-{$row['vertical_align']}";
-			$gutter  = $row['gutter'] === 'no' ? 'no-gutter' : '';
-			$content = "";
+			$addRow  	= ! ( ( array_key_exists( 'slider', $row ) || array_key_exists( 'generic_slider', $row ) ) && $container !== 'container' );
+			$valign  	= $row['vertical_align'] === 'default' ? '' : "v-align-{$row['vertical_align']}";
+			$gutter  	= $row['gutter'] === 'no' ? 'no-gutter' : '';
+			$anim_seq 	= $row['anim_seq'] === 'yes';
+			$content 	= "";
 
 			if ( $addRow ) {
 				$content .= "\n\t <div class='$container'> \n\t\t <div class='row $valign $gutter' style='" . PT_PageBuilder_Helper::generate_css( $row ) . "'> \n";
@@ -301,7 +302,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 					 *
 					 * Since 1.1.2
 					 */
-					$content .= apply_filters( "pt_pb_generate_column", '', $col, $key, count($row['col']) );
+					$content .= apply_filters( "pt_pb_generate_column", '', $col, $anim_seq, $key, count($row['col']) );
 				}
 
 			} else if ( array_key_exists( 'gallery', $row ) && ! empty( $row['gallery'] ) ) {
@@ -346,7 +347,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		 *
 		 * @return string $content
 		 */
-		public function generate_column( $column_html, $column, $i, $colCnt ) {
+		public function generate_column( $column_html, $column, $anim_seq, $i, $colCnt ) {
 
 			if ( ! isset( $column['type'] ) ) {
 				return '';
@@ -363,7 +364,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				foreach ( $column['module'] as $module ) {
 					$cls      = ( array_key_exists( 'animation', $module ) && $module['animation'] != '' )  ? " wow {$module['animation']}" : "";
 					$content .= sprintf( "<div data-wow-delay='%dms' class='quest-module-wrap %s' style='%s'>%s</div>",
-											(((int)$i) + 1 + $colCnt) * 200,
+											$anim_seq ? (((int)$i) + 1 + $colCnt) * 200 : 0,
 											$cls,
 											PT_PageBuilder_Helper::generate_css( $module ),
 											$this->generate_module( $module ) 

@@ -101,6 +101,7 @@ ptPbApp.Models = ptPbApp.Models || {};
             parent: '',
             type: 'columns',
             content_type: 'parent',
+            anim_seq: 'yes',
             padding_top: '0px',
             padding_bottom: '0px',
             vertical_align: 'default',

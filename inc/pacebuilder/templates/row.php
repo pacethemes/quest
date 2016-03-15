@@ -96,6 +96,23 @@
 				</div>
 
 				<div class="pt-pb-option">
+					<label for="anim_seq"><?php _e( 'Sequential Module Animations', 'quest' ); ?>: </label>
+
+					<div class="pt-pb-option-container">
+						<select name="{{{pre}}}[anim_seq]">
+							<option value="yes"
+							{{{anim_seq == 'yes' ? 'selected' : void 0}}}
+							><?php _e( 'Yes', 'quest' ); ?></option>
+							<option value="no"
+							{{{anim_seq == 'no' ? 'selected' : void 0}}}
+							><?php _e( 'No', 'quest' ); ?></option>
+						</select>
+
+						<p class="description"><?php _e( 'Should all the modules in this row animate sequentially ?', 'quest' ) ?></p>
+					</div>
+				</div>
+
+				<div class="pt-pb-option">
 					<label for="padding_top"><?php _e( 'Padding Top', 'quest' ); ?>: </label>
 
 					<div class="pt-pb-option-container">
