@@ -31,7 +31,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				 */
 				add_filter( 'pt_pb_generate_section', array( $this, 'generate_section' ), 10, 2 );
 				add_filter( 'pt_pb_generate_row', array( $this, 'generate_row' ), 10, 3 );
-				add_filter( 'pt_pb_generate_column', array( $this, 'generate_column' ), 10, 4 );
+				add_filter( 'pt_pb_generate_column', array( $this, 'generate_column' ), 10, 5 );
 				add_filter( 'pt_pb_generate_gallery', array( $this, 'generate_gallery' ), 10, 2 );
 				add_filter( 'pt_pb_generate_slider', array( $this, 'generate_slider' ), 10, 2 );
 				add_filter( 'pt_pb_generate_slide', array( $this, 'generate_slide' ), 10, 2 );
