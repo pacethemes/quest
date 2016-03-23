@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint']
+                tasks: ['jshint', 'uglify', 'concat:js' ]
             },
             livereload: {
                 files: ['*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
@@ -74,6 +74,8 @@ module.exports = function(grunt) {
                 'inc/pacebuilder/assets/js/collections.js',
                 'inc/pacebuilder/assets/js/views.js',
                 'inc/pacebuilder/assets/js/app.js',
+                'assets/plugins/smartmenus/jquery.smartmenus.js',
+                'assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js'
             ]
         },
 
@@ -171,7 +173,13 @@ module.exports = function(grunt) {
                         ' */\n',
                 },
                 files: {
-                    'assets/js/quest.min.js': ['assets/js/quest.js']
+                    'assets/js/quest.min.js': ['assets/js/quest.js'],
+                    'assets/plugins/smartmenus/jquery.smartmenus.min.js': ['assets/plugins/smartmenus/jquery.smartmenus.js'],
+                    'assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.min.js': ['assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js'],
+                    'assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.min.js': ['assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js']
+                    // 'assets/plugins/smartmenus/jquery.smartmenus.all.min.js': ['assets/plugins/smartmenus/jquery.smartmenus.min.js',
+                    //                                                             'assets/plugins/smartmenus/bootstrap/jquery.smartmenus.bootstrap.min.js',
+                    //                                                             'assets/plugins/smartmenus/keyboard/jquery.smartmenus.keyboard.js'],
                 }
             }
         },

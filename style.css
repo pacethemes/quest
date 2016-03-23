@@ -1145,29 +1145,27 @@ form.search .fa-search:before {
   border: 1px solid #e5e5e5;
 }
 
-body:not(.sidebar-header) .main-navigation .nav .dropdown-menu {
-  visibility: hidden;
-  opacity: 0;
-  display: block !important;
-  -webkit-transform: translateY(40px);
-      -ms-transform: translateY(40px);
-          transform: translateY(40px);
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-body:not(.sidebar-header) .main-navigation .nav .dropdown-menu.awake {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transform: translateY(0px);
-      -ms-transform: translateY(0px);
-          transform: translateY(0px);
-}
+@media (min-width: 768px) {
+  body:not(.sidebar-header) .main-navigation .nav .dropdown-menu {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+        -ms-transform: translateY(40px);
+            transform: translateY(40px);
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  body:not(.sidebar-header) .main-navigation .nav .dropdown-menu.awake {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+            transform: translateY(0px);
+  }
 
-.navbar-right > ul.dropdown-menu {
-  left: auto !important;
-  right: 0;
+  .navbar-right > ul.dropdown-menu {
+    left: auto !important;
+    right: 0;
+  }
 }
-
 @media (min-width: 992px) {
   .navbar-nav {
     float: right;
@@ -1193,13 +1191,16 @@ body:not(.sidebar-header) .main-navigation .nav .dropdown-menu.awake {
   }
 }
 @media (max-width: 767px) {
+  .main-navigation {
+    margin-bottom: 20px;
+  }
   .main-navigation .navbar-collapse {
     padding: 0;
   }
   .main-navigation .nav {
     padding: 0 15px;
     border-top: none;
-    line-height: 48px;
+    line-height: 48px !important;
     display: block;
     text-align: left;
     margin: 0;
@@ -1228,7 +1229,7 @@ body:not(.sidebar-header) .main-navigation .nav .dropdown-menu.awake {
 #menu-item-search .dropdown-menu li {
   border-bottom: none !important;
 }
-#menu-item-search .sub-arrow {
+#menu-item-search .sub-arrow, #menu-item-search .caret {
   display: none !important;
 }
 #menu-item-search form {
