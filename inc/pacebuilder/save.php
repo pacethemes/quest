@@ -364,7 +364,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 				foreach ( $column['module'] as $module ) {
 					$cls      = ( array_key_exists( 'animation', $module ) && $module['animation'] != '' )  ? " wow {$module['animation']}" : "";
 					$content .= sprintf( "<div data-wow-delay='%dms' class='quest-module-wrap %s' style='%s'>%s</div>",
-											$anim_seq ? (((int)$i) + 1 + $colCnt) * 200 : 0,
+											$anim_seq ? ((int)$i + 1) * 200 : 0,
 											$cls,
 											PT_PageBuilder_Helper::generate_css( $module ),
 											$this->generate_module( $module ) 
