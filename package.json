@@ -1,7 +1,7 @@
 {
   "name": "quest",
   "title": "Quest",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Quest Is a WordPress Theme",
   "main": "index.js",
   "scripts": {

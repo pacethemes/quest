@@ -30,7 +30,8 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 options: { // Target options
-                    style: 'expanded'
+                    style: 'expanded',
+                    sourcemap: 'none'
                 },
                 files: {
                     'style.css': 'style.scss',
@@ -42,7 +43,7 @@ module.exports = function(grunt) {
 
         postcss: {
             options: {
-                map: true, // inline sourcemaps
+                map: false, // inline sourcemaps
 
                 // or
                 // map: {
