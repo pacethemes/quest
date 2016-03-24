@@ -72,7 +72,7 @@
 					<div class="pt-pb-option-container">
 						<input name="{{{pre}}}[href]" class="regular-text" type="text" value="{{{href}}}"/>
 
-						<p class="description"><?php _e( 'If set the image will be wraped inside an anchor tag which will be opened if the user clicks on the image', 'quest' ) ?></p>
+						<p class="description"><?php _e( 'If set the image will be wrapped inside an anchor tag which will be opened if the user clicks on the image', 'quest' ) ?></p>
 					</div>
 				</div>
 

@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Quest 1.4.1\n"
+"Project-Id-Version: Quest 1.4.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2016-03-15 12:59:15+00:00\n"
+"POT-Creation-Date: 2016-03-24 20:41:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -757,7 +757,7 @@ msgstr ""
 #: inc/pacebuilder/templates/module-image.php:102
 #: inc/pacebuilder/templates/module-slider.php:32
 #: inc/pacebuilder/templates/module-slider.php:48
-#: inc/pacebuilder/templates/row.php:65
+#: inc/pacebuilder/templates/row.php:65 inc/pacebuilder/templates/row.php:105
 msgid "Yes"
 msgstr ""
 
@@ -767,7 +767,7 @@ msgstr ""
 #: inc/pacebuilder/templates/module-image.php:104
 #: inc/pacebuilder/templates/module-slider.php:34
 #: inc/pacebuilder/templates/module-slider.php:50
-#: inc/pacebuilder/templates/row.php:68
+#: inc/pacebuilder/templates/row.php:68 inc/pacebuilder/templates/row.php:108
 msgid "No"
 msgstr ""
 
@@ -1765,7 +1765,7 @@ msgstr ""
 
 #: inc/pacebuilder/templates/module-image.php:75
 msgid ""
-"If set the image will be wraped inside an anchor tag which will be opened "
+"If set the image will be wrapped inside an anchor tag which will be opened "
 "if the user clicks on the image"
 msgstr ""
 
@@ -2074,7 +2074,7 @@ msgid "Remove Module"
 msgstr ""
 
 #: inc/pacebuilder/templates/partial-module-margin.php:3
-#: inc/pacebuilder/templates/row.php:99
+#: inc/pacebuilder/templates/row.php:116
 #: inc/pacebuilder/templates/section.php:127
 msgid "Padding Top"
 msgstr ""
@@ -2084,7 +2084,7 @@ msgid "Padding (Spacing) at the Top inside this Module"
 msgstr ""
 
 #: inc/pacebuilder/templates/partial-module-margin.php:13
-#: inc/pacebuilder/templates/row.php:109
+#: inc/pacebuilder/templates/row.php:126
 #: inc/pacebuilder/templates/section.php:137
 msgid "Padding Bottom"
 msgstr ""
@@ -2160,12 +2160,20 @@ msgstr ""
 msgid "Vertical Alignment of the columns"
 msgstr ""
 
-#: inc/pacebuilder/templates/row.php:104
+#: inc/pacebuilder/templates/row.php:99
+msgid "Sequential Module Animations"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:111
+msgid "Should all the modules in this row animate sequentially ?"
+msgstr ""
+
+#: inc/pacebuilder/templates/row.php:121
 #: inc/pacebuilder/templates/section.php:132
 msgid "Padding (Spacing) at the top"
 msgstr ""
 
-#: inc/pacebuilder/templates/row.php:115
+#: inc/pacebuilder/templates/row.php:132
 #: inc/pacebuilder/templates/section.php:143
 msgid "Padding (Spacing) at the Bottom"
 msgstr ""
