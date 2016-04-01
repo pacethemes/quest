@@ -1,4 +1,9 @@
 /* global Modernizr, WOW, console */
+var QuestCache = {
+    $window: jQuery(window),
+    $head: jQuery('#masthead'),
+    $body: jQuery('body')
+};
 
 var Quest = (function($) {
 
@@ -95,7 +100,7 @@ var Quest = (function($) {
 
             if ($window.scrollTop() > offset) {
                 $back_to_top.addClass('cd-is-visible');
-                $('body').addClass('scrolled');
+                QuestCache.$body.addClass('scrolled');
             } else {
                 $back_to_top.removeClass('cd-is-visible cd-fade-out');
             }
@@ -116,7 +121,7 @@ var Quest = (function($) {
         },
 
         initHeader: function(){
-            if(!$('body').hasClass('header-version2')){
+            if(!QuestCache.$body.hasClass('header-version2')){
                 var $logo = $('div.logo');
                 $logo.imagesLoaded(function(){
                     $('nav.main-navigation ul.nav').css('line-height', ($logo.height() - 3) + 'px');
@@ -124,8 +129,18 @@ var Quest = (function($) {
             }
         },
 
+        initTransparentHeader: function () {
+            if (QuestCache.$body.hasClass('transparent-header')){
+                return;
+            }
+            var ht = $('#masthead').height(),
+                firstRow = $('.transparent-header .page-builder .quest-row:first-of-type .container:first-of-type, .transparent-header .page-builder .quest-row:first-of-type .container-fluid:first-of-type');
+                firstRow.css('padding-top', ht + 20 );
+        },
+
         init: function() {
             Quest.initHeader();
+            Quest.initTransparentHeader();
             new WOW({
                 offset: 100
             }).init();
@@ -140,6 +155,8 @@ var Quest = (function($) {
     };
 
 }(jQuery));
+
+QuestCache.$window.resize(Quest.initTransparentHeader);
 
 var PageBuilder = (function($) {
 

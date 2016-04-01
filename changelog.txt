@@ -1,3 +1,7 @@
+##1.4.5
+* Fixes issue with Transparent Header
+* Adds CSS for Post Password page
+
 ##1.4.4
 * Fixes sequential animations issue in Pace Builder
 * Fixes Minor Menu issues on Mobile Devices

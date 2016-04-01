@@ -6,7 +6,9 @@
  * @package Quest
  */
 
-define( 'QUEST_MINIFY_SCRIPTS', true );
+if ( !defined( 'QUEST_MINIFY_SCRIPTS' ) ) {
+	define( 'QUEST_MINIFY_SCRIPTS', true );
+}
 
 
 /**
@@ -511,5 +513,6 @@ if( class_exists( 'MetaSliderPlugin' ) ) {
 	 */
 	add_filter( 'metaslider_hoplink', 'quest_metaslider_hoplink', 10, 1 );
 }
+
 
 ?>

@@ -281,6 +281,6 @@ module.exports = function(grunt) {
     // register task
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('zip', ['compress']);
-    grunt.registerTask('assets', ['uglify', 'concat', 'cssmin']);
+    grunt.registerTask('assets', ['uglify', 'sass', 'concat', 'cssmin']);
 
 };
