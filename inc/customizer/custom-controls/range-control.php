@@ -10,9 +10,9 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
 
 
 class Quest_Customizer_Range_Control extends WP_Customize_Control {
-    public $type = 'range';
-    public function render_content() {
-    ?>
+	public $type = 'range';
+	public function render_content() {
+	?>
         <label>
         	<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
         	<input <?php $this->link(); ?> name="<?php echo esc_html( $this->label ); ?>" type="range" min="<?php echo $this->choices['min']; ?>" max="<?php echo $this->choices['max']; ?>" step="<?php echo $this->choices['step']; ?>" value="<?php echo ( $this->value() ); ?>" class="quest-range" />
@@ -20,5 +20,5 @@ class Quest_Customizer_Range_Control extends WP_Customize_Control {
         	<span class="description customize-control-description"><?php echo esc_html( $this->description ) ?></span>
         </label>
     <?php
-    }
+	}
 }

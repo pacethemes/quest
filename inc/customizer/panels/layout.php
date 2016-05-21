@@ -61,7 +61,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************
 		 * // Header Section
 		 *******************/
@@ -84,7 +83,7 @@ class Quest_Customize_Layout {
 			array(
 				'default'           => quest_get_default( $setting_id ),
 				'type'              => 'theme_mod',
-				// 'sanitize_callback' => 'intval',
+				'sanitize_callback' => 'absint',
 			)
 		);
 
@@ -101,7 +100,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_menu_height';
 
 		$wp_customize->add_setting(
@@ -109,7 +107,7 @@ class Quest_Customize_Layout {
 			array(
 				'default'           => quest_get_default( $setting_id ),
 				'type'              => 'theme_mod',
-				// 'sanitize_callback' => 'intval',
+				'sanitize_callback' => 'absint',
 			)
 		);
 
@@ -222,7 +220,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************
 		 * // Footer Section
 		 *******************/
@@ -263,7 +260,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_social';
 
 		$wp_customize->add_setting(
@@ -288,7 +284,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************************************
 		 * // Blog (Posts Page) Section
 		 *******************************************/
@@ -304,7 +299,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_sidebar';
 
 		$wp_customize->add_setting(
@@ -329,7 +323,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_style';
 
@@ -381,7 +374,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_meta';
 
 		$wp_customize->add_control(
@@ -395,7 +387,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_meta-cats';
 
@@ -445,13 +436,11 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************************************
 		 * // Archives Section
 		 *******************************************/
 
 		$section_id = 'layout_archive';
-
 
 		$wp_customize->add_section( $section_id,
 			array(
@@ -462,7 +451,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_sidebar';
 
 		$wp_customize->add_setting(
@@ -487,7 +475,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_style';
 
@@ -553,7 +540,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_meta-cats';
 
 		$wp_customize->add_setting(
@@ -602,13 +588,11 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************************************
 		 * // Search Results Section
 		 *******************************************/
 
 		$section_id = 'layout_search';
-
 
 		$wp_customize->add_section( $section_id,
 			array(
@@ -619,7 +603,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_sidebar';
 
 		$wp_customize->add_setting(
@@ -644,7 +627,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_style';
 
@@ -696,7 +678,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_meta';
 
 		$wp_customize->add_control(
@@ -710,7 +691,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_meta-cats';
 
@@ -760,13 +740,11 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************************************
 		 * // Single Post
 		 *******************************************/
 
 		$section_id = 'layout_post';
-
 
 		$wp_customize->add_section( $section_id,
 			array(
@@ -850,7 +828,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_ft-img-enlarge';
 
@@ -941,7 +918,6 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		$setting_id = $section_id . '_meta-cats';
 
 		$wp_customize->add_setting(
@@ -990,13 +966,11 @@ class Quest_Customize_Layout {
 			)
 		);
 
-
 		/******************************************
 		 * // Single Page
 		 *******************************************/
 
 		$section_id = 'layout_page';
-
 
 		$wp_customize->add_section( $section_id,
 			array(
@@ -1031,7 +1005,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_title-bar';
 
@@ -1081,7 +1054,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_ft-img-enlarge';
 
@@ -1157,7 +1129,6 @@ class Quest_Customize_Layout {
 				)
 			)
 		);
-
 
 	}
 
