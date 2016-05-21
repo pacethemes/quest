@@ -1,3 +1,7 @@
+##1.4.6
+* Fixes header height issue
+* Adds Header and Nav height options in Customizer
+
 ##1.4.5
 * Fixes issue with Transparent Header
 * Adds CSS for Post Password page
