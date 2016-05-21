@@ -77,6 +77,55 @@ class Quest_Customize_Layout {
 			)
 		);
 
+		$setting_id = $section_id . '_height';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				// 'sanitize_callback' => 'intval',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Quest_Customizer_Range_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Header Height', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'choices'  => quest_get_choices( $setting_id )
+				)
+			)
+		);
+
+
+		$setting_id = $section_id . '_menu_height';
+
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => quest_get_default( $setting_id ),
+				'type'              => 'theme_mod',
+				// 'sanitize_callback' => 'intval',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Quest_Customizer_Range_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'    => __( 'Main Menu Height', 'quest' ),
+					'section'  => $section_id,
+					'settings' => $setting_id,
+					'choices'  => quest_get_choices( $setting_id )
+				)
+			)
+		);
+
 		$setting_id = $section_id . '_search';
 
 		$wp_customize->add_setting(

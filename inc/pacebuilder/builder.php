@@ -134,7 +134,7 @@ class PT_PageBuilder {
 			wp_enqueue_script( 'pt_pb_admin_js', self::$PT_PB_URI . '/assets/js/app.js', array(
 				'pt_pb_collections_js'
 			), self::$PT_PB_VERSION, true );
-
+			
 			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', PT_PageBuilder_Helper::decode_pb_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) ) );
 			wp_localize_script( 'pt_pb_views_js', 'ptPbAppSliders', 
 					apply_filters( 'pt_pb_generic_sliders', array( 'meta' => array( 

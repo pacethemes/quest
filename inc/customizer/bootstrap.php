@@ -83,6 +83,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			require $quest_customizer_path . "custom-controls/text-area-control.php";
 			require $quest_customizer_path . "custom-controls/misc-control.php";
 			require $quest_customizer_path . "custom-controls/multiple-checkbox-control.php";
+			require $quest_customizer_path . "custom-controls/range-control.php";
 
 			// Load all Customizer Panels
 			require $quest_customizer_path . "panels/general.php";
@@ -338,6 +339,15 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 
 			$footer_text = quest_get_mod( 'colors_footer_text' );
 			?>
+
+			.logo{
+				height: <?php echo quest_get_mod( 'layout_header_height' ); ?>px;
+			}
+
+			.main-navigation .nav{
+				line-height: <?php echo quest_get_mod( 'layout_header_menu_height' ); ?>px;
+			}
+
 			/* Theme/Text Colors */
 			.entry-content blockquote,.action-icon.normal,.action, .pagination>.active>a, .pagination .current, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent { border-color: <?php
 			echo $accent_color; ?> ; }

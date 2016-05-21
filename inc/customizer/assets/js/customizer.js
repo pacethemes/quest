@@ -110,6 +110,11 @@
     $(document).ready(function () {
         multiCheckboxes.init();
         fontChosen.init();
+        jQuery('.customize-control input[type="range"]').on('change input', function(){
+            var name = $(this).attr('name');
+            $('input[type="text"][data-name="'+ name +'"]').val( $(this).val() );
+        })
+        .trigger('change');
         $('<a class="quest-plus-link" href="http://pacethemes.com/quest-download-pricing" target="_blank"><span class="quest-plus">Checkout Quest Plus</span></a>')
             .click(function (e) {
                 e.stopPropagation();

@@ -1,3 +1,14 @@
+.customize-control input[type="range"] {
+  width: 75%;
+  float: left;
+}
+
+.customize-control input[type="range"] + input[type="text"] {
+  float: right;
+  width: 22%;
+  color: #333;
+}
+
 .mce-ico.fa {
   font-family: 'FontAwesome' !important;
 }

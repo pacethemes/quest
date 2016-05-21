@@ -24,6 +24,8 @@ $quest_defaults = array(
 
 	/* Global */
 	'layout_global_site'                      => 'wide',
+	'layout_header_height'                    => 66,
+	'layout_header_menu_height'				  => 66,
 	'layout_header_search'                    => 1,
 	'layout_header_secondary'                 => 1,
 	'layout_header_secondary-layout'          => 'callout_icons',
@@ -267,6 +269,16 @@ $quest_defaults = array(
 		'layout_global_site'             => array(
 			'wide'  => __( 'Wide', 'quest' ),
 			'boxed' => __( 'Boxed', 'quest' )
+		),
+		'layout_header_height'			 => array(
+			'min'	=> 40,
+			'max'	=> 200,
+			'step'	=> 1,
+		),
+		'layout_header_menu_height'			 => array(
+			'min'	=> 40,
+			'max'	=> 200,
+			'step'	=> 1,
 		),
 		'layout_footer_widgets'          => array(
 			1 => '1',

@@ -120,15 +120,6 @@ var Quest = (function($) {
             });
         },
 
-        initHeader: function(){
-            if(!QuestCache.$body.hasClass('header-version2')){
-                var $logo = $('div.logo');
-                $logo.imagesLoaded(function(){
-                    $('nav.main-navigation ul.nav').css('line-height', ($logo.height() - 3) + 'px');
-                });
-            }
-        },
-
         initTransparentHeader: function () {
             if (QuestCache.$body.hasClass('transparent-header')){
                 return;
@@ -139,7 +130,6 @@ var Quest = (function($) {
         },
 
         init: function() {
-            Quest.initHeader();
             Quest.initTransparentHeader();
             new WOW({
                 offset: 100
