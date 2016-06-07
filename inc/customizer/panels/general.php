@@ -29,7 +29,6 @@ class Quest_Customize_General {
 		$site_title        = $wp_customize->get_section( $section_id );
 		$site_title->panel = $panel_id;
 
-
 		// Change priority for Site Title
 		$site_title           = $wp_customize->get_control( 'blogname' );
 		$site_title->priority = 15;
@@ -37,7 +36,6 @@ class Quest_Customize_General {
 		// Change priority for Site Tagline
 		$site_title           = $wp_customize->get_control( 'blogdescription' );
 		$site_title->priority = 17;
-
 
 		$setting_id = $section_id . '_hide_title';
 
@@ -93,7 +91,6 @@ class Quest_Customize_General {
 		$site_title        = $wp_customize->get_section( 'static_front_page' );
 		$site_title->panel = $panel_id;
 
-
 		/******************
 		 * // Logo Section
 		 *******************/
@@ -108,7 +105,6 @@ class Quest_Customize_General {
 				'panel'      => $panel_id
 			)
 		);
-
 
 		$setting_id = $section_id . '_logo';
 
@@ -157,7 +153,6 @@ class Quest_Customize_General {
 			)
 		);
 
-
 		$setting_id = $section_id . '_favicon';
 
 		$wp_customize->add_setting(
@@ -181,7 +176,6 @@ class Quest_Customize_General {
 				)
 			)
 		);
-
 
 		/******************************
 		 * // Social Profiles Section
@@ -220,7 +214,6 @@ class Quest_Customize_General {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_twitter';
 
@@ -313,7 +306,6 @@ class Quest_Customize_General {
 				)
 			)
 		);
-
 
 		$setting_id = $section_id . '_vimeo-square';
 
@@ -430,7 +422,6 @@ class Quest_Customize_General {
 			)
 		);
 
-
 		$setting_id = $section_id . '_digg';
 
 		$wp_customize->add_setting(
@@ -454,7 +445,6 @@ class Quest_Customize_General {
 			)
 		);
 
-
 		/******************************
 		 * // Sticky Posts Section
 		 *******************************/
@@ -477,7 +467,7 @@ class Quest_Customize_General {
 			array(
 				'default'           => quest_get_default( $setting_id ),
 				'type'              => 'theme_mod',
-				'sanitize_callback' => 'esc_url_raw'
+				'sanitize_callback' => 'esc_attr'
 			)
 		);
 
@@ -531,7 +521,6 @@ class Quest_Customize_General {
 				)
 			)
 		);
-
 
 	}
 }
