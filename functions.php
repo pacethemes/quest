@@ -146,7 +146,7 @@ if ( ! function_exists( 'quest_scripts' ) ):
 	 */
 	function quest_scripts() {
 
-		if( defined( 'QUEST_MINIFY_SCRIPTS' ) && QUEST_MINIFY_SCRIPTS ) {
+		if( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
 
 			// Enqueue required styles
 			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/plugins-all.min.css' );

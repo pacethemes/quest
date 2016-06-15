@@ -343,7 +343,7 @@
     animation: moveUp 1s ease-in-out both;
 }
 
-.sl-trans-elems .sl-slide-text {
+.sl-active-slide .sl-slide-content .sl-slide-text {
     -webkit-animation: fadeIn 0.5s linear 0.5s both;
     -moz-animation: fadeIn 0.5s linear 0.5s both;
     -o-animation: fadeIn 0.5s linear 0.5s both;

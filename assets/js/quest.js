@@ -156,25 +156,33 @@ var PageBuilder = (function($) {
 
             $('.sl-slider-wrapper').each(function() {
                 var $el = $(this),
-                    $nav = $el.find('.nav-dots > span'),
+                    $slides = $el.find('.sl-slide'),
+                    $nav,
                     options = $el.data(),
                     defaults = {
                         autoplay: true,
                         onBeforeChange: function(slide, pos) {
+                            setTimeout( function(){
+                                $slides.removeClass('sl-active-slide');
+                                $slides.eq(pos).addClass('sl-active-slide');
+                            }, 200);
                             $nav.removeClass('nav-dot-current');
                             $nav.eq(pos).addClass('nav-dot-current');
                         }
                     },
-                    cnt = $el.find('.sl-slide').length;
+                    cnt = $slides.length;
                 $.extend(defaults, options);
 
                 $el.append('<nav class="nav-dots">' + new Array(cnt + 1).join('<span></span>') + '</nav>');
 
+                $nav = $el.find('.nav-dots > span');
                 $nav.first().addClass('nav-dot-current');
 
                 var slitslider = $el.slitslider(defaults),
                     $next = $el.find('.slit-nav-buttons .next'),
                     $prev = $el.find('.slit-nav-buttons .prev');
+
+                $slides.first().addClass('sl-active-slide');
 
                 $nav.each(function(i) {
 

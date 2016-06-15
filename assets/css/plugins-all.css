@@ -1,4 +1,4 @@
-/*! Quest - v1.4.7 - 2016-06-08
+/*! Quest - v1.4.8 - 2016-06-16
  * Copyright (c) 2016
  * Licensed GPLv2+ 
  */
@@ -513,7 +513,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     animation: moveUp 1s ease-in-out both;
 }
 
-.sl-trans-elems .sl-slide-text {
+.sl-active-slide .sl-slide-content .sl-slide-text {
     -webkit-animation: fadeIn 0.5s linear 0.5s both;
     -moz-animation: fadeIn 0.5s linear 0.5s both;
     -o-animation: fadeIn 0.5s linear 0.5s both;
