@@ -1,7 +1,5 @@
 <?php
 
-require trailingslashit( dirname( __FILE__ ) ) . 'save.php';
-
 /**
  *
  */
@@ -26,6 +24,7 @@ class PT_PageBuilder {
 		//setup required Hooks and Filters
 		add_action( 'after_setup_theme', array( $this, 'initialize_meta_box' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ), 10, 1 );
+		add_action( 'init', array( $this, 'load_save_instance' ) );
 
 		if ( in_array( $GLOBALS['pagenow'], array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 			add_action( 'admin_footer', array( $this, 'pagebuilder_tour' ) );
@@ -162,6 +161,16 @@ class PT_PageBuilder {
 					) );
 
 		}
+	}
+
+	/**
+	 * Load Page Builder Save instance file
+	 *
+	 * @return void
+	 */
+	public function load_save_instance(){
+		require trailingslashit( dirname( __FILE__ ) ) . 'modules.php';
+		require trailingslashit( dirname( __FILE__ ) ) . 'save.php';
 	}
 
 	/**
