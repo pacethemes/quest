@@ -1,3 +1,6 @@
+##1.4.8.1
+* Fixes issue with existing class names for Modules
+
 ##1.4.8
 * Fixes Contact Form 7 module issue
 * Fixes SlitSlider issue with text and navigation

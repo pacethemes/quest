@@ -269,7 +269,7 @@ if ( ! class_exists( 'Quest_Main_Menu' ) ):
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
-			if ( $args->has_children ) {
+			if ( is_object( $args ) && $args->has_children ) {
 				$item->classes[] = 'dropdown';
 			}
 
@@ -380,11 +380,6 @@ if ( ! function_exists( 'quest_wp_page_menu' ) ):
 endif;
 
 /**
- * Pace Builder Helper
- */
-require get_template_directory() . '/inc/pacebuilder/helper.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -428,19 +423,28 @@ require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 
 
 /**
- * Admin includes
+ * Pace Builder Helper
  */
-if ( is_admin() )  :
+require get_template_directory() . '/inc/pacebuilder/helper.php';
+
+if( ! class_exists( 'PTPB' ) ) :
 
 	/**
-	 * Pace Builder
+	 * Admin includes
 	 */
-	require get_template_directory() . '/inc/pacebuilder/builder.php';
+	if ( is_admin() )  :
 
-	/**
-	 * Meta Revisions for PaceBuilder.
-	 */
-	require get_template_directory() . '/inc/pacebuilder/revisions.php';
+		/**
+		 * Pace Builder
+		 */
+		require get_template_directory() . '/inc/pacebuilder/builder.php';
+
+		/**
+		 * Meta Revisions for PaceBuilder.
+		 */
+		require get_template_directory() . '/inc/pacebuilder/revisions.php';
+
+	endif;
 
 endif;
 
@@ -514,5 +518,24 @@ if( class_exists( 'MetaSliderPlugin' ) ) {
 	add_filter( 'metaslider_hoplink', 'quest_metaslider_hoplink', 10, 1 );
 }
 
+
+add_action( 'switch_theme', 'quest_switch_theme_update_mods' );
+
+function quest_switch_theme_update_mods() {
+
+	if ( is_child_theme() && false === get_theme_mods() ) {
+
+		$mods = get_option( 'theme_mods_' . get_option( 'template' ) );
+
+		if ( false !== $mods ) {
+
+			foreach ( (array) $mods as $mod => $value ) {
+
+				if ( 'sidebars_widgets' !== $mod )
+					set_theme_mod( $mod, $value );
+			}
+		}
+	}
+}
 
 ?>
