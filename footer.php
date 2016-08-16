@@ -50,4 +50,5 @@ $footer_container_cls = apply_filters( 'quest_footer_container_cls', 'container'
 <a href="#0" class="cd-top"><i class="fa fa-angle-up"></i></a>
 
 </body>
+
 </html>

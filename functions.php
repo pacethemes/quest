@@ -146,7 +146,7 @@ if ( ! function_exists( 'quest_scripts' ) ):
 	 */
 	function quest_scripts() {
 
-		if( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+		if( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 
 			// Enqueue required styles
 			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/plugins-all.min.css' );
@@ -446,6 +446,13 @@ if( ! class_exists( 'PTPB' ) ) :
 
 	endif;
 
+else :
+
+	/**
+	 * Add Quest modules which are missing in Pace Builder Plugin
+	 */
+	require get_template_directory() . '/inc/pacebuilder/plugin/pace-builder.php';	
+
 endif;
 
 add_action( 'tgmpa_register', 'quest_recommended_plugins' );
@@ -518,20 +525,20 @@ if( class_exists( 'MetaSliderPlugin' ) ) {
 	add_filter( 'metaslider_hoplink', 'quest_metaslider_hoplink', 10, 1 );
 }
 
+add_action( 'switch_theme', 'quest_switch_child_theme_update_mods' );
 
-add_action( 'switch_theme', 'quest_switch_theme_update_mods' );
+function quest_switch_child_theme_update_mods() {
 
-function quest_switch_theme_update_mods() {
+	if ( get_option( 'stylesheet' ) !== 'quest' && get_option( 'template' ) === 'quest' ) {
 
-	if ( is_child_theme() && false === get_theme_mods() ) {
-
-		$mods = get_option( 'theme_mods_' . get_option( 'template' ) );
+		$mods = get_option( 'theme_mods_quest' );
+		$child_mods = get_theme_mods();
 
 		if ( false !== $mods ) {
 
 			foreach ( (array) $mods as $mod => $value ) {
 
-				if ( 'sidebars_widgets' !== $mod )
+				if ( 'sidebars_widgets' !== $mod && ! array_key_exists( $mod, $child_mods )  )
 					set_theme_mod( $mod, $value );
 			}
 		}
