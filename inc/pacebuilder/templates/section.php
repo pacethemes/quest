@@ -27,10 +27,12 @@
 					<a href="#" class="section-type pt-pb-insert-gallery"><i
 							class="dashicons dashicons-format-gallery"></i> <?php _e( 'Gallery', 'quest' ); ?></a>
 					<# _.each(ptPbAppSliders, function(slider, name) { #>
-					<a href="#" class="section-type pt-pb-insert-generic-slider" data-gen-slider="{{{name}}}">
-						{{{slider.icon}}}
-						{{{slider.name}}}
-					</a>
+						<# if(slider.exists == 1) { #>
+						<a href="#" class="section-type pt-pb-insert-generic-slider" data-gen-slider="{{{name}}}">
+							{{{slider.icon}}}
+							{{{slider.name}}}
+						</a>
+						<# } #>
 					<# }) #>
 
 					<div class="quest-plus-message">

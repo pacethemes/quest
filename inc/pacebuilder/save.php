@@ -512,7 +512,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 					continue;
 				}
 
-				if ( $image['post_id'] != '' && is_numeric( $image['post_id'] ) ) {
+				// if ( $image['post_id'] != '' && is_numeric( $image['post_id'] ) ) {
 
 					/**
 					 * Filter Image markup
@@ -520,7 +520,7 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 					 * Since 1.1.2
 					 */
 					$content .= apply_filters( 'pt_pb_generate_gallery_image', '', $image );
-				}
+				// }
 			}
 			$content .= '</div>';
 
@@ -535,9 +535,12 @@ if ( ! class_exists( 'PT_PageBuilder_Save' ) ) :
 		public function generate_image( $image_html, $image ) {
 			$link        = esc_url( $image['href'] ) == '' ? $image['src'] : esc_url( $image['href'] );
 			$gallery_cls = empty( $image['href'] ) ? 'gallery' : '';
+			$img 		 = ( empty( $image['post_id'] ) || ! is_numeric( $image['post_id'] ) ) 
+			               	? '<img src="' . esc_url( $image['src'] ) . '" />'
+			               	: wp_get_attachment_image( $image['post_id'], 'quest-gallery' );
 			$content     = "<div class='quest-gallery-thumb-wrap'>
 							<a href='$link' class='quest-gallery-thumb $gallery_cls' title='{$image['desc']}' data-gallery=''>" .
-			               wp_get_attachment_image( $image['post_id'], 'quest-gallery' ) .
+			                $img .
 			               "<span class='overlay'><i class='fa fa-expand'></i>
 									<div class='image-title'>{$image['title']}</div>
 								</span>

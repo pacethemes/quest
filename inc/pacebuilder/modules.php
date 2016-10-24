@@ -140,10 +140,11 @@ if ( ! class_exists( 'PT_PageBuilder_Contactform7_Module' ) ) :
 		}
 
 		public function filterContent( $content, $col ) {
-			$data = extract_data_attr( $col );
+			$data = quest_extract_data_attr( $col ); 
 
 			if ( ! array_key_exists( 'cf7-id', $data ) ) {
-				return $content; }
+				return $content;
+			}
 
 			$form = ( array_key_exists( 'cf7-title', $data ) && $data['cf7-title'] !== '' ) ? "<h3 class='wpcf7-title'> {$data['cf7-title']} </h3>" : '';
 
@@ -153,5 +154,24 @@ if ( ! class_exists( 'PT_PageBuilder_Contactform7_Module' ) ) :
 
 		}
 
+	}
+endif;
+
+if ( ! function_exists( 'quest_extract_data_attr' ) ):
+
+	/**
+	 * Extract data attributes
+	 */
+	function quest_extract_data_attr( $string ) {
+		$cnt  = preg_match_all( "/data-([^=]+)='([^']+)'/", $string, $matches );
+		$data = array();
+		if ( $cnt === false || $cnt < 1 ) {
+			return $data;
+		}
+		foreach ( $matches[1] as $ind => $key ) {
+			$data[ $key ] = $matches[2][ $ind ];
+		}
+
+		return $data;
 	}
 endif;

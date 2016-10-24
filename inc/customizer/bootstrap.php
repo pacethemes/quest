@@ -320,7 +320,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 				'subset' => implode( ',', quest_get_mod( 'typography_options_subsets' ) )
 			);
 
-			wp_enqueue_style( 'google-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
+			wp_enqueue_style( 'quest_google-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 
 		}
 

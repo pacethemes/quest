@@ -623,3 +623,101 @@
         font-size: 16px;
     }
 }
+
+.sl-slide-inner {
+  position: relative;
+}
+
+.sl-slider h2,
+.sl-slider .sl-slide-text {
+  padding: 20px 20px 0;
+  max-width: 1120px;
+}
+
+.sl-slide-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  right: 0;
+  left: 0;
+}
+.sl-slide-content .sl-slide-title {
+  -webkit-animation: moveUp 1s ease-in-out both;
+  -moz-animation: moveUp 1s ease-in-out both;
+  -o-animation: moveUp 1s ease-in-out both;
+  -ms-animation: moveUp 1s ease-in-out both;
+  animation: moveUp 1s ease-in-out both;
+}
+.sl-slide-content .sl-slide-text {
+  opacity: 0;
+}
+
+.content-x-center .sl-slide-content h2,
+.content-x-center .sl-slide-content .sl-slide-text {
+  text-align: center;
+}
+
+.content-x-left .sl-slide-content h2,
+.content-x-left .sl-slide-content .sl-slide-text {
+  text-align: left !important;
+}
+
+.content-x-right .sl-slide-content h2,
+.content-x-right .sl-slide-content .sl-slide-text {
+  text-align: right !important;
+}
+
+.content-y-center .sl-slide-content {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.content-y-top .sl-slide-content {
+  top: 20%;
+  transform: translateY(-20%);
+}
+
+.content-y-bottom .sl-slide-content {
+  top: 80%;
+  transform: translateY(-80%);
+}
+
+@media (max-width: 768px) {
+  .content-x-center .sl-slide-content h2,
+  .content-x-center .sl-slide-content .sl-slide-text,
+  .content-x-left .sl-slide-content h2,
+  .content-x-left .sl-slide-content .sl-slide-text,
+  .content-x-right .sl-slide-content h2,
+  .content-x-right .sl-slide-content .sl-slide-text {
+    text-align: center !important;
+  }
+
+  .content-y-center .sl-slide-content,
+  .content-y-top .sl-slide-content,
+  .content-y-bottom .sl-slide-content {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .sl-slide-content h2 {
+    font-size: 1.6em !important;
+  }
+
+  .sl-slide-content .sl-slide-text,
+  .sl-slide-content .sl-slide-text * {
+    font-size: 1em !important;
+  }
+}
+
+.sl-slider h2 span,
+.sl-slider .sl-slide-text span {
+  padding: 5px 20px;
+  display: inline-block;
+  width: auto;
+  border-radius: 2px;
+}
+.sl-slider h2 span p:last-child,
+.sl-slider .sl-slide-text span p:last-child {
+  margin-bottom: 0;
+}

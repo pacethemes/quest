@@ -137,7 +137,7 @@ class PT_PageBuilder {
 			wp_localize_script( 'pt_pb_admin_js', 'ptPbAppSections', PT_PageBuilder_Helper::decode_pb_metadata( get_post_meta( $post->ID, 'pt_pb_sections', true ) ) );
 			wp_localize_script( 'pt_pb_views_js', 'ptPbAppSliders', 
 					apply_filters( 'pt_pb_generic_sliders', array( 'meta' => array( 
-						'exists' => class_exists( 'MetaSliderPlugin' ), 
+						'exists' => class_exists( 'MetaSliderPlugin' ) ? 1 : 0, 
 						'icon' => "<img src=' " . plugins_url("ml-slider/assets/metaslider/matchalabs.png") . "' />",
 						'sliders' => PT_PageBuilder::get_meta_sliders(),
 						'name' => 'Meta Slider'

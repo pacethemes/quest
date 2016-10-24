@@ -149,18 +149,6 @@ if ( ! function_exists( 'quest_scripts' ) ):
 		if( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 
 			// Enqueue required styles
-			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/plugins-all.min.css' );
-			wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array( 'quest-all-css' ) );
-
-			// Enqueue required scripts
-			wp_enqueue_script( 'quest-all-js', get_template_directory_uri() . '/assets/js/quest-and-plugins.js', array(
-				'jquery',
-				'masonry'
-			) );
-
-		} else {
-
-			// Enqueue required styles
 			wp_enqueue_style( 'quest-bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/css/bootstrap.min.css' );
 			wp_enqueue_style( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css' );
 			wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/plugins/font-awesome/css/font-awesome.min.css' );
@@ -191,7 +179,19 @@ if ( ! function_exists( 'quest_scripts' ) ):
 			wp_enqueue_script( 'smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/jquery.smartmenus.js' );
 			wp_enqueue_script( 'bs-smartmenus', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js' );
 			wp_enqueue_script( 'smartmenus-keyboard', get_template_directory_uri() . '/assets/plugins/smartmenus/addons/keyboard/jquery.smartmenus.keyboard.js' );
-			wp_enqueue_script( 'quest-js', get_template_directory_uri() . '/assets/js/quest.js' );
+			wp_enqueue_script( 'quest-js', get_template_directory_uri() . '/assets/js/quest.js' );			
+
+		} else {
+
+			// Enqueue required styles
+			wp_enqueue_style( 'quest-all-css', get_template_directory_uri() . '/assets/css/plugins-all.min.css' );
+			wp_enqueue_style( 'Quest-style', get_stylesheet_uri(), array( 'quest-all-css' ) );
+
+			// Enqueue required scripts
+			wp_enqueue_script( 'quest-all-js', get_template_directory_uri() . '/assets/js/quest-and-plugins.js', array(
+				'jquery',
+				'masonry'
+			) );
 
 		}
 
@@ -379,6 +379,63 @@ if ( ! function_exists( 'quest_wp_page_menu' ) ):
 	}
 endif;
 
+if ( ! function_exists( 'quest_filter_content' ) ):
+
+	/**
+	 * Filter Page Content for Dynamic Modules
+	 */
+	function quest_filter_content( $content ){
+		global $post;
+		if ( get_page_template_slug( $post->ID ) !== 'page-builder.php' ) {
+			return $content;
+		}
+		$cnt = preg_match_all( "/<[^<]+data-process='true'[^>]+>/", $content, $matches );
+
+		if ( $cnt === false || $cnt < 1 ) {
+			return $content;
+		}
+
+		foreach ( $matches[0] as $key => $col ) {
+			$module = quest_get_module_type( $col ); 
+			$cls    = 'PT_PageBuilder_' . ucwords( $module ) . '_Module';
+
+			if ( ! class_exists( $cls ) ) {
+				continue;
+			}
+
+			$handler = new $cls ( );
+
+			$content = $handler->filterContent( $content, $col );
+
+		}
+
+		return $content;
+	}
+
+endif;
+
+if ( ! function_exists( 'quest_hook_content_filter' ) ) :
+	function quest_hook_content_filter(){
+		if( ! class_exists( 'Quest_Plus_Public' ) ) {
+			add_filter( 'the_content', 'quest_filter_content' );
+		}
+	}
+endif;
+
+add_action( 'init', 'quest_hook_content_filter' );
+
+if ( ! function_exists( 'quest_get_module_type' ) ) :
+	function quest_get_module_type( $html ) {
+		$cnt = preg_match( "/data-type='([^']+)'/", $html, $match );
+
+		if ( $cnt === false || $cnt < 1 || ! array_key_exists( 1, $match ) ) {
+			return '';
+		}
+
+		return $match[1];
+	}
+endif;
+
 /**
  * Custom template tags for this theme.
  */
@@ -444,9 +501,25 @@ if( ! class_exists( 'PTPB' ) ) :
 		 */
 		require get_template_directory() . '/inc/pacebuilder/revisions.php';
 
+	else :
+
+		/**
+		 * Pace Builder Modules
+		 */
+		require get_template_directory() . '/inc/pacebuilder/modules.php';
+
 	endif;
 
 else :
+
+	if( is_admin() ) :
+
+		/**
+		 * Pace Builder Prebuilt layouts
+		 */
+		require get_template_directory() . '/pace-builder/layouts/layouts.php';
+		
+	endif;
 
 	/**
 	 * Add Quest modules which are missing in Pace Builder Plugin
@@ -467,6 +540,11 @@ if ( ! function_exists( 'quest_recommended_plugins' ) ):
 	function quest_recommended_plugins() {
 	 
 	    $plugins = array(
+	    	array(
+	            'name'               => 'Page Builder by PaceThemes',
+	            'slug'               => 'pace-builder',
+	            'required'           => false
+	        ),
 	        array(
 	            'name'               => 'Meta Slider',
 	            'slug'               => 'ml-slider',
