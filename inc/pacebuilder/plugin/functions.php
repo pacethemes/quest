@@ -169,8 +169,10 @@ if( ! function_exists( 'ptpb_legacy_data' ) ) :
 					foreach ( $row['columns'] as $k => $column ) {
 						if( ! empty( $column['modules'] ) && is_array( $column['modules'] ) && count( array_filter( array_keys( $column['modules'] ), 'is_string') ) > 0 ) {
 							$column['modules'] = array( $column['modules'] );
-							$row['columns'][$k] = $column;
+						} else if( ! empty( $column['modules'] ) && is_array( $column['modules'] ) ) {
+							$column['modules'] = array_values( $column['modules'] );
 						}
+						$row['columns'][$k] = $column;
 					}
 					$section['rows'][$j] = $row;
 				}

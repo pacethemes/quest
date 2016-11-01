@@ -1,3 +1,13 @@
+##1.5.0.2
+* Fixes Transparent Header issue with Page Builder plugin
+* Fixes backward compatibility issues with  Page Builder plugin
+
+##1.5.0.1
+* Theme check fixes
+
+##1.5.0
+* Pace Builder plugin support
+
 ##1.4.9
 * Adds support for Page Builder by PaceThemes plugin
 * Adds functionality to apply parent (Quest) mods to child themes as well
