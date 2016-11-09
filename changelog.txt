@@ -1,3 +1,6 @@
+##1.5.0.3
+* Footer widget title changed to h3 from h1
+
 ##1.5.0.2
 * Fixes Transparent Header issue with Page Builder plugin
 * Fixes backward compatibility issues with  Page Builder plugin
