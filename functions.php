@@ -130,8 +130,8 @@ if ( ! function_exists( 'quest_widgets_init' ) ):
 			'id'            => 'footer-widget',
 			'before_widget' => '<article class="col-md-' . $span . ' %2$s" id="%1$s">',
 			'after_widget'  => "</article>\n",
-			'before_title'  => '<h1>',
-			'after_title'   => "</h1>\n"
+			'before_title'  => '<h3>',
+			'after_title'   => "</h3>\n"
 		) );
 	}
 
