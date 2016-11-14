@@ -1,3 +1,6 @@
+##1.5.1
+* Fixes Logo center issue with header version 2
+
 ##1.5.0.3
 * Footer widget title changed to h3 from h1
 
