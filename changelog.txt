@@ -1,3 +1,7 @@
+##1.5.2
+* Fixes logo issue in tablets
+* Fixes Menu Toggle color issue
+
 ##1.5.1
 * Fixes Logo center issue with header version 2
 

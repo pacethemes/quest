@@ -226,15 +226,20 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			color: <?php echo $hover_color; ?>;
 			}
 
-			.transparent-header .main-header .navbar-toggle a:hover{
-			color: <?php echo $hover_color; ?>!important;
-			}
-			.transparent-header .main-header .navbar-toggle a:hover.fa{
-			color: <?php echo $hover_color; ?>!important;
-			}
-
 			.transparent-header .main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent{
 			border-color: <?php echo quest_get_meta( array(), '_quest_pb_menu_active' ); ?>!important;
+			}
+			}
+
+			@media (max-width: 767px) {
+			.transparent-header .main-header .navbar-toggle a{
+			color: <?php echo $color; ?>!important;
+			}
+			.transparent-header .main-header .navbar-toggle a:hover{
+			color: <?php echo $color; ?>!important;
+			}
+			.transparent-header .main-header .navbar-toggle a:hover.fa{
+			color: <?php echo $color; ?>!important;
 			}
 			}
 			<?php
