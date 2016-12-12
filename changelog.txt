@@ -1,3 +1,6 @@
+##1.5.3
+* Fixes Empty Google Fonts enqueue issue
+
 ##1.5.2
 * Fixes logo issue in tablets
 * Fixes Menu Toggle color issue

@@ -312,7 +312,7 @@ if ( ! class_exists( 'Quest_Customize' ) ):
 			$defaults   = array_keys( quest_get_standard_fonts() );
 
 			foreach ( $fonts as $key => $value ) {
-				if ( quest_string_ends_with( $key, '_family' ) && trim( $value ) !== "" && ! in_array( $value, $defaults ) ) {
+				if ( quest_string_ends_with( $key, '_family' ) && ! empty( $value ) && ! in_array( $value, $defaults ) ) {
 					$variant              = quest_get_default_mod( str_replace( '_family', '_variant', $key ), $fonts );
 					$used_fonts[ $value ] = array_key_exists( $value, $used_fonts ) ? ( strpos( $used_fonts[ $value ], $variant ) !== false ) ? $used_fonts[ $value ] : "$used_fonts[$value],$variant" : "$value:$variant";
 				}
